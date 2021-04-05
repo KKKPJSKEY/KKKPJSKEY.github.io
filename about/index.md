@@ -1,6 +1,7 @@
 # 关于 CodeIT
 
 
+{{< style "img { height: 1.25rem; }" >}}
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/sunt-programator/CodeIT?style=flat-square)](https://github.com/sunt-programator/CodeIT/releases)
 [![Hugo](https://img.shields.io/badge/Hugo-%5E0.78.1-ff4088?style=flat-square&logo=hugo)](https://gohugo.io/)
 [![License](https://img.shields.io/github/license/sunt-programator/CodeIT?style=flat-square)](https://github.com/sunt-programator/CodeIT/blob/master/LICENSE)
