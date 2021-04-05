@@ -1,0 +1,31 @@
+.fa-github:before {
+    content: "\f09b";
+}
+
+.fab, .far{
+	font-weight: 400;
+}
+
+.fab {
+    font-family: "Font Awesome 5 Brands";
+}
+
+fa-fw {
+    text-align: center;
+    width: 1.25em;
+}
+
+fa, .fab, .fad, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    /* display: inline-block; */
+    font-style: normal;
+    /* font-variant: normal; */
+    text-rendering: auto;
+    /* line-height: 1; */
+}
+
+.fa-github:before {
+    content: "\f09b";
+}
+
