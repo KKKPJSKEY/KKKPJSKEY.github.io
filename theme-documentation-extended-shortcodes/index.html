@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>主题文档 - 扩展 Shortcodes - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="CodeIT 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode."><meta property="og:title" content="主题文档 - 扩展 Shortcodes" />
+<meta property="og:description" content="CodeIT 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/theme-documentation-extended-shortcodes/" /><meta property="og:image" content="https://example.com/theme-documentation-extended-shortcodes/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-03-03T16:29:59&#43;08:00" />
+<meta property="article:modified_time" content="2020-03-03T16:29:59&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/theme-documentation-extended-shortcodes/featured-image.jpg"/>
+<meta name="twitter:title" content="主题文档 - 扩展 Shortcodes"/>
+<meta name="twitter:description" content="CodeIT 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode."/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/theme-documentation-extended-shortcodes/" /><link rel="prev" href="https://example.com/basic-markdown-syntax/" /><link rel="next" href="https://example.com/theme-documentation-built-in-shortcodes/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.7c109789d1634c2b13017e89b274cc1d968471d213abac9cacad47deca582a11.css" integrity="sha256-fBCXidFjTCsTAX6JsnTMHZaEcdITq6ycrK1H3spYKhE="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "主题文档 - 扩展 Shortcodes",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/theme-documentation-extended-shortcodes\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/example.com\/theme-documentation-extended-shortcodes\/featured-image.jpg",
+                            "width":  1280 ,
+                            "height":  720 
+                        }],"genre": "posts","keywords": "shortcodes","wordcount":  5584 ,
+        "url": "https:\/\/example.com\/theme-documentation-extended-shortcodes\/","datePublished": "2020-03-03T16:29:59+08:00","dateModified": "2020-03-03T16:29:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/example.com\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "Sunt Programator!"
+            },"description": "CodeIT 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode."
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-17" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/en/theme-documentation-extended-shortcodes/">English</option><option value="/theme-documentation-extended-shortcodes/" selected>简体中文</option><option value="/fr/theme-documentation-extended-shortcodes/">Français</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-18" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/en/theme-documentation-extended-shortcodes/">English</option><option value="/theme-documentation-extended-shortcodes/" selected>简体中文</option><option value="/fr/theme-documentation-extended-shortcodes/">Français</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">主题文档 - 扩展 Shortcodes</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://suntprogramator.dev/" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Sunt Programator!</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/documentation/"><i class="far fa-folder fa-fw"></i>文档</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-03-03">2020-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5584 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/theme-documentation-extended-shortcodes/" class="leancloud_visitors" data-flag-title="主题文档 - 扩展 Shortcodes">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/theme-documentation-extended-shortcodes/featured-image.jpg"
+        data-srcset="/theme-documentation-extended-shortcodes/featured-image.jpg, /theme-documentation-extended-shortcodes/featured-image.jpg 1.5x, /theme-documentation-extended-shortcodes/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/theme-documentation-extended-shortcodes/featured-image.jpg"
+        title="CodeIT 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode." /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-style">1 style</a></li>
+    <li><a href="#2-link">2 link</a></li>
+    <li><a href="#image">3 image</a></li>
+    <li><a href="#4-admonition">4 admonition</a></li>
+    <li><a href="#5-mermaid">5 mermaid</a>
+      <ul>
+        <li><a href="#flowchart">5.1 流程图</a></li>
+        <li><a href="#sequence-diagram">5.2 时序图</a></li>
+        <li><a href="#gantt">5.3 甘特图</a></li>
+        <li><a href="#class-diagram">5.4 类图</a></li>
+        <li><a href="#state-diagram">5.5 状态图</a></li>
+        <li><a href="#git-graph">5.6 Git 图</a></li>
+        <li><a href="#pie">5.7 饼图</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-echarts">6 echarts</a></li>
+    <li><a href="#7-mapbox">7 mapbox</a></li>
+    <li><a href="#8-music">8 music</a>
+      <ul>
+        <li><a href="#custom-music-url">8.1 自定义音乐 URL</a></li>
+        <li><a href="#automatic-identification">8.2 音乐平台 URL 的自动识别</a></li>
+        <li><a href="#custom-server">8.3 自定义音乐平台, 类型和 ID</a></li>
+        <li><a href="#other-parameters">8.4 其它参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-bilibili">9 bilibili</a></li>
+    <li><a href="#10-typeit">10 typeit</a>
+      <ul>
+        <li><a href="#simple-content">10.1 简单内容</a></li>
+        <li><a href="#code-content">10.2 代码内容</a></li>
+        <li><a href="#code-content">10.3 分组内容</a></li>
+      </ul>
+    </li>
+    <li><a href="#11-script">11 script</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><strong>CodeIT</strong> 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode.</p>
+<h2 id="1-style">1 style</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Hugo <strong>extended</strong> 版本对于 <code>style</code> shortcode 是必需的.</div>
+        </div>
+    </div>
+<p><code>style</code> shortcode 用来在你的文章中插入自定义样式.</p>
+<p><code>style</code> shortcode 有两个位置参数.</p>
+<p>第一个参数是自定义样式的内容. 它支持 <a href="https://sass-lang.com/documentation/style-rules/declarations#nesting" target="_blank" rel="noopener noreferrer"><i class="fab fa-sass fa-fw"></i>&nbsp;SASS</a> 中的嵌套语法,
+并且 <code>&amp;</code> 指代这个父元素.</p>
+<p>第二个参数是包裹你要更改样式的内容的 HTML 标签, 默认值是 <code>div</code>.</p>
+<p>一个 <code>style</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">style</span> <span class="err">&#34;</span><span class="na">text-align:right</span><span class="err">;</span> <span class="na">strong</span><span class="err">{</span><span class="na">color:</span><span class="err">#</span><span class="na">00b1ff</span><span class="err">;}&#34;</span> <span class="p">&gt;</span><span class="err">}}</span>
+<span class="nt">This</span> <span class="nt">is</span> <span class="nt">a</span> <span class="gs">**right-aligned**</span> <span class="nt">paragraph</span><span class="o">.</span>
+<span class="p">{</span><span class="err">{</span><span class="p">&lt;</span> <span class="p">/</span><span class="nt">style</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div id="id-1">This is a <strong>right-aligned</strong> paragraph.</div>
+<h2 id="2-link">2 link</h2>
+<p><code>link</code> shortcode 是 <a href="../basic-markdown-syntax#links" rel="">Markdown 链接语法</a> 的替代.
+<code>link</code> shortcode 可以提供一些其它的功能并且可以在代码块中使用.</p>
+<p>支持<a href="../theme-documentation-content#contents-organization" rel="">本地资源引用</a>的完整用法.</p>
+<p><code>link</code> shortcode 有以下命名参数:</p>
+<ul>
+<li>
+<p><strong>href</strong> <em>[必需]</em> (<strong>第一个</strong>位置参数)</p>
+<p>链接的目标.</p>
+</li>
+<li>
+<p><strong>content</strong> <em>[可选]</em> (<strong>第二个</strong>位置参数)</p>
+<p>链接的内容, 默认值是 <strong>href</strong> 参数的值.</p>
+<p><em>支持 Markdown 或者 HTML 格式.</em></p>
+</li>
+<li>
+<p><strong>title</strong> <em>[可选]</em> (<strong>第三个</strong>位置参数)</p>
+<p>HTML <code>a</code> 标签 的 <code>title</code> 属性, 当悬停在链接上会显示的提示.</p>
+</li>
+<li>
+<p><strong>rel</strong> <em>[可选]</em></p>
+<p>HTML <code>a</code> 标签 的 <code>rel</code> 补充属性.</p>
+</li>
+<li>
+<p><strong>class</strong> <em>[可选]</em></p>
+<p>HTML <code>a</code> 标签 的 <code>class</code> 属性.</p>
+</li>
+</ul>
+<p>一个 <code>link</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">link</span> <span class="err">&#34;</span><span class="na">https:</span><span class="err">//</span><span class="na">assemble</span><span class="err">.</span><span class="na">io</span><span class="err">&#34;</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://assemble.io&#34;</span> <span class="p">&gt;</span>}}
+
+{{<span class="p">&lt;</span> <span class="nt">link</span> <span class="err">&#34;</span><span class="na">mailto:contact</span><span class="err">@</span><span class="na">revolunet</span><span class="err">.</span><span class="na">com</span><span class="err">&#34;</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;mailto:contact@revolunet.com&#34;</span> <span class="p">&gt;</span>}}
+
+{{<span class="p">&lt;</span> <span class="nt">link</span> <span class="err">&#34;</span><span class="na">https:</span><span class="err">//</span><span class="na">assemble</span><span class="err">.</span><span class="na">io</span><span class="err">&#34;</span> <span class="na">Assemble</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://assemble.io&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">Assemble</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<ul>
+<li><a href="https://assemble.io" target="_blank" rel="noopener noreferrer">https://assemble.io</a></li>
+<li><a href="mailto:contact@revolunet.com" rel="">mailto:contact@revolunet.com</a></li>
+<li><a href="https://assemble.io" target="_blank" rel="noopener noreferrer">Assemble</a></li>
+</ul>
+<p>一个带有标题的 <code>link</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">link</span> <span class="err">&#34;</span><span class="na">https:</span><span class="err">//</span><span class="na">github</span><span class="err">.</span><span class="na">com</span><span class="err">/</span><span class="na">upstage</span><span class="err">/&#34;</span> <span class="na">Upstage</span> <span class="err">&#34;</span><span class="na">Visit</span> <span class="na">Upstage</span><span class="err">!&#34;</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://github.com/upstage/&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">Upstage</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Visit Upstage!&#34;</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下 (将鼠标悬停在链接上，会有一行提示):</p>
+<a href="https://github.com/upstage/" title="Visit Upstage!" target="_blank" rel="noopener noreferrer">Upstage</a>
+<h2 id="image">3 image</h2>
+<p><code>image</code> shortcode 是 <a href="../theme-documentation-built-in-shortcodes#figure" rel=""><code>figure</code> shortcode</a> 的替代. <code>image</code> shortcode 可以充分利用 <a href="https://github.com/aFarkas/lazysizes" target="_blank" rel="noopener noreferrer">lazysizes</a> 和 <a href="https://github.com/sachinchoolur/lightgallery.js" target="_blank" rel="noopener noreferrer">lightgallery.js</a> 两个依赖库.</p>
+<p>支持<a href="../theme-documentation-content#contents-organization" rel="">本地资源引用</a>的完整用法.</p>
+<p><code>image</code> shortcode 有以下命名参数:</p>
+<ul>
+<li>
+<p><strong>src</strong> <em>[必需]</em> (<strong>第一个</strong>位置参数)</p>
+<p>图片的 URL.</p>
+</li>
+<li>
+<p><strong>alt</strong> <em>[可选]</em> (<strong>第二个</strong>位置参数)</p>
+<p>图片无法显示时的替代文本, 默认值是 <strong>src</strong> 参数的值.</p>
+<p><em>支持 Markdown 或者 HTML 格式.</em></p>
+</li>
+<li>
+<p><strong>caption</strong> <em>[可选]</em> (<strong>第三个</strong>位置参数)</p>
+<p>图片标题.</p>
+<p><em>支持 Markdown 或者 HTML 格式.</em></p>
+</li>
+<li>
+<p><strong>title</strong> <em>[可选]</em></p>
+<p>当悬停在图片上会显示的提示.</p>
+</li>
+<li>
+<p><strong>class</strong> <em>[可选]</em></p>
+<p>HTML <code>figure</code> 标签的 <code>class</code> 属性.</p>
+</li>
+<li>
+<p><strong>src_s</strong> <em>[可选]</em></p>
+<p>图片缩略图的 URL, 用在画廊模式中, 默认值是 <strong>src</strong> 参数的值.</p>
+</li>
+<li>
+<p><strong>src_l</strong> <em>[可选]</em></p>
+<p>高清图片的 URL, 用在画廊模式中, 默认值是 <strong>src</strong> 参数的值.</p>
+</li>
+<li>
+<p><strong>height</strong> <em>[可选]</em></p>
+<p>图片的 <code>height</code> 属性.</p>
+</li>
+<li>
+<p><strong>width</strong> <em>[可选]</em></p>
+<p>图片的 <code>width</code> 属性.</p>
+</li>
+<li>
+<p><strong>linked</strong> <em>[可选]</em></p>
+<p>图片是否需要被链接, 默认值是 <code>true</code>.</p>
+</li>
+<li>
+<p><strong>rel</strong> <em>[可选]</em></p>
+<p>HTML <code>a</code> 标签 的 <code>rel</code> 补充属性, 仅在 <strong>linked</strong> 属性设置成 <code>true</code> 时有效.</p>
+</li>
+</ul>
+<p>一个 <code>image</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">image</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/lighthouse.jpg&#34;</span> <span class="na">caption</span><span class="o">=</span><span class="s">&#34;Lighthouse (`image`)&#34;</span> <span class="na">src_s</span><span class="o">=</span><span class="s">&#34;/images/lighthouse-small.jpg&#34;</span> <span class="na">src_l</span><span class="o">=</span><span class="s">&#34;/images/lighthouse-large.jpg&#34;</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<figure><a class="lightgallery" href="/images/lighthouse-large.jpg" title="/images/lighthouse.jpg" data-thumbnail="/images/lighthouse-small.jpg" data-sub-html="<h2>Lighthouse (image)</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/lighthouse.jpg"
+            data-srcset="/images/lighthouse-small.jpg, /images/lighthouse.jpg 1.5x, /images/lighthouse-large.jpg 2x"
+            data-sizes="auto"
+            alt="/images/lighthouse.jpg" />
+    </a><figcaption class="image-caption">Lighthouse (<code>image</code>)</figcaption>
+    </figure>
+<h2 id="4-admonition">4 admonition</h2>
+<p><code>admonition</code> shortcode 支持 <strong>12</strong> 种 帮助你在页面中插入提示的横幅.</p>
+<p><em>支持 Markdown 或者 HTML 格式.</em></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>注意</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>摘要<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>摘要</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>信息<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>信息</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>技巧<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>技巧</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>成功<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>成功</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw"></i>问题<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>问题</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>警告<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>警告</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition failure open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-times-circle fa-fw"></i>失败<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>失败</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition danger open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-skull-crossbones fa-fw"></i>危险<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>危险</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition bug open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-bug fa-fw"></i>Bug<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>Bug</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition example open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ol fa-fw"></i>示例<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>示例</strong> 横幅</div>
+        </div>
+    </div>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw"></i>引用<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>引用</strong> 横幅</div>
+        </div>
+    </div>
+<p><code>admonition</code> shortcode 有以下命名参数:</p>
+<ul>
+<li>
+<p><strong>type</strong> <em>[必需]</em> (<strong>第一个</strong>位置参数)</p>
+<p><code>admonition</code> 横幅的类型, 默认值是 <code>note</code>.</p>
+</li>
+<li>
+<p><strong>title</strong> <em>[可选]</em> (<strong>第二个</strong>位置参数)</p>
+<p><code>admonition</code> 横幅的标题, 默认值是 <strong>type</strong> 参数的值.</p>
+</li>
+<li>
+<p><strong>open</strong> <em>[可选]</em> (<strong>第三个</strong>位置参数)</p>
+<p>横幅内容是否默认展开, 默认值是 <code>true</code>.</p>
+</li>
+</ul>
+<p>一个 <code>admonition</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">admonition</span> <span class="na">type</span><span class="o">=</span><span class="s">tip</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;This is a tip&#34;</span> <span class="na">open</span><span class="o">=</span><span class="s">false</span> <span class="p">&gt;</span>}}
+一个 <span class="gs">**技巧**</span> 横幅
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">admonition</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">admonition</span> <span class="na">tip</span> <span class="err">&#34;</span><span class="na">This</span> <span class="na">is</span> <span class="na">a</span> <span class="na">tip</span><span class="err">&#34;</span> <span class="na">false</span> <span class="p">&gt;</span>}}
+一个 <span class="gs">**技巧**</span> 横幅
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">admonition</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>This is a tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一个 <strong>技巧</strong> 横幅</div>
+        </div>
+    </div>
+<h2 id="5-mermaid">5 mermaid</h2>
+<p><a href="https://mermaidjs.github.io/" target="_blank" rel="noopener noreferrer">mermaid</a> 是一个可以帮助你在文章中生成图表和流程图的库, 类似 Markdown 的语法.</p>
+<p>只需将你的 mermaid 代码插入 <code>mermaid</code> shortcode 中即可.</p>
+<h3 id="flowchart">5.1 流程图</h3>
+<p>一个 <strong>流程图</strong> <code>mermaid</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+graph LR;
+A[Hard edge] --&gt;|Link text| B(Round edge)
+B --&gt; C{Decision}
+C --&gt;|One| D[Result one]
+C --&gt;|Two| E[Result two]
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="mermaid" id="id-2"></div>
+<h3 id="sequence-diagram">5.2 时序图</h3>
+<p>一个 <strong>时序图</strong> <code>mermaid</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+sequenceDiagram
+participant Alice
+participant Bob
+Alice-&gt;&gt;John: Hello John, how are you?
+loop Healthcheck
+John-&gt;John: Fight against hypochondria
+end
+Note right of John: Rational thoughts <span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>prevail...
+John--&gt;Alice: Great!
+John-&gt;Bob: How about you?
+Bob--&gt;John: Jolly good!
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="mermaid" id="id-3"></div>
+<h3 id="gantt">5.3 甘特图</h3>
+<p>一个 <strong>甘特图</strong> <code>mermaid</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+gantt
+dateFormat YYYY-MM-DD
+title Adding GANTT diagram functionality to mermaid
+section A section
+Completed task :done, des1, 2014-01-06,2014-01-08
+Active task :active, des2, 2014-01-09, 3d
+Future task : des3, after des2, 5d
+Future task2 : des4, after des3, 5d
+section Critical tasks
+Completed task in the critical line :crit, done, 2014-01-06,24h
+Implement parser and jison :crit, done, after des1, 2d
+Create tests for parser :crit, active, 3d
+Future task in critical line :crit, 5d
+Create tests for renderer :2d
+Add to mermaid :1d
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="mermaid" id="id-4"></div>
+<h3 id="class-diagram">5.4 类图</h3>
+<p>一个 <strong>类图</strong> <code>mermaid</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+classDiagram
+Class01 <span class="err">&lt;</span>|-- AveryLongClass : Cool
+Class03 <span class="ge">_-- Class04
+</span><span class="ge">Class05 o-- Class06
+</span><span class="ge">Class07 .. Class08
+</span><span class="ge">Class09 --&gt; C2 : Where am i?
+</span><span class="ge">Class09 --_</span> C3
+Class09 --|&gt; Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 <span class="p">&lt;</span><span class="nt">--</span><span class="p">&gt;</span> C2: Cool label
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="mermaid" id="id-5"></div>
+<h3 id="state-diagram">5.5 状态图</h3>
+<p>一个 <strong>状态图</strong> <code>mermaid</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+stateDiagram
+[*] --&gt; Still
+Still --&gt; [*]
+Still --&gt; Moving
+Moving --&gt; Still
+Moving --&gt; Crash
+Crash --&gt; [*]
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="mermaid" id="id-6"></div>
+<h3 id="git-graph">5.6 Git 图</h3>
+<p>一个 <strong>Git 图</strong> <code>mermaid</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+gitGraph:
+options
+{
+&#34;nodeSpacing&#34;: 100,
+&#34;nodeRadius&#34;: 10
+}
+end
+commit
+branch newbranch
+checkout newbranch
+commit
+commit
+checkout master
+commit
+commit
+merge newbranch
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="mermaid" id="id-7"></div>
+<h3 id="pie">5.7 饼图</h3>
+<p>一个 <strong>饼图</strong> <code>mermaid</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+pie
+&#34;Dogs&#34; : 386
+&#34;Cats&#34; : 85
+&#34;Rats&#34; : 15
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">mermaid</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="mermaid" id="id-8"></div>
+<h2 id="6-echarts">6 echarts</h2>
+<p><a href="https://echarts.apache.org/" target="_blank" rel="noopener noreferrer">ECharts</a> 是一个帮助你生成交互式数据可视化的库.</p>
+<p>ECharts 提供了常规的 <a href="https://echarts.apache.org/zh/option.html#series-line" target="_blank" rel="noopener noreferrer">折线图</a>, <a href="https://echarts.apache.org/zh/option.html#series-line" target="_blank" rel="noopener noreferrer">柱状图</a>, <a href="https://echarts.apache.org/zh/option.html#series-scatter" target="_blank" rel="noopener noreferrer">散点图</a>, <a href="https://echarts.apache.org/zh/option.html#series-pie" target="_blank" rel="noopener noreferrer">饼图</a>, <a href="https://echarts.apache.org/zh/option.html#series-candlestick" target="_blank" rel="noopener noreferrer">K 线图</a>, 用于统计的 <a href="https://echarts.apache.org/zh/option.html#series-boxplot" target="_blank" rel="noopener noreferrer">盒形图</a>, 用于地理数据可视化的 <a href="https://echarts.apache.org/zh/option.html#series-map" target="_blank" rel="noopener noreferrer">地图</a>, <a href="https://echarts.apache.org/zh/option.html#series-heatmap" target="_blank" rel="noopener noreferrer">热力图</a>, <a href="https://echarts.apache.org/zh/option.html#series-lines" target="_blank" rel="noopener noreferrer">线图</a>, 用于关系数据可视化的 <a href="https://echarts.apache.org/zh/option.html#series-graph" target="_blank" rel="noopener noreferrer">关系图</a>, <a href="https://echarts.apache.org/zh/option.html#series-treemap" target="_blank" rel="noopener noreferrer">treemap</a>, <a href="https://echarts.apache.org/zh/option.html#series-sunburst" target="_blank" rel="noopener noreferrer">旭日图</a>, 多维数据可视化的 <a href="https://echarts.apache.org/zh/option.html#series-parallel" target="_blank" rel="noopener noreferrer">平行坐标</a>, 还有用于 BI 的 <a href="https://echarts.apache.org/zh/option.html#series-funnel" target="_blank" rel="noopener noreferrer">漏斗图</a>, <a href="https://echarts.apache.org/zh/option.html#series-gauge" target="_blank" rel="noopener noreferrer">仪表盘</a>, 并且支持图与图之间的混搭.</p>
+<p>只需在 <code>echarts</code> shortcode 中以 <code>JSON</code>/<code>YAML</code>/<code>TOML</code>格式插入 ECharts 选项即可.</p>
+<p>一个 <code>JSON</code> 格式的 <code>echarts</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="err">{&lt;</span> <span class="err">echarts</span> <span class="err">&gt;</span><span class="p">}</span><span class="err">}</span>
+<span class="p">{</span>
+  <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;text&#34;</span><span class="p">:</span> <span class="s2">&#34;折线统计图&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;top&#34;</span><span class="p">:</span> <span class="s2">&#34;2%&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;left&#34;</span><span class="p">:</span> <span class="s2">&#34;center&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;tooltip&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;trigger&#34;</span><span class="p">:</span> <span class="s2">&#34;axis&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;legend&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;邮件营销&#34;</span><span class="p">,</span> <span class="s2">&#34;联盟广告&#34;</span><span class="p">,</span> <span class="s2">&#34;视频广告&#34;</span><span class="p">,</span> <span class="s2">&#34;直接访问&#34;</span><span class="p">,</span> <span class="s2">&#34;搜索引擎&#34;</span><span class="p">],</span>
+    <span class="nt">&#34;top&#34;</span><span class="p">:</span> <span class="s2">&#34;10%&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;grid&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;left&#34;</span><span class="p">:</span> <span class="s2">&#34;5%&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;right&#34;</span><span class="p">:</span> <span class="s2">&#34;5%&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;bottom&#34;</span><span class="p">:</span> <span class="s2">&#34;5%&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;top&#34;</span><span class="p">:</span> <span class="s2">&#34;20%&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;containLabel&#34;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;toolbox&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;feature&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;saveAsImage&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;保存为图片&#34;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;xAxis&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;category&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;boundaryGap&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;周一&#34;</span><span class="p">,</span> <span class="s2">&#34;周二&#34;</span><span class="p">,</span> <span class="s2">&#34;周三&#34;</span><span class="p">,</span> <span class="s2">&#34;周四&#34;</span><span class="p">,</span> <span class="s2">&#34;周五&#34;</span><span class="p">,</span> <span class="s2">&#34;周六&#34;</span><span class="p">,</span> <span class="s2">&#34;周日&#34;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;yAxis&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;series&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;邮件营销&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;line&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;stack&#34;</span><span class="p">:</span> <span class="s2">&#34;总量&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span> <span class="mi">132</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">230</span><span class="p">,</span> <span class="mi">210</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;联盟广告&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;line&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;stack&#34;</span><span class="p">:</span> <span class="s2">&#34;总量&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">220</span><span class="p">,</span> <span class="mi">182</span><span class="p">,</span> <span class="mi">191</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">290</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">310</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;视频广告&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;line&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;stack&#34;</span><span class="p">:</span> <span class="s2">&#34;总量&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">150</span><span class="p">,</span> <span class="mi">232</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">154</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">410</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;直接访问&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;line&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;stack&#34;</span><span class="p">:</span> <span class="s2">&#34;总量&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">320</span><span class="p">,</span> <span class="mi">332</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">334</span><span class="p">,</span> <span class="mi">390</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">320</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;搜索引擎&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;line&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;stack&#34;</span><span class="p">:</span> <span class="s2">&#34;总量&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">820</span><span class="p">,</span> <span class="mi">932</span><span class="p">,</span> <span class="mi">901</span><span class="p">,</span> <span class="mi">934</span><span class="p">,</span> <span class="mi">1290</span><span class="p">,</span> <span class="mi">1330</span><span class="p">,</span> <span class="mi">1320</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+<span class="p">{</span><span class="err">{&lt;</span> <span class="err">/echarts</span> <span class="err">&gt;</span><span class="p">}</span><span class="err">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一个 <code>YAML</code> 格式的 <code>echarts</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">{{<span class="l">&lt; echarts &gt;}}</span><span class="w">
+</span><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l">折线统计图</span><span class="w">
+</span><span class="w">    </span><span class="nt">top</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="l">%</span><span class="w">
+</span><span class="w">    </span><span class="nt">left</span><span class="p">:</span><span class="w"> </span><span class="l">center</span><span class="w">
+</span><span class="w"></span><span class="nt">tooltip</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">trigger</span><span class="p">:</span><span class="w"> </span><span class="l">axis</span><span class="w">
+</span><span class="w"></span><span class="nt">legend</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="l">邮件营销</span><span class="w">
+</span><span class="w">        </span>- <span class="l">联盟广告</span><span class="w">
+</span><span class="w">        </span>- <span class="l">视频广告</span><span class="w">
+</span><span class="w">        </span>- <span class="l">直接访问</span><span class="w">
+</span><span class="w">        </span>- <span class="l">搜索引擎</span><span class="w">
+</span><span class="w">    </span><span class="nt">top</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="l">%</span><span class="w">
+</span><span class="w"></span><span class="nt">grid</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">left</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="l">%</span><span class="w">
+</span><span class="w">    </span><span class="nt">right</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="l">%</span><span class="w">
+</span><span class="w">    </span><span class="nt">bottom</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="l">%</span><span class="w">
+</span><span class="w">    </span><span class="nt">top</span><span class="p">:</span><span class="w"> </span><span class="m">20</span><span class="l">%</span><span class="w">
+</span><span class="w">    </span><span class="nt">containLabel</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">toolbox</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">feature</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">saveAsImage</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">保存为图片</span><span class="w">
+</span><span class="w"></span><span class="nt">xAxis</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">category</span><span class="w">
+</span><span class="w">    </span><span class="nt">boundaryGap</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="l">周一</span><span class="w">
+</span><span class="w">        </span>- <span class="l">周二</span><span class="w">
+</span><span class="w">        </span>- <span class="l">周三</span><span class="w">
+</span><span class="w">        </span>- <span class="l">周四</span><span class="w">
+</span><span class="w">        </span>- <span class="l">周五</span><span class="w">
+</span><span class="w">        </span>- <span class="l">周六</span><span class="w">
+</span><span class="w">        </span>- <span class="l">周日</span><span class="w">
+</span><span class="w"></span><span class="nt">yAxis</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">value</span><span class="w">
+</span><span class="w"></span><span class="nt">series</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">邮件营销</span><span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">line</span><span class="w">
+</span><span class="w">      </span><span class="nt">stack</span><span class="p">:</span><span class="w"> </span><span class="l">总量</span><span class="w">
+</span><span class="w">      </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="m">120</span><span class="w">
+</span><span class="w">          </span>- <span class="m">132</span><span class="w">
+</span><span class="w">          </span>- <span class="m">101</span><span class="w">
+</span><span class="w">          </span>- <span class="m">134</span><span class="w">
+</span><span class="w">          </span>- <span class="m">90</span><span class="w">
+</span><span class="w">          </span>- <span class="m">230</span><span class="w">
+</span><span class="w">          </span>- <span class="m">210</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">联盟广告</span><span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">line</span><span class="w">
+</span><span class="w">      </span><span class="nt">stack</span><span class="p">:</span><span class="w"> </span><span class="l">总量</span><span class="w">
+</span><span class="w">      </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="m">220</span><span class="w">
+</span><span class="w">          </span>- <span class="m">182</span><span class="w">
+</span><span class="w">          </span>- <span class="m">191</span><span class="w">
+</span><span class="w">          </span>- <span class="m">234</span><span class="w">
+</span><span class="w">          </span>- <span class="m">290</span><span class="w">
+</span><span class="w">          </span>- <span class="m">330</span><span class="w">
+</span><span class="w">          </span>- <span class="m">310</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">视频广告</span><span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">line</span><span class="w">
+</span><span class="w">      </span><span class="nt">stack</span><span class="p">:</span><span class="w"> </span><span class="l">总量</span><span class="w">
+</span><span class="w">      </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="m">150</span><span class="w">
+</span><span class="w">          </span>- <span class="m">232</span><span class="w">
+</span><span class="w">          </span>- <span class="m">201</span><span class="w">
+</span><span class="w">          </span>- <span class="m">154</span><span class="w">
+</span><span class="w">          </span>- <span class="m">190</span><span class="w">
+</span><span class="w">          </span>- <span class="m">330</span><span class="w">
+</span><span class="w">          </span>- <span class="m">410</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">直接访问</span><span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">line</span><span class="w">
+</span><span class="w">      </span><span class="nt">stack</span><span class="p">:</span><span class="w"> </span><span class="l">总量</span><span class="w">
+</span><span class="w">      </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="m">320</span><span class="w">
+</span><span class="w">          </span>- <span class="m">332</span><span class="w">
+</span><span class="w">          </span>- <span class="m">301</span><span class="w">
+</span><span class="w">          </span>- <span class="m">334</span><span class="w">
+</span><span class="w">          </span>- <span class="m">390</span><span class="w">
+</span><span class="w">          </span>- <span class="m">330</span><span class="w">
+</span><span class="w">          </span>- <span class="m">320</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">搜索引擎</span><span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">line</span><span class="w">
+</span><span class="w">      </span><span class="nt">stack</span><span class="p">:</span><span class="w"> </span><span class="l">总量</span><span class="w">
+</span><span class="w">      </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="m">820</span><span class="w">
+</span><span class="w">          </span>- <span class="m">932</span><span class="w">
+</span><span class="w">          </span>- <span class="m">901</span><span class="w">
+</span><span class="w">          </span>- <span class="m">934</span><span class="w">
+</span><span class="w">          </span>- <span class="m">1290</span><span class="w">
+</span><span class="w">          </span>- <span class="m">1330</span><span class="w">
+</span><span class="w">          </span>- <span class="m">1320</span><span class="w">
+</span><span class="w"></span>{{<span class="l">&lt; /echarts &gt;}}</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>一个 <code>TOML</code> 格式的 <code>echarts</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">{{</span><span class="err">&lt;</span> <span class="nx">echarts</span> <span class="err">&gt;</span><span class="p">}}</span>
+<span class="p">[</span><span class="nx">title</span><span class="p">]</span>
+<span class="nx">text</span> <span class="p">=</span> <span class="s2">&#34;折线统计图&#34;</span>
+<span class="nx">top</span> <span class="p">=</span> <span class="s2">&#34;2%&#34;</span>
+<span class="nx">left</span> <span class="p">=</span> <span class="s2">&#34;center&#34;</span>
+
+<span class="p">[</span><span class="nx">tooltip</span><span class="p">]</span>
+<span class="nx">trigger</span> <span class="p">=</span> <span class="s2">&#34;axis&#34;</span>
+
+<span class="p">[</span><span class="nx">legend</span><span class="p">]</span>
+<span class="nx">data</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="s2">&#34;邮件营销&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;联盟广告&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;视频广告&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;直接访问&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;搜索引擎&#34;</span>
+<span class="p">]</span>
+<span class="nx">top</span> <span class="p">=</span> <span class="s2">&#34;10%&#34;</span>
+
+<span class="p">[</span><span class="nx">grid</span><span class="p">]</span>
+<span class="nx">left</span> <span class="p">=</span> <span class="s2">&#34;5%&#34;</span>
+<span class="nx">right</span> <span class="p">=</span> <span class="s2">&#34;5%&#34;</span>
+<span class="nx">bottom</span> <span class="p">=</span> <span class="s2">&#34;5%&#34;</span>
+<span class="nx">top</span> <span class="p">=</span> <span class="s2">&#34;20%&#34;</span>
+<span class="nx">containLabel</span> <span class="p">=</span> <span class="kc">true</span>
+
+<span class="p">[</span><span class="nx">toolbox</span><span class="p">]</span>
+<span class="p">[</span><span class="nx">toolbox</span><span class="p">.</span><span class="nx">feature</span><span class="p">]</span>
+<span class="p">[</span><span class="nx">toolbox</span><span class="p">.</span><span class="nx">feature</span><span class="p">.</span><span class="nx">saveAsImage</span><span class="p">]</span>
+<span class="nx">title</span> <span class="p">=</span> <span class="s2">&#34;保存为图片&#34;</span>
+
+<span class="p">[</span><span class="nx">xAxis</span><span class="p">]</span>
+<span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;category&#34;</span>
+<span class="nx">boundaryGap</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="nx">data</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="s2">&#34;周一&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;周二&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;周三&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;周四&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;周五&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;周六&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;周日&#34;</span>
+<span class="p">]</span>
+
+<span class="p">[</span><span class="nx">yAxis</span><span class="p">]</span>
+<span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;value&#34;</span>
+
+<span class="p">[[</span><span class="nx">series</span><span class="p">]]</span>
+<span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;邮件营销&#34;</span>
+<span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;line&#34;</span>
+<span class="nx">stack</span> <span class="p">=</span> <span class="s2">&#34;总量&#34;</span>
+<span class="nx">data</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="mf">120.0</span><span class="p">,</span>
+  <span class="mf">132.0</span><span class="p">,</span>
+  <span class="mf">101.0</span><span class="p">,</span>
+  <span class="mf">134.0</span><span class="p">,</span>
+  <span class="mf">90.0</span><span class="p">,</span>
+  <span class="mf">230.0</span><span class="p">,</span>
+  <span class="mf">210.0</span>
+<span class="p">]</span>
+
+<span class="p">[[</span><span class="nx">series</span><span class="p">]]</span>
+<span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;联盟广告&#34;</span>
+<span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;line&#34;</span>
+<span class="nx">stack</span> <span class="p">=</span> <span class="s2">&#34;总量&#34;</span>
+<span class="nx">data</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="mf">220.0</span><span class="p">,</span>
+  <span class="mf">182.0</span><span class="p">,</span>
+  <span class="mf">191.0</span><span class="p">,</span>
+  <span class="mf">234.0</span><span class="p">,</span>
+  <span class="mf">290.0</span><span class="p">,</span>
+  <span class="mf">330.0</span><span class="p">,</span>
+  <span class="mf">310.0</span>
+<span class="p">]</span>
+
+<span class="p">[[</span><span class="nx">series</span><span class="p">]]</span>
+<span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;视频广告&#34;</span>
+<span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;line&#34;</span>
+<span class="nx">stack</span> <span class="p">=</span> <span class="s2">&#34;总量&#34;</span>
+<span class="nx">data</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="mf">150.0</span><span class="p">,</span>
+  <span class="mf">232.0</span><span class="p">,</span>
+  <span class="mf">201.0</span><span class="p">,</span>
+  <span class="mf">154.0</span><span class="p">,</span>
+  <span class="mf">190.0</span><span class="p">,</span>
+  <span class="mf">330.0</span><span class="p">,</span>
+  <span class="mf">410.0</span>
+<span class="p">]</span>
+
+<span class="p">[[</span><span class="nx">series</span><span class="p">]]</span>
+<span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;直接访问&#34;</span>
+<span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;line&#34;</span>
+<span class="nx">stack</span> <span class="p">=</span> <span class="s2">&#34;总量&#34;</span>
+<span class="nx">data</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="mf">320.0</span><span class="p">,</span>
+  <span class="mf">332.0</span><span class="p">,</span>
+  <span class="mf">301.0</span><span class="p">,</span>
+  <span class="mf">334.0</span><span class="p">,</span>
+  <span class="mf">390.0</span><span class="p">,</span>
+  <span class="mf">330.0</span><span class="p">,</span>
+  <span class="mf">320.0</span>
+<span class="p">]</span>
+
+<span class="p">[[</span><span class="nx">series</span><span class="p">]]</span>
+<span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;搜索引擎&#34;</span>
+<span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;line&#34;</span>
+<span class="nx">stack</span> <span class="p">=</span> <span class="s2">&#34;总量&#34;</span>
+<span class="nx">data</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="mf">820.0</span><span class="p">,</span>
+  <span class="mf">932.0</span><span class="p">,</span>
+  <span class="mf">901.0</span><span class="p">,</span>
+  <span class="mf">934.0</span><span class="p">,</span>
+  <span class="mf">1290.0</span><span class="p">,</span>
+  <span class="mf">1330.0</span><span class="p">,</span>
+  <span class="mf">1320.0</span>
+<span class="p">]</span>
+<span class="p">{{</span><span class="err">&lt;</span> <span class="err">/</span><span class="nx">echarts</span> <span class="err">&gt;</span><span class="p">}}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="echarts" id="id-9" style="width: 100%; height: 30rem;"></div>
+<p><code>echarts</code> shortcode 还有以下命名参数:</p>
+<ul>
+<li>
+<p><strong>width</strong> <em>[可选]</em> (<strong>第一个</strong>位置参数)</p>
+<p>数据可视化的宽度, 默认值是 <code>100%</code>.</p>
+</li>
+<li>
+<p><strong>height</strong> <em>[可选]</em> (<strong>第二个</strong>位置参数)</p>
+<p>数据可视化的高度, 默认值是 <code>30rem</code>.</p>
+</li>
+</ul>
+<h2 id="7-mapbox">7 mapbox</h2>
+<p><a href="https://docs.mapbox.com/mapbox-gl-js" target="_blank" rel="noopener noreferrer">Mapbox GL JS</a> 是一个 JavaScript 库，它使用 WebGL, 以 <a href="https://docs.mapbox.com/help/glossary/vector-tiles/" target="_blank" rel="noopener noreferrer">vector tiles</a> 和 <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/" target="_blank" rel="noopener noreferrer">Mapbox styles</a> 为来源, 将它们渲染成互动式地图.</p>
+<p><code>mapbox</code> shortcode 有以下命名参数来使用 Mapbox GL JS:</p>
+<ul>
+<li>
+<p><strong>lng</strong> <em>[必需]</em> (<strong>第一个</strong>位置参数)</p>
+<p>地图初始中心点的经度, 以度为单位.</p>
+</li>
+<li>
+<p><strong>lat</strong> <em>[必需]</em> (<strong>第二个</strong>位置参数)</p>
+<p>地图初始中心点的纬度, 以度为单位.</p>
+</li>
+<li>
+<p><strong>zoom</strong> <em>[可选]</em> (<strong>第三个</strong>位置参数)</p>
+<p>地图的初始缩放级别, 默认值是 <code>10</code>.</p>
+</li>
+<li>
+<p><strong>marked</strong> <em>[可选]</em> (<strong>第四个</strong>位置参数)</p>
+<p>是否在地图的初始中心点添加图钉, 默认值是 <code>true</code>.</p>
+</li>
+<li>
+<p><strong>light-style</strong> <em>[可选]</em> (<strong>第五个</strong>位置参数)</p>
+<p>浅色主题的地图样式, 默认值是<a href="../theme-documentation-content#front-matter" rel="">前置参数</a>或者<a href="../theme-documentation-basics#site-configuration" rel="">网站配置</a>中设置的值.</p>
+</li>
+<li>
+<p><strong>dark-style</strong> <em>[可选]</em> (<strong>第六个</strong>位置参数)</p>
+<p>深色主题的地图样式, 默认值是<a href="../theme-documentation-content#front-matter" rel="">前置参数</a>或者<a href="../theme-documentation-basics#site-configuration" rel="">网站配置</a>中设置的值.</p>
+</li>
+<li>
+<p><strong>navigation</strong> <em>[可选]</em></p>
+<p>是否添加 <a href="https://docs.mapbox.com/mapbox-gl-js/api#navigationcontrol" target="_blank" rel="noopener noreferrer">NavigationControl</a>, 默认值是<a href="../theme-documentation-content#front-matter" rel="">前置参数</a>或者<a href="../theme-documentation-basics#site-configuration" rel="">网站配置</a>中设置的值.</p>
+</li>
+<li>
+<p><strong>geolocate</strong> <em>[可选]</em></p>
+<p>是否添加 <a href="https://docs.mapbox.com/mapbox-gl-js/api#geolocatecontrol" target="_blank" rel="noopener noreferrer">GeolocateControl</a>, 默认值是<a href="../theme-documentation-content#front-matter" rel="">前置参数</a>或者<a href="../theme-documentation-basics#site-configuration" rel="">网站配置</a>中设置的值.</p>
+</li>
+<li>
+<p><strong>scale</strong> <em>[可选]</em></p>
+<p>是否添加 <a href="https://docs.mapbox.com/mapbox-gl-js/api#scalecontrol" target="_blank" rel="noopener noreferrer">ScaleControl</a>, 默认值是<a href="../theme-documentation-content#front-matter" rel="">前置参数</a>或者<a href="../theme-documentation-basics#site-configuration" rel="">网站配置</a>中设置的值.</p>
+</li>
+<li>
+<p><strong>fullscreen</strong> <em>[可选]</em></p>
+<p>是否添加 <a href="https://docs.mapbox.com/mapbox-gl-js/api#fullscreencontrol" target="_blank" rel="noopener noreferrer">FullscreenControl</a>, 默认值是<a href="../theme-documentation-content#front-matter" rel="">前置参数</a>或者<a href="../theme-documentation-basics#site-configuration" rel="">网站配置</a>中设置的值.</p>
+</li>
+<li>
+<p><strong>width</strong> <em>[可选]</em></p>
+<p>地图的宽度, 默认值是 <code>100%</code>.</p>
+</li>
+<li>
+<p><strong>height</strong> <em>[可选]</em></p>
+<p>地图的高度, 默认值是 <code>20rem</code>.</p>
+</li>
+</ul>
+<p>一个简单的 <code>mapbox</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">mapbox</span> <span class="na">121</span><span class="err">.</span><span class="na">485</span> <span class="na">31</span><span class="err">.</span><span class="na">233</span> <span class="na">12</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">mapbox</span> <span class="na">lng</span><span class="o">=</span><span class="s">121.485</span> <span class="na">lat</span><span class="o">=</span><span class="s">31.233</span> <span class="na">zoom</span><span class="o">=</span><span class="s">12</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="mapbox" id="id-10" style="width: 100%; height: 20rem;"></div>
+<p>一个带有自定义样式的 <code>mapbox</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">mapbox</span> <span class="na">-122</span><span class="err">.</span><span class="na">252</span> <span class="na">37</span><span class="err">.</span><span class="na">453</span> <span class="na">10</span> <span class="na">false</span> <span class="err">&#34;</span><span class="na">mapbox:</span><span class="err">//</span><span class="na">styles</span><span class="err">/</span><span class="na">mapbox</span><span class="err">/</span><span class="na">streets-zh-v1</span><span class="err">&#34;</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">mapbox</span> <span class="na">lng</span><span class="o">=</span><span class="s">-122.252</span> <span class="na">lat</span><span class="o">=</span><span class="s">37.453</span> <span class="na">zoom</span><span class="o">=</span><span class="s">10</span> <span class="na">marked</span><span class="o">=</span><span class="s">false</span> <span class="na">light-style</span><span class="o">=</span><span class="s">&#34;mapbox://styles/mapbox/streets-zh-v1&#34;</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="mapbox" id="id-11" style="width: 100%; height: 20rem;"></div>
+<h2 id="8-music">8 music</h2>
+<p><code>music</code> shortcode 基于 <a href="https://github.com/MoePlayer/APlayer" target="_blank" rel="noopener noreferrer">APlayer</a> 和 <a href="https://github.com/metowolf/MetingJS" target="_blank" rel="noopener noreferrer">MetingJS</a> 提供了一个内嵌的响应式音乐播放器.</p>
+<p>有三种方式使用 <code>music</code> shortcode.</p>
+<h3 id="custom-music-url">8.1 自定义音乐 URL</h3>
+<p>支持<a href="../theme-documentation-content#contents-organization" rel="">本地资源引用</a>的完整用法.</p>
+<p><code>music</code> shortcode 有以下命名参数来使用自定义音乐 URL:</p>
+<ul>
+<li>
+<p><strong>server</strong> <em>[必需]</em></p>
+<p>音乐的链接.</p>
+</li>
+<li>
+<p><strong>type</strong> <em>[可选]</em></p>
+<p>音乐的名称.</p>
+</li>
+<li>
+<p><strong>artist</strong> <em>[可选]</em></p>
+<p>音乐的创作者.</p>
+</li>
+<li>
+<p><strong>cover</strong> <em>[可选]</em></p>
+<p>音乐的封面链接.</p>
+</li>
+</ul>
+<p>一个使用自定义音乐 URL 的 <code>music</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">music</span> <span class="na">url</span><span class="o">=</span><span class="s">&#34;/music/Wavelength.mp3&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">Wavelength</span> <span class="na">artist</span><span class="o">=</span><span class="s">oldmanyoung</span> <span class="na">cover</span><span class="o">=</span><span class="s">&#34;/images/Wavelength.jpg&#34;</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<meting-js url="/music/Wavelength.mp3" name="Wavelength" artist="oldmanyoung" cover="/images/Wavelength.jpg" theme="#448aff"></meting-js>
+<h3 id="automatic-identification">8.2 音乐平台 URL 的自动识别</h3>
+<p><code>music</code> shortcode 有一个命名参数来使用音乐平台 URL 的自动识别:</p>
+<ul>
+<li>
+<p><strong>auto</strong> <em>[必需]]</em> (<strong>第一个</strong>位置参数)</p>
+<p>用来自动识别的音乐平台 URL, 支持 <code>netease</code>, <code>tencent</code> 和 <code>xiami</code> 平台.</p>
+</li>
+</ul>
+<p>一个使用音乐平台 URL 的自动识别的 <code>music</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">music</span> <span class="na">auto</span><span class="o">=</span><span class="s">&#34;https://music.163.com/#/playlist?id=60198&#34;</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">music</span> <span class="err">&#34;</span><span class="na">https:</span><span class="err">//</span><span class="na">music</span><span class="err">.</span><span class="na">163</span><span class="err">.</span><span class="na">com</span><span class="err">/#/</span><span class="na">playlist</span><span class="err">?</span><span class="na">id</span><span class="o">=</span><span class="s">60198&#34;</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<meting-js auto="https://music.163.com/#/playlist?id=60198" theme="#448aff"></meting-js>
+<h3 id="custom-server">8.3 自定义音乐平台, 类型和 ID</h3>
+<p><code>music</code> shortcode 有以下命名参数来使用自定义音乐平台:</p>
+<ul>
+<li>
+<p><strong>server</strong> <em>[必需]</em> (<strong>第一个</strong>位置参数)</p>
+<p>[<code>netease</code>, <code>tencent</code>, <code>kugou</code>, <code>xiami</code>, <code>baidu</code>]</p>
+<p>音乐平台.</p>
+</li>
+<li>
+<p><strong>type</strong> <em>[必需]</em> (<strong>第二个</strong>位置参数)</p>
+<p>[<code>song</code>, <code>playlist</code>, <code>album</code>, <code>search</code>, <code>artist</code>]</p>
+<p>音乐类型.</p>
+</li>
+<li>
+<p><strong>id</strong> <em>[必需]</em> (<strong>第三个</strong>位置参数)</p>
+<p>歌曲 ID, 或者播放列表 ID, 或者专辑 ID, 或者搜索关键词, 或者创作者 ID.</p>
+</li>
+</ul>
+<p>一个使用自定义音乐平台的 <code>music</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">music</span> <span class="na">server</span><span class="o">=</span><span class="s">&#34;netease&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;song&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;1868553&#34;</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">music</span> <span class="na">netease</span> <span class="na">song</span> <span class="na">1868553</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<meting-js server="netease" type="song" id="1868553" theme="#448aff"></meting-js>
+<h3 id="other-parameters">8.4 其它参数</h3>
+<p><code>music</code> shortcode 有一些可以应用于以上三种方式的其它命名参数:</p>
+<ul>
+<li>
+<p><strong>theme</strong> <em>[可选]</em></p>
+<p>音乐播放器的主题色, 默认值是 <code>#448aff</code>.</p>
+</li>
+<li>
+<p><strong>fixed</strong> <em>[可选]</em></p>
+<p>是否开启固定模式, 默认值是 <code>false</code>.</p>
+</li>
+<li>
+<p><strong>mini</strong> <em>[可选]</em></p>
+<p>是否开启迷你模式, 默认值是 <code>false</code>.</p>
+</li>
+<li>
+<p><strong>autoplay</strong> <em>[可选]</em></p>
+<p>是否自动播放音乐, 默认值是 <code>false</code>.</p>
+</li>
+<li>
+<p><strong>volume</strong> <em>[可选]</em></p>
+<p>第一次打开播放器时的默认音量, 会被保存在浏览器缓存中, 默认值是 <code>0.7</code>.</p>
+</li>
+<li>
+<p><strong>mutex</strong> <em>[可选]</em></p>
+<p>是否自动暂停其它播放器, 默认值是 <code>true</code>.</p>
+</li>
+</ul>
+<p><code>music</code> shortcode 还有一些只适用于音乐列表方式的其它命名参数:</p>
+<ul>
+<li>
+<p><strong>loop</strong> <em>[可选]</em></p>
+<p>[<code>all</code>, <code>one</code>, <code>none</code>]</p>
+<p>音乐列表的循环模式, 默认值是 <code>none</code>.</p>
+</li>
+<li>
+<p><strong>order</strong> <em>[可选]</em></p>
+<p>[<code>list</code>, <code>random</code>]</p>
+<p>音乐列表的播放顺序, 默认值是 <code>list</code>.</p>
+</li>
+<li>
+<p><strong>list-folded</strong> <em>[可选]</em></p>
+<p>初次打开的时候音乐列表是否折叠, 默认值是 <code>false</code>.</p>
+</li>
+<li>
+<p><strong>list-max-height</strong> <em>[可选]</em></p>
+<p>音乐列表的最大高度, 默认值是 <code>340px</code>.</p>
+</li>
+</ul>
+<h2 id="9-bilibili">9 bilibili</h2>
+<p><code>bilibili</code> shortcode 提供了一个内嵌的用来播放 bilibili 视频的响应式播放器.</p>
+<p>如果视频只有一个部分, 则仅需要视频的 BV <code>id</code>, 例如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">https://www.bilibili.com/video/BV1Sx411T7QQ
+</code></pre></td></tr></table>
+</div>
+</div><p>一个 <code>bilibili</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">bilibili</span> <span class="na">BV1Sx411T7QQ</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">bilibili</span> <span class="na">id</span><span class="o">=</span><span class="s">BV1Sx411T7QQ</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="bilibili"><iframe src="//player.bilibili.com/player.html?bvid=BV1Sx411T7QQ&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
+
+<p>如果视频包含多个部分, 则除了视频的 BV <code>id</code> 之外, 还需要 <code>p</code>, 默认值为 <code>1</code>, 例如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">https://www.bilibili.com/video/BV1TJ411C7An?p=3
+</code></pre></td></tr></table>
+</div>
+</div><p>一个带有 <code>p</code> 参数的 <code>bilibili</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">bilibili</span> <span class="na">BV1TJ411C7An</span> <span class="na">3</span> <span class="p">&gt;</span>}}
+或者
+{{<span class="p">&lt;</span> <span class="nt">bilibili</span> <span class="na">id</span><span class="o">=</span><span class="s">BV1TJ411C7An</span> <span class="na">p</span><span class="o">=</span><span class="s">3</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="bilibili"><iframe src="//player.bilibili.com/player.html?bvid=BV1TJ411C7An&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
+
+<h2 id="10-typeit">10 typeit</h2>
+<p><code>typeit</code> shortcode 基于 <a href="https://typeitjs.com/" target="_blank" rel="noopener noreferrer">TypeIt</a> 提供了打字动画.</p>
+<p>只需将你需要打字动画的内容插入 <code>typeit</code> shortcode 中即可.</p>
+<h3 id="simple-content">10.1 简单内容</h3>
+<p>允许使用 <code>Markdown</code> 格式的简单内容, 并且 <strong>不包含</strong> 富文本的块内容, 例如图像等等&hellip;</p>
+<p>一个 <code>typeit</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">typeit</span> <span class="p">&gt;</span>}}
+这一个带有基于 [<span class="nt">TypeIt</span>](<span class="na">https://typeitjs.com/</span>) 的 <span class="gs">**打字动画**</span> 的 <span class="ge">_段落_</span>...
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">typeit</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="typeit"><div id="id-12" class=""></div></div>
+
+<p>另外, 你也可以自定义 <strong>HTML 标签</strong>.</p>
+<p>一个带有 <code>h4</code> 标签的 <code>typeit</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">typeit</span> <span class="na">tag</span><span class="o">=</span><span class="s">h4</span> <span class="p">&gt;</span>}}
+这一个带有基于 [<span class="nt">TypeIt</span>](<span class="na">https://typeitjs.com/</span>) 的 <span class="gs">**打字动画**</span> 的 <span class="ge">_段落_</span>...
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">typeit</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="typeit"><h4 id="id-13" class=""></h4></div>
+
+<h3 id="code-content">10.2 代码内容</h3>
+<p>代码内容也是允许的, 并且通过使用参数 <code>code</code> 指定语言类型可以实习语法高亮.</p>
+<p>一个带有 <code>code</code> 参数的 <code>typeit</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">typeit</span> <span class="na">code</span><span class="o">=</span><span class="s">java</span> <span class="p">&gt;</span>}}
+public class HelloWorld {
+public static void main(String []args) {
+System.out.println(&#34;Hello World&#34;);
+}
+}
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">typeit</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="typeit"><div id="id-14" class=" highlight"></div></div>
+
+<h3 id="code-content">10.3 分组内容</h3>
+<p>默认情况下, 所有打字动画都是同时开始的.
+但是有时你可能需要按顺序开始一组 <code>typeit</code> 内容的打字动画.</p>
+<p>一组具有相同 <code>group</code> 参数值的 <code>typeit</code> 内容将按顺序开始打字动画.</p>
+<p>一个带有 <code>group</code> 参数的 <code>typeit</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">typeit</span> <span class="na">group</span><span class="o">=</span><span class="s">paragraph</span> <span class="p">&gt;</span>}}
+<span class="gs">**首先**</span>, 这个段落开始
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">typeit</span> <span class="p">&gt;</span>}}
+
+{{<span class="p">&lt;</span> <span class="nt">typeit</span> <span class="na">group</span><span class="o">=</span><span class="s">paragraph</span> <span class="p">&gt;</span>}}
+<span class="gs">**然后**</span>, 这个段落开始
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">typeit</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="typeit"><div id="id-15" class=""></div></div>
+
+<div class="typeit"><div id="id-16" class=""></div></div>
+
+<h2 id="11-script">11 script</h2>
+<p><code>script</code> shortcode 用来在你的文章中插入 <strong><i class="fab fa-js fa-fw"></i>&nbsp;Javascript</strong> 脚本.</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>注意<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">脚本内容可以保证在所有的第三方库加载之后按顺序执行.
+所以你可以自由地使用第三方库.</div>
+        </div>
+    </div>
+<p>一个 <code>script</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">script</span> <span class="p">&gt;}}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello CodeIT!&#39;</span><span class="p">);</span>
+<span class="p">{{&lt;</span> <span class="p">/</span><span class="nt">script</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>你可以在开发者工具的控制台中看到输出.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2020-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/theme-documentation-extended-shortcodes/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://example.com/theme-documentation-extended-shortcodes/" data-title="主题文档 - 扩展 Shortcodes" data-hashtags="shortcodes"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://example.com/theme-documentation-extended-shortcodes/" data-hashtag="shortcodes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://example.com/theme-documentation-extended-shortcodes/" data-title="主题文档 - 扩展 Shortcodes" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://example.com/theme-documentation-extended-shortcodes/" data-title="主题文档 - 扩展 Shortcodes"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/shortcodes/">shortcodes</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/basic-markdown-syntax/" class="prev" rel="prev" title="Markdown 基本语法"><i class="fas fa-angle-left fa-fw"></i>Markdown 基本语法</a>
+            <a href="/theme-documentation-built-in-shortcodes/" class="next" rel="next" title="主题文档 - 内置 Shortcodes">主题文档 - 内置 Shortcodes<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="/lib/mermaid/mermaid.min.c74697cbf094b0b3067a5d8f0371e74671e1331b371ef3a3c7e291a17745ce93.css" integrity="sha256-x0aXy/CUsLMGel2PA3HnRnHhMxs3HvOjx&#43;KRoXdFzpM="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mapbox-gl@1.10.1/dist/mapbox-gl.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css"><link rel="stylesheet" href="/lib/aplayer/dark.min.d9a0e1c6f9761ef61454e725a56b587d17509a0f8200acfccdf3c13b68a874e2.css" integrity="sha256-2aDhxvl2HvYUVOclpWtYfRdQmg&#43;CAKz8zfPBO2iodOI="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="/css/2f1ef0.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.5.1/dist/mermaid.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4.8.0/theme/macarons.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mapbox-gl@1.10.1/dist/mapbox-gl.min.js"></script><script type="text/javascript" src="/lib/mapbox-gl/mapbox-gl-language.min.f6e313a8aa392770f6960cac4d3412aa1ade201bcee5af0e9e287379af822deb.js" integrity="sha256-9uMTqKo5J3D2lgysTTQSqhreIBvO5a8Onihzea&#43;CLes="></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-10":{"darkStyle":"mapbox://styles/mapbox/dark-zh-v1?optimize=true","fullscreen":true,"geolocate":true,"lat":31.233,"lightStyle":"mapbox://styles/mapbox/light-zh-v1?optimize=true","lng":121.485,"marked":true,"navigation":true,"scale":true,"zoom":12},"id-11":{"darkStyle":"mapbox://styles/mapbox/dark-zh-v1?optimize=true","fullscreen":true,"geolocate":true,"lat":37.453,"lightStyle":"mapbox://styles/mapbox/streets-zh-v1?optimize=true","lng":-122.252,"marked":false,"navigation":true,"scale":true,"zoom":10},"id-12":"这一个带有基于 \u003ca href=\"https://typeitjs.com/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eTypeIt\u003c/a\u003e 的 \u003cstrong\u003e打字动画\u003c/strong\u003e 的 \u003cem\u003e段落\u003c/em\u003e\u0026hellip;","id-13":"这一个带有基于 \u003ca href=\"https://typeitjs.com/\" target=\"_blank\" rel=\"noopener noreferrer\"\u003eTypeIt\u003c/a\u003e 的 \u003cstrong\u003e打字动画\u003c/strong\u003e 的 \u003cem\u003e段落\u003c/em\u003e\u0026hellip;","id-14":"\u003cspan class=\"kd\"\u003epublic\u003c/span\u003e\u0026nbsp;\u003cspan class=\"kd\"\u003eclass\u003c/span\u003e\u0026nbsp;\u003cspan class=\"nc\"\u003eHelloWorld\u003c/span\u003e\u0026nbsp;\u003cspan class=\"o\"\u003e{\u003c/span\u003e\u003cbr /\u003e\u003cspan class=\"kd\"\u003epublic\u003c/span\u003e\u0026nbsp;\u003cspan class=\"kd\"\u003estatic\u003c/span\u003e\u0026nbsp;\u003cspan class=\"kt\"\u003evoid\u003c/span\u003e\u0026nbsp;\u003cspan class=\"nf\"\u003emain\u003c/span\u003e\u003cspan class=\"o\"\u003e(\u003c/span\u003e\u003cspan class=\"n\"\u003eString\u003c/span\u003e\u0026nbsp;\u003cspan class=\"o\"\u003e[]\u003c/span\u003e\u003cspan class=\"n\"\u003eargs\u003c/span\u003e\u003cspan class=\"o\"\u003e)\u003c/span\u003e\u0026nbsp;\u003cspan class=\"o\"\u003e{\u003c/span\u003e\u003cbr /\u003e\u003cspan class=\"n\"\u003eSystem\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"na\"\u003eout\u003c/span\u003e\u003cspan class=\"o\"\u003e.\u003c/span\u003e\u003cspan class=\"na\"\u003eprintln\u003c/span\u003e\u003cspan class=\"o\"\u003e(\u003c/span\u003e\u003cspan class=\"s\"\u003e\u0026#34;Hello\u0026nbsp;World\u0026#34;\u003c/span\u003e\u003cspan class=\"o\"\u003e);\u003c/span\u003e\u003cbr /\u003e\u003cspan class=\"o\"\u003e}\u003c/span\u003e\u003cbr /\u003e\u003cspan class=\"o\"\u003e}\u003c/span\u003e","id-15":"\u003cstrong\u003e首先\u003c/strong\u003e, 这个段落开始","id-16":"\u003cstrong\u003e然后\u003c/strong\u003e, 这个段落开始","id-17":"KKKPJSKEY's-Case-Archives","id-18":"KKKPJSKEY's-Case-Archives","id-2":"graph LR;\nA[Hard edge] --\u003e|Link text| B(Round edge)\nB --\u003e C{Decision}\nC --\u003e|One| D[Result one]\nC --\u003e|Two| E[Result two]","id-3":"sequenceDiagram\nparticipant Alice\nparticipant Bob\nAlice-\u003e\u003eJohn: Hello John, how are you?\nloop Healthcheck\nJohn-\u003eJohn: Fight against hypochondria\nend\nNote right of John: Rational thoughts \u003cbr/\u003eprevail...\nJohn--\u003eAlice: Great!\nJohn-\u003eBob: How about you?\nBob--\u003eJohn: Jolly good!","id-4":"gantt\ndateFormat YYYY-MM-DD\ntitle Adding GANTT diagram functionality to mermaid\nsection A section\nCompleted task :done, des1, 2014-01-06,2014-01-08\nActive task :active, des2, 2014-01-09, 3d\nFuture task : des3, after des2, 5d\nFuture task2 : des4, after des3, 5d\nsection Critical tasks\nCompleted task in the critical line :crit, done, 2014-01-06,24h\nImplement parser and jison :crit, done, after des1, 2d\nCreate tests for parser :crit, active, 3d\nFuture task in critical line :crit, 5d\nCreate tests for renderer :2d\nAdd to mermaid :1d","id-5":"classDiagram\nClass01 \u003c|-- AveryLongClass : Cool\nClass03 _-- Class04\nClass05 o-- Class06\nClass07 .. Class08\nClass09 --\u003e C2 : Where am i?\nClass09 --_ C3\nClass09 --|\u003e Class07\nClass07 : equals()\nClass07 : Object[] elementData\nClass01 : size()\nClass01 : int chimp\nClass01 : int gorilla\nClass08 \u003c--\u003e C2: Cool label","id-6":"stateDiagram\n[*] --\u003e Still\nStill --\u003e [*]\nStill --\u003e Moving\nMoving --\u003e Still\nMoving --\u003e Crash\nCrash --\u003e [*]","id-7":"gitGraph:\noptions\n{\n\"nodeSpacing\": 100,\n\"nodeRadius\": 10\n}\nend\ncommit\nbranch newbranch\ncheckout newbranch\ncommit\ncommit\ncheckout master\ncommit\ncommit\nmerge newbranch","id-8":"pie\n\"Dogs\" : 386\n\"Cats\" : 85\n\"Rats\" : 15","id-9":"{\"grid\":{\"bottom\":\"5%\",\"containLabel\":true,\"left\":\"5%\",\"right\":\"5%\",\"top\":\"20%\"},\"legend\":{\"data\":[\"邮件营销\",\"联盟广告\",\"视频广告\",\"直接访问\",\"搜索引擎\"],\"top\":\"10%\"},\"series\":[{\"data\":[120,132,101,134,90,230,210],\"name\":\"邮件营销\",\"stack\":\"总量\",\"type\":\"line\"},{\"data\":[220,182,191,234,290,330,310],\"name\":\"联盟广告\",\"stack\":\"总量\",\"type\":\"line\"},{\"data\":[150,232,201,154,190,330,410],\"name\":\"视频广告\",\"stack\":\"总量\",\"type\":\"line\"},{\"data\":[320,332,301,334,390,330,320],\"name\":\"直接访问\",\"stack\":\"总量\",\"type\":\"line\"},{\"data\":[820,932,901,934,1290,1330,1320],\"name\":\"搜索引擎\",\"stack\":\"总量\",\"type\":\"line\"}],\"title\":{\"left\":\"center\",\"text\":\"折线统计图\",\"top\":\"2%\"},\"toolbox\":{\"feature\":{\"saveAsImage\":{\"title\":\"保存为图片\"}}},\"tooltip\":{\"trigger\":\"axis\"},\"xAxis\":{\"boundaryGap\":false,\"data\":[\"周一\",\"周二\",\"周三\",\"周四\",\"周五\",\"周六\",\"周日\"],\"type\":\"category\"},\"yAxis\":{\"type\":\"value\"}}"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"mapbox":{"RTLTextPlugin":"https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.0/mapbox-gl-rtl-text.js","accessToken":"pk.eyJ1IjoiZGlsbG9uenEiLCJhIjoiY2s2czd2M2x3MDA0NjNmcGxmcjVrZmc2cyJ9.aSjv2BNuZUfARvxRYjSVZQ"},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-12":["id-12"],"id-13":["id-13"],"id-14":["id-14"],"id-17":["id-17"],"id-18":["id-18"],"paragraph":["id-15","id-16"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.d1b26d23ac62a6d4bfafb3292c82d97770d7585d5c60e8d254d46fd9555fc69b.js" integrity="sha256-0bJtI6xiptS/r7MpLILZd3DXWF1cYOjSVNRv2VVfxps="></script><script type="text/javascript">console.log('Hello CodeIT!');</script></body>
+</html>

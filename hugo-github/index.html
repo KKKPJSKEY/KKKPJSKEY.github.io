@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Hogo创建GitHub Pages - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="部署Hugo，并使用其创建静态网站，推送到Github，配置GitHub Pages"><meta property="og:title" content="Hogo创建GitHub Pages" />
+<meta property="og:description" content="部署Hugo，并使用其创建静态网站，推送到Github，配置GitHub Pages" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/hugo-github/" /><meta property="og:image" content="https://example.com/hugo-github/featured-image-preview.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-01T19:12:15&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-03T15:40:13&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/hugo-github/featured-image-preview.jpg"/>
+<meta name="twitter:title" content="Hogo创建GitHub Pages"/>
+<meta name="twitter:description" content="部署Hugo，并使用其创建静态网站，推送到Github，配置GitHub Pages"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://example.com/hugo-github/" /><link rel="next" href="https://example.com/emoji-support/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.7c109789d1634c2b13017e89b274cc1d968471d213abac9cacad47deca582a11.css" integrity="sha256-fBCXidFjTCsTAX6JsnTMHZaEcdITq6ycrK1H3spYKhE="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hogo创建GitHub Pages",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/hugo-github\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/example.com\/hugo-github\/featured-image-preview.jpg",
+                            "width":  1200 ,
+                            "height":  360 
+                        }],"genre": "posts","keywords": "Hugo, Markdown, GitHub, CodeIt, Blog","wordcount":  2457 ,
+        "url": "https:\/\/example.com\/hugo-github\/","datePublished": "2021-04-01T19:12:15+08:00","dateModified": "2021-04-03T15:40:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/example.com\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "部署Hugo，并使用其创建静态网站，推送到Github，配置GitHub Pages"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/hugo-github/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/hugo-github/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Hogo创建GitHub Pages</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/blog/"><i class="far fa-folder fa-fw"></i>Blog</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-01">2021-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2457 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/hugo-github/" class="leancloud_visitors" data-flag-title="Hogo创建GitHub Pages">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hugo-github/featured-image-preview.jpg"
+        data-srcset="/hugo-github/featured-image-preview.jpg, /hugo-github/featured-image-preview.jpg 1.5x, /hugo-github/featured-image-preview.jpg 2x"
+        data-sizes="auto"
+        alt="/hugo-github/featured-image-preview.jpg"
+        title="部署Hugo，并使用其创建静态网站，推送到Github，配置GitHub Pages" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1----本地部署blog">1    本地部署blog</a>
+      <ul>
+        <li><a href="#11----快速开始">1.1    快速开始</a>
+          <ul>
+            <li><a href="#111安装方法介绍">1.1.1、安装方法介绍</a></li>
+            <li><a href="#112我的办法"><strong>1.1.2、我的办法</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#12----创建网站">1.2    创建网站</a></li>
+        <li><a href="#13----选择主题">1.3    选择主题</a></li>
+        <li><a href="#14----配置主题">1.4    配置主题</a>
+          <ul>
+            <li><a href="#141metadata">1.4.1、metadata</a></li>
+            <li><a href="#142其他配置">1.4.2、其他配置</a></li>
+          </ul>
+        </li>
+        <li><a href="#15----生成模板markdown带有metadata">1.5    生成模板MarkDown（带有metadata）</a></li>
+        <li><a href="#16编写markdown">1.6编写MarkDown</a></li>
+        <li><a href="#17-----本地预览与部署">1.7     本地预览与部署</a>
+          <ul>
+            <li><a href="#171本地预览">1.7.1、本地预览</a></li>
+            <li><a href="#172生成静态文件用于发布">1.7.2、生成静态文件用于发布</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#2----github创建仓库">2    GitHub创建仓库</a></li>
+    <li><a href="#3----使用git提交生成的静态页面162">3    使用Git提交生成的静态页面（1.6.2）</a></li>
+    <li><a href="#4在github中进行页面展示设置">4在GitHub中进行页面展示设置</a></li>
+    <li><a href="#5-结语">5 结语</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>近些年GoLang语言逐渐火爆起来，Golang语言所做的静态博客固然也映入眼帘。相比于动态博客，静态博客的好处不言而喻，开发难度极低，不需要后台和数据库，更不需要昂贵的服务器成本和花费运维成本去维护。应老师要求以及个人未来发展，故学习静态博客的部署。本文因此介绍hugo和GitHub.io的初次使用搭建个人博客</p>
+<h2 id="1----本地部署blog">1    本地部署blog</h2>
+<h3 id="11----快速开始">1.1    快速开始</h3>
+<h4 id="111安装方法介绍">1.1.1、安装方法介绍</h4>
+<blockquote>
+<p>hugo_GitHub:<a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener noreferrer">https://github.com/gohugoio/hugo</a></p>
+<p>Official_Website:<a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">https://gohugo.io/</a></p>
+</blockquote>
+<p>不同的操作系统有着不同的安装方式，官方推荐Linux或者Mac下可以使用brew或者port 进行安装Windows推荐使用Chocolatey或者Scoop进行安装，或者使用GitHub中的源码进行安装，我选择GitHub的Relaeases包进行安装，因为它不需要其他包管理工具进行安装。其他安装方式请参阅官方安装文档</p>
+<blockquote>
+<p><a href="https://gohugo.io/getting-started/installing">https://gohugo.io/getting-started/installing</a></p>
+</blockquote>
+<p>可以使用Git工具进行下载源码，或者使用GitHub自带的Donwload Zip进行下载速度慢的话考虑码云转移仓库加速或csdn相关加速服务~~，甚至孙悟空的魔法~~</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">git clone <span class="o">[</span>ssh address<span class="o">][</span>http address<span class="o">]</span>
+<span class="c1">#示例</span>
+git clone git@github.com:gohugoio/hugo.git <span class="c1">#SSH</span>
+<span class="c1">#或者</span>
+git clone https://github.com/gohugoio/hugo.git <span class="c1">#HTTP</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="112我的办法"><strong>1.1.2、我的办法</strong></h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/1.png"
+        data-srcset="/images/hugo-GitHub/1.png, /images/hugo-GitHub/1.png 1.5x, /images/hugo-GitHub/1.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/1.png"
+        title="1" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/2.png"
+        data-srcset="/images/hugo-GitHub/2.png, /images/hugo-GitHub/2.png 1.5x, /images/hugo-GitHub/2.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/2.png"
+        title="2" /></p>
+<p><a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener noreferrer"><code>https://github.com/gohugoio/hugo/releases</code></a>此链接选择最新版，选择对应系统版本下载即可（我的是windows）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/3.png"
+        data-srcset="/images/hugo-GitHub/3.png, /images/hugo-GitHub/3.png 1.5x, /images/hugo-GitHub/3.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/3.png"
+        title="3" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/4.png"
+        data-srcset="/images/hugo-GitHub/4.png, /images/hugo-GitHub/4.png 1.5x, /images/hugo-GitHub/4.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/4.png"
+        title="4" /></p>
+<p>下载后进行解压只有三个文件，个人将hugo.exe文件放入bin目录，将网站问建放入sites目录，其他文件放在根目录</p>
+<p>在当前目录执行（未配置环境变量）</p>
+<p>任意处执行（配置环境变量）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> bin
+hugo version
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/5.png"
+        data-srcset="/images/hugo-GitHub/5.png, /images/hugo-GitHub/5.png 1.5x, /images/hugo-GitHub/5.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/5.png"
+        title="5" /></p>
+<p>单击环境变量（1），创建HOGO_HOME（2），填写路径（3），在原来Path下（4）添加bin目录（5）</p>
+<p>执行命令后有类似返回结果（6）说明安装hugo成功（在系统环境变量中（Windows可以在Cotana直接搜索环境变量））</p>
+<h3 id="12----创建网站">1.2    创建网站</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#返回上一级目录下的网站目录</span>
+<span class="nb">cd</span> ../sites
+hugo new site <span class="o">[</span>site nme<span class="o">]</span>
+<span class="c1">#示例</span>
+hugo new site KKKPJSKEY<span class="err">&#39;</span>s-Case-Archives
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="13----选择主题">1.3    选择主题</h3>
+<p>在<a href="https://themes.gohugo.io/material-design/" target="_blank" rel="noopener noreferrer"><code>https://themes.gohugo.io/</code></a>这个网址选择你喜欢的主题</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/6.png"
+        data-srcset="/images/hugo-GitHub/6.png, /images/hugo-GitHub/6.png 1.5x, /images/hugo-GitHub/6.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/6.png"
+        title="6" /></p>
+<p><a href="https://themes.gohugo.io/material-design/" target="_blank" rel="noopener noreferrer"><code>https://themes.gohugo.io/material-design/</code></a>这是我的选择</p>
+<p>点击download进入对应的GitHub页面，可以使用Git工具进行下载源码，或者使用GitHub自带的Donwload Zip进行下载速度慢的话考虑码云转移仓库加速或Csdn相关加速服务~~，甚至孙悟空的魔法~~</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#切换到新建的网站目录下</span>
+<span class="nb">cd</span> KKKPJSKEY<span class="err">&#39;</span>s-Case-Archives
+git clone <span class="o">[</span>ssh address<span class="o">][</span>http address<span class="o">]</span>
+<span class="c1">#示例</span>
+git clone git@github.com:pdevty/material-design.git themes/material-design <span class="c1">#SSH</span>
+<span class="c1">#或者</span>
+git clone https://github.com/pdevty/material-design.git themes/material-design <span class="c1">#HTTP</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>（自行下载的压缩请手动解压到theme目录）</p>
+<h3 id="14----配置主题">1.4    配置主题</h3>
+<h4 id="141metadata">1.4.1、metadata</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/7.png"
+        data-srcset="/images/hugo-GitHub/7.png, /images/hugo-GitHub/7.png 1.5x, /images/hugo-GitHub/7.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/7.png"
+        title="7" /></p>
+<p>请将主题目录（1）下的默认配置文件（2）中的内容（3）与网站目录（4）下的默认配置文件（5）中的内容（6）进行整合，以网站目录下的默认配置文件为准，最终成河成（7）的样子即可</p>
+<h4 id="142其他配置">1.4.2、其他配置</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/8.png"
+        data-srcset="/images/hugo-GitHub/8.png, /images/hugo-GitHub/8.png 1.5x, /images/hugo-GitHub/8.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/8.png"
+        title="8" /></p>
+<p>将根目录（1）下的config.toml文件（2）中的内容改为自己网站的内容（3）</p>
+<p>我个人主题配置如上图所示，<a href="https://themes.gohugo.io/material-design/" target="_blank" rel="noopener noreferrer">其他配置请自行参照主题文档进行配置</a></p>
+<h3 id="15----生成模板markdown带有metadata">1.5    生成模板MarkDown（带有metadata）</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">hugo new <span class="o">[</span>类别<span class="o">]</span>/<span class="o">[</span>文件名<span class="o">]</span>
+<span class="c1">#示例</span>
+hugo new blog/使用hugo、GitHub.io搭建个人静态博客.md
+</code></pre></td></tr></table>
+</div>
+</div><p>执行以上指令即可在以下路径生成对应的文件content/<sup>类别</sup>/<sub>文件名</sub>（生成一次后也可手动在content/<sup>类别</sup>/<sub>文件名</sub>创建文件，手动拷贝对应的metadata）（这里没有切换路径，但必须在网站根目录下进行）</p>
+<h3 id="16编写markdown">1.6编写MarkDown</h3>
+<p>项目中其他请参照MarkDown语法规范，其中图片需要注意：图片应放到网站根目录下的static中。我为了国立不同静态资源，创建了imags和文章名两级文件夹，图片在MarkDown中应使用，同时使用顺斜杠替换原来反斜杠，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">/<span class="o">[</span>分类名<span class="o">]</span>/<span class="o">[</span>项目名<span class="o">]</span>/图片名.格式  <span class="c1">#个人分类法，非强制要求</span>
+<span class="c1">#示例</span>
+/images/hugo-GitHub/1.png
+</code></pre></td></tr></table>
+</div>
+</div><p>同时使用顺斜杠替换原来反斜杠，</p>
+<h3 id="17-----本地预览与部署">1.7     本地预览与部署</h3>
+<h4 id="171本地预览">1.7.1、本地预览</h4>
+<p><code>hugo server [-D]</code>（这里没有切换路径，但必须在网站根目录下进行）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">Start building sites …
+
+                   <span class="p">|</span> EN
+-------------------+-----
+  Pages            <span class="p">|</span> <span class="m">22</span>
+  Paginator pages  <span class="p">|</span>  <span class="m">0</span>
+  Non-page files   <span class="p">|</span>  <span class="m">9</span>
+  Static files     <span class="p">|</span> <span class="m">33</span>
+  Processed images <span class="p">|</span>  <span class="m">0</span>
+  Aliases          <span class="p">|</span>  <span class="m">8</span>
+  Sitemaps         <span class="p">|</span>  <span class="m">1</span>
+  Cleaned          <span class="p">|</span>  <span class="m">0</span>
+
+Built in <span class="m">52</span> ms
+Watching <span class="k">for</span> changes in C:<span class="se">\P</span>rogram_Green<span class="se">\h</span>ugo_extended_0.82.0_Windows-64bit<span class="se">\s</span>ites<span class="se">\K</span>KKPJSKEY<span class="s1">&#39;s-Case-Archives\{archetypes,content,data,layouts,static,themes}
+</span><span class="s1">Watching for config changes in C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;</span>s-Case-Archives<span class="se">\c</span>onfig.toml
+Environment: <span class="s2">&#34;development&#34;</span>
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ <span class="o">(</span><span class="nb">bind</span> address 127.0.0.1<span class="o">)</span>
+Press Ctrl+C to stop
+</code></pre></td></tr></table>
+</div>
+</div><p>执行后在<a href="https://themes.gohugo.io/material-design/" target="_blank" rel="noopener noreferrer"><code>http://localhost:1313/</code></a>可以进行访问（-D参数表示无论metadata（1.4.1）是否为true都进行发布，不加参数则只发布为false的项目，下面huge生成静态文件相同）</p>
+<h4 id="172生成静态文件用于发布">1.7.2、生成静态文件用于发布</h4>
+<p>使用<code>hugo [-D]</code>生成静态文件，-D参数在1.6.1介绍的功能相同（这里没有切换路径，但必须在网站根目录下进行）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">Start building sites …
+
+                   <span class="p">|</span> EN
+-------------------+-----
+  Pages            <span class="p">|</span> <span class="m">15</span>
+  Paginator pages  <span class="p">|</span>  <span class="m">0</span>
+  Non-page files   <span class="p">|</span>  <span class="m">9</span>
+  Static files     <span class="p">|</span> <span class="m">33</span>
+  Processed images <span class="p">|</span>  <span class="m">0</span>
+  Aliases          <span class="p">|</span>  5s
+  Sitemaps         <span class="p">|</span>  <span class="m">1</span>
+  Cleaned          <span class="p">|</span>  <span class="m">0</span>
+
+Total in <span class="m">167</span> ms
+</code></pre></td></tr></table>
+</div>
+</div><p>以上结果会在网站根目录下的public下生成静态页面</p>
+<h2 id="2----github创建仓库">2    GitHub创建仓库</h2>
+<p>来到GitHub主页<a href="https://github.com/" target="_blank" rel="noopener noreferrer"><code>https://github.com/</code></a>（自行注册登录）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/9.png"
+        data-srcset="/images/hugo-GitHub/9.png, /images/hugo-GitHub/9.png 1.5x, /images/hugo-GitHub/9.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/9.png"
+        title="9" /></p>
+<p>点击左上角新建仓库</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/10.png"
+        data-srcset="/images/hugo-GitHub/10.png, /images/hugo-GitHub/10.png 1.5x, /images/hugo-GitHub/10.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/10.png"
+        title="10" /></p>
+<p>输入自己的仓库名（1，我已经创建过不能使用相同的名字因此报错，仓库名没有格式限制，请自行发挥），设置仓库分类（2，公有是所有人能看到，私有是只有项目内成员能看到），点击创建即可（3）</p>
+<h2 id="3----使用git提交生成的静态页面162">3    使用Git提交生成的静态页面（1.6.2）</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#切换到网站名字下的public下</span>
+<span class="nb">cd</span> public
+<span class="c1">#以下为git指令</span>
+<span class="c1">##git 初始化</span>
+git init
+<span class="c1">##添加当前目录下的所有文件到暂存区</span>
+git add <span class="o">[</span>.<span class="o">][</span>-u<span class="o">][</span>-A<span class="o">][</span>--all<span class="o">]</span>
+<span class="c1">##提交暂存区的指定文件到仓库区 -m是添加标签（Tag）信息</span>
+git commit -m <span class="s2">&#34;[message]&#34;</span>
+<span class="c1">##从将本地的分支版本上传到远程并合并。</span>
+git push
+</code></pre></td></tr></table>
+</div>
+</div><p>详细Git教程、参数解释在<a href="javascrip:void%280%29" rel="">Git笔记（挖坑）</a>中，请移步</p>
+<h2 id="4在github中进行页面展示设置">4在GitHub中进行页面展示设置</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/hugo-GitHub/11.png"
+        data-srcset="/images/hugo-GitHub/11.png, /images/hugo-GitHub/11.png 1.5x, /images/hugo-GitHub/11.png 2x"
+        data-sizes="auto"
+        alt="/images/hugo-GitHub/11.png"
+        title="11" /></p>
+<p>在你的仓库页面点击Settings（1），在新的页面向下滑动找到GitHub Pages下的Branch（2），选择master（3，或自己的分支），在对应的网址即可访问（4）</p>
+<h2 id="5-结语">5 结语</h2>
+<p>至此使用hugo、Github.io搭建个人静态博客彻底完成</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-04-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hugo-github/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://example.com/hugo-github/" data-title="Hogo创建GitHub Pages" data-hashtags="Hugo,Markdown,GitHub,CodeIt,Blog"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://example.com/hugo-github/" data-hashtag="Hugo"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://example.com/hugo-github/" data-title="Hogo创建GitHub Pages" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://example.com/hugo-github/" data-title="Hogo创建GitHub Pages"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hugo/">Hugo</a>,&nbsp;<a href="/tags/markdown/">Markdown</a>,&nbsp;<a href="/tags/github/">GitHub</a>,&nbsp;<a href="/tags/codeit/">CodeIt</a>,&nbsp;<a href="/tags/blog/">Blog</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/emoji-support/" class="next" rel="next" title="Emoji 支持">Emoji 支持<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.d1b26d23ac62a6d4bfafb3292c82d97770d7585d5c60e8d254d46fd9555fc69b.js" integrity="sha256-0bJtI6xiptS/r7MpLILZd3DXWF1cYOjSVNRv2VVfxps="></script></body>
+</html>
