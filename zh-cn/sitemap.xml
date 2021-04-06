@@ -2,6 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://example.com/hugo-github/</loc><lastmod>2021-04-03T15:40:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/theme-documentation-basics/</loc><lastmod>2020-03-06T21:40:32&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
@@ -68,7 +69,6 @@
                     hreflang="zh-cn"
                     href="https://example.com/emoji-support/"
                     /></url><url>
-            <loc>https://example.com/hugo-github/</loc><lastmod>2021-04-03T15:40:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/tags/blog/</loc><lastmod>2021-04-03T15:40:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/categories/blog/</loc><lastmod>2021-04-03T15:40:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://example.com/categories/</loc><lastmod>2021-04-03T15:40:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
@@ -255,4 +255,5 @@
                     rel="alternate"
                     hreflang="zh-cn"
                     href="https://example.com/about/"
-                    /></url></urlset>
+                    /></url><url>
+            <loc>https://example.com/bottom_navigation/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
