@@ -4,7 +4,7 @@
         <link>https://example.com/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</lastBuildDate><atom:link href="https://example.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 09 May 2021 02:52:55 &#43;0800</lastBuildDate><atom:link href="https://example.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>类微信界面设计</title>
     <link>https://example.com/bottom_navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate>
@@ -12,53 +12,67 @@
     <guid>https://example.com/bottom_navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
 </item><item>
+    <title>Mybatis中用到的设计模式</title>
+    <link>https://example.com/mybatis-designmode/</link>
+    <pubDate>Sun, 09 May 2021 02:52:55 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://example.com/mybatis-designmode/</guid>
+    <description><![CDATA[Mybatis中用到的设计模式 Builder模式，例如SqlSessionFactoryBuilder、XMLConfigBuilder、X]]></description>
+</item><item>
+    <title>Kolin：A problem occurred evaluating project &#39;:app&#39;.</title>
+    <link>https://example.com/android-kolin/</link>
+    <pubDate>Tue, 20 Apr 2021 22:45:59 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://example.com/android-kolin/</guid>
+    <description><![CDATA[Kolin：A problem occurred evaluating project &lsquo;:app&rsquo;. 报错 1 2 3 4 Build file &#39;C:\All_Code\AS_Code\Bottom-Navigation\Material-BottomNavigation\app\build.gradle&#39; line: 2 A problem occurred evaluating project &#39;:app&#39;. &gt; java.lang.ExceptionInInitializerError (no error message) 在项目根目录下的app目录（可能被改为项目名）下的build.gradl]]></description>
+</item><item>
+    <title>AndroidStudio网络问题</title>
+    <link>https://example.com/android-net/</link>
+    <pubDate>Mon, 15 Mar 2021 08:33:12 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://example.com/android-net/</guid>
+    <description><![CDATA[AndroidStudio网络问题 android studio 教你修改Maven仓库地址为国内镜像 android studio 默认国外maven 这我们更改为阿里的maven 打开build.]]></description>
+</item><item>
     <title>Hogo创建GitHub Pages</title>
     <link>https://example.com/hugo-github/</link>
-    <pubDate>Thu, 01 Apr 2021 19:12:15 &#43;0800</pubDate>
+    <pubDate>Mon, 01 Mar 2021 19:12:15 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://example.com/hugo-github/</guid>
-    <description><![CDATA[近些年GoLang语言逐渐火爆起来，Golang语言所做的静态博客固然也映入眼帘。相比于动态博客，静态博客的好处不言而喻，开发难度极低，不需]]></description>
+    <description><![CDATA[Hogo创建GitHub Pages 近些年GoLang语言逐渐火爆起来，Golang语言所做的静态博客固然也映入眼帘。相比于动态博客，静态博客的好处不]]></description>
 </item><item>
-    <title>主题文档 - 基本概念</title>
-    <link>https://example.com/theme-documentation-basics/</link>
-    <pubDate>Fri, 06 Mar 2020 21:40:32 &#43;0800</pubDate>
+    <title>VScode代码行的统计插件</title>
+    <link>https://example.com/vscode-count-line/</link>
+    <pubDate>Sun, 28 Feb 2021 08:10:36 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://example.com/theme-documentation-basics/</guid>
-    <description><![CDATA[<p>探索 Hugo - <strong>CodeIT</strong> 主题的全部内容和背后的核心概念.</p>]]></description>
+    <guid>https://example.com/vscode-count-line/</guid>
+    <description><![CDATA[VScode代码行的统计插件 VScode Counter 搜索并安装即可 使用 ctrl + shift +p，输入counter，即可使用 loc 搜索并安装即可 使用 ctrl + shift +p，输入LineCou]]></description>
 </item><item>
-    <title>主题文档 - 内容</title>
-    <link>https://example.com/theme-documentation-content/</link>
-    <pubDate>Thu, 05 Mar 2020 16:30:05 &#43;0800</pubDate>
+    <title>Tomcat部署Jstl项目报错</title>
+    <link>https://example.com/tomcat-jstl-error/</link>
+    <pubDate>Sat, 30 Jan 2021 18:11:16 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://example.com/theme-documentation-content/</guid>
-    <description><![CDATA[<p>了解如何在 <strong>CodeIT</strong> 主题中快速, 直观地创建和组织内容.</p>]]></description>
+    <guid>https://example.com/tomcat-jstl-error/</guid>
+    <description><![CDATA[Tomcat部署Jstl项目报错 问题来源 原Tomcat启动有一条警告，由于看着不爽就查了办法去掉了 办法是修改Tomcat根目录下的conf文]]></description>
 </item><item>
-    <title>主题文档 - 内置 Shortcodes</title>
-    <link>https://example.com/theme-documentation-built-in-shortcodes/</link>
-    <pubDate>Wed, 04 Mar 2020 16:29:59 &#43;0800</pubDate>
+    <title>宝塔面板建站</title>
+    <link>https://example.com/bt-site/</link>
+    <pubDate>Thu, 31 Dec 2020 09:52:19 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://example.com/theme-documentation-built-in-shortcodes/</guid>
-    <description><![CDATA[<p><strong>Hugo</strong> 提供了多个内置的 Shortcodes, 以方便作者保持 Markdown 内容的整洁.</p>]]></description>
+    <guid>https://example.com/bt-site/</guid>
+    <description><![CDATA[宝塔面板建站 1、请自行装好宝塔面板以及Nginx、PHP（其他项目请装对应的服务器以及应用服务器） 2、进入对应的宝塔面板页面点击左侧导航栏的]]></description>
 </item><item>
-    <title>主题文档 - 扩展 Shortcodes</title>
-    <link>https://example.com/theme-documentation-extended-shortcodes/</link>
-    <pubDate>Tue, 03 Mar 2020 16:29:59 &#43;0800</pubDate>
+    <title>CentOS8更换yum源</title>
+    <link>https://example.com/centos8-change-source/</link>
+    <pubDate>Sun, 29 Nov 2020 10:21:21 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://example.com/theme-documentation-extended-shortcodes/</guid>
-    <description><![CDATA[<p><strong>CodeIT</strong> 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode.</p>]]></description>
+    <guid>https://example.com/centos8-change-source/</guid>
+    <description><![CDATA[CentOS8更换yum源 1 2 3 4 5 cd /etc/yum.repos.d/ mv CentOS-Base.repo CentOS-Base.repo_back vi CentOS-Base.repo CentOS-Base.repo 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44]]></description>
 </item><item>
-    <title>Markdown 基本语法</title>
-    <link>https://example.com/basic-markdown-syntax/</link>
-    <pubDate>Sun, 01 Dec 2019 21:57:40 &#43;0800</pubDate>
+    <title>Centos7上安装Docker</title>
+    <link>https://example.com/docker-centos7/</link>
+    <pubDate>Tue, 20 Oct 2020 11:19:49 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://example.com/basic-markdown-syntax/</guid>
-    <description><![CDATA[<p>这篇文章提供了可以在 Hugo 的文章中使用的基本 Markdown 语法示例.</p>]]></description>
-</item><item>
-    <title>Emoji 支持</title>
-    <link>https://example.com/emoji-support/</link>
-    <pubDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://example.com/emoji-support/</guid>
-    <description><![CDATA[<p>Emoji 可以通过多种方式在 Hugo 项目中启用.</p>]]></description>
+    <guid>https://example.com/docker-centos7/</guid>
+    <description><![CDATA[Centos7上安装Docker Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。 社区版是免费提供给个人]]></description>
 </item></channel>
 </rss>
