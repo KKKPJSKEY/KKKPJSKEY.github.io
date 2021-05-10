@@ -54,6 +54,13 @@
     <guid>https://kkkpjskey.github.io/shell-script/</guid>
     <description><![CDATA[ShellScript（.sh）脚本语法知识 set -e的作用 1 2 3 4 5 6 7 #!/bin/bash set -e ... command 1 command 2 ... exit 0 你写的每个脚本都应该在文件开头加上set -e,这]]></description>
 </item><item>
+    <title>修改Git文件夹名字</title>
+    <link>https://kkkpjskey.github.io/git-package-rename/</link>
+    <pubDate>Mon, 01 Mar 2021 19:12:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kkkpjskey.github.io/git-package-rename/</guid>
+    <description><![CDATA[修改Git文件夹名字 &ldquo;修改Git文件夹名字，并不能在本地直接用操作系统的文件系统修改 1 2 3 4 git mv -f [file] [newfile] #示例 git mv -f Github GitHub #-f=-]]></description>
+</item><item>
     <title>VScode代码行的统计插件</title>
     <link>https://kkkpjskey.github.io/vscode-count-line/</link>
     <pubDate>Sun, 28 Feb 2021 08:10:36 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://kkkpjskey.github.io/tomcat-jstl-error/</guid>
     <description><![CDATA[Tomcat部署Jstl项目报错 问题来源 原Tomcat启动有一条警告，由于看着不爽就查了办法去掉了 办法是修改Tomcat根目录下的conf文]]></description>
-</item><item>
-    <title>宝塔面板建站</title>
-    <link>https://kkkpjskey.github.io/bt-site/</link>
-    <pubDate>Thu, 31 Dec 2020 09:52:19 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/bt-site/</guid>
-    <description><![CDATA[宝塔面板建站 1、请自行装好宝塔面板以及Nginx、PHP（其他项目请装对应的服务器以及应用服务器） 2、进入对应的宝塔面板页面点击左侧导航栏的]]></description>
 </item></channel>
 </rss>
