@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 May 2021 12:24:15 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 09 May 2021 02:52:55 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>类微信界面设计</title>
@@ -13,13 +13,6 @@
     <author>作者</author>
     <guid>https://kkkpjskey.github.io/bottom_navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
-</item><item>
-    <title>Hogo配置Algolia</title>
-    <link>https://kkkpjskey.github.io/hogo-algolia/</link>
-    <pubDate>Mon, 10 May 2021 12:24:15 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/hogo-algolia/</guid>
-    <description><![CDATA[<h1 id="hogo配置algolia">Hogo配置Algolia</h1>]]></description>
 </item><item>
     <title>Mybatis中用到的设计模式</title>
     <link>https://kkkpjskey.github.io/mybatis-designmode/</link>
@@ -35,6 +28,13 @@
     <guid>https://kkkpjskey.github.io/android-kolin/</guid>
     <description><![CDATA[Kolin：A problem occurred evaluating project &lsquo;:app&rsquo;. 报错 1 2 3 4 Build file &#39;C:\All_Code\AS_Code\Bottom-Navigation\Material-BottomNavigation\app\build.gradle&#39; line: 2 A problem occurred evaluating project &#39;:app&#39;. &gt; java.lang.ExceptionInInitializerError (no error message) 在项目根目录下的app目录（可能被改为项目名）下的build.gradl]]></description>
 </item><item>
+    <title>Android App界面与顶部状态栏重叠遮盖问题</title>
+    <link>https://kkkpjskey.github.io/android-topbar-cover/</link>
+    <pubDate>Mon, 22 Mar 2021 19:12:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kkkpjskey.github.io/android-topbar-cover/</guid>
+    <description><![CDATA[Android App界面与顶部状态栏重叠遮盖问题 问题情况截图如下： 觉得toolbar默认高度太高，给toolbar设了一个固定值。测试时发现在4.4系统]]></description>
+</item><item>
     <title>AndroidStudio网络问题</title>
     <link>https://kkkpjskey.github.io/android-net/</link>
     <pubDate>Mon, 15 Mar 2021 08:33:12 &#43;0800</pubDate>
@@ -42,39 +42,39 @@
     <guid>https://kkkpjskey.github.io/android-net/</guid>
     <description><![CDATA[AndroidStudio网络问题 android studio 教你修改Maven仓库地址为国内镜像 android studio 默认国外maven 这我们更改为阿里的maven 打开build.]]></description>
 </item><item>
+    <title>Android-版本更替不兼容修正</title>
+    <link>https://kkkpjskey.github.io/android-incompatible-version/</link>
+    <pubDate>Wed, 03 Mar 2021 09:11:55 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kkkpjskey.github.io/android-incompatible-version/</guid>
+    <description><![CDATA[Android-版本更替不兼容修正 CardView、RecyclerView在buildTools28-&gt;30用法改变 Android开]]></description>
+</item><item>
+    <title>Hogo配置Algolia</title>
+    <link>https://kkkpjskey.github.io/hogo-algolia/</link>
+    <pubDate>Sun, 10 Jan 2021 12:24:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kkkpjskey.github.io/hogo-algolia/</guid>
+    <description><![CDATA[<h1 id="hogo配置algolia">Hogo配置Algolia</h1>]]></description>
+</item><item>
     <title>Hogo创建GitHub Pages</title>
     <link>https://kkkpjskey.github.io/hugo-github/</link>
-    <pubDate>Mon, 01 Mar 2021 19:12:15 &#43;0800</pubDate>
+    <pubDate>Fri, 01 Jan 2021 19:12:15 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://kkkpjskey.github.io/hugo-github/</guid>
     <description><![CDATA[Hogo创建GitHub Pages 近些年GoLang语言逐渐火爆起来，Golang语言所做的静态博客固然也映入眼帘。相比于动态博客，静态博客的好处不]]></description>
 </item><item>
-    <title>ShellScript（.sh）脚本语法知识</title>
-    <link>https://kkkpjskey.github.io/shell-script/</link>
-    <pubDate>Mon, 01 Mar 2021 19:12:15 &#43;0800</pubDate>
+    <title>Docker常用指令</title>
+    <link>https://kkkpjskey.github.io/docker-command-note/</link>
+    <pubDate>Mon, 21 Dec 2020 00:01:23 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://kkkpjskey.github.io/shell-script/</guid>
-    <description><![CDATA[ShellScript（.sh）脚本语法知识 set -e的作用 1 2 3 4 5 6 7 #!/bin/bash set -e ... command 1 command 2 ... exit 0 你写的每个脚本都应该在文件开头加上set -e,这]]></description>
+    <guid>https://kkkpjskey.github.io/docker-command-note/</guid>
+    <description><![CDATA[Docker常用指令 容器管理指令 1 2 3 4 5 6 7 8 # 进入docker容器内部 docker exec -it id /bash/bin # 退出容器 exit # 启动docker容器 sudo systemctl start docker # 设置dock]]></description>
 </item><item>
-    <title>修改Git文件夹名字</title>
-    <link>https://kkkpjskey.github.io/git-package-rename/</link>
-    <pubDate>Mon, 01 Mar 2021 19:12:15 &#43;0800</pubDate>
+    <title>CentOS7 查询的几种方式</title>
+    <link>https://kkkpjskey.github.io/cnetos7-shell-search/</link>
+    <pubDate>Sat, 12 Dec 2020 12:22:42 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://kkkpjskey.github.io/git-package-rename/</guid>
-    <description><![CDATA[修改Git文件夹名字 &ldquo;修改Git文件夹名字，并不能在本地直接用操作系统的文件系统修改 1 2 3 4 git mv -f [file] [newfile] #示例 git mv -f Github GitHub #-f=-]]></description>
-</item><item>
-    <title>VScode代码行的统计插件</title>
-    <link>https://kkkpjskey.github.io/vscode-count-line/</link>
-    <pubDate>Sun, 28 Feb 2021 08:10:36 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/vscode-count-line/</guid>
-    <description><![CDATA[VScode代码行的统计插件 VScode Counter 搜索并安装即可 使用 ctrl + shift +p，输入counter，即可使用 loc 搜索并安装即可 使用 ctrl + shift +p，输入LineCou]]></description>
-</item><item>
-    <title>Tomcat部署Jstl项目报错</title>
-    <link>https://kkkpjskey.github.io/tomcat-jstl-error/</link>
-    <pubDate>Sat, 30 Jan 2021 18:11:16 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/tomcat-jstl-error/</guid>
-    <description><![CDATA[Tomcat部署Jstl项目报错 问题来源 原Tomcat启动有一条警告，由于看着不爽就查了办法去掉了 办法是修改Tomcat根目录下的conf文]]></description>
+    <guid>https://kkkpjskey.github.io/cnetos7-shell-search/</guid>
+    <description><![CDATA[CentOS7 查询的几种方式 1. find Java代码 find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件。与查询数据库（/var/lib/loca]]></description>
 </item></channel>
 </rss>
