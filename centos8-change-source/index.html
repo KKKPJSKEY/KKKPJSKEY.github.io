@@ -150,7 +150,7 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">cd /etc/yum.repos.d/
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> /etc/yum.repos.d/
 
 mv CentOS-Base.repo CentOS-Base.repo_back
 
@@ -222,63 +222,63 @@ vi CentOS-Base.repo
 </span><span class="lnt">60
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">#
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#</span>
 
-# The mirror system uses the connecting IP address of the client and the
+<span class="c1"># The mirror system uses the connecting IP address of the client and the</span>
 
-# update status of each mirror to pick mirrors that are updated to and
+<span class="c1"># update status of each mirror to pick mirrors that are updated to and</span>
 
-# geographically close to the client.  You should use this for CentOS updates
+<span class="c1"># geographically close to the client.  You should use this for CentOS updates</span>
 
-# unless you are manually picking other mirrors.
+<span class="c1"># unless you are manually picking other mirrors.</span>
 
-#
+<span class="c1">#</span>
 
-# If the mirrorlist= does not work for you, as a fall back you can try the
+<span class="c1"># If the mirrorlist= does not work for you, as a fall back you can try the</span>
 
-# remarked out baseurl= line instead.
-#
-[BaseOS]
-name=CentOS-$releasever - Base
-#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=BaseOS&amp;infra=$infra
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/BaseOS/$basearch/os/
-gpgcheck=1
-enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+<span class="c1"># remarked out baseurl= line instead.</span>
+<span class="c1">#</span>
+<span class="o">[</span>BaseOS<span class="o">]</span>
+<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Base
+<span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=BaseOS&amp;infra=$infra</span>
+<span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/BaseOS/<span class="nv">$basearch</span>/os/
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
 
-#additional packages that may be useful
-[extras]
-name=CentOS-$releasever - Extras
-#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras&amp;infra=$infra
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/extras/$basearch/os/
-gpgcheck=1
-enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+<span class="c1">#additional packages that may be useful</span>
+<span class="o">[</span>extras<span class="o">]</span>
+<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Extras
+<span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras&amp;infra=$infra</span>
+<span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/extras/<span class="nv">$basearch</span>/os/
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
 
-#additional packages that extend functionality of existing packages
-[centosplus]
-name=CentOS-$releasever - Plus
-#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus&amp;infra=$infra
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/centosplus/$basearch/os/
-gpgcheck=1
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+<span class="c1">#additional packages that extend functionality of existing packages</span>
+<span class="o">[</span>centosplus<span class="o">]</span>
+<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - Plus
+<span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus&amp;infra=$infra</span>
+<span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/centosplus/<span class="nv">$basearch</span>/os/
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
 
-[AppStream]
-name=CentOS-$releasever - AppStream
-#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=AppStream&amp;infra=$infra
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/AppStream/$basearch/os/
-gpgcheck=1
-enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+<span class="o">[</span>AppStream<span class="o">]</span>
+<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - AppStream
+<span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=AppStream&amp;infra=$infra</span>
+<span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/AppStream/<span class="nv">$basearch</span>/os/
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
 
-[PowerTools]
-name=CentOS-$releasever - PowerTools
-#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=PowerTools&amp;infra=$infra
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/PowerTools/$basearch/os/
-gpgcheck=1
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+<span class="o">[</span>PowerTools<span class="o">]</span>
+<span class="nv">name</span><span class="o">=</span>CentOS-<span class="nv">$releasever</span> - PowerTools
+<span class="c1">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=PowerTools&amp;infra=$infra</span>
+<span class="nv">baseurl</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="nv">$releasever</span>/PowerTools/<span class="nv">$basearch</span>/os/
+<span class="nv">gpgcheck</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">enabled</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">gpgkey</span><span class="o">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
 yum  clean all
 
 yum makecache
