@@ -21,6 +21,20 @@
     <guid>https://kkkpjskey.github.io/mybatis-designmode/</guid>
     <description><![CDATA[Mybatis中用到的设计模式 Builder模式，例如SqlSessionFactoryBuilder、XMLConfigBuilder、X]]></description>
 </item><item>
+    <title>Android开发笔记</title>
+    <link>https://kkkpjskey.github.io/android-note/</link>
+    <pubDate>Sat, 01 May 2021 03:02:55 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kkkpjskey.github.io/android-note/</guid>
+    <description><![CDATA[Android开发笔记 Android5.0常用颜色属性说明 在使用Eclipse的时代，我们很少去在style文件给整个应用或者Activit]]></description>
+</item><item>
+    <title>关于drawable和drawable-v24</title>
+    <link>https://kkkpjskey.github.io/android-diff-drawable-v24/</link>
+    <pubDate>Fri, 30 Apr 2021 23:59:59 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kkkpjskey.github.io/android-diff-drawable-v24/</guid>
+    <description><![CDATA[关于drawable和drawable-v24 今天调试一个软件，老是找不到资源 1 android.content.res.Resources$NotFoundException: Resource 断点调试可以看到是有的，当然项目的目录里面也有该资源， 最]]></description>
+</item><item>
     <title>Kolin：A problem occurred evaluating project &#39;:app&#39;.</title>
     <link>https://kkkpjskey.github.io/android-kolin/</link>
     <pubDate>Tue, 20 Apr 2021 22:45:59 &#43;0800</pubDate>
@@ -49,32 +63,18 @@
     <guid>https://kkkpjskey.github.io/android-incompatible-version/</guid>
     <description><![CDATA[Android-版本更替不兼容修正 CardView、RecyclerView在buildTools28-&gt;30用法改变 Android开]]></description>
 </item><item>
-    <title>Hogo配置Algolia</title>
-    <link>https://kkkpjskey.github.io/hogo-algolia/</link>
-    <pubDate>Sun, 10 Jan 2021 12:24:15 &#43;0800</pubDate>
+    <title>Android Studio 修改项目名称和包名方法</title>
+    <link>https://kkkpjskey.github.io/androidstudio-rename/</link>
+    <pubDate>Sun, 28 Feb 2021 16:52:05 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://kkkpjskey.github.io/hogo-algolia/</guid>
-    <description><![CDATA[<h1 id="hogo配置algolia">Hogo配置Algolia</h1>]]></description>
+    <guid>https://kkkpjskey.github.io/androidstudio-rename/</guid>
+    <description><![CDATA[Android Studio 修改项目名称和包名方法 Android Studio修改项目名称和包名方法 平时项目开发中，有时候维护项目多，有的项目结构需要改变，这就需要我们去修改项目]]></description>
 </item><item>
-    <title>Hogo创建GitHub Pages</title>
-    <link>https://kkkpjskey.github.io/hugo-github/</link>
-    <pubDate>Fri, 01 Jan 2021 19:12:15 &#43;0800</pubDate>
+    <title>Android Studio 导入图片标红</title>
+    <link>https://kkkpjskey.github.io/androidstudio-picture-error/</link>
+    <pubDate>Tue, 09 Feb 2021 10:10:05 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://kkkpjskey.github.io/hugo-github/</guid>
-    <description><![CDATA[Hogo创建GitHub Pages 近些年GoLang语言逐渐火爆起来，Golang语言所做的静态博客固然也映入眼帘。相比于动态博客，静态博客的好处不]]></description>
-</item><item>
-    <title>Docker常用指令</title>
-    <link>https://kkkpjskey.github.io/docker-command-note/</link>
-    <pubDate>Mon, 21 Dec 2020 00:01:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/docker-command-note/</guid>
-    <description><![CDATA[Docker常用指令 容器管理指令 1 2 3 4 5 6 7 8 # 进入docker容器内部 docker exec -it id /bash/bin # 退出容器 exit # 启动docker容器 sudo systemctl start docker # 设置dock]]></description>
-</item><item>
-    <title>CentOS7 查询的几种方式</title>
-    <link>https://kkkpjskey.github.io/cnetos7-shell-search/</link>
-    <pubDate>Sat, 12 Dec 2020 12:22:42 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/cnetos7-shell-search/</guid>
-    <description><![CDATA[CentOS7 查询的几种方式 1. find Java代码 find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件。与查询数据库（/var/lib/loca]]></description>
+    <guid>https://kkkpjskey.github.io/androidstudio-picture-error/</guid>
+    <description><![CDATA[Android Studio 导入图片标红 as图片不能使用&quot;-&quot;，只能使用&quot;_&ldquo;代替 情况一 直接修改会直接提示不能带有&rdq]]></description>
 </item></channel>
 </rss>
