@@ -114,10 +114,7 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">目录</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">findViewById返回null的常见原因</h1><div class="post-meta">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">findViewById返回null的常见原因</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/android/"><i class="far fa-folder fa-fw"></i>Android</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-01">2021-02-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 312 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/android-findviewbyid-null/" class="leancloud_visitors" data-flag-title="findViewById返回null的常见原因">
@@ -130,13 +127,7 @@
         data-srcset="/android-findviewbyid-null/featured-image.jpg, /android-findviewbyid-null/featured-image.jpg 1.5x, /android-findviewbyid-null/featured-image.jpg 2x"
         data-sizes="auto"
         alt="/android-findviewbyid-null/featured-image.jpg"
-        title="记录findViewById返回null的常见原因和解决办法" /></div><div class="details toc" id="toc-static"  kept="">
-                <div class="details-summary toc-title">
-                    <span>目录</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><h1 id="findviewbyid返回null的常见原因">findViewById返回null的常见原因</h1>
+        title="记录findViewById返回null的常见原因和解决办法" /></div><div class="content" id="content"><h1 id="findviewbyid返回null的常见原因">findViewById返回null的常见原因</h1>
 <p>1.在另一个view的元素应该用baseView.findViewById()来拿
 findViewById()是要指定view的，也就是说你要找的view 必须是包含在baseView里面的布局（控件） 如果在该父控件下找不到，就会报null。</p>
 <p>2.findViewById在setContentView(R.layout.main);之前.即在setContentView调用之前，view要从父类布局里面找，父类布局还没有加载之前找，必然会返回空。</p>

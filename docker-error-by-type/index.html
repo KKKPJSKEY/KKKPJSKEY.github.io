@@ -114,10 +114,7 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">目录</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Docker 容器常见故障排查及处理</h1><div class="post-meta">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Docker 容器常见故障排查及处理</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/docker/"><i class="far fa-folder fa-fw"></i>Docker</a>&nbsp;<a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-12-30">2019-12-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4669 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/docker-error-by-type/" class="leancloud_visitors" data-flag-title="Docker 容器常见故障排查及处理">
@@ -130,104 +127,7 @@
         data-srcset="/docker-error-by-type/featured-image.jpg, /docker-error-by-type/featured-image.jpg 1.5x, /docker-error-by-type/featured-image.jpg 2x"
         data-sizes="auto"
         alt="/docker-error-by-type/featured-image.jpg"
-        title="Docker 容器常见故障排查及处理，将常见问题分类" /></div><div class="details toc" id="toc-static"  kept="">
-                <div class="details-summary toc-title">
-                    <span>目录</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#docker是一种相对使用较简单的容器我们可以通过以下几种方式获取信息">Docker是一种相对使用较简单的容器，我们可以通过以下几种方式获取信息：</a></li>
-    <li><a href="#以下是整理的docker容器类问题故障分为9个类">以下是整理的docker容器类问题故障，分为9个类</a>
-      <ul>
-        <li><a href="#一启动类故障">一、启动类故障</a>
-          <ul>
-            <li><a href="#1docker-cannot-connect-to-the-docker-daemon-at-unixvarrundockersock-is-the-docker-daemon-running">1、docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</a></li>
-            <li><a href="#2cant-create-unix-socket-varrundockersock-is-a-directory">2、can’t create unix socket /var/run/docker.sock: is a directory</a></li>
-            <li><a href="#3job-for-dockerservice-failed-failed-to-start-docker-application">3、Job for docker.service failed. Failed to start Docker Application</a></li>
-            <li><a href="#4docker-error-response-from-daemon">4、docker: Error response from daemon:</a></li>
-            <li><a href="#5docker-error-response-from-daemon-conflict-the-container-name-xxx-is-already-in-use-by-container-xxx-you-have-to-remove-or-rename-that-container-to-be-able-to-reuse-that-name">5、docker: Error response from daemon: Conflict. The container name “XXX” is already in use by container “XXX”. You have to remove (or rename) that container to be able to reuse that name.</a></li>
-            <li><a href="#6error-connection-activation-failed-no-suitable-device-found-for-this-connection">6、Error: Connection activation failed: No suitable device found for this connection</a></li>
-            <li><a href="#7系统重启后docker无法启动">7、系统重启后docker无法启动</a></li>
-            <li><a href="#8error-starting-daemon-error-initializing-graphdriver-driver-not-supported">8、Error starting daemon: error initializing graphdriver: driver not supported</a></li>
-            <li><a href="#9failed-to-start-dockerservice-unit-dockerservice-is-masked">9、Failed to start docker.service: Unit docker.service is masked.</a></li>
-            <li><a href="#10failed-to-start-dockerservice-unit-is-not-loaded-properly-invalid-argument">10、Failed to start docker.service: Unit is not loaded properly: Invalid argument.</a></li>
-            <li><a href="#11docker-compose启动容器时报错">11、docker-compose启动容器时报错：</a></li>
-            <li><a href="#12docker容器重启故障">12、docker容器重启故障</a></li>
-            <li><a href="#13docker重启错误-重启命令一直卡住">13、docker重启错误-重启命令一直卡住</a></li>
-          </ul>
-        </li>
-        <li><a href="#二权限问题报错">二、权限问题报错</a>
-          <ul>
-            <li><a href="#14got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket-at-unixvarrundockersock">14、Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock</a></li>
-            <li><a href="#15chown-socket-at-step-group-no-such-process">15、chown socket at step GROUP: No such process</a></li>
-            <li><a href="#16post-httpvarrundockersockv1xxx-auth-dial-unix-varrundockersock-permission-denied-are-you-trying-to-connect-to-a-tls-enabled-daemon-without-tls">16、Post http:///var/run/docker.sock/v1.XXX /auth: dial unix /var/run/docker.sock: permission denied. Are you trying to connect to a TLS-enabled daemon without TLS?</a></li>
-            <li><a href="#17docker-commit镜像时报错">17、docker commit镜像时报错</a></li>
-          </ul>
-        </li>
-        <li><a href="#三镜像和仓库问题报错">三、镜像和仓库问题报错</a>
-          <ul>
-            <li><a href="#18get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio">18、Get <a href="https://registry-1.docker.io/v2/:">https://registry-1.docker.io/v2/:</a> dial tcp: lookup registry-1.docker.io</a></li>
-            <li><a href="#19推送本地镜像报错">19、推送本地镜像报错</a></li>
-            <li><a href="#20usrbindocker-current-error-response-from-daemon-oci-runtime-error-container_linuxgo-starting-container-process-caused-exec-binbash-executable-file-not-found-in-path">20、/usr/bin/docker-current: Error response from daemon: oci runtime error: container_linux.go: starting container process caused “exec: “/bin/bash”: executable file not found in $PATH”.</a></li>
-            <li><a href="#21构建镜像执行chown--r非常慢">21、构建镜像，执行chown -R非常慢</a></li>
-            <li><a href="#22docker-build构建镜像的时候报错">22、docker build构建镜像的时候报错：</a></li>
-            <li><a href="#23docker-error-response-from-daemon-containerd-container-did-not-start-before-the-specified-time-outerro0133-error-getting-events-from-daemon-context-canceled">23、docker: Error response from daemon: containerd: container did not start before the specified time-out.ERRO[0133] error getting events from daemon: context canceled</a></li>
-          </ul>
-        </li>
-        <li><a href="#四资源问题报错">四、资源问题报错</a>
-          <ul>
-            <li><a href="#25docker-no-space-left-on-device">25、Docker no space left on device</a></li>
-            <li><a href="#26varlibdockercontainers-占用过大">26、/var/lib/docker/containers 占用过大</a></li>
-            <li><a href="#27max-virtual-memory-areas-vmmax_map_count-65530-is-too-low-increase-to-at-least-262144">27、max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</a></li>
-            <li><a href="#28got-starting-container-process-caused-process_linuxgo301running-exec-setns-process-for-init-caused-exit-status-40-unknownfrom-time-to-time">28、Got starting container process caused &ldquo;process_linux.go:301:running exec setns process for init caused “exit status 40&rdquo;”: unknown.from time to time</a></li>
-            <li><a href="#29docker本机启动多台容器导致出现后续容器启动失败">29、docker本机启动多台容器导致出现后续容器启动失败</a></li>
-            <li><a href="#30docker启动异常状态反复restarting">30、Docker启动异常，状态反复restarting</a></li>
-          </ul>
-        </li>
-        <li><a href="#五版本不兼容报错">五、版本不兼容报错</a>
-          <ul>
-            <li><a href="#31overlayfs-cant-delete-file-moved-from-base-layer-to-newly-created-dir-even-on-ext4">31、overlayfs: Can’t delete file moved from base layer to newly created dir even on ext4</a></li>
-            <li><a href="#32docker-error-response-from-daemon-oci-runtime-create-failed-container_linuxgo344-starting-container-process-caused-process_linuxgo297-getting-the-final-childs-pid-from-pipe-caused-read-init-p-connection-reset-by-peer-unknown">32、docker: Error response from daemon: OCI runtime create failed: container_linux.go:344: starting container process caused “process_linux.go:297: getting the final child’s pid from pipe caused “read init-p: connection reset by peer””: unknown.</a></li>
-          </ul>
-        </li>
-        <li><a href="#六网络或端口问题报错">六、网络或端口问题报错</a>
-          <ul>
-            <li><a href="#33warning-ipv4-forwarding-is-disabled-networking-will-not-work">33、WARNING: IPv4 forwarding is disabled. Networking will not work.</a></li>
-            <li><a href="#34creating-network-xxxxxxx-with-the-default-driver">34、Creating network “xxxxxxx” with the default driver</a></li>
-            <li><a href="#35unable-to-find-a-node-that-satisfies-the-following-conditions-port-xxxx">35、Unable to find a node that satisfies the following conditions [port xxxx]</a></li>
-            <li><a href="#36error-response-from-daemon-service-endpoint-with-name-xxx-already">36、Error response from daemon: service endpoint with name xxx already</a></li>
-            <li><a href="#37docker-error-response-from-daemon-driver-failed-programming-external-connectivity-on-endpoint-xxxxx-bind-for-000080-failed-port-is-already-allocated">37、docker: Error response from daemon: driver failed programming external connectivity on endpoint XXXXX: Bind for 0.0.0.0:80 failed: port is already allocated</a></li>
-          </ul>
-        </li>
-        <li><a href="#七docker安装报错">七、Docker安装报错</a>
-          <ul>
-            <li><a href="#38安装docker报requires-container-selinux--29">38、安装docker报Requires: container-selinux &gt;= 2.9</a></li>
-            <li><a href="#39安装docker-compose时报错">39、安装docker-compose时报错</a></li>
-            <li><a href="#40安装docker-compose时报错">40、安装docker-compose时报错</a></li>
-          </ul>
-        </li>
-        <li><a href="#八docker删除报错">八、Docker删除报错</a>
-          <ul>
-            <li><a href="#41docker删除容器报错">41、docker删除容器报错</a></li>
-            <li><a href="#42状态dead的容器删除报错">42、状态dead的容器删除报错</a></li>
-            <li><a href="#43docker删除镜像报错">43、docker删除镜像报错</a></li>
-            <li><a href="#44docker删除镜像报错">44、docker删除镜像报错</a></li>
-            <li><a href="#45docker删除镜像报错">45、docker删除镜像报错</a></li>
-          </ul>
-        </li>
-        <li><a href="#九其他报错">九、其他报错</a>
-          <ul>
-            <li><a href="#46docker-error-response-from-daemon-driver-failed-programming-external-connectivity-on-end-point-xxxxxxx-iptables-failed-iptables---wait--t-filter--a-docker---i-docker0--o-docker0--p-tcp--d-1721702---dport-8080--j-accept-iptables-no-chaintargetmatch-by-that-name">46、docker: Error response from daemon: driver failed programming external connectivity on end-point XXXXXXX: (iptables failed: iptables &ndash;wait -t filter -A DOCKER ! -i docker0 -o docker0 -p tcp -d 172.17.0.2 &ndash;dport 8080 -j ACCEPT: iptables: No chain/target/match by that name.</a></li>
-            <li><a href="#47执行docker-info出现如下警告">47、执行docker info出现如下警告</a></li>
-            <li><a href="#48docker数据库相关报错">48、docker数据库相关报错</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content"><h1 id="docker-容器常见故障排查及处理">Docker 容器常见故障排查及处理</h1>
+        title="Docker 容器常见故障排查及处理，将常见问题分类" /></div><div class="content" id="content"><h1 id="docker-容器常见故障排查及处理">Docker 容器常见故障排查及处理</h1>
 <h2 id="docker是一种相对使用较简单的容器我们可以通过以下几种方式获取信息">Docker是一种相对使用较简单的容器，我们可以通过以下几种方式获取信息：</h2>
 <p>1、通过docker run执行命令，或许返回信息
 2、通过docker logs 去获取日志，做有针对性的筛选
