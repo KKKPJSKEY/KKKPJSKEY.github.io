@@ -114,7 +114,10 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Hogo配置Algolia</h1><div class="post-meta">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Hogo配置Algolia</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/blog/"><i class="far fa-folder fa-fw"></i>Blog</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-10">2021-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1275 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/hogo-algolia/" class="leancloud_visitors" data-flag-title="Hogo配置Algolia">
@@ -127,7 +130,37 @@
         data-srcset="/hogo-algolia/featured-image.jpg, /hogo-algolia/featured-image.jpg 1.5x, /hogo-algolia/featured-image.jpg 2x"
         data-sizes="auto"
         alt="/hogo-algolia/featured-image.jpg"
-        title="Hogo使用CodeIT主题并配置Algolia作为站内搜索" /></div><div class="content" id="content"><h1 id="hogo配置algolia">Hogo配置Algolia</h1>
+        title="Hogo使用CodeIT主题并配置Algolia作为站内搜索" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-configtoml-配置">1 config.toml 配置</a></li>
+    <li><a href="#2-algolia-配置">2 Algolia 配置</a>
+      <ul>
+        <li><a href="#21-登录-algolia-官网httpswwwalgoliacom-注册账号创建-application-名为-example作为举例默认选择-free-即可这里自定义名称">2.1 登录 <a href="https://www.algolia.com/">Algolia 官网</a> ，注册账号，创建 Application 名为 “example”作为举例，默认选择 “FREE” 即可，这里自定义名称</a></li>
+        <li><a href="#22-我这里选择香港作为存储地区">2.2 我这里选择香港作为存储地区</a></li>
+        <li><a href="#23-创建index要与configtoml-的配置-index-一样">2.3 创建index，要与config.toml 的配置 index 一样</a></li>
+        <li><a href="#24-将-api-keys-里面补充到-configtoml-里面见21">2.4 将 API Keys 里面补充到 config.toml 里面（见2.1）</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-使用-atomic-algoliahttpsgithubcomchrisdmacraeatomic-algolia-来完成自动更新索引">3 使用 <a href="https://github.com/chrisdmacrae/atomic-algolia">atomic-algolia</a> 来完成自动更新索引</a>
+      <ul>
+        <li><a href="#31-首先安装-npm这里不介绍">3.1 首先安装 npm，这里不介绍</a></li>
+        <li><a href="#32-安装-atomic-algolia在任意目录下">3.2 安装 atomic-algolia（在任意目录下）</a></li>
+        <li><a href="#33-创建-env-文件存放-algolia-配置在网站根目录下">3.3 创建 .env 文件存放 algolia 配置（在网站根目录下）</a></li>
+        <li><a href="#34-修改网站根目录下的-packagejson-文件没有就新建在-scripts-下添加-algolia-atomic-algolia">3.4 修改网站根目录下的 <code>package.json</code> 文件（没有就新建），在 <code>scripts</code> 下添加 <code>&quot;algolia&quot;: &quot;atomic-algolia&quot;</code></a></li>
+        <li><a href="#35-上传索引的命令-你可以本地执行-npm-run-algolia-查看运行效果">3.5 上传索引的命令 你可以本地执行 <code>npm run algolia</code> 查看运行效果</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-1定制化脚本">4 .1定制化脚本</a></li>
+    <li><a href="#4-2我的脚本">4 .2我的脚本</a></li>
+    <li><a href="#5结果">5结果</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="hogo配置algolia">Hogo配置Algolia</h1>
 <h2 id="1-configtoml-配置">1 config.toml 配置</h2>
 <p>首先我们配置好 config.toml 的 algolia 的配置，以中文配置作为示例</p>
 <div class="highlight"><div class="chroma">

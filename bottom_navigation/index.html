@@ -114,7 +114,10 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">类微信界面设计</h1><div class="post-meta">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">类微信界面设计</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/android/"><i class="far fa-folder fa-fw"></i>Android</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-04">2021-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2252 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/bottom_navigation/" class="leancloud_visitors" data-flag-title="类微信界面设计">
@@ -127,7 +130,41 @@
         data-srcset="/bottom_navigation/featured-image-preview.jpg, /bottom_navigation/featured-image-preview.jpg 1.5x, /bottom_navigation/featured-image-preview.jpg 2x"
         data-sizes="auto"
         alt="/bottom_navigation/featured-image-preview.jpg"
-        title="使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换" /></div><div class="content" id="content"><h1 id="类微信界面设计">类微信界面设计</h1>
+        title="使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1原型图">1、原型图</a></li>
+    <li><a href="#2需求">2、需求</a></li>
+    <li><a href="#3思路">3、思路</a></li>
+    <li><a href="#4代码">4、代码</a>
+      <ul>
+        <li><a href="#41创建一个empty项目">4.1、创建一个Empty项目</a></li>
+        <li><a href="#42页面-activity_mainxml-四个界面的主公共组件">4.2、页面-activity_main.xml-四个界面的主（公共）组件</a></li>
+        <li><a href="#43页面-fragment_cttxml-联系人组件朋友信息设置都差不多不再过多展示github源码地址在本文最后">4.3、页面-fragment_ctt.xml-联系人组件（朋友、信息、设置都差不多，不再过多展示，GitHub源码地址在本文最后）</a></li>
+        <li><a href="#44页面-bottom_navigation_menuxml-底部导航栏组件">4.4、页面-bottom_navigation_menu.xml-底部导航栏组件</a></li>
+        <li><a href="#45页面-colorxml-颜色配置文件">4.5、页面-color.xml-颜色配置文件</a></li>
+        <li><a href="#46页面-stringsxml-文字字符串配置文件">4.6、页面-strings.xml-文字字符串配置文件</a></li>
+        <li><a href="#47页面-themexml-主题配置文件">4.7、页面-theme.xml-主题配置文件</a></li>
+        <li><a href="#48后台-mainactivityjava-控制逻辑代码">4.8后台-MainActivity.java-控制逻辑代码</a></li>
+        <li><a href="#49后台-cttfragmentjava-联系人组件代码">4.9、后台-CttFragment.java-联系人组件代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#5最终效果">5、最终效果</a>
+      <ul>
+        <li><a href="#51信息页面">5.1、信息页面</a></li>
+        <li><a href="#52朋友界面">5.2、朋友界面</a></li>
+        <li><a href="#53联系人界面">5.3、联系人界面</a></li>
+        <li><a href="#54设置界面">5.4、设置界面</a></li>
+      </ul>
+    </li>
+    <li><a href="#6github源码">6、Github源码</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="类微信界面设计">类微信界面设计</h1>
 <p>使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换</p>
 <h2 id="1原型图">1、原型图</h2>
 <p><img
