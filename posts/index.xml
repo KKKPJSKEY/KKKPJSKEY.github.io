@@ -1,4 +1,4 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
     <channel>
         <title>所有文章 - KKKPJSKEY&#39;s-Case-Archives</title>
         <link>https://kkkpjskey.github.io/posts/</link>
@@ -7,72 +7,52 @@
             <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 11 May 2021 19:12:15 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/music_box/</link>
-    <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/music_box/</guid>
+    <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/music_box/</guid>
     <description><![CDATA[基于广播和服务功能的音乐播放器 1、应用知识点 1.1、Android 广播接收器(Broadcast Receivers) 广播接收器用于响应来自其他应用程序或者系统]]></description>
 </item><item>
     <title>类微信界面设计</title>
     <link>https://kkkpjskey.github.io/bottom_navigation/</link>
-    <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/bottom_navigation/</guid>
+    <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/bottom_navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
 </item><item>
     <title>Mybatis中用到的设计模式</title>
     <link>https://kkkpjskey.github.io/mybatis-designmode/</link>
-    <pubDate>Sun, 09 May 2021 02:52:55 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/mybatis-designmode/</guid>
+    <pubDate>Sun, 09 May 2021 02:52:55 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mybatis-designmode/</guid>
     <description><![CDATA[Mybatis中用到的设计模式 Builder模式，例如SqlSessionFactoryBuilder、XMLConfigBuilder、X]]></description>
 </item><item>
     <title>Android开发笔记</title>
     <link>https://kkkpjskey.github.io/android-note/</link>
-    <pubDate>Sat, 01 May 2021 03:02:55 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/android-note/</guid>
+    <pubDate>Sat, 01 May 2021 03:02:55 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-note/</guid>
     <description><![CDATA[Android开发笔记 Android5.0常用颜色属性说明 在使用Eclipse的时代，我们很少去在style文件给整个应用或者Activit]]></description>
 </item><item>
     <title>关于drawable和drawable-v24</title>
     <link>https://kkkpjskey.github.io/android-diff-drawable-v24/</link>
-    <pubDate>Fri, 30 Apr 2021 23:59:59 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/android-diff-drawable-v24/</guid>
+    <pubDate>Fri, 30 Apr 2021 23:59:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-diff-drawable-v24/</guid>
     <description><![CDATA[关于drawable和drawable-v24 今天调试一个软件，老是找不到资源 1 android.content.res.Resources$NotFoundException: Resource 断点调试可以看到是有的，当然项目的目录里面也有该资源， 最]]></description>
 </item><item>
     <title>Kolin：A problem occurred evaluating project &#39;:app&#39;.</title>
     <link>https://kkkpjskey.github.io/android-kolin/</link>
-    <pubDate>Tue, 20 Apr 2021 22:45:59 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/android-kolin/</guid>
+    <pubDate>Tue, 20 Apr 2021 22:45:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-kolin/</guid>
     <description><![CDATA[Kolin：A problem occurred evaluating project &lsquo;:app&rsquo;. 报错 1 2 3 4 Build file &#39;C:\All_Code\AS_Code\Bottom-Navigation\Material-BottomNavigation\app\build.gradle&#39; line: 2 A problem occurred evaluating project &#39;:app&#39;. &gt; java.lang.ExceptionInInitializerError (no error message) 在项目根目录下的app目录（可能被改为项目名）下的build.gradl]]></description>
 </item><item>
     <title>Android App界面与顶部状态栏重叠遮盖问题</title>
     <link>https://kkkpjskey.github.io/android-topbar-cover/</link>
-    <pubDate>Mon, 22 Mar 2021 19:12:15 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/android-topbar-cover/</guid>
+    <pubDate>Mon, 22 Mar 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-topbar-cover/</guid>
     <description><![CDATA[Android App界面与顶部状态栏重叠遮盖问题 问题情况截图如下： 觉得toolbar默认高度太高，给toolbar设了一个固定值。测试时发现在4.4系统]]></description>
 </item><item>
     <title>AndroidStudio网络问题</title>
     <link>https://kkkpjskey.github.io/android-net/</link>
-    <pubDate>Mon, 15 Mar 2021 08:33:12 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/android-net/</guid>
+    <pubDate>Mon, 15 Mar 2021 08:33:12 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-net/</guid>
     <description><![CDATA[AndroidStudio网络问题 android studio 教你修改Maven仓库地址为国内镜像 android studio 默认国外maven 这我们更改为阿里的maven 打开build.]]></description>
 </item><item>
     <title>Android-版本更替不兼容修正</title>
     <link>https://kkkpjskey.github.io/android-incompatible-version/</link>
-    <pubDate>Wed, 03 Mar 2021 09:11:55 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/android-incompatible-version/</guid>
+    <pubDate>Wed, 03 Mar 2021 09:11:55 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-incompatible-version/</guid>
     <description><![CDATA[Android-版本更替不兼容修正 CardView、RecyclerView在buildTools28-&gt;30用法改变 Android开]]></description>
 </item><item>
     <title>Android Studio 修改项目名称和包名方法</title>
     <link>https://kkkpjskey.github.io/androidstudio-rename/</link>
-    <pubDate>Sun, 28 Feb 2021 16:52:05 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kkkpjskey.github.io/androidstudio-rename/</guid>
+    <pubDate>Sun, 28 Feb 2021 16:52:05 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/androidstudio-rename/</guid>
     <description><![CDATA[Android Studio 修改项目名称和包名方法 Android Studio修改项目名称和包名方法 平时项目开发中，有时候维护项目多，有的项目结构需要改变，这就需要我们去修改项目]]></description>
 </item></channel>
 </rss>
