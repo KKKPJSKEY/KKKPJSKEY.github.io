@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 11 May 2021 19:12:15 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 May 2021 23:59:58 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/music_box/</link>
     <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/music_box/</guid>
@@ -14,6 +14,16 @@
     <link>https://kkkpjskey.github.io/bottom_navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/bottom_navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+</item><item>
+    <title>远程Hugo缺少功能</title>
+    <link>https://kkkpjskey.github.io/sri-hashes-error/</link>
+    <pubDate>Wed, 12 May 2021 23:59:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/sri-hashes-error/</guid>
+    <description><![CDATA[远程Hugo缺少功能 问题来源 Hugo生成页面后，本地调试没问题，推到远程发现动画、目录没有生成 查看HTML对比并未发现不同怀疑JS 打开控制台]]></description>
+</item><item>
+    <title>使用SRI保护你的网站免受第三方CDN恶意攻击</title>
+    <link>https://kkkpjskey.github.io/sri-note/</link>
+    <pubDate>Wed, 12 May 2021 09:41:35 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/sri-note/</guid>
+    <description><![CDATA[使用SRI保护你的网站免受第三方CDN恶意攻击 出于速度和降低服务器负载考虑，有时候我们会选择使用 CDN 加载第三方静态资源。对于一些热门的第三方库]]></description>
 </item><item>
     <title>Mybatis中用到的设计模式</title>
     <link>https://kkkpjskey.github.io/mybatis-designmode/</link>
@@ -44,15 +54,5 @@
     <link>https://kkkpjskey.github.io/android-net/</link>
     <pubDate>Mon, 15 Mar 2021 08:33:12 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-net/</guid>
     <description><![CDATA[AndroidStudio网络问题 android studio 教你修改Maven仓库地址为国内镜像 android studio 默认国外maven 这我们更改为阿里的maven 打开build.]]></description>
-</item><item>
-    <title>Android-版本更替不兼容修正</title>
-    <link>https://kkkpjskey.github.io/android-incompatible-version/</link>
-    <pubDate>Wed, 03 Mar 2021 09:11:55 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-incompatible-version/</guid>
-    <description><![CDATA[Android-版本更替不兼容修正 CardView、RecyclerView在buildTools28-&gt;30用法改变 Android开]]></description>
-</item><item>
-    <title>Android Studio 修改项目名称和包名方法</title>
-    <link>https://kkkpjskey.github.io/androidstudio-rename/</link>
-    <pubDate>Sun, 28 Feb 2021 16:52:05 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/androidstudio-rename/</guid>
-    <description><![CDATA[Android Studio 修改项目名称和包名方法 Android Studio修改项目名称和包名方法 平时项目开发中，有时候维护项目多，有的项目结构需要改变，这就需要我们去修改项目]]></description>
 </item></channel>
 </rss>
