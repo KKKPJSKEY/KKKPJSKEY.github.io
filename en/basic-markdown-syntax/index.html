@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/en\/basic-markdown-syntax\/featured-image.png",
                             "width":  1420 ,
                             "height":  708 
-                        }],"genre": "posts","keywords": "Markdown, HTML","wordcount":  2783 ,
+                        }],"genre": "posts","keywords": "Markdown, HTML","wordcount":  2861 ,
         "url": "https:\/\/kkkpjskey.github.io\/en\/basic-markdown-syntax\/","datePublished": "2019-12-01T21:57:40+08:00","dateModified": "2020-01-01T16:45:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Basic Markdown Syntax</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://suntprogramator.dev/" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Sunt Programator!</a></span>&nbsp;<span class="post-category">included in <a href="/en/categories/markdown/"><i class="far fa-folder fa-fw"></i>Markdown</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-12-01">2019-12-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2783 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-12-01">2019-12-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2861 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;14 minutes&nbsp;<span id="/en/basic-markdown-syntax/" class="leancloud_visitors" data-flag-title="Basic Markdown Syntax">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -176,6 +176,7 @@
     </li>
     <li><a href="#12-footnotes">12 Footnotes</a></li>
     <li><a href="#13-images">13 Images</a></li>
+    <li><a href="#14-escape-characters">14 Escape Characters</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files.</p>
@@ -1278,6 +1279,56 @@ This is a footnote with &#34;label&#34;[^label]
             <div class="admonition-content"><strong>CodeIT</strong> theme has <a href="../theme-documentation-extended-shortcodes#image" rel="">special shortcode for image</a>, which provides more features.</div>
         </div>
     </div>
+<h2 id="14-escape-characters">14 Escape Characters</h2>
+<p>Some characters in the document, especially labels like &lt;script&gt;、&lt;link&gt;, can&rsquo;t write <code>less than or angle brackets</code>,<code>greater than or angle brackets</code> sign directly. They need to be escaped, otherwise the page will report an error</p>
+<table>
+<thead>
+<tr>
+<th>Display Result</th>
+<th>Description</th>
+<th>Entity Name</th>
+<th>Entity Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>space</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>less than or angle brackets</td>
+<td>&lt;</td>
+<td>&lt;</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>greater than or angle brackets</td>
+<td>&gt;</td>
+<td>&gt;</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>and or ampersand</td>
+<td>&amp;</td>
+<td>&amp;</td>
+</tr>
+<tr>
+<td>&quot;</td>
+<td>quote</td>
+<td>&quot;</td>
+<td>&quot;</td>
+</tr>
+<tr>
+<td>'</td>
+<td>single quote</td>
+<td>'(IE Not Supported)</td>
+<td>'</td>
+</tr>
+</tbody>
+</table>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
