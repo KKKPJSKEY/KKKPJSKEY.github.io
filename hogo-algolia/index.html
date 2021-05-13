@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/hogo-algolia/" /><meta property="og:image" content="https://kkkpjskey.github.io/hogo-algolia/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-01-10T12:24:15&#43;08:00" />
-<meta property="article:modified_time" content="2021-01-10T12:24:15&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-10T17:54:19&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/hogo-algolia/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/hogo-algolia\/featured-image.jpg",
                             "width":  1200 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Blog, Hogo, Search, Algolia, CodeIT","wordcount":  1275 ,
-        "url": "https:\/\/kkkpjskey.github.io\/hogo-algolia\/","datePublished": "2021-01-10T12:24:15+08:00","dateModified": "2021-01-10T12:24:15+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Blog, Hogo, Search, Algolia, CodeIT","wordcount":  1592 ,
+        "url": "https:\/\/kkkpjskey.github.io\/hogo-algolia\/","datePublished": "2021-01-10T12:24:15+08:00","dateModified": "2021-05-10T17:54:19+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Hogo配置Algolia</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/blog/"><i class="far fa-folder fa-fw"></i>Blog</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-10">2021-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1275 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/hogo-algolia/" class="leancloud_visitors" data-flag-title="Hogo配置Algolia">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-10">2021-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1592 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/hogo-algolia/" class="leancloud_visitors" data-flag-title="Hogo配置Algolia">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -155,8 +155,13 @@
         <li><a href="#35-上传索引的命令-你可以本地执行-npm-run-algolia-查看运行效果">3.5 上传索引的命令 你可以本地执行 <code>npm run algolia</code> 查看运行效果</a></li>
       </ul>
     </li>
-    <li><a href="#4-1定制化脚本">4 .1定制化脚本</a></li>
-    <li><a href="#4-2我的脚本">4 .2我的脚本</a></li>
+    <li><a href="#4脚本">4.脚本</a>
+      <ul>
+        <li><a href="#41定制化脚本">4.1定制化脚本</a></li>
+        <li><a href="#42我的脚本">4.2我的脚本</a></li>
+        <li><a href="#43我的最新脚本">4.3我的最新脚本</a></li>
+      </ul>
+    </li>
     <li><a href="#5结果">5结果</a></li>
   </ul>
 </nav></div>
@@ -337,7 +342,8 @@
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="35-上传索引的命令-你可以本地执行-npm-run-algolia-查看运行效果">3.5 上传索引的命令 你可以本地执行 <code>npm run algolia</code> 查看运行效果</h3>
-<h2 id="4-1定制化脚本">4 .1定制化脚本</h2>
+<h2 id="4脚本">4.脚本</h2>
+<h3 id="41定制化脚本">4.1定制化脚本</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -521,7 +527,7 @@ push_public<span class="o">(){</span>
 <p>sh deploy.sh 5：主要是用来调试 cdn，评论系统等，所以要用 production 变量来启动。</p>
 <p>sh deploy.sh 6：查看官方例子，方便调试。</p>
 </blockquote>
-<h2 id="4-2我的脚本">4 .2我的脚本</h2>
+<h3 id="42我的脚本">4.2我的脚本</h3>
 <blockquote>
 <p>分析可知仅上传流程中需要两步顺序操作，其他调试普通指令一步基本可以解决，故略去其他脚本，仅使用生成索引并上传，将GitHub Pages上传至Github仓库两步操作脚本</p>
 </blockquote>
@@ -616,6 +622,109 @@ update_algolia
 push_public <span class="nv">$*</span>
 </code></pre></td></tr></table>
 </div>
+</div><h3 id="43我的最新脚本">4.3我的最新脚本</h3>
+<blockquote>
+<p>脚本顺序弄错，应该先生成Hugo页面，再生成algolia 索引，最后将页面推上去就行</p>
+</blockquote>
+<p>update.sh</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="c1"># If a command fails then the deploy stops</span>
+<span class="nb">set</span> -e
+
+generate_pages<span class="o">(){</span>
+	hugo  <span class="c1"># if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`</span>
+	<span class="nb">printf</span> <span class="s2">&#34;\033[0;32m已经重新生成 hugo 页面！！！\033[0m\n&#34;</span>
+<span class="o">}</span>
+
+update_algolia<span class="o">(){</span>
+
+	<span class="nb">pwd</span>	
+	npm run algolia
+	<span class="nb">printf</span> <span class="s2">&#34;\033[0;32m已经更新到 algolia 索引！！！\033[0m\n&#34;</span>
+	sleep <span class="m">10</span>
+<span class="o">}</span>
+
+push_public<span class="o">(){</span>
+	<span class="nb">printf</span> <span class="s2">&#34;\033[0;32mDeploying updates to GitHub &#34;</span>https://github.com/KKKPJSKEY/KKKPJSKEY.github.io/<span class="s2">&#34;\033[0m\n&#34;</span>
+		<span class="c1"># Build the project.</span>
+	<span class="c1"># Go To Public folder</span>
+	<span class="nb">cd</span> public
+	<span class="nb">pwd</span>
+	git pull
+	<span class="c1"># Add changes to git.</span>
+	git add .
+	
+	<span class="c1"># Commit changes.</span>
+	<span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;rebuilding site </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&#34;</span>
+
+	<span class="c1">#param num &gt; 1</span>
+	<span class="k">if</span> <span class="o">[</span>  <span class="s2">&#34;</span><span class="nv">$#</span><span class="s2">&#34;</span> -gt <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+		<span class="nb">printf</span> <span class="s2">&#34;参数个数错误,只能传一个参数为提交的信息！&#34;</span>
+		<span class="nb">exit</span> <span class="m">0</span>
+	<span class="k">else</span>
+		git commit -m <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span>
+
+		<span class="c1"># Push source and build repos.</span>
+		git push
+	<span class="k">fi</span>
+<span class="o">}</span>
+
+generate_pages
+update_algolia
+push_public <span class="nv">$*</span>
+</code></pre></td></tr></table>
+</div>
 </div><h2 id="5结果">5结果</h2>
 <p>仓库代码检验：</p>
 <p><img
@@ -638,7 +747,7 @@ push_public <span class="nv">$*</span>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-01-10</span>
+                <span>更新于 2021-05-10</span>
             </div>
             <div class="post-info-license"></div>
         </div>
