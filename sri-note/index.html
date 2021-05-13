@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/sri-note\/featured-image.jpg",
                             "width":  900 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "SRI, Front, Html, CDN, Hashes, CSP","wordcount":  1540 ,
+                        }],"genre": "posts","keywords": "SRI, Front, Html, CDN, Hashes, CSP","wordcount":  1543 ,
         "url": "https:\/\/kkkpjskey.github.io\/sri-note\/","datePublished": "2021-05-12T09:41:35+08:00","dateModified": "2021-05-12T09:41:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">使用SRI保护你的网站免受第三方CDN恶意攻击</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/front/"><i class="far fa-folder fa-fw"></i>Front</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1540 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1543 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/sri-note/" class="leancloud_visitors" data-flag-title="使用SRI保护你的网站免受第三方CDN恶意攻击">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -212,11 +212,19 @@
 <p>可以生成不同格式的工具 <a href="https://www.xftsoft.com/tool/integrity">https://www.xftsoft.com/tool/integrity</a></p>
 <h2 id="浏览器如何处理-sri-subresource-integrity">浏览器如何处理 SRI (Subresource Integrity)</h2>
 <ol>
-<li>当浏览器遇到一个带有 <code>integrity</code> 的 <strong>script</strong> 或 <strong>style</strong> 标签，在执行其中的 JS 脚本或应用其中的 CSS 样式之前，浏览器会首先计算所下载文件的内容的哈希值是否与 <code>integrity</code> 属性给定的值相同。</li>
-<li>如果计算结果与给定值不匹配，浏览器会拒绝执行脚本内容，并报出一个网络错误，类似如下结果：</li>
-</ol>
-<p>When a browser encounters a <script> or <link> element with an integrity attribute, before executing the script or before applying any stylesheet specified by the <link> element, the browser must first compare the script or stylesheet to the expected hash given in the integrity value.</p>
+<li>
+<p>当浏览器遇到一个带有 <code>integrity</code> 的 &lt;script&gt; 或 &lt;style&gt; 标签，在执行其中的 JS 脚本或应用其中的 CSS 样式之前，浏览器会首先计算所下载文件的内容的哈希值是否与 <code>integrity</code> 属性给定的值相同。</p>
+</li>
+<li>
+<p>如果计算结果与给定值不匹配，浏览器会拒绝执行脚本内容，并报出一个网络错误，类似如下结果：</p>
+</li>
+<li>
+<p>When a browser encounters a &lt;script&gt; or &lt;link&gt; element with an integrity attribute, before executing the script or before applying any stylesheet specified by the &lt;link&gt; element, the browser must first compare the script or stylesheet to the expected hash given in the integrity value.</p>
+</li>
+<li>
 <p>If the script or stylesheet doesn’t match its associated integrity value, then the browser must refuse to execute the script or apply the stylesheet, and must instead return a network error indicating that fetching of that script or stylesheet failed.</p>
+</li>
+</ol>
 <blockquote>
 <p>Failed to find a valid digest in the &lsquo;integrity&rsquo; attribute for resource &lsquo;<a href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css'">https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css'</a> with computed SHA-256 integrity &lsquo;VbcxqgMGQYm3q8qZMd63uETHXXZkqs7ME1bEvAY1xK8=&rsquo;. The resource has been blocked.</p>
 </blockquote>
