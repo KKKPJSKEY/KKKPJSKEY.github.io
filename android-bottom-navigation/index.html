@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>类微信界面设计 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换"><meta property="og:title" content="类微信界面设计" />
+<meta property="og:description" content="使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/android-bottom-navigation/" /><meta property="og:image" content="https://kkkpjskey.github.io/android-bottom-navigation/featured-image-preview.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-04T19:12:15&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-05T21:13:16&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/android-bottom-navigation/featured-image-preview.jpg"/>
+<meta name="twitter:title" content="类微信界面设计"/>
+<meta name="twitter:description" content="使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/android-bottom-navigation/" /><link rel="prev" href="https://kkkpjskey.github.io/sri-hashes-error/" /><link rel="next" href="https://kkkpjskey.github.io/android-music-box/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "类微信界面设计",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/android-bottom-navigation\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/android-bottom-navigation\/featured-image-preview.jpg",
+                            "width":  500 ,
+                            "height":  375 
+                        }],"genre": "posts","keywords": "Android, Java, XML, Material-Design, BottomNavigation, View, Activity, Fragment","wordcount":  2252 ,
+        "url": "https:\/\/kkkpjskey.github.io\/android-bottom-navigation\/","datePublished": "2021-04-04T19:12:15+08:00","dateModified": "2021-04-05T21:13:16+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/android-bottom-navigation/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/android-bottom-navigation/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">类微信界面设计</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/total/"><i class="far fa-folder fa-fw"></i>Total</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-04">2021-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2252 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/android-bottom-navigation/" class="leancloud_visitors" data-flag-title="类微信界面设计">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/android-bottom-navigation/featured-image-preview.jpg"
+        data-srcset="/android-bottom-navigation/featured-image-preview.jpg, /android-bottom-navigation/featured-image-preview.jpg 1.5x, /android-bottom-navigation/featured-image-preview.jpg 2x"
+        data-sizes="auto"
+        alt="/android-bottom-navigation/featured-image-preview.jpg"
+        title="使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1原型图">1、原型图</a></li>
+    <li><a href="#2需求">2、需求</a></li>
+    <li><a href="#3思路">3、思路</a></li>
+    <li><a href="#4代码">4、代码</a>
+      <ul>
+        <li><a href="#41创建一个empty项目">4.1、创建一个Empty项目</a></li>
+        <li><a href="#42页面-activity_mainxml-四个界面的主公共组件">4.2、页面-activity_main.xml-四个界面的主（公共）组件</a></li>
+        <li><a href="#43页面-fragment_cttxml-联系人组件朋友信息设置都差不多不再过多展示github源码地址在本文最后">4.3、页面-fragment_ctt.xml-联系人组件（朋友、信息、设置都差不多，不再过多展示，GitHub源码地址在本文最后）</a></li>
+        <li><a href="#44页面-bottom_navigation_menuxml-底部导航栏组件">4.4、页面-bottom_navigation_menu.xml-底部导航栏组件</a></li>
+        <li><a href="#45页面-colorxml-颜色配置文件">4.5、页面-color.xml-颜色配置文件</a></li>
+        <li><a href="#46页面-stringsxml-文字字符串配置文件">4.6、页面-strings.xml-文字字符串配置文件</a></li>
+        <li><a href="#47页面-themexml-主题配置文件">4.7、页面-theme.xml-主题配置文件</a></li>
+        <li><a href="#48后台-mainactivityjava-控制逻辑代码">4.8后台-MainActivity.java-控制逻辑代码</a></li>
+        <li><a href="#49后台-cttfragmentjava-联系人组件代码">4.9、后台-CttFragment.java-联系人组件代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#5最终效果">5、最终效果</a>
+      <ul>
+        <li><a href="#51信息页面">5.1、信息页面</a></li>
+        <li><a href="#52朋友界面">5.2、朋友界面</a></li>
+        <li><a href="#53联系人界面">5.3、联系人界面</a></li>
+        <li><a href="#54设置界面">5.4、设置界面</a></li>
+      </ul>
+    </li>
+    <li><a href="#6github源码">6、Github源码</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="类微信界面设计">类微信界面设计</h1>
+<p>使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换</p>
+<h2 id="1原型图">1、原型图</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>顶部一个导航栏，，加号按钮的下拉菜单，下面是四个Tab页面，点击下方按钮，每个页面的上下两个导航栏之间的内容会随之发生变化，同时点击状态下的图标样式也随之变化。</p>
+<h2 id="2需求">2、需求</h2>
+<p>请根据课堂展示结果设计APP门户界面，包含4个tab切换效果。</p>
+<h2 id="3思路">3、思路</h2>
+<p>为了使用上课讲到的Material Design设计模式，我们分别使用了TopAppBar，一个ButtomNavigationMenu以及四个Fragment。同时采用了java语言作为点击按钮后界面内容的改变控制</p>
+<h2 id="4代码">4、代码</h2>
+<h3 id="41创建一个empty项目">4.1、创建一个Empty项目</h3>
+<h3 id="42页面-activity_mainxml-四个界面的主公共组件">4.2、页面-activity_main.xml-四个界面的主（公共）组件</h3>
+<blockquote>
+<p>根据<a href="https://developer.android.google.cn/reference/com/google/android/material/bottomnavigation/LabelVisibilityMode" target="_blank" rel="noopener noreferrer">官方文档</a>，导航栏有四种模式，auto、labeled、selected、unlabeled,对应关系如下</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auto</td>
+<td style="text-align:center">当有3个或更少的项目时，标签的行为为“labeled”；当有4个或更多的项目时，标签的行为为“selected”。</td>
+</tr>
+<tr>
+<td>labeled</td>
+<td style="text-align:center">标签显示在所有导航项目上</td>
+</tr>
+<tr>
+<td>selected（default）</td>
+<td style="text-align:center">标签显示在所选的导航项目上。（默认）</td>
+</tr>
+<tr>
+<td>unlabeled</td>
+<td style="text-align:center">标签未显示在任何导航项目上。</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;androidx.constraintlayout.widget.ConstraintLayout</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+    <span class="na">xmlns:tools=</span><span class="s">&#34;http://schemas.android.com/tools&#34;</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:visibility=</span><span class="s">&#34;visible&#34;</span>
+    <span class="na">tools:context=</span><span class="s">&#34;.MainActivity&#34;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;LinearLayout</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/linearLayout&#34;</span>
+        <span class="na">android:layout_width=</span><span class="s">&#34;wrap_content&#34;</span>
+        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+        <span class="na">android:orientation=</span><span class="s">&#34;vertical&#34;</span>
+        <span class="na">app:layout_constraintBottom_toTopOf=</span><span class="s">&#34;@+id/bottom_navigation_menu&#34;</span>
+        <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">&#34;parent&#34;</span>
+        <span class="na">app:layout_constraintStart_toStartOf=</span><span class="s">&#34;parent&#34;</span>
+        <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">&#34;parent&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;FrameLayout</span>
+            <span class="na">android:id=</span><span class="s">&#34;@+id/frameLayout&#34;</span>
+            <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+            <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/FrameLayout&gt;</span>
+    <span class="nt">&lt;/LinearLayout&gt;</span>
+
+    <span class="nt">&lt;com.google.android.material.bottomnavigation.BottomNavigationView</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/bottom_navigation_menu&#34;</span>
+        <span class="na">style=</span><span class="s">&#34;@style/Widget.MaterialComponents.BottomNavigationView.Colored&#34;</span>
+        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+        <span class="na">app:labelVisibilityMode=</span><span class="s">&#34;labeled&#34;</span>
+        <span class="na">app:layout_constraintBottom_toBottomOf=</span><span class="s">&#34;parent&#34;</span>
+        <span class="na">app:layout_constraintEnd_toEndOf=</span><span class="s">&#34;parent&#34;</span>
+        <span class="na">app:layout_constraintHorizontal_bias=</span><span class="s">&#34;1.0&#34;</span>
+        <span class="na">app:layout_constraintStart_toStartOf=</span><span class="s">&#34;parent&#34;</span>
+        <span class="na">app:menu=</span><span class="s">&#34;@menu/bottom_navigation_menu&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="43页面-fragment_cttxml-联系人组件朋友信息设置都差不多不再过多展示github源码地址在本文最后">4.3、页面-fragment_ctt.xml-联系人组件（朋友、信息、设置都差不多，不再过多展示，GitHub源码地址在本文最后）</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;FrameLayout</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span class="na">xmlns:tools=</span><span class="s">&#34;http://schemas.android.com/tools&#34;</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">tools:context=</span><span class="s">&#34;.MesFragment&#34;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;TextView</span>
+        <span class="na">android:layout_width=</span><span class="s">&#34;wrap_content&#34;</span>
+        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+        <span class="na">android:text=</span><span class="s">&#34;@string/cttText&#34;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/FrameLayout&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="44页面-bottom_navigation_menuxml-底部导航栏组件">4.4、页面-bottom_navigation_menu.xml-底部导航栏组件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;menu</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;item</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/page_Mes&#34;</span>
+        <span class="na">android:enabled=</span><span class="s">&#34;true&#34;</span>
+        <span class="na">android:icon=</span><span class="s">&#34;@drawable/tab_weixin_normal&#34;</span>
+        <span class="na">android:title=</span><span class="s">&#34;@string/message&#34;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;item</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/page_Fri&#34;</span>
+        <span class="na">android:enabled=</span><span class="s">&#34;true&#34;</span>
+        <span class="na">android:icon=</span><span class="s">&#34;@drawable/tab_find_frd_normal&#34;</span>
+        <span class="na">android:title=</span><span class="s">&#34;@string/friends&#34;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;item</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/page_Ctt&#34;</span>
+        <span class="na">android:enabled=</span><span class="s">&#34;true&#34;</span>
+        <span class="na">android:icon=</span><span class="s">&#34;@drawable/tab_address_normal&#34;</span>
+        <span class="na">android:title=</span><span class="s">&#34;@string/contacts&#34;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;item</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/page_Set&#34;</span>
+        <span class="na">android:enabled=</span><span class="s">&#34;true&#34;</span>
+        <span class="na">android:icon=</span><span class="s">&#34;@drawable/tab_settings_normal&#34;</span>
+        <span class="na">android:title=</span><span class="s">&#34;@string/settings&#34;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/menu&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="45页面-colorxml-颜色配置文件">4.5、页面-color.xml-颜色配置文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;resources&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">&#34;purple_200&#34;</span><span class="nt">&gt;</span>#FFBB86FC<span class="nt">&lt;/color&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">&#34;purple_500&#34;</span><span class="nt">&gt;</span>#FF6200EE<span class="nt">&lt;/color&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">&#34;purple_700&#34;</span><span class="nt">&gt;</span>#FF3700B3<span class="nt">&lt;/color&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">&#34;teal_200&#34;</span><span class="nt">&gt;</span>#FF03DAC5<span class="nt">&lt;/color&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">&#34;teal_700&#34;</span><span class="nt">&gt;</span>#FF018786<span class="nt">&lt;/color&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">&#34;black&#34;</span><span class="nt">&gt;</span>#FF000000<span class="nt">&lt;/color&gt;</span>
+    <span class="nt">&lt;color</span> <span class="na">name=</span><span class="s">&#34;white&#34;</span><span class="nt">&gt;</span>#FFFFFFFF<span class="nt">&lt;/color&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="46页面-stringsxml-文字字符串配置文件">4.6、页面-strings.xml-文字字符串配置文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;resources&gt;</span>
+    <span class="c">&lt;!--    app标题--&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;app_name&#34;</span><span class="nt">&gt;</span>微信80.0<span class="nt">&lt;/string&gt;</span>
+    <span class="c">&lt;!--    导航栏标题--&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;message&#34;</span><span class="nt">&gt;</span>信息<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;friends&#34;</span><span class="nt">&gt;</span>朋友<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;contacts&#34;</span><span class="nt">&gt;</span>联系人<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;settings&#34;</span><span class="nt">&gt;</span>设置<span class="nt">&lt;/string&gt;</span>
+    <span class="c">&lt;!--    界面二级标题--&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;mesText&#34;</span><span class="nt">&gt;</span>这是信息页面！<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;friText&#34;</span><span class="nt">&gt;</span>这是朋友页面！<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;cttText&#34;</span><span class="nt">&gt;</span>这是联系人页面！<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;setText&#34;</span><span class="nt">&gt;</span>这是设置页面！<span class="nt">&lt;/string&gt;</span>
+    <span class="c">&lt;!-- TODO: Remove or change this placeholder text --&gt;</span>
+    <span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;hello_blank_fragment&#34;</span><span class="nt">&gt;</span>Hello blank fragment<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="47页面-themexml-主题配置文件">4.7、页面-theme.xml-主题配置文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;resources</span> <span class="na">xmlns:tools=</span><span class="s">&#34;http://schemas.android.com/tools&#34;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Base application theme. --&gt;</span>
+    <span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&#34;Theme.Bottom_Navigation&#34;</span> <span class="na">parent=</span><span class="s">&#34;Theme.MaterialComponents.DayNight.DarkActionBar&#34;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- Primary brand color. --&gt;</span>
+        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;colorPrimary&#34;</span><span class="nt">&gt;</span>@color/purple_500<span class="nt">&lt;/item&gt;</span>
+        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;colorPrimaryVariant&#34;</span><span class="nt">&gt;</span>@color/purple_700<span class="nt">&lt;/item&gt;</span>
+        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;colorOnPrimary&#34;</span><span class="nt">&gt;</span>@color/white<span class="nt">&lt;/item&gt;</span>
+        <span class="c">&lt;!-- Secondary brand color. --&gt;</span>
+        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;colorSecondary&#34;</span><span class="nt">&gt;</span>@color/teal_200<span class="nt">&lt;/item&gt;</span>
+        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;colorSecondaryVariant&#34;</span><span class="nt">&gt;</span>@color/teal_700<span class="nt">&lt;/item&gt;</span>
+        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;colorOnSecondary&#34;</span><span class="nt">&gt;</span>@color/black<span class="nt">&lt;/item&gt;</span>
+        <span class="c">&lt;!-- Status bar color. --&gt;</span>
+        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;android:statusBarColor&#34;</span> <span class="na">tools:targetApi=</span><span class="s">&#34;l&#34;</span><span class="nt">&gt;</span>?attr/colorPrimaryVariant<span class="nt">&lt;/item&gt;</span>
+        <span class="c">&lt;!-- Customize your theme here. --&gt;</span>
+    <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="48后台-mainactivityjava-控制逻辑代码">4.8后台-MainActivity.java-控制逻辑代码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">cn.edu.hubu.lhy.bottom_navigation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">androidx.annotation.NonNull</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">androidx.appcompat.app.AppCompatActivity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">androidx.fragment.app.Fragment</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">androidx.fragment.app.FragmentManager</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">androidx.fragment.app.FragmentTransaction</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.Menu</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.MenuInflater</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.MenuItem</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.Toast</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.google.android.material.bottomnavigation.BottomNavigationView</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">MesFragment</span> <span class="n">mesFragment</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">FriFragment</span> <span class="n">friFragment</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">CttFragment</span> <span class="n">cttFragment</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">SetFragment</span> <span class="n">setFragment</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+
+        <span class="n">BottomNavigationView</span> <span class="n">bottom_navigation_menu</span> <span class="o">=</span> <span class="o">(</span><span class="n">BottomNavigationView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bottom_navigation_menu</span><span class="o">);</span>
+        <span class="n">bottom_navigation_menu</span><span class="o">.</span><span class="na">setOnNavigationItemSelectedListener</span><span class="o">(</span><span class="n">mOnNavigationItemSelectedListener</span><span class="o">);</span>
+        <span class="n">mesFragment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MesFragment</span><span class="o">();</span>
+        <span class="n">changeFrameLayout</span><span class="o">(</span><span class="s">&#34;您好&#34;</span><span class="o">,</span> <span class="n">mesFragment</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">BottomNavigationView</span><span class="o">.</span><span class="na">OnNavigationItemSelectedListener</span> <span class="n">mOnNavigationItemSelectedListener</span>
+            <span class="o">=</span> <span class="k">new</span> <span class="n">BottomNavigationView</span><span class="o">.</span><span class="na">OnNavigationItemSelectedListener</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onNavigationItemSelected</span><span class="o">(</span><span class="nd">@NonNull</span> <span class="n">MenuItem</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="k">switch</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getItemId</span><span class="o">())</span> <span class="o">{</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">page_Mes</span><span class="o">:</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">mesFragment</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">mesFragment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MesFragment</span><span class="o">();</span>
+                    <span class="o">}</span>
+                    <span class="n">changeFrameLayout</span><span class="o">(</span><span class="s">&#34;信息&#34;</span><span class="o">,</span> <span class="n">mesFragment</span><span class="o">);</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">page_Fri</span><span class="o">:</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">friFragment</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">friFragment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FriFragment</span><span class="o">();</span>
+                    <span class="o">}</span>
+                    <span class="n">changeFrameLayout</span><span class="o">(</span><span class="s">&#34;朋友&#34;</span><span class="o">,</span> <span class="n">friFragment</span><span class="o">);</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">page_Ctt</span><span class="o">:</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">cttFragment</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">cttFragment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CttFragment</span><span class="o">();</span>
+                    <span class="o">}</span>
+                    <span class="n">changeFrameLayout</span><span class="o">(</span><span class="s">&#34;联系人&#34;</span><span class="o">,</span> <span class="n">cttFragment</span><span class="o">);</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">page_Set</span><span class="o">:</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">setFragment</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">setFragment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SetFragment</span><span class="o">();</span>
+                    <span class="o">}</span>
+                    <span class="n">changeFrameLayout</span><span class="o">(</span><span class="s">&#34;设置&#34;</span><span class="o">,</span> <span class="n">setFragment</span><span class="o">);</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">};</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 使用Fragment组件替换原界面上的FragLayout
+</span><span class="cm">     *
+</span><span class="cm">     * @param string   提示信息
+</span><span class="cm">     * @param fraGment 要替换成的fragment
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">changeFrameLayout</span><span class="o">(</span><span class="n">String</span> <span class="n">string</span><span class="o">,</span> <span class="n">Fragment</span> <span class="n">fraGment</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//弹窗
+</span><span class="c1"></span>        <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">string</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+        <span class="c1">//每一次都要重新创建事务和管理工具
+</span><span class="c1"></span>        <span class="n">FragmentManager</span> <span class="n">fagmentManager</span> <span class="o">=</span> <span class="n">getSupportFragmentManager</span><span class="o">();</span>
+        <span class="n">FragmentTransaction</span> <span class="n">fragmentTransaction</span> <span class="o">=</span> <span class="n">fagmentManager</span><span class="o">.</span><span class="na">beginTransaction</span><span class="o">();</span>
+        <span class="c1">//替换操作
+</span><span class="c1"></span>        <span class="n">fragmentTransaction</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">frameLayout</span><span class="o">,</span> <span class="n">fraGment</span><span class="o">);</span>
+        <span class="c1">//事务具有原子性，类似数据库，每一次操作完成需要提交操作
+</span><span class="c1"></span>        <span class="n">fragmentTransaction</span><span class="o">.</span><span class="na">commit</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="49后台-cttfragmentjava-联系人组件代码">4.9、后台-CttFragment.java-联系人组件代码</h3>
+<blockquote>
+<p>创建Fragment自动生成的构造方法、newInstance()、onCreate()方法啊需要禁掉不然会产生一些问题</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">cn.edu.hubu.lhy.bottom_navigation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.LayoutInflater</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.View</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.view.ViewGroup</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">androidx.fragment.app.Fragment</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * A simple {@link Fragment} subclass.
+</span><span class="cm"> * Use the {@link FriFragment#newInstance} factory method to
+</span><span class="cm"> * create an instance of this fragment.
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FriFragment</span> <span class="kd">extends</span> <span class="n">Fragment</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">View</span> <span class="nf">onCreateView</span><span class="o">(</span><span class="n">LayoutInflater</span> <span class="n">inflater</span><span class="o">,</span> <span class="n">ViewGroup</span> <span class="n">container</span><span class="o">,</span>
+                             <span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Inflate the layout for this fragment
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">inflater</span><span class="o">.</span><span class="na">inflate</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">fragment_fri</span><span class="o">,</span> <span class="n">container</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5最终效果">5、最终效果</h2>
+<h3 id="51信息页面">5.1、信息页面</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<h3 id="52朋友界面">5.2、朋友界面</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<h3 id="53联系人界面">5.3、联系人界面</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<h3 id="54设置界面">5.4、设置界面</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<h2 id="6github源码">6、Github源码</h2>
+<p><a href="https://github.com/KKKPJSKEY/Weixin_Meterial_Design">https://github.com/KKKPJSKEY/Weixin_Meterial_Design</a></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-04-05</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/android-bottom-navigation/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/android-bottom-navigation/" data-title="类微信界面设计" data-hashtags="Android,Java,XML,Material-Design,BottomNavigation,View,Activity,Fragment"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/android-bottom-navigation/" data-hashtag="Android"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/android-bottom-navigation/" data-title="类微信界面设计" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/android-bottom-navigation/" data-title="类微信界面设计"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/android/">Android</a>,&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/xml/">XML</a>,&nbsp;<a href="/tags/material-design/">Material-Design</a>,&nbsp;<a href="/tags/bottomnavigation/">BottomNavigation</a>,&nbsp;<a href="/tags/view/">View</a>,&nbsp;<a href="/tags/activity/">Activity</a>,&nbsp;<a href="/tags/fragment/">Fragment</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sri-hashes-error/" class="prev" rel="prev" title="远程Hugo缺少功能"><i class="fas fa-angle-left fa-fw"></i>远程Hugo缺少功能</a>
+            <a href="/android-music-box/" class="next" rel="next" title="基于广播和服务功能的音乐播放器">基于广播和服务功能的音乐播放器<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

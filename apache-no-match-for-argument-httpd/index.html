@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/apache-no-match-for-argument-httpd\/featured-image.jpg",
                             "width":  1200 ,
                             "height":  360 
-                        }],"genre": "posts","keywords": "Operation, Apache, Install, CentOS7, Linux","wordcount":  116 ,
+                        }],"genre": "posts","keywords": "Site, Apache, CentOS7, Linux, Error","wordcount":  116 ,
         "url": "https:\/\/kkkpjskey.github.io\/apache-no-match-for-argument-httpd\/","datePublished": "2020-02-01T09:14:35+08:00","dateModified": "2020-02-01T09:14:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -149,7 +149,7 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@d78acc291c9e var]# find / -name yum.conf
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@d78acc291c9e var<span class="o">]</span><span class="c1"># find / -name yum.conf</span>
 /etc/yum.conf
 </code></pre></td></tr></table>
 </div>
@@ -164,12 +164,12 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[main]
-gpgcheck=1
-installonly_limit=3
-clean_requirements_on_remove=True
-best=True
-#exclude=httpd nginx php mysql mairadb python-psutil python2-psutil
+<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">main</span><span class="p">]</span>
+<span class="nx">gpgcheck</span><span class="p">=</span><span class="mi">1</span>
+<span class="nx">installonly_limit</span><span class="p">=</span><span class="mi">3</span>
+<span class="nx">clean_requirements_on_remove</span><span class="p">=</span><span class="nx">True</span>
+<span class="nx">best</span><span class="p">=</span><span class="nx">True</span>
+<span class="c">#exclude=httpd nginx php mysql mairadb python-psutil python2-psutil</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
@@ -180,8 +180,8 @@ best=True
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">//重新安装yum install httpd -y
-systemctl enable httpd
+<pre class="chroma"><code class="language-shell" data-lang="shell">//重新安装yum install httpd -y
+systemctl <span class="nb">enable</span> httpd
 systemctl start httpd
 systemctl status httpd
 </code></pre></td></tr></table>
@@ -195,9 +195,9 @@ systemctl status httpd
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@d78acc291c9e var]# httpd -v
-Server version: Apache/2.4.37 (centos)
-Server built:   Dec 23 2019 20:45:34
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@d78acc291c9e var<span class="o">]</span><span class="c1"># httpd -v</span>
+Server version: Apache/2.4.37 <span class="o">(</span>centos<span class="o">)</span>
+Server built:   Dec <span class="m">23</span> <span class="m">2019</span> 20:45:34
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -221,13 +221,13 @@ Server built:   Dec 23 2019 20:45:34
                             <a class="link-to-markdown" href="/apache-no-match-for-argument-httpd/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/" data-title="Apache:No match for argument: httpd" data-hashtags="Operation,Apache,Install,CentOS7,Linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/" data-hashtag="Operation"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/" data-title="Apache:No match for argument: httpd" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/" data-title="Apache:No match for argument: httpd"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/" data-title="Apache:No match for argument: httpd" data-hashtags="Site,Apache,CentOS7,Linux,Error"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/" data-hashtag="Site"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/" data-title="Apache:No match for argument: httpd" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/" data-title="Apache:No match for argument: httpd"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/operation/">Operation</a>,&nbsp;<a href="/tags/apache/">Apache</a>,&nbsp;<a href="/tags/install/">Install</a>,&nbsp;<a href="/tags/centos7/">CentOS7</a>,&nbsp;<a href="/tags/linux/">Linux</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/site/">Site</a>,&nbsp;<a href="/tags/apache/">Apache</a>,&nbsp;<a href="/tags/centos7/">CentOS7</a>,&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/error/">Error</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>

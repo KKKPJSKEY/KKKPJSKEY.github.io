@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/android-note\/featured-image.jpg",
                             "width":  740 ,
                             "height":  393 
-                        }],"genre": "posts","keywords": "Android, note","wordcount":  1484 ,
+                        }],"genre": "posts","keywords": "Android, XMl, Kotlin, Service, Theme, layout, ConstraintLayout, Activity","wordcount":  1508 ,
         "url": "https:\/\/kkkpjskey.github.io\/android-note\/","datePublished": "2021-05-01T03:02:55+08:00","dateModified": "2021-05-01T03:02:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -118,9 +118,9 @@
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Android开发笔记</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/android/"><i class="far fa-folder fa-fw"></i>Android</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-01">2021-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1484 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/android-note/" class="leancloud_visitors" data-flag-title="Android开发笔记">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/total/"><i class="far fa-folder fa-fw"></i>Total</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-01">2021-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1508 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/android-note/" class="leancloud_visitors" data-flag-title="Android开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -274,27 +274,45 @@ layout_constraintBottom_toBottomOf
 <p>布局xml文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;android.support.constraint.ConstraintLayout</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;TextView</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/tv_top_bg&#34;</span>
+        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+        <span class="na">android:layout_height=</span><span class="s">&#34;wrap_content&#34;</span>
+        <span class="na">android:fitsSystemWindows=</span><span class="s">&#34;true&#34;</span>
+        <span class="na">android:maxHeight=</span><span class="s">&#34;140dp&#34;</span>
+        <span class="na">android:background=</span><span class="s">&#34;@drawable/case_resource_transport_top_bg&#34;</span>
+        <span class="na">app:layout_constraintTop_toTopOf=</span><span class="s">&#34;parent&#34;</span> <span class="nt">/&gt;</span>
+
+...
+<span class="nt">&lt;/android.support.constraint.ConstraintLayout&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>&lt;android.support.constraint.ConstraintLayout xmlns:android=&ldquo;<a href="http://schemas.android.com/apk/res/android%22">http://schemas.android.com/apk/res/android&quot;</a>
-xmlns:app=&ldquo;<a href="http://schemas.android.com/apk/res-auto%22">http://schemas.android.com/apk/res-auto&quot;</a>
-android:layout_width=&ldquo;match_parent&rdquo;
-android:layout_height=&ldquo;match_parent&rdquo;&gt;</p>
-<p><TextView
-android:id="@+id/tv_top_bg"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:fitsSystemWindows="true"
-android:maxHeight="140dp"
-android:background="@drawable/case_resource_transport_top_bg"
-app:layout_constraintTop_toTopOf="parent" /></p>
-<p>&hellip;
-&lt;/android.support.constraint.ConstraintLayout&gt;
-activity AndroidManifest设置</p>
+</div><p>activity AndroidManifest设置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -327,12 +345,23 @@ activity AndroidManifest设置</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>xxActivity添加</p>
-<p>val decorView = window.decorView</p>
-<p>​        val option = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-​                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
-​        decorView.systemUiVisibility = option
-​        window.statusBarColor = Color.TRANSPARENT
-效果：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">decorView</span> <span class="p">=</span> <span class="n">window</span><span class="p">.</span><span class="n">decorView</span>
+
+<span class="k">val</span> <span class="py">option</span> <span class="p">=</span> <span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</span> <span class="n">or</span> <span class="n">View</span><span class="p">.</span><span class="n">SYSTEM_UI_FLAG_LAYOUT_STABLE</span><span class="p">)</span>
+<span class="n">decorView</span><span class="p">.</span><span class="n">systemUiVisibility</span> <span class="p">=</span> <span class="n">option</span>
+<span class="n">window</span><span class="p">.</span><span class="n">statusBarColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">TRANSPARENT</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>效果：
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -351,7 +380,7 @@ activity AndroidManifest设置</p>
         data-sizes="auto"
         alt="./8.png"
         title="8" /></p>
-<p>在Android Studio中展开Project模块，会看到里面是一个由文件和文件夹构成的树形图。打开里面的app-&gt;manifests-&gt;AndroidManifest.xml文件，然后找到application标签的android:theme属性，把它的值改为&rdquo;@style/Theme.AppCompat.NoActionBar&rdquo;，这样就可以解决问题了。</p>
+<p>在Android Studio中展开Project模块，会看到里面是一个由文件和文件夹构成的树形图。打开里面的app-&gt;manifests-&gt;AndroidManifest.xml文件，然后找到application标签的android:theme属性，把它的值改为&quot;@style/Theme.AppCompat.NoActionBar&quot;，这样就可以解决问题了。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -393,13 +422,13 @@ activity AndroidManifest设置</p>
                             <a class="link-to-markdown" href="/android-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/android-note/" data-title="Android开发笔记" data-hashtags="Android,note"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/android-note/" data-hashtag="Android"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/android-note/" data-title="Android开发笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/android-note/" data-title="Android开发笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/android-note/" data-title="Android开发笔记" data-hashtags="Android,XMl,Kotlin,Service,Theme,layout,ConstraintLayout,Activity"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/android-note/" data-hashtag="Android"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/android-note/" data-title="Android开发笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/android-note/" data-title="Android开发笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/android/">Android</a>,&nbsp;<a href="/tags/note/">note</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/android/">Android</a>,&nbsp;<a href="/tags/xml/">XML</a>,&nbsp;<a href="/tags/kotlin/">Kotlin</a>,&nbsp;<a href="/tags/service/">Service</a>,&nbsp;<a href="/tags/theme/">Theme</a>,&nbsp;<a href="/tags/layout/">layout</a>,&nbsp;<a href="/tags/constraintlayout/">ConstraintLayout</a>,&nbsp;<a href="/tags/activity/">Activity</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
