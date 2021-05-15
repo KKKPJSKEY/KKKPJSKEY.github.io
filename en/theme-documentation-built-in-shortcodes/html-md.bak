@@ -1,0 +1,152 @@
+</div><p>呈现的输出效果如下:</p>
+
+<!-- ublogger -->
+
+<div class="twitter-tweet twitter-tweet-rendered" style="display: flex; max-width: 550px; width: 100%; margin-top: 10px; margin-bottom: 10px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" style="position: static; visibility: visible; width: 550px; height: 372px; display: block; flex-grow: 1;" title="Twitter Tweet" src="https://platform.twitter.com/embed/Tweet.html?creatorScreenName=xxxx&amp;dnt=true&amp;embedId=twitter-widget-0&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=877500564405444608&amp;lang=en&amp;origin=https%3A%2F%2Fublogger.netlify.app%2Ftheme-documentation-built-in-shortcodes%2F&amp;theme=light&amp;widgetsVersion=e1ffbdb%3A1614796141937&amp;width=550px" __idm_frm__="521" data-tweet-id="877500564405444608"></iframe></div>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<!-- CodeIt -->
+
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Hugo 0.24 Released: Big archetype update + <a href="https://twitter.com/Netlify?ref_src=twsrc%5Etfw">@Netlify</a> _redirects etc. file support<a href="https://t.co/X94FmYDEZJ">https://t.co/X94FmYDEZJ</a> <a href="https://twitter.com/hashtag/gohugo?src=hash&amp;ref_src=twsrc%5Etfw">#gohugo</a> <a href="https://twitter.com/hashtag/golang?src=hash&amp;ref_src=twsrc%5Etfw">#golang</a> <a href="https://twitter.com/spf13?ref_src=twsrc%5Etfw">@spf13</a> <a href="https://twitter.com/bepsays?ref_src=twsrc%5Etfw">@bepsays</a></p>— GoHugo.io (@GoHugoIO) <a href="https://twitter.com/GoHugoIO/status/877500564405444608?ref_src=twsrc%5Etfw">June 21, 2017</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h2 id="8-vimeo">8 vimeo</h2>	
+------------------------------------------------------------------------------------
+<iframe class="instagram-media instagram-media-rendered" id="instagram-embed-0" src="https://www.instagram.com/p/BWNjjyYFxVx/embed/?cr=1&amp;v=12&amp;wp=1595&amp;rd=https%3A%2F%2Fgohugo.io&amp;rp=%2Fcontent-management%2Fshortcodes%2F#%7B%22ci%22%3A0%2C%22os%22%3A4594.719999993686%2C%22ls%22%3A1978.5199999896577%2C%22le%22%3A4467.774999997346%7D" allowtransparency="true" allowfullscreen="true" frameborder="0" height="456" data-instgrm-payload-id="instagram-media-payload-0" scrolling="no" style="background: white; max-width: 658px; width: calc(100% - 2px); border-radius: 3px; border: 1px solid rgb(219, 219, 219); box-shadow: none; display: block; margin: 0px 0px 12px; min-width: 326px; padding: 0px;"></iframe>
+<script async="" src="//www.instagram.com/embed.js"></script>
+------------------------------------------------------------------------------------
+## 4.1 instagram(Ancien)
+
+[Documentation of `instagram`](https://gohugo.io/content-management/shortcodes#instagram)
+
+Example `instagram` input:
+
+```markdown
+{{</* instagram BWNjjyYFxVx hidecaption */>}}
+```
+
+The rendered output looks like this:
+
+<iframe class="instagram-media instagram-media-rendered" id="instagram-embed-0" src="https://www.instagram.com/p/BWNjjyYFxVx/embed/?cr=1&amp;v=12&amp;wp=1595&amp;rd=https%3A%2F%2Fgohugo.io&amp;rp=%2Fcontent-management%2Fshortcodes%2F#%7B%22ci%22%3A0%2C%22os%22%3A4594.719999993686%2C%22ls%22%3A1978.5199999896577%2C%22le%22%3A4467.774999997346%7D" allowtransparency="true" allowfullscreen="true" frameborder="0" height="456" data-instgrm-payload-id="instagram-media-payload-0" scrolling="no" style="background: white; max-width: 658px; width: calc(100% - 2px); border-radius: 3px; border: 1px solid rgb(219, 219, 219); box-shadow: none; display: block; margin: 0px 0px 12px; min-width: 326px; padding: 0px;"></iframe>
+<script async="" src="//www.instagram.com/embed.js"></script>
+
+> Le Code court d'`Instagram` est un paramètre de l'API Instagram qui n'est plus utilisé depuis le 24 octobre 2020.Par conséquent, aucune image ne peut être obtenue à partir de ce paramètre API, ce qui entraîne une erreur lors de l'utilisation du raccourci `Instagram`.Pour en savoir plus, consultez la question # 7879 de github.
+
+
+[Documents officiels de l'`instagram`(Documents officiels de l' Hugo have not been updated yet)](https://gohugo.io/content-management/shortcodes#instagram) 
+
+[Documents officiels de l'`instagram`(Facebook)](https://developers.facebook.com/docs/instagram/oembed)
+
+](https://developers.facebook.com/docs/instagram/oembed)
+
+```shell
+#1.S'inscrire officiellement auprès du promoteur
+#Créez une tâche dans l'outil de développement, obtenez l'id de l'application et le secret de l'application, et remplissez l'adresse de demande ci - dessous
+curl -X GET "https://graph.facebook.com/oauth/access_token ?client_id={your-app-id} &client_secret={your-app-secret} &grant_type=client_credentials"
+# Exemples
+curl -X GET "https://graph.facebook.com/oauth/access_token ?client_id=123&client_secret={456} &grant_type=client_credentials"
+#Après avoir obtenu le token, remplissez l'adresse suivante pour obtenir le code HTML retourné.
+curl -X GET \ 'https://graph.facebook.com/v10.0/instagram_oembed?url={url}&access_token={access-token}"
+# Examples
+curl -X GET \ 'https://graph.facebook.com/v10.0/instagram_oembed?url=https://www.instagram.com/p/fA9uwTtkSN/&access_token=IGQVJ..."
+```
+
+Résumé comme suit: la nouvelle version ne peut pas être directement intégrée, vous devez remplir les étapes suivantes (les deux peuvent) pour vous référer à la méthode de front end boss JS
+
+[Instagram oEmbed Colonne IG encastrée](https://www.letswrite.tw/instagram-embed/)
+
+[Facebook,Application,ID,clé, URL](https://letswrite.tw/firebase-auth-google-fb/#facebook,應用程式,id,密鑰,url)
+
+
+4.2.1Ouvrez l'application directement avec le client mobile, trouvez l'article correspondant, cliquez sur trois points, puis cliquez sur Embedded pour générer l'adresse d'accès correspondante
+
+![1](./2.png)
+
+4.2.2Comment utiliser le Code
+
+1. Créer une application en Facebook for Developers et obtenir des chiffres et des clés
+
+   Pour activer la fonction de connexion Facebook dans Firebase, vous devez avoir un ensemble d'identifiants et de clés pour les applications Facebook.
+
+   > L'application créée dans cet article est utilisée à des fins de démonstration.Cet article sera supprimé après sa mise en ligne, de sorte que le numéro de demande et la clé n'existeront pas.
+
+   Allez sur la page[FACEBOOK for Developers](https://developers.facebook.com/apps/)connectez - vous au compte FB et cliquez sur 「créer une application」,
+
+   ![3](./3.png)
+
+   Sélectionnez「more options」pour la partie de travail:
+
+   ![4](./4.png)
+
+   L'étape suivante consiste à remplir le nom d'affichage de l'application.Remplissez un nom que nous comprenons ce que nous faisons:
+
+   ![5](./5.png)
+
+   Une fois rempli, appuyez sur 「créer une application」, Pour terminer la création.
+
+   ### Numéro d'application, clé, URL oauth
+
+   Une fois l'application créée, allez à l'application et cliquez sur 「paramètres > données de base」，dans le menu de gauche pour voir「numéro de l'application」,「clé de l'application」，et certains champs à remplir:
+
+   ![6](./6.png)
+
+2. Ajouter un nouveau produit à l'application: oembed et ajuster l'application à「 Go Online 」
+
+   ## New product,oembed
+
+   Après avoir créé l'application, cliquez sur  「+」 à côté du 「produit」dans le menu de gauche
+
+   ![7](./7.png)
+
+   Puis trouvez 「oEmbed」 et cliquez sur 「Settings」:
+
+   ![8](./8.png)
+
+   Une boîte de confirmation apparaît, sélectionnez - la et appuyez sur la touche de 「confirm」. L'oembed est ajouté à la liste des produits à gauche, ce qui indique que l'ajout est réussi.
+
+   最后顶部那条有一个显示为「调整中」的Toggle 按钮,
+
+   Enfin, il y a un bouton Toggle  en haut qui s'affiche comme 「 ajuster」:
+
+   ![9](./9.png)
+
+   Cliquez sur le bouton et confirmez que vous voulez changer de mode et le rendre 「 en ligne 」.Ensuite, l'application peut être utilisée à l'extérieur:
+
+
+      Le code complet intégré dans IG post est le suivant:
+
+   ```html
+   < div  id =" ig-iframe " > </ div >
+     
+   < script  src =" https://www.instagram.com/embed.js " > </ script >
+   < script >
+     const  getToken  =  'Sites Web obtenus après le déploiement' ;
+     const  igUri  =  'IG sites publiés' ;
+     const  hideCaption  =  true ;  //En option, météo pour masquer la description ou pas vraiment, faux pas caché.La valeur par défaut est fausse
+     const  maxWidth  =  400 ;  //En option, quelle est la largeur maximale de la colonne
+   
+   
+     fetch ( getToken )
+       . then ( res  =>  res . json ( ) )
+       . then ( res  =>  {
+         const  token  =  res . access_token ;
+         fetch ( `https://graph.facebook.com/v9.0/instagram_oembed?url= ${ igUri } &access_token= ${ token } &hidecaption= ${ hideCaption } &maxwidth= ${ maxWidth } ` )
+           . then ( res  =>  res . json ( ) )
+           . then ( res  =>  {
+             const  wrap  =  document . getElementById ( 'ig-iframe' ) ;
+             wrap . insertAdjacentHTML ( 'afterbegin' ,  res . html ) ;
+             instgrm . Embeds . process ( ) ;
+           } ) . catch ( err  =>  {
+             throw  Error ( e )
+           } )
+         } ) . catch ( err  =>  {
+           throw  Error ( e )
+         } ) ;
+   </ script >
+   ```
+
+   Intégration après IG~
+
+   ![24](./24.png)
+
+Ni l'une ni l'autre de ces méthodes ne peut intégrer Instagram de façon concise et rapide.Ils doivent être intégrés comme des ressources générales.Les autorités d'Hugo ont déclaré qu'elles ne pouvaient plus être utilisées et qu'aucune modification ou adaptation n'avait été faite pour le moment.S'ils ont été adaptés, contactez - moi.

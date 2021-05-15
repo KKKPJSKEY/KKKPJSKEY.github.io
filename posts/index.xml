@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 May 2021 23:59:58 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 15 May 2021 12:12:25 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/android-music-box/</link>
     <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-music-box/</guid>
@@ -14,6 +14,16 @@
     <link>https://kkkpjskey.github.io/android-bottom-navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+</item><item>
+    <title>Error in Created hook: &#39;TypeError&#39;s: Cannot read property &#39;num&#39; of &#39;undefined&#39;</title>
+    <link>https://kkkpjskey.github.io/vue-uni-app-hood-var-undefined/</link>
+    <pubDate>Sat, 15 May 2021 12:12:25 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-uni-app-hood-var-undefined/</guid>
+    <description><![CDATA[Error in Created hook: Error in Created hook: &lsquo;TypeError&rsquo;s: Cannot read property &lsquo;num&rsquo; of &lsquo;undefined&rsquo;&quot; Uni-App编写组件的时候，生命周期函数时遇到了使用箭头函数拿不到this的Vue对象的情况 代码 报错 浏览器控]]></description>
+</item><item>
+    <title>Vue开发UniApp笔记</title>
+    <link>https://kkkpjskey.github.io/vue-uni-app-note/</link>
+    <pubDate>Fri, 14 May 2021 15:32:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-uni-app-note/</guid>
+    <description><![CDATA[Vue开发Uni-App笔记 text text组件相当于html的span行布局组件 selectable属性为是否开启可被选中，当前最新版本uni-]]></description>
 </item><item>
     <title>远程Hugo缺少功能</title>
     <link>https://kkkpjskey.github.io/sri-hashes-error/</link>
@@ -44,15 +54,5 @@
     <link>https://kkkpjskey.github.io/android-kolin/</link>
     <pubDate>Tue, 20 Apr 2021 22:45:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-kolin/</guid>
     <description><![CDATA[Kolin：A problem occurred evaluating project &lsquo;:app&rsquo;. 报错 1 2 3 4 Build file &#39;C:\All_Code\AS_Code\Bottom-Navigation\Material-BottomNavigation\app\build.gradle&#39; line: 2 A problem occurred evaluating project &#39;:app&#39;. &gt; java.lang.ExceptionInInitializerError (no error message) 在项目根目录下的app目录（可能被改为项目名）下的build.gradl]]></description>
-</item><item>
-    <title>Android App界面与顶部状态栏重叠遮盖问题</title>
-    <link>https://kkkpjskey.github.io/android-topbar-cover/</link>
-    <pubDate>Mon, 22 Mar 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-topbar-cover/</guid>
-    <description><![CDATA[Android App界面与顶部状态栏重叠遮盖问题 问题情况截图如下： 觉得toolbar默认高度太高，给toolbar设了一个固定值。测试时发现在4.4系统]]></description>
-</item><item>
-    <title>AndroidStudio网络问题</title>
-    <link>https://kkkpjskey.github.io/android-net/</link>
-    <pubDate>Mon, 15 Mar 2021 08:33:12 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-net/</guid>
-    <description><![CDATA[AndroidStudio网络问题 android studio 教你修改Maven仓库地址为国内镜像 android studio 默认国外maven 这我们更改为阿里的maven 打开build.]]></description>
 </item></channel>
 </rss>

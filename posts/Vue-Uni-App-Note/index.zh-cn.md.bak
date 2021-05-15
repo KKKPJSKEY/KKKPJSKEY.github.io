@@ -1,0 +1,57 @@
+---
+weight: 2
+title: "Vue开发UniApp笔记"
+date: 2021-05-14T15:32:59+08:00
+lastmod: 2021-05-14T15:32:59+08:00
+draft: false
+author: "KKKPSJKEY"
+authorLink: "https://github.com/KKKPJSKEY"
+description: "记录使用Vue开发Uni-App小程序的笔记"
+resources:
+  - name: "featured-image"
+    src: "featured-image.jpg"
+
+tags: ["Vue","Uni-App"]
+categories: ["Front","note"]
+
+lightgallery: true
+
+
+---
+
+# Vue开发Uni-App笔记
+
+## text
+
+> text组件相当于html的span行布局组件
+
+selectable属性为是否开启可被选中，当前最新版本uni-app的text的selectable属性在小程序端不能使用，暂时测试H5端正常使用
+
+decode属性为开启是否可以解码，当前最新版本uni-app的decode属性现在无论设置为true或false都可以解码（如&amp->&）
+
+## view
+
+> view组件相当于html的div盒子（层、垂直）布局组件，独占一行
+
+hover-start-time、hover-stay-time现在支持字符串的数字，原来需要在属性名前加上冒号:，如`:hover-start-time`
+
+## Button
+
+按钮组件，type选择为primary样式后，在H5显示蓝色，在小程序显示绿色
+
+```vue
+<button type="primary">蓝绿色按钮组件</button>
+```
+
+v-for 需要添加`:key`作为唯一值否则警告
+
+## 生命周期
+
+onError只有H5平台支持的生命周期函数，小程序端无效
+
+## 文件上传
+
+uni.chooseImage在H5端设置count:参数以后是限制不住多的图片上传的，但是在小程序端多的图片不会被上传
+
+previewImage的loop:属性（查看的图片可以循环）在小程序端和H5端不起作用
+
