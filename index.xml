@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 15 May 2021 12:12:25 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 25 May 2021 12:33:19 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>基于广播和服务功能的音乐播放器</title>
@@ -17,6 +17,36 @@
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
 </item><item>
+    <title>Java开发笔记</title>
+    <link>https://kkkpjskey.github.io/java_note/</link>
+    <pubDate>Tue, 25 May 2021 12:33:19 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java_note/</guid>
+    <description><![CDATA[Java开发笔记 Java获取系统时间 1 2 3 4 5 6 7 8 9 import java.util.Date; import java.text.SimpleDateFormat; public class NowString { public static void main(String[] args) { SimpleDateFormat df = new SimpleDateFormat(&#34;yyyy-MM-dd HH:mm:ss&#34;);//设置日期格式 System.out.println(df.format(new]]></description>
+</item><item>
+    <title>Hogo创建GitHub Pages</title>
+    <link>https://kkkpjskey.github.io/java-pencentage-format-error/</link>
+    <pubDate>Mon, 24 May 2021 19:06:51 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-pencentage-format-error/</guid>
+    <description><![CDATA[java.util.UnknownFormatConversionException: Conversion = &lsquo;%&rsquo; 问题现象 最近在做一个java项目使用String.format进行控制台打印，结果出现如下错误： 最关键的是这个问题是偶现的，通过go]]></description>
+</item><item>
+    <title>JS的padStart()方法,padEnd()方法</title>
+    <link>https://kkkpjskey.github.io/js-padstart-padend/</link>
+    <pubDate>Wed, 19 May 2021 12:13:45 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/js-padstart-padend/</guid>
+    <description><![CDATA[JS的padStart()方法,padEnd()方法 ES2017 引入了字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。padSt]]></description>
+</item><item>
+    <title>查找表法</title>
+    <link>https://kkkpjskey.github.io/find-table/</link>
+    <pubDate>Tue, 18 May 2021 15:03:10 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/find-table/</guid>
+    <description><![CDATA[查找表法 在遍历的同时，记录一些信息，以省去一层循环，这是“以空间换时间”的想法 需要记录已经遍历过的数值和它所对应的下标，可以借助查找表实现 查]]></description>
+</item><item>
+    <title>HashMap(int initialCapacity)指定集合大小</title>
+    <link>https://kkkpjskey.github.io/hashmap-initialcapacity/</link>
+    <pubDate>Mon, 17 May 2021 17:15:45 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/hashmap-initialcapacity/</guid>
+    <description><![CDATA[HashMap(int initialCapacity)指定集合大小 介绍 首先设置一个合理的初始化容量可以提高HashMap的性能 在当我们对HashMap初始化没设]]></description>
+</item><item>
+    <title>哈希表</title>
+    <link>https://kkkpjskey.github.io/hash-table/</link>
+    <pubDate>Sun, 16 May 2021 14:33:18 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/hash-table/</guid>
+    <description><![CDATA[哈希表 概念： 顺序结构以及平衡树中，元素关键码与其存储位置之间没有对应的关系，因此在查找一个元素时，必须要经过关键码的多次比较。顺序查找时间复]]></description>
+</item><item>
     <title>Error in Created hook: &#39;TypeError&#39;s: Cannot read property &#39;num&#39; of &#39;undefined&#39;</title>
     <link>https://kkkpjskey.github.io/vue-uni-app-hood-var-undefined/</link>
     <pubDate>Sat, 15 May 2021 12:12:25 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-uni-app-hood-var-undefined/</guid>
@@ -26,35 +56,5 @@
     <link>https://kkkpjskey.github.io/vue-uni-app-note/</link>
     <pubDate>Fri, 14 May 2021 15:32:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-uni-app-note/</guid>
     <description><![CDATA[Vue开发Uni-App笔记 text text组件相当于html的span行布局组件 selectable属性为是否开启可被选中，当前最新版本uni-]]></description>
-</item><item>
-    <title>远程Hugo缺少功能</title>
-    <link>https://kkkpjskey.github.io/sri-hashes-error/</link>
-    <pubDate>Wed, 12 May 2021 23:59:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/sri-hashes-error/</guid>
-    <description><![CDATA[远程Hugo缺少功能 问题来源 Hugo生成页面后，本地调试没问题，推到远程发现首页和文章页面的动画，文章页面的目录没有生成 查看HTML对比并未]]></description>
-</item><item>
-    <title>使用SRI保护你的网站免受第三方CDN恶意攻击</title>
-    <link>https://kkkpjskey.github.io/sri-note/</link>
-    <pubDate>Wed, 12 May 2021 09:41:35 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/sri-note/</guid>
-    <description><![CDATA[使用SRI保护你的网站免受第三方CDN恶意攻击 出于速度和降低服务器负载考虑，有时候我们会选择使用 CDN 加载第三方静态资源。对于一些热门的第三方库]]></description>
-</item><item>
-    <title>Mybatis中用到的设计模式</title>
-    <link>https://kkkpjskey.github.io/mybatis-designmode/</link>
-    <pubDate>Sun, 09 May 2021 02:52:55 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mybatis-designmode/</guid>
-    <description><![CDATA[Mybatis中用到的设计模式 Builder模式，例如SqlSessionFactoryBuilder、XMLConfigBuilder、X]]></description>
-</item><item>
-    <title>Android开发笔记</title>
-    <link>https://kkkpjskey.github.io/android-note/</link>
-    <pubDate>Sat, 01 May 2021 03:02:55 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-note/</guid>
-    <description><![CDATA[Android开发笔记 Android5.0常用颜色属性说明 在使用Eclipse的时代，我们很少去在style文件给整个应用或者Activit]]></description>
-</item><item>
-    <title>关于drawable和drawable-v24</title>
-    <link>https://kkkpjskey.github.io/android-diff-drawable-v24/</link>
-    <pubDate>Fri, 30 Apr 2021 23:59:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-diff-drawable-v24/</guid>
-    <description><![CDATA[关于drawable和drawable-v24 今天调试一个软件，老是找不到资源 1 android.content.res.Resources$NotFoundException: Resource 断点调试可以看到是有的，当然项目的目录里面也有该资源， 最]]></description>
-</item><item>
-    <title>Kolin：A problem occurred evaluating project &#39;:app&#39;.</title>
-    <link>https://kkkpjskey.github.io/android-kolin/</link>
-    <pubDate>Tue, 20 Apr 2021 22:45:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-kolin/</guid>
-    <description><![CDATA[Kolin：A problem occurred evaluating project &lsquo;:app&rsquo;. 报错 1 2 3 4 Build file &#39;C:\All_Code\AS_Code\Bottom-Navigation\Material-BottomNavigation\app\build.gradle&#39; line: 2 A problem occurred evaluating project &#39;:app&#39;. &gt; java.lang.ExceptionInInitializerError (no error message) 在项目根目录下的app目录（可能被改为项目名）下的build.gradl]]></description>
 </item></channel>
 </rss>
