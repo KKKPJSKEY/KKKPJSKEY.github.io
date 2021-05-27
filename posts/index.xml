@@ -20,7 +20,7 @@
     <pubDate>Tue, 25 May 2021 12:33:19 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java_note/</guid>
     <description><![CDATA[Java开发笔记 Java获取系统时间 1 2 3 4 5 6 7 8 9 import java.util.Date; import java.text.SimpleDateFormat; public class NowString { public static void main(String[] args) { SimpleDateFormat df = new SimpleDateFormat(&#34;yyyy-MM-dd HH:mm:ss&#34;);//设置日期格式 System.out.println(df.format(new]]></description>
 </item><item>
-    <title>Hogo创建GitHub Pages</title>
+    <title>java.util.UnknownFormatConversionException: Conversion = &#39;%&#39;</title>
     <link>https://kkkpjskey.github.io/java-pencentage-format-error/</link>
     <pubDate>Mon, 24 May 2021 19:06:51 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-pencentage-format-error/</guid>
     <description><![CDATA[java.util.UnknownFormatConversionException: Conversion = &lsquo;%&rsquo; 问题现象 最近在做一个java项目使用String.format进行控制台打印，结果出现如下错误： 最关键的是这个问题是偶现的，通过go]]></description>
