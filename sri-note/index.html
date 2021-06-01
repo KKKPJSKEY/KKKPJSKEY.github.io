@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/sri-note\/featured-image.jpg",
                             "width":  900 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "HTML, SRI, CDN, CSP","wordcount":  1541 ,
+                        }],"genre": "posts","keywords": "HTML, SRI, CDN, CSP","wordcount":  1518 ,
         "url": "https:\/\/kkkpjskey.github.io\/sri-note\/","datePublished": "2021-05-12T09:41:35+08:00","dateModified": "2021-05-12T09:41:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">使用SRI保护你的网站免受第三方CDN恶意攻击</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/front/"><i class="far fa-folder fa-fw"></i>Front</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1541 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1518 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/sri-note/" class="leancloud_visitors" data-flag-title="使用SRI保护你的网站免受第三方CDN恶意攻击">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -151,8 +151,7 @@
     <li><a href="#错误恢复">错误恢复</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="使用sri保护你的网站免受第三方cdn恶意攻击">使用SRI保护你的网站免受第三方CDN恶意攻击</h1>
-<p>出于速度和降低服务器负载考虑，有时候我们会选择使用 CDN 加载第三方静态资源。对于一些热门的第三方库，在用户打开你的网页之前就很有可能在浏览别的网站时被浏览器缓存下来，这样就可以极大的提升网页加载速度。</p>
+            </div><div class="content" id="content"><p>出于速度和降低服务器负载考虑，有时候我们会选择使用 CDN 加载第三方静态资源。对于一些热门的第三方库，在用户打开你的网页之前就很有可能在浏览别的网站时被浏览器缓存下来，这样就可以极大的提升网页加载速度。</p>
 <p>然而使用 CDN 也提高了网站的安全风险：第三方静态资源放在第三方服务器上，CDN 的拥有者有没有可能偷偷的篡改这些文件，加入恶意代码呢？或者 CDN 服务器遭受了黑客攻击，整个文件被替换掉。虽然可能性不高，但不是零。JavaScript 对于当前浏览器页面有完全控制权，他们不仅仅能获取到页面上的任何内容，还能抓取用户输入的一些诸如密码之类的机密信息，还能获取到保存到 Cookie 中的登录票据等等内容，这就是所谓的 XSS 攻击。</p>
 <p>我们需要一种机制确保从 CDN 下载的文件未被恶意篡改。某些下载网站就提供下载文件的 MD5 或 SHA1 码用于检查所下载文件的完整性，网页中有没有类似的机制呢？</p>
 <h2 id="what什么是-sri">What（什么是 SRI）</h2>

@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/android-note\/featured-image.jpg",
                             "width":  740 ,
                             "height":  393 
-                        }],"genre": "posts","keywords": "Android, XMl, Kotlin, Service, Theme, layout, ConstraintLayout, Activity","wordcount":  1508 ,
+                        }],"genre": "posts","keywords": "Android, XMl, Kotlin, Service, Theme, layout, ConstraintLayout, Activity","wordcount":  2387 ,
         "url": "https:\/\/kkkpjskey.github.io\/android-note\/","datePublished": "2021-05-01T03:02:55+08:00","dateModified": "2021-05-01T03:02:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Android开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/total/"><i class="far fa-folder fa-fw"></i>Total</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-01">2021-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1508 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/android-note/" class="leancloud_visitors" data-flag-title="Android开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-01">2021-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2387 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/android-note/" class="leancloud_visitors" data-flag-title="Android开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -142,11 +142,19 @@
     <li><a href="#android-沉浸式标题栏设置顶部view到状态栏">Android 沉浸式标题栏设置，顶部view到状态栏</a></li>
     <li><a href="#android去除顶部默认的标题栏">Android去除顶部默认的标题栏</a></li>
     <li><a href="#android注册服务">Android注册服务</a></li>
+    <li><a href="#android-textview-文字居中">Android TextView 文字居中</a></li>
+    <li><a href="#android给view设置上下左右边框">android给View设置上下左右边框</a></li>
+    <li><a href="#android-为textview添加边框">android 为TextView添加边框</a>
+      <ul>
+        <li><a href="#方法一">方法一</a></li>
+        <li><a href="#方法二">方法二</a></li>
+        <li><a href="#方法三">方法三</a></li>
+      </ul>
+    </li>
     <li><a href="#end">end</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="android开发笔记">Android开发笔记</h1>
-<h2 id="android50常用颜色属性说明">Android5.0常用颜色属性说明</h2>
+            </div><div class="content" id="content"><h2 id="android50常用颜色属性说明">Android5.0常用颜色属性说明</h2>
 <p>在使用Eclipse的时代，我们很少去在style文件给整个应用或者Activity去设定颜色，那是因为即使设置也不会提升用户的视觉效果。但是材料设计号称让没有设计功底的人也能做出漂亮的App，那我们今天就来看看在Androi5.0中常用的颜色属性。</p>
 <p>我们可以先定义一个style，然后在这个style中设定每一个Activity或者整个App的颜色，最后在清单文件中来给某个Activity设置主题即可。代码如下：</p>
 <div class="highlight"><div class="chroma">
@@ -408,7 +416,261 @@ layout_constraintBottom_toBottomOf
 </code></pre></td></tr></table>
 </div>
 </div><p>此处.目录取决于上面package导入的目录</p>
-<h2 id="end">end</h2>
+<h2 id="android-textview-文字居中">Android TextView 文字居中</h2>
+<p>有2种方法可以设置TextView文字居中：</p>
+<p>一：在xml文件设置：android:gravity=&ldquo;center&rdquo;</p>
+<p>二：在程序中设置：m_TxtTitle.setGravity(Gravity.CENTER);</p>
+<h2 id="android给view设置上下左右边框">android给View设置上下左右边框</h2>
+<p>需求
+设置view上下右有边框(左边不要边框)，右上角右下角需要设置为圆角（左边不需要）</p>
+<p>实现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;layer-list</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- This is the main color --&gt;</span>
+    <span class="nt">&lt;item&gt;</span>
+        <span class="nt">&lt;shape&gt;</span>
+            <span class="c">&lt;!--    边框颜色 --&gt;</span>
+            <span class="nt">&lt;solid</span> <span class="na">android:color=</span><span class="s">&#34;@color/flash_text_normal&#34;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/shape&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+    <span class="c">&lt;!-- 给View的上 下  右设置8dp的边框 --&gt;</span>
+    <span class="c">&lt;!-- http://blog.csdn.net/lowprofile_coding/article/details/47848245--&gt;</span>
+    <span class="nt">&lt;item</span> <span class="na">android:top=</span><span class="s">&#34;1dip&#34;</span> <span class="na">android:bottom=</span><span class="s">&#34;1dip&#34;</span> <span class="na">android:right=</span><span class="s">&#34;1dip&#34;</span> <span class="nt">&gt;</span>
+        <span class="nt">&lt;shape&gt;</span>
+            <span class="c">&lt;!--     View填充颜色 --&gt;</span>
+            <span class="nt">&lt;solid</span> <span class="na">android:color=</span><span class="s">&#34;@color/public_round_yellow&#34;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;corners</span> 
+                 <span class="na">android:topRightRadius=</span><span class="s">&#34;@dimen/x10&#34;</span>  
+                 <span class="na">android:bottomRightRadius=</span><span class="s">&#34;@dimen/x10&#34;</span>  <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/shape&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+
+<span class="nt">&lt;/layer-list&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.jpg"
+        data-srcset="./10.jpg, ./10.jpg 1.5x, ./10.jpg 2x"
+        data-sizes="auto"
+        alt="./10.jpg"
+        title="10" /></p>
+<h2 id="android-为textview添加边框">android 为TextView添加边框</h2>
+<blockquote>
+<p>今天需要在TextView上面添加一个边框，但是TextView本身不支持边框，所以只能采用其他方式，在网上查询了一下，主要有三种方式可以实现1.带有边框的透明图片2.使用xml的shape设置3继承TextView覆写onDraw方法。</p>
+</blockquote>
+<h3 id="方法一">方法一</h3>
+<p>带有透明图片的背景图，这个没有什么好将的，自己制作一个就行 ，然后设置background就可以了</p>
+<h3 id="方法二">方法二</h3>
+<ul>
+<li>
+<p>通过shape来设置背景图片</p>
+</li>
+<li>
+<p>首先一个textview_border.xml文件放在drawable文件夹里面</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;shape</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span> <span class="na">android:shape=</span><span class="s">&#34;rectangle&#34;</span> <span class="nt">&gt;</span>
+   <span class="nt">&lt;solid</span> <span class="na">android:color=</span><span class="s">&#34;#ffffff&#34;</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;stroke</span> <span class="na">android:width=</span><span class="s">&#34;1dip&#34;</span> <span class="na">android:color=</span><span class="s">&#34;#4fa5d5&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/shape&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>为要添加边框的TextView添加一个background
+android:background=&quot;@drawable/textview_border&quot;</li>
+</ul>
+<p>效果图片如下:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<h3 id="方法三">方法三</h3>
+<p>编写一个继承TextView类的自定义组件，并在onDraw事件方法中画边框。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.example.test</span><span class="o">;</span>
+ 
+<span class="kn">import</span> <span class="nn">android.annotation.SuppressLint</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Canvas</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.graphics.Paint</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.util.AttributeSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.widget.TextView</span><span class="o">;</span>
+ 
+<span class="nd">@SuppressLint</span><span class="o">(</span><span class="s">&#34;DrawAllocation&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BorderTextView</span> <span class="kd">extends</span> <span class="n">TextView</span><span class="o">{</span>
+ 
+	<span class="kd">public</span> <span class="nf">BorderTextView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nf">BorderTextView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">AttributeSet</span> <span class="n">attrs</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">attrs</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">sroke_width</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDraw</span><span class="o">(</span><span class="n">Canvas</span> <span class="n">canvas</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">Paint</span> <span class="n">paint</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Paint</span><span class="o">();</span>
+        <span class="c1">//  将边框设为黑色
+</span><span class="c1"></span>        <span class="n">paint</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="n">android</span><span class="o">.</span><span class="na">graphics</span><span class="o">.</span><span class="na">Color</span><span class="o">.</span><span class="na">BLACK</span><span class="o">);</span>
+        <span class="c1">//  画TextView的4个边
+</span><span class="c1"></span>        <span class="n">canvas</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getWidth</span><span class="o">()</span> <span class="o">-</span> <span class="n">sroke_width</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">paint</span><span class="o">);</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getHeight</span><span class="o">()</span> <span class="o">-</span> <span class="n">sroke_width</span><span class="o">,</span> <span class="n">paint</span><span class="o">);</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">getWidth</span><span class="o">()</span> <span class="o">-</span> <span class="n">sroke_width</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getWidth</span><span class="o">()</span> <span class="o">-</span> <span class="n">sroke_width</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getHeight</span><span class="o">()</span> <span class="o">-</span> <span class="n">sroke_width</span><span class="o">,</span> <span class="n">paint</span><span class="o">);</span>
+        <span class="n">canvas</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getHeight</span><span class="o">()</span> <span class="o">-</span> <span class="n">sroke_width</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getWidth</span><span class="o">()</span> <span class="o">-</span> <span class="n">sroke_width</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getHeight</span><span class="o">()</span> <span class="o">-</span> <span class="n">sroke_width</span><span class="o">,</span> <span class="n">paint</span><span class="o">);</span>
+		<span class="kd">super</span><span class="o">.</span><span class="na">onDraw</span><span class="o">(</span><span class="n">canvas</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>效果图如下:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+<blockquote>
+<p>使用的Xml布局内容如下:</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;TextView</span> 
+    <span class="na">android:layout_width=</span><span class="s">&#34;120dp&#34;</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;80dp&#34;</span>
+    <span class="na">android:background=</span><span class="s">&#34;@drawable/textview_border&#34;</span>
+    <span class="na">android:text=</span><span class="s">&#34;方法二&#34;</span>
+    <span class="na">android:textColor=</span><span class="s">&#34;#FF000000&#34;</span>
+    <span class="na">android:id=</span><span class="s">&#34;@+id/test&#34;</span>
+    <span class="na">android:gravity=</span><span class="s">&#34;center&#34;</span>
+    <span class="na">android:layout_alignParentTop=</span><span class="s">&#34;true&#34;</span>
+    <span class="na">android:layout_marginTop=</span><span class="s">&#34;20dp&#34;</span>
+    <span class="na">android:layout_centerHorizontal=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+ 
+	<span class="nt">&lt;com.example.test.BorderTextView</span>
+      <span class="na">android:layout_width=</span><span class="s">&#34;120dp&#34;</span>
+      <span class="na">android:layout_height=</span><span class="s">&#34;80dp&#34;</span>
+      <span class="na">android:text=</span><span class="s">&#34;方法三&#34;</span>
+      <span class="na">android:id=</span><span class="s">&#34;@+id/test3&#34;</span>
+      <span class="na">android:gravity=</span><span class="s">&#34;center&#34;</span>
+      <span class="na">android:layout_alignParentBottom=</span><span class="s">&#34;true&#34;</span>
+      <span class="na">android:layout_marginBottom=</span><span class="s">&#34;20dp&#34;</span>
+      <span class="na">android:layout_centerHorizontal=</span><span class="s">&#34;true&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/com.example.test.BorderTextView&gt;</span>
+<span class="nt">&lt;/RelativeLayout&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="end">end</h2>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
