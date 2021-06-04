@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java_note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  2310 ,
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  2581 ,
         "url": "https:\/\/kkkpjskey.github.io\/java_note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-05-27T20:45:19+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2310 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/java_note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2581 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/java_note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -144,6 +144,7 @@
         <li><a href="#deque有三种用途">Deque有三种用途：</a></li>
       </ul>
     </li>
+    <li><a href="#queue队列操作">Queue队列操作</a></li>
     <li><a href="#数组操作">数组操作</a></li>
     <li><a href="#字符串操作">字符串操作</a></li>
   </ul>
@@ -738,6 +739,58 @@ Deque deque = new LinkedList()</li>
 <tr>
 <td style="text-align:center">peek()</td>
 <td style="text-align:center">peekFirst()</td>
+</tr>
+</tbody>
+</table>
+<h2 id="queue队列操作">Queue队列操作</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>方法名</strong></th>
+<th style="text-align:center"><strong>作用</strong></th>
+<th style="text-align:center"><strong>区别</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>add</strong></td>
+<td style="text-align:center">增加一个元索</td>
+<td style="text-align:center">如果队列已满，则抛出一个IIIegaISlabEepeplian异常</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>remove</strong></td>
+<td style="text-align:center">移除并返回队列头部的元素</td>
+<td style="text-align:center">如果队列为空，则抛出一个NoSuchElementException异常</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>element</strong></td>
+<td style="text-align:center">返回队列头部的元素</td>
+<td style="text-align:center">如果队列为空，则抛出一个NoSuchElementException异常</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>offer</strong></td>
+<td style="text-align:center">添加一个元素并返回true</td>
+<td style="text-align:center">如果队列已满，则返回false</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>offer</strong></td>
+<td style="text-align:center">移除并返问队列头部的元素</td>
+<td style="text-align:center">如果队列为空，则返回null</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>peek</strong></td>
+<td style="text-align:center">返回队列头部的元素</td>
+<td style="text-align:center">如果队列为空，则返回null</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>put</strong></td>
+<td style="text-align:center">添加一个元素</td>
+<td style="text-align:center">如果队列满，则阻塞</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>take</strong></td>
+<td style="text-align:center">移除并返回队列头部的元素</td>
+<td style="text-align:center">如果队列为空，则阻塞</td>
 </tr>
 </tbody>
 </table>

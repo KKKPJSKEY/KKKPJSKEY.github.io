@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 01 Jun 2021 17:42:55 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 14:48:50 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/android-music-box/</link>
     <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-music-box/</guid>
@@ -14,6 +14,11 @@
     <link>https://kkkpjskey.github.io/android-bottom-navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+</item><item>
+    <title>回溯算法笔记</title>
+    <link>https://kkkpjskey.github.io/backtracking-note/</link>
+    <pubDate>Fri, 04 Jun 2021 14:48:50 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/backtracking-note/</guid>
+    <description><![CDATA[通俗的讲，回溯法约等于递归里面嵌套for循环 回溯法问题类型 组合类 数组子数列 切割类 回文子串 子集类 类似组合 排列类 有序的组合 棋盘类 n皇后 问题解决思]]></description>
 </item><item>
     <title>Vim查看文件报错</title>
     <link>https://kkkpjskey.github.io/vim-again-swap-error/</link>
@@ -49,10 +54,5 @@
     <link>https://kkkpjskey.github.io/find-table/</link>
     <pubDate>Tue, 18 May 2021 15:03:10 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/find-table/</guid>
     <description><![CDATA[在遍历的同时，记录一些信息，以省去一层循环，这是“以空间换时间”的想法 需要记录已经遍历过的数值和它所对应的下标，可以借助查找表实现 查找表有两]]></description>
-</item><item>
-    <title>HashMap(int initialCapacity)指定集合大小</title>
-    <link>https://kkkpjskey.github.io/hashmap-initialcapacity/</link>
-    <pubDate>Mon, 17 May 2021 17:15:45 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/hashmap-initialcapacity/</guid>
-    <description><![CDATA[介绍 首先设置一个合理的初始化容量可以提高HashMap的性能 在当我们对HashMap初始化没设置初始化容量时，系统会默认创建一个容量为16的]]></description>
 </item></channel>
 </rss>
