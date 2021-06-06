@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 04 Jun 2021 14:48:50 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 06 Jun 2021 15:53:44 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>基于广播和服务功能的音乐播放器</title>
@@ -16,6 +16,16 @@
     <link>https://kkkpjskey.github.io/android-bottom-navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+</item><item>
+    <title>Error inflating class com.baidu.mapapi.map.MapView</title>
+    <link>https://kkkpjskey.github.io/android-baidumap-inflating-error/</link>
+    <pubDate>Sun, 06 Jun 2021 15:53:44 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-baidumap-inflating-error/</guid>
+    <description><![CDATA[快乐报错 1 Error inflating class com.baidu.mapapi.map.MapView 解决办法 这个也是百度地图调用过程中的步骤，亦可作为参考 集成百度地图时遇到的问题,纠缠我了半天,网上各种方法都试过了,还是一]]></description>
+</item><item>
+    <title>Android studio模拟器无法联网问题解决办法</title>
+    <link>https://kkkpjskey.github.io/androidstudio-avd-disconnect/</link>
+    <pubDate>Sun, 06 Jun 2021 15:25:50 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/androidstudio-avd-disconnect/</guid>
+    <description><![CDATA[出现问题 重装系统后安装了Android studio 4.2.1，记得之前用模拟器联网的时候都是直接在模拟器内部打开网络连接就好，现在不行了，不知道之前怎]]></description>
 </item><item>
     <title>回溯算法笔记</title>
     <link>https://kkkpjskey.github.io/backtracking-note/</link>
@@ -46,15 +56,5 @@
     <link>https://kkkpjskey.github.io/java-pencentage-format-error/</link>
     <pubDate>Mon, 24 May 2021 19:06:51 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-pencentage-format-error/</guid>
     <description><![CDATA[问题现象 最近在做一个java项目使用String.format进行控制台打印，结果出现如下错误： 最关键的是这个问题是偶现的，通过google]]></description>
-</item><item>
-    <title>JS的padStart()方法,padEnd()方法</title>
-    <link>https://kkkpjskey.github.io/js-padstart-padend/</link>
-    <pubDate>Wed, 19 May 2021 12:13:45 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/js-padstart-padend/</guid>
-    <description><![CDATA[ES2017 引入了字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。padStart()用于头部补全，padEnd()用于尾部补全]]></description>
-</item><item>
-    <title>查找表法</title>
-    <link>https://kkkpjskey.github.io/find-table/</link>
-    <pubDate>Tue, 18 May 2021 15:03:10 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/find-table/</guid>
-    <description><![CDATA[在遍历的同时，记录一些信息，以省去一层循环，这是“以空间换时间”的想法 需要记录已经遍历过的数值和它所对应的下标，可以借助查找表实现 查找表有两]]></description>
 </item></channel>
 </rss>

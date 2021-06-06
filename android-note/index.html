@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/android-note\/featured-image.jpg",
                             "width":  740 ,
                             "height":  393 
-                        }],"genre": "posts","keywords": "Android, XMl, Kotlin, Service, Theme, layout, ConstraintLayout, Activity","wordcount":  2387 ,
+                        }],"genre": "posts","keywords": "Android, XMl, Kotlin, Service, Theme, layout, ConstraintLayout, Activity","wordcount":  4816 ,
         "url": "https:\/\/kkkpjskey.github.io\/android-note\/","datePublished": "2021-05-01T03:02:55+08:00","dateModified": "2021-05-01T03:02:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Android开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/total/"><i class="far fa-folder fa-fw"></i>Total</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-01">2021-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2387 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/android-note/" class="leancloud_visitors" data-flag-title="Android开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-01">2021-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4816 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/android-note/" class="leancloud_visitors" data-flag-title="Android开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -149,6 +149,27 @@
         <li><a href="#方法一">方法一</a></li>
         <li><a href="#方法二">方法二</a></li>
         <li><a href="#方法三">方法三</a></li>
+      </ul>
+    </li>
+    <li><a href="#全局变量">全局变量</a></li>
+    <li><a href="#android-使控件各占屏幕的一半">Android 使控件各占屏幕的一半</a></li>
+    <li><a href="#fragment生命周期">Fragment生命周期</a>
+      <ul>
+        <li><a href="#一前言">一、前言：</a></li>
+        <li><a href="#二fragment-1-切换到-fragment-2时生命周期变化">二、Fragment 1 切换到 Fragment 2时生命周期变化</a>
+          <ul>
+            <li><a href="#1-通过-add-hide-show-方式来切换-fragment">1. 通过 add hide show 方式来切换 Fragment</a></li>
+            <li><a href="#2-使用-replace-的方法进行切换时">2. 使用 replace 的方法进行切换时</a></li>
+            <li><a href="#3-使用-viewpager-进行切换时">3. 使用 ViewPager 进行切换时</a></li>
+          </ul>
+        </li>
+        <li><a href="#三其它切换">三、其它切换</a>
+          <ul>
+            <li><a href="#1-activity-切换到-fragment-的生命周期变化">1. Activity 切换到 Fragment 的生命周期变化</a></li>
+            <li><a href="#2-从-fragment-1-进行锁屏操作">2. 从 Fragment 1 进行锁屏操作</a></li>
+            <li><a href="#3-从解锁-到-fragment-1-的生命周期">3. 从解锁 到 Fragment 1 的生命周期</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#end">end</a></li>
@@ -670,7 +691,188 @@ android:background=&quot;@drawable/textview_border&quot;</li>
 <span class="nt">&lt;/RelativeLayout&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="end">end</h2>
+</div><h2 id="全局变量">全局变量</h2>
+<blockquote>
+<p>切换Fragment时有些值需要保存，故需要一个全局变量进行保存</p>
+</blockquote>
+<p>​       项目开发的过程中，可能会大量的使用全局变量，在android开发中，大多数人更偏向于使用application来保存全局变量。那么我们就先来了解下在android中，application究竟是什么？有什么作用？</p>
+<p>　　Application类是用来维护应用程序全局状态。我们可以提供自己的实现，并在AndroidManifest.xml文件的<application>标签中指出它的名字，这将导致在创建应用程序时去实例化我们自己的Application类。Android系统会为每个程序运行时创建一个Application类的对象且仅创建一个，所以Application可以说是单例模式的一个类。且Application对象的生命周期是整个程序中最长的，它的生命周期就等于这个程序的生命周期。因为它是全局唯一的，所以在不同的Activity,Service中获得的对象都是同一个对象。所以，通过Application来进行一些数据传递、数据共享、数据缓存等操作。</p>
+<p>　　首先创建继承自Application的MusicPlayerStatus类，定义变量update、current,并创建get和set方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">android.app.Application</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MusicPlayerStatus</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">update</span><span class="o">=-</span><span class="n">1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">current</span><span class="o">=-</span><span class="n">1</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getUpdate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">update</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUpdate</span><span class="o">(</span><span class="kt">int</span> <span class="n">update</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">update</span> <span class="o">=</span> <span class="n">update</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCurrent</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">current</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCurrent</span><span class="o">(</span><span class="kt">int</span> <span class="n">current</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>下面就是如何使用我们创建的全局变量了，在MainActivity中，首先要获得MusicPlayerStatus的对象，因为MusicPlayerStatus继承自Application，所以使用getApplication()方法即可，然后可以调用MusicPlayerStatus的get或set方法进行访问全局变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">MusicPlayerStatus</span> <span class="n">musicPlayerStatus</span><span class="o">=</span><span class="k">new</span> <span class="n">MusicPlayerStatus</span><span class="o">();</span>
+<span class="kt">int</span> <span class="n">update</span> <span class="o">=</span> <span class="n">musicPlayerStatus</span><span class="o">.</span><span class="na">getUpdate</span><span class="o">();</span>
+<span class="kt">int</span> <span class="n">current</span> <span class="o">=</span> <span class="n">musicPlayerStatus</span><span class="o">.</span><span class="na">getCurrent</span><span class="o">();</span>
+<span class="n">musicPlayerStatus</span><span class="o">.</span><span class="na">setUpdate</span><span class="o">(</span><span class="n">update</span><span class="o">);</span>
+<span class="n">musicPlayerStatus</span><span class="o">.</span><span class="na">setCurrent</span><span class="o">(</span><span class="n">current</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意，在使用MusicPlayerStatus之前需要修改AndroidManifest.xml文件的<application>中的android:name = &ldquo;.MusicPlayerStatus&rdquo;，这样就不会访问系统提供的application，而访问我们自己创建的。</p>
+<h2 id="android-使控件各占屏幕的一半">Android 使控件各占屏幕的一半</h2>
+<p>在xml中将两个要占屏幕一半的控件都加上android:layout_weight=&ldquo;1&rdquo;；</p>
+<p>注意：weight只能用在LinearLayout布局中。</p>
+<p>在LinearLayout布局中weight数值越大显示的优先权就越低。</p>
+<h2 id="fragment生命周期">Fragment生命周期</h2>
+<blockquote>
+<p>相互切换时调用的方法</p>
+</blockquote>
+<h3 id="一前言">一、前言：</h3>
+<p>Fragment生命周期图如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<h3 id="二fragment-1-切换到-fragment-2时生命周期变化">二、Fragment 1 切换到 Fragment 2时生命周期变化</h3>
+<h4 id="1-通过-add-hide-show-方式来切换-fragment">1. 通过 add hide show 方式来切换 Fragment</h4>
+<ul>
+<li>Fragment1 的生命周期变化为：onCreate（）、onCreateView、onStart（）、onResume（） 回调 onHiddenChanged（） 方法</li>
+<li>Fragment2 的生命周期变化为： onCreate（）、onCreateView、onStart（）、onResume（）</li>
+<li>Fragment 2 再次返回到 Fragment 1：不走任何生命周期方法但是回调 onHiddenChanged（）方法</li>
+</ul>
+<p><strong>总结：当以这种方式进行 Fragment 1 与 Fragment 2 的切换时，Fragment 隐藏的时候并不走 onDestroyView，所有的显示也不会走 onCreateView 方法，所有的 view 都会保存在内存。</strong></p>
+<h4 id="2-使用-replace-的方法进行切换时">2. 使用 replace 的方法进行切换时</h4>
+<ul>
+<li>载入Fragment 1时：
+Fragment 1的生命周期：onCreate（）、onCreateView（）、onStart（）、onResume（）</li>
+<li>切换到Fragment2时：
+Fragment 1的生命周期：onPause（）、onStop()、onDestroyView（）、onDestroy（）
+Fragment 2的生命周期：onCreate（）、onCreateV（）、onStart（）、onResume（）</li>
+<li>Fragment 2切换回Fragment 1时：
+Fragment2的生命周期：onPause（）、onStop()、onDestroyView（）、onDestroy（）
+Fragment 1的生命周期：onCreate（）、onCreateV（）、onStart（）、onResume（）</li>
+</ul>
+<p><strong>总结：通过 replace 方法进行替换的时，Fragment 都是进行了销毁，重建的过程，相当于走了一整套的生命周期。</strong></p>
+<h4 id="3-使用-viewpager-进行切换时">3. 使用 ViewPager 进行切换时</h4>
+<p>当使用 ViewPager 与 Fragment 进行切换时，Fragment 会进行预加载操作
+所有的 Fragment 都会提前初始&mdash;&gt;预加载；</p>
+<p><strong>初始化时 Fragment 们的生命周期：</strong></p>
+<blockquote>
+<p>Fragment 1 的生命周期：onCreate（）、onCreateView（）
+Fragment 2 的生命周期：onCreate（）、 onCreateView（）</p>
+</blockquote>
+<ul>
+<li>Fragment 1 切换到 Fragment 2 的生命周期：</li>
+</ul>
+<blockquote>
+<p>Fragment 1 ：不走任何生命周期；
+Fragment 2 ：走 setUserVisVleHint（）方法</p>
+</blockquote>
+<p>切回去也是一样的
+<strong>注意： setUserVisVleHint（）方法在 Fragment 1 第一次加载的时候不走，只有在切换的时候 走该方法。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm">*第一个 Fragment 需要处理  setUserVisVleHint（）方法，设置为 setUserVisibleHint(true);
+</span><span class="cm">*否则会产空指针异常，因为 setUserVisVleHint（）方法的优先级高于 onCreate（）方法。
+</span><span class="cm">*
+</span><span class="cm">* @param savedInstanceState
+</span><span class="cm">*/</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onActivityCreated</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">setUserVisibleHint</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onActivityCreated</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+<span class="o">}</span>
+ <span class="cm">/*
+</span><span class="cm">主动调用 setUserVisibleHint（）方法来控制第一次不会调用setUserVisibleHint方法的问题。
+</span><span class="cm">setUserVisibleHint（）方法优先onCreateView方法，当onCreateView方法调用后还会再次调用setUserVisibleHint方法。
+</span><span class="cm">此时要对是否调用了onCreateView（）方法进行标记判断。
+</span><span class="cm">*/</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="三其它切换">三、其它切换</h3>
+<h4 id="1-activity-切换到-fragment-的生命周期变化">1. Activity 切换到 Fragment 的生命周期变化</h4>
+<ul>
+<li>Fragment 的生命周期变化为：onStart（）、onResume（）</li>
+</ul>
+<h4 id="2-从-fragment-1-进行锁屏操作">2. 从 Fragment 1 进行锁屏操作</h4>
+<ul>
+<li>Fragment 的生命周期方法：onPause（）、onSaveInstanceState（）、onStop（）。</li>
+</ul>
+<h4 id="3-从解锁-到-fragment-1-的生命周期">3. 从解锁 到 Fragment 1 的生命周期</h4>
+<ul>
+<li>onStart（）、 onResume（）</li>
+</ul>
+<h2 id="end">end</h2>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
