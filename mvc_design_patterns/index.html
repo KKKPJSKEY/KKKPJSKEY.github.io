@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>用组合模式、策略模式、观察者模式结合来实现一个MVC - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="用组合模式、策略模式、观察者模式结合来实现一个MVC"><meta property="og:title" content="用组合模式、策略模式、观察者模式结合来实现一个MVC" />
+<meta property="og:description" content="用组合模式、策略模式、观察者模式结合来实现一个MVC" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/mvc_design_patterns/" /><meta property="og:image" content="https://kkkpjskey.github.io/mvc_design_patterns/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-28T20:30:40&#43;08:00" />
+<meta property="article:modified_time" content="2021-06-28T20:30:40&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/mvc_design_patterns/featured-image.jpg"/>
+<meta name="twitter:title" content="用组合模式、策略模式、观察者模式结合来实现一个MVC"/>
+<meta name="twitter:description" content="用组合模式、策略模式、观察者模式结合来实现一个MVC"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/mvc_design_patterns/" /><link rel="prev" href="https://kkkpjskey.github.io/office-orrbit-pan-baidu/" /><link rel="next" href="https://kkkpjskey.github.io/java-tomcat-port-already-in-use-1099/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "用组合模式、策略模式、观察者模式结合来实现一个MVC",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/mvc_design_patterns\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/mvc_design_patterns\/featured-image.jpg",
+                            "width":  1049 ,
+                            "height":  627 
+                        }],"genre": "posts","keywords": "MVC","wordcount":  4473 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mvc_design_patterns\/","datePublished": "2021-06-28T20:30:40+08:00","dateModified": "2021-06-28T20:30:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "用组合模式、策略模式、观察者模式结合来实现一个MVC"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/mvc_design_patterns/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/mvc_design_patterns/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">用组合模式、策略模式、观察者模式结合来实现一个MVC</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/softwaredesign/"><i class="far fa-folder fa-fw"></i>SoftwareDesign</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-28">2021-06-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4473 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/mvc_design_patterns/" class="leancloud_visitors" data-flag-title="用组合模式、策略模式、观察者模式结合来实现一个MVC">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/mvc_design_patterns/featured-image.jpg"
+        data-srcset="/mvc_design_patterns/featured-image.jpg, /mvc_design_patterns/featured-image.jpg 1.5x, /mvc_design_patterns/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/mvc_design_patterns/featured-image.jpg"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#用组合模式策略模式观察者模式结合来实现一个mvc">用组合模式、策略模式、观察者模式结合来实现一个MVC</a>
+      <ul>
+        <li><a href="#1-mvc介绍">1 MVC介绍</a></li>
+        <li><a href="#2为什么要在web应用中使用mvc架构">2.为什么要在Web应用中使用MVC架构</a>
+          <ul>
+            <li><a href="#21-提高代码重用率">2.1 提高代码重用率</a></li>
+            <li><a href="#22-提高程序的可维护性">2.2 提高程序的可维护性</a></li>
+            <li><a href="#23-有利于团队开发">2.3 有利于团队开发</a></li>
+          </ul>
+        </li>
+        <li><a href="#3-mvc架构的优点及不足">3 MVC架构的优点及不足</a>
+          <ul>
+            <li><a href="#31-mvc的优点">3.1 MVC的优点</a></li>
+            <li><a href="#32-mvc的缺点">3.2 MVC的缺点</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="用组合模式策略模式观察者模式结合来实现一个mvc">用组合模式、策略模式、观察者模式结合来实现一个MVC</h2>
+<h3 id="1-mvc介绍">1 MVC介绍</h3>
+<p>众所周知MVC不是设计模式，是一个比设计模式更大一点的模式，称作设计模式不合理，应该说MVC它是一种软件开发架构模式，它包含了很多的设计模式，最为密切是以下三种：Observer (观察者模式), Composite（组合模式）和Strategy（策略模式）。所以说MVC模式又称复合模式。MVC(Model-View-Controller) 模式的基本思想是数据，显示和处理相分离。模型(Model)负责数据管理，视图(View)负责数据显示，控制器(Controller)负责业务逻辑和响应策略。</p>
+<p>从MVC的形成过程来看，最初只有模型和视图两个元素。模型封装了数据并提供操作接口，视图用来表现数据和接收用户请求。模型是独立的，而视图依赖于模型：从模型获取数据进行显示；向模型发送用户请求，并根据返回结果刷新自己。</p>
+<p>需要用多个视图表现同一模型时，情况发生了变化：一个视图修改数据以后，不但本身要刷新，其他所有视图也要刷新。如果由该视图通知其他视图，它就需要知道其他所有视图，由于每个视图都可能发出修改，每个视图都要知道其他所有视图，这种关联过于复杂，不但难以维护，而且不便于增加新的视图。如果让模型通知所有视图更新，可能会影响模型的独立性。用观察者(Observer)模式 可以解决上述矛盾，从而实现：由模型通知视图，而模型不依赖于具体的视图，具体视图之间相互独立。</p>
+<p>视图是用户请求的接收者，但不宜作为请求的处理者。因为界面是易变的，如果业务代码和界面代码放在一起，频繁的界面修改可能会破坏比较稳定的业务代码。将业务逻辑分离出来，由一个控制器负责，就是为了避免这种干扰。</p>
+<p>模型，视图和控制器的基本协作关系如下图<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://192.168.1.246:88/wiki/download/attachments/7831556/MVC%E6%A8%A1%E5%BC%8F%E5%8D%8F%E4%BD%9C%E5%9B%BE.gif?version=1&amp;modificationDate=1232177436000"
+        data-srcset="http://192.168.1.246:88/wiki/download/attachments/7831556/MVC%E6%A8%A1%E5%BC%8F%E5%8D%8F%E4%BD%9C%E5%9B%BE.gif?version=1&amp;modificationDate=1232177436000, http://192.168.1.246:88/wiki/download/attachments/7831556/MVC%E6%A8%A1%E5%BC%8F%E5%8D%8F%E4%BD%9C%E5%9B%BE.gif?version=1&amp;modificationDate=1232177436000 1.5x, http://192.168.1.246:88/wiki/download/attachments/7831556/MVC%E6%A8%A1%E5%BC%8F%E5%8D%8F%E4%BD%9C%E5%9B%BE.gif?version=1&amp;modificationDate=1232177436000 2x"
+        data-sizes="auto"
+        alt="http://192.168.1.246:88/wiki/download/attachments/7831556/MVC%E6%A8%A1%E5%BC%8F%E5%8D%8F%E4%BD%9C%E5%9B%BE.gif?version=1&amp;modificationDate=1232177436000"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" /></p>
+<p>模型在状态变化的时候，直接通知所有视图，视图向模型查询状态数据，然后刷新自身。当用户发出操作时，视图把消息发给控制器，控制器按照业务逻辑进行处理，需要查询或更新数据时，控制器会调用模型。下面是一个更详细的示意图<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://192.168.1.246:88/wiki/download/attachments/7831556/20070904133200366.gif?version=1&amp;modificationDate=1232177741000"
+        data-srcset="http://192.168.1.246:88/wiki/download/attachments/7831556/20070904133200366.gif?version=1&amp;modificationDate=1232177741000, http://192.168.1.246:88/wiki/download/attachments/7831556/20070904133200366.gif?version=1&amp;modificationDate=1232177741000 1.5x, http://192.168.1.246:88/wiki/download/attachments/7831556/20070904133200366.gif?version=1&amp;modificationDate=1232177741000 2x"
+        data-sizes="auto"
+        alt="http://192.168.1.246:88/wiki/download/attachments/7831556/20070904133200366.gif?version=1&amp;modificationDate=1232177741000"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" />
+MVC架构把数据处理，程序输入输出控制及数据显示分离开来，并且描述了不同部件的对象间的通信方式。使得软件可维护性，可扩展性，灵活性以及封装性大大提高；MVC(Model-View-Controller)把系统的组成分解为M（模型）、 V（视图）、C（控制器）三种部件。视图表示数据在屏幕上的显示。控制器提供处理过程控制，它在模型和视图之间起连接作用。控制器本身不输出任何信息和做任何处理，它只负责把用户的请求转成针对Model的操作，和调用相应的视图来显示Model处理后的数据。三者之间关系如下图2.1：<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000"
+        data-srcset="http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000, http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000 1.5x, http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000 2x"
+        data-sizes="auto"
+        alt="http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000"
+        data-srcset="http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000, http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000 1.5x, http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000 2x"
+        data-sizes="auto"
+        alt="http://192.168.1.246:88/wiki/download/attachments/7831556/pic2_1.jpg?version=1&amp;modificationDate=1232159712000"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" />
+图2.1 MVC关系图
+同样的数据，可以有不同的显示和进行各种处理。显示仅仅是表现数据，而处理是根据用户请求改变数据的过程，不但包含业务逻辑，也要提供响应策略。响应策略由控制器负责，视图可以使用不同的控制器提供不同的响应方式，这是策略(Strategy)模式的应用。</p>
+<p>此外，MVC还允许视图嵌套，通过使用组合(Composite)模式，一致地处理组合视图和普通视图。</p>
+<p>用多个视图表现一个模型，在视图不变的情况下改变响应策略，允许视图嵌套，这是MVC的三个主要特性。在内部结构上，MVC的主要关系是由观察者模式，策略模式和组合模式给出的。由观察者模式确定的模型视图关系是其中最为重要的。</p>
+<p>MVC 模式有许多变体。前述结构中，由模型通知视图刷新，称为主动MVC；如果由控制器更新模型以后通知视图，称为被动MVC结构。在许多应用中，没有明显的控制器角色，也没有视图嵌套。可见根据实际需要，构成MVC的三个模式上都可能出现变化。Web浏览器就是被动MVC结构的一个实例。<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://192.168.1.246:88/wiki/download/attachments/7831556/Browser.gif?version=1&amp;modificationDate=1232177523000"
+        data-srcset="http://192.168.1.246:88/wiki/download/attachments/7831556/Browser.gif?version=1&amp;modificationDate=1232177523000, http://192.168.1.246:88/wiki/download/attachments/7831556/Browser.gif?version=1&amp;modificationDate=1232177523000 1.5x, http://192.168.1.246:88/wiki/download/attachments/7831556/Browser.gif?version=1&amp;modificationDate=1232177523000 2x"
+        data-sizes="auto"
+        alt="http://192.168.1.246:88/wiki/download/attachments/7831556/Browser.gif?version=1&amp;modificationDate=1232177523000"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" />
+&quot; 浏览器是一个交互程序，从概念上讲，它是由一组客户、一组解释器与一个管理它们的控制器所组成。控制器形成了浏览器的中心部件，它解释鼠标点击与键盘输入，并且调用其他组件来执行用户指定的操作。例如，当用户键入一个URL或者点击一个超文本引用时，控制器调用一个客户从所需文档所在的远程服务器上取回该文档，并且调用解释器向用户显示该文档。每个浏览器必须包含一个HTML解释器来显示文档，其他解释器是可选的。HTML解释器的输入由符合HTML语法的文档所组成，输出由位于用户显示器上的格式版本文档所组成。解释器通过将HTML规则转换成适合用户显示硬件的命令来处理版面细节。HTML解释器一个最重要的功能是包含可选项。解释器必须存储关于显示器上位置之间关系的信息和HTML文档中被瞄定的项。当用户用鼠标选定了一个项，浏览器通过当前的光标位置和存储的位置信息来决定哪个项被用户选定。&quot;</p>
+<h3 id="2为什么要在web应用中使用mvc架构">2.为什么要在Web应用中使用MVC架构</h3>
+<p>用户界面逻辑的更改往往比业务逻辑频繁，尤其是在基于Web的应用程序中。例如，可能添加新的用户界面页，或者可能完全打乱现有的页面布局。对显示的更改，尽可能地不要影响到数据和业务逻辑。</p>
+<p>目前大部分Web应用都是将数据代码和表示混在一起。经验比较丰富的开发者会将数据从表示层分离开来，但这通常不是很容易做到的，它需要精心的计划和不断的尝试。MVC从根本上强制性的将它们分开。尽管构造MVC应用需要一些额外的工作，但它带来的好处是无庸质疑的。</p>
+<h4 id="21-提高代码重用率">2.1 提高代码重用率</h4>
+<p>最重要的一点是多个视图能共享一个模型，无论用户想要Flash界面或是 WAP 界面；用一个模型就能处理它们。由于已经将数据和业务规则从表示层分开，所以可以最大化的重用代码。</p>
+<h4 id="22-提高程序的可维护性">2.2 提高程序的可维护性</h4>
+<p>因为模型是自包含的，并且与控制器和视图相分离，所以很容易改变数据层和业务规则 [3]。例如，把数据库从MySQL移植到Oracle，或者把基于RDBMS数据源改变到LDAP，只需改变模型即可。一旦正确的实现了模型，不管数据来自哪里，视图都会正确的显示它们。MVC架构的运用，使得程序的三个部件相互对立，大大提高了程序的可维护性。</p>
+<h4 id="23-有利于团队开发">2.3 有利于团队开发</h4>
+<p>在开发过程中，可以更好的分工，更好的协作。有利于开发出高质量的软件。良好的项 目架构设计，将减少编码工作量 ：采用MVC结构 + 代码生成器，是大多数Web应用的理想选择。部分模型(Model)、和存储过程一般可用工具自动生成。控制(Controller)器比较稳定，一般由于架构师（也可能是有经验的人）完成；那么整个项目需要手动编写代码的地方就只有视图(View)了。在这种模式下，个人能力不在特别重要，只要懂点语法基础的人都可以编写，无论项目成员写出什么样的代码，都在项目管理者的可控范围内。即使项目中途换人，也不会有太大问题。在个人能力参差不齐的团队开发中，采用MVC开发是非常理想的。</p>
+<h3 id="3-mvc架构的优点及不足">3 MVC架构的优点及不足</h3>
+<h4 id="31-mvc的优点">3.1 MVC的优点</h4>
+<p>MVC的优点体现在以下几个方面：</p>
+<p>（1） 有利于团队开发分工协作和质量控制，降低开发成本。</p>
+<p>（2） 可以为一个模型在运行时同时建立和使用多个视图。变化-传播机制可以确保所有相关的视图及时得到模型数据变化，从而使所有关联的视图和控制器做到行为同步。</p>
+<p>（3） 视图与控制器的可接插性，允许更换视图和控制器对象，而且可以根据需求动态的打开或关闭、甚至在运行期间进行对象替换。</p>
+<p>（4） 模型的可移植性。因为模型是独立于视图的，所以可以把一个模型独立地移植到新的平台工作。需要做的只是在新平台上对视图和控制器进行新的修改。</p>
+<p>（5） 潜在的框架结构。可以基于此模型建立应用程序框架，不仅仅是用在设计界面的设计中。</p>
+<h4 id="32-mvc的缺点">3.2 MVC的缺点</h4>
+<p>MVC的不足体现在以下几个方面：</p>
+<p>（1）增加了系统结构和实现的复杂性。对于简单的界面，严格遵循MVC，使模型、视图与控制器分离，会增加结构的复杂性，并可能产生过多的更新操作，降低运行效率。</p>
+<p>（2）视图对模型数据的访问效率低。视图可能需要多次调用Model才能获得足够的显示数据。</p>
+<p>（3）完全理解MVC并不是很容易。使用MVC需要精心的计划，由于它的内部原理比较复杂，所以需要花费一些时间去思考。同时由于模型和视图要严格的分离，这样也给调试应用程序到来了一定的困难。</p>
+<p><strong>MVC 模式可以分解为以下设计模式</strong></p>
+<p>在GOF书的 Introduction中，有一小节是&quot;Design Patterns in Smalltalk MVC&quot;即介绍在MVC模式里用到的设计模式。它大概向我们传达了这样的信息：合成模式+策略模式+观察者模式约等于MVC模式（当然MVC模式要多一些东西）。也就是说它在大部分情况下是下面几个模式：</p>
+<p><strong>1、观察者模式</strong></p>
+<p>类图结构在Gof里的表示如下：<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://192.168.1.246:88/wiki/download/attachments/7831556/liA0ap5lmtI.png?version=1&amp;modificationDate=1232155791000"
+        data-srcset="http://192.168.1.246:88/wiki/download/attachments/7831556/liA0ap5lmtI.png?version=1&amp;modificationDate=1232155791000, http://192.168.1.246:88/wiki/download/attachments/7831556/liA0ap5lmtI.png?version=1&amp;modificationDate=1232155791000 1.5x, http://192.168.1.246:88/wiki/download/attachments/7831556/liA0ap5lmtI.png?version=1&amp;modificationDate=1232155791000 2x"
+        data-sizes="auto"
+        alt="http://192.168.1.246:88/wiki/download/attachments/7831556/liA0ap5lmtI.png?version=1&amp;modificationDate=1232155791000"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" /></p>
+<p><strong>2、合成模式</strong>
+类图结构在Gof里的表示如下： <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://192.168.1.246:88/wiki/download/attachments/7831556/li7LRJHwxUcps.gif?version=1&amp;modificationDate=1232155830000"
+        data-srcset="http://192.168.1.246:88/wiki/download/attachments/7831556/li7LRJHwxUcps.gif?version=1&amp;modificationDate=1232155830000, http://192.168.1.246:88/wiki/download/attachments/7831556/li7LRJHwxUcps.gif?version=1&amp;modificationDate=1232155830000 1.5x, http://192.168.1.246:88/wiki/download/attachments/7831556/li7LRJHwxUcps.gif?version=1&amp;modificationDate=1232155830000 2x"
+        data-sizes="auto"
+        alt="http://192.168.1.246:88/wiki/download/attachments/7831556/li7LRJHwxUcps.gif?version=1&amp;modificationDate=1232155830000"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" /></p>
+<p><strong>3、策略模式</strong></p>
+<p>类图结构在Gof里的表示如下：
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://192.168.1.246:88/wiki/download/attachments/7831556/liMGbHyP5XlWE.gif?version=1&amp;modificationDate=1232155921000"
+        data-srcset="http://192.168.1.246:88/wiki/download/attachments/7831556/liMGbHyP5XlWE.gif?version=1&amp;modificationDate=1232155921000, http://192.168.1.246:88/wiki/download/attachments/7831556/liMGbHyP5XlWE.gif?version=1&amp;modificationDate=1232155921000 1.5x, http://192.168.1.246:88/wiki/download/attachments/7831556/liMGbHyP5XlWE.gif?version=1&amp;modificationDate=1232155921000 2x"
+        data-sizes="auto"
+        alt="http://192.168.1.246:88/wiki/download/attachments/7831556/liMGbHyP5XlWE.gif?version=1&amp;modificationDate=1232155921000"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" />
+<strong>谈 谈 MVC 架构模式中的三个角色</strong></p>
+<ul>
+<li><strong>Model （模型端）</strong></li>
+</ul>
+<p>Mod封装的是数据源和所有基于对这些数据的操作。在一个组件中，Model往往表示组件的状态和操作这些状态的方法，往往是一系列的公开方法。通过这些公开方法，便可以取得模型端的所有功能。</p>
+<p>在这些公开方法中，有些是取值方法，让系统其他部分可以得到模型端的内部状态参数，其他的改值方法则允许外部修改模型端的内部状态。模型端还必须有方法登记视图，以便在模型端的内部状态发生变化时，可以通知视图端。我们可以自己定义一个Subject接口来提供登记和通知视图所需的接口或者继承 Java.util.Observable类，让父类完成这件事。</p>
+<ul>
+<li><strong>多个 View( 视图端 )</strong></li>
+</ul>
+<p>View封装的是对数据源Model的一种显示。一个模型可以由多个视图，并且可以在需要的时候动态地登记上所需的视图。而一个视图理论上也可以同不同的模型关联起来。</p>
+<p>在前言里提到了，MVC模式用到了合成模式，这是因为在视图端里，视图可以嵌套，比如说在一个JFrame组件里面，可以有菜单组件，很多按钮组件等。</p>
+<ul>
+<li><strong>多个 Controller( 控制器端 )</strong></li>
+</ul>
+<p>封装的是外界作用于模型的操作。通常，这些操作会转发到模型上，并调用模型中相应的一个或者多个方法（这个方法就是前面在介绍模型的时候说的改值方法）。一般Controller在Model和View之间起到了沟通的作用，处理用户在View上的输入，并转发给Model来更改其状态值。这样 Model和View两者之间可以做到松散耦合，甚至可以彼此不知道对方，而由Controller连接起这两个部分。也在前言里提到，MVC用到了策略模式，这是因为View用一个特定的Controller的实例来实现一个特定的响应策略，更换不同的Controller，可以改变View对用户输入的响应。</p>
+<p><strong>MVC</strong> (Model-View-Controller) : 模型利用&quot;观察者&quot;让控制器和视图可以随最新的状态改变而更新。另一方面，视图和控制器则实现了&quot;策略模式&quot;。控制器是视图的行为; 视图内部使用&quot;组合模&quot;式来管理显示组件。</p>
+<p>以下的MVC解释图很好的标示了这种模式：<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://192.168.1.246:88/wiki/download/attachments/7831556/02-mvc_in_fleaphp.png?version=1&amp;modificationDate=1232159466000"
+        data-srcset="http://192.168.1.246:88/wiki/download/attachments/7831556/02-mvc_in_fleaphp.png?version=1&amp;modificationDate=1232159466000, http://192.168.1.246:88/wiki/download/attachments/7831556/02-mvc_in_fleaphp.png?version=1&amp;modificationDate=1232159466000 1.5x, http://192.168.1.246:88/wiki/download/attachments/7831556/02-mvc_in_fleaphp.png?version=1&amp;modificationDate=1232159466000 2x"
+        data-sizes="auto"
+        alt="http://192.168.1.246:88/wiki/download/attachments/7831556/02-mvc_in_fleaphp.png?version=1&amp;modificationDate=1232159466000"
+        title="用组合模式、策略模式、观察者模式结合来实现一个MVC" /></p>
+<ul>
+<li>模型使用观察者模式，以便观察者更新，同时保持两者之间的解耦。</li>
+<li>控制器是视图的策略，视图可以使用不同的控制器实现，得到不同的行为。</li>
+<li>视图使用组合模式实现用户界面，用户界面通常组合了嵌套的组件，像面板、框架和按钮。</li>
+<li>这些模式携手合作，把MVC模式的三层解耦，这样可以保持设计干净又有弹性。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-06-28</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mvc_design_patterns/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/mvc_design_patterns/" data-title="用组合模式、策略模式、观察者模式结合来实现一个MVC" data-hashtags="MVC"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/mvc_design_patterns/" data-hashtag="MVC"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/mvc_design_patterns/" data-title="用组合模式、策略模式、观察者模式结合来实现一个MVC" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/mvc_design_patterns/" data-title="用组合模式、策略模式、观察者模式结合来实现一个MVC"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mvc/">MVC</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/office-orrbit-pan-baidu/" class="prev" rel="prev" title="word怎么去掉百度网盘"><i class="fas fa-angle-left fa-fw"></i>word怎么去掉百度网盘</a>
+            <a href="/java-tomcat-port-already-in-use-1099/" class="next" rel="next" title="java.rmi.server.ExportException: Port already in use: 1099">java.rmi.server.ExportException: Port already in use: 1099<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/dynamic_program\/featured-image.jpg",
                             "width":  669 ,
                             "height":  244 
-                        }],"genre": "posts","keywords": "Algorithm, DynamicProgramming","wordcount":  597 ,
+                        }],"genre": "posts","keywords": "Algorithm, DynamicProgramming","wordcount":  856 ,
         "url": "https:\/\/kkkpjskey.github.io\/dynamic_program\/","datePublished": "2021-05-29T19:19:17+08:00","dateModified": "2021-05-29T19:19:17+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">动态规划笔记（贝尔曼算法）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-29">2021-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 597 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-29">2021-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 856 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/dynamic_program/" class="leancloud_visitors" data-flag-title="动态规划笔记（贝尔曼算法）">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -155,6 +155,11 @@
     <li><a href="#动态规划基本类型">动态规划基本类型</a></li>
     <li><a href="#动态规划时间空间优化">动态规划时间空间优化</a></li>
     <li><a href="#动态规划打印路径解">动态规划打印路径（解）</a></li>
+    <li><a href="#动态规划基本题型">动态规划基本题型</a>
+      <ul>
+        <li><a href="#拔尖类型题目与我无关区间dp概率dp">拔尖类型题目，与我无关：区间dp、概率dp、</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><blockquote>
@@ -215,6 +220,16 @@
 </blockquote>
 <h3 id="4计算顺序">4.计算顺序</h3>
 <p>自顶向下或自底向上，整体思路的体现，即能利用之前的结果进行计算，去掉重复计算的步骤</p>
+<blockquote>
+<p>神奇的注意点（<strong>动规五部曲</strong>）</p>
+<ul>
+<li>dp数组以及下标的含义？二维一维数组中的i、j是什么意思</li>
+<li>递推公式，不言而喻</li>
+<li>dp数组的初始化</li>
+<li>遍历顺序（0/1背包问题为什么要先遍历背包后遍历物品，反过来是否可以；完全背包问题排列和组合for循环不同）</li>
+<li>打印dp数组，用于debug，清晰思路</li>
+</ul>
+</blockquote>
 <h2 id="动态规划基本类型">动态规划基本类型</h2>
 <ol>
 <li>坐标型：dp数组下标为原来坐标，代表题型UniquePath</li>
@@ -235,6 +250,34 @@
 <li>降维</li>
 </ol>
 <h2 id="动态规划打印路径解">动态规划打印路径（解）</h2>
+<h2 id="动态规划基本题型">动态规划基本题型</h2>
+<ol>
+<li>动归基础
+<ul>
+<li>斐波那契额数列</li>
+<li>爬楼梯问题</li>
+</ul>
+</li>
+<li>背包问题</li>
+<li>打家劫舍
+<ul>
+<li>树形dp（leetcode就三道题）</li>
+</ul>
+</li>
+<li>股票问题
+<ul>
+<li>买卖时间最大利润</li>
+</ul>
+</li>
+<li>子序列问题
+<ul>
+<li>最长子序列</li>
+<li>最长连续递增子序列</li>
+<li>编辑距离问题，两个字符串，最小编辑数使字符串相等。</li>
+</ul>
+</li>
+</ol>
+<h3 id="拔尖类型题目与我无关区间dp概率dp"><del>拔尖类型题目，与我无关：区间dp、概率dp、</del></h3>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

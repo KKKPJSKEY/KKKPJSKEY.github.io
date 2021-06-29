@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 06 Jun 2021 15:53:44 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 29 Jun 2021 13:56:16 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>基于广播和服务功能的音乐播放器</title>
@@ -17,44 +17,44 @@
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
 </item><item>
-    <title>Error inflating class com.baidu.mapapi.map.MapView</title>
-    <link>https://kkkpjskey.github.io/android-baidumap-inflating-error/</link>
-    <pubDate>Sun, 06 Jun 2021 15:53:44 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-baidumap-inflating-error/</guid>
-    <description><![CDATA[快乐报错 1 Error inflating class com.baidu.mapapi.map.MapView 解决办法 这个也是百度地图调用过程中的步骤，亦可作为参考 集成百度地图时遇到的问题,纠缠我了半天,网上各种方法都试过了,还是一]]></description>
+    <title>android.os.NetworkOnMainThreadException</title>
+    <link>https://kkkpjskey.github.io/android-runonuithread-error/</link>
+    <pubDate>Tue, 29 Jun 2021 13:56:16 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-runonuithread-error/</guid>
+    <description><![CDATA[android.os.NetworkOnMainThreadException 原因 跑老师的代码的时候报这个错，主要内容是编写Android项目时使用OKHttp3网络请求交互，但是老师向我展示了他的代码在他的机器上的]]></description>
 </item><item>
-    <title>Android studio模拟器无法联网问题解决办法</title>
-    <link>https://kkkpjskey.github.io/androidstudio-avd-disconnect/</link>
-    <pubDate>Sun, 06 Jun 2021 15:25:50 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/androidstudio-avd-disconnect/</guid>
-    <description><![CDATA[出现问题 重装系统后安装了Android studio 4.2.1，记得之前用模拟器联网的时候都是直接在模拟器内部打开网络连接就好，现在不行了，不知道之前怎]]></description>
+    <title>The BC provider no longer provides for KeyPairGenerator.RSA.</title>
+    <link>https://kkkpjskey.github.io/java-android-lang-assertionerror/</link>
+    <pubDate>Tue, 29 Jun 2021 13:56:16 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-android-lang-assertionerror/</guid>
+    <description><![CDATA[The BC provider no longer provides for KeyPairGenerator.RSA. 发生报错 使用网路相关框架时发生报错 1 java.lang.AssertionError: java.security.NoSuchAlgorithmException: The BC provider no longer provides an implementation for KeyPairGenerator.RSA. Please see https://android-developers.googleblog.com/2018/03/cryptography-changes-in-android-p.html for more details. 解决方案 在AndroidManifest.xml文件]]></description>
 </item><item>
-    <title>回溯算法笔记</title>
-    <link>https://kkkpjskey.github.io/backtracking-note/</link>
-    <pubDate>Fri, 04 Jun 2021 14:48:50 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/backtracking-note/</guid>
-    <description><![CDATA[通俗的讲，回溯法约等于递归里面嵌套for循环 回溯法问题类型 组合类 数组子数列 切割类 回文子串 子集类 类似组合 排列类 有序的组合 棋盘类 n皇后 问题解决思]]></description>
+    <title>java.net.UnknownServiceException: CLEARTEXT communication to 127.0.0.1 not permitted by network security policy</title>
+    <link>https://kkkpjskey.github.io/java-android-net-unknownserviceexception/</link>
+    <pubDate>Mon, 28 Jun 2021 21:20:38 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-android-net-unknownserviceexception/</guid>
+    <description><![CDATA[java.net.UnknownServiceException: CLEARTEXT communication to 127.0.0.1 not permitted by network security policy java.net.ConnectException: failed to connect to localhost/127.0.0.1 (port 8080) 以上两个错误 现象： android虚拟机中访问电脑本地url失败 当你启动Tomcat后，在浏览器中输入h]]></description>
 </item><item>
-    <title>Vim查看文件报错</title>
-    <link>https://kkkpjskey.github.io/vim-again-swap-error/</link>
-    <pubDate>Tue, 01 Jun 2021 17:42:55 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vim-again-swap-error/</guid>
-    <description><![CDATA[发现问题 之前使用xshell编辑文件时xshell卡住，无奈关闭xshell标签重新来过，再次vim查看文件报错 1 2 3 4 5 6 7 8 9 10 11 12 13 14]]></description>
+    <title>PrintWriter Web页面乱码</title>
+    <link>https://kkkpjskey.github.io/java-printwriter-random-code/</link>
+    <pubDate>Mon, 28 Jun 2021 21:08:40 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-printwriter-random-code/</guid>
+    <description><![CDATA[PrintWriter Web页面乱码 一般情况只使用下面代码： 1 2 PrintWriter out = response.getWriter()； out.print(&#34;爱死费崇政&#34]]></description>
 </item><item>
-    <title>动态规划笔记（贝尔曼算法）</title>
-    <link>https://kkkpjskey.github.io/dynamic_program/</link>
-    <pubDate>Sat, 29 May 2021 19:19:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/dynamic_program/</guid>
-    <description><![CDATA[动态规划满足最优化原理和无后效性 动态规划三种题型 1.计数 有多少种方式走到右下角 有多少种方法选出k个数使得和是Sum 2.求最大最小值 从左上角走]]></description>
+    <title>Can&#39;t toast on a thread that has not called Looper.prepare()</title>
+    <link>https://kkkpjskey.github.io/java-android-thread-toast-error/</link>
+    <pubDate>Mon, 28 Jun 2021 21:02:02 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-android-thread-toast-error/</guid>
+    <description><![CDATA[Can&rsquo;t toast on a thread that has not called Looper.prepare() 前言 最近一段时间在忙着开发一款自己的APP，将自己常用的功能需求都加入进入，同时在GitHub上跟着大牛们学习新的技术，]]></description>
 </item><item>
-    <title>Android Studio 使用Device File Explorer</title>
-    <link>https://kkkpjskey.github.io/androidstudio-device-file-explorer/</link>
-    <pubDate>Sat, 29 May 2021 13:22:55 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/androidstudio-device-file-explorer/</guid>
-    <description><![CDATA[Android Studio 使用Device File Explorer管理安卓虚拟设备的文件 Android Device Monitor 新版的Android Studio已经把Android Device Monitor移除菜]]></description>
+    <title>Error:java: 无效的目标发行版: 11</title>
+    <link>https://kkkpjskey.github.io/java11-invaid-target-release/</link>
+    <pubDate>Mon, 28 Jun 2021 20:49:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java11-invaid-target-release/</guid>
+    <description><![CDATA[Error:java: 无效的目标发行版: 11 我们在使用Idea开发中如果遇到你的JDK版本有“无效的目标发行版: 11”冲突时，要修改以下JDK版本 1项目java版]]></description>
 </item><item>
-    <title>Java开发笔记</title>
-    <link>https://kkkpjskey.github.io/java_note/</link>
-    <pubDate>Tue, 25 May 2021 12:33:19 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java_note/</guid>
-    <description><![CDATA[Java获取系统时间 1 2 3 4 5 6 7 8 9 import java.util.Date; import java.text.SimpleDateFormat; public class NowString { public static void main(String[] args) { SimpleDateFormat df = new SimpleDateFormat(&#34;yyyy-MM-dd HH:mm:ss&#34;);//设置日期格式 System.out.println(df.format(new Date()));// new Date()]]></description>
+    <title>java.rmi.server.ExportException: Port already in use: 1099</title>
+    <link>https://kkkpjskey.github.io/java-tomcat-port-already-in-use-1099/</link>
+    <pubDate>Mon, 28 Jun 2021 20:35:16 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-tomcat-port-already-in-use-1099/</guid>
+    <description><![CDATA[java.rmi.server.ExportException: Port already in use: 1099 报错信息 1 2 3 4 5 6 7 8 9 10 11 12 D:\apache-tomcat-7.0.54\bin\catalina.batrun [2016-10-1402:26:31,540]Artifactink-balance-web:warexploded:Serverisnotconnected.Deployisnotavailable. Connectedtoserver [2016-10-1402:26:31,562]Artifactink-balance-web:warexploded:Artifactisbeingdeployed,pleasewait... UsingCATALINA_BASE:&#34;C:\Users\mrchen\.IntelliJIdea2016.1\system\tomcat\Unnamed_ink-parent&#34; UsingCATALINA_HOME:&#34;D:\apache-tomcat-7.0.54&#34; UsingCATALINA_TMPDIR:&#34;D:\apache-tomcat-7.0.54\temp&#34; UsingJRE_HOME:&#34;C:\Program Files\Java\jdk1.7.0_17&#34; UsingCLASSPATH:&#34;D:\apache-tomcat-7.0.54\bin\bootstrap.jar;D:\apache-tomcat-7.0.54\bin\tomcat-juli.jar&#34; 错误:代理抛出异常错误:java.rmi.server.ExportExce]]></description>
 </item><item>
-    <title>java.util.UnknownFormatConversionException: Conversion = &#39;%&#39;</title>
-    <link>https://kkkpjskey.github.io/java-pencentage-format-error/</link>
-    <pubDate>Mon, 24 May 2021 19:06:51 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-pencentage-format-error/</guid>
-    <description><![CDATA[问题现象 最近在做一个java项目使用String.format进行控制台打印，结果出现如下错误： 最关键的是这个问题是偶现的，通过google]]></description>
+    <title>用组合模式、策略模式、观察者模式结合来实现一个MVC</title>
+    <link>https://kkkpjskey.github.io/mvc_design_patterns/</link>
+    <pubDate>Mon, 28 Jun 2021 20:30:40 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mvc_design_patterns/</guid>
+    <description><![CDATA[用组合模式、策略模式、观察者模式结合来实现一个MVC 1 MVC介绍 众所周知MVC不是设计模式，是一个比设计模式更大一点的模式，称作设计模式不合]]></description>
 </item></channel>
 </rss>

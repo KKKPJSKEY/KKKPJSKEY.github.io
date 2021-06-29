@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Java后端面试题整理 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="Java后端面试题整理的笔记"><meta property="og:title" content="Java后端面试题整理" />
+<meta property="og:description" content="Java后端面试题整理的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/java-audition-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-audition-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-08T14:37:52&#43;08:00" />
+<meta property="article:modified_time" content="2021-06-08T14:37:52&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/java-audition-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Java后端面试题整理"/>
+<meta name="twitter:description" content="Java后端面试题整理的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/java-audition-note/" /><link rel="prev" href="https://kkkpjskey.github.io/android-baidumap-inflating-error/" /><link rel="next" href="https://kkkpjskey.github.io/office-orrbit-pan-baidu/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Java后端面试题整理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/java-audition-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/java-audition-note\/featured-image.jpg",
+                            "width":  516 ,
+                            "height":  178 
+                        }],"genre": "posts","keywords": "Java, Mysql, Audition, Spring, SpringCloud, Dubbo","wordcount":  9068 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-audition-note\/","datePublished": "2021-06-08T14:37:52+08:00","dateModified": "2021-06-08T14:37:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "Java后端面试题整理的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/java-audition-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/java-audition-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java后端面试题整理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-08">2021-06-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 9068 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 19 分钟&nbsp;<span id="/java-audition-note/" class="leancloud_visitors" data-flag-title="Java后端面试题整理">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/java-audition-note/featured-image.jpg"
+        data-srcset="/java-audition-note/featured-image.jpg, /java-audition-note/featured-image.jpg 1.5x, /java-audition-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/java-audition-note/featured-image.jpg"
+        title="Java后端面试题整理的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1面向对象">1、面向对象</a>
+      <ul>
+        <li><a href="#什么是面向对象">什么是面向对象?</a></li>
+        <li><a href="#面向过程">面向过程</a></li>
+        <li><a href="#面向对象">面向对象</a></li>
+        <li><a href="#封装">封装</a></li>
+        <li><a href="#继承">继承</a></li>
+        <li><a href="#多态">多态</a></li>
+      </ul>
+    </li>
+    <li><a href="#2jvm性能调优实战相关">2、JVM性能调优实战相关</a></li>
+    <li><a href="#3jdk-jre-jvm">3、JDK JRE JVM</a>
+      <ul>
+        <li><a href="#jdk">JDK</a></li>
+        <li><a href="#jre">JRE</a></li>
+        <li><a href="#jvm">JVM:</a></li>
+      </ul>
+    </li>
+    <li><a href="#4equals">4、==equals</a></li>
+    <li><a href="#5final">5、final</a>
+      <ul>
+        <li><a href="#1简述final作用">1、简述final作用</a></li>
+        <li><a href="#2为什么局部内部类和匿名内部类只能访问局部final变量">2、为什么局部内部类和匿名内部类只能访问局部final变量?</a></li>
+      </ul>
+    </li>
+    <li><a href="#11arraylist和linkedlist区别">11、ArrayList和LinkedList区别</a>
+      <ul>
+        <li><a href="#arraylist">ArrayList:</a></li>
+        <li><a href="#linkedlist">LinkedList:</a></li>
+      </ul>
+    </li>
+    <li><a href="#6stringbuilfer-stringstringbufferstringbuilder">6、Stringbuilfer String、StringBuffer、StringBuilder</a></li>
+    <li><a href="#7重载和重写的区别">7、重载和重写的区别</a>
+      <ul>
+        <li><a href="#重载">重载</a></li>
+        <li><a href="#重写">重写</a></li>
+      </ul>
+    </li>
+    <li><a href="#8接口和抽象类的区别">8、接口和抽象类的区别</a></li>
+    <li><a href="#9list和set的区别">9、List和Set的区别</a></li>
+    <li><a href="#10hashcode与equals">10、hashCode与equals</a>
+      <ul>
+        <li><a href="#hashcode介绍">hashCode介绍</a></li>
+        <li><a href="#为什么要有hashcode">为什么要有hashCode</a></li>
+      </ul>
+    </li>
+    <li><a href="#11arraylist和linkedlist区别-1">11、ArrayList和LinkedList区别</a></li>
+    <li><a href="#12hashmap和hashtable的区别底层实现是什么">12、HashMap和HashTable的区别?底层实现是什么?</a></li>
+    <li><a href="#13concurrenthashmap原理jdk7和jdk8版本的区别">13、ConcurrentHashMap原理,jdk7和jdk8版本的区别</a></li>
+    <li><a href="#14如何实现一个ioc容器">14、如何实现一个IOC容器</a></li>
+    <li><a href="#15什么是字节码采用字节码的好处是什么">15、什么是字节码?采用字节码的好处是什么?</a></li>
+    <li><a href="#34谈谈你对aop的理解">34、谈谈你对AOP的理解</a></li>
+    <li><a href="#35谈谈你对ioc的理解">35、谈谈你对IOC的理解</a>
+      <ul>
+        <li><a href="#容器概念控制反转依赖注入">容器概念、控制反转、依赖注入</a></li>
+        <li><a href="#控制反转">控制反转:</a></li>
+        <li><a href="#依赖注入">依赖注入:</a></li>
+      </ul>
+    </li>
+    <li><a href="#66简述mylsam和innodb的区别">66、简述MylSAM和InnoDB的区别</a>
+      <ul>
+        <li><a href="#myisam">MyISAM:</a></li>
+        <li><a href="#lnnodb">lnnoDB:</a></li>
+      </ul>
+    </li>
+    <li><a href="#88spring-cloud和dubbo的区别">88、Spring Cloud和Dubbo的区别</a></li>
+    <li><a href="#acid靠什么保证的">ACID靠什么保证的?</a></li>
+    <li><a href="#end">end</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1面向对象">1、面向对象</h2>
+<h3 id="什么是面向对象">什么是面向对象?</h3>
+<p>对比面向过程，是两种不同的处理问题的角度</p>
+<p>面向过程更注重事情的每一个步骤及顺序，面向对象更注重事情有哪些参与者(对象)、及各自需要做什么</p>
+<p>比如:洗衣机洗衣服</p>
+<h3 id="面向过程">面向过程</h3>
+<p>面向过程会将任务拆解成一系列的步骤(函数)，1、打开洗衣机&mdash;&gt;2、放衣服&ndash;&gt;3、放洗衣粉&mdash;&gt;4、清洗&mdash;&ndash;&gt;5、烘干
+面向对象会拆出人和洗衣机两个对象:</p>
+<p>人:打开洗衣机放衣服放洗衣粉洗衣机:清洗烘干</p>
+<blockquote>
+<p>从以上例子能看出，面向过程比较直接高效，而面向对象更易于复用、扩展和维护</p>
+</blockquote>
+<h3 id="面向对象">面向对象</h3>
+<h3 id="封装">封装</h3>
+<p>封装的意义，在于明确标识出允许外部使用的所有成员函数和数据项内部细节对外部调用透明，外部调用无需修改或者关心内部实现</p>
+<blockquote>
+<p>两个经典的场景</p>
+</blockquote>
+<p>1、javabean举例：</p>
+<p>javabean的属性私有，提供getset对外访问，因为属性的赋值或者获取逻辑只能由javabean本身决定。而不能由外部胡乱修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="n">string</span> <span class="n">name</span> <span class="o">;</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">string</span> <span class="n">name</span><span class="o">){</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">&#34;tuling_&#34;</span><span class="o">+</span><span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>该name有自己的命名规则，明显不能由外部直接赋值</p>
+</blockquote>
+<p>2、orm框架举例</p>
+<p>操作数据库，我们不需要关心链接是如何建立的、sql是如何执行的，只需要引入mybatis，调方法即可</p>
+<h3 id="继承">继承</h3>
+<p>继承基类的方法，并做出自己的改变和/或扩展</p>
+<p>子类共性的方法或者属性直接使用父类的，而不需要自己再定义，只需扩展自己个性化的</p>
+<h3 id="多态">多态</h3>
+<p>基于对象所属类的不同，外部对同一个方法的调用，实际执行的逻辑不同。</p>
+<p>继承，方法重写，父类引用指向子类对象</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">父类类型变量名=new子类对象;
+变量名.方法名();
+</code></pre></td></tr></table>
+</div>
+</div><p>无法调用子类特有的功能</p>
+<h2 id="2jvm性能调优实战相关">2、JVM性能调优实战相关</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.jpg"
+        data-srcset="./2.jpg, ./2.jpg 1.5x, ./2.jpg 2x"
+        data-sizes="auto"
+        alt="./2.jpg"
+        title="2" /></p>
+<h2 id="3jdk-jre-jvm">3、JDK JRE JVM</h2>
+<h3 id="jdk">JDK</h3>
+<p>Java Develpment Kit java开发工具</p>
+<h3 id="jre">JRE</h3>
+<p>Java Runtime Environment java运行时环境</p>
+<h3 id="jvm">JVM:</h3>
+<p>java Virtual Machine java虚拟机</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.jpg"
+        data-srcset="./1.jpg, ./1.jpg 1.5x, ./1.jpg 2x"
+        data-sizes="auto"
+        alt="./1.jpg"
+        title="1" /></p>
+<h2 id="4equals">4、==equals</h2>
+<p>==和equals比较==对比的是栈中的值，基本数据类型是变量值，引用类型是堆中内存对象的地址</p>
+<p>equals: object中默认也是采用==比较，通常会重写</p>
+<blockquote>
+<p>Object</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">pub1ic</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>String</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">pub1ic</span> <span class="kt">boolean</span> <span class="nf">equals</span> <span class="o">(</span><span class="n">Object</span> <span class="n">anObject</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="k">this</span> <span class="o">==</span><span class="n">anobject</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+	<span class="o">}</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">anObject</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">)</span> <span class="n">i</span>
+    	<span class="n">String</span> <span class="n">anotherstring</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span><span class="n">anobject</span><span class="o">;</span>
+    	<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="n">anotherstring</span><span class="o">.</span><span class="na">value</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">char</span> <span class="n">v1</span><span class="o">[]</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+            <span class="kt">char</span> <span class="n">v2</span><span class="o">[]</span> <span class="o">=</span> <span class="n">anotherstring</span><span class="o">.</span> <span class="n">value</span><span class="o">;</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">o</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">n</span><span class="o">--</span> <span class="o">!=</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">v1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="n">v2</span><span class="o">[</span><span class="n">i</span><span class="o">])</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+                <span class="n">i</span><span class="o">++;</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    	<span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述代码可以看出，String类中被复写的equals()方法其实是比较两个字符串的内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringDemo</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">string</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+		<span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">&#34;He11o&#34;</span><span class="o">;</span>
+		<span class="n">String</span> <span class="n">str2</span> <span class="k">new</span> <span class="nf">string</span> <span class="o">(</span> <span class="s">&#34;He11o&#34;</span><span class="o">);</span>
+		<span class="n">String</span> <span class="n">str3</span> <span class="o">=</span> <span class="n">str2</span><span class="o">;</span> <span class="c1">//引用传递
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span> <span class="o">==</span> <span class="n">str2</span><span class="o">);</span> <span class="c1">//false
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span> <span class="o">==</span> <span class="n">str3</span><span class="o">);</span> <span class="c1">// false
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str2</span> <span class="o">==</span> <span class="n">str3</span><span class="o">);</span> <span class="c1">// true
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span> <span class="o">(</span><span class="n">str2</span><span class="o">));</span><span class="c1">// true
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str1</span><span class="o">.</span><span class="na">equals</span> <span class="o">(</span><span class="n">str3</span><span class="o">));</span><span class="c1">//true
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str2</span><span class="o">.</span><span class="na">equals</span> <span class="o">(</span><span class="n">str3</span><span class="o">));</span> <span class="c1">// true
+</span><span class="c1"></span>    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5final">5、final</h2>
+<h3 id="1简述final作用">1、简述final作用</h3>
+<p>最终的</p>
+<ul>
+<li>修饰类:表示类不可被继承</li>
+<li>修饰方法:表示方法不可被子类覆盖，但是可以重载</li>
+<li>修饰变量:表示变量一旦被赋值就不可以更改它的值。</li>
+</ul>
+<p>(1)修饰成员变量</p>
+<ul>
+<li>如果final修饰的是类变量，只能在静态初始化块中指定初始值或者声明该类变量时指定初始值。</li>
+<li>如果final修饰的是成员变量，可以在非静态初始化块、声明该变量或者构造器中执行初始值。</li>
+</ul>
+<p>(2）修饰局部变量</p>
+<p>系统不会为局部变量进行初始化，局部变量必须由程序员显示初始化。
+因此使用final修饰局部变量时，即可以在定义时指定默认值（后面的代码不能对变量再赋值)，也可以不指定默认值，而在后面的代码中对final变量赋初值（仅一次)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">pub1ic</span> <span class="kd">class</span> <span class="nc">Fina1var</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span><span class="c1">//再声明的时候就需要赋值或者静态代码块赋值
+</span><span class="c1"></span>    <span class="cm">/**
+</span><span class="cm">    static{
+</span><span class="cm">    	a =o;
+</span><span class="cm">    }
+</span><span class="cm">    */</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span><span class="c1">//再声明的时候就需要赋值或者代码块中赋值或者构造器赋值
+</span><span class="c1"></span>    <span class="cm">/*{
+</span><span class="cm">    	b = 0;
+</span><span class="cm">    }
+</span><span class="cm">    */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">string</span><span class="o">[]</span><span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">localA</span><span class="o">;</span><span class="c1">//局部变量只声明没有初始化，不会报错,与fina1无关。
+</span><span class="c1"></span>        <span class="n">loca1A</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span><span class="c1">//在使用之前一定要赋值I
+</span><span class="c1"></span>        <span class="c1">//localA = 1;但是不允许第二次赋值
+</span><span class="c1"></span>    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>(3）修饰基本类型数据和引用类型数据</p>
+<ul>
+<li>如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改;</li>
+<li>如果是引用类型的变量，则在对某初始化之后便不能再让其指向另一个对象。<strong>但是引用的值是可变的。</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">pub1ic</span> <span class="kd">class</span> <span class="nc">Fina1ReferenceTest</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(){</span>
+        <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">iArr</span><span class="o">={</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">4</span><span class="o">};</span>
+        <span class="n">iArr</span><span class="o">[</span><span class="n">2</span><span class="o">]=-</span><span class="n">3</span><span class="o">;</span><span class="c1">//合法
+</span><span class="c1"></span>        <span class="n">iArr</span><span class="o">=</span><span class="n">nu1</span><span class="o">;</span><span class="c1">//非法，对iArr不能重新赋值
+</span><span class="c1"></span>        <span class="kd">final</span> <span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="n">25</span><span class="o">);</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">24</span><span class="o">);</span><span class="c1">//合法
+</span><span class="c1"></span>        <span class="n">p</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span><span class="c1">//非法
+</span><span class="c1"></span>    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>为什么局部内部类和匿名内部类只能访问局部final变量?</strong></p>
+<p>编译之后会生成两个class文件，Test.class Test1.class</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">string</span><span class="o">[]</span> <span class="n">args</span><span class="o">){}</span>
+    <span class="c1">//局部fina1变量a,b
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="kd">final</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+        <span class="c1">//匿名内部类
+</span><span class="c1"></span>        <span class="k">new</span> <span class="n">Thread</span><span class="o">(){</span>
+            <span class="n">pub1ic</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="n">i</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print1n</span><span class="o">(</span><span class="n">a</span><span class="o">);</span> 
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print1n</span><span class="o">(</span><span class="n">b</span><span class="o">);</span> 
+            	<span class="o">};</span>
+            <span class="o">}.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">c1ass</span> <span class="n">outc1ass</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">12</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">outPrint</span><span class="o">(</span><span class="kd">final</span> <span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">c1ass</span> <span class="n">Inclass</span> <span class="n">i</span>
+            <span class="n">pub1ic</span> <span class="kt">void</span> <span class="nf">InPrint</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span> <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">age</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="k">new</span> <span class="n">Inc1ass</span><span class="o">(().</span><span class="na">InPrint</span><span class="o">(;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2为什么局部内部类和匿名内部类只能访问局部final变量">2、为什么局部内部类和匿名内部类只能访问局部final变量?</h3>
+<p>首先需要知道的一点是:内部类和外部类是处于同一个级别的，内部类不会因为定义在方法中就会随着方法的执行完毕就被销毁。</p>
+<p>这里就会产生问题:当外部类的方法结束时，局部变量就会被销毁了，但是内部类对象可能还存在(只有没有人再引用它时，才会死亡)。这里就出现了一个矛盾:内部类对象访问了一个不存在的变量。为了解决这个问题，就将局部变量复制了一份作为内部类的成员变量，这样当局部变量死亡后，内部类仍可以访问它，实际访问的是局部变量的&quot;copy&quot;。这样就好像延长了局部变量的生命周期</p>
+<p>将局部变量复制为内部类的成员变量时，必须保证这两个变量是一样的,也就是如果我们在内部类中修改了成员变量，方法中的局部变量也得跟着改变，怎么解决问题呢?</p>
+<p>就将局部变量设置为final，对它初始化后，我就不让你再去修改这个变量，就保证了内部类的成员变量和方法的局部变量的一致性。这实际上也是一种妥协。使得局部变量与内部类内建立的拷贝保持一致。</p>
+<h2 id="11arraylist和linkedlist区别">11、ArrayList和LinkedList区别</h2>
+<h3 id="arraylist">ArrayList:</h3>
+<p>基于动态数组，连续内存存储，适合下标访问（随机访问)，扩容机制:因为数组长度固定，超出长度存数据时需要新建数组，然后将老数组的数据拷贝到新数组，如果不是尾部插入数据还会涉及到元素的移动(往后复制一份，插入新元素)，使用尾插法并指定初始容量可以极大提升性能、甚至超过linkedList(需要创建大量的node对象)</p>
+<h3 id="linkedlist">LinkedList:</h3>
+<p>基于链表，可以存储在分散的内存中，适合做数据插入及删除操作，不适合查询:需要逐—遍历
+遍历LinkedList必须使用iterator不能使用for循环，因为每次for循环体内通过get(i)取得某一元素时都需要对list重新进行遍历，性能消耗极大。
+另外不要试图使用indexof等返回元素索引，并利用其进行遍历，使用indexlOf对list进行了遍历，当结果为空时会遍历整个列表。</p>
+<h2 id="6stringbuilfer-stringstringbufferstringbuilder">6、<del>Stringbuilfer</del> String、StringBuffer、StringBuilder</h2>
+<p>String是final修饰的，不可变，每次操作都会产生新的String对象</p>
+<p>StringBuffer和stringBuilder都是在原对象上操作</p>
+<p>StringBuffer是线程安全的，StringBuilder线程不安全的</p>
+<p>StringBuffer方法都是synchronized修饰的</p>
+<p>性能: StringBuilder &gt; StringBuffer &gt; String</p>
+<p>场景:经常需要改变字符串内容时使用后面两个</p>
+<p>优先使用StringBuilder，多线程使用共享变量时使用StringBuffer</p>
+<h2 id="7重载和重写的区别">7、重载和重写的区别</h2>
+<h3 id="重载">重载</h3>
+<p>发生在同一个类中，方法名必须相同，参数类型不同、个数不同、顺序不同，方法返回值和访问修饰符可以不同，发生在编译时。</p>
+<h3 id="重写">重写</h3>
+<p>发生在父子类中，方法名、参数列表必须相同，返回值范围小于等于父类，抛出的异常范围小于等于父类，访问修饰符范围大于等于父类;如果父类方法访问修饰符为private则子类就不能重写该方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span><span class="n">String</span> <span class="n">b</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">string</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span><span class="n">String</span> <span class="n">b</span><span class="o">)</span><span class="c1">//编译报错,产生二义性，并不知道返回什么值
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="8接口和抽象类的区别">8、接口和抽象类的区别</h2>
+<ul>
+<li>抽象类可以存在普通成员函数，而接口中只能存在public abstract方法。</li>
+<li>抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是public static final类型的。（java8之前，java9变了）</li>
+<li>抽象类只能继承一个，接口可以实现多个。</li>
+</ul>
+<p>接口的设计目的，是对类的行为进行约束（更准确的说是一种“有&quot;约束，因为接口不能规定类不可以有什么行为)，也就是提供一种机制，可以强制要求不同的类具有相同的行为。它只约束了行为的有无，但不对如何实现行为进行限制。</p>
+<p>而抽象类的设计目的，是代码复用。当不同的类具有某些相同的行为(记为行为集合A)，且其中一部分行为的实现方式一致时(A的非真子集，记为B)，可以让这些类都派生于一个抽象类。在这个抽象类中实现了B，避免让所有的子类来实现B，这就达到了代码复用的目的。而A减B的部分，留给各个子类自己实现。正是因为A-B在这里没有实现，所以抽象类不允许实例化出来(否则当调用到A-B时，无法执行)。</p>
+<p>抽象类是对类本质的抽象，表达的是is a 的关系，比如: BMw is a car。抽象类包含并实现子类的通用特性，将子类存在差异化的特性进行抽象，交由子类去实现。</p>
+<p>而接口是对行为的抽象，表达的是like a的关系。比如: Bird like a Aircraft(像飞行器一样可以飞)，但其本质上is a Bird。接口的核心是定义行为，即实现类可以做什么，至于实现类主体是谁、是如何实现的，接口并不关心。</p>
+<p>使用场景:当你关注一个事物的本质的时候，用抽象类;当你关注一个操作的时候，用接口。</p>
+<p>抽象类的功能要远超过接口，但是，定义抽象类的代价高。因为高级语言来说（从实际设计上来说也是)每个类只能继承一个类。在这个类中，你必须继承或编写出其所有子类的所有共性。虽然接口在功能上会弱化许多，但是它只是针对一个动作的描述。而且你可以在一个类中同时实现多个接口。在设计阶段会降低难度。</p>
+<h2 id="9list和set的区别">9、List和Set的区别</h2>
+<ul>
+<li>List:有序，按对象进入的顺序保存对象，可重复，允许多个Null元素对象，可以使用lterator取出所有元素，在逐一遍历，还可以使用get(int index)获取指定下表的元素</li>
+<li>Set:无序，不可重复，最多允许有一个Nul元素对象，取元素时只能用lterator接口取得所有元素，在逐一遍历各个元素</li>
+</ul>
+<h2 id="10hashcode与equals">10、hashCode与equals</h2>
+<h3 id="hashcode介绍">hashCode介绍</h3>
+<p>hashCode()的作用是获取哈希码，也称为散列码;它实际上是返回一个int整数。这个哈希码的作用是确定该对象在哈希表中的索引位置。hashCode()定义在JDK的Object.java中，Java中的任何类都包含有hashCode()函数。散列表存储的是键值对(key-value)，它的特点是:能根据&quot;键&quot;快速的检索出对应的“值&quot;。这其中就利用到了散列码!(可以快速找到所需要的对象)</p>
+<h3 id="为什么要有hashcode">为什么要有hashCode</h3>
+<p><strong>以&quot;Hashset如何检查重复&quot;为例子来说明为什么要有hashcode:</strong></p>
+<p>对象加入HashSet时，HashSet会先计算对象的hashcode值来判断对象加入的位置，看该位置是否有值，如果没有、HashSet会假设对象没有重复出现。但是如果发现有值，这时会调用equals ()方法来检查两个对象是否真的相同。如果两者相同，HashSet就不会让其加入操作成功。如果不同的话，就会重新散列到其他位置。这样就大大减少了equals的次数，相应就大大提高了执行速度。</p>
+<ul>
+<li>如果两个对象相等，则hashcode—定也是相同的</li>
+<li>两个对象相等,对两个对象分别调用equals方法都返回true</li>
+<li>两个对象有相同的hashcode值，它们也不一定是相等的·因此，equals方法被覆盖过，则hashCode方法也必须被覆盖</li>
+<li>因此,equals方法被覆盖过，则hashCode方法也必须被覆盖</li>
+<li>hashCode()的默认行为是对堆上的对象产生独特值。如果没有重写hashCode()，则该class的两个对象无论如
+何都不会相等（即使这两个对象指向相同的数据）</li>
+</ul>
+<h2 id="11arraylist和linkedlist区别-1">11、ArrayList和LinkedList区别</h2>
+<p>ArrayList:基于动态数组，连续内存存储，适合下标访问（随机访问)，扩容机制:因为数组长度固定，超出长度存数据时需要新建数组，然后将老数组的数据拷贝到新数组，如果不是尾部插入数据还会涉及到元素的移动(往后复制一份，插入新元素)，使用尾插法并指定初始容量可以极大提升性能、甚至超过linkedList(需要创建大量的node对象)</p>
+<p>LinkedList:基于链表，可以存储在分散的内存中，适合做数据插入及删除操作，不适合查询:需要逐一遍历遍历LinkedList必须使用iterator不能使用for循环，因为每次for循环体内通过geti)取得某一元素时都需要对list重新进行遍历，性能消耗极大。</p>
+<p>另外不要试图使用indexOf等返回元素索引，并利用其进行遍历，使用indexlOf对list进行了遍历，当结果为空时会遍历整个列表。</p>
+<h2 id="12hashmap和hashtable的区别底层实现是什么">12、HashMap和HashTable的区别?底层实现是什么?</h2>
+<p>1.区别:</p>
+<p>(1) HashMap方法没有synchronized修饰，线程非安全，HashTable线程安全;</p>
+<p>(2)HashMap允许key和value为null，而HashTable不允许</p>
+<p>2.底层实现:数组+链表实现</p>
+<ul>
+<li>jdk8开始链表高度到8、数组长度超过64，链表转变为红黑树，元素以内部类Node节点存在</li>
+<li>计算key的hash值，二次hash然后对数组长度取模，对应到数组下标，</li>
+<li>如果没有产生hash冲突(下标位置没有元素)，则直接创建Node存入数组，</li>
+<li>如果产生hash冲突，先进行equal比较，相同则取代该元素，不同则判断链表高度插入链表，链表高度达到8，并且数组长度到64则转变为红黑树，长度低于6则将红黑树转回链表</li>
+<li>key为null，存在下标0的位置</li>
+</ul>
+<p>数组扩容</p>
+<h2 id="13concurrenthashmap原理jdk7和jdk8版本的区别">13、ConcurrentHashMap原理,jdk7和jdk8版本的区别</h2>
+<p>jdk7:</p>
+<p>数据结构:ReentrantLock+Segment+HashEntry，一个Segment中包含一个HashEntry数组，每个HashEntry又是一个链表结构</p>
+<p>元素查询:二次hash，第一次Hash定位到Segment，第二次Hash定位到元素所在的链表的头部</p>
+<p>锁: Segment分段锁Segment继承了ReentrantLock，锁定操作的Segment，其他的Segment不受影响，并发度
+为segment个数，可以通过构造函数指定，数组扩容不会影响其他的segment</p>
+<p>get方法无需加锁，volatile保证(避免脏数据)</p>
+<p>jdk8:</p>
+<p>数据结构: synchronized+CAS+Node+红黑树，Node的val和next都用volatile修饰，保证可见性</p>
+<p>查找，替换，赋值操作都使用CAS</p>
+<p>锁:锁链表的head节点，不影响其他元素的读写，锁粒度更细，效率更高，扩容时，阻塞所有的读写操作、并发扩容</p>
+<p>读操作无锁:</p>
+<p>Node的val和next使用volatile修饰，读写线程对该变量互相可见</p>
+<p>数组用volatile修饰，保证扩容时被读线程感知</p>
+<h2 id="14如何实现一个ioc容器">14、如何实现一个IOC容器</h2>
+<ol>
+<li>配置文件配置包扫描路径</li>
+<li>递归包扫描获取.class文件</li>
+<li>反射、确定需要交给IOC管理的类</li>
+<li>对需要注入的类进行依赖注入</li>
+</ol>
+<ul>
+<li>
+<p>配置文件中指定需要扫描的包路径</p>
+</li>
+<li>
+<p>定义一些注解，分别表示访问控制层、业务服务层、数据持久层、
+依赖注入注解、获取配置文件注解</p>
+</li>
+<li>
+<p>从配置文件中获取需要扫描的包路径，获取到当前路径下的文件信息及文件夹信息，我们将当前路径下所有以.class结尾的文件添加到一个Set集合中进行存储</p>
+</li>
+<li>
+<p>遍历这个set集合，获取在类上有指定注解的类，并将其交给IOC容器，定义一个安全的Map用来存储这些对象</p>
+</li>
+<li>
+<p>遍历这个lOC容器，获取到每一个类的实例，判断里面是有有依赖其他的类的实例，然后进行递归注入</p>
+</li>
+</ul>
+<h2 id="15什么是字节码采用字节码的好处是什么">15、什么是字节码?采用字节码的好处是什么?</h2>
+<p><strong>java中的编译器和解释器:</strong></p>
+<p>Java中引入了虚拟机的概念，即在机器和编译程序之间加入了
+-层抽象的虚拟的机器。这台虚拟的机器在任何平台
+上都提供给编译程序一个的共同的接口。</p>
+<p>编译程序只需要面向虚拟机，生成虚拟机能够理解的代码，然后由解释器来将虚拟机代码转换为特定系统的机器码执行。在Java中，这种供虚拟机理解的代码叫做字节码(即扩展名为.class的文件)，它不面向任何特定的处理器，只面向虚拟机。</p>
+<p>每一种平台的解释器是不同的，但是实现的虚拟机是相同的。Java源程序经过编译器编译后变成字节码，字节码由虚拟机解释执行，虚拟机将每一条要执行的字节码送给解释器，解释器将其翻译成特定机器上的机器码，然后在特定的机器上运行。这也就是解释了Java的编译与解释并存的特点。</p>
+<p>Java源代码&mdash;&gt;编译器&mdash;&gt;jvm可执行的Java字节码(即虚拟指令)&mdash;&gt;jvm&mdash;&gt;jvm中解释器&mdash;-&gt;机器可执行的二进制机器码&mdash;-&gt;程序运行。</p>
+<p><strong>采用字节码的好处:</strong></p>
+<p>Java语言通过字节码的方式，在一定程度上解决了传统解释型语言执行效率低的问题，同时又保留了解释型语言可移植的特点。所以Java程序运行时比较高效，而且，由于字节码并不专对一种特定的机器，因此，Java程序无须重新编译便可在多种不同的计算机上运行。</p>
+<h2 id="34谈谈你对aop的理解">34、谈谈你对AOP的理解</h2>
+<p>系统是由许多不同的组件所组成的，每一个组件各负责一块特定功能。除了实现自身核心功能之外，这些组件还经常承担着额外的职责。例如日志、事务管理和安全这样的核心服务经常融入到自身具有核心业务逻辑的组件中去。这些系统服务经常被称为横切关注点，因为它们会跨越系统的多个组件。</p>
+<p>当我们需要为分散的对象引入公共行为的时候，OOP则显得无能为力。也就是说，OOP允许你定义从上到下的关系，但并不适合定义从左到右的关系。例如日志功能。</p>
+<p>日志代码往往水平地散布在所有对象层次中，而与它所散布到的对象的核心功能毫无关系。在OOP设计中，它导致了大量代码的重复，而不利于各个模块的重用</p>
+<p>AOP:将程序中的交叉业务逻辑(比如安全，日志，事务等)，封装成一个切面，然后注入到目标对象(具体业务逻辑)中去。AOP可以对某个对象或某些对象的功能进行增强，比如对象中的方法进行增强，可以在执行某个方法之前额外的做一些事情，在某个方法执行之后额外的做一些事情</p>
+<h2 id="35谈谈你对ioc的理解">35、谈谈你对IOC的理解</h2>
+<h3 id="容器概念控制反转依赖注入">容器概念、控制反转、依赖注入</h3>
+<p>ioc容器:实际上就是个map (key,value)，里面存的是各种对象（在xml里配置的bean节点、@repository.@service、@controller、@component)，在项目启动的时候会读取配置文件里面的bean节点，根据全限定类名使用反射创建对象放到map里、扫描到打上上述注解的类还是通过反射创建对象放到map里。</p>
+<p>这个时候map里就有各种对象了，接下来我们在代码里需要用到里面的对象时，再通过DI注入(autowired.resource等注解，xml里bean节点内的ref属性，项目启动的时候会读取xml节点ref属性根据id注入，也会扫描这些注解，根据类型或id注入; id就是对象名）。</p>
+<h3 id="控制反转">控制反转:</h3>
+<p>没有引入IOC容器之前，对象A依赖于对象B，那么对象A在初始化或者运行到某一点的时候，自己必须主动去创建对象B或者使用已经创建的对象B。无论是创建还是使用对象B，控制权都在自己手上。</p>
+<p>引入IOC容器之后，对象A与对象B之间失去了直接联系，当对象A运行到需要对象B的时候，IOC容器会主动创建一个对象B注入到对象A需要的地方。</p>
+<p>通过前后的对比，不难看出来:对象A获得依赖对象B的过程,由主动行为变为了被动行为，控制权颠倒过来了，这就是“控制反转&quot;这个名称的由来。</p>
+<p>全部对象的控制权全部上缴给&quot;第三方&quot;&ldquo;OC容器，所以，IOC容器成了整个系统的关键核心，它起到了一种类似&quot;粘合剂的作用，把系统中的所有对象粘合在一起发挥作用，如果没有这个粘合剂&rdquo;，对象与对象之间会彼此失去联系，这就是有人把lOC容器比喻成′粘合剂&quot;的由来。</p>
+<h3 id="依赖注入">依赖注入:</h3>
+<p>“获得依赖对象的过程被反转了&quot;。控制被反转之后，获得依赖对象的过程由自身管理变为了由IOC容器主动注入。依赖注入是实现IOC的方法，就是由IOC容器在运行期间，动态地将某种依赖关系注入到对象之中。</p>
+<h2 id="66简述mylsam和innodb的区别">66、简述MylSAM和InnoDB的区别</h2>
+<h3 id="myisam">MyISAM:</h3>
+<p><del>不支持事务</del>，现在支持了，但是每次查询都是原子的;支持表级锁，即每次操作是对整个表加锁;存储表的总行数;</p>
+<p>一个MyISAM表有三个文件:索引文件、表结构文件、数据文件;</p>
+<p>采用非聚集索引，索引文件的数据域存储指向数据文件的指针。辅索引与主索引基本一致，但是辅索引不用保证唯—性。</p>
+<h3 id="lnnodb">lnnoDB:</h3>
+<p>支持ACID的事务，支持事务的四种隔离级别;支持行级锁及外键约束:因此可以支持写并发;不存储总行数;</p>
+<p>一个InnoDB引擎存储在一个文件空间(共享表空间，表大小不受操作系统控制，一个表可能分布在多个文件里)，也有可能</p>
+<p>为多个(设置为独立表空，表大小受操作系统文件大小限制，一般为2G)，受操作系统文件大小的限制;</p>
+<h2 id="88spring-cloud和dubbo的区别">88、Spring Cloud和Dubbo的区别</h2>
+<p>底层协议: springcloud基于http协议，dubbo基于Tcp协议，决定了dubbo的性能相对会比较好</p>
+<p>注册中心: Spring Cloud 使用的eureka , dubbo推荐使用zookeeper</p>
+<p>模型定义: dubbo将一个接口定义为一个服务，SpringCloud则是将一个应用定义为一个服务</p>
+<p>SpringCloud是一个生态，而Dubbo是SpringCloud生态中关于服务调用一种解决方案(服务治理)</p>
+<h2 id="acid靠什么保证的">ACID靠什么保证的?</h2>
+<ul>
+<li>A原子性由undo log日志保证，它记录了需要回滚的日志信息，事务回滚时撤销已经执行成功的sql</li>
+<li>C一致性由其他三大特性保证、程序代码要保证业务上的一致性</li>
+<li>I隔离性由MVCC来保证</li>
+<li>D持久性由内存+redo log来保证，Mysq|修改数据同时在内存和redo log记录这次操作，宕机的时候可以从redolog恢复</li>
+</ul>
+<blockquote>
+<p>InnoDB redo log写盘，InnoDB事务进入prepare状态。</p>
+<p>如果前面prepare成功，bin1og 写盘，再继续将事务日志持久化到 binlog，如果持久化成功，那么、InnoDB事务则进入commit状态(在 redo log 里面写一个commit记录)</p>
+</blockquote>
+<p>redolog的刷盘会在系统空闲时进行</p>
+<h2 id="end">end</h2>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-06-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/java-audition-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/java-audition-note/" data-title="Java后端面试题整理" data-hashtags="Java,Mysql,Audition,Spring,SpringCloud,Dubbo"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/java-audition-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/java-audition-note/" data-title="Java后端面试题整理" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/java-audition-note/" data-title="Java后端面试题整理"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/mysql/">Mysql</a>,&nbsp;<a href="/tags/audition/">Audition</a>,&nbsp;<a href="/tags/spring/">Spring</a>,&nbsp;<a href="/tags/springcloud/">SpringCloud</a>,&nbsp;<a href="/tags/dubbo/">Dubbo</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/android-baidumap-inflating-error/" class="prev" rel="prev" title="Error inflating class com.baidu.mapapi.map.MapView"><i class="fas fa-angle-left fa-fw"></i>Error inflating class com.baidu.mapapi.map.MapView</a>
+            <a href="/office-orrbit-pan-baidu/" class="next" rel="next" title="word怎么去掉百度网盘">word怎么去掉百度网盘<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

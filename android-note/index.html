@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/android-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/android-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-01T03:02:55&#43;08:00" />
-<meta property="article:modified_time" content="2021-05-01T03:02:55&#43;08:00" />
+<meta property="article:modified_time" content="2021-06-29T14:25:59&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/android-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/android-note\/featured-image.jpg",
                             "width":  740 ,
                             "height":  393 
-                        }],"genre": "posts","keywords": "Android, XMl, Kotlin, Service, Theme, layout, ConstraintLayout, Activity","wordcount":  4816 ,
-        "url": "https:\/\/kkkpjskey.github.io\/android-note\/","datePublished": "2021-05-01T03:02:55+08:00","dateModified": "2021-05-01T03:02:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Android, XMl, Kotlin, Service, Theme, layout, ConstraintLayout, Activity","wordcount":  6485 ,
+        "url": "https:\/\/kkkpjskey.github.io\/android-note\/","datePublished": "2021-05-01T03:02:55+08:00","dateModified": "2021-06-29T14:25:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Android开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/total/"><i class="far fa-folder fa-fw"></i>Total</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-01">2021-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4816 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/android-note/" class="leancloud_visitors" data-flag-title="Android开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-01">2021-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6485 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;<span id="/android-note/" class="leancloud_visitors" data-flag-title="Android开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -172,6 +172,29 @@
         </li>
       </ul>
     </li>
+    <li><a href="#简单实现imageview宽度填满屏幕高度自适应的两种方式">简单实现ImageView宽度填满屏幕，高度自适应的两种方式</a>
+      <ul>
+        <li><a href="#1重写view的onmeasure方法">1.重写View的onMeasure方法</a></li>
+        <li><a href="#2设置imageview的属性">2.设置ImageView的属性：</a></li>
+      </ul>
+    </li>
+    <li><a href="#android使用bundlemessagehundle进行线程间通信">Android使用Bundle+Message+Hundle进行线程间通信</a>
+      <ul>
+        <li><a href="#数据是java自带数据对象常规八种数据结构">数据是java自带数据对象（常规八种数据结构）</a>
+          <ul>
+            <li><a href="#接收线程">接收线程</a></li>
+            <li><a href="#发送线程">发送线程</a></li>
+          </ul>
+        </li>
+        <li><a href="#数据是自定义对象时">数据是自定义对象时</a>
+          <ul>
+            <li><a href="#自定义类">自定义类</a></li>
+            <li><a href="#接收线程-1">接收线程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#android历史版本平台sdk版本名称对照争取持续更新">Android历史版本平台、SDK、版本名称对照（争取持续更新）</a></li>
     <li><a href="#end">end</a></li>
   </ul>
 </nav></div>
@@ -872,12 +895,383 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 <ul>
 <li>onStart（）、 onResume（）</li>
 </ul>
+<h2 id="简单实现imageview宽度填满屏幕高度自适应的两种方式">简单实现ImageView宽度填满屏幕，高度自适应的两种方式</h2>
+<p>两种方式</p>
+<h3 id="1重写view的onmeasure方法">1.重写View的onMeasure方法</h3>
+<p>核心代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"> <span class="n">protectedvoidonMeasure</span><span class="o">(</span><span class="n">intwidthMeasureSpec</span><span class="o">,</span><span class="n">intheightMeasureSpec</span><span class="o">){</span>
+     <span class="n">Drawable</span> <span class="n">d</span> <span class="o">=</span> <span class="n">getDrawable</span><span class="o">();</span>
+     <span class="k">if</span><span class="o">(</span><span class="n">d</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+         <span class="c1">// ceil not round - avoid thin vertical gaps along the left/right 
+</span><span class="c1"></span>         <span class="n">edgesintwidth</span> <span class="o">=</span> <span class="n">MeasureSpec</span><span class="o">.</span><span class="na">getSize</span><span class="o">(</span><span class="n">widthMeasureSpec</span><span class="o">);</span>
+         <span class="c1">//高度根据使得图片的宽度充满屏幕计算而得 
+</span><span class="c1"></span>         <span class="n">intheight</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">((</span><span class="kt">float</span><span class="o">)</span> <span class="n">width</span> <span class="o">*</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="n">d</span><span class="o">.</span><span class="na">getIntrinsicHeight</span><span class="o">()</span> <span class="o">/</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="n">d</span><span class="o">.</span><span class="na">getIntrinsicWidth</span><span class="o">());</span>
+     <span class="n">setMeasuredDimension</span><span class="o">(</span><span class="n">width</span><span class="o">,</span> <span class="n">height</span><span class="o">);</span>
+     <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+         <span class="kd">super</span><span class="o">.</span><span class="na">onMeasure</span><span class="o">(</span><span class="n">widthMeasureSpec</span><span class="o">,</span> <span class="n">heightMeasureSpec</span><span class="o">);</span>
+     <span class="o">}</span>
+ <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2设置imageview的属性">2.设置ImageView的属性：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">//宽度填满屏幕
+ android:layout_width=”match_parent”
+ android:scaleType=”fitXY”
+ android:layout_height=”wrap_content”
+ //保持比例，一定要设置
+ android:adjustViewBounds=”true”
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="android使用bundlemessagehundle进行线程间通信">Android使用Bundle+Message+Hundle进行线程间通信</h2>
+<h3 id="数据是java自带数据对象常规八种数据结构">数据是java自带数据对象（常规八种数据结构）</h3>
+<h4 id="接收线程">接收线程</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Handler</span> <span class="n">mHandler</span><span class="o">=</span><span class="k">new</span> <span class="n">Handler</span><span class="o">(){</span>  
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">switch</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">what</span><span class="o">){</span>  
+            <span class="k">case</span> <span class="n">CANSHU</span> <span class="o">:</span>   <span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="na">getData</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="s">&#34;text1&#34;</span><span class="o">);</span><span class="c1">//接受msg传递过来的参数   
+</span><span class="c1"></span>                    <span class="n">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="na">getData</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="s">&#34;text2&#34;</span><span class="o">);</span><span class="c1">//接受msg传递过来的参数   
+</span><span class="c1"></span>                    <span class="n">initFinishMainActivity</span><span class="o">(</span><span class="n">str1</span><span class="o">,</span> <span class="n">str2</span><span class="o">);</span>  
+                              <span class="k">break</span><span class="o">;</span>  
+            <span class="k">default</span>         <span class="o">:</span> <span class="k">break</span><span class="o">;</span>  
+            <span class="o">}</span>  
+        <span class="o">}</span>     
+    <span class="o">};</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="发送线程">发送线程</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">();</span>  
+            <span class="n">msg</span><span class="o">.</span><span class="na">what</span> <span class="o">=</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">CANSHU</span><span class="o">;</span>  
+            <span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>    
+                      <span class="n">bundle</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&#34;text1&#34;</span><span class="o">,</span><span class="s">&#34;大明的消息传递参数的例子！&#34;</span><span class="o">);</span>  <span class="c1">//往Bundle中存放数据   
+</span><span class="c1"></span>                         <span class="n">bundle</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&#34;text2&#34;</span><span class="o">,</span><span class="s">&#34;Time：2011-09-05&#34;</span><span class="o">);</span>  <span class="c1">//往Bundle中put数据   
+</span><span class="c1"></span>                         <span class="n">msg</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">bundle</span><span class="o">);</span><span class="c1">//mes利用Bundle传递数据   
+</span><span class="c1"></span>                         <span class="n">activity</span><span class="o">.</span><span class="na">mHandler</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span><span class="c1">//用activity中的handler发送消息   
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="数据是自定义对象时">数据是自定义对象时</h3>
+<h4 id="自定义类">自定义类</h4>
+<blockquote>
+<p>首先需要自定对象实现Serializable可序列化的接口，如下</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Persion</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="接收线程-1">接收线程</h4>
+<blockquote>
+<p>getString等改为</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Handler</span> <span class="n">mHandler</span><span class="o">=</span><span class="k">new</span> <span class="n">Handler</span><span class="o">(){</span>  
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">switch</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">what</span><span class="o">){</span>  
+            <span class="k">case</span> <span class="n">CANSHU</span> <span class="o">:</span>   
+                <span class="n">Persion</span> <span class="n">persion</span><span class="o">=(</span><span class="n">Persion</span><span class="o">)(</span><span class="n">msg</span><span class="o">.</span><span class="na">getData</span><span class="o">().</span><span class="na">getSerializable</span><span class="o">(</span><span class="s">&#34;persion&#34;</span><span class="o">));</span>
+                <span class="c1">//接受msg传递过来的参数
+</span><span class="c1"></span>                <span class="n">initFinishMainActivity</span><span class="o">(</span><span class="n">persion</span><span class="o">);</span>  
+                <span class="k">break</span><span class="o">;</span>  
+            <span class="k">default</span><span class="o">:</span> 
+                <span class="k">break</span><span class="o">;</span>  
+            <span class="o">}</span>  
+        <span class="o">}</span>     
+    <span class="o">};</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>发送线程</p>
+<blockquote>
+<p>putString等改为putSerializable</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">();</span>  
+<span class="n">msg</span><span class="o">.</span><span class="na">what</span> <span class="o">=</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">CANSHU</span><span class="o">;</span> 
+<span class="n">Persion</span> <span class="n">persion</span><span class="o">=</span><span class="k">new</span> <span class="n">Persion</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">Name</span><span class="o">=</span><span class="s">&#34;zhangsan&#34;</span><span class="o">;</span>
+<span class="n">persion</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">Name</span><span class="o">);</span>
+<span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>    
+<span class="n">bundle</span><span class="o">.</span><span class="na">putSerializable</span><span class="o">(</span><span class="s">&#34;persion&#34;</span><span class="o">,</span><span class="n">persion</span><span class="o">);</span> 
+<span class="c1">//往Bundle中存放数据   
+</span><span class="c1"></span><span class="n">msg</span><span class="o">.</span><span class="na">setData</span><span class="o">(</span><span class="n">bundle</span><span class="o">);</span><span class="c1">//mes利用Bundle传递数据   
+</span><span class="c1"></span><span class="n">activity</span><span class="o">.</span><span class="na">mHandler</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span><span class="c1">//用activity中的handler发送消息   
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="android历史版本平台sdk版本名称对照争取持续更新">Android历史版本平台、SDK、版本名称对照（争取持续更新）</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">平台版本</th>
+<th style="text-align:center">SDK版本</th>
+<th style="text-align:center">版本名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">12.0</td>
+<td style="text-align:center">31</td>
+<td style="text-align:center">Android 12（Snow Cone）（刨冰）</td>
+</tr>
+<tr>
+<td style="text-align:center">11.0</td>
+<td style="text-align:center">30</td>
+<td style="text-align:center">Red Velvet Cake（Quince Tart）(Android R)（11）（红丝绒蛋糕）</td>
+</tr>
+<tr>
+<td style="text-align:center">10.0</td>
+<td style="text-align:center">29</td>
+<td style="text-align:center">(Android Q)（10）</td>
+</tr>
+<tr>
+<td style="text-align:center">9.0</td>
+<td style="text-align:center">28</td>
+<td style="text-align:center">Pie (Android P)（派/馅饼）</td>
+</tr>
+<tr>
+<td style="text-align:center">8.1</td>
+<td style="text-align:center">27</td>
+<td style="text-align:center">Oreo(Android O)（奥利奥）</td>
+</tr>
+<tr>
+<td style="text-align:center">8.0</td>
+<td style="text-align:center">26</td>
+<td style="text-align:center">[Oreo(Android O)（奥利奥）</td>
+</tr>
+<tr>
+<td style="text-align:center">7.1</td>
+<td style="text-align:center">25</td>
+<td style="text-align:center">Nougat(Android N)（牛轧糖）</td>
+</tr>
+<tr>
+<td style="text-align:center">7.0</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">Nougat(Android N)（牛轧糖）</td>
+</tr>
+<tr>
+<td style="text-align:center">6.0</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">Marshmallow(Android M)（棉花糖）</td>
+</tr>
+<tr>
+<td style="text-align:center">5.1</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">Lollipop(Android L)（棒棒糖）</td>
+</tr>
+<tr>
+<td style="text-align:center">5.0</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">Lollipop(Android L)（棒棒糖）</td>
+</tr>
+<tr>
+<td style="text-align:center">4.4W</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">KITKAT Wear（奇巧巧克力）</td>
+</tr>
+<tr>
+<td style="text-align:center">4.4</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">[KITKAT（奇巧巧克力）</td>
+</tr>
+<tr>
+<td style="text-align:center">4.3</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">JELLY_BEAN_MR2（软心豆粒糖/果冻豆）</td>
+</tr>
+<tr>
+<td style="text-align:center">4.2 / 4.2.2</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">JELLY_BEAN_MR1（软心豆粒糖）</td>
+</tr>
+<tr>
+<td style="text-align:center">4.1 / 4.1.1</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">JELLY_BEAN（软心豆粒糖）</td>
+</tr>
+<tr>
+<td style="text-align:center">4.0.3 / 4.0.4</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">ICE_CREAM_SANDWICH_MR1（冰淇淋三明治）</td>
+</tr>
+<tr>
+<td style="text-align:center">4.0 / 4.01 / 4.02</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">ICE_CREAM_SANDWICH（冰淇淋三明治）</td>
+</tr>
+<tr>
+<td style="text-align:center">3.2</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">HONEYCOMB_MR2（蜂巢）</td>
+</tr>
+<tr>
+<td style="text-align:center">3.1.X</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">HONEYCOMB_MR1（蜂巢）</td>
+</tr>
+<tr>
+<td style="text-align:center">3.0.X</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">HONEYCOMB（蜂巢）</td>
+</tr>
+<tr>
+<td style="text-align:center">2.3.3 / 2.3.4</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">GINGERBREAD_MR1（姜饼）</td>
+</tr>
+<tr>
+<td style="text-align:center">2.3</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">GINGERBREAD（姜饼）</td>
+</tr>
+<tr>
+<td style="text-align:center">2.2 / 2.2.1</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">Froyo（冻酸奶）</td>
+</tr>
+<tr>
+<td style="text-align:center">2.1</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">Eclair_MR2（闪电泡芙）</td>
+</tr>
+<tr>
+<td style="text-align:center">2.0.1</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">Eclair_MR1（闪电泡芙）</td>
+</tr>
+<tr>
+<td style="text-align:center">2.0</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">Eclair（闪电泡芙）</td>
+</tr>
+<tr>
+<td style="text-align:center">1.6</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">Donut（甜甜圈）</td>
+</tr>
+<tr>
+<td style="text-align:center">1.5</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">Cupcake（纸杯蛋糕）</td>
+</tr>
+<tr>
+<td style="text-align:center">1.1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">Petit Four</td>
+</tr>
+<tr>
+<td style="text-align:center">1.0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">Astro / Bender(1.0有两版)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="end">end</h2>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-05-01</span>
+                <span>更新于 2021-06-29</span>
             </div>
             <div class="post-info-license"></div>
         </div>
