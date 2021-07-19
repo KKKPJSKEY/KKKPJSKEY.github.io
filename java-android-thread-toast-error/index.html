@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-android-thread-toast-error\/featured-image.jpg",
                             "width":  844 ,
                             "height":  144 
-                        }],"genre": "posts","keywords": "Java, Android, Thread, Error","wordcount":  1096 ,
+                        }],"genre": "posts","keywords": "Java, Android, Thread, Error","wordcount":  1083 ,
         "url": "https:\/\/kkkpjskey.github.io\/java-android-thread-toast-error\/","datePublished": "2021-06-28T21:02:02+08:00","dateModified": "2021-06-28T21:02:02+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Can&#39;t toast on a thread that has not called Looper.prepare()</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-28">2021-06-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1096 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-28">2021-06-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1083 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/java-android-thread-toast-error/" class="leancloud_visitors" data-flag-title="Can&#39;t toast on a thread that has not called Looper.prepare()">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -137,23 +137,18 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#cant-toast-on-a-thread-that-has-not-called-looperprepare">Can&rsquo;t toast on a thread that has not called Looper.prepare()</a>
-      <ul>
-        <li><a href="#前言">前言</a></li>
-        <li><a href="#在子线程中调用toast">在子线程中调用Toast</a></li>
-        <li><a href="#在子线程中更新ui">在子线程中更新UI</a></li>
-        <li><a href="#在子线程中创建handler">在子线程中创建Handler</a></li>
-        <li><a href="#写在最后">写在最后</a></li>
-      </ul>
-    </li>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#在子线程中调用toast">在子线程中调用Toast</a></li>
+    <li><a href="#在子线程中更新ui">在子线程中更新UI</a></li>
+    <li><a href="#在子线程中创建handler">在子线程中创建Handler</a></li>
+    <li><a href="#写在最后">写在最后</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="cant-toast-on-a-thread-that-has-not-called-looperprepare">Can&rsquo;t toast on a thread that has not called Looper.prepare()</h2>
-<h3 id="前言">前言</h3>
+            </div><div class="content" id="content"><h2 id="前言">前言</h2>
 <p>最近一段时间在忙着开发一款自己的APP，将自己常用的功能需求都加入进入，同时在GitHub上跟着大牛们学习新的技术，提升自己的技能，在开发的过程中不断的发现问题和解决问题。
 在开发过程遇到了这样一个问题：Can&rsquo;t toast on a thread that has not called Looper.prepare()，如果在一个线程中没有调用Looper.prepare(),就不能在该线程中创建Toast。这个问题是因为在子线程中弹出Toast导致的。
 Android是不能直接在子线程中弹出Toast的，可是如果我们非要这么做，那该怎么办呢？下面就为大家讲解如何在子线程中弹出Toast，以及一些其他类似的子线程中操作的错误。</p>
-<h3 id="在子线程中调用toast">在子线程中调用Toast</h3>
+<h2 id="在子线程中调用toast">在子线程中调用Toast</h2>
 <blockquote>
 <p>在子线程中弹出Toast，会报错：java.lang.RuntimeException: Can’t toast on a thread that has not called Looper.prepare()。</p>
 </blockquote>
@@ -200,12 +195,12 @@ Android是不能直接在子线程中弹出Toast的，可是如果我们非要�
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="在子线程中更新ui">在子线程中更新UI</h3>
+</div><h2 id="在子线程中更新ui">在子线程中更新UI</h2>
 <blockquote>
 <p>在子线程中更新UI，会报错：android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.</p>
 </blockquote>
 <p>解决方式：在子线程中更新UI，一般使用Handler或者runOnUiThread()或者AsyncTask。</p>
-<h3 id="在子线程中创建handler">在子线程中创建Handler</h3>
+<h2 id="在子线程中创建handler">在子线程中创建Handler</h2>
 <blockquote>
 <p>在子线程中创建Handler，会报错：java.lang.RuntimeException: Can’t create handler inside thread that has not called Looper.prepare()。</p>
 </blockquote>
@@ -232,7 +227,7 @@ Android是不能直接在子线程中弹出Toast的，可是如果我们非要�
 <span class="o">}.</span><span class="na">start</span><span class="o">();</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="写在最后">写在最后</h3>
+</div><h2 id="写在最后">写在最后</h2>
 <p>以上就是在子线程中更新UI、弹出Toast、创建Handler时会遇到的问题，及解决方式。</p>
 <p>如果你在参考过程中遇到问题，可以在我的联系方式中给我提问。</p>
 <p>后面会继续介绍，Android的相关知识，欢迎继续关注我博客的更新。</p>
@@ -240,15 +235,7 @@ Android是不能直接在子线程中弹出Toast的，可是如果我们非要�
 在子线程中new Handler报错
 Android – Looper.prepare()和Looper.loop() —深入版
 Toast和Looper、Handler消息循环机制</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sh ./update.sh 
-</code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer" id="post-footer">
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

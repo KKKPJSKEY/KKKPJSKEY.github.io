@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-25T12:33:19&#43;08:00" />
-<meta property="article:modified_time" content="2021-05-27T20:45:19&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-15T12:54:59&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  3142 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-05-27T20:45:19+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  3362 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-07-15T12:54:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3142 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3362 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -137,6 +137,7 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
+    <li><a href="#oracle-java-下载jdk账号">Oracle Java 下载JDK账号</a></li>
     <li><a href="#java获取系统时间">Java获取系统时间</a></li>
     <li><a href="#java代码实现double类型数字格式化为百分数">Java代码实现double类型数字格式化为百分数</a></li>
     <li><a href="#java双端队列deque使用详解">Java双端队列Deque使用详解</a>
@@ -154,9 +155,24 @@
         <li><a href="#表示无符号右移也叫逻辑右移即若该数为正则高位补0而若该数为负数则右移后高位同样补0"><strong>&raquo;&gt;表示无符号右移，也叫逻辑右移，即若该数为正，则高位补0，而若该数为负数，则右移后高位同样补0</strong></a></li>
       </ul>
     </li>
+    <li><a href="#操作系统控制台中查看java进程">操作系统控制台中查看Java进程</a>
+      <ul>
+        <li><a href="#一linux篇">一、Linux篇</a>
+          <ul>
+            <li><a href="#方法一">方法一</a></li>
+            <li><a href="#方法二">方法二</a></li>
+          </ul>
+        </li>
+        <li><a href="#二windows篇">二、Windows篇</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="java获取系统时间">Java获取系统时间</h2>
+            </div><div class="content" id="content"><h2 id="oracle-java-下载jdk账号">Oracle Java 下载JDK账号</h2>
+<p>目前在官网下载低于jdk1.8的<a href="http://lib.csdn.net/base/java" target="_blank" rel="noopener noreferrer">Java </a>jdk的时候需要登陆，这边分享一个账号，方便下载</p>
+<p>账号：2696671285@qq.com</p>
+<p>密码：Oracle123</p>
+<h2 id="java获取系统时间">Java获取系统时间</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -871,11 +887,44 @@ Deque deque = new LinkedList()</li>
 <p>　　　　补码：<strong>11111111 11111111  11111111  11101100</strong></p>
 <p>　　　　右移：<strong>00111111 11111111  11111111  11111011</strong></p>
 <p>　　　　结果：<strong>r = 1073741819</strong></p>
-</div><div class="post-footer" id="post-footer">
+<h2 id="操作系统控制台中查看java进程">操作系统控制台中查看Java进程</h2>
+<h3 id="一linux篇">一、Linux篇</h3>
+<h4 id="方法一">方法一</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">ps -ef<span class="p">|</span>grep java
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="方法二">方法二</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">jps -l （显示java进程的Id和软件名称）
+jps -lmv（显示java进程的Id和软件名称；显示启动main输入参数；虚拟机参数）
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="二windows篇">二、Windows篇</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">jps
+jps -l（显示java进程的Id和软件路径及名称）
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-05-27</span>
+                <span>更新于 2021-07-15</span>
             </div>
             <div class="post-info-license"></div>
         </div>

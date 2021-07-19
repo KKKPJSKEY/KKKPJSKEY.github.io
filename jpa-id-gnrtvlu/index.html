@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>JPA @Id 和 @GeneratedValue 注解详解 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录JPA @Id 和 @GeneratedValue 注解详解的笔记"><meta property="og:title" content="JPA @Id 和 @GeneratedValue 注解详解" />
+<meta property="og:description" content="记录JPA @Id 和 @GeneratedValue 注解详解的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/jpa-id-gnrtvlu/" /><meta property="og:image" content="https://kkkpjskey.github.io/jpa-id-gnrtvlu/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-16T08:58:59&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-16T08:58:59&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/jpa-id-gnrtvlu/featured-image.jpg"/>
+<meta name="twitter:title" content="JPA @Id 和 @GeneratedValue 注解详解"/>
+<meta name="twitter:description" content="记录JPA @Id 和 @GeneratedValue 注解详解的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/jpa-id-gnrtvlu/" /><link rel="prev" href="https://kkkpjskey.github.io/mysql-server-time-error/" /><link rel="next" href="https://kkkpjskey.github.io/reqmap-getmap-diff/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "JPA @Id 和 @GeneratedValue 注解详解",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/jpa-id-gnrtvlu\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/jpa-id-gnrtvlu\/featured-image.jpg",
+                            "width":  1200 ,
+                            "height":  360 
+                        }],"genre": "posts","keywords": "Java, Jpa","wordcount":  6521 ,
+        "url": "https:\/\/kkkpjskey.github.io\/jpa-id-gnrtvlu\/","datePublished": "2021-07-16T08:58:59+08:00","dateModified": "2021-07-16T08:58:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录JPA @Id 和 @GeneratedValue 注解详解的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/jpa-id-gnrtvlu/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/jpa-id-gnrtvlu/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">JPA @Id 和 @GeneratedValue 注解详解</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-16">2021-07-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6521 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/jpa-id-gnrtvlu/" class="leancloud_visitors" data-flag-title="JPA @Id 和 @GeneratedValue 注解详解">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/jpa-id-gnrtvlu/featured-image.jpg"
+        data-srcset="/jpa-id-gnrtvlu/featured-image.jpg, /jpa-id-gnrtvlu/featured-image.jpg 1.5x, /jpa-id-gnrtvlu/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/jpa-id-gnrtvlu/featured-image.jpg"
+        title="记录JPA @Id 和 @GeneratedValue 注解详解的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#解释">解释</a>
+      <ul>
+        <li><a href="#id">@Id</a></li>
+        <li><a href="#generatedvalue">@GeneratedValue</a></li>
+      </ul>
+    </li>
+    <li><a href="#推荐的两种写法">推荐的两种写法：</a>
+      <ul>
+        <li><a href="#属性之上">属性之上：</a></li>
+        <li><a href="#getter方法之上">getter方法之上：</a></li>
+        <li><a href="#注意">注意</a></li>
+      </ul>
+    </li>
+    <li><a href="#一jpa通用策略生成器">一、JPA通用策略生成器</a>
+      <ul>
+        <li><a href="#1generationtype">1、GenerationType:</a>
+          <ul>
+            <li><a href="#这里应用表tb_generator定义为">这里应用表tb_generator，定义为</a></li>
+            <li><a href="#插入纪录供生成主键使用">插入纪录，供生成主键使用，</a></li>
+            <li><a href="#在主键生成后这条纪录的value值按allocationsize递增">在主键生成后，这条纪录的value值，按allocationSize递增。</a></li>
+            <li><a href="#其中属性说明">其中属性说明：</a></li>
+          </ul>
+        </li>
+        <li><a href="#2sequence">2、SEQUENCE</a>
+          <ul>
+            <li><a href="#sequencegenerator定义">@SequenceGenerator定义</a></li>
+          </ul>
+        </li>
+        <li><a href="#3identity">3、IDENTITY</a></li>
+        <li><a href="#4auto">4、AUTO</a></li>
+      </ul>
+    </li>
+    <li><a href="#二hibernate主键策略生成器">二、hibernate主键策略生成器</a></li>
+    <li><a href="#三genericgenerator">三、@GenericGenerator</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#genericgenerator的定义">@GenericGenerator的定义:</a></li>
+          </ul>
+        </li>
+        <li><a href="#1native">1、native</a></li>
+        <li><a href="#2uuid">2、uuid</a></li>
+        <li><a href="#3hilo">3、hilo</a></li>
+        <li><a href="#4assigned">4、assigned</a></li>
+        <li><a href="#5identity">5、identity</a></li>
+        <li><a href="#6select">6、select</a></li>
+        <li><a href="#7sequence">7、sequence</a></li>
+        <li><a href="#8seqhilo">8、seqhilo</a></li>
+        <li><a href="#9increment">9、increment</a></li>
+        <li><a href="#10foreign">10、foreign</a></li>
+        <li><a href="#11guid">11、guid</a></li>
+        <li><a href="#12uuidhex">12、uuid.hex</a></li>
+        <li><a href="#13sequence-identity">13、sequence-identity</a></li>
+      </ul>
+    </li>
+    <li><a href="#四通过genericgenerator自定义主键生成策略">四、通过@GenericGenerator自定义主键生成策略</a>
+      <ul>
+        <li><a href="#1generationtypetable">1.GenerationType.TABLE</a></li>
+        <li><a href="#2generationtypesequence">2.GenerationType.SEQUENCE</a></li>
+        <li><a href="#3generationtypeidentity">3.GenerationType.IDENTITY</a></li>
+        <li><a href="#4generationtypeauto">4.GenerationType.AUTO</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="解释">解释</h2>
+<h3 id="id">@Id</h3>
+<p>@Id 标注用于声明一个实体类的属性映射为数据库的主键列。该属性通常置于属性声明语句之前，可与声明语句同行，也可写在单独行上。 
+@Id标注也可置于属性的getter方法之前。</p>
+<h3 id="generatedvalue">@GeneratedValue</h3>
+<p>@GeneratedValue 用于标注主键的生成策略，通过strategy 属性指定。默认情况下，JPA 自动选择一个最适合底层数据库的主键生成策略：SqlServer对应identity，MySQL 对应 auto increment。 
+在javax.persistence.GenerationType中定义了以下几种可供选择的策略： 
+–IDENTITY：采用数据库ID自增长的方式来自增主键字段，Oracle 不支持这种方式； 
+–AUTO： JPA自动选择合适的策略，是默认选项； 
+–SEQUENCE：通过序列产生主键，通过@SequenceGenerator 注解指定序列名，MySql不支持这种方式 
+–TABLE：通过表产生主键，框架借由表模拟序列产生主键，使用该策略可以使应用更易于数据库移植。</p>
+<h2 id="推荐的两种写法">推荐的两种写法：</h2>
+<h3 id="属性之上">属性之上：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;CUSTOMERS&#34;</span><span class="o">)</span>
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span>
+    <span class="nd">@Id</span>
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">email</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="getter方法之上">getter方法之上：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;CUSTOMERS&#34;</span><span class="o">)</span>
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">email</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+ 
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span>
+    <span class="nd">@Id</span>
+    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="注意">注意</h3>
+<p>但是不能某个注解在属性之上，某个注解在getter之上，将抛出异常，对其他注解也相同</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;CUSTOMERS&#34;</span><span class="o">)</span>
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">email</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+ 
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面的写法是错误的</p>
+<h2 id="一jpa通用策略生成器">一、JPA通用策略生成器</h2>
+<p>通过annotation来映射hibernate实体的,基于annotation的hibernate主键标识为@Id, 
+其生成规则由@GeneratedValue设定的.这里的@id和@GeneratedValue都是JPA的标准用法, 
+JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">METHOD</span><span class="o">,</span><span class="n">FIELD</span><span class="o">})</span>    
+    <span class="nd">@Retention</span><span class="o">(</span><span class="n">RUNTIME</span><span class="o">)</span>    
+    <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">GeneratedValue</span><span class="o">{</span>    
+        <span class="n">GenerationType</span> <span class="nf">strategy</span><span class="o">()</span> <span class="k">default</span> <span class="n">AUTO</span><span class="o">;</span>    
+        <span class="n">String</span> <span class="nf">generator</span><span class="o">()</span> <span class="k">default</span> <span class="s">&#34;&#34;</span><span class="o">;</span>    
+    <span class="o">}</span>   
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="1generationtype">1、GenerationType:</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span>  
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">TABLE</span><span class="o">,</span> <span class="n">generator</span><span class="o">=</span><span class="s">&#34;payablemoney_gen&#34;</span><span class="o">)</span>  
+<span class="nd">@TableGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;pk_gen&#34;</span><span class="o">,</span>  
+    <span class="n">table</span><span class="o">=</span><span class="s">&#34;tb_generator&#34;</span><span class="o">,</span>  
+    <span class="n">pkColumnName</span><span class="o">=</span><span class="s">&#34;gen_name&#34;</span><span class="o">,</span>  
+    <span class="n">valueColumnName</span><span class="o">=</span><span class="s">&#34;gen_value&#34;</span><span class="o">,</span>  
+    <span class="n">pkColumnValue</span><span class="o">=</span><span class="s">&#34;PAYABLEMOENY_PK&#34;</span><span class="o">,</span>  
+    <span class="n">allocationSize</span><span class="o">=</span><span class="n">1</span>  
+<span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="这里应用表tb_generator定义为">这里应用表tb_generator，定义为</h4>
+<p>Sql代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">tb_generator</span> <span class="p">(</span>  
+  <span class="n">id</span> <span class="nb">NUMBER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
+  <span class="n">gen_name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
+  <span class="n">gen_value</span> <span class="nb">NUMBER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
+  <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>  
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="插入纪录供生成主键使用">插入纪录，供生成主键使用，</h4>
+<p>Sql代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tb_generator</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">gen_name</span><span class="p">,</span> <span class="n">gen_value</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">PAYABLEMOENY_PK</span><span class="s1">&#39;, 1); 
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="在主键生成后这条纪录的value值按allocationsize递增">在主键生成后，这条纪录的value值，按allocationSize递增。</h4>
+<p>@TableGenerator的定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">TYPE</span><span class="o">,</span> <span class="n">METHOD</span><span class="o">,</span> <span class="n">FIELD</span><span class="o">})</span>   
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">RUNTIME</span><span class="o">)</span>  
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">TableGenerator</span> <span class="o">{</span>  
+  <span class="n">String</span> <span class="nf">name</span><span class="o">();</span>  
+  <span class="n">String</span> <span class="nf">table</span><span class="o">()</span> <span class="k">default</span> <span class="s">&#34;&#34;</span><span class="o">;</span>  
+  <span class="n">String</span> <span class="nf">catalog</span><span class="o">()</span> <span class="k">default</span> <span class="s">&#34;&#34;</span><span class="o">;</span>  
+  <span class="n">String</span> <span class="nf">schema</span><span class="o">()</span> <span class="k">default</span> <span class="s">&#34;&#34;</span><span class="o">;</span>  
+  <span class="n">String</span> <span class="nf">pkColumnName</span><span class="o">()</span> <span class="k">default</span> <span class="s">&#34;&#34;</span><span class="o">;</span>  
+  <span class="n">String</span> <span class="nf">valueColumnName</span><span class="o">()</span> <span class="k">default</span> <span class="s">&#34;&#34;</span><span class="o">;</span>  
+  <span class="n">String</span> <span class="nf">pkColumnValue</span><span class="o">()</span> <span class="k">default</span> <span class="s">&#34;&#34;</span><span class="o">;</span>  
+  <span class="kt">int</span> <span class="nf">initialValue</span><span class="o">()</span> <span class="k">default</span> <span class="n">0</span><span class="o">;</span>  
+  <span class="kt">int</span> <span class="nf">allocationSize</span><span class="o">()</span> <span class="k">default</span> <span class="n">50</span><span class="o">;</span>  
+  <span class="n">UniqueConstraint</span><span class="o">[]</span> <span class="nf">uniqueConstraints</span><span class="o">()</span> <span class="k">default</span> <span class="o">{};</span>  
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="其中属性说明">其中属性说明：</h4>
+<p>name属性表示该表主键生成策略的名称，它被引用在@GeneratedValue中设置的“generator”值中。 
+table属性表示表生成策略所持久化的表名，例如，这里表使用的是数据库中的“tb_generator”。 
+catalog属性和schema具体指定表所在的目录名或是数据库名。 
+pkColumnName属性的值表示在持久化表中，该主键生成策略所对应键值的名称。例如在“tb_generator”中将“gen_name”作为主键的键值 
+valueColumnName属性的值表示在持久化表中，该主键当前所生成的值，它的值将会随着每次创建累加。例如，在“tb_generator”中将“gen_value”作为主键的值 
+pkColumnValue属性的值表示在持久化表中，该生成策略所对应的主键。例如在“tb_generator”表中，将“gen_name”的值为“CUSTOMER_PK”。 
+initialValue表示主键初识值，默认为0。 
+allocationSize表示每次主键值增加的大小，例如设置成1，则表示每次创建新记录后自动加1，默认为50。 
+UniqueConstraint与@Table标记中的用法类似。</p>
+<h3 id="2sequence">2、SEQUENCE</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span>  
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">SEQUENCE</span><span class="o">,</span><span class="n">generator</span><span class="o">=</span><span class="s">&#34;payablemoney_seq&#34;</span><span class="o">)</span>  
+<span class="nd">@SequenceGenerator</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;payablemoney_seq&#34;</span><span class="o">,</span> <span class="n">sequenceName</span><span class="o">=</span><span class="s">&#34;seq_payment&#34;</span><span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="sequencegenerator定义">@SequenceGenerator定义</h4>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">TYPE</span><span class="o">,</span> <span class="n">METHOD</span><span class="o">,</span> <span class="n">FIELD</span><span class="o">})</span>  
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">RUNTIME</span><span class="o">)</span> 
+<span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="nd">@interface</span><span class="o">**</span> <span class="n">SequenceGenerator</span> <span class="o">{</span> 
+ <span class="n">String</span> <span class="nf">name</span><span class="o">();</span> 
+ <span class="n">String</span> <span class="nf">sequenceName</span><span class="o">()</span> <span class="o">**</span><span class="k">default</span><span class="o">**</span> <span class="s">&#34;&#34;</span><span class="o">;</span> 
+ <span class="o">**</span><span class="kt">int</span><span class="o">**</span> <span class="n">initialValue</span><span class="o">()</span> <span class="o">**</span><span class="k">default</span><span class="o">**</span> <span class="n">0</span><span class="o">;</span> 
+ <span class="o">**</span><span class="kt">int</span><span class="o">**</span> <span class="n">allocationSize</span><span class="o">()</span> <span class="o">**</span><span class="k">default</span><span class="o">**</span> <span class="n">50</span><span class="o">;</span> 
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>name属性表示该表主键生成策略的名称，它被引用在@GeneratedValue中设置的“generator”值中。 
+sequenceName属性表示生成策略用到的数据库序列名称。 
+initialValue表示主键初识值，默认为0。 
+allocationSize表示每次主键值增加的大小，例如设置成1，则表示每次创建新记录后自动加1，默认为50。</p>
+<h3 id="3identity">3、IDENTITY</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4auto">4、AUTO</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>在指定主键时，如果不指定主键生成策略，默认为AUTO。</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>跟下面的定义是一样的。</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="二hibernate主键策略生成器">二、hibernate主键策略生成器</h2>
+<p>hibernate提供多种主键生成策略，有点是类似于JPA，有的是hibernate特有： 
+native: 对于 oracle 采用 Sequence 方式，对于MySQL 和 SQL Server 采用identity（自增主键生成机制），native就是将主键的生成工作交由数据库完成，hibernate不管（很常用）。 
+uuid: 采用128位的uuid算法生成主键，uuid被编码为一个32位16进制数字的字符串。占用空间大（字符串类型）。 
+hilo: 使用hilo生成策略，要在数据库中建立一张额外的表，默认表名为hibernate_unique_key,默认字段为integer类型，名称是next_hi（比较少用）。 
+assigned: 在插入数据的时候主键由程序处理（很常用），这是 元素没有指定时的默认生成策略。等同于JPA中的AUTO。 
+identity: 使用SQL Server 和 MySQL 的自增字段，这个方法不能放到 Oracle 中，Oracle 不支持自增字段，要设定sequence（MySQL 和 SQL Server 中很常用）。 
+等同于JPA中的INDENTITY。 
+select: 使用触发器生成主键（主要用于早期的数据库主键生成机制，少用）。 
+sequence: 调用底层数据库的序列来生成主键，要设定序列名，不然hibernate无法找到。 
+seqhilo: 通过hilo算法实现，但是主键历史保存在Sequence中，适用于支持 Sequence 的数据库，如 Oracle（比较少用） 
+increment: 插入数据的时候hibernate会给主键添加一个自增的主键，但是一个hibernate实例就维护一个计数器，所以在多个实例运行的时候不能使用这个方法。 
+foreign: 使用另外一个相关联的对象的主键。通常和联合起来使用。 
+guid: 采用数据库底层的guid算法机制，对应MYSQL的uuid()函数，SQL Server的newid()函数，ORACLE的rawtohex(sys_guid())函数等。 
+uuid.hex: 看uuid，建议用uuid替换。 
+sequence-identity: sequence策略的扩展，采用立即检索策略来获取sequence值，需要JDBC3.0和JDK4以上（含1.4）版本</p>
+<p>hibernate提供了多种生成器供选择,基于Annotation的方式通过@GenericGenerator实现. 
+hibernate每种主键生成策略提供接口org.hibernate.id.IdentifierGenerator的实现类,如果要实现自定义的主键生成策略也必须实现此接口.</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IdentifierGenerator</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ENTITY_NAME</span> <span class="o">=</span> <span class="s">&#34;entity_name&#34;</span><span class="o">;</span>  
+  <span class="kd">public</span> <span class="n">Serializable</span> <span class="nf">generate</span><span class="o">(</span><span class="n">SessionImplementor</span> <span class="n">session</span><span class="o">,</span> <span class="n">Object</span> <span class="n">object</span><span class="o">)</span>   
+    <span class="kd">throws</span> <span class="n">HibernateException</span><span class="o">;</span>  
+<span class="o">}</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>IdentifierGenerator提供一generate方法,generate方法返回产生的主键.</p>
+<h2 id="三genericgenerator">三、@GenericGenerator</h2>
+<p>自定义主键生成策略，由@GenericGenerator实现。 
+hibernate在JPA的基础上进行了扩展，可以用一下方式引入hibernate独有的主键生成策略，就是通过@GenericGenerator加入的。</p>
+<p>比如说，JPA标准用法</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>就可以用hibernate特有以下用法来实现</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">@GeneratedValue(generator = &#34;paymentableGenerator&#34;)  
+@GenericGenerator(name = &#34;paymentableGenerator&#34;, strategy = &#34;assigned&#34;) 
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="genericgenerator的定义">@GenericGenerator的定义:</h4>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">PACKAGE</span><span class="o">,</span> <span class="n">TYPE</span><span class="o">,</span> <span class="n">METHOD</span><span class="o">,</span> <span class="n">FIELD</span><span class="o">})</span> 
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">RUNTIME</span><span class="o">)</span> 
+<span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="nd">@interface</span><span class="o">**</span> <span class="n">GenericGenerator</span> <span class="o">{</span> 
+ <span class="n">String</span> <span class="nf">name</span><span class="o">();</span> 
+ <span class="n">String</span> <span class="nf">strategy</span><span class="o">();</span> 
+ <span class="n">Parameter</span><span class="o">[]</span> <span class="nf">parameters</span><span class="o">()</span> <span class="o">**</span><span class="k">default</span><span class="o">**</span> <span class="o">{};</span> 
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>name属性指定生成器名称。 
+strategy属性指定具体生成器的类名。 
+parameters得到strategy指定的具体生成器所用到的参数。</p>
+<p>对于这些hibernate主键生成策略和各自的具体生成器之间的关系,在org.hibernate.id.IdentifierGeneratorFacto ry中指定了,</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="o">**</span><span class="kd">static</span><span class="o">**</span> <span class="o">{</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;uuid&#34;</span><span class="o">,</span> <span class="n">UUIDHexGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;hilo&#34;</span><span class="o">,</span> <span class="n">TableHiLoGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;assigned&#34;</span><span class="o">,</span> <span class="n">Assigned</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;identity&#34;</span><span class="o">,</span> <span class="n">IdentityGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;select&#34;</span><span class="o">,</span> <span class="n">SelectGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;sequence&#34;</span><span class="o">,</span> <span class="n">SequenceGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;seqhilo&#34;</span><span class="o">,</span> <span class="n">SequenceHiLoGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;increment&#34;</span><span class="o">,</span> <span class="n">IncrementGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;foreign&#34;</span><span class="o">,</span> <span class="n">ForeignGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;guid&#34;</span><span class="o">,</span> <span class="n">GUIDGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+ <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;uuid.hex&#34;</span><span class="o">,</span> <span class="n">UUIDHexGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> <span class="c1">//uuid.hex is deprecated 
+</span><span class="c1"></span> <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;sequence-identity&#34;</span><span class="o">,</span> <span class="n">SequenceIdentityGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>上面十二种策略，加上native，hibernate一共默认支持十三种生成策略。</p>
+<h3 id="1native">1、native</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;native&#34;</span><span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2uuid">2、uuid</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;uuid&#34;</span><span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3hilo">3、hilo</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;hilo&#34;</span><span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4assigned">4、assigned</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;assigned&#34;</span><span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="5identity">5、identity</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="6select">6、select</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;select&#34;</span><span class="o">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s">&#34;select&#34;</span><span class="o">,</span> 
+   <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;key&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;idstoerung&#34;</span><span class="o">)</span> <span class="o">})</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="7sequence">7、sequence</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;sequence&#34;</span><span class="o">,</span>  
+     <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sequence&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;seq_payablemoney&#34;</span><span class="o">)</span> <span class="o">})</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="8seqhilo">8、seqhilo</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;seqhilo&#34;</span><span class="o">,</span>  
+     <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;max_lo&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;5&#34;</span><span class="o">)</span> <span class="o">})</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="9increment">9、increment</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;increment&#34;</span><span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="10foreign">10、foreign</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;idGenerator&#34;</span><span class="o">)</span> 
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;idGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;foreign&#34;</span><span class="o">,</span>  
+     <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;property&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;employee&#34;</span><span class="o">)</span> <span class="o">})</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>注意：直接使用@PrimaryKeyJoinColumn 报错（?）</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@OneToOne</span><span class="o">(</span><span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>  
+<span class="nd">@PrimaryKeyJoinColumn</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>例如</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span> 
+<span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="n">class</span><span class="o">**</span> <span class="n">Employee</span> <span class="o">{</span> 
+ <span class="nd">@Id</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
+ <span class="nd">@OneToOne</span> <span class="nd">@PrimaryKeyJoinColumn</span> 
+ <span class="n">EmployeeInfo</span> <span class="n">info</span><span class="o">;</span> 
+ <span class="o">...</span> 
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>应该为</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span> 
+<span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="n">class</span><span class="o">**</span> <span class="n">Employee</span> <span class="o">{</span> 
+ <span class="nd">@Id</span>  
+ <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;idGenerator&#34;</span><span class="o">)</span> 
+ <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;idGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;foreign&#34;</span><span class="o">,</span>  
+     <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;property&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;info&#34;</span><span class="o">)</span> <span class="o">})</span>  
+ <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
+ <span class="nd">@OneToOne</span> 
+ <span class="n">EmployeeInfo</span> <span class="n">info</span><span class="o">;</span> 
+ <span class="o">...</span> 
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="11guid">11、guid</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;guid&#34;</span><span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="12uuidhex">12、uuid.hex</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;uuid.hex&#34;</span><span class="o">)</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="13sequence-identity">13、sequence-identity</h3>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;sequence-identity&#34;</span><span class="o">,</span>  
+     <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sequence&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;seq_payablemoney&#34;</span><span class="o">)</span> <span class="o">})</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="四通过genericgenerator自定义主键生成策略">四、通过@GenericGenerator自定义主键生成策略</h2>
+<p>如果实际应用中，主键策略为程序指定了就用程序指定的主键（assigned），没有指定就从sequence中取。 
+明显上面所讨论的策略都不满足，只好自己扩展了，集成assigned和sequence两种策略。</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="n">class</span><span class="o">**</span> <span class="n">AssignedSequenceGenerator</span> <span class="o">**</span><span class="kd">extends</span><span class="o">**</span> <span class="n">SequenceGenerator</span> <span class="o">**</span><span class="kd">implements</span><span class="o">**</span>  
+ <span class="n">PersistentIdentifierGenerator</span><span class="o">,</span> <span class="n">Configurable</span> <span class="o">{</span> 
+ <span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">String</span> <span class="n">entityName</span><span class="o">;</span> 
+
+ <span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="kt">void</span><span class="o">**</span> <span class="n">configure</span><span class="o">(</span><span class="n">Type</span> <span class="n">type</span><span class="o">,</span> <span class="n">Properties</span> <span class="n">params</span><span class="o">,</span> <span class="n">Dialect</span> <span class="n">dialect</span><span class="o">)</span> <span class="o">**</span><span class="kd">throws</span><span class="o">**</span> <span class="n">MappingException</span> <span class="o">{</span> 
+ <span class="n">entityName</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="n">ENTITY_NAME</span><span class="o">);</span> 
+ <span class="o">**</span><span class="k">if</span><span class="o">**</span> <span class="o">(</span><span class="n">entityName</span><span class="o">==**</span><span class="kc">null</span><span class="o">**)</span> <span class="o">{</span> 
+  <span class="o">**</span><span class="k">throw</span><span class="o">**</span> <span class="o">**</span><span class="k">new</span><span class="o">**</span> <span class="n">MappingException</span><span class="o">(</span><span class="s">&#34;no entity name&#34;</span><span class="o">);</span> 
+ <span class="o">}</span> 
+ 
+ <span class="o">**</span><span class="kd">super</span><span class="o">**.</span><span class="na">configure</span><span class="o">(</span><span class="n">type</span><span class="o">,</span> <span class="n">params</span><span class="o">,</span> <span class="n">dialect</span><span class="o">);</span>  
+ <span class="o">}</span> 
+ 
+ <span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="n">Serializable</span> <span class="nf">generate</span><span class="o">(</span><span class="n">SessionImplementor</span> <span class="n">session</span><span class="o">,</span> <span class="n">Object</span> <span class="n">obj</span><span class="o">)</span>  
+ <span class="o">**</span><span class="kd">throws</span><span class="o">**</span> <span class="n">HibernateException</span> <span class="o">{</span> 
+
+ <span class="n">Serializable</span> <span class="n">id</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">getEntityPersister</span><span class="o">(</span> <span class="n">entityName</span><span class="o">,</span> <span class="n">obj</span> <span class="o">)</span>  
+  <span class="o">.</span><span class="na">getIdentifier</span><span class="o">(</span> <span class="n">obj</span><span class="o">,</span> <span class="n">session</span><span class="o">.</span><span class="na">getEntityMode</span><span class="o">()</span> <span class="o">);</span> 
+
+ <span class="o">**</span><span class="k">if</span><span class="o">**</span> <span class="o">(</span><span class="n">id</span><span class="o">==**</span><span class="kc">null</span><span class="o">**)</span> <span class="o">{</span> 
+  <span class="n">id</span> <span class="o">=</span> <span class="o">**</span><span class="kd">super</span><span class="o">**.</span><span class="na">generate</span><span class="o">(</span><span class="n">session</span><span class="o">,</span> <span class="n">obj</span><span class="o">);</span> 
+ <span class="o">}</span> 
+
+ <span class="o">**</span><span class="k">return</span><span class="o">**</span> <span class="n">id</span><span class="o">;</span> 
+ <span class="o">}</span> 
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>实际应用中，定义同sequence。</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;AssignedSequenceGenerator&#34;</span><span class="o">,</span>  
+   <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sequence&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;seq_payablemoney&#34;</span><span class="o">)</span> <span class="o">})</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>四种数据库的支持情况如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据库名称</th>
+<th style="text-align:left">支持的id策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">mysql</td>
+<td style="text-align:left">GenerationType.<em>TABLE</em>GenerationType.<em>AUTO</em>GenerationType.<em>IDENTITY**不支持</em>GenerationType.<em>SEQUENCE</em>* *</td>
+</tr>
+<tr>
+<td style="text-align:center">oracle</td>
+<td style="text-align:left">strategy=GenerationType.<em>AUTO</em>GenerationType.<em>SEQUENCE</em>GenerationType.<em>TABLE**不支持</em>GenerationType.<em>IDENTITY</em>* *</td>
+</tr>
+<tr>
+<td style="text-align:center">postgreSQL</td>
+<td style="text-align:left">GenerationType.<em>TABLE</em>GenerationType.<em>AUTO</em>GenerationType.<em>IDENTITY</em>GenerationType.*SEQUENCE<strong>都支持</strong> *</td>
+</tr>
+<tr>
+<td style="text-align:center">kingbase</td>
+<td style="text-align:left">GenerationType.<em>TABLE</em>GenerationType.<em>SEQUENCE</em>GenerationType.<em>IDENTITY</em>GenerationType.<em>AUTO**都支持</em></td>
+</tr>
+</tbody>
+</table>
+<p>JPA的@GeneratedValue注解,在JPA中,@GeneratedValue注解存在的意义主要就是为一个实体生成一个唯一标识的主键(JPA要求每一个实体Entity,必须有且只有一个主键),@GeneratedValue提供了主键的生成策略。@GeneratedValue注解有两个属性,分别是strategy和generator,其中generator属性的值是一个字符串,默认为&quot;&quot;,其声明了主键生成器的名称(对应于同名的主键生成器@SequenceGenerator和@TableGenerator)。</p>
+<p>JPA为开发人员提供了四种主键生成策略,其被定义在枚举类GenerationType中,包括GenerationType.TABLE,GenerationType.SEQUENCE,GenerationType.IDENTITY和GenerationType.AUTO。下面分别介绍这四种主键生成策略。</p>
+<h3 id="1generationtypetable">1.GenerationType.TABLE</h3>
+<p>使用一个特定的数据库表格来保存主键,持久化引擎通过关系数据库的一张特定的表格来生成主键,这种策略的好处就是不依赖于外部环境和数据库的具体实现,在不同数据库间可以很容易的进行移植,但由于其不能充分利用数据库的特性,所以不会优先使用。该策略一般与另外一个注解一起使用@TableGenerator,@TableGenerator注解指定了生成主键的表(可以在实体类上指定也可以在主键字段或属性上指定),然后JPA将会根据注解内容自动生成一张表作为序列表(或使用现有的序列表)。如果不指定序列表,则会生成一张默认的序列表,表中的列名也是自动生成,数据库上会生成一张名为sequence的表(SEQ_NAME,SEQ_COUNT)。序列表一般只包含两个字段:第一个字段是该生成策略的名称,第二个字段是该关系表的最大序号,它会随着数据的插入逐渐累加。类似于</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">TABLE</span><span class="o">,</span> <span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;roleSeq&#34;</span><span class="o">)</span> 
+<span class="nd">@TableGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;roleSeq&#34;</span><span class="o">,</span> <span class="n">allocationSize</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">table</span> <span class="o">=</span> <span class="s">&#34;seq_table&#34;</span><span class="o">,</span> <span class="n">pkColumnName</span> <span class="o">=</span> <span class="s">&#34;seq_id&#34;</span><span class="o">,</span> <span class="n">valueColumnName</span> <span class="o">=</span> <span class="s">&#34;seq_count&#34;</span><span class="o">)</span> 
+<span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>在以上例子中,roleSeq唯一的标识了该生成器,在@GeneratedValue注解中的generator属性可以根据此标识来声明主键生成器。</p>
+<h3 id="2generationtypesequence">2.GenerationType.SEQUENCE</h3>
+<p>在某些数据库中,不支持主键自增长,比如Oracle,其提供了一种叫做&quot;序列(sequence)&ldquo;的机制生成主键。此时,GenerationType.SEQUENCE就可以作为主键生成策略。该策略的不足之处正好与TABLE相反,由于只有部分数据库(Oracle,PostgreSQL,DB2)支持序列对象,所以该策略一般不应用于其他数据库。类似的,该策略一般与另外一个注解一起使用@SequenceGenerator,@SequenceGenerator注解指定了生成主键的序列.然后JPA会根据注解内容创建一个序列(或使用一个现有的序列)。如果不指定序列,则会自动生成一个序列SEQ_GEN_SEQUENCE。类似于</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">SEQUENCE</span><span class="o">,</span> <span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;menuSeq&#34;</span><span class="o">)</span> 
+<span class="nd">@SequenceGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;menuSeq&#34;</span><span class="o">,</span> <span class="n">initialValue</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">allocationSize</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">sequenceName</span> <span class="o">=</span> <span class="s">&#34;MENU_SEQUENCE&#34;</span><span class="o">)</span> 
+<span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>同样,在以上例子中,menuSeq唯一的标识了该生成器,@SequenceGenerator可以理解为将数据库中存在的序列进行了一个映射,在@GeneratedValue注解中的generator属性可以根据此标识来声明主键生成器。</p>
+<h3 id="3generationtypeidentity">3.GenerationType.IDENTITY</h3>
+<p>此种主键生成策略就是通常所说的主键自增长,数据库在插入数据时,会自动给主键赋值,比如MYSQL可以在创建表时声明&quot;auto_increment&rdquo; 来指定主键自增长。该策略在大部分数据库中都提供了支持(指定方法或关键字可能不同),但还是有少数数据库不支持,所以可移植性略差。使用自增长主键生成策略是只需要声明strategy = GenerationType.IDENTITY即可。类似于</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span> 
+<span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>需要注意的是,同一张表中自增列最多只能有一列。</p>
+<h3 id="4generationtypeauto">4.GenerationType.AUTO</h3>
+<p>把主键生成策略交给持久化引擎(persistence engine),持久化引擎会根据数据库在以上三种主键生成策略中选择其中一种。此种主键生成策略比较常用,由于JPA默认的生成策略就是GenerationType.AUTO,所以使用此种策略时.可以显式的指定@GeneratedValue(strategy = GenerationType.AUTO)也可以直接@GeneratedValue</p>
+<p>类似于</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span> 
+<span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>或</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span> 
+<span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>参考资料:</p>
+<p><a href="http://xiaoyaocao.iteye.com/blog/1874412">http://xiaoyaocao.iteye.com/blog/1874412</a></p>
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-jpaprimarykey/">http://www.ibm.com/developerworks/cn/java/j-lo-jpaprimarykey/</a></p>
+<p><a href="http://www.oracle.com/technetwork/cn/middleware/ias/toplink-jpa-annotations-100895-zhs.html#">http://www.oracle.com/technetwork/cn/middleware/ias/toplink-jpa-annotations-100895-zhs.html#</a></p>
+<p>测试实例</p>
+<p><a href="http://download.csdn.net/detail/u012493207/9456135">http://download.csdn.net/detail/u012493207/9456135</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-07-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/jpa-id-gnrtvlu/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/jpa-id-gnrtvlu/" data-title="JPA @Id 和 @GeneratedValue 注解详解" data-hashtags="Java,Jpa"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/jpa-id-gnrtvlu/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/jpa-id-gnrtvlu/" data-title="JPA @Id 和 @GeneratedValue 注解详解" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/jpa-id-gnrtvlu/" data-title="JPA @Id 和 @GeneratedValue 注解详解"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/jpa/">Jpa</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mysql-server-time-error/" class="prev" rel="prev" title="MySql SQLException: The server time zone"><i class="fas fa-angle-left fa-fw"></i>MySql SQLException: The server time zone</a>
+            <a href="/reqmap-getmap-diff/" class="next" rel="next" title="@RequestMapping和@GetMapping">@RequestMapping和@GetMapping<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

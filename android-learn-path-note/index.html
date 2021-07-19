@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Android_Java学习路线 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Android_Java学习路线的笔记"><meta property="og:title" content="Android_Java学习路线" />
+<meta property="og:description" content="记录Android_Java学习路线的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/android-learn-path-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/android-learn-path-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-29T14:54:10&#43;08:00" />
+<meta property="article:modified_time" content="2021-06-29T14:54:10&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/android-learn-path-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Android_Java学习路线"/>
+<meta name="twitter:description" content="记录Android_Java学习路线的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/android-learn-path-note/" /><link rel="prev" href="https://kkkpjskey.github.io/android-runonuithread-error/" /><link rel="next" href="https://kkkpjskey.github.io/vm-ping-error/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Android_Java学习路线",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/android-learn-path-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/android-learn-path-note\/featured-image.jpg",
+                            "width":  1080 ,
+                            "height":  693 
+                        }],"genre": "posts","keywords": "Java, Android","wordcount":  3457 ,
+        "url": "https:\/\/kkkpjskey.github.io\/android-learn-path-note\/","datePublished": "2021-06-29T14:54:10+08:00","dateModified": "2021-06-29T14:54:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Android_Java学习路线的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/android-learn-path-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/android-learn-path-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Android_Java学习路线</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-29">2021-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3457 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/android-learn-path-note/" class="leancloud_visitors" data-flag-title="Android_Java学习路线">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/android-learn-path-note/featured-image.jpg"
+        data-srcset="/android-learn-path-note/featured-image.jpg, /android-learn-path-note/featured-image.jpg 1.5x, /android-learn-path-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/android-learn-path-note/featured-image.jpg"
+        title="记录Android_Java学习路线的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#java基础">Java基础</a></li>
+    <li><a href="#数据结构及算法">数据结构及算法</a></li>
+    <li><a href="#算法">算法</a></li>
+    <li><a href="#android基础">Android基础</a></li>
+    <li><a href="#android开发高级">Android开发高级</a></li>
+    <li><a href="#android技术难点">Android技术难点</a></li>
+    <li><a href="#android框架层源码掌握">Android框架层源码掌握</a></li>
+    <li><a href="#android进程通信以及多进程开发">Android进程通信以及多进程开发</a></li>
+    <li><a href="#混合开发及android-webview应用">混合开发及Android WebView应用</a></li>
+    <li><a href="#gradle自动化构建持续集成相关">Gradle，自动化构建，持续集成相关</a></li>
+    <li><a href="#app启动加载过程">App启动加载过程</a></li>
+    <li><a href="#android架构">Android架构</a></li>
+    <li><a href="#移动开发外围">移动开发外围</a></li>
+    <li><a href="#前端开发相关">前端开发相关</a></li>
+    <li><a href="#开发调试各种工具">开发调试各种工具</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="java基础">Java基础</h2>
+<p><strong>泛型</strong></p>
+<ul>
+<li>作用于定义</li>
+<li>通配符于嵌套</li>
+<li>Rxjava中的泛型</li>
+</ul>
+<p><strong>注解</strong></p>
+<ul>
+<li>自定义注解与元注解</li>
+<li>APT，编译时注解处理器</li>
+<li>插桩</li>
+<li>反射，运行时动态获取注解信息</li>
+<li>Retrofit</li>
+</ul>
+<p><strong>并发线程</strong></p>
+<ul>
+<li>线程共享与实现实现</li>
+<li>CAS原理</li>
+<li>Android AsyncTask原理</li>
+</ul>
+<p><strong>Java虚拟机</strong></p>
+<ul>
+<li>Dalvik虚拟机</li>
+<li>CG算法、机制</li>
+<li>内存分配策略</li>
+</ul>
+<p><strong>Hook技术动态编程</strong>
+<strong>动态代理模式</strong>
+<strong>双亲委托机制</strong>
+<strong>JavaIO体系</strong>
+<strong>IO操作Dex加密</strong></p>
+<h2 id="数据结构及算法">数据结构及算法</h2>
+<p><strong>数据结构</strong></p>
+<ul>
+<li>栈和队列</li>
+<li>数组和链表，自定义一个动态数组</li>
+<li>Hash表，及Hash冲突的解决</li>
+<li>二叉树</li>
+<li>B+ B-树</li>
+<li>基础排序算法：重点 快排、归并排序、堆排序（大根堆、小根堆）</li>
+<li>快排的优化</li>
+<li>二分查找与变种二分查找</li>
+<li>哈夫曼树、红黑树</li>
+<li>字符串操作，字符串查找，KMP算法</li>
+<li>图的BFS、DFS、prim、Dijkstra算法（高阶技能）</li>
+<li>经典问题：海量数据的处理 （10亿个数中找出最大的10000个数 TOP K问题）</li>
+</ul>
+<h2 id="算法">算法</h2>
+<ul>
+<li>分治算法</li>
+<li>动态规划</li>
+<li>贪心算法</li>
+<li>分支限界法</li>
+</ul>
+<h2 id="android基础">Android基础</h2>
+<ul>
+<li>Android Activity生命周期</li>
+<li>Application生命周期</li>
+<li>Android Service、IntentService，Service和组件间通信</li>
+<li>Activity的onNewIntent</li>
+<li>Fragment的懒加载实现，参数传递与保存</li>
+<li>ContentProvider实例详解</li>
+<li>BroadcastReceiver使用总结</li>
+<li>Android消息机制</li>
+<li>Binder机制，共享内存实现原理</li>
+<li>Android 事件分发机制</li>
+<li>Android 多线程的实现：Thread、HandlerThread、AsyncTask、IntentService、RxJava</li>
+<li>ActivityThread工作原理</li>
+<li>嵌套滑动实现原理</li>
+<li>RecyclerView与ListView(缓存原理，区别联系，优缺点)</li>
+<li>View的绘制原理，自定义View，自定义ViewGroup</li>
+<li>View、SurfaceView 与 TextureView</li>
+<li>主线程Looper.loop为什么不会造成死循环</li>
+<li>ViewPager的缓存实现</li>
+<li>requestLayout，invalidate，postInvalidate区别与联系</li>
+<li>AndroidP新特性</li>
+<li>Android两种虚拟机</li>
+<li>ADB常用命令</li>
+<li>Asset目录与res目录的区别</li>
+<li>Android SQLite的使用入门</li>
+</ul>
+<h2 id="android开发高级">Android开发高级</h2>
+<blockquote>
+<p>注：
+Android高级工程师招聘要求：
+1.熟悉Android SDK，熟悉Android UI，熟悉Android各种调试工具；
+2.有丰富的Android应用架构能力，能够独立主导并架构App；
+3.Mobile Web 开发经验；具备各种复合技能：熟悉iOS、H5、Python、.NET等多
+种开发语言的优先考虑；
+4.对Android性能优化，安全，软件加固，自动化测试有深刻认识;
+5.博客，开源项目</p>
+</blockquote>
+<h2 id="android技术难点">Android技术难点</h2>
+<p><strong>AIDL、Binder、多进程、View的绘制流程、事件分发、消息队列等</strong>。</p>
+<p>这类知识对于定位自己为高级Android工程师的人来说是必须掌握的，同时他也是能鉴别高级和初中级工程师的一块试金石，其中binder是Android系统进程间通信最重要的手段之一，现阶段app的发展离不开多进程的运用，经常会启动例如定位、推送等需要在后台开启动的进程来来保证主进程的内存运行；所以合理的使用多进程也是十分必要的；view的绘制是我们自定义控件的理论基础，只有掌握了view是如何绘制的才能个性化的自定义控件；事件分发一直是Android开发的难点之一，也是必须掌握的；关于handler机制也是android的一块难点，因为包括Asynctask、系统启动、Intentservice等底层都是通过handler来实现的，所以掌握后handler机制不仅能提高你的实战开发能力，更能让你系统的了解整个android系统运作的情况。</p>
+<h2 id="android框架层源码掌握">Android框架层源码掌握</h2>
+<ul>
+<li>Android包管理机制，核心PackageManagerService</li>
+<li>Window管理，核心WindowManagerService</li>
+<li>Android Activity启动和管理，核心ActivityManagerService</li>
+<li>根Activity工作流程</li>
+<li>Context关联类</li>
+<li>各种原理，经典第三方库源码系列</li>
+<li>自定义LayoutManager，RecyclerView中如何自定义LayoutManager</li>
+<li>VLayout实现原理，即如何自定义LayoutManager</li>
+<li>Glide加载原理，缓存方案，LRU算法</li>
+<li>Retrofit的实现与原理</li>
+<li>OKHttp3的使用，网络请求中的Intercept</li>
+<li>EventBus实现原理</li>
+<li>ButterKnife实现原理</li>
+<li>RxJava实现原理</li>
+<li>Dagger依赖注入</li>
+<li>热修复实现原理，解决方案</li>
+<li>组件化原理和解决方案</li>
+</ul>
+<h2 id="android进程通信以及多进程开发">Android进程通信以及多进程开发</h2>
+<p>Android 多进程和Application关系</p>
+<p>经典解决方案：多进程通信解决方案：<strong>Andromeda</strong></p>
+<ul>
+<li>Android动画机制</li>
+<li>Android绘图原理</li>
+<li>Android页面恢复</li>
+</ul>
+<p>Android的页面恢复采用以下两个方法：</p>
+<ul>
+<li>onSaveInstanceState(Bundle outState)</li>
+<li>onRestoreInstanceState(Bundle savedInstanceState)</li>
+</ul>
+<p>onSaveInstanceState ：当Activity容易被系统销毁时，会触发该方法。具体的说：</p>
+<ul>
+<li>用户点击Home键</li>
+<li>用户点击Home键，切换到其他应用程序</li>
+<li>有电话来了等附加操作</li>
+</ul>
+<h2 id="混合开发及android-webview应用">混合开发及Android WebView应用</h2>
+<p>混合开发涉及到的知识点主要包括：</p>
+<ul>
+<li>APP调用WebView加载url</li>
+<li>掌握WebView的封装，了解所有的WebSettings配置，掌握WebViewClient、* WebChromeClient</li>
+<li>掌握WebView和Native双向通信机制，会自己封装双向通信中间件</li>
+<li>对WebView的封装可参考：GitHub: AgentWeb</li>
+<li>对通信中间件原理理解：GitHub：webprogress</li>
+</ul>
+<h2 id="gradle自动化构建持续集成相关">Gradle，自动化构建，持续集成相关</h2>
+<p><strong>Android系统</strong></p>
+<p>Android Studio编译过程</p>
+<p>其中使用到的编译工具：
+aapt、aidl、Java Compiler、dex、 zipalign</p>
+<p>主要步骤描述：</p>
+<ul>
+<li>通过aapt打包res资源文件，生成R.java、resources.arsc和res文件（二进制 &amp; 非二进制如res/raw和pic保持原样）</li>
+<li>处理.aidl文件，生成对应的Java接口文件</li>
+<li>通过Java Compiler编译R.java、Java接口文件、Java源文件，生成.class文件</li>
+<li>通过dex命令，将.class文件和第三方库中的.class文件处理生成classes.dex</li>
+<li>通过apkbuilder工具，将aapt生成的resources.arsc和res文件、assets文件和classes.dex一起打包生成apk</li>
+<li>通过Jarsigner工具，对上面的apk进行debug或release签名</li>
+<li>通过zipalign工具，将签名后的apk进行对齐处理。</li>
+</ul>
+<h2 id="app启动加载过程">App启动加载过程</h2>
+<blockquote>
+<p>Android虚拟机 Android App运行的沙箱原则</p>
+</blockquote>
+<h2 id="android架构">Android架构</h2>
+<blockquote>
+<p>在Android源码中最重要的三个类：ActivityManagerService／PackageManagerService／View，推荐大家周末的时候可以去阅读下这部分的源码，阅读源码能提高我们今后设计架构自己代码的能力，同时也能从底层了解整个android系统的运行原理，其他一些比如主线程的消息循环、主线程如何和AMS如何跨进程交互、SystemServer进程中的各种Service的工作方式、AsyncTask的工作原理等。这些知识也是作为一个Android高级开发工程师必须掌握的，不能整天沉溺于ui和四大组件的交互，要站在更高的角度去考虑Android的有些问题。</p>
+</blockquote>
+<ul>
+<li>MVC模式</li>
+<li>MVP模式</li>
+<li>MVVM模式</li>
+<li>CLEAN模式</li>
+<li>组件化开发</li>
+<li>跨平台开发：Flutter、ReactNative（RN未来要黄，了解一下就好）</li>
+</ul>
+<h2 id="移动开发外围">移动开发外围</h2>
+<p>服务器开发相关</p>
+<ul>
+<li>SpringBoot技术</li>
+<li>Restful API开发</li>
+<li><strong>网络协议理解</strong>：TCP/IP、HTTP/HTTPS、OSI七层协议</li>
+<li><strong>授权认证协议</strong>： OAuth2.0 等</li>
+<li>基本的数据库技术</li>
+<li>数据缓存技术v：Memcached、Redis，Web缓存原理</li>
+<li>消息队列技术</li>
+<li>监控、日志分析技术</li>
+</ul>
+<h2 id="前端开发相关">前端开发相关</h2>
+<p>前端开发知识很多，框架层出不穷，本质的东西却只有以下这些。</p>
+<ul>
+<li><strong>核心必备</strong>：HTML、CSS、JavaScript</li>
+<li><strong>入门提高</strong>：浏览器兼容性、自定义UI和动效</li>
+<li><strong>中级技能</strong>：框架层出不穷，当前以vue.js、react.js 为核心</li>
+<li><strong>协作开发技能</strong>：包管理、模块化，工具采用 npm、webpack等</li>
+<li><strong>高级技能</strong>：框架原理源码研究</li>
+</ul>
+<h2 id="开发调试各种工具">开发调试各种工具</h2>
+<ul>
+<li><strong>性能分析工具</strong>：Memory Monitor</li>
+<li><strong>性能追踪及方法执行分析</strong>： TraceView</li>
+<li><strong>视图分析</strong>：Hierarchy Viewer</li>
+<li><strong>ApkTool</strong>- 用于反向工程Android Apk文件的工具</li>
+<li><strong>Lint- Android lint</strong>工具是一个静态代码分析工具</li>
+<li><strong>Dex2Jar</strong>- 使用android .dex和java .class文件的工具</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-06-29</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/android-learn-path-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/android-learn-path-note/" data-title="Android_Java学习路线" data-hashtags="Java,Android"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/android-learn-path-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/android-learn-path-note/" data-title="Android_Java学习路线" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/android-learn-path-note/" data-title="Android_Java学习路线"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/android/">Android</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/android-runonuithread-error/" class="prev" rel="prev" title="android.os.NetworkOnMainThreadException"><i class="fas fa-angle-left fa-fw"></i>android.os.NetworkOnMainThreadException</a>
+            <a href="/vm-ping-error/" class="next" rel="next" title="VM虚拟机Ping不通">VM虚拟机Ping不通<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>
