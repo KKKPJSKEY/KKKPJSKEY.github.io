@@ -5,36 +5,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>PostgreSQL相关笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="SpringBoot连接使用PostgreSQL数据库"><meta property="og:title" content="PostgreSQL相关笔记" />
-<meta property="og:description" content="SpringBoot连接使用PostgreSQL数据库" />
+        <title>通过银行业务理解 跑批 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="银行跑批业务的初步理解（批量批量.....流水账）"><meta property="og:title" content="通过银行业务理解 跑批" />
+<meta property="og:description" content="银行跑批业务的初步理解（批量批量.....流水账）" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kkkpjskey.github.io/postgresql-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/postgresql-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-28T10:29:58&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-28T10:29:58&#43;08:00" />
+<meta property="og:url" content="https://kkkpjskey.github.io/run-batch/" /><meta property="og:image" content="https://kkkpjskey.github.io/run-batch/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-28T15:55:01&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-28T15:55:01&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://kkkpjskey.github.io/postgresql-note/featured-image.jpg"/>
-<meta name="twitter:title" content="PostgreSQL相关笔记"/>
-<meta name="twitter:description" content="SpringBoot连接使用PostgreSQL数据库"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/run-batch/featured-image.jpg"/>
+<meta name="twitter:title" content="通过银行业务理解 跑批"/>
+<meta name="twitter:description" content="银行跑批业务的初步理解（批量批量.....流水账）"/>
 <meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
 <meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/postgresql-note/" /><link rel="prev" href="https://kkkpjskey.github.io/mybatisplus-multy-datasource/" /><link rel="next" href="https://kkkpjskey.github.io/mybatisplus-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/run-batch/" /><link rel="prev" href="https://kkkpjskey.github.io/mybatisplus-note/" /><link rel="next" href="https://kkkpjskey.github.io/android-bottom-navigation/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "PostgreSQL相关笔记",
+        "headline": "通过银行业务理解 跑批",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/kkkpjskey.github.io\/postgresql-note\/"
+            "@id": "https:\/\/kkkpjskey.github.io\/run-batch\/"
         },"image": [{
                             "@type": "ImageObject",
-                            "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/featured-image.jpg",
-                            "width":  640 ,
-                            "height":  205 
-                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  1136 ,
-        "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/","datePublished": "2021-07-28T10:29:58+08:00","dateModified": "2021-07-28T10:29:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                            "url": "https:\/\/kkkpjskey.github.io\/run-batch\/featured-image.jpg",
+                            "width":  1330 ,
+                            "height":  399 
+                        }],"genre": "posts","keywords": "Development, Markdown, GitHub, CodeIt, Blog","wordcount":  517 ,
+        "url": "https:\/\/kkkpjskey.github.io\/run-batch\/","datePublished": "2021-07-28T15:55:01+08:00","dateModified": "2021-07-28T15:55:01+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -44,7 +44,7 @@
                 }},"author": {
                 "@type": "Person",
                 "name": "KKKPSJKEY"
-            },"description": "SpringBoot连接使用PostgreSQL数据库"
+            },"description": "银行跑批业务的初步理解（批量批量.....流水账）"
     }
     </script></head>
     <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -56,7 +56,7 @@
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
-                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/postgresql-note/" selected>简体中文</option></select>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/run-batch/" selected>简体中文</option></select>
                     </a><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
@@ -103,7 +103,7 @@
                 </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
                 <i class="fas fa-adjust fa-fw"></i>
             </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
-                    <select class="language-select" onchange="location = this.value;"><option value="/postgresql-note/" selected>简体中文</option></select>
+                    <select class="language-select" onchange="location = this.value;"><option value="/run-batch/" selected>简体中文</option></select>
                 </a></div>
     </div>
 </header>
@@ -117,174 +117,45 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">PostgreSQL相关笔记</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1136 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/postgresql-note/" class="leancloud_visitors" data-flag-title="PostgreSQL相关笔记">
+        </div><article class="page single"><h1 class="single-title animated flipInX">通过银行业务理解 跑批</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 517 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/run-batch/" class="leancloud_visitors" data-flag-title="通过银行业务理解 跑批">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/postgresql-note/featured-image.jpg"
-        data-srcset="/postgresql-note/featured-image.jpg, /postgresql-note/featured-image.jpg 1.5x, /postgresql-note/featured-image.jpg 2x"
+        data-src="/run-batch/featured-image.jpg"
+        data-srcset="/run-batch/featured-image.jpg, /run-batch/featured-image.jpg 1.5x, /run-batch/featured-image.jpg 2x"
         data-sizes="auto"
-        alt="/postgresql-note/featured-image.jpg"
-        title="SpringBoot连接使用PostgreSQL数据库" /></div><div class="details toc" id="toc-static"  kept="">
+        alt="/run-batch/featured-image.jpg"
+        title="银行跑批业务的初步理解（批量批量.....流水账）" /></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#一介绍">一、介绍</a></li>
+    <li><a href="#一初步理解">一、初步理解</a></li>
+    <li><a href="#二逐渐深入">二、逐渐深入</a></li>
+    <li><a href="#三跑批">三、跑批&hellip;</a></li>
+    <li><a href="#四更深入的理解">四、更深入的理解</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="一介绍">一、介绍</h2>
-<p>此次更新时间：2020-10-28，现在是上班时间，偷更一下。其实使用IDEA的话无需配置Maven什么的，如果你们公司不是强制要求使用Eclipse的话，只需要有个JDK的环境即可，IDEA自带了一个版本的Maven，还是挺新的，目前IDEA最新版2.2.3的版本。我们也不用按照下面这个步骤去下载Spring Initializr，我们在IDEA中新建项目选择到Maven就行了，干净简洁。</p>
-<blockquote>
-<p>目前在Resources目录下的application大多数是使用yml语法了。现在已经太长时间没有接触过 postgresql了，长期使用MySQL，只要数据量在几百万，加加索引，优化SQL工作量还是不大，而且外面的公司还是比较愿意使用MySQL的，我面试别人的时候，也不会问什么乱七八糟的数据库，考虑到公司的业务和生成报表相关，对于SQL优化非常重视，所以数据库只问MySQL。</p>
-</blockquote>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="./1.png"
-        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
-        data-sizes="auto"
-        alt="./1.png"
-        title="1" /></p>
-<p>这篇文章是初次接触 PostgreSQL 时所写，从MyBatis 1.3.2 的版本大家也能看的出来，本来写了个简单的CRUD的DEMO，结果时间太久找不到了。</p>
-<p>1、情况说明
-在这里我使用SpringBoot配置JPA连接到PostgreSql数据库的。源码也会提供给大家（此文末尾），效果如下</p>
-<p>数据库：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="./2.png"
-        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
-        data-sizes="auto"
-        alt="./2.png"
-        title="2" /></p>
-<p>运行效果：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="./3.png"
-        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
-        data-sizes="auto"
-        alt="./3.png"
-        title="3" /></p>
-<p>2、安装软件及依赖包
-完整搭建SpringBoot及依赖包：https://blog.csdn.net/qq_41647999/article/details/83214100</p>
-<p>需要的SpringBoot代码从Spring官网下载：https://start.spring.io/</p>
-<p>Mybaits官网：http://www.mybatis.org/mybatis-3/</p>
-<p>最关键的地方是在依赖包那里，需要引用Mybaits和PostgreSql的包。</p>
-<p>什么是JPA 和 Mybaits?</p>
-<p>两者都是基于JDBC做了连接持久化的两个开源框架，jdbc不陌生吧，每次连接都要创建实例，执行完sql之后还要关闭连接实例，做了持久化之后，就会大大降低IO的开销。JPA不用自己写SQL，mybatis按理来说是需要自己写SQL的（使用通用Mapper或者Mybatis plus 也能不写SQL），各有各的好处。</p>
-<p>将下载的项目解压出来。</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="./4.png"
-        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
-        data-sizes="auto"
-        alt="./4.png"
-        title="4" /></p>
-<p>二、配置
-如果您的环境配置和我搭建SpringBoot的博文一样的话，用eclipse打开项目。</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="./5.png"
-        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
-        data-sizes="auto"
-        alt="./5.png"
-        title="5" /></p>
-<p>连接数据库</p>
-<p><strong>resources</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">//数据库的地址以及端口号
-spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
-//账号（默认为postgres）
-spring.datasource.username=postgres
-//密码
-spring.datasource.password=123456ok
-spring.datasource.driverClassName=org.postgresql.Driver
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-spring.jpa.properties.hibernate.hbm2ddl.auto=update
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>yml</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">spring</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="c">#    primary:</span><span class="w">
-</span><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:postgresql://localhost:5432/postgres</span><span class="w">
-</span><span class="w"></span><span class="c">#    url: jdbc:mysql://localhost:3306/springboot?useSSL=false</span><span class="w">
-</span><span class="w"></span><span class="c">#      jdbc-url: jdbc:mysql://localhost:3306/springboot?useSSL=false</span><span class="w">
-</span><span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">postgres</span><span class="w">
-</span><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="cp">********</span><span class="w">
-</span><span class="w"></span><span class="c">#    username: root</span><span class="w">
-</span><span class="w"></span><span class="c">#    password: ********</span><span class="w">
-</span><span class="w">    </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l">org.postgresql.Driver</span><span class="w">
-</span><span class="w"></span><span class="c">#    driver-class-name: com.mysql.cj.jdbc.Driver</span><span class="w">
-</span></code></pre></td></tr></table>
-</div>
-</div><p>其他情况
-当然如果您的项目是按照上面的链接搭建的，也可以通过在pom.xml中添加代码，如图。</p>
-<p>这里需要<strong>注意</strong>的一点是，要清楚您使用的Mybaits的依赖包是否符合！</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="./6.png"
-        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
-        data-sizes="auto"
-        alt="./6.png"
-        title="6" /></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.postgresql<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>postgresql<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer" id="post-footer">
+            </div><div class="content" id="content"><h2 id="一初步理解">一、初步理解</h2>
+<p>白天的柜台交易,   实时的 对帐户进行操作。</p>
+<p>晚上 批量 , 比如 一些报表的生成 , 定期储蓄到期的自动转存 , 行内行外业务清分清算 ， 有时还可能赶上利息计算&hellip;&hellip;.</p>
+<p>当然  不是所有的数据都是实时操作  , 因此跑批就是为此诞生。</p>
+<h2 id="二逐渐深入">二、逐渐深入</h2>
+<p>批量是相对来说，并不一定是在晚上，白天也有批量，主要是完成业务处理的。
+批量的核心功能是进行 核算，如总分核对、试算平衡 等，这样保证全行的帐务没有偏差。</p>
+<p>一般，为提高交易的 反应时间，一些 对帐清算 等不需要实时入账的功能 也由批量完成；同时，还有一些为了减少柜员工作量和减少高峰时期资源争夺的交易，如待收代付等，也归入批量完成的功能。一些特殊业务，如记息记提等。还有一块批量就是为了统计和管理的需要而出的一些报表。</p>
+<h2 id="三跑批">三、跑批&hellip;</h2>
+<p>跑批  最主要就是产生总帐, 进行总分核对。或者  是进行大批量交易，如:结息,计提,代收付等(这一步可以在各分布平台做)。或者  是生成报表,导出流水数据等。简单来讲就是每天结算几次，一般是在10点到12点左右。</p>
+<h2 id="四更深入的理解">四、更深入的理解</h2>
+<p>每天系统需要跑批一次，将所有分行还有办事处的信息录入到总的计算机内，进行分析、运算。然后将第二天需要的事情发布出去（比如卡函的打印，账单的答应）</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -294,23 +165,23 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/postgresql-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                            <a class="link-to-markdown" href="/run-batch/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/postgresql-note/" data-title="PostgreSQL相关笔记" data-hashtags="DataBase,SQL,PostgreSQL,SpringBoot"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/postgresql-note/" data-hashtag="DataBase"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/postgresql-note/" data-title="PostgreSQL相关笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/postgresql-note/" data-title="PostgreSQL相关笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/run-batch/" data-title="通过银行业务理解 跑批" data-hashtags="Development,Markdown,GitHub,CodeIt,Blog"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/run-batch/" data-hashtag="Development"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/run-batch/" data-title="通过银行业务理解 跑批" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/run-batch/" data-title="通过银行业务理解 跑批"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/postgresql/">PostgreSQL</a>,&nbsp;<a href="/tags/springboot/">SpringBoot</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/development/">Development</a>,&nbsp;<a href="/tags/markdown/">Markdown</a>,&nbsp;<a href="/tags/github/">GitHub</a>,&nbsp;<a href="/tags/codeit/">CodeIT</a>,&nbsp;<a href="/tags/blog/">Blog</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/mybatisplus-multy-datasource/" class="prev" rel="prev" title="Springboot Mybatis Plus解决多数据源"><i class="fas fa-angle-left fa-fw"></i>Springboot Mybatis Plus解决多数据源</a>
-            <a href="/mybatisplus-note/" class="next" rel="next" title="MyBatis-Plus笔记">MyBatis-Plus笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/mybatisplus-note/" class="prev" rel="prev" title="MyBatis-Plus笔记"><i class="fas fa-angle-left fa-fw"></i>MyBatis-Plus笔记</a>
+            <a href="/android-bottom-navigation/" class="next" rel="next" title="类微信界面设计">类微信界面设计<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

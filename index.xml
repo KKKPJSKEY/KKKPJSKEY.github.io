@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 28 Jul 2021 11:17:10 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 28 Jul 2021 15:55:01 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>基于广播和服务功能的音乐播放器</title>
@@ -16,6 +16,11 @@
     <link>https://kkkpjskey.github.io/android-bottom-navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+</item><item>
+    <title>通过银行业务理解 跑批</title>
+    <link>https://kkkpjskey.github.io/run-batch/</link>
+    <pubDate>Wed, 28 Jul 2021 15:55:01 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/run-batch/</guid>
+    <description><![CDATA[一、初步理解 白天的柜台交易, 实时的 对帐户进行操作。 晚上 批量 , 比如 一些报表的生成 , 定期储蓄到期的自动转存 , 行内行外业务清分清算 ， 有时还可能赶上]]></description>
 </item><item>
     <title>MyBatis-Plus笔记</title>
     <link>https://kkkpjskey.github.io/mybatisplus-note/</link>
@@ -51,10 +56,5 @@
     <link>https://kkkpjskey.github.io/driver-install-kernel32-error/</link>
     <pubDate>Tue, 27 Jul 2021 23:33:22 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/driver-install-kernel32-error/</guid>
     <description><![CDATA[报错 今天，在电脑刚安装完Windows 7系统后准备打驱动，结果所有驱动都无法安装，报错**“无法定位程序输入点 AddDllDirectory 于动态链接库 KERNEL32]]></description>
-</item><item>
-    <title>Mybaties报错 nested exception is org.apache.ibatis.executor</title>
-    <link>https://kkkpjskey.github.io/mybatis-nested-exception/</link>
-    <pubDate>Tue, 27 Jul 2021 23:29:51 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mybatis-nested-exception/</guid>
-    <description><![CDATA[报错 1 nested exception is org.apache.ibatis.executor.result.ResultMapException: Error attempting to get column ‘user_name’ from result set. Cause: java.lang.NumberFormatException: For input string: “shenzhenhytzb” 原因：使用lambok时使用了@Builder注]]></description>
 </item></channel>
 </rss>
