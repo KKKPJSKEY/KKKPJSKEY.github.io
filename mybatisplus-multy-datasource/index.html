@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Springboot Mybatis Plus解决多数据源 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Springboot Mybatis Plus解决多数据源的几种办法"><meta property="og:title" content="Springboot Mybatis Plus解决多数据源" />
+<meta property="og:description" content="记录Springboot Mybatis Plus解决多数据源的几种办法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/mybatisplus-multy-datasource/" /><meta property="og:image" content="https://kkkpjskey.github.io/mybatisplus-multy-datasource/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-28T10:29:58&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-28T10:29:58&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/mybatisplus-multy-datasource/featured-image.jpg"/>
+<meta name="twitter:title" content="Springboot Mybatis Plus解决多数据源"/>
+<meta name="twitter:description" content="记录Springboot Mybatis Plus解决多数据源的几种办法"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/mybatisplus-multy-datasource/" /><link rel="prev" href="https://kkkpjskey.github.io/postgresql-install/" /><link rel="next" href="https://kkkpjskey.github.io/postgresql-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Springboot Mybatis Plus解决多数据源",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/mybatisplus-multy-datasource\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/mybatisplus-multy-datasource\/featured-image.jpg",
+                            "width":  545 ,
+                            "height":  257 
+                        }],"genre": "posts","keywords": "Java, Springboot, MybatisPlus, DataBase, SQL, Mysql","wordcount":  3091 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mybatisplus-multy-datasource\/","datePublished": "2021-07-28T10:29:58+08:00","dateModified": "2021-07-28T10:29:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Springboot Mybatis Plus解决多数据源的几种办法"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/mybatisplus-multy-datasource/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/mybatisplus-multy-datasource/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Springboot Mybatis Plus解决多数据源</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3091 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/mybatisplus-multy-datasource/" class="leancloud_visitors" data-flag-title="Springboot Mybatis Plus解决多数据源">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/mybatisplus-multy-datasource/featured-image.jpg"
+        data-srcset="/mybatisplus-multy-datasource/featured-image.jpg, /mybatisplus-multy-datasource/featured-image.jpg 1.5x, /mybatisplus-multy-datasource/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/mybatisplus-multy-datasource/featured-image.jpg"
+        title="记录Springboot Mybatis Plus解决多数据源的几种办法" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#目标">目标</a></li>
+    <li><a href="#解决思路1"><strong>解决思路</strong>1</a>
+      <ul>
+        <li><a href="#注意事项">注意事项</a></li>
+        <li><a href="#优缺点">优缺点</a></li>
+      </ul>
+    </li>
+    <li><a href="#解决思路2">解决思路2</a>
+      <ul>
+        <li><a href="#注意事项-1">注意事项</a></li>
+      </ul>
+    </li>
+    <li><a href="#解决思路3">解决思路3</a>
+      <ul>
+        <li><a href="#基础的配置">基础的配置</a></li>
+        <li><a href="#建立一个线程和数据源之间的关联类">建立一个线程和数据源之间的关联类</a></li>
+        <li><a href="#定义动态数据源">定义动态数据源</a></li>
+        <li><a href="#定义多数据源">定义多数据源</a></li>
+        <li><a href="#使用数据源">使用数据源</a></li>
+        <li><a href="#优化升级">优化升级</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="目标">目标</h2>
+<p>在开发中经常会遇到一个程序需要调用多个数据库的情况，总得来说分为下面的几种情况：</p>
+<ol>
+<li><strong>一个程序会调用不同结构的两个数据库。</strong></li>
+<li><strong>读写分离，两个数据结构可能一样高，但是不同的操作针对不同的数据库。</strong></li>
+<li><strong>混合情况，既有不同的结构的数据库，也可能存在读写分离的情况</strong>。</li>
+</ol>
+<p>下面针对第一种情况，提供一个解决方案。</p>
+<h2 id="解决思路1"><strong>解决思路</strong>1</h2>
+<p>因为两个数据库的功能和结构不一样，所以可以根据功能和结构把DAO分为两个package。然后再mapperscan中指定不同的package对接不同的数据源，即可达到多个数据源的共存。</p>
+<p><strong>配置yml中的数据源设置</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">emanage</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="c">#SpringBoot 1.x</span><span class="w">
+</span><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:mysql://127.0.0.1:3306/emanage?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;serverTimezone=UTC&amp;useAffectedRows=true</span><span class="w">
+</span><span class="w">      </span><span class="c">#SpringBoot 2.x</span><span class="w">
+</span><span class="w"></span><span class="c">#      jdbc-url: jdbc:mysql://127.0.0.1:3306/emanage?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;serverTimezone=UTC&amp;useAffectedRows=true</span><span class="w">
+</span><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="cp">******</span><span class="w">
+</span><span class="w">      </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l">com.mysql.cj.jdbc.Driver</span><span class="w">
+</span><span class="w">    </span><span class="nt">ehr</span><span class="p">:</span><span class="w">
+</span><span class="w">       </span><span class="c">#SpringBoot 1.x</span><span class="w">
+</span><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:mysql://127.0.0.1:3306/ehr?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;serverTimezone=UTC&amp;useAffectedRows=true</span><span class="w">
+</span><span class="w">      </span><span class="c">#SpringBoot 2.x</span><span class="w">
+</span><span class="w"></span><span class="c">#      jdbc-url: jdbc:mysql://127.0.0.1:3306/ehr?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;serverTimezone=UTC&amp;useAffectedRows=true</span><span class="w">
+</span><span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">root</span><span class="w">
+</span><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="cp">********</span><span class="w">
+</span><span class="w">      </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l">com.mysql.cj.jdbc.Driver</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><em>为了不必要的干扰，我把druid数据源的配置部分给删除了。</em></p>
+<p><strong>数据源配置注意事项</strong></p>
+<ol>
+<li>多数据源配置的时候，与单数据源不同点在于spring.datasource之后多设置一个数据源名称primary和secondary来区分不同的数据源配置，这个前缀将在后续初始化数据源的时候用到。</li>
+<li>数据源连接配置2.x和1.x的配置项是有区别的：2.x使用spring.datasource.secondary.jdbc-url，而1.x版本使用spring.datasource.secondary.url。如果你在配置的时候发生了这个报错java.lang.IllegalArgumentException: jdbcUrl is required with driverClassName.，那么就是这个配置项的问题。</li>
+<li>可以看到，不论使用哪一种数据访问框架，对于数据源的配置都是一样的。</li>
+</ol>
+<p><strong>建立两个datasource的配置</strong></p>
+<p>datasource1的 配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@MapperScan</span><span class="o">(</span><span class="n">basePackages</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;com.emanage.ehr.mapper.emanage&#34;</span><span class="o">},</span><span class="n">sqlSessionTemplateRef</span> <span class="o">=</span> <span class="s">&#34;sqlTemplate1&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataSourceConfig1</span> <span class="o">{</span>
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;datasource1&#34;</span><span class="o">)</span>
+    <span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;spring.datasource.emanage&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">DruidDataSource</span> <span class="nf">druidDataSource1</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">DruidDataSourceBuilder</span><span class="o">.</span><span class="na">create</span><span class="o">().</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sqlFactory1&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">SqlSessionFactory</span> <span class="nf">sqlSessionFactory</span><span class="o">(</span><span class="nd">@Qualifier</span><span class="o">(</span><span class="s">&#34;datasource1&#34;</span><span class="o">)</span> <span class="n">DruidDataSource</span> <span class="n">dataSource</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="n">Exception</span>
+    <span class="o">{</span>
+        <span class="n">MybatisSqlSessionFactoryBean</span> <span class="n">factoryBean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MybatisSqlSessionFactoryBean</span><span class="o">();</span>
+        <span class="n">factoryBean</span><span class="o">.</span><span class="na">setDataSource</span><span class="o">(</span><span class="n">dataSource</span><span class="o">);</span>
+        <span class="n">ResourcePatternResolver</span> <span class="n">resolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PathMatchingResourcePatternResolver</span><span class="o">();</span>
+        <span class="n">factoryBean</span><span class="o">.</span><span class="na">setMapperLocations</span><span class="o">(</span><span class="n">resolver</span><span class="o">.</span><span class="na">getResources</span><span class="o">(</span><span class="s">&#34;classpath*:mapper/emanage/**Mapper.xml&#34;</span><span class="o">));</span>
+        <span class="k">return</span> <span class="n">factoryBean</span><span class="o">.</span><span class="na">getObject</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sqlTemplate1&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">SqlSessionTemplate</span> <span class="nf">sqlSessionTemplate</span><span class="o">(</span><span class="nd">@Qualifier</span><span class="o">(</span><span class="s">&#34;sqlFactory1&#34;</span><span class="o">)</span> <span class="n">SqlSessionFactory</span> <span class="n">sqlSessionFactory</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">SqlSessionTemplate</span><span class="o">(</span><span class="n">sqlSessionFactory</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>datasource2的配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@MapperScan</span><span class="o">(</span><span class="n">basePackages</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;com.emanage.ehr.mapper.ehr&#34;</span><span class="o">},</span><span class="n">sqlSessionTemplateRef</span> <span class="o">=</span> <span class="s">&#34;sqlTemplate2&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataSourceConfig2</span> <span class="o">{</span>
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;datasource2&#34;</span><span class="o">)</span>
+    <span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;spring.datasource.ehr&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">DataSource</span> <span class="nf">druidDataSource1</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">DruidDataSourceBuilder</span><span class="o">.</span><span class="na">create</span><span class="o">().</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sqlFactory2&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">SqlSessionFactory</span> <span class="nf">sqlSessionFactory</span><span class="o">(</span><span class="nd">@Qualifier</span><span class="o">(</span><span class="s">&#34;datasource2&#34;</span><span class="o">)</span> <span class="n">DataSource</span> <span class="n">dataSource</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="n">Exception</span>
+    <span class="o">{</span>
+        <span class="n">MybatisSqlSessionFactoryBean</span> <span class="n">factoryBean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MybatisSqlSessionFactoryBean</span><span class="o">();</span>
+        <span class="n">factoryBean</span><span class="o">.</span><span class="na">setDataSource</span><span class="o">(</span><span class="n">dataSource</span><span class="o">);</span>
+        <span class="n">ResourcePatternResolver</span> <span class="n">resolver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PathMatchingResourcePatternResolver</span><span class="o">();</span>
+        <span class="n">factoryBean</span><span class="o">.</span><span class="na">setMapperLocations</span><span class="o">(</span><span class="n">resolver</span><span class="o">.</span><span class="na">getResources</span><span class="o">(</span><span class="s">&#34;classpath*:mapper/ehr/**Mapper.xml&#34;</span><span class="o">));</span>
+        <span class="k">return</span> <span class="n">factoryBean</span><span class="o">.</span><span class="na">getObject</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sqlTemplate2&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">SqlSessionTemplate</span> <span class="nf">sqlSessionTemplate</span><span class="o">(</span><span class="nd">@Qualifier</span><span class="o">(</span><span class="s">&#34;sqlFactory2&#34;</span><span class="o">)</span> <span class="n">SqlSessionFactory</span> <span class="n">sqlSessionFactory</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">SqlSessionTemplate</span><span class="o">(</span><span class="n">sqlSessionFactory</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>两个datasource的配置基本上一样。就是建立datasource,sqlsessionFactory，sqlSessionTemplate的注入。然后通过mapperscan来指定具体什么包采用什么数据源。然后再对应包里就和以前单数据源一样操作即可。</p>
+<h3 id="注意事项">注意事项</h3>
+<ol>
+<li>如果用myBatis, SqlSessionFactory 部分可以使用SqlSessionFactoryBean来生成。但是如果用mybatis plus一定要用MybatisSqlSessionFactoryBean 来生成SqlSessionFactory。否则会报错 ，无法直接通过BaseMapper去调用查询。</li>
+<li>如果要再不同的包中混合上XML进行调用。需要在SqlSessionFactory的配置中设置factoryBean.setMapperLocations(resolver.getResources(&ldquo;classpath*:mapper/ehr/**Mapper.xml&rdquo;));</li>
+</ol>
+<h3 id="优缺点">优缺点</h3>
+<p>优点：简单，通过简单的设置。就可以满足大多数的情况。</p>
+<p>缺点：只适合多个数据源的结构完全不一样，通过package可以分来的方式来调用，不能灵活的在一个package下面随心所欲的调用数据源。</p>
+<h2 id="解决思路2">解决思路2</h2>
+<blockquote>
+<p>总config和各自的config分开，总config用于导入配置数据源，各自config用于Service、Dao层链接数据库使用</p>
+</blockquote>
+<p><strong>总数据源，初始化数据源与MyBatis-Plus配置</strong></p>
+<p>完成多数据源的配置信息之后，就来创建个配置类来加载这些配置信息，初始化数据源，以及初始化每个数据源要用的MyBatis配置。</p>
+<p>这里我们继续将数据源与框架配置做拆分处理：</p>
+<ol>
+<li>单独建一个多数据源的配置类，比如下面这样：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataSourceConfiguration</span> <span class="o">{</span>
+
+    <span class="nd">@Primary</span>
+    <span class="nd">@Bean</span>
+    <span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;spring.datasource.primary&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">DataSource</span> <span class="nf">primaryDataSource</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">DataSourceBuilder</span><span class="o">.</span><span class="na">create</span><span class="o">().</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;spring.datasource.secondary&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">DataSource</span> <span class="nf">secondaryDataSource</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">DataSourceBuilder</span><span class="o">.</span><span class="na">create</span><span class="o">().</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过<code>@Configuration</code>可以知道这两个数据源分别加载了<code>spring.datasource.primary.*</code>和<code>spring.datasource.secondary.*</code>的配置。<code>@Primary</code>注解指定了主数据源，就是当我们不特别指定哪个数据源的时候，就会使用这个Bean真正差异部分在下面的JPA配置上。</p>
+<ol>
+<li><strong>第一个数据源，分别创建两个数据源的MyBatis配置。</strong></li>
+</ol>
+<p>Primary数据源的JPA配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@MapperScan</span><span class="o">(</span>
+    	<span class="c1">//这里如果单数据源只需写到mysql，会自动寻找mapper，多数据源要写到mapper文件夹否则报错
+</span><span class="c1"></span>        <span class="n">basePackages</span> <span class="o">=</span> <span class="s">&#34;cn.edu.hubu.lhy.multiplydatabase.mysql.mapper&#34;</span><span class="o">,</span>
+        <span class="n">sqlSessionFactoryRef</span> <span class="o">=</span> <span class="s">&#34;sqlSessionFactoryPrimary&#34;</span><span class="o">,</span>
+        <span class="n">sqlSessionTemplateRef</span> <span class="o">=</span> <span class="s">&#34;sqlSessionTemplatePrimary&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrimaryConfig</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">DataSource</span> <span class="n">primaryDataSource</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">PrimaryConfig</span><span class="o">(</span><span class="nd">@Qualifier</span><span class="o">(</span><span class="s">&#34;primaryDataSource&#34;</span><span class="o">)</span> <span class="n">DataSource</span> <span class="n">primaryDataSource</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">primaryDataSource</span> <span class="o">=</span> <span class="n">primaryDataSource</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">SqlSessionFactory</span> <span class="nf">sqlSessionFactoryPrimary</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<span class="c1">//        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+</span><span class="c1"></span>        <span class="n">MybatisSqlSessionFactoryBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MybatisSqlSessionFactoryBean</span><span class="o">();</span>
+        <span class="n">bean</span><span class="o">.</span><span class="na">setDataSource</span><span class="o">(</span><span class="n">primaryDataSource</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">bean</span><span class="o">.</span><span class="na">getObject</span><span class="o">();</span>
+    <span class="o">}</span>
+
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">SqlSessionTemplate</span> <span class="nf">sqlSessionTemplatePrimary</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">SqlSessionTemplate</span><span class="o">(</span><span class="n">sqlSessionFactoryPrimary</span><span class="o">());</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>第二个数据源，Secondary数据源的JPA配置：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@MapperScan</span><span class="o">(</span>
+    	<span class="c1">//这里如果单数据源只需写到postgresql，会自动寻找mapper，多数据源要写到mapper文件夹否则报错
+</span><span class="c1"></span>        <span class="n">basePackages</span> <span class="o">=</span> <span class="s">&#34;cn.edu.hubu.lhy.multiplydatabase.postgresql.mapper&#34;</span><span class="o">,</span>
+        <span class="n">sqlSessionFactoryRef</span> <span class="o">=</span> <span class="s">&#34;sqlSessionFactorySecondary&#34;</span><span class="o">,</span>
+        <span class="n">sqlSessionTemplateRef</span> <span class="o">=</span> <span class="s">&#34;sqlSessionTemplateSecondary&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecondaryConfig</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">DataSource</span> <span class="n">secondaryDataSource</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">SecondaryConfig</span><span class="o">(</span><span class="nd">@Qualifier</span><span class="o">(</span><span class="s">&#34;secondaryDataSource&#34;</span><span class="o">)</span> <span class="n">DataSource</span> <span class="n">secondaryDataSource</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">secondaryDataSource</span> <span class="o">=</span> <span class="n">secondaryDataSource</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">SqlSessionFactory</span> <span class="nf">sqlSessionFactorySecondary</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">//        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+</span><span class="c1"></span>        <span class="n">MybatisSqlSessionFactoryBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MybatisSqlSessionFactoryBean</span><span class="o">();</span>
+        <span class="n">bean</span><span class="o">.</span><span class="na">setDataSource</span><span class="o">(</span><span class="n">secondaryDataSource</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">bean</span><span class="o">.</span><span class="na">getObject</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">SqlSessionTemplate</span> <span class="nf">sqlSessionTemplateSecondary</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">SqlSessionTemplate</span><span class="o">(</span><span class="n">sqlSessionFactorySecondary</span><span class="o">());</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="注意事项-1">注意事项</h3>
+<p><strong>说明与注意</strong>：</p>
+<ol>
+<li>配置类上使用<code>@MapperScan</code>注解来指定当前数据源下定义的Entity和Mapper的包路径；另外需要指定sqlSessionFactory和sqlSessionTemplate，这两个具体实现在该配置类中类中初始化。</li>
+<li>配置类的构造函数中，通过<code>@Qualifier</code>注解来指定具体要用哪个数据源，其名字对应在<code>DataSourceConfiguration</code>配置类中的数据源定义的函数名。</li>
+<li>配置类中定义SqlSessionFactory和SqlSessionTemplate的实现，注意具体使用的数据源正确（如果使用这里的演示代码，只要第二步没问题就不需要修改）。</li>
+</ol>
+<h2 id="解决思路3">解决思路3</h2>
+<h3 id="基础的配置">基础的配置</h3>
+<ol>
+<li>数据源的yml配置和上一结一样，就不在赘述了。</li>
+<li>建立一个枚举类来标识两个数据源</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">enum</span> <span class="n">DataSourceType</span> <span class="o">{</span>
+    <span class="n">emanage</span><span class="o">,</span><span class="n">ehr</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="建立一个线程和数据源之间的关联类">建立一个线程和数据源之间的关联类</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataBaseContextHolder</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">ThreadLocal</span><span class="o">&lt;</span><span class="n">DataSourceType</span><span class="o">&gt;</span> <span class="n">contextHolder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadLocal</span><span class="o">&lt;&gt;();</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setDataSourceType</span><span class="o">(</span><span class="n">DataSourceType</span> <span class="n">type</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">type</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">NullPointerException</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="n">contextHolder</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">type</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">DataSourceType</span> <span class="nf">getDataSourceType</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">DataSourceType</span> <span class="n">type</span> <span class="o">=</span> <span class="n">contextHolder</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">type</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="c1">//确定一个默认数据源
+</span><span class="c1"></span>            <span class="k">return</span> <span class="n">DataSourceType</span><span class="o">.</span><span class="na">emanage</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">type</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">clearDataSrouceType</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">contextHolder</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>代码比较简单。就是当我们设置一个Mapper是通过那个数据源去访问数据的时候，把设置的参数保存在contextHolder中，为了处理线程安全，采用ThreadLocal的方式。</p>
+<h3 id="定义动态数据源">定义动态数据源</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DynamicDataSource</span> <span class="kd">extends</span> <span class="n">AbstractRoutingDataSource</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="n">Object</span> <span class="nf">determineCurrentLookupKey</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="k">return</span> <span class="n">DataBaseContextHolder</span><span class="o">.</span><span class="na">getDataSourceType</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="定义多数据源">定义多数据源</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@MapperScan</span><span class="o">(</span><span class="s">&#34;com.emanage.ehr.mapper&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataSourceConfig</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">Environment</span> <span class="n">env</span><span class="o">;</span>
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;datasource1&#34;</span><span class="o">)</span>
+    <span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;spring.datasource.emanage&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">DruidDataSource</span> <span class="nf">druidDataSource1</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">DruidDataSourceBuilder</span><span class="o">.</span><span class="na">create</span><span class="o">().</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;datasource2&#34;</span><span class="o">)</span>
+    <span class="nd">@ConfigurationProperties</span><span class="o">(</span><span class="n">prefix</span> <span class="o">=</span> <span class="s">&#34;spring.datasource.ehr&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">DruidDataSource</span> <span class="nf">druidDataSource2</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">DruidDataSourceBuilder</span><span class="o">.</span><span class="na">create</span><span class="o">().</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">DynamicDataSource</span> <span class="nf">dynamicDataSource</span><span class="o">(</span><span class="nd">@Qualifier</span><span class="o">(</span><span class="s">&#34;datasource1&#34;</span><span class="o">)</span> <span class="n">DruidDataSource</span> <span class="n">ds1</span><span class="o">,</span>
+                                               <span class="nd">@Qualifier</span><span class="o">(</span><span class="s">&#34;datasource2&#34;</span><span class="o">)</span>  <span class="n">DruidDataSource</span> <span class="n">ds2</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">targetDataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">targetDataSource</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">DataSourceType</span><span class="o">.</span><span class="na">emanage</span><span class="o">,</span> <span class="n">ds1</span><span class="o">);</span>
+        <span class="n">targetDataSource</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">DataSourceType</span><span class="o">.</span><span class="na">ehr</span><span class="o">,</span> <span class="n">ds2</span><span class="o">);</span>
+        <span class="n">DynamicDataSource</span> <span class="n">dataSource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DynamicDataSource</span><span class="o">();</span>
+        <span class="n">dataSource</span><span class="o">.</span><span class="na">setTargetDataSources</span><span class="o">(</span><span class="n">targetDataSource</span><span class="o">);</span>
+        <span class="n">dataSource</span><span class="o">.</span><span class="na">setDefaultTargetDataSource</span><span class="o">(</span><span class="n">ds1</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">dataSource</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">SqlSessionFactory</span> <span class="nf">sqlSessionFactory</span><span class="o">(</span><span class="n">DynamicDataSource</span> <span class="n">dynamicDataSource</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+
+        <span class="n">SqlSessionFactoryBean</span> <span class="n">bean</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SqlSessionFactoryBean</span><span class="o">();</span>
+        <span class="c1">// 指定数据源
+</span><span class="c1"></span>        <span class="n">bean</span><span class="o">.</span><span class="na">setDataSource</span><span class="o">(</span><span class="n">dynamicDataSource</span><span class="o">);</span>
+        <span class="n">bean</span><span class="o">.</span><span class="na">setMapperLocations</span><span class="o">(</span><span class="n">resolver</span><span class="o">.</span><span class="na">getResources</span><span class="o">(</span><span class="s">&#34;classpath*:mapper/**Mapper.xml&#34;</span><span class="o">));</span>
+
+        <span class="k">return</span> <span class="n">bean</span><span class="o">.</span><span class="na">getObject</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">DataSourceTransactionManager</span> <span class="nf">transactionManager</span><span class="o">(</span><span class="n">DynamicDataSource</span> <span class="n">dynamicDataSource</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="n">DataSourceTransactionManager</span><span class="o">(</span><span class="n">dynamicDataSource</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="使用数据源">使用数据源</h3>
+<p>在调用<code>mapper</code>之前，在<code>service</code>中执行以下代码，可以灵活的切换数据源。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">DataBaseContextHolder</span><span class="o">.</span><span class="na">setDataSourceType</span><span class="o">(</span><span class="n">DataSourceType</span><span class="o">.</span><span class="na">emanage</span><span class="o">);</span> 
+<span class="n">DataBaseContextHolder</span><span class="o">.</span><span class="na">setDataSourceType</span><span class="o">(</span><span class="n">DataSourceType</span><span class="o">.</span><span class="na">ehr</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="优化升级">优化升级</h3>
+<p>感觉在sevrice中调用这些代码太过繁琐，可以自己定义两个注解。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nd">@interface</span> <span class="n">DataSourceEmanage</span><span class="o">{}</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">DataSourceEHr</span><span class="o">{}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后建立一个aop类让在有些注解的mapper类执行之前，先执行相应的数据源切换。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Aspect</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataSourceAop</span> <span class="o">{</span>
+    <span class="nd">@Before</span><span class="o">(</span><span class="s">&#34;@annotation(com.example.demo3.config.DataSourceEmanage)&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEmanageDataSource</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">DataBaseContextHolder</span><span class="o">.</span><span class="na">setDataSourceType</span><span class="o">(</span><span class="n">DataSourceType</span><span class="o">.</span><span class="na">emanage</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Before</span><span class="o">(</span><span class="s">&#34;@annotation(com.example.demo3.config.DataSourceEhr)&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEhrDataSource</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">DataBaseContextHolder</span><span class="o">.</span><span class="na">setDataSourceType</span><span class="o">(</span><span class="n">DataSourceType</span><span class="o">.</span><span class="na">ehr</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>只需要在mapper对应的方法上面设置注解，就可以很灵活的实现不同的方法调用不同的数据源。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-07-28</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mybatisplus-multy-datasource/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/mybatisplus-multy-datasource/" data-title="Springboot Mybatis Plus解决多数据源" data-hashtags="Java,Springboot,MybatisPlus,DataBase,SQL,Mysql"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/mybatisplus-multy-datasource/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/mybatisplus-multy-datasource/" data-title="Springboot Mybatis Plus解决多数据源" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/mybatisplus-multy-datasource/" data-title="Springboot Mybatis Plus解决多数据源"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/springboot/">SpringBoot</a>,&nbsp;<a href="/tags/mybatisplus/">MybatisPlus</a>,&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/mysql/">Mysql</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/postgresql-install/" class="prev" rel="prev" title="简单安装PostgreSQL"><i class="fas fa-angle-left fa-fw"></i>简单安装PostgreSQL</a>
+            <a href="/postgresql-note/" class="next" rel="next" title="PostgreSQL相关笔记">PostgreSQL相关笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

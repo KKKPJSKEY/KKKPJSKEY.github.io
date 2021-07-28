@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>PostgreSQL相关笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="SpringBoot连接使用PostgreSQL数据库"><meta property="og:title" content="PostgreSQL相关笔记" />
+<meta property="og:description" content="SpringBoot连接使用PostgreSQL数据库" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/postgresql-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/postgresql-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-28T10:29:58&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-28T10:29:58&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/postgresql-note/featured-image.jpg"/>
+<meta name="twitter:title" content="PostgreSQL相关笔记"/>
+<meta name="twitter:description" content="SpringBoot连接使用PostgreSQL数据库"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/postgresql-note/" /><link rel="prev" href="https://kkkpjskey.github.io/mybatisplus-multy-datasource/" /><link rel="next" href="https://kkkpjskey.github.io/mybatisplus-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "PostgreSQL相关笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/postgresql-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/featured-image.jpg",
+                            "width":  640 ,
+                            "height":  205 
+                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  1136 ,
+        "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/","datePublished": "2021-07-28T10:29:58+08:00","dateModified": "2021-07-28T10:29:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "SpringBoot连接使用PostgreSQL数据库"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/postgresql-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/postgresql-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">PostgreSQL相关笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1136 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/postgresql-note/" class="leancloud_visitors" data-flag-title="PostgreSQL相关笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/postgresql-note/featured-image.jpg"
+        data-srcset="/postgresql-note/featured-image.jpg, /postgresql-note/featured-image.jpg 1.5x, /postgresql-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/postgresql-note/featured-image.jpg"
+        title="SpringBoot连接使用PostgreSQL数据库" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一介绍">一、介绍</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="一介绍">一、介绍</h2>
+<p>此次更新时间：2020-10-28，现在是上班时间，偷更一下。其实使用IDEA的话无需配置Maven什么的，如果你们公司不是强制要求使用Eclipse的话，只需要有个JDK的环境即可，IDEA自带了一个版本的Maven，还是挺新的，目前IDEA最新版2.2.3的版本。我们也不用按照下面这个步骤去下载Spring Initializr，我们在IDEA中新建项目选择到Maven就行了，干净简洁。</p>
+<blockquote>
+<p>目前在Resources目录下的application大多数是使用yml语法了。现在已经太长时间没有接触过 postgresql了，长期使用MySQL，只要数据量在几百万，加加索引，优化SQL工作量还是不大，而且外面的公司还是比较愿意使用MySQL的，我面试别人的时候，也不会问什么乱七八糟的数据库，考虑到公司的业务和生成报表相关，对于SQL优化非常重视，所以数据库只问MySQL。</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c1.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c1.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c1.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c1.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\PostgreSQL-Note\1.png"
+        title="1" /></p>
+<p>这篇文章是初次接触 PostgreSQL 时所写，从MyBatis 1.3.2 的版本大家也能看的出来，本来写了个简单的CRUD的DEMO，结果时间太久找不到了。</p>
+<p>1、情况说明
+在这里我使用SpringBoot配置JPA连接到PostgreSql数据库的。源码也会提供给大家（此文末尾），效果如下</p>
+<p>数据库：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c2.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c2.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c2.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c2.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\PostgreSQL-Note\2.png"
+        title="2" /></p>
+<p>运行效果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c3.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c3.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c3.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c3.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\PostgreSQL-Note\3.png"
+        title="3" /></p>
+<p>2、安装软件及依赖包
+完整搭建SpringBoot及依赖包：https://blog.csdn.net/qq_41647999/article/details/83214100</p>
+<p>需要的SpringBoot代码从Spring官网下载：https://start.spring.io/</p>
+<p>Mybaits官网：http://www.mybatis.org/mybatis-3/</p>
+<p>最关键的地方是在依赖包那里，需要引用Mybaits和PostgreSql的包。</p>
+<p>什么是JPA 和 Mybaits?</p>
+<p>两者都是基于JDBC做了连接持久化的两个开源框架，jdbc不陌生吧，每次连接都要创建实例，执行完sql之后还要关闭连接实例，做了持久化之后，就会大大降低IO的开销。JPA不用自己写SQL，mybatis按理来说是需要自己写SQL的（使用通用Mapper或者Mybatis plus 也能不写SQL），各有各的好处。</p>
+<p>将下载的项目解压出来。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c4.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c4.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c4.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c4.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\PostgreSQL-Note\4.png"
+        title="4" /></p>
+<p>二、配置
+如果您的环境配置和我搭建SpringBoot的博文一样的话，用eclipse打开项目。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c5.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c5.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c5.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c5.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\PostgreSQL-Note\5.png"
+        title="5" /></p>
+<p>连接数据库</p>
+<p><strong>resources</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">//数据库的地址以及端口号
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+//账号（默认为postgres）
+spring.datasource.username=postgres
+//密码
+spring.datasource.password=123456ok
+spring.datasource.driverClassName=org.postgresql.Driver
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.hbm2ddl.auto=update
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>yml</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="c">#    primary:</span><span class="w">
+</span><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:postgresql://localhost:5432/postgres</span><span class="w">
+</span><span class="w"></span><span class="c">#    url: jdbc:mysql://localhost:3306/springboot?useSSL=false</span><span class="w">
+</span><span class="w"></span><span class="c">#      jdbc-url: jdbc:mysql://localhost:3306/springboot?useSSL=false</span><span class="w">
+</span><span class="w">    </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">postgres</span><span class="w">
+</span><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="cp">********</span><span class="w">
+</span><span class="w"></span><span class="c">#    username: root</span><span class="w">
+</span><span class="w"></span><span class="c">#    password: ********</span><span class="w">
+</span><span class="w">    </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l">org.postgresql.Driver</span><span class="w">
+</span><span class="w"></span><span class="c">#    driver-class-name: com.mysql.cj.jdbc.Driver</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>其他情况
+当然如果您的项目是按照上面的链接搭建的，也可以通过在pom.xml中添加代码，如图。</p>
+<p>这里需要<strong>注意</strong>的一点是，要清楚您使用的Mybaits的依赖包是否符合！</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c6.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c6.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c6.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cPostgreSQL-Note%5c6.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\PostgreSQL-Note\6.png"
+        title="6" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.postgresql<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>postgresql<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-07-28</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/postgresql-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/postgresql-note/" data-title="PostgreSQL相关笔记" data-hashtags="DataBase,SQL,PostgreSQL,SpringBoot"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/postgresql-note/" data-hashtag="DataBase"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/postgresql-note/" data-title="PostgreSQL相关笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/postgresql-note/" data-title="PostgreSQL相关笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/postgresql/">PostgreSQL</a>,&nbsp;<a href="/tags/springboot/">SpringBoot</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mybatisplus-multy-datasource/" class="prev" rel="prev" title="Springboot Mybatis Plus解决多数据源"><i class="fas fa-angle-left fa-fw"></i>Springboot Mybatis Plus解决多数据源</a>
+            <a href="/mybatisplus-note/" class="next" rel="next" title="MyBatis-Plus笔记">MyBatis-Plus笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

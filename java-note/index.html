@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-25T12:33:19&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-15T12:54:59&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-28T14:01:40&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  3362 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-07-15T12:54:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  7672 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-07-28T14:01:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3362 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7672 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 16 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -166,6 +166,19 @@
         <li><a href="#二windows篇">二、Windows篇</a></li>
       </ul>
     </li>
+    <li><a href="#java8-streammapcollect用法">Java8 stream().map().collect()用法</a>
+      <ul>
+        <li><a href="#集合">集合</a></li>
+        <li><a href="#stream优点">stream()优点</a></li>
+        <li><a href="#其他例子">其他例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#深入理解java双冒号运算符的使用">深入理解Java双冒号(::)运算符的使用</a>
+      <ul>
+        <li><a href="#双冒号">双冒号（::）</a></li>
+      </ul>
+    </li>
+    <li><a href="#java-this与super使用详解">Java this()与super()使用详解</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="oracle-java-下载jdk账号">Oracle Java 下载JDK账号</h2>
@@ -920,11 +933,755 @@ jps -lmv（显示java进程的Id和软件名称；显示启动main输入参数�
 jps -l（显示java进程的Id和软件路径及名称）
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="java8-streammapcollect用法">Java8 stream().map().collect()用法</h2>
+<h3 id="集合">集合</h3>
+<p><code>List&lt;User&gt; users = getList();</code> //从数据库查询的用户集合</p>
+<p>现在想获取User的身份证号码；在后续的逻辑处理中要用；</p>
+<p>常用的方法我们大家都知道，用for循环，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">idcards</span><span class="o">=</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span><span class="c1">//定义一个集合来装身份证号码
+</span><span class="c1"></span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">users</span><span class="o">.</span><span class="na">size</span><span class="o">();</span><span class="n">i</span><span class="o">++){</span>
+
+　　<span class="n">idcards</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">users</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">getIdcard</span><span class="o">());</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这种方法要写好几行代码，有没有简单点的，有，java8 API能一行搞定：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">idcards</span><span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getIdcard</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">())</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>解释下一这行代码：</p>
+<ul>
+<li>users：一个实体类的集合，类型为<code>List&lt;User&gt;</code></li>
+<li>User：实体类</li>
+<li>getIdcard：实体类中的get方法，为获取User的idcard</li>
+</ul>
+<h3 id="stream优点">stream()优点</h3>
+<p><strong>无存储。stream不是一种数据结构，它只是某种数据源的一个视图，数据源可以是一个数组，Java容器或I/O channel等。</strong>
+<strong>为函数式编程而生。对stream的任何修改都不会修改背后的数据源，比如对stream执行过滤操作并不会删除被过滤的元素，而是会产生一个不包含被过滤元素的新stream。</strong>
+<strong>惰式执行。stream上的操作并不会立即执行，只有等到用户真正需要结果的时候才会执行。</strong>
+<strong>可消费性。stream只能被“消费”一次，一旦遍历过就会失效，就像容器的迭代器那样，想要再次遍历必须重新生成。</strong>
+<strong>stream().map()方法的使用示例:</strong></p>
+<h3 id="其他例子">其他例子</h3>
+<p>再看几个例子：数组字母小写变大写</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="s">&#34;b&#34;</span><span class="o">,</span> <span class="s">&#34;c&#34;</span><span class="o">,</span> <span class="s">&#34;d&#34;</span><span class="o">);</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span><span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">String</span><span class="o">::</span><span class="n">toUpperCase</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span> <span class="c1">//[A, B, C, D]
+</span></code></pre></td></tr></table>
+</div>
+</div><p>数组所有元素，按某种规律计算：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">num</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">4</span><span class="o">,</span><span class="n">5</span><span class="o">);</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">collect1</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span> <span class="o">*</span> <span class="n">2</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect1</span><span class="o">);</span> <span class="c1">//[2, 4, 6, 8, 10]
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="深入理解java双冒号运算符的使用">深入理解Java双冒号(::)运算符的使用</h2>
+<p>Jdk8中有好多新的特性，比如引入Lambda，简化代码的书写等等</p>
+<p>我们先看一个关于Lambda的使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm">* 输出list
+</span><span class="cm"> */</span>
+<span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+	<span class="n">String</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;aaaa&#34;</span><span class="o">,</span> <span class="s">&#34;bbbb&#34;</span><span class="o">,</span> <span class="s">&#34;cccc&#34;</span><span class="o">};</span>
+	<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+	
+	<span class="c1">//Java 7 
+</span><span class="c1"></span>	<span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">:</span><span class="n">list</span><span class="o">){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="c1">//Java 8
+</span><span class="c1"></span>	<span class="n">list</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中<code>list.forEach(System.out::println);</code>就是Java 8中的Lambda写法之一， 有没有特别注意到输出语句跟我们平时写的syso语句不一样，常规输出语句是这样的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;流浪地球拍的不错哦！&#34;</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里面使用到了<code>::</code>， 有点意思，来认识一下这个新东西！</p>
+<h3 id="双冒号">双冒号（::）</h3>
+<p>英文：double colon，双冒号（<code>::</code>）运算符在Java 8中被用作<strong>方法引用（method reference）</strong>，方法引用是与lambda表达式相关的一个重要特性。它提供了一种不执行方法的方法。为此，方法引用需要由兼容的函数接口组成的目标类型上下文。</p>
+<blockquote>
+<p><strong>Method References</strong>
+You use lambda expressions to create anonymous methods. Sometimes, however, a lambda expression does nothing but call an existing method. In those cases, it’s often clearer to refer to the existing method by name. Method references enable you to do this; they are compact, easy-to-read lambda expressions for methods that already have a name.
+关于方法引用的描述，摘自<a href="https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html" target="_blank" rel="noopener noreferrer">oracle官网</a></p>
+</blockquote>
+<p>大致意思是，使用lambda表达式会创建匿名方法， 但有时候需要使用一个lambda表达式只调用一个已经存在的方法（不做其它）， 所以这才有了方法引用！</p>
+<p>以下是Java 8中方法引用的一些语法：</p>
+<ol>
+<li>静态方法引用（static method）语法：classname::methodname 例如：Person::getAge</li>
+<li>对象的实例方法引用语法：instancename::methodname 例如：System.out::println</li>
+<li>对象的超类方法引用语法： super::methodname</li>
+<li>类构造器引用语法： classname::new 例如：ArrayList::new</li>
+<li>数组构造器引用语法： typename[]::new 例如： String[]:new</li>
+<li>如果上的语法太枯燥，那就通过一些例子来加强对它的理解：</li>
+</ol>
+<p>静态方法语法使用例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.ComponentScan</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.junit4.SpringJUnit4ClassRunner</span><span class="o">;</span>
+<span class="cm">/**
+</span><span class="cm"> * 
+</span><span class="cm"> * @author zhoufy
+</span><span class="cm"> * @date 2019年2月20日 下午2:19:13
+</span><span class="cm"> */</span>
+<span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="s">&#34;com.zhoufy&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+	<span class="nd">@Test</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;aaaa&#34;</span><span class="o">,</span> <span class="s">&#34;bbbb&#34;</span><span class="o">,</span> <span class="s">&#34;cccc&#34;</span><span class="o">);</span>
+		
+		<span class="c1">//静态方法语法	ClassName::methodName
+</span><span class="c1"></span>		<span class="n">list</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">Demo</span><span class="o">::</span><span class="n">print</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="n">String</span> <span class="n">content</span><span class="o">){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>类实例方法语法使用例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.ComponentScan</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.junit4.SpringJUnit4ClassRunner</span><span class="o">;</span>
+<span class="cm">/**
+</span><span class="cm"> * 
+</span><span class="cm"> * @author zhoufy
+</span><span class="cm"> * @date 2019年2月20日 下午2:19:13
+</span><span class="cm"> */</span>
+<span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="s">&#34;com.zhoufy&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+	<span class="nd">@Test</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;aaaa&#34;</span><span class="o">,</span> <span class="s">&#34;bbbb&#34;</span><span class="o">,</span> <span class="s">&#34;cccc&#34;</span><span class="o">);</span>
+		
+		<span class="c1">//对象实例语法	instanceRef::methodName
+</span><span class="c1"></span>		<span class="n">list</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="k">new</span> <span class="n">Demo</span><span class="o">()::</span><span class="n">print</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="n">String</span> <span class="n">content</span><span class="o">){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>超类方法语法使用例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.ComponentScan</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.junit4.SpringJUnit4ClassRunner</span><span class="o">;</span>
+
+
+<span class="cm">/**
+</span><span class="cm"> * @author zhoufy
+</span><span class="cm"> * @date 2019年2月20日 下午2:41:38
+</span><span class="cm"> */</span>
+<span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="s">&#34;com.zhoufy&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example</span> <span class="kd">extends</span> <span class="n">BaseExample</span><span class="o">{</span>
+
+	<span class="nd">@Test</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;aaaa&#34;</span><span class="o">,</span> <span class="s">&#34;bbbb&#34;</span><span class="o">,</span> <span class="s">&#34;cccc&#34;</span><span class="o">);</span>
+		
+		<span class="c1">//对象的超类方法语法： super::methodName 
+</span><span class="c1"></span>		<span class="n">list</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="kd">super</span><span class="o">::</span><span class="n">print</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">BaseExample</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="n">String</span> <span class="n">content</span><span class="o">){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>类构造器语法使用例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.ComponentScan</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.junit4.SpringJUnit4ClassRunner</span><span class="o">;</span>
+<span class="cm">/**
+</span><span class="cm"> * 
+</span><span class="cm"> * @author zhoufy
+</span><span class="cm"> * @date 2019年2月20日 下午2:19:13
+</span><span class="cm"> */</span>
+<span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="s">&#34;com.zhoufy&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example</span> <span class="o">{</span>
+
+	<span class="nd">@Test</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">InterfaceExample</span> <span class="n">com</span> <span class="o">=</span>  <span class="n">Example</span><span class="o">::</span><span class="k">new</span><span class="o">;</span>
+		<span class="n">Example</span> <span class="n">bean</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>	
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bean</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">InterfaceExample</span><span class="o">{</span>
+	<span class="n">Example</span> <span class="nf">create</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果是带参数的构造器，示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * @author zhoufy
+</span><span class="cm"> * @date 2019年2月20日 下午2:19:13
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example</span> <span class="o">{</span>
+	
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	
+	<span class="n">Example</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">){</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">InterfaceExample</span> <span class="n">com</span> <span class="o">=</span>  <span class="n">Example</span><span class="o">::</span><span class="k">new</span><span class="o">;</span>
+		<span class="n">Example</span> <span class="n">bean</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&#34;hello world&#34;</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bean</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">interface</span> <span class="nc">InterfaceExample</span><span class="o">{</span>
+	<span class="n">Example</span> <span class="nf">create</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里需要特别注意的是：Example 类并没有implements InterfaceExample接口哦！！！</p>
+<p>数组构造器语法使用例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.function.Function</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * @author zhoufy
+</span><span class="cm"> * @date 2019年2月20日 下午2:19:13
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">Function</span> <span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Example</span><span class="o">[]&gt;</span> <span class="n">function</span> <span class="o">=</span> <span class="n">Example</span><span class="o">[]::</span><span class="k">new</span><span class="o">;</span>
+		<span class="n">Example</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>	<span class="c1">//这里的4是数组的大小
+</span><span class="c1"></span>		
+		<span class="k">for</span><span class="o">(</span><span class="n">Example</span> <span class="n">e</span><span class="o">:</span><span class="n">array</span><span class="o">){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>	<span class="c1">//如果输出的话，你会发现会输出4个空对象(null)
+</span><span class="c1"></span>		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里是借用jdk自带的java.util.function.Function类实现的，如果想要自定义接口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 
+</span><span class="cm"> * @author zhoufy
+</span><span class="cm"> * @date 2019年2月20日 下午2:19:13
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Example</span> <span class="o">{</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">Interface</span> <span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Example</span><span class="o">[]&gt;</span> <span class="n">function</span> <span class="o">=</span> <span class="n">Example</span><span class="o">[]::</span><span class="k">new</span><span class="o">;</span>
+		<span class="n">Example</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">4</span><span class="o">);</span>	<span class="c1">//这里的4是数组的大小
+</span><span class="c1"></span>		
+		<span class="k">for</span><span class="o">(</span><span class="n">Example</span> <span class="n">e</span><span class="o">:</span><span class="n">array</span><span class="o">){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@FunctionalInterface</span>
+<span class="kd">interface</span> <span class="nc">Interface</span><span class="o">&lt;</span><span class="n">A</span><span class="o">,</span> <span class="n">T</span><span class="o">&gt;{</span>
+	<span class="n">T</span> <span class="nf">apply</span><span class="o">(</span><span class="n">A</span> <span class="n">a</span><span class="o">);</span> 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="java-this与super使用详解">Java this()与super()使用详解</h2>
+<p>这几天看到类在继承时会用到<strong>this</strong>和<strong>super</strong>，这里就做了一点总结，与各位共同交流，有错误请各位指正~</p>
+<p><strong>this</strong></p>
+<p>this是自身的一个对象，代表对象本身，可以理解为：指向对象本身的一个指针。</p>
+<p>this的用法在java中大体可以分为3种：</p>
+<p><strong>1.普通的直接引用</strong></p>
+<p>这种就不用讲了，this相当于是指向当前对象本身。</p>
+<p><strong>2.形参与成员名字重名，用this来区分：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span><span class="n">10</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;初始化年龄：&#34;</span><span class="o">+</span><span class="n">age</span><span class="o">);</span>
+<span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">GetAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">test1</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Person</span> <span class="n">Harry</span> <span class="o">=</span><span class="k">new</span> <span class="n">Person</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Harry&#39;s age is &#34;</span><span class="o">+</span><span class="n">Harry</span><span class="o">.</span><span class="na">GetAge</span><span class="o">(</span><span class="n">12</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>     
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>运行结果：</strong></p>
+<p><strong>初始化年龄：10</strong>
+<strong>Harry&rsquo;s age is 12</strong></p>
+<p>可以看到，这里age是GetAge成员方法的形参，this.age是Person类的成员变量。</p>
+<p><strong>3.引用构造函数</strong></p>
+<p>这个和super放在一起讲，见下面。</p>
+<p><strong>super</strong></p>
+<p>super可以理解为是指向自己超（父）类对象的一个指针，而这个超类指的是离自己最近的一个父类。</p>
+<p>super也有三种用法：</p>
+<p>1.普通的直接引用</p>
+<p>与this类似，super相当于是指向当前对象的父类，这样就可以用super.xxx来引用父类的成员。</p>
+<p>2.子类中的成员变量或方法与父类中的成员变量或方法同名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Country</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">void</span> <span class="nf">value</span><span class="o">()</span> <span class="o">{</span>
+       <span class="n">name</span> <span class="o">=</span><span class="s">&#34;China&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+  
+<span class="kd">class</span> <span class="nc">Cityextends</span> <span class="n">Country</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">void</span> <span class="nf">value</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">name</span> <span class="o">=</span><span class="s">&#34;Shanghai&#34;</span><span class="o">;</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">value</span><span class="o">();</span>     <span class="c1">//调用父类的方法
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="kd">super</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+    <span class="o">}</span>
+  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="n">City</span> <span class="n">c</span><span class="o">=</span><span class="k">new</span> <span class="n">City</span><span class="o">();</span>
+       <span class="n">c</span><span class="o">.</span><span class="na">value</span><span class="o">();</span>
+       <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>运行结果：</strong></p>
+<p><strong>Shanghai</strong>
+<strong>China</strong></p>
+<p>可以看到，这里既调用了父类的方法，也调用了父类的变量。若不调用父类方法value()，只调用父类变量name的话，则父类name值为默认值null。</p>
+<p>3.引用构造函数</p>
+<p>super（参数）：调用父类中的某一个构造函数（应该为构造函数中的第一条语句）。</p>
+<p>this（参数）：调用本类中另一种形式的构造函数（应该为构造函数中的第一条语句）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">prt</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span> 
+       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span> 
+    <span class="o">}</span> 
+   
+    <span class="n">Person</span><span class="o">()</span> <span class="o">{</span> 
+       <span class="n">prt</span><span class="o">(</span><span class="s">&#34;父类·无参数构造方法： &#34;</span><span class="o">+</span><span class="s">&#34;A Person.&#34;</span><span class="o">);</span> 
+    <span class="o">}</span><span class="c1">//构造方法(1) 
+</span><span class="c1"></span>    
+    <span class="n">Person</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span> 
+       <span class="n">prt</span><span class="o">(</span><span class="s">&#34;父类·含一个参数的构造方法： &#34;</span><span class="o">+</span><span class="s">&#34;A person&#39;s name is &#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span> 
+    <span class="o">}</span><span class="c1">//构造方法(2) 
+</span><span class="c1"></span><span class="o">}</span> 
+    
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Chineseextends</span> <span class="n">Person</span> <span class="o">{</span> 
+    <span class="n">Chinese</span><span class="o">()</span> <span class="o">{</span> 
+       <span class="kd">super</span><span class="o">();</span><span class="c1">// 调用父类构造方法（1） 
+</span><span class="c1"></span>       <span class="n">prt</span><span class="o">(</span><span class="s">&#34;子类·调用父类”无参数构造方法“： &#34;</span><span class="o">+</span><span class="s">&#34;A chinese coder.&#34;</span><span class="o">);</span> 
+    <span class="o">}</span> 
+    
+    <span class="n">Chinese</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span> 
+       <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">);</span><span class="c1">// 调用父类具有相同形参的构造方法（2） 
+</span><span class="c1"></span>       <span class="n">prt</span><span class="o">(</span><span class="s">&#34;子类·调用父类”含一个参数的构造方法“： &#34;</span><span class="o">+</span><span class="s">&#34;his name is &#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span> 
+    <span class="o">}</span> 
+    
+    <span class="n">Chinese</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span> 
+       <span class="k">this</span><span class="o">(</span><span class="n">name</span><span class="o">);</span><span class="c1">// 调用具有相同形参的构造方法（3） 
+</span><span class="c1"></span>       <span class="n">prt</span><span class="o">(</span><span class="s">&#34;子类：调用子类具有相同形参的构造方法：his age is &#34;</span> <span class="o">+</span> <span class="n">age</span><span class="o">);</span> 
+    <span class="o">}</span> 
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> 
+       <span class="n">Chinese</span> <span class="n">cn</span> <span class="o">=</span><span class="k">new</span> <span class="n">Chinese</span><span class="o">();</span> 
+       <span class="n">cn</span> <span class="o">=</span><span class="k">new</span> <span class="n">Chinese</span><span class="o">(</span><span class="s">&#34;codersai&#34;</span><span class="o">);</span> 
+       <span class="n">cn</span> <span class="o">=</span><span class="k">new</span> <span class="n">Chinese</span><span class="o">(</span><span class="s">&#34;codersai&#34;</span><span class="o">,</span><span class="n">18</span><span class="o">);</span> 
+    <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>运行结果：</strong></p>
+<p><strong>父类·无参数构造方法： A Person.</strong>
+<strong>子类·调用父类”无参数构造方法“： A chinese coder.</strong>
+<strong>父类·含一个参数的构造方法： A person&rsquo;s name is codersai</strong>
+<strong>子类·调用父类”含一个参数的构造方法“： his name is codersai</strong>
+<strong>父类·含一个参数的构造方法： A person&rsquo;s name is codersai</strong>
+<strong>子类·调用父类”含一个参数的构造方法“： his name is codersai</strong>
+<strong>子类：调用子类具有相同形参的构造方法：his age is 18</strong></p>
+<p>从本例可以看到，可以用super和this分别调用父类的构造方法和本类中其他形式的构造方法。</p>
+<p>例子中Chinese类第三种构造方法调用的是本类中第二种构造方法，而第二种构造方法是调用父类的，因此也要先调用父类的构造方法，再调用本类中第二种，最后是重写第三种构造方法。</p>
+<p><strong>super和this的异同：</strong></p>
+<ul>
+<li>super（参数）：调用基类中的某一个构造函数（应该为构造函数中的第一条语句）</li>
+<li>this（参数）：调用本类中另一种形成的构造函数（应该为构造函数中的第一条语句）</li>
+<li>super:　它引用当前对象的直接父类中的成员（用来访问直接父类中被隐藏的父类中成员数据或函数，基类与派生类中有相同成员定义时如：super.变量名  super.成员函数据名（实参）</li>
+<li>this：它代表当前对象名（在程序中易产生二义性之处，应使用this来指明当前对象；如果函数的形参与类中的成员数据同名，这时需用this来指明成员变量名）</li>
+<li>调用super()必须写在子类构造方法的第一行，否则编译不通过。每个子类构造方法的第一条语句，都是隐含地调用super()，如果父类没有这种形式的构造函数，那么在编译的时候就会报错。</li>
+<li>super()和this()类似,区别是，super()从子类中调用父类的构造方法，this()在同一类内调用其它方法。</li>
+<li>super()和this()均需放在构造方法内第一行。</li>
+<li>尽管可以用this调用一个构造器，但却不能调用两个。</li>
+<li>this和super不能同时出现在一个构造函数里面，因为this必然会调用其它的构造函数，其它的构造函数必然也会有super语句的存在，所以在同一个构造函数里面有相同的语句，就失去了语句的意义，编译器也不会通过。</li>
+<li>this()和super()都指的是对象，所以，均不可以在static环境中使用。包括：static变量,static方法，static语句块。</li>
+<li>从本质上讲，this是一个指向本对象的指针, 然而super是一个Java关键字。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-07-15</span>
+                <span>更新于 2021-07-28</span>
             </div>
             <div class="post-info-license"></div>
         </div>

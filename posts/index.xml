@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 19 Jul 2021 23:03:59 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 28 Jul 2021 11:17:10 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/android-music-box/</link>
     <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-music-box/</guid>
@@ -15,44 +15,44 @@
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
 </item><item>
-    <title>安装Windows系统报错无法继续安装</title>
-    <link>https://kkkpjskey.github.io/win-install-error/</link>
-    <pubDate>Mon, 19 Jul 2021 23:03:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win-install-error/</guid>
-    <description><![CDATA[问题 今天在给朋友安装系统时遇到这样的问题“Windows无法完成安装，若要在此计算机上安装，请重新启动安装”，一看到这瞬间就蒙了，其实这种问]]></description>
+    <title>MyBatis-Plus笔记</title>
+    <link>https://kkkpjskey.github.io/mybatisplus-note/</link>
+    <pubDate>Wed, 28 Jul 2021 11:17:10 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mybatisplus-note/</guid>
+    <description><![CDATA[MyBatis-Plus 通用BaseMapper使用介绍 拥有 Java 开发环境以及相应 IDE 熟悉 Spring Boot 熟悉 Maven 现有一张 User 表，其表结构如下： id name age email 1 Jone 18 test1@baomidou.com 2 Jack 20 test2@baomidou.com 3 Tom 28 test3@baomidou.com 4 Sandy 21 test4@baomidou.com]]></description>
 </item><item>
-    <title>An illegal reflective access operation has occurred</title>
-    <link>https://kkkpjskey.github.io/an-illegal-reflective-access-operation-has-occurred/</link>
-    <pubDate>Mon, 19 Jul 2021 22:56:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/an-illegal-reflective-access-operation-has-occurred/</guid>
-    <description><![CDATA[报警 警告如图所示，该警告是因为jdk版本太高（我用的是10.0，据说9.0的也会这样），具体的原理还没有研究，它不影响项目的正常运行，但是看]]></description>
+    <title>PostgreSQL相关笔记</title>
+    <link>https://kkkpjskey.github.io/postgresql-note/</link>
+    <pubDate>Wed, 28 Jul 2021 10:29:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/postgresql-note/</guid>
+    <description><![CDATA[一、介绍 此次更新时间：2020-10-28，现在是上班时间，偷更一下。其实使用IDEA的话无需配置Maven什么的，如果你们公司不是强制要求]]></description>
 </item><item>
-    <title>Error creating bean with name &#39;flywayInitializer&#39;</title>
-    <link>https://kkkpjskey.github.io/creating-bean-with-name-error/</link>
-    <pubDate>Mon, 19 Jul 2021 22:43:35 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/creating-bean-with-name-error/</guid>
-    <description><![CDATA[报错 1 项目启动报错： org.springframework.beans.factory.BeanCreationException: Error creating bean with name ‘flywayInitializer’ defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Invocation of init method failed; nested exception is org.flywaydb.core.api.FlywayException: Validate failed: Detected failed migration to version 1.0 (xxx yyy zzz) 解决 找到该项目数据]]></description>
+    <title>Springboot Mybatis Plus解决多数据源</title>
+    <link>https://kkkpjskey.github.io/mybatisplus-multy-datasource/</link>
+    <pubDate>Wed, 28 Jul 2021 10:29:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mybatisplus-multy-datasource/</guid>
+    <description><![CDATA[目标 在开发中经常会遇到一个程序需要调用多个数据库的情况，总得来说分为下面的几种情况： 一个程序会调用不同结构的两个数据库。 读写分离，两个数据结]]></description>
 </item><item>
-    <title>spring-cloud-starter-eureka-server 和 spring-cloud-starter-netflix-eureka-server的区别</title>
-    <link>https://kkkpjskey.github.io/spring-cloud-starter-netflix-eureka-server-diff/</link>
-    <pubDate>Mon, 19 Jul 2021 22:37:39 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/spring-cloud-starter-netflix-eureka-server-diff/</guid>
-    <description><![CDATA[发现问题 在学习spring cloud时发现有的引入了spring-cloud-starter-eureka-server，有的引入了spri]]></description>
+    <title>简单安装PostgreSQL</title>
+    <link>https://kkkpjskey.github.io/postgresql-install/</link>
+    <pubDate>Wed, 28 Jul 2021 10:29:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/postgresql-install/</guid>
+    <description><![CDATA[〇.概况 目前版本是PostgreSQL 9.6，它经过以下平台认证： 32位Windows Windows 7,8和10 Windows 2008 Server 64位Windows Windows 7,8和10]]></description>
 </item><item>
-    <title>@EnableDiscoveryClient和@EnableEurekaClient区别</title>
-    <link>https://kkkpjskey.github.io/enable-discovery-eureka-client-diff/</link>
-    <pubDate>Mon, 19 Jul 2021 22:26:10 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/enable-discovery-eureka-client-diff/</guid>
-    <description><![CDATA[他山之石 通过我们看 《springcloud @EnableDiscoveryClient注解作用》这篇文章（https://blog.csdn]]></description>
+    <title>new与newInstance()的区别</title>
+    <link>https://kkkpjskey.github.io/new-newinstance-diff/</link>
+    <pubDate>Wed, 28 Jul 2021 09:46:48 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/new-newinstance-diff/</guid>
+    <description><![CDATA[简单测试 1 2 3 4 String st = (String)Class.forName(&#34;java.lang.String&#34;).newInstance(); String st1=new String(); boolean bl=st.getClass()==st1.getClass(); System.out.println(bl); 返回为ture 这两种方法得到的结果是一样的 原因 分析下原因，第一种方法是把new这个方式分解为两步，即首先]]></description>
 </item><item>
-    <title>磁盘擦写算法</title>
-    <link>https://kkkpjskey.github.io/disk-clear-algorithm/</link>
-    <pubDate>Fri, 16 Jul 2021 16:42:55 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/disk-clear-algorithm/</guid>
-    <description><![CDATA[美国国防部 5220.22-M 美国国防部在 DoD 5220.22-M 规范中规定使用三次覆写算法。 美国：NAVSO P-5239-26 （RLL） 美国海军职员办公室发行物（NAVSO Pub）5239—《]]></description>
+    <title>PO,BO,VO和POJO的区别</title>
+    <link>https://kkkpjskey.github.io/po-bo-vo-pojo-diff/</link>
+    <pubDate>Wed, 28 Jul 2021 09:35:09 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/po-bo-vo-pojo-diff/</guid>
+    <description><![CDATA[PO persistent object 持久对象 1 ．有时也被称为Data对象，对应数据库中的entity，可以简单认为一个PO对应数据库中的一条记录。 2 ．在hibernate]]></description>
 </item><item>
-    <title>@RequestMapping和@GetMapping</title>
-    <link>https://kkkpjskey.github.io/reqmap-getmap-diff/</link>
-    <pubDate>Fri, 16 Jul 2021 09:35:28 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/reqmap-getmap-diff/</guid>
-    <description><![CDATA[引言 在Spring4.3版本以后，提供了@GetMapping注解更方便了开发，那么@RequestMapping和@GetMapping有]]></description>
+    <title>Windows 无法定位程序输入点 AddDllDirectory 于动态链接库 KERNEL32.dll</title>
+    <link>https://kkkpjskey.github.io/driver-install-kernel32-error/</link>
+    <pubDate>Tue, 27 Jul 2021 23:33:22 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/driver-install-kernel32-error/</guid>
+    <description><![CDATA[报错 今天，在电脑刚安装完Windows 7系统后准备打驱动，结果所有驱动都无法安装，报错**“无法定位程序输入点 AddDllDirectory 于动态链接库 KERNEL32]]></description>
 </item><item>
-    <title>JPA @Id 和 @GeneratedValue 注解详解</title>
-    <link>https://kkkpjskey.github.io/jpa-id-gnrtvlu/</link>
-    <pubDate>Fri, 16 Jul 2021 08:58:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/jpa-id-gnrtvlu/</guid>
-    <description><![CDATA[解释 @Id @Id 标注用于声明一个实体类的属性映射为数据库的主键列。该属性通常置于属性声明语句之前，可与声明语句同行，也可写在单独行上。 @Id标注也可]]></description>
+    <title>Mybaties报错 nested exception is org.apache.ibatis.executor</title>
+    <link>https://kkkpjskey.github.io/mybatis-nested-exception/</link>
+    <pubDate>Tue, 27 Jul 2021 23:29:51 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mybatis-nested-exception/</guid>
+    <description><![CDATA[报错 1 nested exception is org.apache.ibatis.executor.result.ResultMapException: Error attempting to get column ‘user_name’ from result set. Cause: java.lang.NumberFormatException: For input string: “shenzhenhytzb” 原因：使用lambok时使用了@Builder注]]></description>
 </item></channel>
 </rss>
