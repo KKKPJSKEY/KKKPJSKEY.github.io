@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/featured-image.jpg",
                             "width":  1570 ,
                             "height":  471 
-                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  27 ,
+                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  196 ,
         "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/","datePublished": "2021-07-27T18:58:15+08:00","dateModified": "2021-07-27T18:58:15+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Mybatis笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 27 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 196 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/mybatis-note/" class="leancloud_visitors" data-flag-title="Mybatis笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -138,6 +138,7 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#mapperscan注解包含多个包">MapperScan注解包含多个包</a></li>
+    <li><a href="#实体类忽略映射字段">实体类忽略映射字段</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="mapperscan注解包含多个包">MapperScan注解包含多个包</h2>
@@ -167,7 +168,33 @@
         data-sizes="auto"
         alt="./1.png"
         title="1" /></p>
-</div><div class="post-footer" id="post-footer">
+<h2 id="实体类忽略映射字段">实体类忽略映射字段</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@TableField</span><span class="o">(</span><span class="n">exist</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span><span class="c1">//：表示该属性不为数据库表字段，但又是必须使用的。
+</span><span class="c1"></span><span class="nd">@TableField</span><span class="o">(</span><span class="n">exist</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span><span class="c1">//：表示该属性为数据库表字段。
+</span></code></pre></td></tr></table>
+</div>
+</div><p>Mybatis-Plus 插件有这个功能，可以看一下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@TableName</span><span class="c1">//：数据库表相关
+</span><span class="c1"></span><span class="nd">@TableId</span><span class="c1">//：表主键标识
+</span><span class="c1"></span><span class="nd">@TableField</span><span class="c1">//：表字段标识
+</span><span class="c1"></span><span class="nd">@TableLogic</span><span class="c1">//：表字段逻辑处理注解（逻辑删除）
+</span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

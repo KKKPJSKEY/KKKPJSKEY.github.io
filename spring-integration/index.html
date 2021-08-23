@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Spring-Integration笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录学习Spring-Integration笔记"><meta property="og:title" content="Spring-Integration笔记" />
+<meta property="og:description" content="记录学习Spring-Integration笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/spring-integration/" /><meta property="og:image" content="https://kkkpjskey.github.io/spring-integration/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-28T22:47:14&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-28T22:47:14&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/spring-integration/featured-image.jpg"/>
+<meta name="twitter:title" content="Spring-Integration笔记"/>
+<meta name="twitter:description" content="记录学习Spring-Integration笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/spring-integration/" /><link rel="prev" href="https://kkkpjskey.github.io/intellect-in-microservices/" /><link rel="next" href="https://kkkpjskey.github.io/linux-proc-mange-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Spring-Integration笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/spring-integration\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/spring-integration\/featured-image.jpg",
+                            "width":  2780 ,
+                            "height":  834 
+                        }],"genre": "posts","keywords": "ShellScript, Markdown, GitHub, CodeIt, Blog","wordcount":  4369 ,
+        "url": "https:\/\/kkkpjskey.github.io\/spring-integration\/","datePublished": "2021-07-28T22:47:14+08:00","dateModified": "2021-07-28T22:47:14+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录学习Spring-Integration笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/spring-integration/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/spring-integration/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Spring-Integration笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4369 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/spring-integration/" class="leancloud_visitors" data-flag-title="Spring-Integration笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/spring-integration/featured-image.jpg"
+        data-srcset="/spring-integration/featured-image.jpg, /spring-integration/featured-image.jpg 1.5x, /spring-integration/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/spring-integration/featured-image.jpg"
+        title="记录学习Spring-Integration笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一what">一、what</a></li>
+    <li><a href="#二why">二、why</a></li>
+    <li><a href="#三how">三、how</a>
+      <ul>
+        <li><a href="#1message">1.Message</a></li>
+        <li><a href="#2messagechannel">2.MessageChannel</a>
+          <ul>
+            <li><a href="#1publishsubscribechannel">（1）.PublishSubscribeChannel</a></li>
+            <li><a href="#2queuechannel">（2）.QueueChannel</a></li>
+            <li><a href="#3prioritychannel">（3）.PriorityChannel</a></li>
+            <li><a href="#4rendezvouschannel">（4）.RendezvousChannel</a></li>
+            <li><a href="#5directchannel">（5）.DirectChannel</a></li>
+            <li><a href="#6executorchannel">（6）.ExecutorChannel</a></li>
+          </ul>
+        </li>
+        <li><a href="#3message-endpoint">3.Message Endpoint</a>
+          <ul>
+            <li><a href="#1transformer">（1）.Transformer</a></li>
+            <li><a href="#2filter">（2）.Filter</a></li>
+            <li><a href="#3router">（3）.Router</a></li>
+            <li><a href="#4service-activator">（4）.Service Activator</a></li>
+            <li><a href="#5channel-adapter">（5）.Channel Adapter</a></li>
+            <li><a href="#6channel-bridge">（6）.Channel Bridge</a></li>
+          </ul>
+        </li>
+        <li><a href="#4channel-interceptor">4.Channel Interceptor</a></li>
+      </ul>
+    </li>
+    <li><a href="#四usedemo地址在本文最后">四、use（demo地址在本文最后）</a>
+      <ul>
+        <li><a href="#1普通方式">（1）普通方式</a></li>
+        <li><a href="#2普通多参数方式">（2）普通多参数方式</a></li>
+        <li><a href="#3jms方式">（3）JMS方式</a></li>
+        <li><a href="#4订阅方式">（4）订阅方式</a></li>
+        <li><a href="#5router方式">（5）router方式</a></li>
+        <li><a href="#6网关方式">（6）网关方式</a></li>
+        <li><a href="#7全局拦截器">（7）全局拦截器</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="一what">一、what</h2>
+<p>​	首先，什么是spring-integration？研究之初，对这根管道有些迷惑，这是队列？这个activeMQ有啥区别？待研究了一段时间之后，才发现，spring-integration越来越像曾经做过的esb组件。那么spring-integration到底是什么呢？</p>
+<p>​	官网给出的解释是，spring-integration是一个功能强大的EIP(Enterprise Integration Patterns)，即企业集成模式。对，spring-integration是一个集大成者。就我自己的理解，集成了众多功能的它，是一种便捷的事件驱动消息框架用来在系统之间做消息传递的。</p>
+<h2 id="二why">二、why</h2>
+<p>​    那么，我们为什么用它呢？spring-integration的官网上，给出了以下说法</p>
+<p>​	spring-integration的目标</p>
+<ul>
+<li>
+<p>提供一个简单的模型来实现复杂的企业集成解决方案</p>
+</li>
+<li>
+<p>为基于spring的应用添加异步的、消息驱动的行为</p>
+</li>
+<li>
+<p>让更多的Spring用户来使用他</p>
+<p>看这种解释，我的直观感觉是：啥玩意？不懂啊！接着看到spring-integration的原则</p>
+</li>
+<li>
+<p>组件之间应该是松散的，模块性的易测的</p>
+</li>
+<li>
+<p>应用框架应该强迫分离业务逻辑和集成逻辑</p>
+</li>
+<li>
+<p>扩展节点应该有更好的抽象和可以再使用的能力</p>
+<p>感觉，这个应该说的是解耦吧。另外看了下其他人的理解，如果你的系统处在各个系统的中间，需要JMS交互，又需要Database/Redis/MongoDB，还需要监听Tcp/UDP等，还有固定的文件转移，分析。还面对着时不时的更改需求的风险。那么，它再适合不过了。</p>
+</li>
+</ul>
+<h2 id="三how">三、how</h2>
+<p>​    那么，重点来了，如何使用呢？在介绍之前，先简单的介绍几个名词。</p>
+<h3 id="1message">1.Message</h3>
+<p>​    Message是它的基础构件和核心，所有的流程都围绕着Message运转，如图所示</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.jpg"
+        data-srcset="./1.jpg, ./1.jpg 1.5x, ./1.jpg 2x"
+        data-sizes="auto"
+        alt="./1.jpg"
+        title="1" /></p>
+<p>Message，就是所说的消息体，用来承载传输的信息用的。Message分为两部分，header和payload。header是头部信息，用来存储传输的一些特性属性参数。payload是用来装载数据的，他可以携带的任何Object对象，放什么都行，随你 。</p>
+<h3 id="2messagechannel">2.MessageChannel</h3>
+<p>​    消息管道，生产者生产一个消息到channel，消费者从channel消费一个消息，所以channel可以对消息组件解耦，并且提供一个方便的拦截功能和监控功能。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.jpg"
+        data-srcset="./2.jpg, ./2.jpg 1.5x, ./2.jpg 2x"
+        data-sizes="auto"
+        alt="./2.jpg"
+        title="2" /></p>
+<p>​	对于MessageChannel，有以下几种</p>
+<h4 id="1publishsubscribechannel">（1）.PublishSubscribeChannel</h4>
+<p>​	发布订阅式通道形式，多用于消息广播形式，发送给所有已经订阅了的用户。在3.x版本之前，订阅者如果是0，启动会报错或者发送的时候报错。在4.x版本后，订阅者是0，则仍然会返回true。当然，可以配置最小订阅者数量（min-subscribers）</p>
+<h4 id="2queuechannel">（2）.QueueChannel</h4>
+<p>​	队列模式通道，最常用的形式。与发布订阅通道不同，此通道实现点对点式的传输方式，管道内部是队列方式，可以设置管道的容量，如果内部的消息已经达到了最大容量，则会阻塞住，直到队列有时间，或者发送的消息被超时处理。</p>
+<h4 id="3prioritychannel">（3）.PriorityChannel</h4>
+<p>​	优先级队列通道，我的理解为QueueChannel的升级版，可以无视排队，根据设置的优先级直接插队。（壕无人性）</p>
+<h4 id="4rendezvouschannel">（4）.RendezvousChannel</h4>
+<p>​	前方施工，禁止通行！这个是一个强行阻塞的通道，当消息进入通道后，通道禁止通行，直到消息在对方通道receive()后，才能继续使用。</p>
+<h4 id="5directchannel">（5）.DirectChannel</h4>
+<p>​	最简单的点对点通道方式，一个简单的单线程通道。是spring-integration的默认通道类型</p>
+<h4 id="6executorchannel">（6）.ExecutorChannel</h4>
+<p>​	多线程通道模式，开启多线程执行点对点通道形式。这个通道博主还未研究，不敢多说&hellip;&hellip;..</p>
+<h3 id="3message-endpoint">3.Message Endpoint</h3>
+<p>​    消息的终点，或者我称他为消息节点，在channel你不能操作消息，只能在endpoint操作。对于常用的消息节点，有以下几种</p>
+<h4 id="1transformer">（1）.Transformer</h4>
+<p>​	解释者，转换者，翻译者，怎么理解都可以。作用是可以将消息转为你想要的类型。可以将xml形式转换成string类型。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- Filter过滤器 --&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;filterAChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:filter</span> <span class="na">input-channel=</span><span class="s">&#34;filterAChannel&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;filterBChannel&#34;</span> <span class="na">expression=</span><span class="s">&#34;payload.name.equals(&#39;haha&#39;)&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;filterBChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;filterBChannel&#34;</span> <span class="na">expression=</span><span class="s">&#34;@receiveServiceImpl.helloMoreParam(payload.name,payload.age)&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="2filter">（2）.Filter</h4>
+<p>​    过滤器，顾名思义，过滤用的，用来判断一个消息是否应该被传输。用我的理解看，他就是spring-integration里面的if语句。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- transformer转换器 --&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;transformerInChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:transformer</span> <span class="na">input-channel=</span><span class="s">&#34;transformerInChannel&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;transformerOutChannel&#34;</span>
+                     <span class="na">expression=</span><span class="s">&#34;payload.name.toUpperCase() + &#39;- [&#39; + T(java.lang.System).currentTimeMillis() + &#39;]&#39;&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;transformerOutChannel&#34;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;int:queue/&gt;</span>
+<span class="nt">&lt;/int:channel&gt;</span>
+<span class="nt">&lt;int:outbound-channel-adapter</span> <span class="na">channel=</span><span class="s">&#34;transformerOutChannel&#34;</span> <span class="na">ref=</span><span class="s">&#34;receiveServiceImpl&#34;</span> <span class="na">method=</span><span class="s">&#34;helloTransformer&#34;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;int:poller</span> <span class="na">fixed-delay=</span><span class="s">&#34;0&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/int:outbound-channel-adapter&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="3router">（3）.Router</h4>
+<p>​    路由器，用来管理一个消息应该被发送到哪个channel中。相当于JAVA里面的switch case语句吧。判断条件很多，可是使用header里面的参数具体值（比如header里面有个定义为testRouter的参数，数值为A，那么消息经过路由会发送到判断为A的通道内，后面使用中再详细讲解）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.jpg"
+        data-srcset="./3.jpg, ./3.jpg 1.5x, ./3.jpg 2x"
+        data-sizes="auto"
+        alt="./3.jpg"
+        title="3" /></p>
+<h4 id="4service-activator">（4）.Service Activator</h4>
+<p>​	我称他为服务激活器，是一个连接服务实例到消息系统的通用端点。对于服务激活器，可能是因为我理解的不够全面，我总是将他和通道适配器搞混，因为我自己测试发现，激活器和适配器都可以作为一个消息出通道的节点。</p>
+<h4 id="5channel-adapter">（5）.Channel Adapter</h4>
+<p>​	通道适配器是将消息通道连接到某个其他系统或传输的端点。通道适配器可以是入站或出站。通常情况下，通道适配器将在消息与从其他系统（文件，HTTP请求，JMS消息等）接收或发送的任何对象或资源之间进行映射。</p>
+<h4 id="6channel-bridge">（6）.Channel Bridge</h4>
+<p>​	通道桥梁，用来作为管道之间进行通信使用的，常用情景为：在一个输入管道，将管道的内容发送到另外N个管道输出，配置方式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- bridge --&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;bridgeSendChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:bridge</span> <span class="na">input-channel=</span><span class="s">&#34;bridgeSendChannel&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;bridgeReceiveAChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;bridgeReceiveAChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:bridge</span> <span class="na">input-channel=</span><span class="s">&#34;bridgeReceiveAChannel&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;bridgeReceiveBChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;bridgeReceiveBChannel&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:queue/&gt;</span>
+<span class="nt">&lt;/int:channel&gt;</span>
+<span class="nt">&lt;int:outbound-channel-adapter</span> <span class="na">channel=</span><span class="s">&#34;bridgeReceiveBChannel&#34;</span>
+                              <span class="na">expression=</span><span class="s">&#34;@receiveServiceImpl.helloBridge(payload.name,payload.age)&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:poller</span> <span class="na">fixed-delay=</span><span class="s">&#34;0&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/int:outbound-channel-adapter&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	另外还有Splitter（分解器），Aggregator（聚合器）等。对于其他的消息节点，博主还没有做过多研究，就不再次误人子弟了。后续会将未研究到的一一补上。</p>
+<h3 id="4channel-interceptor">4.Channel Interceptor</h3>
+<p>​    管道拦截器，能够以非常优雅，非常温柔的方式捕获管道传递之间的节点。对于拦截器，spring-integration给了我们六种节点</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p>​	分别是发送前，邮寄后，发送成功后，接收前，接收后，接受成功后。可以分别在不同的节点进行操作。</p>
+<h2 id="四usedemo地址在本文最后">四、use（demo地址在本文最后）</h2>
+<p>下面使用到的Test类为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+ 
+<span class="cm">/**
+</span><span class="cm"> * 普通测试dto
+</span><span class="cm"> * @author lin
+</span><span class="cm"> */</span>
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+ 
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+ 
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">age</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="1普通方式">（1）普通方式</h3>
+<p>​	xml配置，这里配置了一个通道helloWorldChannel，配置了个接收激活点，即接收方的地址为helloServiceImpl里面的hello方法。（其中ref指对应接收的类名，method指类里面接收的方法）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 测试dto模式传输 --&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;testChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;testChannel&#34;</span> <span class="na">ref=</span><span class="s">&#34;receiveServiceImpl&#34;</span> <span class="na">method=</span><span class="s">&#34;hello&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	发送方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 测试传输dto
+</span><span class="cm"> */</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testDto</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;testDto方法&#34;</span><span class="o">);</span>
+    <span class="n">Test</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Test</span><span class="o">();</span>
+    <span class="n">test</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;testDto&#34;</span><span class="o">);</span>
+    <span class="n">test</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="s">&#34;18&#34;</span><span class="o">);</span>
+    <span class="n">testChannel</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="n">test</span><span class="o">).</span><span class="na">build</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	接收方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(</span><span class="n">Test</span> <span class="n">test</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">test</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="n">test</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2普通多参数方式">（2）普通多参数方式</h3>
+<p>​	xml配置，这里通过获取payload里面的具体参数来传参的形式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 测试多参数传递 --&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;moreParamChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;moreParamChannel&#34;</span> <span class="na">expression=</span><span class="s">&#34;@receiveServiceImpl.helloMoreParam(payload.name,payload.age)&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	发送方Service里面，将所有的参数通过Map形式装载到payload里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 测试多参数传输
+</span><span class="cm"> */</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">moreParamm</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;greetMoreParam方法&#34;</span><span class="o">);</span>
+    <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;moreParam&#34;</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="s">&#34;18&#34;</span><span class="o">);</span>
+    <span class="n">helloWorldMoreParamChannel</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="n">map</span><span class="o">).</span><span class="na">build</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	接收方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">helloMoreParam</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="n">age</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3jms方式">（3）JMS方式</h3>
+<p>​	xml配置，这里配置了个MQ，将消息放入mq中进行传递</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 测试Mq配置--&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;topicChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;jmsConnectionFactory&#34;</span> <span class="na">class=</span><span class="s">&#34;org.apache.activemq.ActiveMQConnectionFactory&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;brokerURL&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;value&gt;</span>tcp://127.0.0.1:61616?trace=true<span class="err">&amp;</span>keepAlive=true<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;useAsyncSend&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+<span class="nt">&lt;int-jms:outbound-channel-adapter</span> <span class="na">channel=</span><span class="s">&#34;topicChannel&#34;</span> <span class="na">destination-name=</span><span class="s">&#34;topic.myTopic&#34;</span> <span class="na">pub-sub-domain=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;listenerChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int-jms:message-driven-channel-adapter</span> <span class="na">id=</span><span class="s">&#34;messageDrivenAdapter&#34;</span> <span class="na">channel=</span><span class="s">&#34;listenerChannel&#34;</span><span class="na">destination-name=</span><span class="s">&#34;topic.myTopic&#34;</span> <span class="na">pub-sub-domain=</span><span class="s">&#34;true&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;listenerChannel&#34;</span> <span class="na">ref=</span><span class="s">&#34;messageListenerImpl&#34;</span> <span class="na">method=</span><span class="s">&#34;processMessage&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	发送方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 使用mq进行传输发送方法
+</span><span class="cm"> */</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">send</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="s">&#34;MqService&#34;</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span><span class="s">&#34;18&#34;</span><span class="o">);</span>
+    <span class="n">topicChannel</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="n">map</span><span class="o">).</span><span class="na">build</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	接收方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">processMessage</span><span class="o">(</span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;MessageListener::::::Received message: &#34;</span> <span class="o">+</span> <span class="n">map</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4订阅方式">（4）订阅方式</h3>
+<p>​	xml配置，这里配置了两个订阅者，订阅者分别是两个方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 测试订阅发布 --&gt;</span>
+<span class="c">&lt;!--min-subscribers=&#34;&#34;参数为预期最小订阅者，如果必须有订阅者，则这里填写最少数；默认值为0--&gt;</span>
+<span class="nt">&lt;int:publish-subscribe-channel</span> <span class="na">id=</span><span class="s">&#34;pubsubChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:outbound-channel-adapter</span> <span class="na">channel=</span><span class="s">&#34;pubsubChannel&#34;</span> <span class="na">ref=</span><span class="s">&#34;receiveServiceImpl&#34;</span> <span class="na">method=</span><span class="s">&#34;helloReceiveOne&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/int:outbound-channel-adapter&gt;</span>
+<span class="nt">&lt;int:outbound-channel-adapter</span> <span class="na">channel=</span><span class="s">&#34;pubsubChannel&#34;</span> <span class="na">ref=</span><span class="s">&#34;receiveServiceImpl&#34;</span> <span class="na">method=</span><span class="s">&#34;helloReceiveTwo&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/int:outbound-channel-adapter&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	发送方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">pubsubSend</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Test</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Test</span><span class="o">();</span>
+    <span class="n">test</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;pubsubSend&#34;</span><span class="o">);</span>
+    <span class="n">test</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="s">&#34;18&#34;</span><span class="o">);</span>
+    <span class="n">publishSubscribeChannel</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="n">test</span><span class="o">).</span><span class="na">build</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	接收方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">helloReceiveOne</span><span class="o">(</span><span class="n">Test</span> <span class="n">test</span><span class="o">){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;One:&#34;</span><span class="o">+</span><span class="n">test</span><span class="o">.</span><span class="na">getName</span><span class="o">()+</span><span class="s">&#34; &#34;</span><span class="o">+</span><span class="n">test</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+<span class="o">}</span>
+ 
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">helloReceiveTwo</span><span class="o">(</span><span class="n">Test</span> <span class="n">test</span><span class="o">){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Two:&#34;</span><span class="o">+</span><span class="n">test</span><span class="o">.</span><span class="na">getName</span><span class="o">()+</span><span class="s">&#34; &#34;</span><span class="o">+</span><span class="n">test</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="5router方式">（5）router方式</h3>
+<p>​	xml配置，这里配置了一个入口通道，当消息进入入口后，通过判断header里面的&rsquo;tsetHeader&rsquo;参数的值，如果值为A，则进入routerAChannel通道，如果为B则进入routerBChannel通道。进入通道后分别进入两者的接收方法中。其中两种方法用了传递类，和多参数传递的形式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 测试路由 --&gt;</span>
+<span class="c">&lt;!-- 路由入口 --&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;routingChannel&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:queue/&gt;</span>
+<span class="nt">&lt;/int:channel&gt;</span>
+<span class="c">&lt;!-- 路由器 --&gt;</span>
+<span class="nt">&lt;int:header-value-router</span> <span class="na">input-channel=</span><span class="s">&#34;routingChannel&#34;</span> <span class="na">header-name=</span><span class="s">&#34;testHeader&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:poller</span> <span class="na">fixed-delay=</span><span class="s">&#34;0&#34;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;int:mapping</span> <span class="na">value=</span><span class="s">&#34;A&#34;</span> <span class="na">channel=</span><span class="s">&#34;routerAChannel&#34;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;int:mapping</span> <span class="na">value=</span><span class="s">&#34;B&#34;</span> <span class="na">channel=</span><span class="s">&#34;routerBChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/int:header-value-router&gt;</span>
+<span class="c">&lt;!-- 路由出口 --&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;routerAChannel&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:queue/&gt;</span>
+<span class="nt">&lt;/int:channel&gt;</span>
+<span class="nt">&lt;int:outbound-channel-adapter</span> <span class="na">channel=</span><span class="s">&#34;routerAChannel&#34;</span> <span class="na">ref=</span><span class="s">&#34;receiveServiceImpl&#34;</span> <span class="na">method=</span><span class="s">&#34;helloRouterTest&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:poller</span> <span class="na">fixed-delay=</span><span class="s">&#34;0&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/int:outbound-channel-adapter&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;routerBChannel&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:queue/&gt;</span>
+<span class="nt">&lt;/int:channel&gt;</span>
+<span class="nt">&lt;int:outbound-channel-adapter</span> <span class="na">channel=</span><span class="s">&#34;routerBChannel&#34;</span>
+                              <span class="na">expression=</span><span class="s">&#34;@receiveServiceImpl.helloRouterMap(payload.name,payload.age)&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:poller</span> <span class="na">fixed-delay=</span><span class="s">&#34;0&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/int:outbound-channel-adapter&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	发送方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">routerA</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Test</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Test</span><span class="o">();</span>
+    <span class="n">test</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">age</span><span class="o">);</span>
+    <span class="n">test</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="n">routingChannel</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="n">test</span><span class="o">).</span><span class="na">setHeader</span><span class="o">(</span><span class="s">&#34;testHeader&#34;</span><span class="o">,</span> <span class="s">&#34;A&#34;</span><span class="o">).</span><span class="na">build</span><span class="o">());</span>
+<span class="o">}</span>
+ 
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">routerB</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">age</span><span class="o">);</span>
+    <span class="n">routingChannel</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="n">map</span><span class="o">).</span><span class="na">setHeader</span><span class="o">(</span><span class="s">&#34;testHeader&#34;</span><span class="o">,</span> <span class="s">&#34;B&#34;</span><span class="o">).</span><span class="na">build</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	接收方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">helloRouterTest</span><span class="o">(</span><span class="n">Test</span> <span class="n">test</span><span class="o">){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;routerA方法&#34;</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;helloRouterTest:&#34;</span><span class="o">+</span><span class="n">test</span><span class="o">.</span><span class="na">getName</span><span class="o">()+</span><span class="s">&#34; &#34;</span><span class="o">+</span><span class="n">test</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span>
+<span class="o">}</span>
+ 
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">helloRouterMap</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span><span class="n">String</span> <span class="n">age</span><span class="o">){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;routerB方法&#34;</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;helloRouterMap:&#34;</span><span class="o">+</span><span class="n">name</span><span class="o">+</span><span class="s">&#34; &#34;</span><span class="o">+</span><span class="n">age</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="6网关方式">（6）网关方式</h3>
+<p>​	xml配置，在这里面配置了一个接口类，当调用这个接口的方法时，就会进入网关配置的通道</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 网关通道口模式，dto --&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;getWayChannel&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:queue/&gt;</span>
+<span class="nt">&lt;/int:channel&gt;</span>
+<span class="nt">&lt;int:gateway</span> <span class="na">service-interface=</span><span class="s">&#34;com.lin.integration.service.interfaces.UseGetWaySender&#34;</span> <span class="na">id=</span><span class="s">&#34;helloGetWaySender&#34;</span>
+             <span class="na">default-request-channel=</span><span class="s">&#34;getWayChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:outbound-channel-adapter</span> <span class="na">channel=</span><span class="s">&#34;getWayChannel&#34;</span> <span class="na">ref=</span><span class="s">&#34;receiveServiceImpl&#34;</span> <span class="na">method=</span><span class="s">&#34;hello&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:poller</span> <span class="na">fixed-delay=</span><span class="s">&#34;0&#34;</span><span class="nt">&gt;&lt;/int:poller&gt;</span>
+<span class="nt">&lt;/int:outbound-channel-adapter&gt;</span>
+ 
+<span class="c">&lt;!-- 网关通道口模式，多参数传递 --&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;getWayMoreParamChannel&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;int:queue/&gt;</span>
+<span class="nt">&lt;/int:channel&gt;</span>
+<span class="nt">&lt;int:gateway</span> <span class="na">service-interface=</span><span class="s">&#34;com.lin.integration.service.interfaces.MoreParamSender&#34;</span> <span class="na">id=</span><span class="s">&#34;getWayMoreParamSender&#34;</span>
+             <span class="na">default-request-channel=</span><span class="s">&#34;getWayMoreParamChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:outbound-channel-adapter</span> <span class="na">channel=</span><span class="s">&#34;getWayMoreParamChannel&#34;</span> <span class="na">expression=</span><span class="s">&#34;@receiveServiceImpl.helloMoreParam(payload.name,payload.age)&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;int:poller</span> <span class="na">fixed-delay=</span><span class="s">&#34;0&#34;</span><span class="nt">&gt;&lt;/int:poller&gt;</span>
+<span class="nt">&lt;/int:outbound-channel-adapter&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	网关interface里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UseGetWaySender</span> <span class="o">{</span>
+	<span class="kt">void</span> <span class="nf">sendMessage</span><span class="o">(</span><span class="n">Test</span> <span class="n">test</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MoreParamSender</span> <span class="o">{</span>
+	<span class="kt">void</span> <span class="nf">sendMessage</span><span class="o">(</span><span class="n">Map</span> <span class="n">map</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	发送方Service里面</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 测试网关dto
+</span><span class="cm"> */</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getWay</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Test</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Test</span><span class="o">();</span>
+    <span class="n">test</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="s">&#34;18&#34;</span><span class="o">);</span>
+    <span class="n">test</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;getWay&#34;</span><span class="o">);</span>
+    <span class="n">useGetWaySender</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
+<span class="o">}</span>
+ 
+<span class="cm">/**
+</span><span class="cm"> * 测试网关多参数
+</span><span class="cm"> */</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getWayMoreParam</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;getWayMoreParam&#34;</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="s">&#34;18&#34;</span><span class="o">);</span>
+    <span class="n">moreParamSender</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="7全局拦截器">（7）全局拦截器</h3>
+<p>​	拦截器中，将需要拦截的管道进行拦截，拦截之后就会对这个管道的发送端，接收端进行拦截，拦截的接口在上文已经提到过，拦截的配置如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 全局拦截器 --&gt;</span>
+<span class="nt">&lt;int:channel-interceptor</span> <span class="na">pattern=</span><span class="s">&#34;testInterceptorChannel&#34;</span> <span class="na">order=</span><span class="s">&#34;3&#34;</span> <span class="na">ref=</span><span class="s">&#34;countingChannelInterceptor&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/int:channel-interceptor&gt;</span>
+<span class="nt">&lt;int:channel</span> <span class="na">id=</span><span class="s">&#34;testInterceptorChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;testInterceptorChannel&#34;</span> <span class="na">ref=</span><span class="s">&#34;receiveServiceImpl&#34;</span> <span class="na">method=</span><span class="s">&#34;hello&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>​	对于近期的spring-integration研究，这些只是“初探”，如此好的一个框架模式，我也将在今后进行深入研究，会将文章进行补充，希望各位对于我文章里面的不足与错误的地方进行批评指出，从而能互相交流研究，多谢。</p>
+<p>参考文献：</p>
+<p><a href="https://docs.spring.io/spring-integration/docs/5.0.4.RELEASE/reference/html/">https://docs.spring.io/spring-integration/docs/5.0.4.RELEASE/reference/html/</a></p>
+<p><a href="https://www.aliyun.com/jiaocheng/301276.html">https://www.aliyun.com/jiaocheng/301276.html</a></p>
+<p><a href="https://blog.csdn.net/xiayutai1/article/details/53302652?locationNum=4&amp;fps=1">https://blog.csdn.net/xiayutai1/article/details/53302652?locationNum=4&amp;fps=1</a></p>
+<p><a href="http://www.iteye.com/topic/744524">http://www.iteye.com/topic/744524</a></p>
+<p><a href="https://blog.csdn.net/slivefox/article/details/3740541">https://blog.csdn.net/slivefox/article/details/3740541</a></p>
+<p><a href="https://my.oschina.net/zhzhenqin/blog/86586">https://my.oschina.net/zhzhenqin/blog/86586</a></p>
+<p><a href="http://www.importnew.com/16538.html">http://www.importnew.com/16538.html</a></p>
+<p>demo码云地址（10.21更新，增加了java dsl）：</p>
+<p><a href="https://gitee.com/doubletreelin/spring-integration-mydemo.git">https://gitee.com/doubletreelin/spring-integration-mydemo.git</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-07-28</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/spring-integration/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/spring-integration/" data-title="Spring-Integration笔记" data-hashtags="ShellScript,Markdown,GitHub,CodeIt,Blog"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/spring-integration/" data-hashtag="ShellScript"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/spring-integration/" data-title="Spring-Integration笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/spring-integration/" data-title="Spring-Integration笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/shellscript/">ShellScript</a>,&nbsp;<a href="/tags/markdown/">Markdown</a>,&nbsp;<a href="/tags/github/">GitHub</a>,&nbsp;<a href="/tags/codeit/">CodeIt</a>,&nbsp;<a href="/tags/blog/">Blog</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/intellect-in-microservices/" class="prev" rel="prev" title="请不要在“微服务”的狂热中迷失自我！"><i class="fas fa-angle-left fa-fw"></i>请不要在“微服务”的狂热中迷失自我！</a>
+            <a href="/linux-proc-mange-note/" class="next" rel="next" title="Linux进程管理笔记">Linux进程管理笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

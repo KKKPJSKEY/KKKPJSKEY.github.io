@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Jsp笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Jsp相关笔记合示例"><meta property="og:title" content="Jsp笔记" />
+<meta property="og:description" content="记录Jsp相关笔记合示例" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/jsp-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/jsp-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-16T17:00:33&#43;08:00" />
+<meta property="article:modified_time" content="2021-08-16T17:00:33&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/jsp-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Jsp笔记"/>
+<meta name="twitter:description" content="记录Jsp相关笔记合示例"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/jsp-note/" /><link rel="prev" href="https://kkkpjskey.github.io/linux-proc-mange-note/" /><link rel="next" href="https://kkkpjskey.github.io/html-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Jsp笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/jsp-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/jsp-note\/featured-image.jpg",
+                            "width":  1090 ,
+                            "height":  300 
+                        }],"genre": "posts","keywords": "Jsp, Java","wordcount":  12003 ,
+        "url": "https:\/\/kkkpjskey.github.io\/jsp-note\/","datePublished": "2021-08-16T17:00:33+08:00","dateModified": "2021-08-16T17:00:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Jsp相关笔记合示例"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/jsp-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/jsp-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Jsp笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/total/"><i class="far fa-folder fa-fw"></i>Total</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-16">2021-08-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 12003 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 24 分钟&nbsp;<span id="/jsp-note/" class="leancloud_visitors" data-flag-title="Jsp笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/jsp-note/featured-image.jpg"
+        data-srcset="/jsp-note/featured-image.jpg, /jsp-note/featured-image.jpg 1.5x, /jsp-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/jsp-note/featured-image.jpg"
+        title="记录Jsp相关笔记合示例" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#jsp-fmt标签详解">jsp fmt标签详解</a>
+      <ul>
+        <li><a href="#931-数字日期格式化">9.3.1 数字日期格式化</a>
+          <ul>
+            <li><a href="#格式化java返回的date类型时间示例">格式化Java返回的Date类型时间示例</a></li>
+          </ul>
+        </li>
+        <li><a href="#932-读取消息资源">9.3.2 读取消息资源</a></li>
+        <li><a href="#933-国际化">9.3.3 国际化</a></li>
+      </ul>
+    </li>
+    <li><a href="#jsp-标准标签库jstl">JSP 标准标签库（JSTL）</a>
+      <ul>
+        <li><a href="#jstl-库安装">JSTL 库安装</a></li>
+        <li><a href="#核心标签">核心标签</a></li>
+        <li><a href="#格式化标签">格式化标签</a></li>
+        <li><a href="#sql标签">SQL标签</a></li>
+        <li><a href="#xml-标签">XML 标签</a></li>
+        <li><a href="#jstl函数">JSTL函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#jstl-11-与-jstl-12-之间的区别如何下载-jstl-12">JSTL 1.1 与 JSTL 1.2 之间的区别？如何下载 JSTL 1.2?</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="jsp-fmt标签详解">jsp fmt标签详解</h2>
+<p>JSTL标签提供了对国际化（I18N）的支持，它可以根据发出请求的客户端地域的不同来显示不同的语言。同时还提供了格式化数据和日期的方法。实现这些功能需要I18N格式标签库（I18N-capable formation tags liberary）。引入该标签库的方法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;fmt&#34; uri=&#34;http://java.sun.com/jsp/jstl/fmt&#34; %&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>I18N格式标签库提供了11个标签，这些 标签从功能上可以划分为3类如下：</p>
+<p>（1）数字日期格式化。formatNumber标签、formatData标签、parseNumber标签、parseDate标签、timeZone标签、setTimeZone标签。</p>
+<p>（2）读取消息资源。bundle标签、message标签、setBundle标签。</p>
+<p>（3）国际化。setlocale标签、requestEncoding标签。</p>
+<p>接下将详细介绍这些标签的功能和使用方式。</p>
+<h3 id="931-数字日期格式化">9.3.1 数字日期格式化</h3>
+<p>数字日期格式化标签共有6个，用来将数字或日期转换成设定的格式。</p>
+<p>1．<code>&lt;frm:formatNumber/&gt;</code>标签</p>
+<p>该标签依据特定的区域将数字改变为不同的格式来显示。</p>
+<p>【语法1】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;frm:formatNumber value=”被格式化的数据”[type=”number|currency|percent”][pattern=”pattern”]
+[currencyCode=”code”][currencySymbol=”symbol”][groupingUsed=”true|false”]
+[maxIntergerDigits=”maxDigits”][minIntergerDigits=”minDigits”][maxFractionDigits=”maxDigits”]
+[minFractionDigits=”minDigits”][var=”name”][scope=page|request|session|application]/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【语法2】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;frm:formatNumber [type=”number|currency|percent”][pattern=”pattern”][currencyCode=”code”]
+[currencySymbol=”symbol”][groupingUsed=”true|false”][maxIntergerDigits=”maxDigits”]
+[minIntergerDigits=”minDigits”][maxFractionDigits=”maxDigits”][minFractionDigits=”minDigits”]
+[var=”name”][scope=page|request|session|application]\&gt; 
+</code></pre></td></tr></table>
+</div>
+</div><p><code>&lt;fmt:formatNumber&gt;</code>标签参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>EL</th>
+<th>类型</th>
+<th>必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>要格式化的数据</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>type</td>
+<td>指定类型（单位、货币、百分比等）见表</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>number</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td>格式化的数据样式</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>currencyCode</td>
+<td>货币单位代码</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>cuttencySymbol</td>
+<td>货币符号（$、￥）</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>groupingUsed</td>
+<td>是否对整数部分进行分组如（9，999）</td>
+<td>是</td>
+<td>boolean</td>
+<td>是</td>
+<td>true</td>
+</tr>
+<tr>
+<td>maxIntergerDigits</td>
+<td>整数部分最对显示多少位数</td>
+<td>是</td>
+<td>int</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>minIntergerDigits</td>
+<td>整数部分最少显示多少位</td>
+<td>是</td>
+<td>int</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>maxFractionDigits</td>
+<td>小数部分最多显示多少位</td>
+<td>是</td>
+<td>int</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>minFractionDigits</td>
+<td>小数部分最少显示多少位</td>
+<td>是</td>
+<td>int</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>var</td>
+<td>存储格式化后的数据</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>var的JSP范围</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>page</td>
+</tr>
+</tbody>
+</table>
+<p>Type属性的类型应用:.</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>数字格式</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>当地货币</td>
+<td>￥0.80</td>
+</tr>
+<tr>
+<td>percent</td>
+<td>百分比格式</td>
+<td>80%</td>
+</tr>
+</tbody>
+</table>
+<p>【示例代码】：实现了对数字的格式化、货币的格式、货币的格式化。使用<code>&lt;frm:formatNumber&gt;</code>的各种属性的设定。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;table border=1 cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; align=&#34;center&#34;&gt;
+&lt;tr align=&#34;center&#34;&gt;
+&lt;td width=&#34;100&#34;&gt;类型 &lt;/td&gt;
+&lt;td width=&#34;100&#34;&gt;使用数据&lt;/td&gt;
+&lt;td width=&#34;100&#34;&gt;结果&lt;/td&gt;
+&lt;td width=&#34;300&#34;&gt;说明&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;数字格式化&lt;/td&gt;&lt;td&gt;108.75&lt;/td&gt;
+ &lt;td&gt;&lt;fmt:formatNumber type=&#34;number&#34; pattern=&#34;###.#&#34;&gt;108.75&lt;/fmt:formatNumber&gt;&lt;/td&gt;
+ &lt;td&gt;使用pattern可以定义显示的样式。本例设定为###.#小数部分将使用四舍五入法。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;数字格式化&lt;/td&gt;&lt;td&gt;9557&lt;/td&gt;
+ &lt;td&gt;&lt;fmt:formatNumber type=&#34;number&#34; pattern=&#34;#.####E0&#34;&gt;9557&lt;/fmt:formatNumber&gt;&lt;/td&gt;
+ &lt;td&gt;使用科学计数法。&lt;/td&gt; 
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;数字格式化&lt;/td&gt;&lt;td&gt;9557&lt;/td&gt;
+ &lt;td&gt;&lt;fmt:formatNumber type=&#34;number&#34; &gt;9557&lt;/fmt:formatNumber&gt;&lt;/td&gt;
+ &lt;/td&gt;
+ &lt;td&gt;使用默认分组。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;数字格式化&lt;/td&gt;&lt;td&gt;9557&lt;/td&gt;
+ &lt;td&gt;&lt;fmt:formatNumber type=&#34;number&#34; groupingUsed=&#34;false&#34; &gt;9557&lt;/fmt:formatNumber&gt;&lt;/td&gt;
+ &lt;td&gt;不使用分组。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;数字格式化&lt;/td&gt;&lt;td&gt;9557&lt;/td&gt;
+ &lt;td&gt;&lt;fmt:formatNumber type=&#34;number&#34; maxIntegerDigits=&#34;3&#34;&gt;9557&lt;/fmt:formatNumber&gt;&lt;/td&gt;
+ &lt;td&gt;使用位数限定，根据指定的位数显示，其他数字忽略。例如：9不被显示。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;百分比格式化&lt;/td&gt;&lt;td&gt;0.98&lt;/td&gt;
+ &lt;td&gt;&lt;fmt:formatNumber type=&#34;percent&#34;&gt;0.98&lt;/fmt:formatNumber&gt;&lt;/td&gt;
+ &lt;td&gt;用百分比形式显示一个数据。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;货币格式化&lt;/td&gt;&lt;td&gt;188.88&lt;/td&gt;
+ &lt;td&gt;&lt;fmt:formatNumber type=&#34;currency&#34; &gt;188.8&lt;/fmt:formatNumber&gt;&lt;/td&gt;
+&lt;td&gt;将一个数据转化为货币形式输出。&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;存储数据&lt;/td&gt;&lt;td&gt;188.88&lt;/td&gt;
+ &lt;td&gt;&lt;fmt:formatNumber type=&#34;currency&#34; var=&#34;money&#34;&gt;188.8&lt;/fmt:formatNumber&gt;
+ &lt;c:out value=&#34;${money}&#34;&gt;&lt;/c:out&gt;
+ &lt;/td&gt;
+ &lt;td&gt;存储的money的值为${money} &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/table&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【代码说明】：</p>
+<p>（1）从应用角度可以把属性分为三类：数字格式化、货币格式化、百分比格式化。使用type指定类型。</p>
+<p>（2）应用于数字格式化的属性有：partten属性、maxIntegerDigits属性、minIntegerDigits属性、maxFractionDigits属性和minFactionDigits属性。其中partten属性在设定格式化样式时会比较准确如：四舍五入、科学计数法的使用。而使用maIntegerDirgits等属性时，只把设定位数以外的数字舍去。</p>
+<p>（3）货币格式化可以使用数字格式化的所有属性。如果有必要建议使用partten属性。currencyCode属性和currencySymbol只用于货币格式化。</p>
+<p>（4）百分比格式化使用到的属性为type属性、partten属性，设定type属性的类型为percent即可。</p>
+<p>（5）使用var属性时，会将格式化后的值存在JSP的某个范围内（一个String类型的字符串包括符号等）。<code>&lt;frm:forNumber&gt;</code>将不再输出格式化后的值可以使用EL表达式输出。</p>
+<p>（6）通用属性：type属性、partten属性、var属性和scope属性。</p>
+<p>2．<code>&lt;frm:parseNumber&gt;</code>标签</p>
+<p>将格式化后的数字、货币、百分比都转化为数字类型。</p>
+<p>【语法1】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseNumber value=&#34;number&#34; [type=”number|currency|percent”][pattern=”pattern”]
+[parseLocale=”locale”][intergerOnly=”true|false”][scope=”page|request|session|application”]/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【语法2】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseNumber [type=”number|currency|percent”][pattern=”pattern”] [parseLocale=”locale”]
+[intergerOnly=”true|false”][scope=”page|request|session|application”]\&gt; 
+Number
+&lt;/fmt:parseNumber
+</code></pre></td></tr></table>
+</div>
+</div><p><code>&lt;fmt:parseNumber&gt;</code>标签参数说明:</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>EL</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>被解析的字符串</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>type</td>
+<td>指定单位（数字、货币、百分比）</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>number</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td>格式样式</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>parseLocale</td>
+<td>用来替代默认区域的设定</td>
+<td>是</td>
+<td>String，Java.util.Locale</td>
+<td>是</td>
+<td>默认本地样式</td>
+</tr>
+<tr>
+<td>var</td>
+<td>存储已经格式化的数据</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>var变量的作用域</td>
+<td>否</td>
+<td>String</td>
+<td>是</td>
+<td>page</td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;fmt:parseNumber&gt;</code>可以看作是<code>&lt;fmt:formatNumber&gt;</code>的逆运算。相应的参数和类型的配置和使用<code>&lt;fmt:formatNumber&gt;</code>格式化时相同。</p>
+<p>【示例代码】：实现了从字符串中提取数据，并用合适的数据类型进行存储（浮点性、整型等）。可以对转换后的数据进行加法运算。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"> &lt;fmt:formatNumber type=&#34;currency&#34; var=&#34;money&#34;&gt;188.8&lt;/fmt:formatNumber&gt;
+ &lt;li&gt;格式化前的数据为：&lt;c:out value=&#34;${money}&#34;&gt;&lt;/c:out&gt;
+ &lt;fmt:parseNumber var=&#34;money&#34; type=&#34;currency&#34;&gt;${money}&lt;/fmt:parseNumber&gt;
+ &lt;li&gt;格式化后的数据为:&lt;c:out value=&#34;${money}&#34;&gt;&lt;/c:out&gt;
+ &lt;li&gt;可以对格式化的后的数据进行运算： 
+ &lt;c:out value=&#34;${money+200}&#34;&gt;&lt;/c:out&gt;
+ &lt;li&gt;对百分比进行格式化98%为：
+ &lt;fmt:parseNumber type=&#34;percent&#34;&gt;98%&lt;/fmt:parseNumber&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【代码解析】：</p>
+<p>（1）首先使用<code>&lt;fmt:formatNumber&gt;</code>将188.8转换为字符串￥188.8并在page范围内存储一个String类型的变量，变量名为money。</p>
+<p>（2）使用<code>&lt;fmt:parseNumber&gt;</code>将￥188.8转化为浮点型的数据188.8并赋值为变量money，</p>
+<p>则变量money转变为一个浮点型的值188.8，对188.8进行加运算。</p>
+<p>（3）直接对一个百分比数98%进行转化。</p>
+<p>3．<code>&lt;fmt:formatDate&gt;</code>标签</p>
+<p>该标签主要用来格式化日期和时间。</p>
+<p>【语法】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt: formatDate value=”date” [type=”time|date|both”][pattern=”pattern”]
+[dateStyle=”default|short|medium|long|full”][timeStyle=”default|short|medium|long|full”]
+[timeZone=”timeZone”][var=”name”][scope=”page|request|session|application”]/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>&lt;fmt:formatDate&gt;</code>标签属性说明：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>说明</th>
+<th>EL</th>
+<th>类型</th>
+<th>必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>将要格式化的日期对象。</td>
+<td>是</td>
+<td>Java.util.Date</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>type</td>
+<td>显示的部分（日期、时间或者两者）。</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>date</td>
+</tr>
+<tr>
+<td>partten</td>
+<td>格式化的样式。</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>dateStyle</td>
+<td>设定日期的显示方式。</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>default</td>
+</tr>
+<tr>
+<td>timeStyle</td>
+<td>设定时间的显示方式。</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>default</td>
+</tr>
+<tr>
+<td>timeZone</td>
+<td>设定使用的时区。</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>当地所用时区</td>
+</tr>
+<tr>
+<td>var</td>
+<td>存储已格式化的日期或时间。</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>指定var存储的JSP范围。</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<p>type属性参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td>只显示时间</td>
+</tr>
+<tr>
+<td>date</td>
+<td>只显示时期</td>
+</tr>
+<tr>
+<td>both</td>
+<td>显示日期和时间</td>
+</tr>
+</tbody>
+</table>
+<p>【示例程序】：实现了对日期的格式化，使用了type、dateStyle、timeStyle等属性。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:formatDate value=&#34;${date}&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
+&lt;fmt:formatDate value=&#34;${date}&#34; type=&#34;both&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
+&lt;fmt:formatDate value=&#34;${date}&#34; type=&#34;both&#34; dateStyle=&#34;default&#34;
+ timeStyle=&#34;default&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
+  &lt;fmt:formatDate value=&#34;${date}&#34; type=&#34;both&#34; dateStyle=&#34;short&#34;
+ timeStyle=&#34;short&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
+  &lt;fmt:formatDate value=&#34;${date}&#34; type=&#34;both&#34; dateStyle=&#34;long&#34;
+ timeStyle=&#34;long&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
+  &lt;fmt:formatDate value=&#34;${date}&#34; type=&#34;both&#34; dateStyle=&#34;full&#34;
+timeStyle=&#34;full&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
+  &lt;fmt:formatDate value=&#34;${date}&#34; type=&#34;both&#34; dateStyle=&#34;full&#34;
+timeStyle=&#34;full&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="格式化java返回的date类型时间示例">格式化Java返回的Date类型时间示例</h4>
+<blockquote>
+<p>jsp 循环获取的列表里有个时间属性。获取的格式为Mon Jan 02 00:00:00 cst 2017。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;input name=&#34;discoverTime&#34;  value=&#34;${estiDetail.discoverTime}&#34;   class=&#34;easyui-datebox&#34;  style=&#34;width:100&#34; disabled=&#34;disabled&#34;/&gt;${estiDetail.discoverTime}
+</code></pre></td></tr></table>
+</div>
+</div><p>这样datebox 的value里面获取的一直是当天的日期，并不是后台传过来的日期，如果放在input外面就能获取到，但是格式不对，就像这样</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>解决方案：</p>
+<p>引用jstl fmt标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;input name=&#34;discoverTime&#34;  value=&#34;&lt;fmt:formatDate value=&#34;${estiDetail.discoverTime}&#34; pattern=&#34;yyyy-MM-dd&#34; /&gt;&#34;   class=&#34;easyui-datebox&#34;  style=&#34;width:100&#34; disabled=&#34;disabled&#34;/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>注意：是将<code>&lt;fmt:formatDate value=&quot;${estiDetail.discoverTime}&quot; pattern=&quot;yyyy-MM-dd&quot; /&gt;</code>放在value里面</p>
+<p>完美解决</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>Java返回的Date示例结束</p>
+<p>【代码解析】：</p>
+<p>（1）首先通过配置JavaBean在页面上实例化java.util.Date对象。实现代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;jsp:useBean id=&#34;date&#34; class=&#34;java.util.Date&#34;&gt;&lt;/jsp:useBean&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>（2）对日期对象进行格式化时${date}是一个日期对象，如果给value设的值为String时程序会报错。</p>
+<p>（3）设置type为both时，将显示日期和时间，同时示例中依次改变dateStyle和timeStyle的值作为比较。</p>
+<p>4．<code>&lt;fmt:parseDate&gt;</code>标签</p>
+<p><code>&lt;fmt:parseDate&gt;</code>标签主要将字符串类型的时间或日期转化为时间或日期对象。</p>
+<p>【语法1】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseDate value=”date” [type=”time|date|both”][pattern=”pattern”][parseLocale=”locale”]
+[dateStyle=”default|short|medium|long|full”][timeStyle=”default|short|medium|long|full”]
+[timeZone=”timezone”][var=”name”][scope=”page|request|session|application”]/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【语法2】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseDate [type=”time|date|both”][pattern=”pattern”][parseLocale=”locale”]
+[dateStyle=”default|short|medium|long|full”][timeStyle=”default|short|medium|long|full”]
+[timeZone=”timezone”][var=”name”][scope=”page|request|session|application”]\&gt; 
+Date
+&lt;/fmt:parseDate&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>&lt;fmt:parseData&gt;</code>标签属性说明：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>说明</th>
+<th>EL</th>
+<th>类型</th>
+<th>必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>将要格式化的日期时间</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>type</td>
+<td>字符串的类型（日期、时间或全部）</td>
+<td>EL</td>
+<td>String</td>
+<td>是</td>
+<td>date</td>
+</tr>
+<tr>
+<td>pattern</td>
+<td>字符串使用的时间样式</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>parseLocale</td>
+<td>取代默认地区设定</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>默认地区</td>
+</tr>
+<tr>
+<td>dateStyle</td>
+<td>字符串使用的日期显示方式</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>default</td>
+</tr>
+<tr>
+<td>timeStyle</td>
+<td>字符串使用的时间显示格式</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>default</td>
+</tr>
+<tr>
+<td>timeZone</td>
+<td>使用的时区</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>当地区时</td>
+</tr>
+<tr>
+<td>var</td>
+<td>使用var定义的名字保存对象</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>var的JSP范围</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>page</td>
+</tr>
+</tbody>
+</table>
+<p>【示例代码】：实现了以下功能：首先，使用了<a href="fmt:formatDate">fmt:formatDate</a>把一个日期对象格式化成一个日期的字符串，并把该字符串以参数名为a存储page范围内。其次，使用<a href="fmt:parseDate">fmt:parseDate</a>方法把a的值（字符串）格式化成一个Date并以参数名为b存储在page范围内。最后，使用Java脚本证明生成的b为对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:formatDate value=&#34;${date}&#34; var=&#34;a&#34; type=&#34;both&#34;
+dateStyle=&#34;full&#34; timeStyle=&#34;full&#34;&gt;&lt;/fmt:formatDate&gt;
+&lt;fmt:parseDate var=&#34;b&#34; type=&#34;both&#34; dateStyle=&#34;full&#34; timeStyle=&#34;full&#34;&gt;
+${a}
+&lt;/fmt:parseDate&gt;
+  &lt;%
+  out.println(pageContext.getAttribute(&#34;b&#34;).toString());
+  out.println(&#34;&lt;br&gt;&#34;);
+  out.println(pageContext.getAttribute(&#34;b&#34;).hashCode());
+  %&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【代码解析】：</p>
+<p>（1）使用<code>&lt;fmt:formatDate&gt;</code>把日期对象格式化成字符串。</p>
+<p>（2）使用<code>&lt;fmt:parseDate&gt;</code>把字符串对象转化为日期对象，注意同（1）中的参数对比，可以发现两者是一个互逆的过程。</p>
+<p>（3）使用Java脚本进行测试Date对象的toString()方法可以输出时间字符串。hashCode()可以得到一个对象的hashCode。该方法只能应用于对象，因此可以证明得到的是一个日期对象。</p>
+<p>5．<code>&lt;fmt:setTimeZone&gt;</code>标签</p>
+<p>该标签用于设定默认时区或者将时区存储在指定的JSP范围内。</p>
+<p>【语法】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setTimeZone value=”value” [var=”name”][scope=”page|request|session|application”]/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>&lt;fmt:setTimeZone&gt;</code>标签属性说明:</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+<th>EL</th>
+<th>类型</th>
+<th>必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>使用的时区</td>
+<td>是</td>
+<td>StringJava.util.TimeZone</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>var</td>
+<td>使用var定义的参数名保存值</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>存储var的JSP范围</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>page</td>
+</tr>
+</tbody>
+</table>
+<p>value用来设定使用的时区，例如中国使用的时区为CST，其他的还有EST、PST等。可以把时区存储在指定的JSP范围内，例如存储在session中，用户访问的所有页面都可以显示使用的设定的时区下对应的时间。</p>
+<p>【示例代码】</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setTimeZone value=”EST” scope=”session”/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>提示：有关TimeZone的说明见JDK帮助文档的java.util.TimeZone类。</p>
+<p>6．<code>&lt;fmt:timeZone&gt;</code>标签</p>
+<p>该标签主要用于设置标签体内使用的时区。</p>
+<p>【语法】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:timeZone value=”timeZone”&gt;
+…..
+&lt;/fmt:timeZone&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>使用<code>&lt;fmt:timeZone&gt;&lt;/fmt:timeZone&gt;</code>只会应用到标签体内使用的时区，对标签外部将不产生影响。</p>
+<h3 id="932-读取消息资源">9.3.2 读取消息资源</h3>
+<p>读取消息资源用到的标签主要有4个：<code>&lt;fmt:message&gt;</code>标签、<code>&lt;fmt:param&gt;</code>标签、<code>&lt;fmt:bundle&gt;</code>标签和<code>&lt;fmt:setBundle&gt;</code>标签。主要用于从资源文件中读取信息。</p>
+<p>1．<code>&lt;fmt:bundle&gt;</code>标签</p>
+<p>该标签主要用于将资源文件绑定于它的标签体中的显示。</p>
+<p>【语法】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:bundle basename=”name”[prefix=”prefix”]&gt;
+….标签主题
+&lt;/fmt:bundle&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>&lt;fmt:bundle&gt;</code>标签属性说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+<th>EL</th>
+<th>类型</th>
+<th>必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basename</td>
+<td>指定使用的资源文件的名称</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>前置关键字</td>
+<td>是</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<p>2．<code>&lt;fmt:setBundle&gt;</code>标签</p>
+<p>该标签主要用于绑定资源文件或者把资源文件保存在指定的JSP范围内。</p>
+<p>【语法】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setBundle basename=”name” [var=”name”][scope=”page|request|session|application”]\&gt; 
+</code></pre></td></tr></table>
+</div>
+</div><p><code>&lt;fmt:setBundle&gt;</code>标签属性说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+<th>EL</th>
+<th>类型</th>
+<th>必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basename</td>
+<td>指定使用的资源文件的名称</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>var</td>
+<td>指定将资源文件保存的名称</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>设定将资源文件保存的JSP范围</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>page</td>
+</tr>
+</tbody>
+</table>
+<p>3．<code>&lt;fmt:message&gt;</code>标签</p>
+<p>该标签主要负责读取本地资源文件，从指定的消息文本资源文件中读取键值，并且可以将键值保存在指定的JSP范围内。</p>
+<p>【语法1】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:message key=”keyName”[bundle=”bundle”][scope=”page|request|session|application”]/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【语法2】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:message key=”keyName”[bundle=”bundle”][scope=”page|request|session|application”]\&gt; 
+&lt;fmt:param/&gt;
+&lt;/fmt:message
+</code></pre></td></tr></table>
+</div>
+</div><p>【语法3】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:message key=”keyName”[bundle=”bundle”][scope=”page|request|session|application”]\&gt; 
+key
+&lt;fmt:param/&gt;
+…
+&lt;/fmt:message&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>&lt;fmt:message&gt;</code>标签属性说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+<th>EL</th>
+<th>类型</th>
+<th>必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>指定键值的名称（索引）</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>bundle</td>
+<td>指定消息文本的来源</td>
+<td>是</td>
+<td>LocalizationContext</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>var</td>
+<td>指定存储键值的变量名</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>指定var的作用域</td>
+<td>否</td>
+<td>String</td>
+<td>否</td>
+<td>page</td>
+</tr>
+</tbody>
+</table>
+<p>提示：建议此处的bundle使用EL表达式，因为属性bundle的类型为LocalizationContext，而不是一个String类型的URL。</p>
+<p>【示例代码】：实现从指定的资源文件中读取对应key的值。</p>
+<p>首先编写一个资源文件内容下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">name=olive
+password=01234
+</code></pre></td></tr></table>
+</div>
+</div><p>使用标签从资源文件中读取相应的值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">  &lt;fmt:bundle basename=&#34;message&#34;&gt;
+  &lt;c:out value=&#34;从message资源文件中得到的key为name的值为：&#34;&gt;&lt;/c:out&gt;
+  &lt;fmt:message key=&#34;name&#34; &gt;&lt;/fmt:message&gt;
+  &lt;/fmt:bundle&gt;
+  &lt;hr&gt;
+  &lt;fmt:setBundle basename=&#34;message&#34; var=&#34;m&#34;/&gt;
+  &lt;fmt:message key=&#34;password&#34; bundle=&#34;${m}&#34;&gt;&lt;/fmt:message
+</code></pre></td></tr></table>
+</div>
+</div><p>${m}</p>
+<p>【代码解析】：</p>
+<p>（1）使用<code>&lt;fmt:bundle&gt;</code>标签指定从message.properties文件中读取值。</p>
+<p>（2）使用<code>&lt;fmt:message&gt;</code>标签读取资源文件中key为name的值。<code>&lt;fmt:message&gt;</code>标签放在<code>&lt;fmt:bundle&gt;</code>标签体内使用。</p>
+<p>（3）使用<code>&lt;fmt:setBundle&gt;</code>标签在page范围绑定一个配置文件，以m为参数名存储。</p>
+<p>（4）使用<code>&lt;fmt:message&gt;</code>标签得到key为password的值，此处指定资源文件的方式为使用<code>&lt;fmt:message&gt;</code>标签的bundle属性来设定。</p>
+<p>（5）输出参数m的值，加深对bundle的理解。</p>
+<p><code>&lt;fmt:bundle&gt;</code>标签中有一个prefix属性，该标签用来指明前缀。例如配置文件内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">org.person.name=olive
+org.personpassword=01234
+</code></pre></td></tr></table>
+</div>
+</div><p>如果不使用prefix标签，在取值是要指明前缀。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:bundle basename=”message”&gt;
+&lt;fmt:message key=”org.person.name”&gt;&lt;/fmt:message&gt;
+&lt;fmt:message key=”org.person.password”&gt;&lt;/fmt:message&gt;
+&lt;/fmt:bundle
+</code></pre></td></tr></table>
+</div>
+</div><p>使用prefix属性可以简化取值时的代码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:bundle basename=”message” prefix=”org.person”&gt;
+&lt;fmt:message key=”name”&gt;&lt;/fmt:message&gt;
+&lt;fmt:message key=”password”&gt;&lt;/fmt:message&gt;
+&lt;/fmt:bundle&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>4．<code>&lt;fmt:param&gt;</code>标签</p>
+<p>该标签主要用于当<code>&lt;fmt:message&gt;</code>中资源文件中获得键值时，动态的为资源文件中的变量赋值。</p>
+<p>【语法1】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:param value=”value”/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【语法2】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:param &gt;
+…标签主体
+&lt;/fmt:param&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【示例代码】：</p>
+<p>（1）创建资源文件。在message.properties文件中增加一个key和value。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">news={0} welcome to out website!
+&lt;br&gt;today is :{1,date}
+</code></pre></td></tr></table>
+</div>
+</div><p>表达的含义是键news对应的是一个字符串，字符串中还有动态变量{0}表示第一个动态变量，{1,date}表示第二个动态变量并且该变量是一个日期类型的对象。</p>
+<p>（2）通过标签从资源文件中取出键值，并给动态变量赋值显示在页面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">  &lt;fmt:bundle basename=&#34;message&#34;&gt;
+  &lt;fmt:message key=&#34;news&#34;&gt;
+  &lt;fmt:param value=&#34;olive&#34; /&gt;
+  &lt;fmt:param value=&#34;${date}&#34;/&gt;
+  &lt;/fmt:message&gt;
+  &lt;/fmt:bundle&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【代码解析】：</p>
+<p>（1）使用<code>&lt;fmt:bundle&gt;</code>标签把资源文件绑定在标签体内。</p>
+<p>（2）在<code>&lt;fmt:bundle&gt;</code>标签体内使用<code>&lt;fmt:message&gt;</code>得到键值。</p>
+<p>（3）使用<code>&lt;fmt:param&gt;</code>为资源文件中的动态变量赋值。</p>
+<h3 id="933-国际化">9.3.3 国际化</h3>
+<p>国际化这个分类中共包含两个标签：用于设定语言地区<code>&lt;fmt:setLocale/&gt;</code>和用于设定请求的字符编码的<code>&lt;fmt:requestEncoding&gt;</code>标签。</p>
+<p>1．<code>&lt;fmt:setLocale/&gt;</code>标签</p>
+<p><code>&lt;fmt:setLocale&gt;</code>标签用来设定用户语言区域。</p>
+<p>【语法】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setLocale value=”locale”[variant=”variant”][scope=”page|request|session|application”]&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="fmt:setLocale">fmt:setLocale</a>标签属性说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>说明</th>
+<th>EL</th>
+<th>类型</th>
+<th>必须</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>指定区域代码</td>
+<td>是</td>
+<td>Stringjava.util.Locale</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>variant</td>
+<td>操作系统的类型</td>
+<td>是</td>
+<td>String</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>设定时区的作用范围</td>
+<td>否</td>
+<td>String</td>
+<td>是</td>
+<td>page</td>
+</tr>
+</tbody>
+</table>
+<p>value属性用来指定使用的语言代码，可以从浏览器的【工具】&mdash;【Internet选项】&mdash;【语言】&mdash;【添加】中查看浏览器支持的语言种类及语言代码。例如：中文（zh_cn）、台湾（zh_tw）、香港（zh_mo）等。</p>
+<p>【示例代码】：实现了设定不同的区域代码，根据不同的区域代码浏览将显示不同格式的日期。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx">  <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">setLocale</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;en_us&#34;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">formatDate</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${date}&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;both&#34;</span> <span class="na">dateStyle</span><span class="o">=</span><span class="s">&#34;full&#34;</span> <span class="na">timeStyle</span><span class="o">=</span><span class="s">&#34;full&#34;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">setLocale</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;zh_cn&#34;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">formatDate</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${date}&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;both&#34;</span> <span class="na">dateStyle</span><span class="o">=</span><span class="s">&#34;full&#34;</span> <span class="na">timeStyle</span><span class="o">=</span><span class="s">&#34;full&#34;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">setLocale</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;zh_TW&#34;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">formatDate</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${date}&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;both&#34;</span> <span class="na">dateStyle</span><span class="o">=</span><span class="s">&#34;full&#34;</span> <span class="na">timeStyle</span><span class="o">=</span><span class="s">&#34;full&#34;</span><span class="p">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>【代码解析】：</p>
+<p>（1）浏览器默认跟您使用的操作系统的语言相同，因此默认值zh_cn。使用<a href="fmt:setLocale/">fmt:setLocale/</a>标签设置使用的语言为en_us（英语）。使用<a href="fmt:formateDate">fmt:formateDate</a>格式化输出的时间字符串，该标签会根据不同的语言输出不同的日期格式。</p>
+<p>（2）使用的语言修改为zh_cn，再次用格式化输出。</p>
+<p>（3）使用语言修改为zh_TW，输出格式化后的时间。</p>
+<p>2．<code>&lt;fmt:requestEncoding&gt;</code>标签</p>
+<p>该标签用于设定请求的编码格式。功能同servletRequest.setCharacterEncoding()方法相同。</p>
+<p>【语法】：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:requestEncoding [value=”charEncoding”]/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>【参数说明】：</p>
+<p>value属性用来指定使用的编码集例如：gbk、gb2312等。当没有给出value的值时将会自动搜索取寻找合适的编码方式，因此能够很好的解决中文乱码问题。</p>
+<h2 id="jsp-标准标签库jstl">JSP 标准标签库（JSTL）</h2>
+<p>JSP标准标签库（JSTL）是一个JSP标签集合，它封装了JSP应用的通用核心功能。</p>
+<p>JSTL支持通用的、结构化的任务，比如迭代，条件判断，XML文档操作，国际化标签，SQL标签。 除了这些，它还提供了一个框架来使用集成JSTL的自定义标签。</p>
+<p>根据JSTL标签所提供的功能，可以将其分为5个类别。</p>
+<ul>
+<li><strong>核心标签</strong></li>
+<li><strong>格式化标签</strong></li>
+<li><strong>SQL 标签</strong></li>
+<li><strong>XML 标签</strong></li>
+<li><strong>JSTL 函数</strong></li>
+</ul>
+<hr>
+<h3 id="jstl-库安装">JSTL 库安装</h3>
+<p>Apache Tomcat安装JSTL 库步骤如下：</p>
+<p>从Apache的标准标签库中下载的二进包(jakarta-taglibs-standard-current.zip)。</p>
+<ul>
+<li>官方下载地址：http://archive.apache.org/dist/jakarta/taglibs/standard/binaries/</li>
+<li>本站下载地址：<a href="http://static.runoob.com/download/jakarta-taglibs-standard-1.1.2.tar.gz" target="_blank" rel="noopener noreferrer">jakarta-taglibs-standard-1.1.2.zip</a></li>
+</ul>
+<p>下载 <strong>jakarta-taglibs-standard-1.1.2.zip</strong> 包并解压，将 <strong>jakarta-taglibs-standard-1.1.2/lib/</strong> 下的两个 jar 文件：<strong>standard.jar</strong> 和 <strong>jstl.jar</strong> 文件拷贝到 <strong>/WEB-INF/lib/</strong> 下。</p>
+<p>将 tld 下的需要引入的 tld 文件复制到 WEB-INF 目录下。</p>
+<p>接下来我们在 web.xml 文件中添加以下配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
+&lt;web-app version=&#34;2.4&#34; 
+    xmlns=&#34;http://java.sun.com/xml/ns/j2ee&#34; 
+    xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;
+    xsi:schemaLocation=&#34;http://java.sun.com/xml/ns/j2ee 
+        http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd&#34;&gt;
+    &lt;jsp-config&gt;
+    &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://java.sun.com/jsp/jstl/fmt&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/fmt.tld&lt;/taglib-location&gt;
+    &lt;/taglib&gt;
+    &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://java.sun.com/jsp/jstl/fmt-rt&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/fmt-rt.tld&lt;/taglib-location&gt;
+    &lt;/taglib&gt;
+    &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://java.sun.com/jsp/jstl/core&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/c.tld&lt;/taglib-location&gt;
+    &lt;/taglib&gt;
+    &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://java.sun.com/jsp/jstl/core-rt&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/c-rt.tld&lt;/taglib-location&gt;
+    &lt;/taglib&gt;
+    &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://java.sun.com/jsp/jstl/sql&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/sql.tld&lt;/taglib-location&gt;
+    &lt;/taglib&gt;
+    &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://java.sun.com/jsp/jstl/sql-rt&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/sql-rt.tld&lt;/taglib-location&gt;
+    &lt;/taglib&gt;
+    &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://java.sun.com/jsp/jstl/x&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/x.tld&lt;/taglib-location&gt;
+    &lt;/taglib&gt;
+    &lt;taglib&gt;
+    &lt;taglib-uri&gt;http://java.sun.com/jsp/jstl/x-rt&lt;/taglib-uri&gt;
+    &lt;taglib-location&gt;/WEB-INF/x-rt.tld&lt;/taglib-location&gt;
+    &lt;/taglib&gt;
+    &lt;/jsp-config&gt;
+&lt;/web-app&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>使用任何库，你必须在每个 JSP 文件中的头部包含 <strong><taglib></strong> 标签。</p>
+<hr>
+<h3 id="核心标签">核心标签</h3>
+<p>核心标签是最常用的 JSTL标签。引用核心标签库的语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;c&#34; uri=&#34;http://java.sun.com/jsp/jstl/core&#34; %&gt;
+</code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th style="text-align:left">标签</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-out-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">用于在JSP中显示数据，就像&lt;%= &hellip; &gt;</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-set-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">用于保存数据</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-remove-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">用于删除数据</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-catch-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">用来处理产生错误的异常状况，并且将错误信息储存起来</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-if-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">与我们在一般程序中用的if一样</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-choose-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">本身只当做&lt;c:when&gt;和&lt;c:otherwise&gt;的父标签</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-choose-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">&lt;c:choose&gt;的子标签，用来判断条件是否成立</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-choose-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">&lt;c:choose&gt;的子标签，接在&lt;c:when&gt;标签后，当&lt;c:when&gt;标签判断为false时被执行</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-import-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">检索一个绝对或相对 URL，然后将其内容暴露给页面</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-foreach-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">基础迭代标签，接受多种集合类型</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-foreach-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">根据指定的分隔符来分隔内容并迭代输出</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-param-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">用来给包含或重定向的页面传递参数</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-redirect-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">重定向至一个新的URL.</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-core-url-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">使用可选的查询参数来创造一个URL</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="格式化标签">格式化标签</h3>
+<p>JSTL格式化标签用来格式化并输出文本、日期、时间、数字。引用格式化标签库的语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;fmt&#34; 
+           uri=&#34;http://java.sun.com/jsp/jstl/fmt&#34; %&gt;
+</code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th style="text-align:left">标签</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-formatnumber-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">使用指定的格式或精度格式化数字</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-parsenumber-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">解析一个代表着数字，货币或百分比的字符串</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-formatdate-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">使用指定的风格或模式格式化日期和时间</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-parsedate-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">解析一个代表着日期或时间的字符串</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-bundle-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">绑定资源</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-setlocale-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">指定地区</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-setbundle-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">绑定资源</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-timezone-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">指定时区</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-settimezone-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">指定时区</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-message-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">显示资源配置文件信息</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-format-requestencoding-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">设置request的字符编码</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="sql标签">SQL标签</h3>
+<p>JSTL SQL标签库提供了与关系型数据库（Oracle，MySQL，SQL Server等等）进行交互的标签。引用SQL标签库的语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;sql&#34; 
+           uri=&#34;http://java.sun.com/jsp/jstl/sql&#34; %&gt;
+</code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th style="text-align:left">标签</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-sql-setdatasource-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">指定数据源</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-sql-query-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">运行SQL查询语句</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-sql-update-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">运行SQL更新语句</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-sql-param-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">将SQL语句中的参数设为指定值</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-sql-dateparam-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">将SQL语句中的日期参数设为指定的java.util.Date 对象值</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-sql-transaction-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">在共享数据库连接中提供嵌套的数据库行为元素，将所有语句以一个事务的形式来运行</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="xml-标签">XML 标签</h3>
+<p>JSTL XML标签库提供了创建和操作XML文档的标签。引用XML标签库的语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;x&#34; 
+           uri=&#34;http://java.sun.com/jsp/jstl/xml&#34; %&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>在使用xml标签前，你必须将XML 和 XPath 的相关包拷贝至你的&lt;Tomcat 安装目录&gt;\lib下:</p>
+<ul>
+<li>
+<p>XercesImpl.jar</p>
+<p>下载地址： <a href="http://www.apache.org/dist/xerces/j/">http://www.apache.org/dist/xerces/j/</a></p>
+</li>
+<li>
+<p>xalan.jar</p>
+<p>下载地址： <a href="http://xml.apache.org/xalan-j/index.html">http://xml.apache.org/xalan-j/index.html</a></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">标签</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-out-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">与&lt;%= &hellip; &gt;,类似，不过只用于XPath表达式</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-parse-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">解析 XML 数据</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-set-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">设置XPath表达式</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-if-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">判断XPath表达式，若为真，则执行本体中的内容，否则跳过本体</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-foreach-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">迭代XML文档中的节点</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-choose-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">&lt;x:when&gt;和&lt;x:otherwise&gt;的父标签</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-choose-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">&lt;x:choose&gt;的子标签，用来进行条件判断</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-choose-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">&lt;x:choose&gt;的子标签，当&lt;x:when&gt;判断为false时被执行</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-transform-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">将XSL转换应用在XML文档中</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-xml-param-tag.html" target="_blank" rel="noopener noreferrer"></a></td>
+<td style="text-align:left">与&lt;x:transform&gt;共同使用，用于设置XSL样式表</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="jstl函数">JSTL函数</h3>
+<p>JSTL包含一系列标准函数，大部分是通用的字符串处理函数。引用JSTL函数库的语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;fn&#34; 
+           uri=&#34;http://java.sun.com/jsp/jstl/functions&#34; %&gt;
+</code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-contains.html" target="_blank" rel="noopener noreferrer">fn:contains()</a></td>
+<td style="text-align:left">测试输入的字符串是否包含指定的子串</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-containsignoreCase.html" target="_blank" rel="noopener noreferrer">fn:containsIgnoreCase()</a></td>
+<td style="text-align:left">测试输入的字符串是否包含指定的子串，大小写不敏感</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-endswith.html" target="_blank" rel="noopener noreferrer">fn:endsWith()</a></td>
+<td style="text-align:left">测试输入的字符串是否以指定的后缀结尾</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-escapexml.html" target="_blank" rel="noopener noreferrer">fn:escapeXml()</a></td>
+<td style="text-align:left">跳过可以作为XML标记的字符</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-indexof.html" target="_blank" rel="noopener noreferrer">fn:indexOf()</a></td>
+<td style="text-align:left">返回指定字符串在输入字符串中出现的位置</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-join.html" target="_blank" rel="noopener noreferrer">fn:join()</a></td>
+<td style="text-align:left">将数组中的元素合成一个字符串然后输出</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-length.html" target="_blank" rel="noopener noreferrer">fn:length()</a></td>
+<td style="text-align:left">返回字符串长度</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-replace.html" target="_blank" rel="noopener noreferrer">fn:replace()</a></td>
+<td style="text-align:left">将输入字符串中指定的位置替换为指定的字符串然后返回</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-split.html" target="_blank" rel="noopener noreferrer">fn:split()</a></td>
+<td style="text-align:left">将字符串用指定的分隔符分隔然后组成一个子字符串数组并返回</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-startswith.html" target="_blank" rel="noopener noreferrer">fn:startsWith()</a></td>
+<td style="text-align:left">测试输入字符串是否以指定的前缀开始</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-substring.html" target="_blank" rel="noopener noreferrer">fn:substring()</a></td>
+<td style="text-align:left">返回字符串的子集</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-substringafter.html" target="_blank" rel="noopener noreferrer">fn:substringAfter()</a></td>
+<td style="text-align:left">返回字符串在指定子串之后的子集</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-substringbefore.html" target="_blank" rel="noopener noreferrer">fn:substringBefore()</a></td>
+<td style="text-align:left">返回字符串在指定子串之前的子集</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-tolowercase.html" target="_blank" rel="noopener noreferrer">fn:toLowerCase()</a></td>
+<td style="text-align:left">将字符串中的字符转为小写</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-touppercase.html" target="_blank" rel="noopener noreferrer">fn:toUpperCase()</a></td>
+<td style="text-align:left">将字符串中的字符转为大写</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://www.runoob.com/jsp/jstl-function-trim.html" target="_blank" rel="noopener noreferrer">fn:trim()</a></td>
+<td style="text-align:left">移除首尾的空白符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jstl-11-与-jstl-12-之间的区别如何下载-jstl-12">JSTL 1.1 与 JSTL 1.2 之间的区别？如何下载 JSTL 1.2?</h2>
+<p>JSTL 1.2 中不要求 standard.jar 包。</p>
+<p>您可以在 Maven 中央仓库中找到它们。</p>
+<p><a href="http://repo2.maven.org/maven2/javax/servlet/jstl/">http://repo2.maven.org/maven2/javax/servlet/jstl/</a></p>
+<p><a href="http://repo2.maven.org/maven2/taglibs/standard/">http://repo2.maven.org/maven2/taglibs/standard/</a></p>
+<p>由于<code>JSTL 1.1</code>已经过时，Apache已将其置于<a href="http://archive.apache.org/dist/jakarta/taglibs/standard/" target="_blank" rel="noopener noreferrer">存档中</a>。选择<code>jakarta-taglibs-standard-current.zip</code>文件。但是，如果您正在运行<code>Servlet 2.5</code>兼容容器并且<code>web.xml</code>声明为至少<code>Servlet 2.5</code>，那么您应该能够使用新的<a href="http://central.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar" target="_blank" rel="noopener noreferrer">JSTL 1.2</a>。需要注意的是<code>JSTL 1.2</code>并没有要求<code>standard.jar</code>。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-08-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/jsp-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/jsp-note/" data-title="Jsp笔记" data-hashtags="Jsp,Java"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/jsp-note/" data-hashtag="Jsp"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/jsp-note/" data-title="Jsp笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/jsp-note/" data-title="Jsp笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jsp/">Jsp</a>,&nbsp;<a href="/tags/java/">Java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/linux-proc-mange-note/" class="prev" rel="prev" title="Linux进程管理笔记"><i class="fas fa-angle-left fa-fw"></i>Linux进程管理笔记</a>
+            <a href="/html-note/" class="next" rel="next" title="Html笔记">Html笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

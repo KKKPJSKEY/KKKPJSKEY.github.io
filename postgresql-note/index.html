@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/featured-image.jpg",
                             "width":  640 ,
                             "height":  205 
-                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  1136 ,
+                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  1362 ,
         "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/","datePublished": "2021-07-28T10:29:58+08:00","dateModified": "2021-07-28T10:29:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">PostgreSQL相关笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1136 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1362 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/postgresql-note/" class="leancloud_visitors" data-flag-title="PostgreSQL相关笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -137,7 +137,15 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#一介绍">一、介绍</a></li>
+    <li><a href="#一介绍">一、介绍</a>
+      <ul>
+        <li><a href="#1情况说明">1、情况说明</a></li>
+        <li><a href="#2安装软件及依赖包">2、安装软件及依赖包</a></li>
+      </ul>
+    </li>
+    <li><a href="#二配置">二、配置</a></li>
+    <li><a href="#重置自增序列">重置自增序列</a></li>
+    <li><a href="#schemas问题">schemas问题</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="一介绍">一、介绍</h2>
@@ -154,8 +162,8 @@
         alt="./1.png"
         title="1" /></p>
 <p>这篇文章是初次接触 PostgreSQL 时所写，从MyBatis 1.3.2 的版本大家也能看的出来，本来写了个简单的CRUD的DEMO，结果时间太久找不到了。</p>
-<p>1、情况说明
-在这里我使用SpringBoot配置JPA连接到PostgreSql数据库的。源码也会提供给大家（此文末尾），效果如下</p>
+<h3 id="1情况说明">1、情况说明</h3>
+<p>在这里我使用SpringBoot配置JPA连接到PostgreSql数据库的。源码也会提供给大家（此文末尾），效果如下</p>
 <p>数据库：</p>
 <p><img
         class="lazyload"
@@ -174,8 +182,8 @@
         data-sizes="auto"
         alt="./3.png"
         title="3" /></p>
-<p>2、安装软件及依赖包
-完整搭建SpringBoot及依赖包：https://blog.csdn.net/qq_41647999/article/details/83214100</p>
+<h3 id="2安装软件及依赖包">2、安装软件及依赖包</h3>
+<p>完整搭建SpringBoot及依赖包：https://blog.csdn.net/qq_41647999/article/details/83214100</p>
 <p>需要的SpringBoot代码从Spring官网下载：https://start.spring.io/</p>
 <p>Mybaits官网：http://www.mybatis.org/mybatis-3/</p>
 <p>最关键的地方是在依赖包那里，需要引用Mybaits和PostgreSql的包。</p>
@@ -190,8 +198,8 @@
         data-sizes="auto"
         alt="./4.png"
         title="4" /></p>
-<p>二、配置
-如果您的环境配置和我搭建SpringBoot的博文一样的话，用eclipse打开项目。</p>
+<h2 id="二配置">二、配置</h2>
+<p>如果您的环境配置和我搭建SpringBoot的博文一样的话，用eclipse打开项目。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -284,7 +292,26 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="重置自增序列">重置自增序列</h2>
+<p>分为从43开始、从43开始、从42开始</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;myseq&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>           			<span class="o">#</span><span class="k">Next</span> <span class="n">nextval</span> <span class="n">will</span> <span class="k">return</span> <span class="mi">43</span>
+<span class="k">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;myseq&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>     			<span class="o">#</span><span class="n">Same</span> <span class="k">as</span> <span class="n">above</span>
+<span class="k">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;myseq&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>    			<span class="o">#</span><span class="k">Next</span> <span class="n">nextval</span> <span class="n">will</span> <span class="k">return</span> <span class="mi">42</span>
+<span class="k">alter</span> <span class="n">sequence</span> <span class="n">dataset_id_seq</span> <span class="k">start</span> <span class="k">with</span> <span class="mi">1</span> <span class="p">;</span>     <span class="o">#</span><span class="err">只能增大</span> <span class="err">不能减小</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="schemas问题">schemas问题</h2>
+<p>PGSql默认的是public,如果用MybatisPlus的内置方法的话,是需要指定连接的CurrentSchema的,否则只会默认查询public,自己写Sql可以在前面加上schemas
+但是使用内置方法没有,必须在连接url指定schemsa,否则会报ERROR: relation &ldquo;item&rdquo; does not exist表不存在</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -303,7 +330,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/postgresql/">PostgreSQL</a>,&nbsp;<a href="/tags/springboot/">SpringBoot</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/sql/">Sql</a>,&nbsp;<a href="/tags/postgresql/">PostgreSql</a>,&nbsp;<a href="/tags/springboot/">SpringBoot</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>

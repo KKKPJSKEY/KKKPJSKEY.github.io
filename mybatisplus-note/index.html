@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mybatisplus-note\/featured-image.jpg",
                             "width":  1700 ,
                             "height":  510 
-                        }],"genre": "posts","keywords": "Java, ORM, MyBatisPlus","wordcount":  1600 ,
+                        }],"genre": "posts","keywords": "Java, ORM, MyBatisPlus","wordcount":  2310 ,
         "url": "https:\/\/kkkpjskey.github.io\/mybatisplus-note\/","datePublished": "2021-07-28T11:17:10+08:00","dateModified": "2021-07-28T11:17:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">MyBatis-Plus笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1600 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/mybatisplus-note/" class="leancloud_visitors" data-flag-title="MyBatis-Plus笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2310 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/mybatisplus-note/" class="leancloud_visitors" data-flag-title="MyBatis-Plus笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -157,9 +157,24 @@
         </li>
       </ul>
     </li>
+    <li><a href="#maybatis-plus-lambdaquery和mapper中eqnegtltgele的用法及详解"><strong>Maybatis-Plus lambdaQuery和mapper中EQ、NE、GT、LT、GE、LE的用法及详解</strong></a>
+      <ul>
+        <li><a href="#1等于当前时间"><strong>1.等于当前时间</strong></a></li>
+        <li><a href="#2不等于当前时间"><strong>2.不等于当前时间</strong></a></li>
+        <li><a href="#3大于当前时间"><strong>3.大于当前时间</strong></a></li>
+        <li><a href="#4小于当前时间"><strong>4.小于当前时间</strong></a></li>
+        <li><a href="#5大于等于当前时间"><strong>5.大于等于当前时间</strong></a></li>
+        <li><a href="#6小于等于当前时间"><strong>6.小于等于当前时间</strong></a></li>
+        <li><a href="#72个时间段是否相交"><strong>7.2个时间段是否相交</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#mybatis-plus_更新操作示例">MyBatis-Plus_更新操作示例</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="mybatis-plus-通用basemapper使用介绍">MyBatis-Plus 通用BaseMapper使用介绍</h2>
+<blockquote>
+<p>详细见<a href="https://mp.baomidou.com/guide/quick-start.html" target="_blank" rel="noopener noreferrer">快速开始</a></p>
+</blockquote>
 <ul>
 <li>拥有 Java 开发环境以及相应 IDE</li>
 <li>熟悉 Spring Boot</li>
@@ -493,7 +508,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 <h2 id="mybatis-plus-通用iservice使用介绍">MyBatis-Plus 通用IService使用介绍</h2>
 <h3 id="一引言">一、引言</h3>
 <p>MP除了通用的Mapper还有通用的Servcie层，这也减少了相对应的代码工作量，把通用的接口提取到公共。其实按照MP的这种思想，可以自己也实现一些通用的Controller。</p>
-<p>由于官网文档没有IService的使用教程，快速开始仅仅有Mapper的教程，故写了本文</p>
+<p>由于官网文档没有IService的使用教程，<a href="https://mp.baomidou.com/guide/quick-start.html" target="_blank" rel="noopener noreferrer">快速开始</a>仅仅有Mapper的教程，故写了本文</p>
 <h3 id="二iservice使用">二、IService使用</h3>
 <h4 id="service">Service</h4>
 <p>Service层需要继承IService，当然实现层也要继承对应的实现类。</p>
@@ -660,6 +675,229 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">remove</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></td></tr></table>
+</div>
+</div><h2 id="maybatis-plus-lambdaquery和mapper中eqnegtltgele的用法及详解"><strong>Maybatis-Plus lambdaQuery和mapper中EQ、NE、GT、LT、GE、LE的用法及详解</strong></h2>
+<h3 id="1等于当前时间"><strong>1.等于当前时间</strong></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">eq</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">())</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2不等于当前时间"><strong>2.不等于当前时间</strong></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">ne</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3大于当前时间"><strong>3.大于当前时间</strong></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">gt</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4小于当前时间"><strong>4.小于当前时间</strong></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">lt</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="5大于等于当前时间"><strong>5.大于等于当前时间</strong></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">ge</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="6小于等于当前时间"><strong>6.小于等于当前时间</strong></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">le</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="72个时间段是否相交"><strong>7.2个时间段是否相交</strong></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span><span class="o">((!</span><span class="n">start1</span><span class="o">.</span><span class="na">after</span><span class="o">(</span><span class="n">end2</span><span class="o">))&amp;&amp;(!</span><span class="n">end1</span><span class="o">.</span><span class="na">before</span><span class="o">(</span><span class="n">start2</span><span class="o">))){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;时间重叠&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="mybatis-plus_更新操作示例">MyBatis-Plus_更新操作示例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserMapperUpdateTest</span> <span class="kd">extends</span> <span class="n">MybatisPlusSamplesChapter1ApplicationTests</span> <span class="o">{</span>
+    <span class="nd">@Resource</span>
+    <span class="kd">private</span> <span class="n">UserMapper</span> <span class="n">userMapper</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateById</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">1087982257332887553L</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="s">&#34;gblfy@163.com&#34;</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">22</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">updateById</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;影响记录数:&#34;</span> <span class="o">+</span> <span class="n">rows</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="c1">//UPDATE user SET age=?, email=? WHERE id=?
+</span><span class="c1"></span>
+    <span class="cm">/**
+</span><span class="cm">     * 根据 whereEntity 条件，更新记录
+</span><span class="cm">     *
+</span><span class="cm">     * @param entity        实体对象 (set 条件值,可以为 null)
+</span><span class="cm">     * @param updateWrapper 实体对象封装操作类（可以为 null,里面的 entity 用于生成 where 语句）
+</span><span class="cm">     */</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateByWrapper</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">UpdateWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">updateWrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UpdateWrapper</span><span class="o">&lt;&gt;();</span>
+        <span class="n">updateWrapper</span><span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;李艺伟&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">28</span><span class="o">);</span>
+
+        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="s">&#34;gblfy2@sino.com&#34;</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">22</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">user</span><span class="o">,</span> <span class="n">updateWrapper</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;影响记录数:&#34;</span> <span class="o">+</span> <span class="n">rows</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="c1">//UPDATE user SET age=?, email=? WHERE name = ? AND age = ?
+</span><span class="c1"></span>
+    <span class="cm">/**
+</span><span class="cm">     * 当表中字段很多,只更新少量字段的值（建议使用）
+</span><span class="cm">     */</span>
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateByWrapper2</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">UpdateWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">updateWrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UpdateWrapper</span><span class="o">&lt;&gt;();</span>
+        <span class="n">updateWrapper</span><span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="s">&#34;李艺伟&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">28</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">,</span> <span class="n">30</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">updateWrapper</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;影响记录数:&#34;</span> <span class="o">+</span> <span class="n">rows</span><span class="o">);</span>
+    <span class="c1">//UPDATE user SET age=?, email=? WHERE name = ? AND age = ?
+</span><span class="c1"></span>    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateByWrapperLambda</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">LambdaUpdateWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">lambdaUpdateWrapper</span> <span class="o">=</span> <span class="n">Wrappers</span><span class="o">.&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="n">lambdaUpdate</span><span class="o">();</span>
+        <span class="n">lambdaUpdateWrapper</span><span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getName</span><span class="o">,</span> <span class="s">&#34;李艺伟&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getAge</span><span class="o">,</span> <span class="n">28</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getAge</span><span class="o">,</span> <span class="n">30</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">lambdaUpdateWrapper</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;影响记录数:&#34;</span> <span class="o">+</span> <span class="n">rows</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateByWrapperLambdaChain</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">sign</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LambdaUpdateChainWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;(</span><span class="n">userMapper</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getName</span><span class="o">,</span> <span class="s">&#34;李艺伟&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getAge</span><span class="o">,</span> <span class="n">22</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getAge</span><span class="o">,</span> <span class="n">30</span><span class="o">).</span><span class="na">update</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sign</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="c1">//UPDATE user SET age=? WHERE name = ? AND age = ?
+</span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">

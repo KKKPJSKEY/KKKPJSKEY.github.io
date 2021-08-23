@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>springfox-swagger笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录详细使用说明的笔记"><meta property="og:title" content="springfox-swagger笔记" />
+<meta property="og:description" content="记录详细使用说明的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/springfox-swagger-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/springfox-swagger-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-22T23:32:28&#43;08:00" />
+<meta property="article:modified_time" content="2021-08-22T23:32:28&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/springfox-swagger-note/featured-image.jpg"/>
+<meta name="twitter:title" content="springfox-swagger笔记"/>
+<meta name="twitter:description" content="记录详细使用说明的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/springfox-swagger-note/" /><link rel="prev" href="https://kkkpjskey.github.io/mybatis-pagehelper-note/" /><link rel="next" href="https://kkkpjskey.github.io/mybatis-postgresql-jsonb-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "springfox-swagger笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/springfox-swagger-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/springfox-swagger-note\/featured-image.jpg",
+                            "width":  1600 ,
+                            "height":  480 
+                        }],"genre": "posts","keywords": "ShellScript, Markdown, GitHub, CodeIt, Blog","wordcount":  2588 ,
+        "url": "https:\/\/kkkpjskey.github.io\/springfox-swagger-note\/","datePublished": "2021-08-22T23:32:28+08:00","dateModified": "2021-08-22T23:32:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录详细使用说明的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/springfox-swagger-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/springfox-swagger-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">springfox-swagger笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-22">2021-08-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2588 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/springfox-swagger-note/" class="leancloud_visitors" data-flag-title="springfox-swagger笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/springfox-swagger-note/featured-image.jpg"
+        data-srcset="/springfox-swagger-note/featured-image.jpg, /springfox-swagger-note/featured-image.jpg 1.5x, /springfox-swagger-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/springfox-swagger-note/featured-image.jpg"
+        title="记录详细使用说明的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1spring-boot依赖">1.spring-boot依赖</a></li>
+    <li><a href="#2swagger-配置">2.swagger 配置</a></li>
+    <li><a href="#3相关注解使用和说明">3.相关注解使用和说明</a></li>
+    <li><a href="#4对应关系">4.对应关系</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1spring-boot依赖">1.spring-boot依赖</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>io.springfox<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>springfox-swagger2<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.9.2<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>io.springfox<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>springfox-swagger-ui<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.9.2<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2swagger-配置">2.swagger 配置</h2>
+<p><strong>swagger文档默认访问地址：/swagger-ui.html</strong></p>
+<p>swagger文档默认访问地址：/swagger-ui.html</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@EnableSwagger2</span> <span class="c1">//开启swagger，自动生成文档
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SwaggerConfig</span> <span class="o">{</span>
+    <span class="c1">//一个Docket是一个组，组的划分可以通过paths()或apis()来实现，组名称可以作为api搜索条件。组包含多个tags，tag可以包含多个api；
+</span><span class="c1"></span>    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">Docket</span> <span class="nf">api</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//apiInfo():配置文档描述
+</span><span class="c1"></span>        <span class="c1">//apis():api过滤规则，可以自定义为那些接口生成文档
+</span><span class="c1"></span>        <span class="c1">//useDefaultResponseMessages():是否使用默认的响应信息
+</span><span class="c1"></span>        <span class="c1">//paths()::可以根据请求路径过滤api
+</span><span class="c1"></span>        <span class="c1">//globalResponseMessage():：所有接口统一定义响应信息
+</span><span class="c1"></span>        <span class="c1">//produces(): 为所有接口设置响应类型
+</span><span class="c1"></span>        <span class="c1">//consumes():(): 为所有接口设置请求类型
+</span><span class="c1"></span>        <span class="c1">//protocols(): 为所有接口设置支持的协议
+</span><span class="c1"></span>        <span class="c1">//groupName（）：组名称
+</span><span class="c1"></span>        <span class="c1">//tags：设置标签
+</span><span class="c1"></span>        <span class="n">Tag</span> <span class="n">tag</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Tag</span><span class="o">(</span><span class="s">&#34;订单导出api&#34;</span><span class="o">,</span> <span class="s">&#34;订单相关导出api描述&#34;</span><span class="o">);</span>
+        <span class="n">ResponseMessage</span> <span class="n">error</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ResponseMessageBuilder</span><span class="o">().</span><span class="na">code</span><span class="o">(</span><span class="n">500</span><span class="o">).</span><span class="na">message</span><span class="o">(</span><span class="s">&#34;系统异常&#34;</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Docket</span><span class="o">(</span><span class="n">DocumentationType</span><span class="o">.</span><span class="na">SWAGGER_2</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">useDefaultResponseMessages</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">globalResponseMessage</span><span class="o">(</span><span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">Lists</span><span class="o">.</span><span class="na">newArrayList</span><span class="o">(</span><span class="n">error</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">apiInfo</span><span class="o">(</span><span class="n">apiInfo</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">groupName</span><span class="o">(</span><span class="s">&#34;订单导出api&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">protocols</span><span class="o">(</span><span class="n">Sets</span><span class="o">.</span><span class="na">newHashSet</span><span class="o">(</span><span class="s">&#34;http&#34;</span><span class="o">,</span> <span class="s">&#34;https&#34;</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">consumes</span><span class="o">(</span><span class="n">Sets</span><span class="o">.</span><span class="na">newHashSet</span><span class="o">(</span><span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_VALUE</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">produces</span><span class="o">(</span><span class="n">Sets</span><span class="o">.</span><span class="na">newHashSet</span><span class="o">(</span><span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_VALUE</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">tags</span><span class="o">(</span><span class="n">tag</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">select</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">apis</span><span class="o">((</span><span class="n">RequestHandlerSelectors</span><span class="o">.</span><span class="na">basePackage</span><span class="o">(</span><span class="s">&#34;com.zhen.export&#34;</span><span class="o">))</span>
+                        <span class="o">.</span><span class="na">paths</span><span class="o">(</span><span class="n">PathSelectors</span><span class="o">.</span><span class="na">any</span><span class="o">()).</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">ApiInfo</span> <span class="nf">apiInfo</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//title:文档标题
+</span><span class="c1"></span>        <span class="c1">//description：文档的描述
+</span><span class="c1"></span>        <span class="c1">//termsOfServiceUrl:文档的服务条款说明网址
+</span><span class="c1"></span>        <span class="c1">//version:版本号
+</span><span class="c1"></span>        <span class="c1">//contact：文档的联系人信息
+</span><span class="c1"></span>        <span class="c1">//license:文档版权信息
+</span><span class="c1"></span>        <span class="c1">//licenseUrl:版权信息超链接
+</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="n">ApiInfoBuilder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">title</span><span class="o">(</span><span class="s">&#34;珍品导出系统API文档&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">description</span><span class="o">(</span><span class="s">&#34;珍品导出系统API文档&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">contact</span><span class="o">(</span><span class="k">new</span> <span class="n">Contact</span><span class="o">(</span><span class="s">&#34;moon&#34;</span><span class="o">,</span> <span class="s">&#34;www.baidu.com&#34;</span><span class="o">,</span> <span class="s">&#34;moon@zhen.com&#34;</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">license</span><span class="o">(</span><span class="s">&#34;license-moon&#34;</span><span class="o">).</span>
+        <span class="o">.</span><span class="na">licenseUrl</span><span class="o">:</span>
+        <span class="n">版权信息超链接</span><span class="o">(</span><span class="s">&#34;license-moon-url&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">termsOfServiceUrl</span><span class="o">(</span><span class="s">&#34;http://www.zhen.com&#34;</span><span class="o">).</span><span class="na">version</span><span class="o">(</span><span class="s">&#34;2.0&#34;</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3相关注解使用和说明">3.相关注解使用和说明</h2>
+<p>3.相关注解使用和说明</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/orders&#34;</span><span class="o">)</span>
+<span class="nd">@Api</span><span class="o">(</span><span class="n">tags</span> <span class="o">=</span> <span class="s">&#34;订单导出api&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderExportController</span> <span class="o">{</span>
+    <span class="nd">@ApiOperation</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34; 订单导出任务-对象请求&#34;</span><span class="o">,</span> <span class="n">notes</span> <span class="o">=</span> <span class="s">&#34;订单导出任务详细描述&#34;</span><span class="o">,</span> <span class="n">httpMethod</span> <span class="o">=</span> <span class="s">&#34;GET&#34;</span><span class="o">,</span> <span class="n">produces</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_VALUE</span><span class="o">)</span>
+    <span class="nd">@ApiImplicitParams</span><span class="o">({</span>
+            <span class="nd">@ApiImplicitParam</span><span class="o">(</span><span class="n">paramType</span> <span class="o">=</span> <span class="s">&#34;query&#34;</span><span class="o">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;test&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;测试字段&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">dataType</span> <span class="o">=</span> <span class="s">&#34;String&#34;</span><span class="o">)</span>
+    <span class="o">})</span>
+    <span class="nd">@ApiResponses</span><span class="o">({</span>
+            <span class="nd">@ApiResponse</span><span class="o">(</span><span class="n">code</span> <span class="o">=</span> <span class="n">500</span><span class="o">,</span> <span class="n">message</span> <span class="o">=</span> <span class="s">&#34;系统异常&#34;</span><span class="o">)</span>
+    <span class="o">})</span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/doExportTaskToOperationOnObject.json&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">EgResponse</span> <span class="nf">doExportTaskToOperationOnObject</span><span class="o">(</span><span class="n">OrderDetailRequest</span> <span class="n">req</span><span class="o">,</span>
+                                                      <span class="nd">@ApiIgnore</span> <span class="n">String</span> <span class="n">test</span><span class="o">,</span> <span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">EgResponse</span><span class="o">.</span><span class="na">success</span><span class="o">(</span><span class="k">new</span> <span class="n">OrderInfo</span><span class="o">());</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>OrderDetailRequest：接口的请求对象，<strong>不需要格外注解，可以自动识别展示在文档中</strong>，可以用ApiModelProperty注解定义对象字段在文档中的展示</li>
+<li>@ApiIgnore：可以用在controller类，方法参数上，使其不展示在文档中</li>
+<li>@api：为功能模块添加说明信息，<strong>不是必须的，所有匹配的controller都会自动生成文档</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性名</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">tags</td>
+<td style="text-align:center">接口的标签名，可用于分组，不能设置tag的描述，只能在swagger配置时设置组描述。每个controller都会生成默认的标签</td>
+</tr>
+<tr>
+<td style="text-align:center">produces</td>
+<td style="text-align:center">支持的响应类型，mime类型，多个值逗号分隔</td>
+</tr>
+<tr>
+<td style="text-align:center">consumes</td>
+<td style="text-align:center">入参类型值，mime类型，多个值逗号分隔</td>
+</tr>
+<tr>
+<td style="text-align:center">authorizations</td>
+<td style="text-align:center">获取此操作的授权列表</td>
+</tr>
+<tr>
+<td style="text-align:center">protocols</td>
+<td style="text-align:center">支持的传输协议，如http。多个协议逗号分隔</td>
+</tr>
+<tr>
+<td style="text-align:center">hidden</td>
+<td style="text-align:center">是否隐藏该模块</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>@ApiImplicitParams：描述方法参数的集合包含多个ApiImplicitParam注解</li>
+<li>@ApiImplicitParam：描述方法参数信息</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>参数描述</td>
+</tr>
+<tr>
+<td>name</td>
+<td>参数名称</td>
+</tr>
+<tr>
+<td>defaultValue</td>
+<td>参数默认值</td>
+</tr>
+<tr>
+<td>allowableValues</td>
+<td>参数允许的取值集合</td>
+</tr>
+<tr>
+<td>required</td>
+<td>是否必填</td>
+</tr>
+<tr>
+<td>allowMultiple</td>
+<td>是否可以传多个</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td>参数值的类型</td>
+</tr>
+<tr>
+<td>dataTypeClass</td>
+<td>参数值得java类型</td>
+</tr>
+<tr>
+<td>paramType</td>
+<td>参数的类型，可选值path, query, body, header,form</td>
+</tr>
+<tr>
+<td>example</td>
+<td>参数值例子，paramType!=body时有效</td>
+</tr>
+<tr>
+<td>examples</td>
+<td>paramType=body时有效</td>
+</tr>
+<tr>
+<td>allowEmptyValue</td>
+<td>是否可以传递空值</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>@ApiOperation：模块中每个接口定义，不是必须的，spring会自动扫描所有的接口。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性名</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">value</td>
+<td style="text-align:center">接口名称</td>
+</tr>
+<tr>
+<td style="text-align:center">httpMethod</td>
+<td style="text-align:center">接口使用http方法，可选值 “GET”, “HEAD”, “POST”, “PUT”, “DELETE”, “OPTIONS”,“PATCH”。如果未指定则使用除&quot;PATH&quot;之外的其它所有</td>
+</tr>
+<tr>
+<td style="text-align:center">produces</td>
+<td style="text-align:center">支持的响应类型，mime类型，多个值逗号分隔</td>
+</tr>
+<tr>
+<td style="text-align:center">consumes</td>
+<td style="text-align:center">入参类型值，mime类型，多个值逗号分隔</td>
+</tr>
+<tr>
+<td style="text-align:center">notes</td>
+<td style="text-align:center">接口的详细描述</td>
+</tr>
+<tr>
+<td style="text-align:center">response</td>
+<td style="text-align:center">接口的响应类型。<strong>文档的响应信息结构可以根据方法的返回值自动处理。</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">protocols</td>
+<td style="text-align:center">支持的传输协议，如http。多个协议逗号分隔</td>
+</tr>
+<tr>
+<td style="text-align:center">hidden</td>
+<td style="text-align:center">是否在文档中展示改接口</td>
+</tr>
+<tr>
+<td style="text-align:center">responseHeaders</td>
+<td style="text-align:center">http响应头信息描述</td>
+</tr>
+<tr>
+<td style="text-align:center">authorizations</td>
+<td style="text-align:center">获取此操作的授权列表</td>
+</tr>
+<tr>
+<td style="text-align:center">code</td>
+<td style="text-align:center">HTTP返回状态码</td>
+</tr>
+<tr>
+<td style="text-align:center">nickname</td>
+<td style="text-align:center">第三方工具使用operationId来唯一表示此操作</td>
+</tr>
+<tr>
+<td style="text-align:center">tags</td>
+<td style="text-align:center">接口所属标签，默认为controller标签</td>
+</tr>
+<tr>
+<td style="text-align:center">extensions</td>
+<td style="text-align:center">扩展属性描述</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>@ApiResponses：响应信息集合，包含多个ApiResponse注解</li>
+<li>@ApiResponse：定义不同http响应码的相关相关响应信息</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>http响应码</td>
+</tr>
+<tr>
+<td>message</td>
+<td>响应码描述</td>
+</tr>
+<tr>
+<td>response</td>
+<td>响应实体类</td>
+</tr>
+<tr>
+<td>examples</td>
+<td>响应例子</td>
+</tr>
+</tbody>
+</table>
+<p>examples	响应例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderDetailRequest</span> <span class="o">{</span>
+    <span class="nd">@ApiModelProperty</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;平台编码&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">example</span> <span class="o">=</span> <span class="s">&#34;70&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">platformCode</span><span class="o">;</span>
+
+    <span class="nd">@ApiModelProperty</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;平台订单号&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">example</span> <span class="o">=</span> <span class="s">&#34;sn20201029&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">platformOrderSn</span><span class="o">;</span>
+
+    <span class="nd">@ApiModelProperty</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;订单状态&#34;</span><span class="o">,</span> <span class="n">example</span> <span class="o">=</span> <span class="s">&#34;0&#34;</span><span class="o">,</span> <span class="n">allowableValues</span> <span class="o">=</span> <span class="s">&#34;0,1,2,3,4&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">status</span><span class="o">;</span>
+
+    <span class="nd">@ApiModelProperty</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;特殊字段&#34;</span><span class="o">,</span> <span class="n">example</span> <span class="o">=</span> <span class="s">&#34;0&#34;</span><span class="o">,</span> <span class="n">hidden</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">BigDecimal</span> <span class="n">special</span><span class="o">;</span>
+
+    <span class="nd">@ApiModelProperty</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;开始时间 格式：yyyy-MM-dd HH:mm:ss&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">startTime</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@ApiModel</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;response&#34;</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">&#34;用于通用响应&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EgResponse</span> <span class="o">{</span>
+    <span class="nd">@ApiModelProperty</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;响应码&#34;</span><span class="o">,</span> <span class="n">example</span> <span class="o">=</span> <span class="s">&#34;200&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">code</span><span class="o">;</span>
+
+    <span class="nd">@ApiModelProperty</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;响应码描述&#34;</span><span class="o">,</span> <span class="n">example</span> <span class="o">=</span> <span class="s">&#34;成功&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">message</span><span class="o">;</span>
+
+    <span class="nd">@ApiModelProperty</span><span class="o">(</span><span class="s">&#34;响应数据&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">T</span> <span class="n">data</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>@ApiModel：实体的描述，主要用于响应实体，不是必须的</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>实体名称</td>
+</tr>
+<tr>
+<td>description</td>
+<td>实体说明</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>设置父类型</td>
+</tr>
+<tr>
+<td>subTypes</td>
+<td>设置子类型</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>@ApiModelProperty：实体中字段的描述</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>字段描述</td>
+</tr>
+<tr>
+<td>name</td>
+<td>字段名称，会覆盖默认名称</td>
+</tr>
+<tr>
+<td>allowableValues</td>
+<td>允许的取值范围，主要用于请求实体中</td>
+</tr>
+<tr>
+<td>description</td>
+<td>实体说明</td>
+</tr>
+<tr>
+<td>example</td>
+<td>字段样例值。对于请求实体，该值在测试时自动填充入请求参数中；对于响应实体，则会展示在响应例子中</td>
+</tr>
+<tr>
+<td>dataType</td>
+<td>字段类型</td>
+</tr>
+<tr>
+<td>required</td>
+<td>是否必填</td>
+</tr>
+<tr>
+<td>position</td>
+<td>字段的顺序</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>是否在文档中隐藏该字段</td>
+</tr>
+<tr>
+<td>allowEmptyValue</td>
+<td>是否允许传递空置</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4对应关系">4.对应关系</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-08-22</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/springfox-swagger-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/springfox-swagger-note/" data-title="springfox-swagger笔记" data-hashtags="ShellScript,Markdown,GitHub,CodeIt,Blog"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/springfox-swagger-note/" data-hashtag="ShellScript"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/springfox-swagger-note/" data-title="springfox-swagger笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/springfox-swagger-note/" data-title="springfox-swagger笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/shellscript/">ShellScript</a>,&nbsp;<a href="/tags/markdown/">Markdown</a>,&nbsp;<a href="/tags/github/">GitHub</a>,&nbsp;<a href="/tags/codeit/">CodeIt</a>,&nbsp;<a href="/tags/blog/">Blog</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mybatis-pagehelper-note/" class="prev" rel="prev" title="PageHelper笔记"><i class="fas fa-angle-left fa-fw"></i>PageHelper笔记</a>
+            <a href="/mybatis-postgresql-jsonb-note/" class="next" rel="next" title="MybatisPlus访问PostgreSql教程">MybatisPlus访问PostgreSql教程<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

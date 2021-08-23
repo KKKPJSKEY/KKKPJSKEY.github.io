@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  7672 ,
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  13323 ,
         "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-07-28T14:01:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7672 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 16 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 13323 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 27 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -179,6 +179,31 @@
       </ul>
     </li>
     <li><a href="#java-this与super使用详解">Java this()与super()使用详解</a></li>
+    <li><a href="#java中遍历map的四种方法-大容量map迭代推荐">JAVA中遍历Map的四种方法-大容量Map迭代推荐</a>
+      <ul>
+        <li><a href="#前言">前言</a></li>
+        <li><a href="#map遍历的代码示例">Map遍历的代码示例</a></li>
+      </ul>
+    </li>
+    <li><a href="#谈谈java中遍历map的几种方法">谈谈java中遍历Map的几种方法</a>
+      <ul>
+        <li><a href="#keyset-values">keySet values</a></li>
+        <li><a href="#keyset-getkey">keySet get(key)</a></li>
+        <li><a href="#entryset">entrySet</a></li>
+        <li><a href="#iterator">Iterator</a></li>
+        <li><a href="#lambda">Lambda</a></li>
+        <li><a href="#简单性能测试">简单性能测试</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#bigdecimal">BigDecimal</a>
+      <ul>
+        <li><a href="#几种舍弃精度的算法">几种舍弃精度的算法</a></li>
+        <li><a href="#特殊的情况">特殊的情况</a></li>
+      </ul>
+    </li>
+    <li><a href="#map的特点">Map的特点</a></li>
+    <li><a href="#map的修改">Map的修改</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="oracle-java-下载jdk账号">Oracle Java 下载JDK账号</h2>
@@ -1677,6 +1702,541 @@ You use lambda expressions to create anonymous methods. Sometimes, however, a la
 <li>this()和super()都指的是对象，所以，均不可以在static环境中使用。包括：static变量,static方法，static语句块。</li>
 <li>从本质上讲，this是一个指向本对象的指针, 然而super是一个Java关键字。</li>
 </ul>
+<h2 id="java中遍历map的四种方法-大容量map迭代推荐">JAVA中遍历Map的四种方法-大容量Map迭代推荐</h2>
+<h3 id="前言">前言</h3>
+<p>java中的集合主要分为三种类型：</p>
+<ul>
+<li>Set（集）</li>
+<li>List（列表）</li>
+<li>Map（映射）</li>
+</ul>
+<p>**数组：**几乎所有集合实现的底层都有数据的身影存在，因此我们首先需要了解一下数组。以下这段话摘自《Thinking In Algorithm》，感觉很不错现在拿出来跟大家分享。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.jpg"
+        data-srcset="./2.jpg, ./2.jpg 1.5x, ./2.jpg 2x"
+        data-sizes="auto"
+        alt="./2.jpg"
+        title="2" /></p>
+<p>《Thinking In Algorithm》之数组</p>
+<p>**集合：**接下来是集合，同样我们摘自网络上的一段解释，很不错也通俗易懂，与大家分享：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.jpg"
+        data-srcset="./3.jpg, ./3.jpg 1.5x, ./3.jpg 2x"
+        data-sizes="auto"
+        alt="./3.jpg"
+        title="3" /></p>
+<p>集合与数组</p>
+<p><strong>总结一下上面两段话：</strong></p>
+<p>数组的大小是固定不变的，并且同一个数组只能存储相同类型的数据，该数据类型可以是基本类型也可以是引用类型。Java中集合可以存储操作不同类型和大小不固定的数据，但是Java中集合只能存储引用类型，不能存储基本类型。</p>
+<hr>
+<h3 id="map遍历的代码示例">Map遍历的代码示例</h3>
+<p><strong>一、数据准备</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.jpg"
+        data-srcset="./4.jpg, ./4.jpg 1.5x, ./4.jpg 2x"
+        data-sizes="auto"
+        alt="./4.jpg"
+        title="4" /></p>
+<p>Map数据准备</p>
+<p><strong>二、迭代示例</strong></p>
+<p>1.第一种方式</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.jpg"
+        data-srcset="./5.jpg, ./5.jpg 1.5x, ./5.jpg 2x"
+        data-sizes="auto"
+        alt="./5.jpg"
+        title="5" /></p>
+<p>二次取值方式</p>
+<p>2.第二种方式</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.jpg"
+        data-srcset="./6.jpg, ./6.jpg 1.5x, ./6.jpg 2x"
+        data-sizes="auto"
+        alt="./6.jpg"
+        title="6" /></p>
+<p>Iterator遍历</p>
+<p>3.第三种方式</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.jpg"
+        data-srcset="./7.jpg, ./7.jpg 1.5x, ./7.jpg 2x"
+        data-sizes="auto"
+        alt="./7.jpg"
+        title="7" /></p>
+<p>entrySet遍历</p>
+<p>4.第四种方式</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.jpg"
+        data-srcset="./8.jpg, ./8.jpg 1.5x, ./8.jpg 2x"
+        data-sizes="auto"
+        alt="./8.jpg"
+        title="8" /></p>
+<p>Map.values取值遍历</p>
+<p><strong>三、结果展示及总结</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.jpg"
+        data-srcset="./9.jpg, ./9.jpg 1.5x, ./9.jpg 2x"
+        data-sizes="auto"
+        alt="./9.jpg"
+        title="9" /></p>
+<p>不同长度Map迭代结果</p>
+<p>结论：</p>
+<p>一般来讲使用entrySet的方式进行遍历是效率最高的，因为hashMap内部的存储结构就是基于Entry的数组，在用这种方式进行遍历时，只需要遍历一次即可。而使用其他方式的时间复杂度可以会提高，例如：keySet方式，每次都需要通过key值去计算对应的hash,然后再通过hash获取对应的结果值，因此效率较低。</p>
+<h2 id="谈谈java中遍历map的几种方法">谈谈java中遍历Map的几种方法</h2>
+<p>java中的map遍历有多种方法，从最早的Iterator，到java5支持的foreach,再到java8 Lambda，让我们一起来看下具体的用法以及各自的优缺点</p>
+<p>先初始化一个map</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMap</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="keyset-values">keySet values</h3>
+<p>如果只需要map的key或者value，用map的keySet或values方法无疑是最方便的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">  <span class="c1">// KeySet 获取key
+</span><span class="c1"></span>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testKeySet</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">Integer</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="c1">// values 获取value
+</span><span class="c1"></span>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testValues</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">Integer</span> <span class="n">value</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="keyset-getkey">keySet get(key)</h3>
+<p>如果需要同时获取key和value，可以先获取key,然后再通过map的get(key)获取value</p>
+<p>需要说明的是，该方法不是最优选择，一般不推荐使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">  <span class="c1">// keySet get(key) 获取key and value
+</span><span class="c1"></span>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testKeySetAndGetKey</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">Integer</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="entryset">entrySet</h3>
+<p>通过对map entrySet的遍历，也可以同时拿到key和value，一般情况下，性能上要优于上一种,这一种也是最常用的遍历方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">  <span class="c1">// entrySet 获取key and value
+</span><span class="c1"></span>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testEntry</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="iterator">Iterator</h3>
+<p>对于上面的几种foreach都可以用Iterator代替，其实foreach在java5中才被支持，foreach的写法看起来更简洁</p>
+<p>但Iterator也有其优势：在用foreach遍历map时，如果改变其大小，会报错，但如果只是删除元素，可以使用Iterator的remove方法删除元素</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">  <span class="c1">// Iterator entrySet 获取key and value
+</span><span class="c1"></span>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testIterator</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+      <span class="c1">// it.remove(); 删除元素
+</span><span class="c1"></span>    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="lambda">Lambda</h3>
+<p>java8提供了Lambda表达式支持，语法看起来更简洁，可以同时拿到key和value，不过，经测试，性能低于entrySet,所以更推荐用entrySet的方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">  <span class="c1">// Lambda 获取key and value
+</span><span class="c1"></span>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testLambda</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">value</span><span class="o">);</span>
+    <span class="o">});</span>
+  <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="简单性能测试">简单性能测试</h3>
+<p>用10万条数据，做了一个简单性能测试，数据类型为Integer，map实现选取HashMap</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">  <span class="kd">static</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">100000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>测试结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">KeySet</span><span class="err">：</span>           <span class="n">392</span>
+<span class="n">Values</span><span class="err">：</span>           <span class="n">320</span>
+<span class="n">keySet</span> <span class="nf">get</span><span class="o">(</span><span class="n">key</span><span class="o">)</span><span class="err">：</span>  <span class="n">552</span>
+<span class="n">entrySet</span><span class="err">：</span>         <span class="n">465</span>
+<span class="n">entrySet</span> <span class="n">Iterator</span><span class="err">：</span><span class="n">508</span>
+<span class="n">Lambda</span><span class="err">：</span>           <span class="n">536</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>需要说明的是，map存储的数据类型，map的大小，以及map的不同实现方式都会影响遍历的性能，所以该测试结果仅供参考</p>
+<h3 id="总结">总结</h3>
+<p>如果只是获取key，或者value，推荐使用keySet或者values方式</p>
+<p>如果同时需要key和value推荐使用entrySet</p>
+<p>如果需要在遍历过程中删除元素推荐使用Iterator</p>
+<p>如果需要在遍历过程中增加元素，可以新建一个临时map存放新增的元素，等遍历完毕，再把临时map放到原来的map中</p>
+<h2 id="bigdecimal">BigDecimal</h2>
+<h3 id="几种舍弃精度的算法">几种舍弃精度的算法</h3>
+<p>测试代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">
+        <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">4</span><span class="o">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">5</span><span class="o">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">6</span><span class="o">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">9</span><span class="o">;</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2.4=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">j</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">k</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">l</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">m</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2.4)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2.5)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2.6)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">l</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2.9)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2.4=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">j</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">k</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">l</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">m</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2.4)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2.5)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2.6)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">l</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2.9)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2.4)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">j</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">k</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">l</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">m</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2.4).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2.1&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2.5).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2.5&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2.6).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2.6&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2.9).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2.9&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2.4)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">j</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">k</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">l</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">m</span><span class="o">));</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2.4)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">j</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">k</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">l</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">m</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2.4).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2.1&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2.5).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2.5&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2.6).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2.6&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2.9).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2.9&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2.4)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">j</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">k</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">l</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">m</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>运行结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">五舍六入取整:Math.rint<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
+五舍六入取整:Math.rint<span class="o">(</span>2.4<span class="o">=</span><span class="m">2</span>
+五舍六入取整:Math.rint<span class="o">(</span>2.5<span class="o">)=</span><span class="m">2</span>
+五舍六入取整:Math.rint<span class="o">(</span>2.6<span class="o">)=</span><span class="m">3</span>
+五舍六入取整:Math.rint<span class="o">(</span>2.9<span class="o">)=</span><span class="m">3</span>
+五舍六入取整: new DecimalFormat<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
+五舍六入取整: new DecimalFormat<span class="o">(</span>2.4<span class="o">)=</span><span class="m">2</span>
+五舍六入取整: new DecimalFormat<span class="o">(</span>2.5<span class="o">)=</span><span class="m">2</span>
+五舍六入取整: new DecimalFormat<span class="o">(</span>2.6<span class="o">)=</span><span class="m">3</span>
+五舍六入取整: new DecimalFormat<span class="o">(</span>2.9<span class="o">)=</span><span class="m">2</span>
+五舍六入取整:Math.rint<span class="o">(</span>-2<span class="o">)=</span>-2
+五舍六入取整:Math.rint<span class="o">(</span>-2.4<span class="o">=</span>-2
+五舍六入取整:Math.rint<span class="o">(</span>-2.5<span class="o">)=</span>-2
+五舍六入取整:Math.rint<span class="o">(</span>-2.6<span class="o">)=</span>-3
+五舍六入取整:Math.rint<span class="o">(</span>-2.9<span class="o">)=</span>-3
+五舍六入取整: new DecimalFormat<span class="o">(</span>-2<span class="o">)=</span>-2
+五舍六入取整: new DecimalFormat<span class="o">(</span>-2.4<span class="o">)=</span>-2
+五舍六入取整: new DecimalFormat<span class="o">(</span>-2.5<span class="o">)=</span>-2
+五舍六入取整: new DecimalFormat<span class="o">(</span>-2.6<span class="o">)=</span>-3
+五舍六入取整: new DecimalFormat<span class="o">(</span>-2.9<span class="o">)=</span>-2
+舍掉小数取整:Math.floor<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
+舍掉小数取整:Math.floor<span class="o">(</span>2.4<span class="o">)=</span><span class="m">2</span>
+舍掉小数取整:Math.floor<span class="o">(</span>2.5<span class="o">)=</span><span class="m">2</span>
+舍掉小数取整:Math.floor<span class="o">(</span>2.6<span class="o">)=</span><span class="m">2</span>
+舍掉小数取整:Math.floor<span class="o">(</span>2.9<span class="o">)=</span><span class="m">2</span>
+四舍五入取整:new BigDecimal<span class="o">(</span>2<span class="o">)</span>.setScale<span class="o">=</span><span class="m">2</span>
+四舍五入取整:new BigDecimal<span class="o">(</span>2.4<span class="o">)</span>.setScale<span class="o">=</span><span class="m">2</span>
+四舍五入取整:new BigDecimal<span class="o">(</span>2.5<span class="o">)</span>.setScale<span class="o">=</span><span class="m">3</span>
+四舍五入取整:new BigDecimal<span class="o">(</span>2.6<span class="o">)</span>.setScale<span class="o">=</span><span class="m">3</span>
+四舍五入取整:new BigDecimal<span class="o">(</span>2.9<span class="o">)</span>.setScale<span class="o">=</span><span class="m">3</span>
+凑整:Math.ceil<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
+凑整:Math.ceil<span class="o">(</span>2.4<span class="o">)=</span><span class="m">3</span>
+凑整:Math.ceil<span class="o">(</span>2.5<span class="o">)=</span><span class="m">3</span>
+凑整:Math.ceil<span class="o">(</span>2.6<span class="o">)=</span><span class="m">3</span>
+凑整:Math.ceil<span class="o">(</span>2.9<span class="o">)=</span><span class="m">3</span>
+舍掉小数取整:Math.floor<span class="o">(</span>-2<span class="o">)=</span>-2
+舍掉小数取整:Math.floor<span class="o">(</span>-2.4<span class="o">)=</span>-3
+舍掉小数取整:Math.floor<span class="o">(</span>-2.5<span class="o">)=</span>-3
+舍掉小数取整:Math.floor<span class="o">(</span>-2.6<span class="o">)=</span>-3
+舍掉小数取整:Math.floor<span class="o">(</span>-2.9<span class="o">)=</span>-3
+四舍五入取整:new BigDecimal<span class="o">(</span>-2<span class="o">)</span>.setScale<span class="o">=</span>-2
+四舍五入取整:new BigDecimal<span class="o">(</span>-2.4<span class="o">)</span>.setScale<span class="o">=</span>-2
+四舍五入取整:new BigDecimal<span class="o">(</span>-2.5<span class="o">)</span>.setScale<span class="o">=</span>-3
+四舍五入取整:new BigDecimal<span class="o">(</span>-2.6<span class="o">)</span>.setScale<span class="o">=</span>-3
+四舍五入取整:new BigDecimal<span class="o">(</span>-2.9<span class="o">)</span>.setScale<span class="o">=</span>-3
+凑整:Math.ceil<span class="o">(</span>-2<span class="o">)=</span>-2
+凑整:Math.ceil<span class="o">(</span>-2.4<span class="o">)=</span>-2
+凑整:Math.ceil<span class="o">(</span>-2.5<span class="o">)=</span>-2
+凑整:Math.ceil<span class="o">(</span>-2.6<span class="o">)=</span>-2
+凑整:Math.ceil<span class="o">(</span>-2.9<span class="o">)=</span>-2
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="特殊的情况">特殊的情况</h3>
+<p>将 <code>double</code> 转换为 <code>BigDecimal</code>，后者是 <code>double</code> 的二进制浮点值准确的十进制表示形式。返回的 <code>BigDecimal</code> 的标度是使 $ (10^{scale} × val) $为整数的最小值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">        <span class="n">BigDecimal</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="n">9</span><span class="o">.</span><span class="na">655</span> <span class="o">);</span>
+        <span class="c1">//double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+</span><span class="c1"></span>        <span class="kt">double</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">setScale</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">).</span><span class="na">doubleValue</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;f1=&#34;</span> <span class="o">+</span> <span class="n">f1</span><span class="o">);</span><span class="c1">//f1=9.65
+</span><span class="c1"></span>        <span class="n">BigDecimal</span> <span class="n">mData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;9.655&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;mData=&#34;</span> <span class="o">+</span> <span class="n">mData</span><span class="o">);</span><span class="c1">//mData=9.66
+</span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注：</p>
+<ol>
+<li>此构造方法的结果有一定的不可预知性。有人可能认为在 Java 中写入 <code>new BigDecimal(0.1)</code> 所创建的 <code>BigDecimal</code> 正好等于 0.1（非标度值 1，其标度为 1），但是它实际上等于 0.1000000000000000055511151231257827021181583404541015625。这是因为 0.1 无法准确地表示为 <code>double</code>（或者说对于该情况，不能表示为任何有限长度的二进制小数）。这样，传入 到构造方法的值不会正好等于 0.1（虽然表面上等于该值）。</li>
+<li>另一方面，<code>String</code> 构造方法是完全可预知的：写入 <code>new BigDecimal(&quot;0.1&quot;)</code> 将创建一个 <code>BigDecimal</code>，它正好 等于预期的 0.1。因此，比较而言，通常建议优先使用String` 构造方法。</li>
+<li>当 <code>double</code> 必须用作 <code>BigDecimal</code> 的源时，请注意，此构造方法提供了一个准确转换；它不提供与以下操作相同的结果：先使用 <code>Double.toString(double)</code>方法，然后使用 <code>BigDecimal(String)</code> 构造方法，将 <code>double</code> 转换为 <code>String</code>。要获取该结果，请使用 <code>static</code> <code>valueOf(double)</code> 方法。</li>
+</ol>
+</blockquote>
+<h2 id="map的特点">Map的特点</h2>
+<p>map 没有无序，不能下标访问，只能通过keyvalue进行访问，能增加随机访问的速度</p>
+<h2 id="map的修改">Map的修改</h2>
+<p>map 直接put进行key，value覆盖修改即可，无需其他操作</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
