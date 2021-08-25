@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 23 Aug 2021 23:40:18 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 25 Aug 2021 09:38:28 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/android-music-box/</link>
     <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-music-box/</guid>
@@ -14,6 +14,31 @@
     <link>https://kkkpjskey.github.io/android-bottom-navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+</item><item>
+    <title>new与newInstance()的区别</title>
+    <link>https://kkkpjskey.github.io/draft-test/</link>
+    <pubDate>Wed, 25 Aug 2021 09:38:28 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/draft-test/</guid>
+    <description><![CDATA[1 draft: true]]></description>
+</item><item>
+    <title>Idea格式化Xml后替换换行符接口提交报错</title>
+    <link>https://kkkpjskey.github.io/xml-idea-format-error/</link>
+    <pubDate>Tue, 24 Aug 2021 17:06:41 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/xml-idea-format-error/</guid>
+    <description><![CDATA[现象 使用Swagger或者Postman访问均报错500 分析 流程是在Idea中将Xml写好，使用Idea带正则的替换，将\n替换为空，改变为]]></description>
+</item><item>
+    <title>win10报错“无法编辑写该值的新内容时出错”</title>
+    <link>https://kkkpjskey.github.io/reg-auth-error/</link>
+    <pubDate>Tue, 24 Aug 2021 16:47:57 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/reg-auth-error/</guid>
+    <description><![CDATA[问题 注册表无法修改删除，提示：无法编辑写该值的新内容时出错的提示 步骤 1、在无法编辑的注册表键值上右键，菜单中选择&quot;权限&quot;]]></description>
+</item><item>
+    <title>Dell新版BIOS教程</title>
+    <link>https://kkkpjskey.github.io/dell-bios-note/</link>
+    <pubDate>Tue, 24 Aug 2021 15:23:36 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/dell-bios-note/</guid>
+    <description><![CDATA[Dell进入BIOS 开机按F2，和联想的一致，且F12都是进入启动项修改界面 BIOS永久修改启动项 Legacey DELL bios操作一次 点击security,]]></description>
+</item><item>
+    <title>浏览器首页被恶意劫持</title>
+    <link>https://kkkpjskey.github.io/browser-hijacked/</link>
+    <pubDate>Tue, 24 Aug 2021 09:52:32 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/browser-hijacked/</guid>
+    <description><![CDATA[方法/步骤 当我们打开浏览器时就跳转到下图页面。但实际这并不是出发跳转的页面。 我们打开浏览器选项查看是否被修改。此处没有被恶意修改,那么问题就]]></description>
 </item><item>
     <title>SpringCloud使用spring-test进行单元测试教程</title>
     <link>https://kkkpjskey.github.io/springcloud-unittset/</link>
@@ -29,30 +54,5 @@
     <link>https://kkkpjskey.github.io/md-font-center-size/</link>
     <pubDate>Mon, 23 Aug 2021 18:20:48 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/md-font-center-size/</guid>
     <description><![CDATA[1.说明 本文主要叙述如何写出更加优美的markdown文档。在我们观看文档的过程中，良好的格式将会带来很大的收益。对于不同颜色的字体也并不会]]></description>
-</item><item>
-    <title>Java中的包装类(Wrapper Class in Java )</title>
-    <link>https://kkkpjskey.github.io/java-auto-pkg-note/</link>
-    <pubDate>Mon, 23 Aug 2021 18:08:37 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-auto-pkg-note/</guid>
-    <description><![CDATA[包装类型的继承结构图 包装类型的继承结构图 什么是包装类型，包装类型的作用是什么？ Java 设计当初就提供了 8 种 基本数据类型及对应的 8 种包装数据类型。 我]]></description>
-</item><item>
-    <title>URL汉字编码问题（及乱码解决）</title>
-    <link>https://kkkpjskey.github.io/url-code-note/</link>
-    <pubDate>Mon, 23 Aug 2021 17:35:09 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/url-code-note/</guid>
-    <description><![CDATA[一、问题的由来 URL就是网址，只要上网，就一定会用到。 一般来说，URL只能使用英文字母、阿拉伯数字和某些标点符号，不能使用其他文字和符号。比]]></description>
-</item><item>
-    <title>Url含中文时后代码重定向时中文接收不到</title>
-    <link>https://kkkpjskey.github.io/url-zh-cn-code-error/</link>
-    <pubDate>Mon, 23 Aug 2021 17:12:07 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/url-zh-cn-code-error/</guid>
-    <description><![CDATA[问题 Url的中文接收不到 分析 Url中不能直接存在中文，需要进行编码，使用源码。程序中使用的是编码的中文 解决 重定向前将中文使用utf-8进行编]]></description>
-</item><item>
-    <title>Csdn转换为Markdown工具使用教程</title>
-    <link>https://kkkpjskey.github.io/csdn-download-markdown-note/</link>
-    <pubDate>Mon, 23 Aug 2021 17:06:37 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/csdn-download-markdown-note/</guid>
-    <description><![CDATA[推荐 ➹ Clean-mark, 这是一个很棒的工具，针对你的需求；它可以将博客文章转换为干净的Markdown文本文件。 安装： 1 npm install clean-mark --global 使用: 1 clean-mark &#34;http://some-website.com/fancy-article&#34; 示例： 1 clean-mark &#34;https://jeffjade.com/2017/12/31/136-talk-about-nicelinks-site/&#34; 更多]]></description>
-</item><item>
-    <title>found 12 vulnerabilities (7 moderate, 5 high) run `npm audit fix` to fix them, or `npm audit` for details</title>
-    <link>https://kkkpjskey.github.io/vue-install-error/</link>
-    <pubDate>Mon, 23 Aug 2021 16:58:41 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-install-error/</guid>
-    <description><![CDATA[报错 npm 安装包之后，如果出现类似下面的信息 1 2 found 12 vulnerabilities (7 moderate, 5 high) run `npm audit fix` to fix them, or `npm audit` for details 如果 npm audit fix，之后还是有问题，可能是不能自动 fix，尽量]]></description>
 </item></channel>
 </rss>
