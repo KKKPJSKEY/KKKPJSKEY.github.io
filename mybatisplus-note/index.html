@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mybatisplus-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mybatisplus-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-28T11:17:10&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-28T11:17:10&#43;08:00" />
+<meta property="article:modified_time" content="2021-08-25T16:55:11&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mybatisplus-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mybatisplus-note\/featured-image.jpg",
                             "width":  1700 ,
                             "height":  510 
-                        }],"genre": "posts","keywords": "Java, ORM, MyBatisPlus","wordcount":  2310 ,
-        "url": "https:\/\/kkkpjskey.github.io\/mybatisplus-note\/","datePublished": "2021-07-28T11:17:10+08:00","dateModified": "2021-07-28T11:17:10+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, ORM, MyBatisPlus","wordcount":  4315 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mybatisplus-note\/","datePublished": "2021-07-28T11:17:10+08:00","dateModified": "2021-08-25T16:55:11+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">MyBatis-Plus笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2310 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/mybatisplus-note/" class="leancloud_visitors" data-flag-title="MyBatis-Plus笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4315 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/mybatisplus-note/" class="leancloud_visitors" data-flag-title="MyBatis-Plus笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -157,7 +157,7 @@
         </li>
       </ul>
     </li>
-    <li><a href="#maybatis-plus-lambdaquery和mapper中eqnegtltgele的用法及详解"><strong>Maybatis-Plus lambdaQuery和mapper中EQ、NE、GT、LT、GE、LE的用法及详解</strong></a>
+    <li><a href="#maybatis-plus-lambdaquery和mapper中eqnegtltgele的对时间的用法及详解"><strong>Maybatis-Plus lambdaQuery和mapper中EQ、NE、GT、LT、GE、LE的对时间的用法及详解</strong></a>
       <ul>
         <li><a href="#1等于当前时间"><strong>1.等于当前时间</strong></a></li>
         <li><a href="#2不等于当前时间"><strong>2.不等于当前时间</strong></a></li>
@@ -168,7 +168,9 @@
         <li><a href="#72个时间段是否相交"><strong>7.2个时间段是否相交</strong></a></li>
       </ul>
     </li>
-    <li><a href="#mybatis-plus_更新操作示例">MyBatis-Plus_更新操作示例</a></li>
+    <li><a href="#mybatis-plus-更新操作示例">MyBatis-Plus 更新操作示例</a></li>
+    <li><a href="#mybatis-plus-分页查询示例">MyBatis-Plus 分页查询示例</a></li>
+    <li><a href="#mybatis-plus-模糊查询及querywrapper常用条件方法介绍">MyBatis-Plus 模糊查询及QueryWrapper&lt;&gt;常用条件方法介绍</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="mybatis-plus-通用basemapper使用介绍">MyBatis-Plus 通用BaseMapper使用介绍</h2>
@@ -676,7 +678,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="maybatis-plus-lambdaquery和mapper中eqnegtltgele的用法及详解"><strong>Maybatis-Plus lambdaQuery和mapper中EQ、NE、GT、LT、GE、LE的用法及详解</strong></h2>
+</div><h2 id="maybatis-plus-lambdaquery和mapper中eqnegtltgele的对时间的用法及详解"><strong>Maybatis-Plus lambdaQuery和mapper中EQ、NE、GT、LT、GE、LE的对时间的用法及详解</strong></h2>
 <h3 id="1等于当前时间"><strong>1.等于当前时间</strong></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -744,7 +746,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
     <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="mybatis-plus_更新操作示例">MyBatis-Plus_更新操作示例</h2>
+</div><h2 id="mybatis-plus-更新操作示例">MyBatis-Plus 更新操作示例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -899,11 +901,243 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
     <span class="c1">//UPDATE user SET age=? WHERE name = ? AND age = ?
 </span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="mybatis-plus-分页查询示例">MyBatis-Plus 分页查询示例</h2>
+<p>IPage封装了各种分页的信息，包括不限于总页数，当前页数，总个数，是否有上一页或下一页等</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/user/allpage&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">IPage</span><span class="o">&lt;</span><span class="n">PrimaryUser</span><span class="o">&gt;</span> <span class="nf">getAllIP</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">IPage</span><span class="o">&lt;</span><span class="n">PrimaryUser</span><span class="o">&gt;</span> <span class="n">primaryUserPage</span> <span class="o">=</span> <span class="n">primaryUserMapper</span><span class="o">.</span><span class="na">selectPage</span><span class="o">(</span><span class="k">new</span> <span class="n">Page</span><span class="o">&lt;&gt;(</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">),</span><span class="kc">null</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">primaryUserPage</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="mybatis-plus-模糊查询及querywrapper常用条件方法介绍">MyBatis-Plus 模糊查询及QueryWrapper&lt;&gt;常用条件方法介绍</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="err">【</span><span class="n">通用条件</span><span class="err">：】</span>
+<span class="err">【</span><span class="n">比较大小</span><span class="err">：</span> <span class="o">(</span> <span class="o">=,</span> <span class="o">&lt;&gt;,</span> <span class="o">&gt;,</span> <span class="o">&gt;=,</span> <span class="o">&lt;,</span> <span class="o">&lt;=</span> <span class="o">)</span><span class="err">】</span>
+    <span class="n">eq</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 =，例: eq(&#34;name&#34;, &#34;老王&#34;) ---&gt; name = &#39;老王&#39;
+</span><span class="c1"></span>    <span class="n">ne</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 &lt;&gt;，例: ne(&#34;name&#34;, &#34;老王&#34;) ---&gt; name &lt;&gt; &#39;老王&#39;
+</span><span class="c1"></span>    <span class="n">gt</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 &gt;，例: gt(&#34;name&#34;, &#34;老王&#34;) ---&gt; name &gt; &#39;老王&#39;
+</span><span class="c1"></span>    <span class="n">ge</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 &gt;=，例: ge(&#34;name&#34;, &#34;老王&#34;) ---&gt; name &gt;= &#39;老王&#39;
+</span><span class="c1"></span>    <span class="n">lt</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 &lt;，例: lt(&#34;name&#34;, &#34;老王&#34;) ---&gt; name &lt; &#39;老王&#39;
+</span><span class="c1"></span>    <span class="n">le</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 &lt;=，例: le(&#34;name&#34;, &#34;老王&#34;) ---&gt; name &lt;= &#39;老王&#39;
+</span><span class="c1"></span>
+<span class="err">【</span><span class="n">范围</span><span class="err">：（</span><span class="n">between</span><span class="err">、</span><span class="n">not</span> <span class="n">between</span><span class="err">、</span><span class="n">in</span><span class="err">、</span><span class="n">not</span> <span class="n">in</span><span class="err">）】</span>
+   <span class="n">between</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val2</span><span class="o">);</span> <span class="c1">// 等价于 between a and b, 例： 			between(&#34;age&#34;, 18, 30) ---&gt; age between 18 and 30
+</span><span class="c1"></span>   <span class="n">notBetween</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val2</span><span class="o">);</span> <span class="c1">// 等价于 not between a and b, 例： 	notBetween(&#34;age&#34;, 18, 30) ---&gt; age not between 18 and 30
+</span><span class="c1"></span>   <span class="n">in</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">values</span><span class="o">);</span> <span class="c1">// 等价于 字段 IN (v0, v1, ...),例: in(&#34;age&#34;,{1,2,3}) ---&gt; age in (1,2,3)
+</span><span class="c1"></span>   <span class="n">notIn</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">values</span><span class="o">);</span> <span class="c1">// 等价于 字段 NOT IN (v0, v1, ...), 例: notIn(&#34;age&#34;,{1,2,3}) ---&gt; age not in (1,2,3)
+</span><span class="c1"></span>   <span class="n">inSql</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">values</span><span class="o">);</span> <span class="c1">// 等价于 字段 IN (sql 语句), 例: inSql(&#34;id&#34;, &#34;select id from table where id &lt; 3&#34;) ---&gt; id in (select id from table where id &lt; 3)
+</span><span class="c1"></span>   <span class="n">notInSql</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">values</span><span class="o">);</span> <span class="c1">// 等价于 字段 NOT IN (sql 语句)
+</span><span class="c1"></span>
+<span class="err">【</span><span class="n">模糊匹配</span><span class="err">：（</span><span class="n">like</span><span class="err">）】</span>
+    <span class="n">like</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 LIKE &#39;%值%&#39;，例: like(&#34;name&#34;, &#34;王&#34;) ---&gt; name like &#39;%王%&#39;
+</span><span class="c1"></span>    <span class="n">notLike</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 NOT LIKE &#39;%值%&#39;，例: notLike(&#34;name&#34;, &#34;王&#34;) ---&gt; name not like &#39;%王%&#39;
+</span><span class="c1"></span>    <span class="n">likeLeft</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 LIKE &#39;%值&#39;，例: likeLeft(&#34;name&#34;, &#34;王&#34;) ---&gt; name like &#39;%王&#39;
+</span><span class="c1"></span>    <span class="n">likeRight</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 LIKE &#39;值%&#39;，例: likeRight(&#34;name&#34;, &#34;王&#34;) ---&gt; name like &#39;王%&#39;
+</span><span class="c1"></span>
+<span class="err">【</span><span class="n">空值比较</span><span class="err">：（</span><span class="n">isNull</span><span class="err">、</span><span class="n">isNotNull</span><span class="err">）】</span>
+    <span class="n">isNull</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">);</span> <span class="c1">// 等价于 IS NULL，例: isNull(&#34;name&#34;) ---&gt; name is null
+</span><span class="c1"></span>    <span class="n">isNotNull</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">);</span> <span class="c1">// 等价于 IS NOT NULL，例: isNotNull(&#34;name&#34;) ---&gt; name is not null
+</span><span class="c1"></span>
+<span class="err">【</span><span class="n">分组</span><span class="err">、</span><span class="n">排序</span><span class="err">：（</span><span class="n">group</span><span class="err">、</span><span class="n">having</span><span class="err">、</span><span class="n">order</span><span class="err">）】</span>
+    <span class="n">groupBy</span><span class="o">(</span><span class="n">R</span><span class="o">...</span> <span class="n">columns</span><span class="o">);</span> <span class="c1">// 等价于 GROUP BY 字段, ...， 例: groupBy(&#34;id&#34;, &#34;name&#34;) ---&gt; group by id,name
+</span><span class="c1"></span>    <span class="n">orderByAsc</span><span class="o">(</span><span class="n">R</span><span class="o">...</span> <span class="n">columns</span><span class="o">);</span> <span class="c1">// 等价于 ORDER BY 字段, ... ASC， 例: orderByAsc(&#34;id&#34;, &#34;name&#34;) ---&gt; order by id ASC,name ASC
+</span><span class="c1"></span>    <span class="n">orderByDesc</span><span class="o">(</span><span class="n">R</span><span class="o">...</span> <span class="n">columns</span><span class="o">);</span> <span class="c1">// 等价于 ORDER BY 字段, ... DESC， 例: orderByDesc(&#34;id&#34;, &#34;name&#34;) ---&gt; order by id DESC,name DESC
+</span><span class="c1"></span>    <span class="n">having</span><span class="o">(</span><span class="n">String</span> <span class="n">sqlHaving</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">params</span><span class="o">);</span> <span class="c1">// 等价于 HAVING ( sql语句 )， 例: having(&#34;sum(age) &gt; {0}&#34;, 11) ---&gt; having sum(age) &gt; 11
+</span><span class="c1"></span>
+<span class="err">【</span><span class="n">拼接</span><span class="err">、</span><span class="n">嵌套</span> <span class="n">sql</span><span class="err">：（</span><span class="n">or</span><span class="err">、</span><span class="n">and</span><span class="err">、</span><span class="n">nested</span><span class="err">、</span><span class="n">apply</span><span class="err">）】</span>
+   <span class="n">or</span><span class="o">();</span> <span class="c1">// 等价于 a or b， 例：eq(&#34;id&#34;,1).or().eq(&#34;name&#34;,&#34;老王&#34;) ---&gt; id = 1 or name = &#39;老王&#39;
+</span><span class="c1"></span>   <span class="n">or</span><span class="o">(</span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Param</span><span class="o">&gt;</span> <span class="n">consumer</span><span class="o">);</span> <span class="c1">// 等价于 or(a or/and b)，or 嵌套。例: or(i -&gt; i.eq(&#34;name&#34;, &#34;李白&#34;).ne(&#34;status&#34;, &#34;活着&#34;)) ---&gt; or (name = &#39;李白&#39; and status &lt;&gt; &#39;活着&#39;)
+</span><span class="c1"></span>   <span class="n">and</span><span class="o">(</span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Param</span><span class="o">&gt;</span> <span class="n">consumer</span><span class="o">);</span> <span class="c1">// 等价于 and(a or/and b)，and 嵌套。例: and(i -&gt; i.eq(&#34;name&#34;, &#34;李白&#34;).ne(&#34;status&#34;, &#34;活着&#34;)) ---&gt; and (name = &#39;李白&#39; and status &lt;&gt; &#39;活着&#39;)
+</span><span class="c1"></span>   <span class="n">nested</span><span class="o">(</span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Param</span><span class="o">&gt;</span> <span class="n">consumer</span><span class="o">);</span> <span class="c1">// 等价于 (a or/and b)，普通嵌套。例: nested(i -&gt; i.eq(&#34;name&#34;, &#34;李白&#34;).ne(&#34;status&#34;, &#34;活着&#34;)) ---&gt; (name = &#39;李白&#39; and status &lt;&gt; &#39;活着&#39;)
+</span><span class="c1"></span>   <span class="n">apply</span><span class="o">(</span><span class="n">String</span> <span class="n">applySql</span><span class="o">,</span> <span class="n">Object</span><span class="o">...</span> <span class="n">params</span><span class="o">);</span> <span class="c1">// 拼接sql（若不使用 params 参数，可能存在 sql 注入），例: apply(&#34;date_format(dateColumn,&#39;%Y-%m-%d&#39;) = {0}&#34;, &#34;2008-08-08&#34;) ---&gt; date_format(dateColumn,&#39;%Y-%m-%d&#39;) = &#39;2008-08-08&#39;&#34;)
+</span><span class="c1"></span>   <span class="n">last</span><span class="o">(</span><span class="n">String</span> <span class="n">lastSql</span><span class="o">);</span> <span class="c1">// 无视优化规则直接拼接到 sql 的最后，可能存若在 sql 注入。
+</span><span class="c1"></span>   <span class="n">exists</span><span class="o">(</span><span class="n">String</span> <span class="n">existsSql</span><span class="o">);</span> <span class="c1">// 拼接 exists 语句。例: exists(&#34;select id from table where age = 1&#34;) ---&gt; exists (select id from table where age = 1)
+</span><span class="c1"></span>
+<span class="err">【</span><span class="n">QueryWrapper</span> <span class="n">条件</span><span class="err">：】</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">sqlSelect</span><span class="o">);</span> <span class="c1">// 用于定义需要返回的字段。例： select(&#34;id&#34;, &#34;name&#34;, &#34;age&#34;) ---&gt; select id, name, age
+</span><span class="c1"></span>    <span class="n">select</span><span class="o">(</span><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">TableFieldInfo</span><span class="o">&gt;</span> <span class="n">predicate</span><span class="o">);</span> <span class="c1">// Lambda 表达式，过滤需要的字段。
+</span><span class="c1"></span>    <span class="n">lambda</span><span class="o">();</span> <span class="c1">// 返回一个 LambdaQueryWrapper
+</span><span class="c1"></span>
+<span class="err">【</span><span class="n">UpdateWrapper</span> <span class="n">条件</span><span class="err">：】</span>
+    <span class="n">set</span><span class="o">(</span><span class="n">String</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 用于设置 set 字段值。例: set(&#34;name&#34;, null) ---&gt; set name = null
+</span><span class="c1"></span>    <span class="n">etSql</span><span class="o">(</span><span class="n">String</span> <span class="n">sql</span><span class="o">);</span> <span class="c1">// 用于设置 set 字段值。例: setSql(&#34;name = &#39;老李头&#39;&#34;) ---&gt; set name = &#39;老李头&#39;
+</span><span class="c1"></span>    <span class="n">lambda</span><span class="o">();</span> <span class="c1">// 返回一个 LambdaUpdateWrapper
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>我们直接创建测试类进行展示</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"> <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>在<code>QueryWrapper&lt;&gt;</code>中，有很多已经编译好的方法，我们可以直接进行调用，</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">test4</span><span class="o">(){</span>
+    <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="na">likeRight</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="s">&#34;K&#34;</span><span class="o">);</span>
+    <span class="c1">// .likeRight(&#34;email&#34;,4); 右查询  左%e%右
+</span><span class="c1"></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;&gt;</span><span class="n">maps</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">selectMaps</span><span class="o">(</span><span class="n">wrapper</span><span class="o">);</span>
+    <span class="n">maps</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>在test4的方法中，使用likeRight进行查询带有K的数据</p>
+</blockquote>
+<blockquote>
+<p>或者使用自己注入的sql语句，</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">test5</span><span class="o">(){</span>
+    <span class="c1">//模糊查询
+</span><span class="c1"></span>    <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
+    <span class="n">wrapper</span><span class="o">.</span><span class="na">inSql</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span><span class="err">&#34;</span><span class="n">select</span> <span class="n">id</span> <span class="n">from</span> <span class="n">user</span> <span class="n">where</span> <span class="n">id</span><span class="o">);</span>
+                  <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="n">objects</span> <span class="o">=</span> <span class="n">userMapper</span><span class="o">.</span><span class="na">selectObjs</span><span class="o">(</span><span class="n">wrapper</span><span class="o">);</span>
+                  <span class="n">objects</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>当我们需要在Controller中使用方法时，需要把 QueryWrapper wrapper = new QueryWrapper&lt;&gt;();语句写入到Service层中</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<blockquote>
+<p>Service</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<blockquote>
+<p>这样我们在Controller中可以避免直接调用mapper层</p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-07-28</span>
+                <span>更新于 2021-08-25</span>
             </div>
             <div class="post-info-license"></div>
         </div>

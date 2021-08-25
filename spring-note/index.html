@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Spring笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Spring的笔记"><meta property="og:title" content="Spring笔记" />
+<meta property="og:description" content="记录Spring的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/spring-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/spring-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-25T17:59:59&#43;08:00" />
+<meta property="article:modified_time" content="2021-08-25T17:59:59&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/spring-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Spring笔记"/>
+<meta name="twitter:description" content="记录Spring的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/spring-note/" /><link rel="prev" href="https://kkkpjskey.github.io/mysql-transact/" /><link rel="next" href="https://kkkpjskey.github.io/android-bottom-navigation/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Spring笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/spring-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/spring-note\/featured-image.jpg",
+                            "width":  500 ,
+                            "height":  324 
+                        }],"genre": "posts","keywords": "Java, Spring","wordcount":  6766 ,
+        "url": "https:\/\/kkkpjskey.github.io\/spring-note\/","datePublished": "2021-08-25T17:59:59+08:00","dateModified": "2021-08-25T17:59:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Spring的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/spring-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/spring-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Spring笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6766 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/spring-note/" class="leancloud_visitors" data-flag-title="Spring笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/spring-note/featured-image.jpg"
+        data-srcset="/spring-note/featured-image.jpg, /spring-note/featured-image.jpg 1.5x, /spring-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/spring-note/featured-image.jpg"
+        title="记录Spring的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#beanutils工具类中的copyproperties方法使用">BeanUtils工具类中的copyProperties方法使用</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1两个包下的beanutilscopyproperties对比">1、两个包下的BeanUtils.copyProperties对比</a></li>
+            <li><a href="#2beanutilscopyproperties的深浅拷贝问题">2、BeanUtils.copyProperties的深浅拷贝问题</a>
+              <ul>
+                <li><a href="#21浅拷贝和深拷贝">2.1、浅拷贝和深拷贝</a></li>
+                <li><a href="#22beanutilscopyproperties深浅拷贝问题">2.2、BeanUtils.copyProperties深浅拷贝问题</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#spring-integration学习总结">Spring integration学习总结</a>
+      <ul>
+        <li><a href="#21-消息message">2.1 消息（Message）</a></li>
+        <li><a href="#22-消息通道message-channel">2.2 消息通道（Message channel）</a></li>
+        <li><a href="#23-消息端点message-endpoint">2.3 消息端点（Message Endpoint）</a></li>
+        <li><a href="#231----transformer">2.3.1    Transformer</a></li>
+        <li><a href="#233----router">2.3.3    Router</a></li>
+        <li><a href="#234----splitter">2.3.4    Splitter</a></li>
+        <li><a href="#235----aggregator">2.3.5    Aggregator</a></li>
+        <li><a href="#236----service-activator">2.3.6    Service Activator</a></li>
+        <li><a href="#237----channel-adapter">2.3.7    Channel Adapter</a></li>
+      </ul>
+    </li>
+    <li><a href="#3----使用经验">3    使用经验</a>
+      <ul>
+        <li><a href="#31-重复下载远程服务器上的文件">3.1 重复下载远程服务器上的文件</a></li>
+        <li><a href="#32-如何控制inbound-channel-adapter类的对象是否工作">3.2 如何控制inbound-channel-adapter类的对象是否工作</a></li>
+        <li><a href="#33-spring-integration-触发-spring-batch-的-job">3.3 Spring Integration 触发 Spring batch 的 job</a></li>
+        <li><a href="#34-java-代码中发消息给-spring-integration-的-channel">3.4 JAVA 代码中发消息给 Spring Integration 的 channel</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="beanutils工具类中的copyproperties方法使用">BeanUtils工具类中的copyProperties方法使用</h2>
+<h4 id="1两个包下的beanutilscopyproperties对比">1、两个包下的BeanUtils.copyProperties对比</h4>
+<p>BeanUtils是开发中常用到的工具类，而获取这一工具类主要是通过导入org.springframework.beans.BeanUtils或者org.apache.commons.beanutils.BeanUtils包来获取，但是不同的包中BeanUtils的方法使用是不一样的，接下来就对这两个包中的copyProperties方法进行对比。</p>
+<p>先来看一下这两个包中的copyProperties方法的定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//org.springframework.beans.BeanUtils
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">copyProperties</span><span class="o">(</span><span class="n">Object</span> <span class="n">source</span><span class="o">,</span> <span class="n">Object</span> <span class="n">target</span><span class="o">){....}</span>
+<span class="c1">//org.apache.commons.beanutils.BeanUtils
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">copyProperties</span><span class="o">(</span><span class="n">Object</span> <span class="n">dest</span><span class="o">,</span><span class="n">Object</span> <span class="n">orig</span><span class="o">){....}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>由定义可知，在org.springframework.beans.BeanUtils包下的copyProperties第一个参数是被copy的对象，而org.apache.commons.beanutils.BeanUtils中是第二个参数，所以使用时不要弄混。</p>
+<p>1）接下来定义两个实体类Student和Teacher，用来模拟目标对象（target/dest）中包含被copy的对象（source/orig）的所有字段时</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Teacher</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">age</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">sex</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Teacher</span><span class="o">()</span> <span class="o">{}</span>
+	<span class="kd">public</span> <span class="nf">Teacher</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">age</span><span class="o">,</span> <span class="n">String</span> <span class="n">sex</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>先使用org.springframework.beans.BeanUtils下的copyProperties来进行测试，执行代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.springframework.beans.BeanUtils</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+	<span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">(</span><span class="n">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">(),</span> <span class="s">&#34;zhangsan&#34;</span><span class="o">,</span> <span class="s">&#34;19&#34;</span><span class="o">);</span>
+	<span class="n">Teacher</span> <span class="n">teacher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="o">();</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+	<span class="n">BeanUtils</span><span class="o">.</span><span class="na">copyProperties</span><span class="o">(</span><span class="n">student</span><span class="o">,</span><span class="n">teacher</span><span class="o">);</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">teacher</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">执行结果如下：
+	Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>00c47e77-785d-4939-89db-e757979050ec, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+	Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>00c47e77-785d-4939-89db-e757979050ec, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19, <span class="nv">sex</span><span class="o">=</span>null<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当将引入的包改为org.apache.commons.beanutils.BeanUtils时，将上述中的执行代码进行如下修改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">BeanUtils</span><span class="o">.</span><span class="na">copyProperties</span><span class="o">(</span><span class="n">teacher</span><span class="o">,</span><span class="n">student</span><span class="o">);</span> <span class="c1">//因为apache包下被copy的参数在第二个位置
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">执行结果如下：
+	Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>900d0b93-1913-4022-b86b-127682cd9f5c, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+	Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>00c47e77-785d-4939-89db-e757979050ec, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19, <span class="nv">sex</span><span class="o">=</span>null<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>小结：当目标对象（target/dest）中包含被copy的对象（source/orig）的所有字段时，两种包下的copyProperties方法均可以执行成功。</p>
+</blockquote>
+<p>2）对上述中说到的实体类进行修改，即目标对象（target/dest）中不包含被copy的对象（source/orig）的所有字段时，修改后的内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Teacher</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Teacher</span><span class="o">()</span> <span class="o">{}</span>
+	<span class="kd">public</span> <span class="nf">Teacher</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>执行代码与1）中的一样这里就不写了，先使用org.apache.commons.beanutils.BeanUtils中的copyProperties方法，执行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">    Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>6f6711ef-fa2f-420d-b0b3-b76998356533, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+
+    Exception in thread <span class="s2">&#34;main&#34;</span> java.lang.NoClassDefFoundError: org/apache/commons/collections/FastHashMap
+        at org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor<span class="o">(</span>PropertyUtilsBean.java:964<span class="o">)</span>
+        at org.apache.commons.beanutils.PropertyUtilsBean.isWriteable<span class="o">(</span>PropertyUtilsBean.java:1479<span class="o">)</span>
+        at org.apache.commons.beanutils.BeanUtilsBean.copyProperties<span class="o">(</span>BeanUtilsBean.java:280<span class="o">)</span>
+        at org.apache.commons.beanutils.BeanUtils.copyProperties<span class="o">(</span>BeanUtils.java:135<span class="o">)</span>
+        at com.learn.controller.BeanController.main<span class="o">(</span>BeanController.java:39<span class="o">)</span>
+    Caused by: java.lang.ClassNotFoundException: org.apache.commons.collections.FastHashMap
+        at java.net.URLClassLoader.findClass<span class="o">(</span>URLClassLoader.java:381<span class="o">)</span>
+        at java.lang.ClassLoader.loadClass<span class="o">(</span>ClassLoader.java:424<span class="o">)</span>
+        at sun.misc.Launcher<span class="nv">$AppClassLoader</span>.loadClass<span class="o">(</span>Launcher.java:335<span class="o">)</span>
+        at java.lang.ClassLoader.loadClass<span class="o">(</span>ClassLoader.java:357<span class="o">)</span>
+        ... <span class="m">5</span> more
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来使用org.springframework.beans.BeanUtils下的copyProperties方法，执行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">    Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>87665c46-9a6f-4936-9c9d-1513e29f2bca, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+    Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>87665c46-9a6f-4936-9c9d-1513e29f2bca, <span class="nv">name</span><span class="o">=</span>zhangsan<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>小结：目标对象（target/dest）中不包含被copy的对象（source/orig）的所有字段时，应选用org.springframework.beans.BeanUtils下的copyProperties方法</p>
+</blockquote>
+<p>3）基于2）中的实体类来看下另外一种情况，修改下执行代码，实体类不变：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+		<span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">(</span><span class="n">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">(),</span> <span class="s">&#34;zhangsan&#34;</span><span class="o">,</span> <span class="s">&#34;19&#34;</span><span class="o">);</span>
+		<span class="n">Teacher</span> <span class="n">teacher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="o">(</span><span class="s">&#34;12334&#34;</span><span class="o">,</span><span class="s">&#34;lisi&#34;</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+		<span class="n">BeanUtils</span><span class="o">.</span><span class="na">copyProperties</span><span class="o">(</span><span class="n">student</span><span class="o">,</span><span class="n">teacher</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">teacher</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+	<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>先使用org.apache.commons.beanutils.BeanUtils中的copyProperties方法，执行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>16bf375a-5925-4411-8bdf-158b3373d261, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>12334, <span class="nv">name</span><span class="o">=</span>zhangsan<span class="o">)</span>
+Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>12334, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来使用org.springframework.beans.BeanUtils下的copyProperties方法，执行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>2df2fba9-22a2-4cb6-86d7-3d5b47475114, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>12334, <span class="nv">name</span><span class="o">=</span>zhangsan<span class="o">)</span>
+Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>12334, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>小结：目标对象（target/dest）中包含被copy的对象（source/orig）的所有字段时，两个包下的copy方法都可以，而且目标对象（target/dest）中多于的对象的值不会被覆盖掉。</p>
+</blockquote>
+<blockquote>
+<p>总结：
+​ 1、org.apache.commons.beanutils.BeanUtils和org.springframework.beans.BeanUtils两个包中的copyProperties方法目标对象和源对象参数的位置是相反，使用时需要注意。
+​ 2、使用org.apache.commons.beanutils.BeanUtils进行copy对象时，被copy的对象（source/orig）中包含的字段目标对象（target/dest）必须包含，可以有其他的多于字段，类型可以不相同，但字段名称必须一致；org.springframework.beans.BeanUtils中的没有这个限制。</p>
+</blockquote>
+<h4 id="2beanutilscopyproperties的深浅拷贝问题">2、BeanUtils.copyProperties的深浅拷贝问题</h4>
+<h5 id="21浅拷贝和深拷贝">2.1、浅拷贝和深拷贝</h5>
+<p>先来说一下什么是浅拷贝，深拷贝；两者最主要的区别就在于是否是复制了对象的真实实体还是说只是使用了一个指针，两者指向的是内存中的同一个对象。</p>
+<p>浅拷贝（shallowCopy）只是增加了一个指针指向已存在的内存地址；</p>
+<p>深拷贝（deepCopy）是增加了一个指针并且申请了一个新的内存，使这个增加的指针指向这个新的内存；同时如果一个类中包含有引用类型变量，则该类拷贝以后引用类型也会被拷贝。</p>
+<p>参考博文：
+1、<a href="https://www.cnblogs.com/mikeCao/p/8710837.html" target="_blank" rel="noopener noreferrer">深拷贝和浅拷贝的区别</a>
+2、<a href="https://blog.csdn.net/xinghuo0007/article/details/78896726" target="_blank" rel="noopener noreferrer">java中clone方法的理解（深拷贝、浅拷贝）</a>
+3、<a href="https://blog.csdn.net/youngogo/article/details/107689676" target="_blank" rel="noopener noreferrer">System.arraycopy()使用原理解析，坑点之：深拷贝和浅拷贝</a></p>
+<h5 id="22beanutilscopyproperties深浅拷贝问题">2.2、BeanUtils.copyProperties深浅拷贝问题</h5>
+<p>BeanUtils.copyProperties使用起来虽然方便，但是它其实只是浅拷贝，所以类中都是单一的属性，像咱们上边介绍的，可以直接用；如果类中包含有其他的子类就需要考虑下拷贝后目标对象（target/dest）中包含被copy的对象（source/orig）中的子类是否有可能被修改，如果有可能被修改就不能直接使用。</p>
+<p>新增加一个实体类Life，接下来我们将上述中的代码进行一个改造：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Life</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">life</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Life</span><span class="o">(</span><span class="n">String</span> <span class="n">life</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">life</span> <span class="o">=</span> <span class="n">life</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Teacher</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">Life</span> <span class="n">life</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Teacher</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nf">Teacher</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">}</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">age</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">Life</span> <span class="n">life</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.springframework.beans.BeanUtils</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanController</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+		<span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">(</span><span class="n">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">(),</span> <span class="s">&#34;zhangsan&#34;</span><span class="o">,</span> <span class="s">&#34;19&#34;</span><span class="o">);</span>
+		<span class="n">Life</span> <span class="n">life</span><span class="o">=</span><span class="k">new</span> <span class="n">Life</span><span class="o">(</span><span class="s">&#34;young&#34;</span><span class="o">);</span>
+		<span class="n">student</span><span class="o">.</span><span class="na">setLife</span><span class="o">(</span><span class="n">life</span><span class="o">);</span>
+		<span class="n">Teacher</span> <span class="n">teacher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="o">();</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+		<span class="n">BeanUtils</span><span class="o">.</span><span class="na">copyProperties</span><span class="o">(</span><span class="n">student</span><span class="o">,</span><span class="n">teacher</span><span class="o">);</span>
+		<span class="n">teacher</span><span class="o">.</span><span class="na">getLife</span><span class="o">().</span><span class="na">setLife</span><span class="o">(</span><span class="s">&#34;old&#34;</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">执行结果如下：
+	Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>988cac88-638c-4e52-8421-db39590ed32c, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19, <span class="nv">life</span><span class="o">=</span>Life<span class="o">(</span><span class="nv">life</span><span class="o">=</span>young<span class="o">))</span>
+Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>988cac88-638c-4e52-8421-db39590ed32c, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19, <span class="nv">life</span><span class="o">=</span>Life<span class="o">(</span><span class="nv">life</span><span class="o">=</span>old<span class="o">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>正常情况下，Student中的life值应该为young，但是student拷贝给teacher以后，随着teacher中life修改，student中的life也被修改，说明teacher和student两个对象中的life子对象为内存中的同一个life对象，所以BeanUtils.copyProperties属于浅拷贝。</p>
+<p>这里介绍一种深拷贝的方法，先将集合转化为字节数组输出流，然后在读取，这样就可以实现深度拷贝，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">deepCopy</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">src</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+
+	    <span class="n">ByteArrayOutputStream</span> <span class="n">byteOut</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+	    <span class="n">ObjectOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="o">(</span><span class="n">byteOut</span><span class="o">);</span>
+	    <span class="n">out</span><span class="o">.</span><span class="na">writeObject</span><span class="o">(</span><span class="n">src</span><span class="o">);</span>
+
+	    <span class="n">ByteArrayInputStream</span> <span class="n">byteIn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayInputStream</span><span class="o">(</span><span class="n">byteOut</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">());</span>
+	    <span class="n">ObjectInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectInputStream</span><span class="o">(</span><span class="n">byteIn</span><span class="o">);</span>
+	    <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&#34;unchecked&#34;</span><span class="o">)</span>
+	    <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">dest</span> <span class="o">=</span> <span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;)</span> <span class="n">in</span><span class="o">.</span><span class="na">readObject</span><span class="o">();</span>
+	    <span class="k">return</span> <span class="n">dest</span><span class="o">;</span>
+	<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>参考博文：<a href="https://blog.csdn.net/weixin_42857992/article/details/99338681" target="_blank" rel="noopener noreferrer">序列化(Serialization)实现深拷贝</a></p>
+</blockquote>
+<h2 id="spring-integration学习总结">Spring integration学习总结</h2>
+<p><code>Spring integration</code>是一个企业应用集成系统。主要通过消息、通道、消息端点等概念完成不同系统之间的集成。</p>
+<h3 id="21-消息message">2.1 消息（Message）</h3>
+<p>消息包括<code>header</code>（头）和<code>payload</code>（负载）</p>
+<p><code>message</code>的<code>header</code>一般是<code>id</code>，时间戳或者目的地址什么的，比如如果你发的消息是个文件，那么header应该存放文件的名称，消息头可以根据需要修改。Payload就是负载，也就睡消息的主要内容，主要通过这个进行通信。</p>
+<h3 id="22-消息通道message-channel">2.2 消息通道（Message channel）</h3>
+<p>消息传输的通道。分两种，一种是<code>point-to-point</code>点对点的，一种是<code>publish-subscribe</code>发布订阅形式的。如果是点对点的<code>channel</code>，至少会有一个消费者<code>consumer</code>能收到发送的<code>message</code>，另一种订阅发布的<code>channel</code>，<code>spring integration</code>试图去用广播的形式发布message给那些订阅者<code>subscriber</code>。</p>
+<p>主要实现如下：</p>
+<p><code>PublishSubscribeChannel</code>：将消息广播给所有的订阅者。</p>
+<p>QueueChannel：可以缓存消息，在缓存消息没有达到上限时，消息发送者将消息发送到该通道后立即返回。如果缓存消息数量达到设定的容量，则消息发送者发送消息后会被阻塞，直到消息队列中有空间为止或者超时。对于消息接收者正好相反，尝试获取消息时，如果队列中有消息会立即返回，如果队列中没有消息则会一直阻塞直到超时（需要设定超时时间，不设定的话一直阻塞）。</p>
+<p><code>PriorityChannel</code>：一个排序队列。默认是根据消息头中的&quot;priority&quot;属性值进行排序，也可以通过实现<code>Comparator&lt;Message&lt;?&gt;&gt;</code>接口的逻辑来进行排序。</p>
+<p><code>RendezvousChannel</code>：类似于<code>QueueChannel</code>，只是容量为0。也就是发送者发送消息时，接受者必须将其接收才会返回，否则一直被阻塞。接受者也是一样。</p>
+<p><code>DirectChannel</code>：用于点对点场景，但实现的是<code>PublishSubscribeChannel</code>接口，因此该通道会将消息直接分发给接收者，和<code>PublishSubscribeChannel</code>的区别就是，接收者只有一个。除此之外，<code>DirectChannel</code>还有一个最重要的特点就是发送和接收双方处于一个线程当中，如下：发送者发送消息-&gt;接收者接收消息并触发处理操作-&gt;返回。<code>Spring Integration</code>中的缺省的通道就是<code>DirectChannel</code>。例如<code>&lt;int:channel id=&quot;xxxx&quot;/&gt;</code>。</p>
+<p><code>ExecutorChannel</code>：用于点对点场景，和<code>DirectChannel</code>的配置相同，但主要的区别是<code>ExecutorChannel</code>将消息分发的操作委派给一个<code>TaskExecutor</code>的实例来进行，因此发送消息时不会进行阻塞。</p>
+<p><code>Scoped Channel</code>：暂不理解。</p>
+<h3 id="23-消息端点message-endpoint">2.3 消息端点（Message Endpoint）</h3>
+<p>可以对消息进行处理的地方。包括如下的主要构件：</p>
+<h3 id="231----transformer">2.3.1    Transformer</h3>
+<p>可以对消息的内容或者结构进行修改，最常见的是修改消息内容的格式，或者对消息头的内容进行添加、修改和删除。用法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:transformer</span> <span class="na">id=</span><span class="s">&#34;testTransformer&#34;</span> <span class="na">ref=</span><span class="s">&#34;testTransformerBean&#34;</span> <span class="na">input-channel=</span><span class="s">&#34;inChannel&#34;</span>
+             <span class="na">method=</span><span class="s">&#34;transform&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;outChannel&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;beans:bean</span> <span class="na">id=</span><span class="s">&#34;testTransformerBean&#34;</span> <span class="na">class=</span><span class="s">&#34;org.foo.TestTransformer&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>决定一个消息是否被过滤掉，只有没有被过滤掉的消息才发送到输出通道上。<code>filter</code>多用于<code>publish</code> <code>subscribe</code>模式中，很多<code>consumer</code>消费者可以收到相同的<code>message</code>并且可以用<code>filter</code>来接收指定类型的消息并将其加工处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:filter</span> <span class="na">input-channel=</span><span class="s">&#34;input&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;output&#34;</span>
+         <span class="na">ref=</span><span class="s">&#34;exampleObject&#34;</span> <span class="na">method=</span><span class="s">&#34;someBooleanReturningMethod&#34;</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;exampleObject&#34;</span> <span class="na">class=</span><span class="s">&#34;example.SomeObject&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="233----router">2.3.3    Router</h3>
+<p>路由器，通常是一个输入通道，多个输出通道。根据消息头或者消息体的内容，决定将消息转发到哪个输出通道上。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:router</span> <span class="na">input-channel=</span><span class="s">&#34;drinks&#34;</span> <span class="na">ref=</span><span class="s">&#34;drinkRouter&#34;</span> <span class="na">method=</span><span class="s">&#34;route&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="234----splitter">2.3.4    Splitter</h3>
+<p>对应一个输入通道，多个输出通道。Splitter把消息从输入通道上分割发送到它的输出通道上。比如用于把一个复合型的<code>payload</code>负载分割成很多子负载<code>payloads</code>，发送到多个输出通道上。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:splitter</span> <span class="na">input-channel=</span><span class="s">&#34;orders&#34;</span> <span class="na">ref=</span><span class="s">&#34;orderSplitter&#34;</span> <span class="na">method=</span><span class="s">&#34;split&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;drinksTransform&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="235----aggregator">2.3.5    Aggregator</h3>
+<p>集合器，和<code>splitter</code>对应。用于把多种<code>message</code>组合成一个单一的<code>message</code>。事实上<code>aggregator</code>比<code>splitter</code>要复杂一些，因为它需要维持message的状态，决定什么时候提供组合,什么时候超时<code>timeout</code>，甚至可以将一个局部的结果放弃，并发送到一个隔离的<code>channel</code>里。<code>Spring integration</code>提供了一个CompletionStrategy来配置<code>timeout</code>超时，是否在超时的时候发送一个结果并且废弃这个<code>channel</code>（这里应该是说消息废弃这个<code>channel</code>）。<code>Aggregator</code>在聚合时，会将消息头中消息<code>ID</code>相同的消息进行聚合。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:aggregator</span> <span class="na">input-channel=</span><span class="s">&#34;preparedDrinks&#34;</span>  <span class="na">method=</span><span class="s">&#34;prepareDelivery&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;deliveries&#34;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">&#34;com.abc.springintegration.cafe.xml.Waiter&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/int:aggregator&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="236----service-activator">2.3.6    Service Activator</h3>
+<p>用来连接应用的接口和<code>message framework</code>消息框架的组件，一个输入的频道<code>input message</code> channel必须被设定，一个<code>service activator</code>的方法被执行并且返回了一个值，那么可以提供一个输出频道output message channel（如果消息提供自己的返回地址，那么这是可选的）。这个规则适用于所有的consumer endpoints。输入从<code>input channel</code>到<code>service activator</code>再到<code>message handler</code>，然后返回<code>output message</code>到<code>service activator</code>到<code>output message channel</code>。归根结底：被继承组件的主要对外接口。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;coldDrinks&#34;</span> <span class="na">ref=</span><span class="s">&#34;barista&#34;</span> <span class="na">method=</span><span class="s">&#34;prepareColdDrink&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;preparedDrinks&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="237----channel-adapter">2.3.7    Channel Adapter</h3>
+<p>连接一个消息通道和其他实体之间的对象。<code>channel adapter</code>也分<code>inbound</code>内绑定和<code>outbound</code>外绑定。</p>
+<p><code>Inbound</code>通道适配：通常的作用是将一个外部系统的资源进行转换，通过消息通道输送到系统中，用于进行后续的处理。</p>
+<p><code>Outbound</code>通道适配：将系统中的资源通过消息通道发送给Outbound通道适配，然后该“Outbound通道适配”将其转换为外部的资源。</p>
+<p>举例：<code>&lt;file:inbound-channel-adapter&gt;</code>的作用，将文件系统中的文件进行读取，将文件对象或者文件内容发送到消息通道中。</p>
+<p><code>&lt;file:outbound-channel-adapter&gt;</code>的作用，将处理好的文件资源输出到文件系统中。</p>
+<p><code>Spring Integration</code>目前支持的常用<code>channel-adapter</code>如下：</p>
+<ul>
+<li>File</li>
+<li>FTP/FTPS</li>
+<li>HTTP</li>
+<li>JDBC</li>
+<li>SFTP</li>
+<li>Mail</li>
+<li>XML</li>
+<li>等等</li>
+</ul>
+<h2 id="3----使用经验">3    使用经验</h2>
+<h3 id="31-重复下载远程服务器上的文件">3.1 重复下载远程服务器上的文件</h3>
+<p><code>Spring Integration</code>下载远程服务器可以使用其工作原理是监控远程服务器上的文件，一旦有新的文件就会首先下载到本地，然后将文件对象装载到<code>channel</code>中。在测试的过程中发现，这两步是各自独立进行的，也就是说，下载部分只下载远程服务器上存在但本地目录不存在的文件，将文件对象装载到<code>channel</code>的操作是监控本地目录中的文件，如果没有装载过就进行处理。有时候远程服务器上的相同文件名的文件是定期更新的，需要客户端定期下载，这种情况下的默认处理就有问题了：</p>
+<p>1） 下载一次后，如果本地文件已经存在，就不会重复下载。</p>
+<p>2） 即使将本地文件进行删除，此时虽然会下载，但下载到本地后不会将文件对象装载到channel中进行后续的处理。</p>
+<p><code>Spring</code>社区中也没有好的处理办法，这种情况下，可以使用下载到本地后对文件进行改名的方法进行规避，使用方法如下，见红色部分：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int-sftp:inbound-channel-adapter</span>
+        <span class="na">id=</span><span class="s">&#34;sftpInboundAdapter&#34;</span>
+        <span class="na">session-factory=</span><span class="s">&#34;sftpSessionFactory&#34;</span>
+        <span class="na">remote-directory=</span><span class="s">&#34;/srv/data/stc/crm/&#34;</span>
+        <span class="na">local-directory=</span><span class="s">&#34;file:///srv/data/stc/crm/upload&#34;</span>
+        <span class="na">local-filename-generator-expression=</span><span class="s">&#34;substring(0,lastIndexOf(&#39;.&#39;))
+</span><span class="s">                   + &#39;_&#39; + T(java.lang.System).currentTimeMillis()
+</span><span class="s">                   + substring(lastIndexOf(&#39;.&#39;))&#34;</span>
+        <span class="na">channel=</span><span class="s">&#34;downloadFileChannel&#34;</span>
+        <span class="na">delete-remote-files=</span><span class="s">&#34;true&#34;</span>
+        <span class="na">auto-startup=</span><span class="s">&#34;true&#34;</span>
+        <span class="na">filter=</span><span class="s">&#34;entryListFilter&#34;</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;int:poller</span> <span class="na">max-messages-per-poll=</span><span class="s">&#34;1&#34;</span> <span class="na">cron=</span><span class="s">&#34;0/1 * * * * * &#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/int-sftp:inbound-channel-adapter&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>进行了上面的配置后，下载下来的文件名会变成原来的文件名中加上了时间戳，这样就规避了上述的问题，如果也许需要还原原来的文件名，可以在进入<code>channel</code>后的后续的处理中再进行处理。</p>
+<h3 id="32-如何控制inbound-channel-adapter类的对象是否工作">3.2 如何控制inbound-channel-adapter类的对象是否工作</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileSystemXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;/conf/stc-job.xml&#34;</span><span class="o">);</span>
+    <span class="n">SourcePollingChannelAdapter</span> <span class="n">adapter</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;sftpInboundAdapter&#34;</span><span class="o">,</span> <span class="n">SourcePollingChannelAdapter</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">adapter</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span> <span class="c1">//停止工作
+</span><span class="c1"></span>    <span class="n">adapter</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//开始工作
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="33-spring-integration-触发-spring-batch-的-job">3.3 Spring Integration 触发 Spring batch 的 job</h3>
+<p><code>Spring Integration</code>的配置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;file:inbound-channel-adapter</span> <span class="na">directory=</span><span class="s">&#34;file:///srv/data/stc/crm&#34;</span>
+        <span class="na">channel=</span><span class="s">&#34;inputFileChannel&#34;</span> <span class="na">filename-pattern=</span><span class="s">&#34;*.csv&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;int:poller</span> <span class="na">max-messages-per-poll=</span><span class="s">&#34;1&#34;</span> <span class="na">cron=</span><span class="s">&#34;0/1 * * * * * &#34;</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;/file:inbound-channel-adapter&gt;</span>
+
+ <span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;inputFileChannel&#34;</span>
+                       <span class="na">output-channel=</span><span class="s">&#34;jobLaunchRequestChannel&#34;</span>
+                       <span class="na">ref=</span><span class="s">&#34;fileToJobLaunchRequestAdapter&#34;</span>
+                       <span class="na">method=</span><span class="s">&#34;adapt&#34;</span><span class="nt">/&gt;</span>
+
+<span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;jobLaunchRequestChannel&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;jobExecutionChannel&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">&#34;org.springframework.batch.integration.launch.JobLaunchingMessageHandler&#34;</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;beans:constructor-arg</span> <span class="na">ref=</span><span class="s">&#34;jobLauncher&#34;</span> <span class="nt">/&gt;</span>
+       <span class="nt">&lt;/beans:bean&gt;</span>
+<span class="nt">&lt;/int:service-activator&gt;</span>
+
+<span class="nt">&lt;beans:bean</span> <span class="na">id=</span><span class="s">&#34;fileToJobLaunchRequestAdapter&#34;</span> <span class="na">class=</span><span class="s">&#34;com.abc.job.FileToJobLaunchRequestAdapter&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">&#34;job&#34;</span> <span class="na">ref=</span><span class="s">&#34;stcJob&#34;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans:bean&gt;</span>
+<span class="c">&lt;!--其中，红色stcJob为Spring batch的job名称，需要做如下的配置：--&gt;</span>
+
+<span class="nt">&lt;job</span> <span class="na">id=</span><span class="s">&#34;stcJob&#34;</span><span class="nt">&gt;</span>
+  ……
+<span class="nt">&lt;/job&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>对于<code>Spring Job</code>的触发类<code>FileToJobLaunchRequestAdapter</code>，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileToJobLaunchRequestAdapter</span> <span class="kd">implements</span> <span class="n">InitializingBean</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Job</span> <span class="n">job</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setJob</span><span class="o">(</span><span class="n">Job</span> <span class="n">job</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">job</span> <span class="o">=</span> <span class="n">job</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterPropertiesSet</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">{</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">job</span><span class="o">,</span> <span class="s">&#34;A Job must be provided&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="nd">@ServiceActivator</span>
+    <span class="kd">public</span> <span class="n">JobLaunchRequest</span> <span class="nf">adapt</span><span class="o">(</span><span class="n">File</span> <span class="n">file</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">NoSuchJobException</span><span class="o">{</span>
+        <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="na">getAbsolutePath</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">fileName</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;/&#34;</span><span class="o">)){</span>
+            <span class="n">fileName</span> <span class="o">=</span> <span class="s">&#34;/&#34;</span> <span class="o">+</span> <span class="n">fileName</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">fileName</span> <span class="o">=</span> <span class="s">&#34;file://&#34;</span> <span class="o">+</span> <span class="n">fileName</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">outPutPath</span> <span class="o">=</span> <span class="s">&#34;file:///srv/smartcare/export/&#34;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">outPutFilePath</span> <span class="o">=</span> <span class="n">outPutPath</span> <span class="o">+</span> <span class="n">file</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">outPutTmpFilePath</span> <span class="o">=</span> <span class="n">outPutFilePath</span><span class="o">;</span>
+        <span class="n">JobParameters</span> <span class="n">jobParameters</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JobParametersBuilder</span><span class="o">().</span><span class="na">addString</span><span class="o">(</span><span class="s">&#34;input.file.path&#34;</span><span class="o">,</span>
+                <span class="n">fileName</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">addString</span><span class="o">(</span><span class="s">&#34;output.file.path&#34;</span><span class="o">,</span> <span class="n">outPutTmpFilePath</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">addString</span><span class="o">(</span><span class="s">&#34;file.src&#34;</span><span class="o">,</span> <span class="n">outPutTmpFilePath</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">addString</span><span class="o">(</span><span class="s">&#34;file.original.name&#34;</span><span class="o">,</span> <span class="n">file</span><span class="o">.</span><span class="na">getName</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">addString</span><span class="o">(</span><span class="s">&#34;file.dst&#34;</span><span class="o">,</span> <span class="n">outPutFilePath</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">addLong</span><span class="o">(</span><span class="s">&#34;time.stamp&#34;</span><span class="o">,</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">toJobParameters</span><span class="o">();</span>
+        <span class="c1">//确保job多次执行时，通过让jobParameters发生变化，从而区分job
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">job</span><span class="o">.</span><span class="na">getJobParametersIncrementer</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">jobParameters</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="na">getJobParametersIncrementer</span><span class="o">()</span>
+
+                    <span class="o">.</span><span class="na">getNext</span><span class="o">(</span><span class="n">jobParameters</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">JobLaunchRequest</span><span class="o">(</span><span class="n">job</span><span class="o">,</span> <span class="n">jobParameters</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">output</span><span class="o">(</span><span class="n">File</span> <span class="n">file</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;receive file = &#34;</span> <span class="o">+</span> <span class="n">file</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;, path = &#34;</span>
+
+                <span class="o">+</span> <span class="n">file</span><span class="o">.</span><span class="na">getPath</span><span class="o">());</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="34-java-代码中发消息给-spring-integration-的-channel">3.4 JAVA 代码中发消息给 Spring Integration 的 channel</h3>
+<p><code>Java</code>代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Message</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span> <span class="n">message</span> <span class="o">=</span> <span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="n">file</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+<span class="n">sftpChannel</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>**<code>sftpChannel</code>**为<code>Spring integration</code>的<code>channel</code>名称。</p>
+<p>在<code>Spring Integration</code>的配置文件中，做如下的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int-sftp:outbound-channel-adapter</span> <span class="na">id=</span><span class="s">&#34;sftpOutboundAdapter&#34;</span>
+            <span class="na">session-factory=</span><span class="s">&#34;sftpSessionFactory&#34;</span>
+            <span class="na">channel=</span><span class="s">&#34;outFileChannel&#34;</span>
+            <span class="na">charset=</span><span class="s">&#34;UTF-8&#34;</span>
+            <span class="na">temporary-file-suffix=</span><span class="s">&#34;.uploading&#34;</span>
+            <span class="na">remote-directory=</span><span class="s">&#34;/srv&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中，**<code>sftpChannel</code><strong>的名称等于</strong><code>outFileChannel</code>**就可以了。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-08-25</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/spring-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/spring-note/" data-title="Spring笔记" data-hashtags="Java,Spring"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/spring-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/spring-note/" data-title="Spring笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/spring-note/" data-title="Spring笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/spring/">Spring</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mysql-transact/" class="prev" rel="prev" title="Mysql事务笔记"><i class="fas fa-angle-left fa-fw"></i>Mysql事务笔记</a>
+            <a href="/android-bottom-navigation/" class="next" rel="next" title="类微信界面设计">类微信界面设计<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

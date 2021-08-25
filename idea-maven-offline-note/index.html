@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/idea-maven-offline-note\/featured-image.jpg",
                             "width":  2900 ,
                             "height":  870 
-                        }],"genre": "posts","keywords": "Maven, Idea","wordcount":  577 ,
+                        }],"genre": "posts","keywords": "Maven, Idea","wordcount":  615 ,
         "url": "https:\/\/kkkpjskey.github.io\/idea-maven-offline-note\/","datePublished": "2021-08-23T11:23:48+08:00","dateModified": "2021-08-23T11:23:48+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">IDEA如何离线使用maven仓库？</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-23">2021-08-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 577 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-23">2021-08-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 615 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/idea-maven-offline-note/" class="leancloud_visitors" data-flag-title="IDEA如何离线使用maven仓库？">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -145,6 +145,9 @@
 <p>第一步，将相关的maven依赖在外网的环境中下载好，然后将整个repository打包后拷贝到内网的机器上并解压：</p>
 <p>第二步，将maven的配置文件settings.xml拷贝一份出来，在localRepository中配置本地仓库的地址。例如我刚才拷贝出来的仓库放在<code>D:/repository</code>下，然后配置下本地的镜像，本地仓库的地址一定要配置正确。</p>
 <p>D:/repository下，然后配置下本地的镜像，本地仓库的地址一定要配置正确。</p>
+<blockquote>
+<p>不需要配置localRepository标签，配置一个本地mirror即可</p>
+</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -162,15 +165,13 @@
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
-</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 <span class="nt">&lt;settings</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
           <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
           <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;localRepository&gt;</span>D:/repository<span class="nt">&lt;/localRepository&gt;</span>
-
+    <span class="c">&lt;!-- &lt;localRepository&gt;D:/repository&lt;/localRepository&gt; --&gt;</span>    
     <span class="nt">&lt;mirrors&gt;</span>
         <span class="nt">&lt;mirror&gt;</span>
             <span class="nt">&lt;id&gt;</span>central<span class="nt">&lt;/id&gt;</span>
