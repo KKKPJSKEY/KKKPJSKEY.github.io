@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 25 Aug 2021 17:59:59 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 28 Aug 2021 17:59:50 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>基于广播和服务功能的音乐播放器</title>
@@ -16,6 +16,31 @@
     <link>https://kkkpjskey.github.io/android-bottom-navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+</item><item>
+    <title>Win10根据弹窗定位窗口进程（程序）</title>
+    <link>https://kkkpjskey.github.io/win-locate-pop-form-note/</link>
+    <pubDate>Sat, 28 Aug 2021 17:59:50 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win-locate-pop-form-note/</guid>
+    <description><![CDATA[操作环境 红色粗字体字为修改后内容，蓝色粗体字为特别注意内容 操作系统：Win10 64bit 工具(ProcessExplorer)下载地址 分析 如今，使用]]></description>
+</item><item>
+    <title>Linux SSH相关操作教程</title>
+    <link>https://kkkpjskey.github.io/linux-ssh-note/</link>
+    <pubDate>Fri, 27 Aug 2021 17:09:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/linux-ssh-note/</guid>
+    <description><![CDATA[版本说明 本章内容基于CentOS6.5（32位） Linux使用SCP进行文件传输 scp就是secure copy，是用来进行远程文件拷贝的。数]]></description>
+</item><item>
+    <title>SpringBoot笔记</title>
+    <link>https://kkkpjskey.github.io/springboot-note/</link>
+    <pubDate>Thu, 26 Aug 2021 16:20:48 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springboot-note/</guid>
+    <description><![CDATA[SpringBoot Controller接收参数的几种常用方式 第一类：请求路径参数 1、@PathVariable 获取路径参数。即 _url/{id}_这种形式。]]></description>
+</item><item>
+    <title>Spring Cloud Stream详细教程</title>
+    <link>https://kkkpjskey.github.io/springcloud-stream-note/</link>
+    <pubDate>Thu, 26 Aug 2021 16:13:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springcloud-stream-note/</guid>
+    <description><![CDATA[引言 TIPS 本文基于Spring Cloud Stream 2.2.0.RC1，包含其新特性。 内容稍微有点乱，但这毕竟是个人学习笔记分享，不是从0到1的手把手系列博客，望]]></description>
+</item><item>
+    <title>Vue执行Npm Install 报错no such file or directory</title>
+    <link>https://kkkpjskey.github.io/vue-npm-install-no-file-dir-error/</link>
+    <pubDate>Thu, 26 Aug 2021 14:30:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-npm-install-no-file-dir-error/</guid>
+    <description><![CDATA[报错 下载别人项目执行 1 npm install 报错 1 npm WARN saveError ENOENT: no such file or directory 解决 清空npm缓存 1 npm cache clean -f 在执行install即可]]></description>
 </item><item>
     <title>Spring笔记</title>
     <link>https://kkkpjskey.github.io/spring-note/</link>
@@ -31,30 +56,5 @@
     <link>https://kkkpjskey.github.io/http/</link>
     <pubDate>Wed, 25 Aug 2021 16:32:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/http/</guid>
     <description><![CDATA[HTTP状态码 当浏览者访问一个网页时，浏览者的浏览器会向网页所在服务器发出请求。当浏览器接收并显示网页前，此网页所在的服务器会返回一个包含H]]></description>
-</item><item>
-    <title>GET和POST两种基本请求方法的区别</title>
-    <link>https://kkkpjskey.github.io/http-get-post-diff/</link>
-    <pubDate>Wed, 25 Aug 2021 16:24:23 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/http-get-post-diff/</guid>
-    <description><![CDATA[引言 GET和POST是HTTP请求的两种基本方法，要说它们的区别，接触过WEB开发的人都能说出一二。 最直观的区别就是GET把参数包含在URL]]></description>
-</item><item>
-    <title>解决Chrome浏览器图标缓存问题</title>
-    <link>https://kkkpjskey.github.io/chrome-favicon/</link>
-    <pubDate>Wed, 25 Aug 2021 15:54:33 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/chrome-favicon/</guid>
-    <description><![CDATA[一、先解决图标缓存问题 尝试解决 清空浏览器缓存，无效 直接访问图片地址，无效 删除本地favicon缓存文件，有效 C:\Users\xxxxxx\AppData\Local\Google\Chrome\User Data\Default 其中xxxxxx为用户名 **]]></description>
-</item><item>
-    <title>Git仓库之间交互指令教程</title>
-    <link>https://kkkpjskey.github.io/git-mutual-note/</link>
-    <pubDate>Wed, 25 Aug 2021 15:18:13 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/git-mutual-note/</guid>
-    <description><![CDATA[Git Push 目标 当远程仓库仅有一个且本地和远程都只有一个分支时可以省略主机名、本地分支名、远程分支名 1 git push 当远程仓库仅有一个且本地分支和远程分支同名]]></description>
-</item><item>
-    <title>Intellij IDEA教程</title>
-    <link>https://kkkpjskey.github.io/idea-note/</link>
-    <pubDate>Wed, 25 Aug 2021 11:13:39 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-note/</guid>
-    <description><![CDATA[使用Intellij IDEA的Bookmarks 今天用idea的时候，无意按了什么，发现了了一个小功能，叫做BookMark 然后去查阅了一下]]></description>
-</item><item>
-    <title>IntelliJ IDEA统计代码行数插件教程</title>
-    <link>https://kkkpjskey.github.io/idea-count-lines-note/</link>
-    <pubDate>Wed, 25 Aug 2021 10:52:53 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-count-lines-note/</guid>
-    <description><![CDATA[步骤 第一步首先需要知道idea统计项目代码行数，主要是使用Statistic插件来统计，点击File-&gt;Settings，如下图所示：]]></description>
 </item></channel>
 </rss>
