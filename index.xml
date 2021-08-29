@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 28 Aug 2021 17:59:50 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 29 Aug 2021 22:49:59 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>基于广播和服务功能的音乐播放器</title>
@@ -16,6 +16,31 @@
     <link>https://kkkpjskey.github.io/android-bottom-navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+</item><item>
+    <title>计算机网络笔记</title>
+    <link>https://kkkpjskey.github.io/comp-net-note/</link>
+    <pubDate>Sun, 29 Aug 2021 22:49:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/comp-net-note/</guid>
+    <description><![CDATA[TCP三次握手、四次挥手的理解及面试题（图解过程） TCP 和 UDP是网络协议的传输层上的两种不同的协议。TCP的特点是面向连接的、可靠的字节流服务]]></description>
+</item><item>
+    <title>服务器大量TIME_WAIT和CLOSE_WAIT</title>
+    <link>https://kkkpjskey.github.io/server-timewait-closewait-note/</link>
+    <pubDate>Sun, 29 Aug 2021 22:29:53 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/server-timewait-closewait-note/</guid>
+    <description><![CDATA[0.引言 Linux服务器下查看网络连接的状态 1 netstat -n | awk &#39;/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}&#39; 它会显示例如下面的信息： 1 2 3 4 5 6 TIME_WAIT 814 CLOSE_WAIT 1 FIN_WAIT1 1 ESTABLISHED 634 SYN_RECV 2 LAST_ACK 1 常用的三]]></description>
+</item><item>
+    <title>Python环境搭建相关笔记</title>
+    <link>https://kkkpjskey.github.io/python_env_note/</link>
+    <pubDate>Sun, 29 Aug 2021 22:03:25 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/python_env_note/</guid>
+    <description><![CDATA[卸载Python 要想彻底干净的卸载python,如果是使用的安装版的话，其实很简单。【windows安装版】 就是点击安装包。 例如，当前你安装]]></description>
+</item><item>
+    <title>Java报错Can not find table primary key in Class</title>
+    <link>https://kkkpjskey.github.io/java_cant_find_primary_key/</link>
+    <pubDate>Sun, 29 Aug 2021 19:33:56 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java_cant_find_primary_key/</guid>
+    <description><![CDATA[报错 项目启动之后，报错 Can not find table primary key in Class: &ldquo;com.unicloud.common.core.domain.entity.SysDept&rdquo;. 1 2 3 4 5 6 7 8 9 10 09:57:19.227 [restartedMain] WARN c.b.m.c.m.TableInfoHelper - [initTableFields,307] - Can not find table primary key in Class: &#34;com.unicloud.common.core.domain.entity.SysDept&#34;. 09:57:19.272 [restartedMain] WARN c.b.m.c.m.TableInfoHelper - [initTableFields,307] - Can not find table primary key in Class: &#34;com.unicloud.common.core.domain.entity.SysDictData&#34;. 09:57:19.318 [restartedMain] WARN c.b.m.c.m.TableInfoHelper - [initTableFields,307] - Can]]></description>
+</item><item>
+    <title>C/S和B/S结构的优缺点</title>
+    <link>https://kkkpjskey.github.io/cs_and_bs_diff/</link>
+    <pubDate>Sun, 29 Aug 2021 18:58:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/cs_and_bs_diff/</guid>
+    <description><![CDATA[引言 为了区别于传统的C/S模式，才特意将其称为B/S模式。认识到这些结构的特征，对于系统的选型而言是很关键的。 分类对比 1、系统的性能 在系统的]]></description>
 </item><item>
     <title>Win10根据弹窗定位窗口进程（程序）</title>
     <link>https://kkkpjskey.github.io/win-locate-pop-form-note/</link>
@@ -31,30 +56,5 @@
     <link>https://kkkpjskey.github.io/springboot-note/</link>
     <pubDate>Thu, 26 Aug 2021 16:20:48 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springboot-note/</guid>
     <description><![CDATA[SpringBoot Controller接收参数的几种常用方式 第一类：请求路径参数 1、@PathVariable 获取路径参数。即 _url/{id}_这种形式。]]></description>
-</item><item>
-    <title>Spring Cloud Stream详细教程</title>
-    <link>https://kkkpjskey.github.io/springcloud-stream-note/</link>
-    <pubDate>Thu, 26 Aug 2021 16:13:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springcloud-stream-note/</guid>
-    <description><![CDATA[引言 TIPS 本文基于Spring Cloud Stream 2.2.0.RC1，包含其新特性。 内容稍微有点乱，但这毕竟是个人学习笔记分享，不是从0到1的手把手系列博客，望]]></description>
-</item><item>
-    <title>Vue执行Npm Install 报错no such file or directory</title>
-    <link>https://kkkpjskey.github.io/vue-npm-install-no-file-dir-error/</link>
-    <pubDate>Thu, 26 Aug 2021 14:30:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-npm-install-no-file-dir-error/</guid>
-    <description><![CDATA[报错 下载别人项目执行 1 npm install 报错 1 npm WARN saveError ENOENT: no such file or directory 解决 清空npm缓存 1 npm cache clean -f 在执行install即可]]></description>
-</item><item>
-    <title>Spring笔记</title>
-    <link>https://kkkpjskey.github.io/spring-note/</link>
-    <pubDate>Wed, 25 Aug 2021 17:59:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/spring-note/</guid>
-    <description><![CDATA[BeanUtils工具类中的copyProperties方法使用 1、两个包下的BeanUtils.copyProperties对比 BeanU]]></description>
-</item><item>
-    <title>Mysql事务笔记</title>
-    <link>https://kkkpjskey.github.io/mysql-transact/</link>
-    <pubDate>Wed, 25 Aug 2021 17:34:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mysql-transact/</guid>
-    <description><![CDATA[脏读、不可重复读、幻读 一、分析 1、脏读：脏读就是指当一个事务正在访问数据，并且对数据进行了修改，而这种修改还没有提交到数据库中，这时，另外一]]></description>
-</item><item>
-    <title>HTTP教程</title>
-    <link>https://kkkpjskey.github.io/http/</link>
-    <pubDate>Wed, 25 Aug 2021 16:32:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/http/</guid>
-    <description><![CDATA[HTTP状态码 当浏览者访问一个网页时，浏览者的浏览器会向网页所在服务器发出请求。当浏览器接收并显示网页前，此网页所在的服务器会返回一个包含H]]></description>
 </item></channel>
 </rss>
