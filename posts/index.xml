@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 29 Aug 2021 22:49:59 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 30 Aug 2021 23:17:25 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/android-music-box/</link>
     <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-music-box/</guid>
@@ -15,6 +15,36 @@
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
 </item><item>
+    <title>Vue笔记</title>
+    <link>https://kkkpjskey.github.io/vue-note/</link>
+    <pubDate>Mon, 30 Aug 2021 23:17:25 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-note/</guid>
+    <description><![CDATA[将vue文档下载到本地预览 1下载：https://github.com/vuejs/cn.vuejs.org 到本地 2.执行指令 1 2 npm install npm start #]]></description>
+</item><item>
+    <title>Win10该设备正在使用中报错</title>
+    <link>https://kkkpjskey.github.io/win10-usb-in-use-error/</link>
+    <pubDate>Mon, 30 Aug 2021 22:40:27 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win10-usb-in-use-error/</guid>
+    <description><![CDATA[方法一 我反正不行，搜索结果为空 电脑弹出USB设备时提示该设备正在使用，虽然在正常显示时并没有程序在使用，但是确实会出现这种情况，实际上确实有]]></description>
+</item><item>
+    <title>Linux硬件相关笔记</title>
+    <link>https://kkkpjskey.github.io/linux-hardware/</link>
+    <pubDate>Mon, 30 Aug 2021 22:22:22 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/linux-hardware/</guid>
+    <description><![CDATA[CentOs7排查CPU高占用 一、查看CPU高占用 1 2 ## 执行top命令 top PS:P按照CPU排序显示，M按照内存排序； 二、查看进程中最占CPU]]></description>
+</item><item>
+    <title>Win10启动蓝屏报错BAD_SYSTEM_CONFIG</title>
+    <link>https://kkkpjskey.github.io/win10-bad-system-config-error/</link>
+    <pubDate>Mon, 30 Aug 2021 22:07:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win10-bad-system-config-error/</guid>
+    <description><![CDATA[原因 本人Win10虚拟机突然启动不起来了，蓝屏报错BAD_SYSTEM_CONFIG，遂检索寻找方法。 发现方法作用于实体机，故尝试，终成功，]]></description>
+</item><item>
+    <title>二叉树笔记</title>
+    <link>https://kkkpjskey.github.io/binarytree-note/</link>
+    <pubDate>Mon, 30 Aug 2021 21:46:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/binarytree-note/</guid>
+    <description><![CDATA[引言 顺序表和链表的时间复杂度由给定条件不同从而会得出不同的时间复杂度结果，对于程序设计时并不总是最好用的存储方式。二叉树是一种更加稳定的数据]]></description>
+</item><item>
+    <title>进程与线程的区别</title>
+    <link>https://kkkpjskey.github.io/system-proc-thd-diff/</link>
+    <pubDate>Mon, 30 Aug 2021 21:14:25 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/system-proc-thd-diff/</guid>
+    <description><![CDATA[一、进程与线程的区别： 1、根本区别：进程是操作系统资源分配的最小单位，线程是程序执行(任务调度和执行)的最小单位（资源调度的最小单位） 2、进]]></description>
+</item><item>
     <title>计算机网络笔记</title>
     <link>https://kkkpjskey.github.io/comp-net-note/</link>
     <pubDate>Sun, 29 Aug 2021 22:49:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/comp-net-note/</guid>
@@ -24,35 +54,5 @@
     <link>https://kkkpjskey.github.io/server-timewait-closewait-note/</link>
     <pubDate>Sun, 29 Aug 2021 22:29:53 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/server-timewait-closewait-note/</guid>
     <description><![CDATA[0.引言 Linux服务器下查看网络连接的状态 1 netstat -n | awk &#39;/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}&#39; 它会显示例如下面的信息： 1 2 3 4 5 6 TIME_WAIT 814 CLOSE_WAIT 1 FIN_WAIT1 1 ESTABLISHED 634 SYN_RECV 2 LAST_ACK 1 常用的三]]></description>
-</item><item>
-    <title>Python环境搭建相关笔记</title>
-    <link>https://kkkpjskey.github.io/python_env_note/</link>
-    <pubDate>Sun, 29 Aug 2021 22:03:25 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/python_env_note/</guid>
-    <description><![CDATA[卸载Python 要想彻底干净的卸载python,如果是使用的安装版的话，其实很简单。【windows安装版】 就是点击安装包。 例如，当前你安装]]></description>
-</item><item>
-    <title>Java报错Can not find table primary key in Class</title>
-    <link>https://kkkpjskey.github.io/java_cant_find_primary_key/</link>
-    <pubDate>Sun, 29 Aug 2021 19:33:56 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java_cant_find_primary_key/</guid>
-    <description><![CDATA[报错 项目启动之后，报错 Can not find table primary key in Class: &ldquo;com.unicloud.common.core.domain.entity.SysDept&rdquo;. 1 2 3 4 5 6 7 8 9 10 09:57:19.227 [restartedMain] WARN c.b.m.c.m.TableInfoHelper - [initTableFields,307] - Can not find table primary key in Class: &#34;com.unicloud.common.core.domain.entity.SysDept&#34;. 09:57:19.272 [restartedMain] WARN c.b.m.c.m.TableInfoHelper - [initTableFields,307] - Can not find table primary key in Class: &#34;com.unicloud.common.core.domain.entity.SysDictData&#34;. 09:57:19.318 [restartedMain] WARN c.b.m.c.m.TableInfoHelper - [initTableFields,307] - Can]]></description>
-</item><item>
-    <title>C/S和B/S结构的优缺点</title>
-    <link>https://kkkpjskey.github.io/cs_and_bs_diff/</link>
-    <pubDate>Sun, 29 Aug 2021 18:58:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/cs_and_bs_diff/</guid>
-    <description><![CDATA[引言 为了区别于传统的C/S模式，才特意将其称为B/S模式。认识到这些结构的特征，对于系统的选型而言是很关键的。 分类对比 1、系统的性能 在系统的]]></description>
-</item><item>
-    <title>Win10根据弹窗定位窗口进程（程序）</title>
-    <link>https://kkkpjskey.github.io/win-locate-pop-form-note/</link>
-    <pubDate>Sat, 28 Aug 2021 17:59:50 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win-locate-pop-form-note/</guid>
-    <description><![CDATA[操作环境 红色粗字体字为修改后内容，蓝色粗体字为特别注意内容 操作系统：Win10 64bit 工具(ProcessExplorer)下载地址 分析 如今，使用]]></description>
-</item><item>
-    <title>Linux SSH相关操作教程</title>
-    <link>https://kkkpjskey.github.io/linux-ssh-note/</link>
-    <pubDate>Fri, 27 Aug 2021 17:09:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/linux-ssh-note/</guid>
-    <description><![CDATA[版本说明 本章内容基于CentOS6.5（32位） Linux使用SCP进行文件传输 scp就是secure copy，是用来进行远程文件拷贝的。数]]></description>
-</item><item>
-    <title>SpringBoot笔记</title>
-    <link>https://kkkpjskey.github.io/springboot-note/</link>
-    <pubDate>Thu, 26 Aug 2021 16:20:48 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springboot-note/</guid>
-    <description><![CDATA[SpringBoot Controller接收参数的几种常用方式 第一类：请求路径参数 1、@PathVariable 获取路径参数。即 _url/{id}_这种形式。]]></description>
 </item></channel>
 </rss>

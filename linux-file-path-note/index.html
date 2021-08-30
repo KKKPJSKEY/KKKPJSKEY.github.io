@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/linux-file-path-note\/featured-image.jpg",
                             "width":  914 ,
                             "height":  595 
-                        }],"genre": "posts","keywords": "Linux, File, Directory","wordcount":  4666 ,
+                        }],"genre": "posts","keywords": "Linux, File, Directory","wordcount":  4774 ,
         "url": "https:\/\/kkkpjskey.github.io\/linux-file-path-note\/","datePublished": "2020-11-27T10:22:45+08:00","dateModified": "2021-08-27T14:40:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux 文件与目录管理教程</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-27">2020-11-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4666 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-27">2020-11-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4774 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/linux-file-path-note/" class="leancloud_visitors" data-flag-title="Linux 文件与目录管理教程">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -166,6 +166,7 @@
       </ul>
     </li>
     <li><a href="#修改文件权限和群组">修改文件权限和群组</a></li>
+    <li><a href="#centos7限制用户访问指定目录">Centos7限制用户访问指定目录</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="引言">引言</h2>
@@ -868,7 +869,13 @@ tail -n +5 /test001/text001
   <span class="c1"># **账号名称**:**组群** **文件****/****目录**</span>
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="centos7限制用户访问指定目录">Centos7限制用户访问指定目录</h2>
+<p>创建用户及指定访问目录<code>useradd test -d /home/test -M</code></p>
+<p>设置密码<code>passwd test</code></p>
+<p>将访问目录权限全部赋予用户<code>chown -R test /home/test</code></p>
+<p>将上层目录设置为root所有<code>chown root /home</code></p>
+<p>赋予权限给上层目录<code>chmod 771 /home</code></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

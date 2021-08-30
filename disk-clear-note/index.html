@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>磁盘数据销毁笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录磁盘数据销毁的笔记"><meta property="og:title" content="磁盘数据销毁笔记" />
+<meta property="og:description" content="记录磁盘数据销毁的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/disk-clear-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/disk-clear-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-16T16:42:55&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-16T16:42:55&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/disk-clear-note/featured-image.jpg"/>
+<meta name="twitter:title" content="磁盘数据销毁笔记"/>
+<meta name="twitter:description" content="记录磁盘数据销毁的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/disk-clear-note/" /><link rel="prev" href="https://kkkpjskey.github.io/reqmap-getmap-diff/" /><link rel="next" href="https://kkkpjskey.github.io/enable-discovery-eureka-client-diff/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "磁盘数据销毁笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/disk-clear-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/disk-clear-note\/featured-image.jpg",
+                            "width":  1200 ,
+                            "height":  360 
+                        }],"genre": "posts","keywords": "Disk","wordcount":  5692 ,
+        "url": "https:\/\/kkkpjskey.github.io\/disk-clear-note\/","datePublished": "2021-07-16T16:42:55+08:00","dateModified": "2021-07-16T16:42:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录磁盘数据销毁的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/disk-clear-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/disk-clear-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">磁盘数据销毁笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/hardware/"><i class="far fa-folder fa-fw"></i>Hardware</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-16">2021-07-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5692 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/disk-clear-note/" class="leancloud_visitors" data-flag-title="磁盘数据销毁笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/disk-clear-note/featured-image.jpg"
+        data-srcset="/disk-clear-note/featured-image.jpg, /disk-clear-note/featured-image.jpg 1.5x, /disk-clear-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/disk-clear-note/featured-image.jpg"
+        title="记录磁盘数据销毁的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#今天的讨论">今天的讨论</a>
+      <ul>
+        <li><a href="#01-硬盘数据销毁乱象"><strong>01 硬盘数据销毁乱象</strong></a></li>
+        <li><a href="#02-硬盘会不会有后门"><strong>02</strong> <strong>硬盘会不会有后门?</strong></a></li>
+        <li><a href="#03-fbi的恢复手段有那么厉害"><strong>03 FBI的恢复手段有那么厉害？</strong></a></li>
+        <li><a href="#04-那些方式可以彻底销毁数据"><strong>04 那些方式可以彻底销毁数据？</strong></a></li>
+        <li><a href="#05-数据安全重不重要"><strong>05</strong> 数据安全重不重要？</a></li>
+        <li><a href="#06-尾声"><strong>06 尾声</strong></a></li>
+        <li><a href="#补充"><strong>补充</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#几种常见磁盘擦写算法">几种常见磁盘擦写算法</a>
+      <ul>
+        <li><a href="#美国国防部-522022-m">美国国防部 5220.22-M</a></li>
+        <li><a href="#美国navso-p-5239-26-rll">美国：NAVSO P-5239-26 （RLL）</a></li>
+        <li><a href="#美国navso-p-5239-26-mfm">美国：NAVSO P-5239-26 （MFM）</a></li>
+        <li><a href="#德国-vsitr">德国： VSITR</a></li>
+        <li><a href="#俄罗斯gost-p50739-95">俄罗斯：GOST P50739-95</a></li>
+        <li><a href="#peter-gutmann古特曼">Peter Gutmann(古特曼)</a></li>
+        <li><a href="#bruce-schneier">Bruce Schneier</a></li>
+        <li><a href="#快速0填充">快速（0填充）</a></li>
+        <li><a href="#linux低级格式化">Linux低级格式化</a></li>
+      </ul>
+    </li>
+    <li><a href="#磁盘的剩磁效应">磁盘的剩磁效应</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="今天的讨论">今天的讨论</h2>
+<h3 id="01-硬盘数据销毁乱象"><strong>01 硬盘数据销毁乱象</strong></h3>
+<p>当前数据存储最最常见的设备就是机械硬盘，很多公司单位及个人淘汰硬盘的时候都会对其中的敏感数据进行销毁，防止泄露造成损失。那么到底数据销毁应该怎么去做？本人认为对于数据销毁有过度消费的情况，而且趋势是越演越烈！</p>
+<p>大家都知道数据恢复公司，可能很少有人知道数据销毁公司。这些公司专门为各种有数据销毁需求的单位公司提供销毁数据的设备。</p>
+<p>我记得N年前网上流传着一篇文章，大概内容就说的你的硬盘不安全，硬盘厂家可能留了后门偷数据，就算你把硬盘全盘覆盖十几次美国FBI也能找回数据。因此，为了保障你的数据不被泄露，必须要在“肉体”上对硬盘进行彻底毁灭，不然你的数据分分钟被泄露。</p>
+<p>该文流传的之广，影响之大，毒害之深，直到现在很多人都对此深信不疑，还经常拿出来作为一些话题的佐证。在我看来这就是一篇不折不扣的伪科学文章，我严重怀疑就是那些数据销毁公司的软文，误导了太多的人。</p>
+<p>我举个例子：某公司淘汰的硬盘首先是进行全盘清零，然后用消磁机消磁，再用锤子砸掉或者台钻钻孔对硬盘进行彻底的物理破坏。你不能说做错了，确实可以彻底的毁灭硬盘上的任何数据。但是做的太过了！</p>
+<p>纯属脱裤子打屁。</p>
+<p>归根结底无非就是为了多争取点部门经费，把数据销毁工作渲染的玄之又玄。</p>
+<hr>
+<h3 id="02-硬盘会不会有后门"><strong>02</strong> <strong>硬盘会不会有后门?</strong></h3>
+<p>如果是正规硬盘厂家出来的产品是不会有后门的。硬盘销售是不记名的，换句话说每个硬盘的去向厂家并不清楚。哪些硬盘装了有价值的数据，哪些硬盘装的只是爱情动作大片没人知道。只能没有明确目标的靠挨个入侵查找。每年硬盘厂家的销售量至少都是几千万个，要从这几千万个硬盘里面挖掘有价值的数据，这是一件多么浩大的工程，需要多大的人力物力财力和技术去做这种事情？硬盘厂家能得到什么的好处？</p>
+<p>有人说，几年前不是爆出一个新闻，说用户买回去的某品牌硬盘里面居然有病毒，严重侵犯了用户的隐私和危害数据安全。该厂家回应，这种事情绝无可能，要么是自身原因导致中毒，要么就是抹黑。这个事情估计就是硬盘有后门的出处。加上帝国主义亡我之心不死的调调，基本上就“坐实”了硬盘有后门的结论！</p>
+<p>其实事情再简单不过了，用户买到了拆机翻新盘。奸商一时大意忘记清除硬盘中的数据，导致用户买回去中毒。所以黑锅背到了厂家头上也算是躺枪了。</p>
+<hr>
+<h3 id="03-fbi的恢复手段有那么厉害"><strong>03 FBI的恢复手段有那么厉害？</strong></h3>
+<p>写到这里我不由自主的就笑了，现在伪科学实在太多了，什么硬盘覆盖十几次FBI都可以把最原始的数据恢复出来。难道宇宙间的物理规律在FBI手里立马失效？</p>
+<p>硬盘靠磁介质的极性翻转进行数据存储，假设存储数据000111，磁颗粒的极性排序SSSNNN。数据改写成010101磁颗粒则变成SNSNSN。排序完全变了（实际排序比这个复杂几十亿倍），请问FBI凭什么能恢复出原始的排序？FBI的人都是神仙？如果FBI真有这样的黑科技，为啥当初一个爱疯5的锁屏密码都解不开，还要威逼苹果解锁？</p>
+<p>人云亦云、以讹传讹的太多了，当真谎言重复一千次就是真理。在某些人的眼里，FBI是可以登陆太阳表面的&hellip;&hellip;</p>
+<hr>
+<h3 id="04-那些方式可以彻底销毁数据"><strong>04 那些方式可以彻底销毁数据？</strong></h3>
+<p>数据的本质就是存储在硬盘中的一串0和1，他们不同的排序组合形成不同的数据类型和结构，从物理层面来说就是磁颗粒的极性变化。硬盘存储数据要经历三个层面：系统层&mdash;逻辑层&mdash;物理层。</p>
+<p>系统层就很容易懂，就是咱们平时最常接触到的文件系统，数据是文本还是视频还是图片等等。物理层也容易理解，就是基本上的磁性介质，是它们的物理特性使得硬盘可以存储数据。那么逻辑层对大家来说相对就陌生了。</p>
+<p>逻辑层用于衔接系统层和物理层。</p>
+<p>系统层无法直接对物理层进行工作指派，必须要经过逻辑层的转换。逻辑层是由硬盘的固件来进行转换和控制。</p>
+<p>一块硬盘要正常工作保存数据，那么首先是确认该硬盘的存储密度，0磁道的起始位置，扇区的数量以及容量的大小。</p>
+<p>同时硬盘并不是铁板一块，而是被固件从逻辑上划分了很多个ZONE，每个ZONE有固定的范围和磁头读写参数还有表面缺陷扇区的坐标等。统称为硬盘的几何结构，每一块硬盘的几何结构都是独一无二的，正如世界上没有二个完全一样的人。</p>
+<p>如果你想彻底毁灭硬盘里面的数据，那么直接破坏它的几何机构就行了。调用格式化固件区命令直接清空固件区里的所有信息，硬盘立马就变板砖，失去几何结构的硬盘数据绝无恢复的可能性。好比你把你的手机系统彻底抹掉，手机里的数据永远丢失。</p>
+<p>如果你没办法通过技术手段来清空硬盘的固件区，那么可以使用MHDD调用硬盘本身内置的数据安全擦除的功能，这个功能先对硬盘进行加密，然后再进行内部擦除每一个扇区，运行这个功能之后，之前的数据荡然无存绝无恢复的可能性，而且不会破坏硬盘任何功能。我曾经做过试验，安全擦除过的硬盘使用任何手段均无法恢复出原来的数据。这个功能的缺点就是耗时比较长，视硬盘容量大小而定。</p>
+<p>最后就是用物理方式对硬盘进行破坏，比如砸、钻、消磁。当然我并不否认这些方式对销毁数据有立竿见影的效果，但是绝非百分之百的安全。砸久了手要酸，人会累，会偷懒。如果硬盘数量很多那么必定有漏网之鱼。</p>
+<p>我一个朋友买了一批国内某知名企业的消磁盘。经过挑选里面全好的硬盘占比最少四成，盈利最少过百万。说明了什么问题？</p>
+<p>外界很多关于数据销毁的言论大部分都是数据销毁公司人为的制造一些恐慌，你不买什么什么专业设备进行处理，你的数据就会泄露。就跟马爸爸演讲时经常说的：你不听我的什么什么，那么你公司就会死&hellip;&hellip;如出一辙。</p>
+<hr>
+<h3 id="05-数据安全重不重要"><strong>05</strong> 数据安全重不重要？</h3>
+<p>当然重要。</p>
+<p>但是要理性的、科学的去看待这个事情，不要人云亦云，不要迷信什么设备。</p>
+<p>切莫去听信外面的一些人为制造的一些恐慌话题，从根本上理解硬盘存储数据的原理，一切困惑将迎刃而解。</p>
+<hr>
+<h3 id="06-尾声"><strong>06 尾声</strong></h3>
+<p>我猜测很可能有人会在评论里讲：“前些年的方程式病毒不就是硬盘固件里面的后门吗？”</p>
+<p>这里我引用卡巴斯基专家的说法：</p>
+<p><strong>卡巴斯基专家Costin Raiu对此警告说：</strong></p>
+<p>“还有一种危险，即当磁盘被感染后，就无法对其固件进行扫描。简言之，大多数硬盘只能对其硬件固件区域进行写入，却不具备读取功能。这意味着，我们几乎对此一无所知，无法检测磁盘是否被该恶意软件所感染。”由于病毒在系统启动初始阶段就处于活动状态，它能够截取加密密码，并将其保存在磁盘的隐藏区域。</p>
+<p><strong>断网照样窃取信息</strong></p>
+<p>不仅如此，“方程式组织”还能够从隔离网络中获取数据，该组织使用的恶意软件Fanny使用了一种独特的基于USB的命令和控制机制，允许攻击者向来隔绝网络之外回传送数据。</p>
+<p>具体来说，这是一个包含一个隐藏区域的U盘，它可以从未联网的计算机上收集基础系统信息；而当该U盘被插入到联网计算机上时，恶意软件Fanny会将收集到的系统信息发送至C&amp;C（命令和控制中心）。</p>
+<p><strong>感染各大品牌硬盘</strong></p>
+<p>卡巴斯基在报告中显示，很多大品牌硬盘可能均受影响，包括三星、西数、希捷、迈拓、东芝以及日立等公司。这些受到感染的硬盘使得攻击者可以持续的对受害者的计算机进行控制和数据窃取。</p>
+<hr>
+<p>可以看出，所有品牌的硬盘都全军覆没，如果谁告诉我这些不同国家的硬盘厂家都合伙埋雷，我是不信的。</p>
+<h3 id="补充"><strong>补充</strong></h3>
+<p><strong>1，如果硬盘厂家真的在产品中留了后门，那么在你使用硬盘的那一刻你的数据就已经开始泄露了，跟后期你如何销毁硬盘没有任何关系。</strong></p>
+<p><strong>2，利用剩磁原理来恢复硬盘数据。如果对于上个世纪的低容量硬盘也许凑合，当今硬盘存储密度高到吓人，磁道之间的间隔不足10纳米，若采用剩磁效应来恢复数据，那个信噪比就已经彻底淹没你想要恢复的数据，可行性无限趋近于0。</strong></p>
+<p><strong>3，对于相对绝密的单位，大公司过度销毁硬盘并非为了骗经费，而是一种管理方法。理论上确实把磁道重置为全0或者全1就能销毁，但是这个操作也需要人来执行，是人就无法避免出现背叛的情况。如果分三步(硬盘数据擦除+销磁+物理破坏)，这样三个操作就由不同的人完成，任意两个人出现背叛都不会有问题。说穿了就是用钱换冗余，和双机热备是一个道理。同时需求较小，分人甚至多人处理一个盘</strong></p>
+<p><strong>3，当下清空硬盘，对于机械硬盘，在硬盘刚装上未写入数据时先开启bitlocker，销毁时低格一次足以,不行就随机数据填充一次.对于固态硬盘的种种特性比较麻烦,最好是一开始就全盘加密,删除时直接重置硬盘</strong></p>
+<p><strong>4，硬盘外流被开盘取数据的可能性约等于剩磁的可能性</strong></p>
+<p><strong>2，固件后门：<a href="https://www.ibr.cs.tu-bs.de/users/kurmus/papers/acsac13.pdf" target="_blank" rel="noopener noreferrer">一</a>、<a href="http://spritesmods.com/?art=hddhack" target="_blank" rel="noopener noreferrer">二</a></strong></p>
+<h2 id="几种常见磁盘擦写算法">几种常见磁盘擦写算法</h2>
+<h3 id="美国国防部-522022-m">美国国防部 5220.22-M</h3>
+<blockquote>
+<p>资料争议，三次或七次。个人倾向于7次</p>
+<hr>
+<p>美国国防部在 DoD 5220.22-M 规范中规定使用三次覆写算法。</p>
+<hr>
+<p>Use this seven-pass method for tighter security. Different patterns of bytes are written to the disk as described in the table below. Using this method is probably even safer than using the simple method (with 6 passes).</p>
+<p>This method is described in the National Industrial Security Program Operating Manual (NISPOM a.k.a. DoD 5220.22-M) of the US Department of Defense (January 1995; chapter 8, section 3, 8-306. Maintenance).</p>
+<p>The free disk space is overwritten seven times:</p>
+<p>Pass Data</p>
+<p>1 A random character, n = [0, 255]</p>
+<p>2 A random character, n</p>
+<p>3 Complement of previous character, ~n</p>
+<p>4 A random character, n</p>
+<p>5 A random character, n</p>
+<p>6 Complement of previous character, ~n</p>
+<p>7 A random character, n</p>
+<p>However, if you want to be absolutely sure of your data security, use the Gutmann method, below</p>
+</blockquote>
+<h3 id="美国navso-p-5239-26-rll">美国：NAVSO P-5239-26 （RLL）</h3>
+<blockquote>
+<p>美国海军职员办公室发行物（NAVSO Pub）5239—《信息系统 安全（INFOSEC）计划指导原则》由美国海军信息 系统管理中心签发。磁盘控制器采用多种加密技术将计算机数据转换为 磁性数据存储媒体的适用格式。一般情况，ST506 类磁盘驱动器使用改进频率调制（MFM）加密。;SCSI 和 ATA/IDE驱动器使用 游程长度受限（RLL）加密方案。如果对驱动器加密技术不确定，请使用此模式。</p>
+</blockquote>
+<h3 id="美国navso-p-5239-26-mfm">美国：NAVSO P-5239-26 （MFM）</h3>
+<blockquote>
+<p>美国海军职员办公室发行物（NAVSO Pub）5239—《信息系统 安全（INFOSEC）计划指导原则》由美国海军信息 系统管理中心签发。磁盘控制器采用多种加密技术将计算机数据转换为 磁性数据存储媒体的适用格式。一般情况，ST506类磁盘驱动器使用改进频率调制（MFM）；加密。SCSI 和 ATA/IDE 驱动器使用 游程长度受限（RLL）加密方案。该算法采用MFM模式。</p>
+</blockquote>
+<h3 id="德国-vsitr">德国： VSITR</h3>
+<blockquote>
+<p>根据 $12 VSITR（指令 #11，1999 年 11 月 29 日）的规定（德国信息安全联邦办公室（BSI）签发），每个扇区都将被 00 和 FF 的三个不同模式覆写，最后一次为AA覆写。</p>
+</blockquote>
+<h3 id="俄罗斯gost-p50739-95">俄罗斯：GOST P50739-95</h3>
+<blockquote>
+<p>俄罗斯国家技术委员会（Russian State Technical Committee）规定须使 第 6 至第 4 保护类型扇区为零，并在第三至第一个内使用随机字符覆写。</p>
+</blockquote>
+<h3 id="peter-gutmann古特曼">Peter Gutmann(古特曼)</h3>
+<blockquote>
+<p>Peter Gutmann （奥克兰大学计算机科学 系）在第六届 USENIX 安全会议记录上发表了文章（加利福尼亚州圣何塞，1996 年 7 月 22-25 日）。他建议使用一系列方法，以尽可能使黑客很难对此类媒体进行数据 恢复。他提出了35次覆写算法。该算法速度较慢，但极为可靠。</p>
+<hr>
+<p>Top Previous Next
+This method offers the most tight security for the whole range of disk drive types. You should use this method if your data is very valuable and you think your disk could possibly be scrutinized by expensive, specialized equipment.</p>
+<p>The method used by Clean Disk Security is based on that described in the paper Secure Deletion of Data from Magnetic and Solid-State Memory, by Peter Gutmann (Department of Computer Science University of Auckland. <a href="mailto:pgut001@cs.auckland.ac.nz" rel="">pgut001@cs.auckland.ac.nz</a>), and is included in Clean Disk Security with his permission.</p>
+<p>The paper was first published in the Sixth USENIX Security Symposium Proceedings, San Jose, California, July 22-25, 1996.</p>
+<p>The first four and last four passes are pseudo-random data (created with additive congruential pseudo-random number generator) and other passes are made in random order.</p>
+<p>Overwrite Data</p>
+<p>PassNo. Data Written Encoding Scheme Targeted</p>
+<p>1 Random</p>
+<p>2 Random</p>
+<p>3 Random</p>
+<p>4 Random</p>
+<p>5 01010101 01010101 01010101 0×55 (1,7) RLL MFM</p>
+<p>6 10101010 10101010 10101010 0xAA (1,7) RLL MFM</p>
+<p>7 10010010 01001001 00100100 0×92 0×49 0×24 (2,7) RLL MFM</p>
+<p>8 01001001 00100100 10010010 0×49 0×24 0×92 (2,7) RLL MFM</p>
+<p>9 00100100 10010010 01001001 0×24 0×92 0×49 (2,7) RLL MFM</p>
+<p>10 00000000 00000000 00000000 0×00 (1,7) RLL (2,7) RLL</p>
+<p>11 00010001 00010001 00010001 0×11 (1,7) RLL</p>
+<p>12 00100010 00100010 00100010 0×22 (1,7) RLL</p>
+<p>13 00110011 00110011 00110011 0×33 (1,7) RLL (2,7) RLL</p>
+<p>14 01000100 01000100 01000100 0×44 (1,7) RLL</p>
+<p>15 01010101 01010101 01010101 0×55 (1,7) RLL MFM</p>
+<p>16 01100110 01100110 01100110 0×66 (1,7) RLL (2,7) RLL</p>
+<p>17 01110111 01110111 01110111 0×77 (1,7) RLL</p>
+<p>18 10001000 10001000 10001000 0×88 (1,7) RLL</p>
+<p>19 10011001 10011001 10011001 0×99 (1,7) RLL (2,7) RLL</p>
+<p>20 10101010 10101010 10101010 0xAA (1,7) RLL MFM</p>
+<p>21 10111011 10111011 10111011 0xBB (1,7) RLL</p>
+<p>22 11001100 11001100 11001100 0xCC (1,7) RLL (2,7) RLL</p>
+<p>23 11011101 11011101 11011101 0xDD (1,7) RLL</p>
+<p>24 11101110 11101110 11101110 0xEE (1,7) RLL</p>
+<p>25 11111111 11111111 11111111 0xFF (1,7) RLL (2,7) RLL</p>
+<p>26 10010010 01001001 00100100 0×92 0×49 0×24 (2,7) RLL MFM</p>
+<p>27 01001001 00100100 10010010 0×49 0×24 0×92 (2,7) RLL MFM</p>
+<p>28 00100100 10010010 01001001 0×24 0×92 0×49 (2,7) RLL MFM</p>
+<p>29 01101101 10110110 11011011 0x6D 0xB6 0xDB (2,7) RLL</p>
+<p>30 10110110 11011011 01101101 0xB6 0xDB 0x6D (2,7) RLL</p>
+<p>31 11011011 01101101 10110110 0xDB 0x6D 0xB6 (2,7) RLL</p>
+<p>32 Random</p>
+<p>33 Random</p>
+<p>34 Random</p>
+<p>35 Random</p>
+</blockquote>
+<h3 id="bruce-schneier">Bruce Schneier</h3>
+<blockquote>
+<p>Bruce Schneier 则在他的《应用 密码术》一书中提出使用七次覆写算法。第一次全部使用一，第二次全部为 零，接下来的五次使用密码安全性较高的假随机序列。</p>
+</blockquote>
+<h3 id="快速0填充">快速（0填充）</h3>
+<p>最快但最不安全的数据销毁算法。一次性以“零”覆写所有数据。</p>
+<h3 id="linux低级格式化">Linux低级格式化</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo dd <span class="k">if</span><span class="o">=</span>/dev/random <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span><span class="m">1000000</span> <span class="nv">count</span><span class="o">=</span><span class="m">4000000</span> <span class="c1"># 谨慎使用责任自负</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="磁盘的剩磁效应">磁盘的剩磁效应</h2>
+<p>​		计算机磁盘属于磁介质，所有磁介质都存在剩磁效应的问题，保存在磁介质中的信息会使磁介质不同程度地永久性磁化，所以磁介质上记载的信息在一定程度上是抹除不净的，使用高灵敏度的磁头和放大器可以将已抹除信息的磁盘上的原有信息提取出来。据一些资料介绍，即使磁盘已改写了12次，第一次写入的信息仍有可能复原出来。这使涉密和重要磁介质的管理、废弃磁介质的处理，都成为很重要的问题。国外甚至有这样的规定：记录绝密信息资料的磁盘只准用一次，不用时就必须销毁，不准抹后重录。</p>
+<p>　　磁盘是用于拷贝和存储文件的，它常被重新使用，有时要删除其中某些文件，有时又要拷贝一些文件进去。在许多计算机操作系统中，用DEL命令删除一个文件，仅仅是删除该文件的文件指针，也就是删除该文件的标记，释放了该文件的存储空间，而并没有真正将该文件删除或覆盖。在该文件的存储空间未被其他文件覆盖之前，该文件仍然原封不动地保留在磁盘上。计算机删除磁盘文件的这种方式，可提高文件处理的速度和效率，也可方便误删除文件的恢复，但却给窃密者留下了可乘之机。他只要查阅一下磁盘最近删除的文件目录，就可以轻而易举地找到和恢复对他有价值的信息。</p>
+<p>　　因此如果将曾经记载过秘密信息的磁盘留做它用，必须将原记载的信息彻底清除，具体的清除办法和技术有很多种，但实质上可分为直流消磁法和交流消磁法两种。</p>
+<p>　　直流消磁法是使用直流磁头将磁盘上原先记录信息的剩余磁通，全部以一种形式的恒定值所代替。通常，我们操作计算机用完全格式化方式格式化磁盘就是这种方法。</p>
+<p>　　交流消磁法是使用交流磁头将磁盘上原先记录信息的剩余磁通变得极小，这种方法的消磁效果比直流消磁法要好得多，消磁后磁盘上残留信息强度可比消磁前下降90分贝。实用中一般是使用大电流的交流强力消磁器进行的，对一些曾记载过较高密级的磁盘，必须使用这种消磁技术进行处理后，才能从保密环境中释放做其他使用。</p>
+<p>　　对一些经消磁后仍达不到保密要求的磁盘，或已经损坏需废弃的涉密磁盘，以及曾经记载过绝密级信息的磁盘，必须作销毁处理。磁盘销毁的方法是，将磁盘碾碎后放入焚化炉熔为灰烬和铝液。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-07-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/disk-clear-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/disk-clear-note/" data-title="磁盘数据销毁笔记" data-hashtags="Disk"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/disk-clear-note/" data-hashtag="Disk"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/disk-clear-note/" data-title="磁盘数据销毁笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/disk-clear-note/" data-title="磁盘数据销毁笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/disk/">Disk</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/reqmap-getmap-diff/" class="prev" rel="prev" title="@RequestMapping和@GetMapping"><i class="fas fa-angle-left fa-fw"></i>@RequestMapping和@GetMapping</a>
+            <a href="/enable-discovery-eureka-client-diff/" class="next" rel="next" title="@EnableDiscoveryClient和@EnableEurekaClient区别">@EnableDiscoveryClient和@EnableEurekaClient区别<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>
