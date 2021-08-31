@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 30 Aug 2021 23:17:25 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 31 Aug 2021 23:38:20 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/android-music-box/</link>
     <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-music-box/</guid>
@@ -14,6 +14,26 @@
     <link>https://kkkpjskey.github.io/android-bottom-navigation/</link>
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+</item><item>
+    <title>微服务RPC原理与好处</title>
+    <link>https://kkkpjskey.github.io/microsvc-rpc-axiom/</link>
+    <pubDate>Tue, 31 Aug 2021 23:38:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/microsvc-rpc-axiom/</guid>
+    <description><![CDATA[服务化有什么好处？ 服务化的一个好处就是，不限定服务的提供方使用什么技术选型，能够实现大公司跨团队的技术解耦，如下图所示： 服务A：欧洲团队维护]]></description>
+</item><item>
+    <title>IDEA启动项目报错 Command line is too long</title>
+    <link>https://kkkpjskey.github.io/shorten-command-line-for/</link>
+    <pubDate>Tue, 31 Aug 2021 17:45:26 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/shorten-command-line-for/</guid>
+    <description><![CDATA[报错 在Intell IDEA运行main函数的时候遇到了如下错误： 1 Error running&#39; xxxxxx&#39;: Command line is too long. Shorten command line for xxxxxxxxx1 解决 在run-&gt; edit configuratio]]></description>
+</item><item>
+    <title>Surrogate Pair笔记</title>
+    <link>https://kkkpjskey.github.io/surrogate-pair-note/</link>
+    <pubDate>Tue, 31 Aug 2021 16:31:24 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/surrogate-pair-note/</guid>
+    <description><![CDATA[引言 Surrogate Pair是UTF-16中用于扩展字符而使用的编码方式，是一种采用四个字节(两个UTF-16编码)来表示一个字符。 中文名 代理对 外文名 surrogate pair]]></description>
+</item><item>
+    <title>Maven笔记</title>
+    <link>https://kkkpjskey.github.io/maven-note/</link>
+    <pubDate>Tue, 31 Aug 2021 15:39:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/maven-note/</guid>
+    <description><![CDATA[Transitive Dependencies（Maven依赖可传递性） 这里是官网地址，本人英语渣渣，依靠翻译软件勉勉强强看懂，就不翻译出来班门弄斧了，请大家八]]></description>
 </item><item>
     <title>Vue笔记</title>
     <link>https://kkkpjskey.github.io/vue-note/</link>
@@ -34,25 +54,5 @@
     <link>https://kkkpjskey.github.io/win10-bad-system-config-error/</link>
     <pubDate>Mon, 30 Aug 2021 22:07:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win10-bad-system-config-error/</guid>
     <description><![CDATA[原因 本人Win10虚拟机突然启动不起来了，蓝屏报错BAD_SYSTEM_CONFIG，遂检索寻找方法。 发现方法作用于实体机，故尝试，终成功，]]></description>
-</item><item>
-    <title>二叉树笔记</title>
-    <link>https://kkkpjskey.github.io/binarytree-note/</link>
-    <pubDate>Mon, 30 Aug 2021 21:46:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/binarytree-note/</guid>
-    <description><![CDATA[引言 顺序表和链表的时间复杂度由给定条件不同从而会得出不同的时间复杂度结果，对于程序设计时并不总是最好用的存储方式。二叉树是一种更加稳定的数据]]></description>
-</item><item>
-    <title>进程与线程的区别</title>
-    <link>https://kkkpjskey.github.io/system-proc-thd-diff/</link>
-    <pubDate>Mon, 30 Aug 2021 21:14:25 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/system-proc-thd-diff/</guid>
-    <description><![CDATA[一、进程与线程的区别： 1、根本区别：进程是操作系统资源分配的最小单位，线程是程序执行(任务调度和执行)的最小单位（资源调度的最小单位） 2、进]]></description>
-</item><item>
-    <title>计算机网络笔记</title>
-    <link>https://kkkpjskey.github.io/comp-net-note/</link>
-    <pubDate>Sun, 29 Aug 2021 22:49:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/comp-net-note/</guid>
-    <description><![CDATA[TCP三次握手、四次挥手的理解及面试题（图解过程） TCP 和 UDP是网络协议的传输层上的两种不同的协议。TCP的特点是面向连接的、可靠的字节流服务]]></description>
-</item><item>
-    <title>服务器大量TIME_WAIT和CLOSE_WAIT</title>
-    <link>https://kkkpjskey.github.io/server-timewait-closewait-note/</link>
-    <pubDate>Sun, 29 Aug 2021 22:29:53 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/server-timewait-closewait-note/</guid>
-    <description><![CDATA[0.引言 Linux服务器下查看网络连接的状态 1 netstat -n | awk &#39;/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}&#39; 它会显示例如下面的信息： 1 2 3 4 5 6 TIME_WAIT 814 CLOSE_WAIT 1 FIN_WAIT1 1 ESTABLISHED 634 SYN_RECV 2 LAST_ACK 1 常用的三]]></description>
 </item></channel>
 </rss>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>微服务RPC原理与好处 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录离不开的微服务架构，脱不开的RPC细节"><meta property="og:title" content="微服务RPC原理与好处" />
+<meta property="og:description" content="记录离不开的微服务架构，脱不开的RPC细节" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/microsvc-rpc-axiom/" /><meta property="og:image" content="https://kkkpjskey.github.io/microsvc-rpc-axiom/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-31T23:38:20&#43;08:00" />
+<meta property="article:modified_time" content="2021-08-31T23:38:20&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/microsvc-rpc-axiom/featured-image.jpg"/>
+<meta name="twitter:title" content="微服务RPC原理与好处"/>
+<meta name="twitter:description" content="记录离不开的微服务架构，脱不开的RPC细节"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/microsvc-rpc-axiom/" /><link rel="prev" href="https://kkkpjskey.github.io/shorten-command-line-for/" /><link rel="next" href="https://kkkpjskey.github.io/android-bottom-navigation/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "微服务RPC原理与好处",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/microsvc-rpc-axiom\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/microsvc-rpc-axiom\/featured-image.jpg",
+                            "width":  2000 ,
+                            "height":  600 
+                        }],"genre": "posts","keywords": "Microservices, RPC","wordcount":  7192 ,
+        "url": "https:\/\/kkkpjskey.github.io\/microsvc-rpc-axiom\/","datePublished": "2021-08-31T23:38:20+08:00","dateModified": "2021-08-31T23:38:20+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录离不开的微服务架构，脱不开的RPC细节"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/microsvc-rpc-axiom/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/microsvc-rpc-axiom/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">微服务RPC原理与好处</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-31">2021-08-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7192 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 15 分钟&nbsp;<span id="/microsvc-rpc-axiom/" class="leancloud_visitors" data-flag-title="微服务RPC原理与好处">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/microsvc-rpc-axiom/featured-image.jpg"
+        data-srcset="/microsvc-rpc-axiom/featured-image.jpg, /microsvc-rpc-axiom/featured-image.jpg 1.5x, /microsvc-rpc-axiom/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/microsvc-rpc-axiom/featured-image.jpg"
+        title="记录离不开的微服务架构，脱不开的RPC细节" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#服务化有什么好处"><strong>服务化有什么好处？</strong></a></li>
+    <li><a href="#rpc框架的职责是什么"><strong>RPC框架的职责是什么？</strong></a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="服务化有什么好处"><strong>服务化有什么好处？</strong></h2>
+<p>服务化的一个好处就是，不限定服务的提供方使用什么技术选型，能够实现<font color=#F84506 size=3>大公司跨团队的技术解耦</font>，如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.webp"
+        data-srcset="./1.webp, ./1.webp 1.5x, ./1.webp 2x"
+        data-sizes="auto"
+        alt="./1.webp"
+        title="1" /></p>
+<ul>
+<li>服务A：欧洲团队维护，技术背景是Java</li>
+<li>服务B：美洲团队维护，用C++实现</li>
+<li>服务C：中国团队维护，技术栈是go</li>
+</ul>
+<p>服务的上游调用方，按照接口、协议即可完成对远端服务的调用。</p>
+<p>但实际上，大部分互联网公司，研发团队规模有限，大都<font color=#F84506 size=3>使用同一套技术体系来实现服务</font>：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.webp"
+        data-srcset="./2.webp, ./2.webp 1.5x, ./2.webp 2x"
+        data-sizes="auto"
+        alt="./2.webp"
+        title="2" /></p>
+<p>这样的话，如果没有统一的服务框架，各个团队的服务提供方就需要各自实现一套<strong>序列化、反序列化、网络框架、连接池、收发线程、超时处理、状态机</strong>等“业务之外”的重复技术劳动，造成整体的低效。</p>
+<p>因此，统一服务框架<font color=#F84506 size=3>把上述“业务之外”的工作统一实现</font>，是服务化首要解决的问题。</p>
+<p><strong>什么是RPC？</strong></p>
+<p>Remote Procedure Call Protocol，远程过程调用。</p>
+<p><strong>什么是“远程”，为什么“远”？</strong></p>
+<p>先来看下什么是“近”，即“本地函数调用”。</p>
+<p>当我们写下：</p>
+<blockquote>
+<p><em>int result = Add(1, 2);</em></p>
+</blockquote>
+<p><strong>这行代码的时候，到底发生了什么？</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.webp"
+        data-srcset="./3.webp, ./3.webp 1.5x, ./3.webp 2x"
+        data-sizes="auto"
+        alt="./3.webp"
+        title="3" /></p>
+<ul>
+<li>传递两个<font color=#F84506 size=3>入参</font></li>
+<li>调用了本地代码段中的函数，执行运算逻辑</li>
+<li>返回一个<font color=#F84506 size=3>出参</font></li>
+</ul>
+<p>这三个动作，<font color=#F84506 size=3>都发生在同一个进程空间里</font>，这是<strong>本地函数调用</strong>。</p>
+<p><strong>那有没有办法，调用一个跨进程的函数呢？</strong></p>
+<p>典型的，这个进程部署在另一台服务器上。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.webp"
+        data-srcset="./4.webp, ./4.webp 1.5x, ./4.webp 2x"
+        data-sizes="auto"
+        alt="./4.webp"
+        title="4" /></p>
+<p>最容易想到的，两个进程<font color=#F84506 size=3>约定一个协议格式</font>，使用Socket通信，来传输：</p>
+<ul>
+<li>入参</li>
+<li>调用哪个函数</li>
+<li>出参</li>
+</ul>
+<p>如果能够实现，那这就是“远程”过程调用。</p>
+<p><strong>Socket通信只能传递连续的字节流，如何将入参、函数都放到连续的字节流里呢？</strong></p>
+<p>假设，设计一个11字节的请求报文：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.webp"
+        data-srcset="./5.webp, ./5.webp 1.5x, ./5.webp 2x"
+        data-sizes="auto"
+        alt="./5.webp"
+        title="5" /></p>
+<ul>
+<li>前3个字节填入函数名“add”</li>
+<li>中间4个字节填入第一个参数“1”</li>
+<li>末尾4个字节填入第二个参数“2”</li>
+</ul>
+<p>同理，可以设计一个4字节响应报文：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.webp"
+        data-srcset="./6.webp, ./6.webp 1.5x, ./6.webp 2x"
+        data-sizes="auto"
+        alt="./6.webp"
+        title="6" /></p>
+<ul>
+<li>4个字节填入处理结果“3”</li>
+</ul>
+<p>调用方的代码可能变为：</p>
+<blockquote>
+<p><em>request = MakePacket(“add”, 1, 2);</em></p>
+<p><em>SendRequest_ToService_B(request);</em></p>
+<p><em>response = RecieveRespnse_FromService_B();</em></p>
+<p><em>int result = unMakePacket(respnse);</em></p>
+</blockquote>
+<p>这4个步骤是：</p>
+<p>（1）将传入参数变为字节流；</p>
+<p>（2）将字节流发给服务B；</p>
+<p>（3）从服务B接受返回字节流；</p>
+<p>（4）将返回字节流变为传出参数；</p>
+<p>服务方的代码可能变为：</p>
+<blockquote>
+<p><em>request = RecieveRequest();</em></p>
+<p><em>args/function = unMakePacket(request);</em></p>
+<p><em>result = Add(1, 2);</em></p>
+<p><em>response = MakePacket(result);</em></p>
+<p><em>SendResponse(response);</em></p>
+</blockquote>
+<p>这个5个步骤也很好理解：</p>
+<p>（1）服务端收到字节流；</p>
+<p>（2）将字节流转为函数名与参数；</p>
+<p>（3）本地调用函数得到结果；</p>
+<p>（4）将结果转变为字节流；</p>
+<p>（5）将字节流发送给调用方；</p>
+<p>这个过程用一张图描述如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.webp"
+        data-srcset="./7.webp, ./7.webp 1.5x, ./7.webp 2x"
+        data-sizes="auto"
+        alt="./7.webp"
+        title="7" />
+调用方与服务方的处理步骤都是非常清晰。</p>
+<p><strong>这个过程存在最大的问题是什么呢？</strong></p>
+<p>调用方太麻烦了，每次都要关注很多底层细节：</p>
+<ul>
+<li>入参到字节流的转化，即<font color=#F84506 size=3>序列化</font>应用层协议细节</li>
+<li>socket发送，即网络传输协议细节</li>
+<li>socket接收</li>
+<li>字节流到出参的转化，即<font color=#F84506 size=3>反序列化</font>应用层协议细节</li>
+</ul>
+<p><strong>能不能调用层不关注这个细节？</strong></p>
+<p>可以，RPC框架就是解决这个问题的，它能够让调用方“<font color=#F84506 size=3>像调用本地函数一样调用远端的函数（服务）</font>”。</p>
+<p>讲到这里，是不是对RPC，对序列化范序列化有点感觉了？往下看，有更多的底层细节。</p>
+<h2 id="rpc框架的职责是什么"><strong>RPC框架的职责是什么？</strong></h2>
+<p>RPC框架，要向调用方屏蔽各种复杂性，要向服务提供方也屏蔽各类复杂性：</p>
+<ul>
+<li>服务调用方client感觉就像调用本地函数一样，来调用服务</li>
+<li>服务提供方server感觉就像实现一个本地函数一样，来实现服务</li>
+</ul>
+<p>所以整个RPC框架又分为<strong>client部分</strong>与<strong>server部分</strong>，实现上面的目标，把复杂性屏蔽，就是RPC框架的职责。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.webp"
+        data-srcset="./8.webp, ./8.webp 1.5x, ./8.webp 2x"
+        data-sizes="auto"
+        alt="./8.webp"
+        title="8" /></p>
+<p>如上图所示，<strong>业务方的职责</strong>是：</p>
+<ul>
+<li>调用方A，传入参数，执行调用，拿到结果</li>
+<li>服务方B，收到参数，执行逻辑，返回结果</li>
+</ul>
+<p><strong>RPC框架的职责</strong>是，中间大蓝框的部分：</p>
+<ul>
+<li><strong>client端</strong>：序列化、反序列化、连接池管理、负载均衡、故障转移、队列管理，超时管理、异步管理等等</li>
+<li><strong>server端</strong>：服务端组件、服务端收发包队列、io线程、工作线程、序列化反序列化等</li>
+</ul>
+<p>server端的技术大家了解的比较多，接下来重点讲讲client端的技术细节。</p>
+<p>先来看看RPC-client部分的“序列化反序列化”部分。</p>
+<p><strong>为什么要进行序列化？</strong></p>
+<p>工程师通常使用“对象”来进行数据的操纵：</p>
+<blockquote>
+<p><em>class User{</em></p>
+<p>​     <em>std::String user_name;</em></p>
+<p>​     <em>uint64_t user_id;</em></p>
+<p>​     <em>uint32_t user_age;</em></p>
+<p><em>};</em></p>
+<p><em>User u = new User(“shenjian”);</em></p>
+<p><em>u.setUid(123);</em></p>
+<p><em>u.setAge(35);</em></p>
+</blockquote>
+<p>但当需要对数据进行<strong>存储</strong>或者<strong>传输</strong>时，“对象”就不这么好用了，往往需要把数据转化成连续空间的“二进制字节流”，一些典型的场景是：</p>
+<ul>
+<li>数据库<strong>索引的磁盘存储</strong>：数据库的索引在内存里是b+树，但这个格式是不能够直接存储到磁盘上的，所以需要把b+树转化为<font color=#F84506 size=3>连续空间的二进制字节流</font>，才能存储到磁盘上</li>
+<li><strong>缓存的KV存储</strong>：redis/memcache是KV类型的缓存，缓存存储的value必须是连续空间的二进制字节流，而不能够是User对象</li>
+<li><strong>数据的网络传输</strong>：socket发送的数据必须是连续空间的二进制字节流，也不能是对象</li>
+</ul>
+<p>所谓<strong>序列化</strong>（Serialization），就是将“对象”形态的数据转化为“连续空间二进制字节流”形态数据的过程。这个过程的逆过程叫做<strong>反序列化</strong>。</p>
+<p><strong>怎么进行序列化？</strong></p>
+<p>这是一个非常细节的问题，要是让你来把“对象”转化为字节流，你会怎么做？很容易想到的一个方法是xml（或者json）这类具有自描述特性的标记性语言：</p>
+<blockquote>
+<p><em><class name=”User”></em></p>
+<p><em><element name="user_name" type="std::String" value="shenjian" /></em></p>
+<p><em><element name=”user_id” type=”uint64_t” value=”123” /></em></p>
+<p><em><element name=”user_age” type=”uint32_t” value=”35” /></em></p>
+<p><em></class></em></p>
+</blockquote>
+<p>规定好转换规则，发送方很容易把User类的一个对象序列化为xml，服务方收到xml二进制流之后，也很容易将其范序列化为User对象。</p>
+<p><em><font color=#0068FF size=3>画外音：语言支持反射时，这个工作很容易。</font></em></p>
+<p>第二个方法是自己实现二进制协议来进行序列化，还是以上面的User对象为例，可以设计一个这样的通用协议：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.webp"
+        data-srcset="./9.webp, ./9.webp 1.5x, ./9.webp 2x"
+        data-sizes="auto"
+        alt="./9.webp"
+        title="9" /></p>
+<ul>
+<li>头4个字节表示序号</li>
+<li>序号后面的4个字节表示key的长度m</li>
+<li>接下来的m个字节表示key的值</li>
+<li>接下来的4个字节表示value的长度n</li>
+<li>接下来的n个字节表示value的值</li>
+<li>像xml一样递归下去，直到描述完整个对象</li>
+</ul>
+<p>上面的User对象，用这个协议描述出来可能是这样的：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.webp"
+        data-srcset="./10.webp, ./10.webp 1.5x, ./10.webp 2x"
+        data-sizes="auto"
+        alt="./10.webp"
+        title="10" /></p>
+<ul>
+<li>第一行：序号4个字节（设0表示类名），类名长度4个字节（长度为4），接下来4个字节是类名（”User”），共12字节</li>
+<li>第二行：序号4个字节（1表示第一个属性），属性长度4个字节（长度为9），接下来9个字节是属性名（”user_name”），属性值长度4个字节（长度为8），属性值8个字节（值为”shenjian”），共29字节</li>
+<li>第三行：序号4个字节（2表示第二个属性），属性长度4个字节（长度为7），接下来7个字节是属性名（”user_id”），属性值长度4个字节（长度为8），属性值8个字节（值为123），共27字节</li>
+<li>第四行：序号4个字节（3表示第三个属性），属性长度4个字节（长度为8），接下来8个字节是属性名（”user_name”），属性值长度4个字节（长度为4），属性值4个字节（值为35），共24字节</li>
+</ul>
+<p>整个二进制字节流共12+29+27+24=92字节。</p>
+<p>实际的序列化协议要考虑的细节远比这个多，例如：强类型的语言不仅要还原属性名，属性值，还要还原属性类型；复杂的对象不仅要考虑普通类型，还要考虑对象嵌套类型等。无论如何，序列化的思路都是类似的。</p>
+<p><strong>序列化协议要考虑什么因素？</strong></p>
+<p>不管使用成熟协议xml/json，还是自定义二进制协议来序列化对象，序列化协议设计时都需要考虑以下这些因素。</p>
+<ul>
+<li><strong>解析效率</strong>：这个应该是序列化协议应该首要考虑的因素，像xml/json解析起来比较耗时，需要解析doom树，二进制自定义协议解析起来效率就很高</li>
+<li><strong>压缩率，传输有效性</strong>：同样一个对象，xml/json传输起来有大量的xml标签，信息有效性低，二进制自定义协议占用的空间相对来说就小多了</li>
+<li><strong>扩展性与兼容性</strong>：是否能够方便的增加字段，增加字段后旧版客户端是否需要强制升级，都是需要考虑的问题，xml/json和上面的二进制协议都能够方便的扩展</li>
+<li><strong>可读性与可调试性</strong>：这个很好理解，xml/json的可读性就比二进制协议好很多</li>
+<li><strong>跨语言</strong>：上面的两个协议都是跨语言的，有些序列化协议是与开发语言紧密相关的，例如dubbo的序列化协议就只能支持Java的RPC调用</li>
+<li><strong>通用性</strong>：xml/json非常通用，都有很好的第三方解析库，各个语言解析起来都十分方便，上面自定义的二进制协议虽然能够跨语言，但每个语言都要写一个简易的协议客户端</li>
+</ul>
+<p><strong>有哪些常见的序列化方式？</strong></p>
+<ul>
+<li>xml/json：解析效率，压缩率都较差，扩展性、可读性、通用性较好</li>
+<li>thrift</li>
+<li>protobuf：Google出品，必属精品，各方面都不错，强烈推荐，属于二进制协议，可读性差了点，但也有类似的to-string协议帮助调试问题</li>
+<li>Avro</li>
+<li>CORBA</li>
+<li><font color=#F84506 size=3>mc_pack</font>：懂的同学就懂，不懂的就不懂了，09年用过，传说各方面都超越protobuf，懂行的同学可以说一下现状</li>
+<li>…</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.webp"
+        data-srcset="./11.webp, ./11.webp 1.5x, ./11.webp 2x"
+        data-sizes="auto"
+        alt="./11.webp"
+        title="11" />
+RPC-client除了：</p>
+<ul>
+<li>序列化反序列化的部分（上图中的1、4）</li>
+</ul>
+<p>还包含：</p>
+<ul>
+<li>发送字节流与接收字节流的部分（上图中的2、3）</li>
+</ul>
+<p>这一部分，又分为同步调用与异步调用两种方式，下面一一来进行介绍。</p>
+<p><em><font color=#0068FF size=3>画外音：搞通透RPC-client确实不容易。</font></em></p>
+<p>同步调用的代码片段为：</p>
+<blockquote>
+<p><em>Result = Add(Obj1, Obj2);// 得到Result之前处于阻塞状态</em></p>
+</blockquote>
+<p>异步调用的代码片段为：</p>
+<blockquote>
+<p><em>Add(Obj1, Obj2, callback);// 调用后直接返回，不等结果</em></p>
+</blockquote>
+<p>处理结果通过回调为：</p>
+<blockquote>
+<p><em>callback(Result){// 得到处理结果后会调用这个回调函数</em></p>
+<p>​     <em>…</em></p>
+<p><em>}</em></p>
+</blockquote>
+<p>这两类调用，在RPC-client里，实现方式完全不一样。</p>
+<p><strong>RPC-client同步调用架构如何？</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.webp"
+        data-srcset="./12.webp, ./12.webp 1.5x, ./12.webp 2x"
+        data-sizes="auto"
+        alt="./12.webp"
+        title="12" />
+所谓同步调用，在得到结果之前，一直处于阻塞状态，会一直占用一个工作线程，上图简单的说明了一下组件、交互、流程步骤：</p>
+<ul>
+<li><strong>左边大框</strong>，代表了调用方的<font color=#F84506 size=3>一个工作线程</font></li>
+<li>左边<strong>粉色中框</strong>，代表了<font color=#F84506 size=3>RPC-client组件</font></li>
+<li>右边<strong>橙色框</strong>，代表了<font color=#F84506 size=3>RPC-server</font></li>
+<li><strong>蓝色两个小框</strong>，代表了同步RPC-client两个核心组件，<font color=#F84506 size=3>序列化组件</font>与连接池组件</li>
+<li><strong>白色的流程小框</strong>，以及箭头序号1-10，代表整个<font color=#F84506 size=3>工作线程的串行执行步骤</font>：</li>
+</ul>
+<p>1）业务代码发起RPC调用：</p>
+<blockquote>
+<p><em>Result=Add(Obj1,Obj2)</em></p>
+</blockquote>
+<p>2）序列化组件，将对象调用序列化成二进制字节流，可理解为一个待发送的包packet1；</p>
+<p>3）通过连接池组件拿到一个可用的连接connection；</p>
+<p>4）通过连接connection将包packet1发送给RPC-server；</p>
+<p>5）发送包在网络传输，发给RPC-server；</p>
+<p>6）响应包在网络传输，发回给RPC-client；</p>
+<p>7）通过连接connection从RPC-server收取响应包packet2；</p>
+<p>8）通过连接池组件，将conneciont放回连接池；</p>
+<p>9）序列化组件，将packet2范序列化为Result对象返回给调用方；</p>
+<p>10）业务代码获取Result结果，工作线程继续往下走；</p>
+<p><em><font color=#0068FF size=3>画外音：请对照架构图中的1-10步骤阅读。</font></em></p>
+<p><strong>连接池组件有什么作用？</strong></p>
+<p>RPC框架锁支持的负载均衡、故障转移、发送超时等特性，都是通过连接池组件去实现的。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.webp"
+        data-srcset="./13.webp, ./13.webp 1.5x, ./13.webp 2x"
+        data-sizes="auto"
+        alt="./13.webp"
+        title="13" /></p>
+<p>典型连接池组件对外提供的接口为：</p>
+<blockquote>
+<p><em>int ConnectionPool::<strong><font color=#F84506 size=3>init</font></strong>(…);</em></p>
+<p><em>Connection ConnectionPool::<strong><font color=#F84506 size=3>getConnection</font></strong>();</em></p>
+<p><em>int ConnectionPool::<strong><font color=#F84506 size=3>putConnection</font></strong>(Connection t);</em></p>
+</blockquote>
+<p><strong>init做了些什么？</strong></p>
+<p>和下游RPC-server（一般是一个集群），建立N个tcp长连接，即所谓的连接“池”。</p>
+<p><strong>getConnection做了些什么？</strong></p>
+<p>从连接“池”中拿一个连接，加锁（置一个标志位），返回给调用方。</p>
+<p><strong>putConnection做了些什么？</strong></p>
+<p>将一个分配出去的连接放回连接“池”中，解锁（也是置一个标志位）。</p>
+<p><strong>如何实现负载均衡？</strong></p>
+<p>连接池中建立了与一个RPC-server集群的连接，<font color=#F84506 size=3>连接池在返回连接的时候，需要具备随机性</font>。</p>
+<p><strong>如何实现故障转移？</strong></p>
+<p>连接池中建立了与一个RPC-server集群的连接，当连接池<font color=#F84506 size=3>发现某一个机器的连接异常后，需要将这个机器的连接排除掉</font>，返回正常的连接，在机器恢复后，再将连接加回来。</p>
+<p><strong>如何实现发送超时？</strong></p>
+<p>因为是同步阻塞调用，拿到一个连接后，<font color=#F84506 size=3>使用带超时的send/recv</font>即可实现带超时的发送和接收。</p>
+<p>总的来说，<font color=#F84506 size=3>同步的RPC-client</font>的实现是相对比较容易的，序列化组件、连接池组件配合多工作线程数，就能够实现。</p>
+<p>遗留问题，<strong>工作线程数设置为多少最合适？</strong></p>
+<p>这个问题在《<a href="http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDA5OQ==&amp;mid=2651960260&amp;idx=1&amp;sn=051fd566d43d7fd35724bdf55484ee5f&amp;chksm=bd2d06188a5a8f0e64467381c7b3df5bdcb7f81ba055d5d21ec2f8b888492be15527d23070b0&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">工作线程数究竟要设置为多少最合适？</a>》中讨论过，此处不再深究。</p>
+<p><strong>RPC-client异步回调架构如何？</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.webp"
+        data-srcset="./14.webp, ./14.webp 1.5x, ./14.webp 2x"
+        data-sizes="auto"
+        alt="./14.webp"
+        title="14" /></p>
+<p>所谓异步回调，在得到结果之前，不会处于阻塞状态，理论上任何时间都没有任何线程处于阻塞状态，因此异步回调的模型，理论上只需要很少的工作线程与服务连接就能够达到很高的吞吐量，如上图所示：</p>
+<ul>
+<li><strong>左边的框框</strong>，是<font color=#F84506 size=3>少量工作线程</font>（少数几个就行了）进行调用与回调</li>
+<li><strong>中间粉色的框框</strong>，代表了<font color=#F84506 size=3>RPC-client组件</font></li>
+<li><strong>右边橙色框</strong>，代表了<font color=#F84506 size=3>RPC-server</font></li>
+<li><strong>蓝色六个小框</strong>，代表了异步<font color=#F84506 size=3>RPC-client六个核心组件</font>：<strong>上下文管理器，超时管理器，序列化组件，下游收发队列，下游收发线程，连接池组件</strong></li>
+<li><strong>白色的流程小框</strong>，以及箭头序号1-17，代表整个工作线程的串行执行步骤：</li>
+</ul>
+<p>1）业务代码发起异步RPC调用；</p>
+<blockquote>
+<p><em>Add(Obj1,Obj2, callback)</em></p>
+</blockquote>
+<p>2）上下文管理器，将请求，回调，上下文存储起来；</p>
+<p>3）序列化组件，将对象调用序列化成二进制字节流，可理解为一个待发送的包packet1；</p>
+<p>4）下游收发队列，将报文放入“待发送队列”，此时调用返回，不会阻塞工作线程；</p>
+<p>5）下游收发线程，将报文从“待发送队列”中取出，通过连接池组件拿到一个可用的连接connection；</p>
+<p>6）通过连接connection将包packet1发送给RPC-server；</p>
+<p>7）发送包在网络传输，发给RPC-server；</p>
+<p>8）响应包在网络传输，发回给RPC-client；</p>
+<p>9）通过连接connection从RPC-server收取响应包packet2；</p>
+<p>10）下游收发线程，将报文放入“已接受队列”，通过连接池组件，将conneciont放回连接池；</p>
+<p>11）下游收发队列里，报文被取出，此时回调将要开始，不会阻塞工作线程；</p>
+<p>12）序列化组件，将packet2范序列化为Result对象；</p>
+<p>13）上下文管理器，将结果，回调，上下文取出；</p>
+<p>14）通过callback回调业务代码，返回Result结果，工作线程继续往下走；</p>
+<p>如果请求长时间不返回，处理流程是：</p>
+<p>15）上下文管理器，请求长时间没有返回；</p>
+<p>16）超时管理器拿到超时的上下文；</p>
+<p>17）通过timeout_cb回调业务代码，工作线程继续往下走；</p>
+<p><em><font color=#0068FF size=3>画外音：请配合架构图仔细看几遍这个流程。</font></em></p>
+<p>序列化组件和连接池组件上文已经介绍过，收发队列与收发线程比较容易理解。下面重点介绍<strong>上下文管理器</strong>与<strong>超时管理器</strong>这两个总的组件。</p>
+<p><strong>为什么需要上下文管理器？</strong></p>
+<p>由于请求包的发送，响应包的回调都是异步的，甚至不在同一个工作线程中完成，需要一个组件来记录一个请求的上下文，<font color=#F84506 size=3>把请求-响应-回调等一些信息匹配起来</font>。</p>
+<p><strong>如何将请求-响应-回调这些信息匹配起来？</strong></p>
+<p>这是一个很有意思的问题，通过一条连接往下游服务发送了a，b，c三个请求包，异步的收到了x，y，z三个响应包：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.webp"
+        data-srcset="./15.webp, ./15.webp 1.5x, ./15.webp 2x"
+        data-sizes="auto"
+        alt="./15.webp"
+        title="15" /></p>
+<p><strong>怎么知道哪个请求包与哪个响应包对应？</strong></p>
+<p><strong>怎么知道哪个响应包与哪个回调函数对应？</strong></p>
+<p>可以通过“请求id”来实现请求-响应-回调的串联。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.webp"
+        data-srcset="./16.webp, ./16.webp 1.5x, ./16.webp 2x"
+        data-sizes="auto"
+        alt="./16.webp"
+        title="16" />
+整个处理流程如上，通过请求id，上下文管理器来对应请求-响应-callback之间的映射关系：</p>
+<p>1）生成请求id；</p>
+<p>2）生成请求上下文context，上下文中包含发送时间time，回调函数callback等信息；</p>
+<p>3）上下文管理器记录req-id与上下文context的映射关系；</p>
+<p>4）<font color=#F84506 size=3>将req-id打在请求包里发给RPC-server；</font></p>
+<p>5）<font color=#F84506 size=3>RPC-server将req-id打在响应包里返回；</font></p>
+<p>6）由响应包中的req-id，通过上下文管理器找到原来的上下文context；</p>
+<p>7）从上下文context中拿到回调函数callback；</p>
+<p>8）callback将Result带回，推动业务的进一步执行；</p>
+<p><strong>如何实现负载均衡，故障转移？</strong></p>
+<p>与同步的连接池思路类似，不同之处在于：</p>
+<ul>
+<li>同步连接池使用阻塞方式收发，需要与一个服务的一个ip建立<font color=#F84506 size=3>多条连接</font></li>
+<li>异步收发，一个服务的一个ip只需要建立<font color=#F84506 size=3>少量的连接</font>（例如，一条tcp连接）</li>
+</ul>
+<p><strong>如何实现超时发送与接收？</strong></p>
+<p>超时收发，与同步阻塞收发的实现就不一样了：</p>
+<ul>
+<li>同步阻塞超时，可以直接使用带超时的send/recv来实现</li>
+<li>异步非阻塞的nio的网络报文收发，由于连接不会一直等待回包，超时是由超时管理器实现的</li>
+</ul>
+<p><strong>超时管理器如何实现超时管理？</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./17.webp"
+        data-srcset="./17.webp, ./17.webp 1.5x, ./17.webp 2x"
+        data-sizes="auto"
+        alt="./17.webp"
+        title="17" /></p>
+<p>超时管理器，用于实现请求回包超时回调处理。</p>
+<p>每一个请求发送给下游RPC-server，会在上下文管理器中保存req-id与上下文的信息，上下文中保存了请求很多相关信息，例如req-id，回包回调，超时回调，发送时间等。</p>
+<p>超时管理器启动timer对上下文管理器中的context进行扫描，看上下文中请求发送时间是否过长，如果过长，就不再等待回包，直接超时回调，推动业务流程继续往下走，并将上下文删除掉。</p>
+<p>如果超时回调执行后，正常的回包又到达，通过req-id在上下文管理器里找不到上下文，就直接将请求丢弃。</p>
+<p><em><font color=#0068FF size=3>画外音：因为已经超时处理了，无法恢复上下文。</font></em></p>
+<p>无论如何，异步回调和同步回调相比，除了序列化组件和连接池组件，会多出上下文管理器，超时管理器，下游收发队列，下游收发线程等组件，并且对调用方的调用习惯有影响。</p>
+<p><em><font color=#0068FF size=3>画外音：编程习惯，由同步变为了回调。</font></em></p>
+<p>异步回调能提高系统整体的吞吐量，具体使用哪种方式实现RPC-client，可以结合业务场景来选取。</p>
+<p><strong>总结</strong></p>
+<p><strong>什么是RPC调用？</strong></p>
+<p>像调用本地函数一样，调用一个远端服务。</p>
+<p><strong>为什么需要RPC框架？</strong></p>
+<p>RPC框架用于屏蔽RPC调用过程中的序列化，网络传输等技术细节。让调用方只专注于调用，服务方只专注于实现调用。</p>
+<p><strong>什么是序列化？为什么需要序列化？</strong></p>
+<p>把对象转化为连续二进制流的过程，叫做序列化。磁盘存储，缓存存储，网络传输只能操作于二进制流，所以必须序列化。</p>
+<p><strong>同步RPC-client的核心组件是什么？</strong></p>
+<p>同步RPC-client的核心组件是<font color=#F84506 size=3>序列化组件、连接池组件</font>。它通过连接池来实现负载均衡与故障转移，通过阻塞的收发来实现超时处理。</p>
+<p><strong>异步RPC-client的核心组件是什么？</strong></p>
+<p>异步RPC-client的核心组件是<font color=#F84506 size=3>序列化组件、连接池组件、收发队列、收发线程、上下文管理器、超时管理器</font>。它通过“请求id”来关联请求包-响应包-回调函数，用上下文管理器来管理上下文，用超时管理器中的timer触发超时回调，推进业务流程的超时处理。</p>
+<p><font color=#F84506 size=3>思路</font>比结论重要。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-08-31</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/microsvc-rpc-axiom/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/microsvc-rpc-axiom/" data-title="微服务RPC原理与好处" data-hashtags="Microservices,RPC"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/microsvc-rpc-axiom/" data-hashtag="Microservices"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/microsvc-rpc-axiom/" data-title="微服务RPC原理与好处" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/microsvc-rpc-axiom/" data-title="微服务RPC原理与好处"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/microservices/">Microservices</a>,&nbsp;<a href="/tags/rpc/">RPC</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/shorten-command-line-for/" class="prev" rel="prev" title="IDEA启动项目报错 Command line is too long"><i class="fas fa-angle-left fa-fw"></i>IDEA启动项目报错 Command line is too long</a>
+            <a href="/android-bottom-navigation/" class="next" rel="next" title="类微信界面设计">类微信界面设计<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>
