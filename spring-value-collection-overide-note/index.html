@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Spring的通过@Value注入自定义类型教程 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Spring的通过@Value注入自定义类型教程的笔记"><meta property="og:title" content="Spring的通过@Value注入自定义类型教程" />
+<meta property="og:description" content="记录Spring的通过@Value注入自定义类型教程的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/spring-value-collection-overide-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/spring-value-collection-overide-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-06T14:46:46&#43;08:00" />
+<meta property="article:modified_time" content="2021-09-06T14:46:46&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/spring-value-collection-overide-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Spring的通过@Value注入自定义类型教程"/>
+<meta name="twitter:description" content="记录Spring的通过@Value注入自定义类型教程的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/spring-value-collection-overide-note/" /><link rel="prev" href="https://kkkpjskey.github.io/restful-note/" /><link rel="next" href="https://kkkpjskey.github.io/android-bottom-navigation/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Spring的通过@Value注入自定义类型教程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/spring-value-collection-overide-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/spring-value-collection-overide-note\/featured-image.jpg",
+                            "width":  1830 ,
+                            "height":  549 
+                        }],"genre": "posts","keywords": "Java, Spring","wordcount":  5119 ,
+        "url": "https:\/\/kkkpjskey.github.io\/spring-value-collection-overide-note\/","datePublished": "2021-09-06T14:46:46+08:00","dateModified": "2021-09-06T14:46:46+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Spring的通过@Value注入自定义类型教程的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/spring-value-collection-overide-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/spring-value-collection-overide-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Spring的通过@Value注入自定义类型教程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-06">2021-09-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5119 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/spring-value-collection-overide-note/" class="leancloud_visitors" data-flag-title="Spring的通过@Value注入自定义类型教程">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/spring-value-collection-overide-note/featured-image.jpg"
+        data-srcset="/spring-value-collection-overide-note/featured-image.jpg, /spring-value-collection-overide-note/featured-image.jpg 1.5x, /spring-value-collection-overide-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/spring-value-collection-overide-note/featured-image.jpg"
+        title="记录Spring的通过@Value注入自定义类型教程的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#先来梳理一下value对属性的注入流程">先来梳理一下@Value对属性的注入流程</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#1从autowiredannotationbeanpostprocessor后置处理说起吧">1、从AutowiredAnnotationBeanPostProcessor后置处理说起吧</a></li>
+                <li><a href="#2接着进入injectionmetadata的inject方法">2、接着进入InjectionMetadata的inject()方法</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>之前写了一篇关于Spring的@Value注入的文章<a href="https://kkkpjskey.github.io/springboot-config-note/" target="_blank" rel="noopener noreferrer">《SpringBoot读取yml/properties的几种方法》</a>里面列出了@Value和@ConfigurationProperties的对比，其中有一条是写的@Value不支持复杂类型封装（数组、Map、对象等）。</p>
+<p>但是后来有小伙伴留言说他用@Value测试的时候，是可以注入的数组和集合的。于是我就跟着做了一些测试，发现确实可以。但是只有在以，分割的字符串的时候才可以。</p>
+<p>为什么用，分割的字符串可以注入数组？于是我就去一步一步的断点去走了一遍@Value注入属性的过程，才发现了根本原因。</p>
+<blockquote>
+<p>@Value不支持复杂类型封装（数组、Map、对象等）这个说法确实是有问题的，不够严谨，因为在特殊情况下，是可以注入复杂类型的。</p>
+</blockquote>
+<h3 id="先来梳理一下value对属性的注入流程">先来梳理一下@Value对属性的注入流程</h3>
+<p>先交代一下我们的代码：</p>
+<p>一个yml文件a.yml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="l">a,b,c,d</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>一个Bean A.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="nd">@PropertySource</span><span class="o">(</span><span class="n">Value</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;classpath:a.yml&#34;</span><span class="o">},</span><span class="n">ignoreResourceNotFound</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s">&#34;utf-8&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+
+	<span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${test}&#34;</span><span class="o">)</span>
+	<span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">test</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;test:&#34;</span><span class="o">+</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">test</span><span class="o">));</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;长度：&#34;</span><span class="o">+</span><span class="n">test</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>main方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="s">&#34;com.kinyang&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloApp</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">AnnotationConfigApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AnnotationConfigApplicationContext</span><span class="o">(</span><span class="n">HelloApp</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+		<span class="n">A</span> <span class="n">bean</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">A</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+		<span class="n">bean</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ok！下面开始分析</p>
+<h5 id="1从autowiredannotationbeanpostprocessor后置处理说起吧">1、从AutowiredAnnotationBeanPostProcessor后置处理说起吧</h5>
+<p>过多的Spring初始化Bean的流程就不说了，我们直接定位到Bean的属性注入的后置处理器</p>
+<p>AutowiredAnnotationBeanPostProcessor。此类中的processInjection（）方法中完成了Bean 中@Autowired、@Inject、 @Value 注解的解析并注入的功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	 <span class="n">此方法中完成了Bean</span> <span class="n">中</span><span class="nd">@Autowired</span><span class="err">、</span><span class="nd">@Inject</span><span class="err">、</span> <span class="nd">@Value</span> <span class="n">注解的解析并注入的功能</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">processInjection</span><span class="o">(</span><span class="n">Object</span> <span class="n">bean</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">BeanCreationException</span> <span class="o">{</span>
+		<span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">bean</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+		<span class="c1">///  找到 类上所有的需要自动注入的元素
+</span><span class="c1"></span>		<span class="c1">// （把@Autowired、@Inject、 @Value注解的字段和方法包装成InjectionMetadata类的对象返回）
+</span><span class="c1"></span>		<span class="n">InjectionMetadata</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">findAutowiringMetadata</span><span class="o">(</span><span class="n">clazz</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="n">clazz</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="n">metadata</span><span class="o">.</span><span class="na">inject</span><span class="o">(</span><span class="n">bean</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="n">BeanCreationException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">throw</span> <span class="n">ex</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">catch</span> <span class="o">(</span><span class="n">Throwable</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="n">BeanCreationException</span><span class="o">(</span>
+					<span class="s">&#34;Injection of autowired dependencies failed for class [&#34;</span> <span class="o">+</span> <span class="n">clazz</span> <span class="o">+</span> <span class="s">&#34;]&#34;</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="2接着进入injectionmetadata的inject方法">2、接着进入InjectionMetadata的inject()方法</h5>
+<p>inject（）方法就是一个循环上面一步解析出来的注解信息，注解的方法或者字段包装后的对象是InjectedElement类型的类，InjectedElement是一个抽象类，他的实现主要有两个：对注解字段生成的是AutowiredFieldElement类，对注解方法生成的是AutowiredMethodElement类。</p>
+<p>我们这里只分析@Value注解字段的注入流程，所以下一步会进到AutowiredFieldElement类的inject()方法.</p>
+<p>此方法就两大步骤:</p>
+<ol>
+<li>获取要注入的Value</li>
+<li>通过反射，把值去set字段上</li>
+</ol>
+<p>其中获取要注入的Value过程比较复杂，第二步set值就两行代码搞定</p>
+<p>具体逻辑看下面代码上我写的注释</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">		<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">inject</span><span class="o">(</span><span class="n">Object</span> <span class="n">bean</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">String</span> <span class="n">beanName</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">PropertyValues</span> <span class="n">pvs</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+			<span class="n">Field</span> <span class="n">field</span> <span class="o">=</span> <span class="o">(</span><span class="n">Field</span><span class="o">)</span> <span class="k">this</span><span class="o">.</span><span class="na">member</span><span class="o">;</span>
+			<span class="n">Object</span> <span class="n">Value</span><span class="o">;</span>
+			<span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">cached</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">/// 优先从缓存中获取
+</span><span class="c1"></span>				<span class="n">Value</span> <span class="o">=</span> <span class="n">resolvedCachedArgument</span><span class="o">(</span><span class="n">beanName</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">cachedFieldValue</span><span class="o">);</span>
+			<span class="o">}</span>
+			<span class="k">else</span> <span class="o">{</span>
+			<span class="c1">///缓存中没有的话，走下面的逻辑处理
+</span><span class="c1"></span>				<span class="n">DependencyDescriptor</span> <span class="n">desc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DependencyDescriptor</span><span class="o">(</span><span class="n">field</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">required</span><span class="o">);</span>
+				<span class="n">desc</span><span class="o">.</span><span class="na">setContainingClass</span><span class="o">(</span><span class="n">bean</span><span class="o">.</span><span class="na">getClass</span><span class="o">());</span>
+				<span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">autowiredBeanNames</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashSet</span><span class="o">&lt;&gt;(</span><span class="n">1</span><span class="o">);</span>
+				<span class="n">Assert</span><span class="o">.</span><span class="na">state</span><span class="o">(</span><span class="n">beanFactory</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">,</span> <span class="s">&#34;No BeanFactory available&#34;</span><span class="o">);</span>
+				  <span class="n">这个对我们今天讨论的问题很关键</span>
+				  <span class="n">获取一个</span> <span class="n">类型转换器</span>
+				<span class="n">TypeConverter</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">beanFactory</span><span class="o">.</span><span class="na">getTypeConverter</span><span class="o">();</span>
+				<span class="k">try</span> <span class="o">{</span>
+					<span class="c1">///   获取值（重点，这里把一个TypeConverter传进去了）
+</span><span class="c1"></span>					<span class="n">Value</span> <span class="o">=</span> <span class="n">beanFactory</span><span class="o">.</span><span class="na">resolveDependency</span><span class="o">(</span><span class="n">desc</span><span class="o">,</span> <span class="n">beanName</span><span class="o">,</span> <span class="n">autowiredBeanNames</span><span class="o">,</span> <span class="n">typeConverter</span><span class="o">);</span>
+					<span class="c1">///  经过上面的方法返回来的 Value 就是要注入的值了
+</span><span class="c1"></span>					<span class="c1">///  通过断点调试，我们可以发现我们在配置文件yml中配置的 “a,b,c,d”字符串已经变成了一个String[]数组
+</span><span class="c1"></span>				<span class="o">}</span>
+				<span class="k">catch</span> <span class="o">(</span><span class="n">BeansException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+					<span class="k">throw</span> <span class="k">new</span> <span class="n">UnsatisfiedDependencyException</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">beanName</span><span class="o">,</span> <span class="k">new</span> <span class="n">InjectionPoint</span><span class="o">(</span><span class="n">field</span><span class="o">),</span> <span class="n">ex</span><span class="o">);</span>
+				<span class="o">}</span>
+				<span class="kd">synchronized</span> <span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+					<span class="o">.....</span> 
+					<span class="n">这里不是我们本次讨论的重点所以就去掉了</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">Value</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			 <span class="n">这里就是第二步</span><span class="err">，</span><span class="n">赋值</span>
+				<span class="n">ReflectionUtils</span><span class="o">.</span><span class="na">makeAccessible</span><span class="o">(</span><span class="n">field</span><span class="o">);</span>
+				<span class="n">field</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">bean</span><span class="o">,</span> <span class="n">Value</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>从上面代码来看，所有重点就都落到了这行代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Value</span> <span class="o">=</span> <span class="n">beanFactory</span><span class="o">.</span><span class="na">resolveDependency</span><span class="o">(</span><span class="n">desc</span><span class="o">,</span> <span class="n">beanName</span><span class="o">,</span> <span class="n">autowiredBeanNames</span><span class="o">,</span> <span class="n">typeConverter</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>推断下来resolveDependency方法里应该是读取配置文件字符串，然后将字符串用，分割转换了数组。
+那么具体怎么转换的呢？我们继续跟进！</p>
+<p>进入resolveDependency（）方法，里面逻辑很简单做了一些判断，真正实现其实是doResolveDependency（）方法，进行跟进。</p>
+<p>根据@Value注解，从配置文件a.yml中解析出配置的内容：&ldquo;a,b,c,d&rdquo;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c1.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c1.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c1.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c1.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Spring-Value-Collection-Overide-Note\1.png"
+        title="1" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img-blog.csdnimg.cn/2020121900031752.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppYW55YW5nYmo=,size_16,color_FFFFFF,t_70"
+        data-srcset="https://img-blog.csdnimg.cn/2020121900031752.png?x-oss-process=image/watermark%2ctype_ZmFuZ3poZW5naGVpdGk%2cshadow_10%2ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppYW55YW5nYmo=%2csize_16%2ccolor_FFFFFF%2ct_70, https://img-blog.csdnimg.cn/2020121900031752.png?x-oss-process=image/watermark%2ctype_ZmFuZ3poZW5naGVpdGk%2cshadow_10%2ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppYW55YW5nYmo=%2csize_16%2ccolor_FFFFFF%2ct_70 1.5x, https://img-blog.csdnimg.cn/2020121900031752.png?x-oss-process=image/watermark%2ctype_ZmFuZ3poZW5naGVpdGk%2cshadow_10%2ctext_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppYW55YW5nYmo=%2csize_16%2ccolor_FFFFFF%2ct_70 2x"
+        data-sizes="auto"
+        alt="https://img-blog.csdnimg.cn/2020121900031752.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppYW55YW5nYmo=,size_16,color_FFFFFF,t_70"
+        title="https://img-blog.csdnimg.cn/2020121900031752.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdWppYW55YW5nYmo=,size_16,color_FFFFFF,t_70" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c2.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c2.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c2.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c2.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Spring-Value-Collection-Overide-Note\2.png"
+        title="2" /></p>
+<p>到这里我们得到值还是配置文件配置的字符串，并没有变成我们想要的String[]字符串数组类型。</p>
+<p>我们继续往下走，下面是获取一个TypeConverter类型转换器，这里的类型转换器是上面传进来的，具体类型SimpleTypeConverter类。</p>
+<p>然后通过这个类型转换器的convertIfNecessary方法把，我们的字符串&quot;a,b,c,d&quot;转换成了String[]数组。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c3.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c3.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c3.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c3.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Spring-Value-Collection-Overide-Note\3.png"
+        title="3" /></p>
+<p>所以我们现在知道了，我们从配置文件获取到的值，通过了Spring转换器，调用了convertIfNecessary方法后，进行了类型自动转换。</p>
+<p>那么这转换器到底是怎么进行工作的呢？</p>
+<p>继续研究~~</p>
+<p>那接下来要研究的就是Spring的TypeConverter的工作原理问题了</p>
+<blockquote>
+<p>在这里推荐大家去看看 A哥的<a href="https://blog.csdn.net/f641385712/article/details/110514831" target="_blank" rel="noopener noreferrer">《3. 搞定收工，PropertyEditor就到这》</a> 这篇文章，一共三篇，看完后，在回来看你会更通透！！</p>
+</blockquote>
+<p>首先我们这里知道了外面传进来的那个转换器是一个叫SimpleTypeConverter 的转换器。</p>
+<p>这转换器是org.springframework.beans.factory.support.AbstractBeanFactory#getTypeConverter方法得到的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="n">TypeConverter</span> <span class="nf">getTypeConverter</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">TypeConverter</span> <span class="n">customConverter</span> <span class="o">=</span> <span class="n">getCustomTypeConverter</span><span class="o">();</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">customConverter</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="n">customConverter</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+		<span class="c1">/// 如果没有 用户自定的TypeConverter 那就用 默认的SimpleTypeConverter吧
+</span><span class="c1"></span>			<span class="c1">// Build default TypeConverter, registering custom editors.
+</span><span class="c1"></span>			<span class="n">SimpleTypeConverter</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleTypeConverter</span><span class="o">();</span>
+			 <span class="n">注册一些默认的ConversionService</span>
+			<span class="n">typeConverter</span><span class="o">.</span><span class="na">setConversionService</span><span class="o">(</span><span class="n">getConversionService</span><span class="o">());</span>
+			  <span class="n">再注册一些默认的CustomEditors</span>
+			<span class="nf">registerCustomEditors</span><span class="o">(</span><span class="n">typeConverter</span><span class="o">);</span>
+			<span class="k">return</span> <span class="n">typeConverter</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>默认的SimpleTypeConverter里面注册了一些转换器，从debug过程我们可以看到默认是注入了12个PropertyEditor</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c4.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c4.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c4.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c4.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Spring-Value-Collection-Overide-Note\4.png"
+        title="4" /></p>
+<p>这12个PropertyEditor是在哪注入的呢？大家可以看registerCustomEditors(typeConverter)方法，这里就不展开了，我直接说了，是通过ResourceEditorRegistrar类注入进去的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerCustomEditors</span><span class="o">(</span><span class="n">PropertyEditorRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">ResourceEditor</span> <span class="n">baseEditor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ResourceEditor</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">resourceLoader</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">propertyResolver</span><span class="o">);</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">Resource</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">baseEditor</span><span class="o">);</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">ContextResource</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">baseEditor</span><span class="o">);</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">InputStream</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">InputStreamEditor</span><span class="o">(</span><span class="n">baseEditor</span><span class="o">));</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">InputSource</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">InputSourceEditor</span><span class="o">(</span><span class="n">baseEditor</span><span class="o">));</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">File</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">FileEditor</span><span class="o">(</span><span class="n">baseEditor</span><span class="o">));</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">Path</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">PathEditor</span><span class="o">(</span><span class="n">baseEditor</span><span class="o">));</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">Reader</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">ReaderEditor</span><span class="o">(</span><span class="n">baseEditor</span><span class="o">));</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">URL</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">URLEditor</span><span class="o">(</span><span class="n">baseEditor</span><span class="o">));</span>
+
+		<span class="n">ClassLoader</span> <span class="n">classLoader</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">resourceLoader</span><span class="o">.</span><span class="na">getClassLoader</span><span class="o">();</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">URI</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">URIEditor</span><span class="o">(</span><span class="n">classLoader</span><span class="o">));</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">Class</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">ClassEditor</span><span class="o">(</span><span class="n">classLoader</span><span class="o">));</span>
+		<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">Class</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">ClassArrayEditor</span><span class="o">(</span><span class="n">classLoader</span><span class="o">));</span>
+
+		<span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">resourceLoader</span> <span class="k">instanceof</span> <span class="n">ResourcePatternResolver</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">doRegisterEditor</span><span class="o">(</span><span class="n">registry</span><span class="o">,</span> <span class="n">Resource</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span>
+					<span class="k">new</span> <span class="n">ResourceArrayPropertyEditor</span><span class="o">((</span><span class="n">ResourcePatternResolver</span><span class="o">)</span> <span class="k">this</span><span class="o">.</span><span class="na">resourceLoader</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">propertyResolver</span><span class="o">));</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>现在我们回到 SimpleTypeConverter 的convertIfNecessary方法里去，这个方法其实是SimpleTypeConverter的父类TypeConverterSupport的方法，而这个父类方法里调用的又是TypeConverterDelegate类的convertIfNecessary方法（一个比一个懒，哈哈哈就是自己不干活）</p>
+<p>最后我们重点来分析TypeConverterDelegate的convertIfNecessary方法。</p>
+<p>这个方法内容比较多，但是整体思路就是 根据最后想转换的类型，选择出对应的PropertyEditor或者ConversionService，然后进行类型转换。</p>
+<p>从上面的看的注入的12个PropertyEditor中，我们就可以看出来了，我们匹配到的是</p>
+<p>这行代码doRegisterEditor(registry, Class[].class, new ClassArrayEditor(classLoader));注入的ClassArrayEditor。</p>
+<p>所以我ClassArrayEditor这个类就可以了，这个类就很简单了，主要看setAsText方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAsText</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IllegalArgumentException</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">text</span><span class="o">))</span> <span class="o">{</span>
+			<span class="c1">///  这里通过StringUtils 把字符串，转换成 String数组
+</span><span class="c1"></span>			<span class="n">String</span><span class="o">[]</span> <span class="n">classNames</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">commaDelimitedListToStringArray</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+			<span class="n">Class</span><span class="o">&lt;?&gt;[]</span> <span class="n">classes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Class</span><span class="o">&lt;?&gt;[</span><span class="n">classNames</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+			<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">classNames</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="n">String</span> <span class="n">className</span> <span class="o">=</span> <span class="n">classNames</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">trim</span><span class="o">();</span>
+				<span class="n">classes</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">ClassUtils</span><span class="o">.</span><span class="na">resolveClassName</span><span class="o">(</span><span class="n">className</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">classLoader</span><span class="o">);</span>
+			<span class="o">}</span>
+			<span class="n">setValue</span><span class="o">(</span><span class="n">classes</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="n">setValue</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这个方法里通过Spring的字符串工具类StringUtils的commaDelimitedListToStringArray(text)方法把字符串转换成了数组，方法里就是通过 &ldquo;,&rdquo; 进行分割的。</p>
+<p>到此为止，我们知道了@Value为什么可以把&quot;,&ldquo;分割的字符串注册到数组中了吧。</p>
+<p>其实@Value可以注入URI、Class、File、Resource等等类型，@Value可以注入什么类型完全取决于能不能找到处理 String 到 注入类型的转换器。</p>
+<p>上面列出来的12个其实不是全部默认的，系统还有47个其他的转换器，只不过是上面的12个优先级比较高而已，其实还有下面的40多个转换器，所以你看@Value可以注入的类型还会很多的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kt">void</span> <span class="nf">createDefaultEditors</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;(</span><span class="n">64</span><span class="o">);</span>
+
+		<span class="c1">// Simple editors, without parameterization capabilities.
+</span><span class="c1"></span>		<span class="c1">// The JDK does not contain a default editor for any of these target types.
+</span><span class="c1"></span>		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Charset</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CharsetEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Class</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">ClassEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Class</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">ClassArrayEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Currency</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CurrencyEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">File</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">FileEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">InputStream</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">InputStreamEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">InputSource</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">InputSourceEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Locale</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">LocaleEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Path</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">PathEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Pattern</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">PatternEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Properties</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertiesEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Reader</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">ReaderEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Resource</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">ResourceArrayPropertyEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">TimeZone</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">TimeZoneEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">URI</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">URIEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">URL</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">URLEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">UUID</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">UUIDEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">ZoneId</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">ZoneIdEditor</span><span class="o">());</span>
+
+		<span class="c1">// Default instances of collection editors.
+</span><span class="c1"></span>		<span class="c1">// Can be overridden by registering custom instances of those as custom editors.
+</span><span class="c1"></span>		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Collection</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomCollectionEditor</span><span class="o">(</span><span class="n">Collection</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Set</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomCollectionEditor</span><span class="o">(</span><span class="n">Set</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SortedSet</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomCollectionEditor</span><span class="o">(</span><span class="n">SortedSet</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">List</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomCollectionEditor</span><span class="o">(</span><span class="n">List</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">SortedMap</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomMapEditor</span><span class="o">(</span><span class="n">SortedMap</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>
+
+		<span class="c1">// Default editors for primitive arrays.
+</span><span class="c1"></span>		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">byte</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">ByteArrayPropertyEditor</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">char</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CharArrayPropertyEditor</span><span class="o">());</span>
+
+		<span class="c1">// The JDK does not contain a default editor for char!
+</span><span class="c1"></span>		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">char</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CharacterEditor</span><span class="o">(</span><span class="kc">false</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Character</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CharacterEditor</span><span class="o">(</span><span class="kc">true</span><span class="o">));</span>
+
+		<span class="c1">// Spring&#39;s CustomBooleanEditor accepts more flag Values than the JDK&#39;s default editor.
+</span><span class="c1"></span>		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">boolean</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomBooleanEditor</span><span class="o">(</span><span class="kc">false</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomBooleanEditor</span><span class="o">(</span><span class="kc">true</span><span class="o">));</span>
+
+		<span class="c1">// The JDK does not contain default editors for number wrapper types!
+</span><span class="c1"></span>		<span class="c1">// Override JDK primitive number editors with our own CustomNumberEditor.
+</span><span class="c1"></span>		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">byte</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Byte</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">false</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Byte</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Byte</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">short</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Short</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">false</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Short</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Short</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">false</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">long</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">false</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">float</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Float</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">false</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Float</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Float</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">double</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Double</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">false</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Double</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">Double</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">BigDecimal</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">BigDecimal</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">BigInteger</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomNumberEditor</span><span class="o">(</span><span class="n">BigInteger</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+
+		<span class="c1">// Only register config Value editors if explicitly requested.
+</span><span class="c1"></span>		<span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">configValueEditorsActive</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">StringArrayPropertyEditor</span> <span class="n">sae</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringArrayPropertyEditor</span><span class="o">();</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">String</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="n">sae</span><span class="o">);</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">short</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="n">sae</span><span class="o">);</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">int</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="n">sae</span><span class="o">);</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">defaultEditors</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="kt">long</span><span class="o">[].</span><span class="na">class</span><span class="o">,</span> <span class="n">sae</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><strong>重点来了，分析了这么久了，那么,如果我们想注册一个我们自定义的类该如何操作呢？？？</strong></p>
+</blockquote>
+<p>好了，既然知道了@Value的注入的原理和中间类型转换的过程，那我们就知道该从哪里下手了，那就是写一个我们自己的PropertyEditor，然后注册到Spring的类型转换器中。</p>
+<p>先明确一下我们的需求，就是在yml配置文件中，配置字符串，然后通过@Value注入为一个自定义的对象。</p>
+<p>我们的自定义对象 Car.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">color</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+	<span class="c1">// 省略 get set方法
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>yml配置文件，配置car: 红色|法拉利，我们这里用|分割</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="l">a,b,c,d</span><span class="w">
+</span><span class="w"></span><span class="nt">car</span><span class="p">:</span><span class="w"> </span><span class="l">红色|法拉利</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>用于测试的Bean A.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="nd">@PropertySource</span><span class="o">(</span><span class="n">Value</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;classpath:a.yml&#34;</span><span class="o">},</span><span class="n">ignoreResourceNotFound</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s">&#34;utf-8&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+	<span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${test}&#34;</span><span class="o">)</span>
+	<span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">test</span><span class="o">;</span>
+	<span class="nd">@Value</span><span class="o">(</span><span class="s">&#34;${car}&#34;</span><span class="o">)</span>
+	<span class="kd">private</span> <span class="n">Car</span> <span class="n">car</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;test:&#34;</span><span class="o">+</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">test</span><span class="o">));</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;长度：&#34;</span><span class="o">+</span><span class="n">test</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;自定的Car 居然通过@Value注册成功了&#34;</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">car</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>下面就是写我们的PropertyEditor然后注册到Spring的Spring的类型转换器中。</p>
+<ul>
+<li>自定义 一个 propertyEditor类：CarPropertyEditor，</li>
+<li>这里不要直接去实现PropertyEditor接口，那样太麻烦了，因为有很多接口要实现</li>
+<li>我们这里通过继承PropertyEditorSupport类，通过覆盖关键方法来做</li>
+<li>主要是两个方法 setAsText 和 getAsText 方法</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * @author KinYang.Lau
+</span><span class="cm"> * @date 2020/12/18 11:00 上午
+</span><span class="cm"> *
+</span><span class="cm"> * 自定义 一个 propertyEditor，
+</span><span class="cm"> * 这里不要直接去实现PropertyEditor接口，那样太麻烦了，因为有很多接口要实现
+</span><span class="cm"> * 我们这里通过继承PropertyEditorSupport类，通过覆盖关键方法来做
+</span><span class="cm"> * 主要是两个方法 setAsText 和 getAsText 方法
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CarPropertyEditor</span> <span class="kd">extends</span> <span class="n">PropertyEditorSupport</span> <span class="o">{</span>
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAsText</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IllegalArgumentException</span> <span class="o">{</span>
+		<span class="c1">///  这实现我们的 字符串 转 自定义对象的 逻辑
+</span><span class="c1"></span>		<span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">text</span><span class="o">))</span> <span class="o">{</span>
+			<span class="n">String</span><span class="o">[]</span> <span class="n">split</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;\\|&#34;</span><span class="o">);</span>
+
+			<span class="n">Car</span> <span class="n">car</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Car</span><span class="o">();</span>
+			<span class="n">car</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="n">split</span><span class="o">[</span><span class="n">0</span><span class="o">]);</span>
+			<span class="n">car</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">split</span><span class="o">[</span><span class="n">1</span><span class="o">]);</span>
+			<span class="n">setValue</span><span class="o">(</span><span class="n">car</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="n">setValue</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getAsText</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">Car</span> <span class="n">Value</span> <span class="o">=</span> <span class="o">(</span><span class="n">Car</span><span class="o">)</span> <span class="n">getValue</span><span class="o">();</span>
+		<span class="k">return</span> <span class="o">(</span><span class="n">Value</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">Value</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">:</span> <span class="s">&#34;&#34;</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么如何注册到Spring的Spring的类型转换器中呢？</p>
+<p>这个也简单，ConfigurableBeanFactory 接口有一个void registerCustomEditor(Class requiredType, Class propertyEditorClass);方法就是用于注册CustomEditor的。</p>
+<p>所以我们写一个BeanFactory的后置处理器就可以了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * @author KinYang.Lau
+</span><span class="cm"> * @date 2020/12/18 10:54 上午
+</span><span class="cm"> */</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCustomEditorConfigurer</span> <span class="kd">implements</span> <span class="n">BeanFactoryPostProcessor</span><span class="o">,</span> <span class="n">Ordered</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">order</span> <span class="o">=</span> <span class="n">Ordered</span><span class="o">.</span><span class="na">LOWEST_PRECEDENCE</span><span class="o">;</span>  <span class="c1">// default: same as non-Ordered
+</span><span class="c1"></span>
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">postProcessBeanFactory</span><span class="o">(</span><span class="n">ConfigurableListableBeanFactory</span> <span class="n">beanFactory</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">BeansException</span> <span class="o">{</span>
+	<span class="c1">///  把我们自定义的 转换器器注册进去
+</span><span class="c1"></span>		<span class="n">beanFactory</span><span class="o">.</span><span class="na">registerCustomEditor</span><span class="o">(</span><span class="n">Car</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">CarPropertyEditor</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getOrder</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">order</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>下面我运行一下程序，看看结果吧：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@ComponentScan</span><span class="o">(</span><span class="s">&#34;com.kinyang&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloApp</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">AnnotationConfigApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AnnotationConfigApplicationContext</span><span class="o">(</span><span class="n">HelloApp</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+		<span class="n">A</span> <span class="n">bean</span> <span class="o">=</span> <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">A</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+		<span class="n">bean</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c5.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c5.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c5.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cSpring-Value-Collection-Overide-Note%5c5.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Spring-Value-Collection-Overide-Note\5.png"
+        title="5" /></p>
+<p>搞定！！！</p>
+<p>通过整个分析过程，对@Value的注入原理又有了更深入的理解。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-09-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/spring-value-collection-overide-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/spring-value-collection-overide-note/" data-title="Spring的通过@Value注入自定义类型教程" data-hashtags="Java,Spring"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/spring-value-collection-overide-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/spring-value-collection-overide-note/" data-title="Spring的通过@Value注入自定义类型教程" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/spring-value-collection-overide-note/" data-title="Spring的通过@Value注入自定义类型教程"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/spring/">Spring</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/restful-note/" class="prev" rel="prev" title="RESTful笔记"><i class="fas fa-angle-left fa-fw"></i>RESTful笔记</a>
+            <a href="/android-bottom-navigation/" class="next" rel="next" title="类微信界面设计">类微信界面设计<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

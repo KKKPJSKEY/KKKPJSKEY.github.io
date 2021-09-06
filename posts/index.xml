@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 31 Aug 2021 23:38:20 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 06 Sep 2021 14:46:46 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/android-music-box/</link>
     <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-music-box/</guid>
@@ -15,44 +15,44 @@
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
 </item><item>
-    <title>微服务RPC原理与好处</title>
-    <link>https://kkkpjskey.github.io/microsvc-rpc-axiom/</link>
-    <pubDate>Tue, 31 Aug 2021 23:38:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/microsvc-rpc-axiom/</guid>
-    <description><![CDATA[服务化有什么好处？ 服务化的一个好处就是，不限定服务的提供方使用什么技术选型，能够实现大公司跨团队的技术解耦，如下图所示： 服务A：欧洲团队维护]]></description>
+    <title>Spring的通过@Value注入自定义类型教程</title>
+    <link>https://kkkpjskey.github.io/spring-value-collection-overide-note/</link>
+    <pubDate>Mon, 06 Sep 2021 14:46:46 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/spring-value-collection-overide-note/</guid>
+    <description><![CDATA[之前写了一篇关于Spring的@Value注入的文章《SpringBoot读取yml/properties的几种方法》里面列出了@Value]]></description>
 </item><item>
-    <title>IDEA启动项目报错 Command line is too long</title>
-    <link>https://kkkpjskey.github.io/shorten-command-line-for/</link>
-    <pubDate>Tue, 31 Aug 2021 17:45:26 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/shorten-command-line-for/</guid>
-    <description><![CDATA[报错 在Intell IDEA运行main函数的时候遇到了如下错误： 1 Error running&#39; xxxxxx&#39;: Command line is too long. Shorten command line for xxxxxxxxx1 解决 在run-&gt; edit configuratio]]></description>
+    <title>RESTful笔记</title>
+    <link>https://kkkpjskey.github.io/restful-note/</link>
+    <pubDate>Mon, 06 Sep 2021 14:26:12 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/restful-note/</guid>
+    <description><![CDATA[老婆经常喜欢翻看我订阅的技术杂志，她总能从她的视角提出很多有趣的问题。 一个悠闲的周日下午，她午觉醒来，又习惯性的抓起这个月的杂志，饶有兴趣地]]></description>
 </item><item>
-    <title>Surrogate Pair笔记</title>
-    <link>https://kkkpjskey.github.io/surrogate-pair-note/</link>
-    <pubDate>Tue, 31 Aug 2021 16:31:24 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/surrogate-pair-note/</guid>
-    <description><![CDATA[引言 Surrogate Pair是UTF-16中用于扩展字符而使用的编码方式，是一种采用四个字节(两个UTF-16编码)来表示一个字符。 中文名 代理对 外文名 surrogate pair]]></description>
+    <title>SpringBoot读取yml/properties的几种方法</title>
+    <link>https://kkkpjskey.github.io/springboot-config-note/</link>
+    <pubDate>Thu, 02 Sep 2021 11:27:32 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springboot-config-note/</guid>
+    <description><![CDATA[前言 由于一些众所周知且不可抗拒的力量，个人的Spring底子很差，Boot和MVC部分还可以。特别是学习了设计模式，认为开发一个软件时Spr]]></description>
 </item><item>
-    <title>Maven笔记</title>
-    <link>https://kkkpjskey.github.io/maven-note/</link>
-    <pubDate>Tue, 31 Aug 2021 15:39:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/maven-note/</guid>
-    <description><![CDATA[Transitive Dependencies（Maven依赖可传递性） 这里是官网地址，本人英语渣渣，依靠翻译软件勉勉强强看懂，就不翻译出来班门弄斧了，请大家八]]></description>
+    <title>log4j和slf4j分析及教程</title>
+    <link>https://kkkpjskey.github.io/java-log4j-slf4j-note/</link>
+    <pubDate>Thu, 02 Sep 2021 11:18:14 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-log4j-slf4j-note/</guid>
+    <description><![CDATA[为什么要log4j和slf4j代替System.out.println()输出日志 内容： 1.什么是log4j 2.log4j的特点 3.为什么要]]></description>
 </item><item>
-    <title>Vue笔记</title>
-    <link>https://kkkpjskey.github.io/vue-note/</link>
-    <pubDate>Mon, 30 Aug 2021 23:17:25 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-note/</guid>
-    <description><![CDATA[将vue文档下载到本地预览 1下载：https://github.com/vuejs/cn.vuejs.org 到本地 2.执行指令 1 2 npm install npm start #]]></description>
+    <title>Spring @Aspect、@Before、@After 注解实现 AOP 切面功能</title>
+    <link>https://kkkpjskey.github.io/spring-aop-note/</link>
+    <pubDate>Wed, 01 Sep 2021 14:45:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/spring-aop-note/</guid>
+    <description><![CDATA[Spring AOP 注解概述 1、Spring 的 AOP 功能除了在配置文件中配置一大堆的配置，比如切入点、表达式、通知等等以外，使用注解的方式更为方便快捷，特别是 Spring]]></description>
 </item><item>
-    <title>Win10该设备正在使用中报错</title>
-    <link>https://kkkpjskey.github.io/win10-usb-in-use-error/</link>
-    <pubDate>Mon, 30 Aug 2021 22:40:27 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win10-usb-in-use-error/</guid>
-    <description><![CDATA[方法一 我反正不行，搜索结果为空 电脑弹出USB设备时提示该设备正在使用，虽然在正常显示时并没有程序在使用，但是确实会出现这种情况，实际上确实有]]></description>
+    <title>EJB解释分析</title>
+    <link>https://kkkpjskey.github.io/ejb-note/</link>
+    <pubDate>Wed, 01 Sep 2021 14:18:32 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/ejb-note/</guid>
+    <description><![CDATA[1. 我们不禁要问，什么是&quot;服务集群&quot;？什么是&quot;企业级开发&quot;？ 既然说了EJB 是为了&quot;服务集群&]]></description>
 </item><item>
-    <title>Linux硬件相关笔记</title>
-    <link>https://kkkpjskey.github.io/linux-hardware/</link>
-    <pubDate>Mon, 30 Aug 2021 22:22:22 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/linux-hardware/</guid>
-    <description><![CDATA[CentOs7排查CPU高占用 一、查看CPU高占用 1 2 ## 执行top命令 top PS:P按照CPU排序显示，M按照内存排序； 二、查看进程中最占CPU]]></description>
+    <title>lombok常用注解及其使用方法</title>
+    <link>https://kkkpjskey.github.io/lombok-note/</link>
+    <pubDate>Wed, 01 Sep 2021 10:33:29 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/lombok-note/</guid>
+    <description><![CDATA[以下类为例 1 2 3 4 5 public class User { int id; String name; List list; } @Data、@Value @Data注解在类上，将类提供的所有属性都添加get、set方法，并添加e]]></description>
 </item><item>
-    <title>Win10启动蓝屏报错BAD_SYSTEM_CONFIG</title>
-    <link>https://kkkpjskey.github.io/win10-bad-system-config-error/</link>
-    <pubDate>Mon, 30 Aug 2021 22:07:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win10-bad-system-config-error/</guid>
-    <description><![CDATA[原因 本人Win10虚拟机突然启动不起来了，蓝屏报错BAD_SYSTEM_CONFIG，遂检索寻找方法。 发现方法作用于实体机，故尝试，终成功，]]></description>
+    <title>Feign 基本使用教程和原理分析</title>
+    <link>https://kkkpjskey.github.io/springcloud-feign-note/</link>
+    <pubDate>Wed, 01 Sep 2021 10:25:37 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springcloud-feign-note/</guid>
+    <description><![CDATA[Feign 基本使用 在开发 Spring Cloud 微服务的时候，我们知道，服务之间都是以 HTTP 接口的形式对外提供服务的，因此消费者在进行调用的时候，底层就是通过 HTTP Client 的这种方式]]></description>
 </item></channel>
 </rss>

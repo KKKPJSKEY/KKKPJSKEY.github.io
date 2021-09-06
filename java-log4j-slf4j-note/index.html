@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>log4j和slf4j分析及教程 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录log4j和slf4j分析及教程的笔记"><meta property="og:title" content="log4j和slf4j分析及教程" />
+<meta property="og:description" content="记录log4j和slf4j分析及教程的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/java-log4j-slf4j-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-log4j-slf4j-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-02T11:18:14&#43;08:00" />
+<meta property="article:modified_time" content="2021-09-02T11:18:14&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/java-log4j-slf4j-note/featured-image.jpg"/>
+<meta name="twitter:title" content="log4j和slf4j分析及教程"/>
+<meta name="twitter:description" content="记录log4j和slf4j分析及教程的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/java-log4j-slf4j-note/" /><link rel="prev" href="https://kkkpjskey.github.io/spring-aop-note/" /><link rel="next" href="https://kkkpjskey.github.io/springboot-config-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "log4j和slf4j分析及教程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/java-log4j-slf4j-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/java-log4j-slf4j-note\/featured-image.jpg",
+                            "width":  2100 ,
+                            "height":  630 
+                        }],"genre": "posts","keywords": "Java, Log, log4j, slf4j","wordcount":  6200 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-log4j-slf4j-note\/","datePublished": "2021-09-02T11:18:14+08:00","dateModified": "2021-09-02T11:18:14+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录log4j和slf4j分析及教程的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/java-log4j-slf4j-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/java-log4j-slf4j-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">log4j和slf4j分析及教程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-02">2021-09-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6200 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;<span id="/java-log4j-slf4j-note/" class="leancloud_visitors" data-flag-title="log4j和slf4j分析及教程">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/java-log4j-slf4j-note/featured-image.jpg"
+        data-srcset="/java-log4j-slf4j-note/featured-image.jpg, /java-log4j-slf4j-note/featured-image.jpg 1.5x, /java-log4j-slf4j-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/java-log4j-slf4j-note/featured-image.jpg"
+        title="记录log4j和slf4j分析及教程的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么要log4j和slf4j代替systemoutprintln输出日志">为什么要log4j和slf4j代替System.out.println()输出日志</a>
+      <ul>
+        <li><a href="#内容">内容：</a></li>
+        <li><a href="#一什么是log4j">一、什么是log4j</a></li>
+        <li><a href="#二log4j的特点">二、log4j的特点</a></li>
+      </ul>
+    </li>
+    <li><a href="#看到log4j有好处也有缺点我再来看看为什么要使用slf4j结合log4j来使用">看到log4j有好处也有缺点，我再来看看为什么要使用slf4j结合log4j来使用</a></li>
+    <li><a href="#为什么使用-slf4j-而不是-log4j-来做-java-日志httpswwwoschinanettranslatewhy-use-sl4j-over-log4j-for-logginglangchs"><a href="https://www.oschina.net/translate/why-use-sl4j-over-log4j-for-logging?lang=chs">为什么使用 SLF4J 而不是 Log4J 来做 Java 日志</a></a>
+      <ul>
+        <li><a href="#宁愿使用slf4j也不愿使用log4jlogback和javautillogging"><strong>宁愿使用SLF4J也不愿使用Log4J,logback和java.util.Logging</strong></a></li>
+        <li><a href="#slf4j的优势与使用原理">slf4j的优势与使用原理</a>
+          <ul>
+            <li><a href="#概述">概述</a></li>
+            <li><a href="#slf4j的优势">slf4j的优势</a></li>
+            <li><a href="#与客户端解耦">与客户端解耦</a></li>
+            <li><a href="#省内存">省内存</a></li>
+            <li><a href="#slf4j的使用与绑定原理">slf4j的使用与绑定原理</a></li>
+          </ul>
+        </li>
+        <li><a href="#如何使用slf4j和log4j来做日志">如何使用SLF4J和Log4J来做日志</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="为什么要log4j和slf4j代替systemoutprintln输出日志">为什么要log4j和slf4j代替System.out.println()输出日志</h2>
+<h3 id="内容">内容：</h3>
+<p>1.什么是log4j</p>
+<p>2.log4j的特点</p>
+<p>3.为什么要用Log4j来替代System.out.println</p>
+<h3 id="一什么是log4j">一、什么是log4j</h3>
+<p>Log4j是Apache的一个开源项目，通过使用Log4j，我们可以控制日志信息输送的目的地是控制台、文件、GUI组件，甚至是套接口服务器、NT的事件记录器、UNIX Syslog守护进程等；我们也可以控制每一条日志的输出格式；通过定义每一条日志信息的级别，我们能够更加细致地控制日志的生成过程。</p>
+<h3 id="二log4j的特点">二、log4j的特点</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p>三、为什么要用Log4j来替代System.out.println</p>
+<p>关于log4j 的五个问题及答案：</p>
+<p>(1)什么情况使用log4j、什么情况下使用System.out.println?</p>
+<p>System.out.println在开发中可以使用，部署项目后用日志文件。最好不要用System.out.println。</p>
+<p>(2)log4j是否会影响性能？</p>
+<p>是的，log4j会拖慢进程响应时间</p>
+<p>(3)为什么log4j日志的最高级是error，但error却是&quot;虽然发生错误事件，但仍然不影响系统的继续运行&quot;？</p>
+<p>日志有7个等级：</p>
+<p>A：off 最高等级，用于关闭所有日志记录。</p>
+<p>B：fatal 指出每个严重的错误事件将会导致应用程序的退出。</p>
+<p>C：error 指出虽然发生错误事件，但仍然不影响系统的继续运行。</p>
+<p>D：warm 表明会出现潜在的错误情形。</p>
+<p>E：info 一般和在粗粒度级别上，强调应用程序的运行全程。</p>
+<p>F：debug 一般用于细粒度级别上，对调试应用程序非常有帮助。</p>
+<p>G：all 最低等级，用于打开所有日志记录。</p>
+<p>而log4j建议使用四种：debug、info、warn、error</p>
+<p>(4)log4j 的文件保存位置？</p>
+<p>存放到项目目录下：</p>
+<p>${task5.root}/WEB-INF/logs/log.log</p>
+<p>(5)log4j打印堆栈信息？</p>
+<p>log.info(&ldquo;xxx&rdquo;, e)</p>
+<h2 id="看到log4j有好处也有缺点我再来看看为什么要使用slf4j结合log4j来使用">看到log4j有好处也有缺点，我再来看看为什么要使用slf4j结合log4j来使用</h2>
+<h2 id="为什么使用-slf4j-而不是-log4j-来做-java-日志httpswwwoschinanettranslatewhy-use-sl4j-over-log4j-for-logginglangchs"><a href="https://www.oschina.net/translate/why-use-sl4j-over-log4j-for-logging?lang=chs" target="_blank" rel="noopener noreferrer">为什么使用 SLF4J 而不是 Log4J 来做 Java 日志</a></h2>
+<p>每个Java开发人员都知道日志记录对Java应用的重要性，尤其是对服务端应用，而且其中许多人都已经熟悉了各种记录日志的库，比如java.util.logging,Apache的log4j,logback，然而如果你不知道 <strong>SLF4J</strong>，java的简单记录日志的设计的话 ，那么到了学习并在你的项目中使用它的时候了。在这篇Java文档里，我们将学习为什么使用SLF4J比使用log4j或者java.util.logging更好。从我写 <a href="http://javarevisited.blogspot.com/2011/05/top-10-tips-on-logging-in-java.html" target="_blank" rel="noopener noreferrer">Java开发人员的10个记录日志的技巧</a> 算起已经过去了很长一段时间了。我不记得我所写的有关日志记录的任何事情了。无论如何，让我们回归到这个主题上来，与所有提到的这些日志记录库相比，SLF4J与它们之间有一个主要的区别。SLF4J或者说是Java的简单记录日志设计没有真正地实现日志记录，相反它只是一个允许你使用任何处于后端的日志记录库的 <a href="http://javarevisited.blogspot.com/2010/10/abstraction-in-java.html" target="_blank" rel="noopener noreferrer">抽象层</a> 。如果你正在编写内部或者外部使用的API或者应用库的话，那么你真的不需要让使用你所编写的库的客户端还去选择日志库。假设项目已经使用了log4j，而且你包含一个名为Apache Active MQ的库，这个库还依赖于另一个日志记录库logback的话，那么你还需要包含它们，然而，如果Apache Active MQ使用了SLF4J的话，你可以继续使用你的日志记录库，而不需要痛苦地添加和维护新的日志记录框架。简短的说，SLF4J让你的代码独立于任何特定的日志记录API，这个好的想法尤其适合于公共的API开发人员。虽然日志记录库的抽象理念不是新的，而且Apache的commons logging日志记录库也是用了这个理念，不过现在SLF4J很快就会成为Java世界里标准的日志记录库。让我们看一些使用 SLF4J而不使用log4j,logback或者java.util.logging的理由。</p>
+<h3 id="宁愿使用slf4j也不愿使用log4jlogback和javautillogging"><strong>宁愿使用SLF4J也不愿使用Log4J,logback和java.util.Logging</strong></h3>
+<p>正如我前面所说，在你的代码中编写日志记录语句使用SLF4J的主要动机是让你的程序独立于任何特定的日志记录库，这些日志记录库可能需要与你现在配置不同的配置，而且还会引入更多令人头疼的维护问题。然而除了这个之外，SLF4J API还有一个让你使用SLF4J而不是用长期感兴趣的 <strong>Log4j</strong> 更让人信服的功能，也就是占位符功能，在代码中用{}来表示。占位符功能与 <a href="http://javarevisited.blogspot.com/2012/08/how-to-format-string-in-java-printf.html" target="_blank" rel="noopener noreferrer">String的format()方法中</a> 的%s非常相似，因为它在运行时刻才提取所提供的真正的字符串。这不仅缩减了代码中的许多字符串连接，而且减少了创建String对象所需要的资源。即便在你生产环境日志级别比如DEBUG和INFO级别的字符串连接可能不需要的时候，仍然可以起到同样的效果。由于 <a href="http://javarevisited.blogspot.com/2010/10/why-string-is-immutable-in-java.html" target="_blank" rel="noopener noreferrer">字符串是不可更改的</a> ，而且它们是在字符串池中创建的，这些字符串使用了 <a href="http://javarevisited.blogspot.com/2013/04/what-is-maximum-heap-size-for-32-bit-64-JVM-Java-memory.html" target="_blank" rel="noopener noreferrer">堆内存</a> ，当应用在生产环境中运行在ERROR级别的时候，字符串在大多数情况下就不是必须的，比如DEBUG语句里的字符串就不是必须的。通过使用SLF4J，你可以延迟字符串的创建到运行时刻，这意味着只有在需要字符串的时候才创建它。如果你已经使用了log4j,那么你已经熟悉把调试语句放入if()条件内的工作场景，而SLF4J占位符功能比log4j更适合这种场景。</p>
+<p>下面是你用Log4j时的做法，当然这并不好玩而且它增加了不必要的公式化的代码，减少了代码的可读性。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Processing trade with id: &#34;</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">&#34; symbol: &#34;</span> <span class="o">+</span> <span class="n">symbol</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而如果你使用SLF4J，你可以使用更简洁的格式达到同样的效果，如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Processing trade with id: {} and symbol : {} &#34;</span><span class="o">,</span> <span class="n">id</span><span class="o">,</span> <span class="n">symbol</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在SLF4J中，我们不需要进行字符串拼接，不会导致使用临时字符串带来的消耗。相反，我们使用带占位符的模板消息来记录日志信息，并提供实际值作为参数。也许你会想，要是有多个参数该怎么办，你可以使用带参数版的日志方法，也可以通过Object数组传入。这确实是非常方便而且高效的记日志的方法。记住，在为日志信息产生最终的字符串之前，该方法会检查是否开启了特定的日志级别，这不仅降低了内存占用，而且预先减少了执行<a href="http://javarevisited.blogspot.com/2011/07/string-vs-stringbuffer-vs-stringbuilder.html" target="_blank" rel="noopener noreferrer">字符串拼接</a>所消耗的CPU时间。下面的SLF4J日志方法的代码，来自于slf4j-log4j12-1.6.1.jar包里的Log4j的适配器类Log4jLoggerAdapter.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">debug</span><span class="o">(</span><span class="n">String</span> <span class="n">format</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span> <span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span>
+      <span class="n">FormattingTuple</span> <span class="n">ft</span> <span class="o">=</span> <span class="n">MessageFormatter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">format</span><span class="o">,</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">arg2</span><span class="o">);</span>
+      <span class="n">logger</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">FQCN</span><span class="o">,</span> <span class="n">Level</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">,</span> <span class="n">ft</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(),</span> <span class="n">ft</span><span class="o">.</span><span class="na">getThrowable</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>同样值得了解是，日志也会对应用程序的<a href="http://javarevisited.blogspot.sg/2012/01/improve-performance-java-database.html" target="_blank" rel="noopener noreferrer">性能</a>产生压力，大家通常宣扬的是只在生产环境中才强制记录日志。</p>
+<h3 id="slf4j的优势与使用原理">slf4j的优势与使用原理</h3>
+<h4 id="概述">概述</h4>
+<p>slf4j的全称是Simple Loging Facade For Java，即它仅仅是一个为Java程序提供日志输出的统一接口，并不是一个具体的日志实现方案，就比如JDBC一样，只是一种规则而已。所以单独的slf4j是不能工作的，必须搭配其他具体的日志实现方案，比如apache的 <strong>org.apache.log4j.Logger</strong>，jdk自带的 <strong>java.util.logging.Logger</strong>等等。</p>
+<h4 id="slf4j的优势">slf4j的优势</h4>
+<p>知道什么是slf4j之后我们应该明白为什么要使用slf4j，为什么不适用具体的日志实现方案。笔者理解，slf4j主要有以下几点优势：</p>
+<h4 id="与客户端解耦">与客户端解耦</h4>
+<p>想象一下下面的场景：</p>
+<blockquote>
+<p>有一个别人写的很棒的类库，里面使用的是jdk自带的java.util.logging.Logger这个日志系统，现在你有一个程序需要用到这个类库，并且你自己的程序现在是使用apache的org.apache.log4j.Logger这个日志系统。那么问题来了，如果你的程序导入了这个类库，那么是不是必须两种日志系统都要支持，那么你是不是需要多配置一些东西，多维护一些东西？耗费了太多维护成本，你想死的心都有了吧？</p>
+</blockquote>
+<p>有问题就要有解决方案，不错，解决方案就是： <strong>使用slf4j</strong>。</p>
+<p>slf4j只是一种接口，它本身并不关心你底层使用的是什么日志实现方案，所以它支持各种日志实现方案。简单的说，只要我们在类库中使用slf4j打日志，那么底层使用什么日志实现方案是使用者决定的，怎么决定？依靠配置文件和jar库。</p>
+<h4 id="省内存">省内存</h4>
+<p>如果大家之前使用过log4j，那么一定基本都是这样用的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.winwill.test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.Logger</span><span class="o">;</span>
+ <span class="o">*</span> <span class="nd">@author</span> <span class="n">qifuguang</span>
+ <span class="o">*</span> <span class="nd">@date</span> <span class="n">15</span><span class="o">/</span><span class="n">8</span><span class="o">/</span><span class="n">26</span> <span class="n">21</span><span class="o">:</span><span class="n">54</span>
+ <span class="o">*/</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestLog4j</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">LOGGER</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">TestLog4j</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">message</span> <span class="o">=</span> <span class="s">&#34;Hello World.&#34;</span><span class="o">;</span>
+        <span class="n">LOGGER</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;This is a test message: &#34;</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意到log4j的info函数有两种使用方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">info</span><span class="o">(</span><span class="n">Object</span> <span class="n">message</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">info</span><span class="o">(</span><span class="n">Object</span> <span class="n">message</span><span class="o">,</span> <span class="n">Throwable</span> <span class="n">t</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>第一个参数是要输出的信息，假设要输出的是一个字符串，并且字符串中包含变量，则message参数就必须使用字符串相加操作，就比如上面测试代码的14行一样。姑且不说字符串相加是一个比较消耗性能的操作，字符串是一个不可变对象，一旦创建就不能被修改，创建的字符串会保存在String池中，占用内存。更糟糕的是如果配置文件中配置的日志级别是ERROR的话，这行info日志根本不会输出，则相加得到的字符串对象是一个非必须对象，白白浪费了内存空间。有人会说了，那我可以这样写啊：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.winwill.test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.log4j.Logger</span><span class="o">;</span>
+ <span class="o">*</span> <span class="nd">@author</span> <span class="n">qifuguang</span>
+ <span class="o">*</span> <span class="nd">@date</span> <span class="n">15</span><span class="o">/</span><span class="n">8</span><span class="o">/</span><span class="n">26</span> <span class="n">21</span><span class="o">:</span><span class="n">54</span>
+ <span class="o">*/</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestLog4j</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">LOGGER</span> <span class="o">=</span> <span class="n">Logger</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">TestLog4j</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">message</span> <span class="o">=</span> <span class="s">&#34;Hello World.&#34;</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">LOGGER</span><span class="o">.</span><span class="na">isInfoEnabled</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">LOGGER</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;This is a test message: &#34;</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样不就解决了白白浪费内存的问题了吗？没错，这是一个变通方案，但是这样的代码太繁琐，不直观！</p>
+<p>再来看看slf4j的打日志的方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.winwill.test</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+
+ <span class="o">*</span> <span class="nd">@author</span> <span class="n">qifuguang</span>
+ <span class="o">*</span> <span class="nd">@date</span> <span class="n">15</span><span class="o">/</span><span class="n">8</span><span class="o">/</span><span class="n">26</span> <span class="n">21</span><span class="o">:</span><span class="n">54</span>
+ <span class="o">*/</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestLog4j</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">LOGGER</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">TestLog4j</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">message</span> <span class="o">=</span> <span class="s">&#34;Hello World.&#34;</span><span class="o">;</span>
+        <span class="n">LOGGER</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&#34;This is a test message: {}&#34;</span><span class="o">,</span> <span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>看到没有，打日志的时候使用了{}占位符，这样就不会有字符串拼接操作，减少了无用String对象的数量，节省了内存。并且，记住，在生产最终日志信息的字符串之前，这个方法会检查一个特定的日志级别是不是打开了，这不仅降低了内存消耗而且预先降低了CPU去处理字符串连接命令的时间。这里是使用SLF4J日志方法的代码，来自于slf4j-log4j12-1.6.1.jar中的Log4j的适配器类Log4jLoggerAdapter。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">debug</span><span class="o">(</span><span class="n">String</span> <span class="n">format</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">FormattingTuple</span> <span class="n">ft</span> <span class="o">=</span> <span class="n">MessageFormatter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">format</span><span class="o">,</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">arg2</span><span class="o">);</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">FQCN</span><span class="o">,</span> <span class="n">Level</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">,</span> <span class="n">ft</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(),</span> <span class="n">ft</span><span class="o">.</span><span class="na">getThrowable</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="slf4j的使用与绑定原理">slf4j的使用与绑定原理</h4>
+<p>前面介绍了slf4j的优势，本节介绍怎么使用slf4j以及其中的原理，前文说到了，单独的slf4j是不能工作的，必须带上其他具体的日志实现方案。就以apache的log4j作为具体日志实现方案为例，如果在工程中要使用slf4j作为接口，并且要用log4j作为具体实现方案，那么我们需要做的事情如下：（下面的xxx表示具体版本号）</p>
+<ul>
+<li>将slf4j-api-xxx.jar加入工程classpath中；</li>
+<li>将slf4j-log4jxx-xxx.jar加入工程classpath中；</li>
+<li>将log4j-xxx.jar加入工程classpath中；</li>
+<li>将log4j.properties（log4j.xml）文件加入工程classpath中。</li>
+</ul>
+<p>介绍一下工作原理：</p>
+<p>首先，slf4j-api作为slf4j的接口类，使用在程序代码中，这个包提供了一个Logger类和LoggerFactory类，Logger类用来打日志，LoggerFactory类用来获取Logger；slf4j-log4j是连接slf4j和log4j的桥梁，怎么连接的呢？我们看看slf4j的LoggerFactory类的getLogger函数的源码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * Return a logger named corresponding to the class passed as parameter, using
+</span><span class="cm"> * the statically bound {@link ILoggerFactory} instance.
+</span><span class="cm"> *
+</span><span class="cm"> * @param clazz the returned logger will be named after clazz
+</span><span class="cm"> * @return logger
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">Logger</span> <span class="nf">getLogger</span><span class="o">(</span><span class="n">Class</span> <span class="n">clazz</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">getLogger</span><span class="o">(</span><span class="n">clazz</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="cm">/**
+</span><span class="cm"> * Return a logger named according to the name parameter using the statically
+</span><span class="cm"> * bound {@link ILoggerFactory} instance.
+</span><span class="cm"> * @param name The name of the logger.
+</span><span class="cm"> * @return logger
+</span><span class="cm"> */</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="n">Logger</span> <span class="nf">getLogger</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">ILoggerFactory</span> <span class="n">iLoggerFactory</span> <span class="o">=</span> <span class="n">getILoggerFactory</span><span class="o">();</span>
+   <span class="k">return</span> <span class="n">iLoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+ <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">ILoggerFactory</span> <span class="nf">getILoggerFactory</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">INITIALIZATION_STATE</span> <span class="o">==</span> <span class="n">UNINITIALIZED</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">INITIALIZATION_STATE</span> <span class="o">=</span> <span class="n">ONGOING_INITIALIZATION</span><span class="o">;</span>
+    <span class="n">performInitialization</span><span class="o">();</span>
+  <span class="o">}</span>
+  <span class="k">switch</span> <span class="o">(</span><span class="n">INITIALIZATION_STATE</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">SUCCESSFUL_INITIALIZATION</span><span class="o">:</span>
+      <span class="k">return</span> <span class="n">StaticLoggerBinder</span><span class="o">.</span><span class="na">getSingleton</span><span class="o">().</span><span class="na">getLoggerFactory</span><span class="o">();</span>
+    <span class="k">case</span> <span class="n">NOP_FALLBACK_INITIALIZATION</span><span class="o">:</span>
+      <span class="k">return</span> <span class="n">NOP_FALLBACK_FACTORY</span><span class="o">;</span>
+    <span class="k">case</span> <span class="n">FAILED_INITIALIZATION</span><span class="o">:</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalStateException</span><span class="o">(</span><span class="n">UNSUCCESSFUL_INIT_MSG</span><span class="o">);</span>
+    <span class="k">case</span> <span class="n">ONGOING_INITIALIZATION</span><span class="o">:</span>
+      <span class="c1">// support re-entrant behavior.
+</span><span class="c1"></span>      <span class="c1">// See also http://bugzilla.slf4j.org/show_bug.cgi?id=106
+</span><span class="c1"></span>      <span class="k">return</span> <span class="n">TEMP_FACTORY</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalStateException</span><span class="o">(</span><span class="s">&#34;Unreachable code&#34;</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>追踪到最后，发现LoggerFactory.getLogger()首先获取一个ILoggerFactory接口，然后使用该接口获取具体的Logger。获取ILoggerFactory的时候用到了一个StaticLoggerBinder类，仔细研究我们会发现StaticLoggerBinder这个类并不是slf4j-api这个包中的类，而是slf4j-log4j包中的类，这个类就是一个中间类，它用来将抽象的slf4j变成具体的log4j，也就是说具体要使用什么样的日志实现方案，就得靠这个StaticLoggerBinder类。再看看slf4j-log4j包种的这个StaticLoggerBinder类创建ILoggerFactory长什么样子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">final</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="o">;</span>
+<span class="kd">private</span> <span class="nf">StaticLoggerBinder</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">loggerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Log4jLoggerFactory</span><span class="o">();</span>
+  <span class="k">try</span> <span class="o">{</span>
+    <span class="n">Level</span> <span class="n">level</span> <span class="o">=</span> <span class="n">Level</span><span class="o">.</span><span class="na">TRACE</span><span class="o">;</span>
+  <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NoSuchFieldError</span> <span class="n">nsfe</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Util</span>
+        <span class="o">.</span><span class="na">report</span><span class="o">(</span><span class="s">&#34;This version of SLF4J requires log4j version 1.2.12 or later. See also http://www.slf4j.org/codes.html#log4j_version&#34;</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="n">ILoggerFactory</span> <span class="nf">getLoggerFactory</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">loggerFactory</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到slf4j-log4j中的StaticLoggerBinder类创建的ILoggerFactory其实是一个 <strong>org.slf4j.impl.Log4jLoggerFactory</strong>，这个类的getLogger函数是这样的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Logger</span> <span class="nf">getLogger</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">Logger</span> <span class="n">slf4jLogger</span> <span class="o">=</span> <span class="n">loggerMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">slf4jLogger</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">slf4jLogger</span><span class="o">;</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">log4j</span><span class="o">.</span><span class="na">Logger</span> <span class="n">log4jLogger</span><span class="o">;</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">Logger</span><span class="o">.</span><span class="na">ROOT_LOGGER_NAME</span><span class="o">))</span>
+      <span class="n">log4jLogger</span> <span class="o">=</span> <span class="n">LogManager</span><span class="o">.</span><span class="na">getRootLogger</span><span class="o">();</span>
+    <span class="k">else</span>
+      <span class="n">log4jLogger</span> <span class="o">=</span> <span class="n">LogManager</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+
+    <span class="n">Logger</span> <span class="n">newInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Log4jLoggerAdapter</span><span class="o">(</span><span class="n">log4jLogger</span><span class="o">);</span>
+    <span class="n">Logger</span> <span class="n">oldInstance</span> <span class="o">=</span> <span class="n">loggerMap</span><span class="o">.</span><span class="na">putIfAbsent</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">newInstance</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">oldInstance</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">newInstance</span> <span class="o">:</span> <span class="n">oldInstance</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>就在其中创建了真正的 <strong>org.apache.log4j.Logger</strong>，也就是我们需要的具体的日志实现方案的Logger类。就这样，整个绑定过程就完成了。</p>
+<h3 id="如何使用slf4j和log4j来做日志">如何使用SLF4J和Log4J来做日志</h3>
+<p>除了上面所说的好处，我认为还有个警告需要说一下，为了使用SLF4J你不仅需要进入SLF4J API Jar包，比如slf4j-api-1.6.1.jar，还需要引入协同工作的JAR包，具体是什么jar包则依赖于后端你使用了什么日志工具库。假如你想使用 _SLF4J，Simple Logging Facade for Java，还想使用Lo4J，_那么你需要把下列jar包引入到你的<a href="http://javarevisited.blogspot.sg/2013/02/windows-8-set-path-and-classpath-java-windows-7.html" target="_blank" rel="noopener noreferrer">classpath</a>中，具体版本要视你使用的SLF4J和log4J版本而定， 比如：</p>
+<p>slf4j-api-1.6.1.jar - JAR for SLF4J API
+log4j-1.2.16.jar - JAR for Log4J API
+slf4j-log4j12-1.6.1.jar - Log4J Adapter for SLF4J</p>
+<p>如果你正在使用<a href="http://javarevisited.blogspot.com/2011/08/increase-heap-size-maven-ant.html" target="_blank" rel="noopener noreferrer">Maven</a>来管理你的项目依赖，你可以只引入SLF4J JAR，然后maven会引入它所依赖的其它JAR包。为了使用Log4J和SLF4J，你可以在你项目的pom.xml中添加下列依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.slf4j<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>slf4j-log4j12<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>1.6.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.slf4j<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>slf4j-log4j12<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>1.6.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>顺便说一下，如果你对使用<a href="http://javarevisited.blogspot.com/2011/09/variable-argument-in-java5-varargs.html" target="_blank" rel="noopener noreferrer">带参数版的</a>日志方法感兴趣，那就需要引入SLF4J 1.7版本。</p>
+<h3 id="总结">总结</h3>
+<p>总结这篇文章，我具有充分的理由的来选择SLF4J而不是直接选用Log4j, commons logging, logback 或者 java.util.logging。</p>
+<p>1）在你的开源库或者私有库中使用SLF4J，可以使它独立于任何的日志实现，这就意味着不需要管理多个库和多个日志文件。你的客户端将会体会到这一点。</p>
+<p>2）SLF4J提供了占位日志记录，通过移除对isDebugEnabled(), isInfoEnabled()等等的检查提高了代码的可读性。</p>
+<p>3）通过使用日志记录方法，直到你使用到的时候，才会去构造日志信息（字符串），这就同时提高了内存和CPU的使用率。</p>
+<p>4）做一个侧面的说明，越少的临时字符串，垃圾回收器就意味着越少的工作，这就意味着为你的应用程序提供更好的吞吐量和性能。</p>
+<p>这些优势都只是冰山一角，当你开始使用SL4J并阅读它，你会学到更多的好处。我强烈建议，在java中任何新的代码开发，都应使用SLF4J而不是任何的日志API，包括log4J。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-09-02</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/java-log4j-slf4j-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/java-log4j-slf4j-note/" data-title="log4j和slf4j分析及教程" data-hashtags="Java,Log,log4j,slf4j"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/java-log4j-slf4j-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/java-log4j-slf4j-note/" data-title="log4j和slf4j分析及教程" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/java-log4j-slf4j-note/" data-title="log4j和slf4j分析及教程"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/log/">Log</a>,&nbsp;<a href="/tags/log4j/">log4j</a>,&nbsp;<a href="/tags/slf4j/">slf4j</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/spring-aop-note/" class="prev" rel="prev" title="Spring @Aspect、@Before、@After 注解实现 AOP 切面功能"><i class="fas fa-angle-left fa-fw"></i>Spring @Aspect、@Before、@After 注解实现 AOP 切面功能</a>
+            <a href="/springboot-config-note/" class="next" rel="next" title="SpringBoot读取yml/properties的几种方法">SpringBoot读取yml/properties的几种方法<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

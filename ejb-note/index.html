@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>EJB解释分析 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录EJB解释分析的笔记"><meta property="og:title" content="EJB解释分析" />
+<meta property="og:description" content="记录EJB解释分析的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/ejb-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/ejb-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-01T14:18:32&#43;08:00" />
+<meta property="article:modified_time" content="2021-09-01T14:18:32&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/ejb-note/featured-image.jpg"/>
+<meta name="twitter:title" content="EJB解释分析"/>
+<meta name="twitter:description" content="记录EJB解释分析的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/ejb-note/" /><link rel="prev" href="https://kkkpjskey.github.io/lombok-note/" /><link rel="next" href="https://kkkpjskey.github.io/spring-aop-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "EJB解释分析",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/ejb-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/ejb-note\/featured-image.jpg",
+                            "width":  1480 ,
+                            "height":  444 
+                        }],"genre": "posts","keywords": "Microservices, EJB","wordcount":  4731 ,
+        "url": "https:\/\/kkkpjskey.github.io\/ejb-note\/","datePublished": "2021-09-01T14:18:32+08:00","dateModified": "2021-09-01T14:18:32+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录EJB解释分析的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/ejb-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/ejb-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">EJB解释分析</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-01">2021-09-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4731 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/ejb-note/" class="leancloud_visitors" data-flag-title="EJB解释分析">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/ejb-note/featured-image.jpg"
+        data-srcset="/ejb-note/featured-image.jpg, /ejb-note/featured-image.jpg 1.5x, /ejb-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/ejb-note/featured-image.jpg"
+        title="记录EJB解释分析的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-我们不禁要问什么是服务集群什么是企业级开发"><strong>1. 我们不禁要问，什么是&quot;服务集群&quot;？什么是&quot;企业级开发&quot;？</strong></a></li>
+    <li><a href="#2-把ejb-掰开了揉碎了"><strong>2. 把EJB 掰开了揉碎了</strong></a>
+      <ul>
+        <li><a href="#31-ejb-概念的剖析"><strong>3.1 EJB 概念的剖析</strong></a></li>
+        <li><a href="#32-把ejb-这个概念变成大白话"><strong>3.2 把EJB 这个概念变成大白话</strong></a></li>
+        <li><a href="#33-发现问题了"><strong>3.3 发现问题了</strong></a></li>
+        <li><a href="#4-1-ejb-的最底层究竟是什么"><strong>4 .1 EJB 的最底层究竟是什么</strong></a></li>
+        <li><a href="#42-ejb-的实现技术"><strong>4.2 EJB 的实现技术</strong></a></li>
+        <li><a href="#43-看看rmi-是什么东东"><strong>4.3 看看RMI 是什么东东</strong></a></li>
+        <li><a href="#44-优点"><strong>4.4 优点</strong></a></li>
+        <li><a href="#45-缺点"><strong>4.5 缺点</strong></a></li>
+        <li><a href="#46-ejb-是以rmi-为基础的"><strong>4.6 EJB 是以RMI 为基础的</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#5-ejb-中所谓的服务群集"><strong>5. EJB 中所谓的&quot;服务群集&quot;</strong></a></li>
+    <li><a href="#6-这种部署难道是无懈可击"><strong>6. 这种部署难道是无懈可击</strong></a>
+      <ul>
+        <li><a href="#61-瓶颈在数据库端"><strong>6.1 瓶颈在数据库端</strong></a></li>
+        <li><a href="#62-假如分开数据库数据共享怎么办"><strong>6.2 假如分开数据库，数据共享怎么办</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#7-ejb-活学活用j2ee-不是必须使用ejb"><strong>7. EJB 活学活用，J2EE 不是必须使用EJB</strong></a></li>
+    <li><a href="#总结"><strong>总结</strong></a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-我们不禁要问什么是服务集群什么是企业级开发"><strong>1. 我们不禁要问，什么是&quot;服务集群&quot;？什么是&quot;企业级开发&quot;？</strong></h2>
+<p>既然说了EJB 是为了&quot;服务集群&quot;和&quot;企业级开发&quot;，那么，总得说说什么是所谓的&quot;服务
+集群&quot;和&quot;企业级开发&quot;吧！
+这个问题其实挺关键的，因为J2EE 中并没有说明白，也没有具体的指标或者事例告诉
+广大程序员什么时候用EJB 什么时候不用。于是大家都产生一些联想，认为EJB&quot;分布式运
+算&quot;指得是&quot;负载均衡&quot;提高系统的运行效率。然而，估计很多人都搞错了，这个&quot;服务群集&quot;
+和&quot;分布式运算&quot;并没有根本解决运行负载的问题，尤其是针对数据库的应用系统。</p>
+<p>为什么？
+我们先把EJB 打回原形给大家来慢慢分析。</p>
+<h2 id="2-把ejb-掰开了揉碎了"><strong>2. 把EJB 掰开了揉碎了</strong></h2>
+<p>我们把EJB 的概念好好的分析一下，看看能发现些什么蛛丝马迹。</p>
+<h3 id="31-ejb-概念的剖析"><strong>3.1 EJB 概念的剖析</strong></h3>
+<p>我们先看一下，EJB 的官方解释：
+商务软件的核心部分是它的业务逻辑。业务逻辑抽象了整个商务过程的流程，并使用计
+算机语言将他们实现。</p>
+<p>……
+J2EE 对于这个问题的处理方法是将业务逻辑从客户端软件中抽取出来，封装在一个组
+件中。这个组件运行在一个独立的服务器上，客户端软件通过网络调用组件提供的服务以实
+现业务逻辑，而客户端软件的功能单纯到只负责发送调用请求和显示处理结果。在J2EE 中，
+这个运行在一个独立的服务器上，并封装了业务逻辑的组件就是EJB（Enterprise Java
+Bean）组件。
+这其中我们主要关注这么几点，我们来逐条剖析：
+剖析1：所谓：&ldquo;业务逻辑&rdquo; 
+我们注意到在EJB 的概念中主要提到的就是&quot;业务逻辑&quot;的封装，而这个业务逻辑到底是
+什么？说的那么悬乎，其实这个所谓的&quot;业务逻辑&quot;我们完全可以理解成执行特定任务的&quot;类
+&ldquo;。
+剖析2：所谓：&ldquo;将业务逻辑从客户端软件中抽取出来，封装在组件中……运行在一个服
+务器上&rdquo;
+既然我们知道了&quot;业务逻辑&quot;的概念就是执行特定任务的&quot;类&rdquo;，那么，什么叫&quot;从客户端
+软件中抽取出来&quot;？其实，这个就是把原来放到客户端的&quot;类&quot;，拿出来不放到客户端了，放
+到一个组件中，并将这个组件放到一个服务器上去运行。</p>
+<h3 id="32-把ejb-这个概念变成大白话"><strong>3.2 把EJB 这个概念变成大白话</strong></h3>
+<p>变成大白话就是，&ldquo;把你编写的软件中那些需要执行制定的任务的类，不放到客户端软
+件上了，而是给他打成包放到一个服务器上了&rdquo;。</p>
+<h3 id="33-发现问题了"><strong>3.3 发现问题了</strong></h3>
+<p>不管是用&quot;八股文&quot;说，还是用大白话说这个EJB 概念都提到了一个词&ndash;&ldquo;客户端软件&rdquo;。
+&ldquo;客户端软件&rdquo;？难道EJB 的概念中说的是C/S 软件？
+是的，没错！
+EJB 就是将那些&quot;类&quot;放到一个服务器上，用C/S 形式的软件客户端对服务器上的&quot;类&quot;进
+行调用。
+快崩溃了吧！
+EJB 和JSP 有什么关系？EJB 和JSP 有关系，但是关系还真不怎么大，至多是在JSP 的
+服务器端调用远端服务上的EJB 类，仅此而已。</p>
+<h3 id="4-1-ejb-的最底层究竟是什么"><strong>4 .1 EJB 的最底层究竟是什么</strong></h3>
+<p>我们揭开了EJB&quot;八股&quot;概念的真谛，那么，再来分析EJB 的底层实现技术，通过底层实
+现技术来分析EJB 的工作方式。</p>
+<h3 id="42-ejb-的实现技术"><strong>4.2 EJB 的实现技术</strong></h3>
+<p>EJB 是运行在独立服务器上的组件，客户端是通过网络对EJB 对象进行调用的。在Java
+中，能够实现远程对象调用的技术是RMI，而EJB 技术基础正是RMI。通过RMI 技术，J2EE
+将EJB 组件创建为远程对象，客户端就可以通过网络调用EJB 对象了。</p>
+<h3 id="43-看看rmi-是什么东东"><strong>4.3 看看RMI 是什么东东</strong></h3>
+<p>在说RMI 之前，需要理解两个名词：
+对象的序列化
+分布式计算与RPC
+<font color=#F33B45 size=3>名词1：对象的序列化 </font>
+对象的序列化概念：对象的序列化过程就是将对象状态转换成字节流和从字节流恢复对
+象。将对象状态转换成字节流之后，可以用java.io 包中的各种字节流类将其保存到文件中，
+或者通过网络连接将对象数据发送到另一个主机。
+上面的说法有点&quot;八股&quot;，我们不妨再用白话解释一下：对象的序列化就是将你程序中实
+例化的某个类的对象，比如，你自定一个类MyClass，或者任何一个类的对象，将它转换成
+字节数组，也就是说可以放到一个byte 数组中，这时候，你既然已经把一个对象放到了byte
+数组中，那么你当然就可以随便处置了它了，用得最多的就是把他发送到网络上远程的计算
+机上了。如图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.jpg"
+        data-srcset="./1.jpg, ./1.jpg 1.5x, ./1.jpg 2x"
+        data-sizes="auto"
+        alt="./1.jpg"
+        title="1" /></p>
+<p><font color=#F33B45 size=3>名词2：分布式计算与RPC  </font></p>
+<p>RPC 并不是一个纯粹的Java 概念，因为在Java 诞生之前就已经有了RPC 的这个概念，RPC
+是&quot;Remote Procedure Call&quot;的缩写，也就是&quot;远程过程调用&quot;。在Java 之前的大多数编程语
+言，如，Fortran、C、COBOL 等等，都是过程性的语言，而不是面向对象的。所以，这些编
+程语言很自然地用过程表示工作，如，函数或子程序，让其在网络上另一台机器上执行。说
+白了，就是本地计算机调用远程计算机上的一个函数。
+如下图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.jpg"
+        data-srcset="./2.jpg, ./2.jpg 1.5x, ./2.jpg 2x"
+        data-sizes="auto"
+        alt="./2.jpg"
+        title="2" /></p>
+<p><font color=#F33B45 size=3>名词3：二者结合就是RMI   </font></p>
+<p>RMI 英文全称是&quot;Remote Method Invocation&quot;，它的中文名称是&quot;远程方法调用&quot;，它就
+是利用Java 对象序列化的机制实现分布式计算，实现远程类对象的实例化以及调用的方法。
+说的更清楚些，就是利用对象序列化来实现远程调用，也就是上面两个概念的结合体，利用
+这个方法来调用远程的类的时候，就不需要编写Socket 程序了，也不需要把对象进行序列
+化操作，直接调用就行了非常方便。
+远程方法调用是一种计算机之间对象互相调用对方函数，启动对方进程的一种机制，使用这
+种机制，某一台计算机上的对象在调用另外一台计算机上的方法时，使用的程序语法规则和
+在本地机上对象间的方法调用的语法规则一样。
+如图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.jpg"
+        data-srcset="./3.jpg, ./3.jpg 1.5x, ./3.jpg 2x"
+        data-sizes="auto"
+        alt="./3.jpg"
+        title="3" /></p>
+<h3 id="44-优点"><strong>4.4 优点</strong></h3>
+<p>这种机制给分布计算的系统设计、编程都带来了极大的方便。只要按照RMI 规则设计程
+序，可以不必再过问在RMI 之下的网络细节了，如：TCP 和Socket 等等。任意两台计算机
+之间的通讯完全由RMI 负责。调用远程计算机上的对象就像本地对象一样方便。
+RMI 可将完整的对象作为参数和返回值进行传递，而不仅仅是预定义的数据类型。也就
+是说，可以将类似Java 哈西表这样的复杂类型作为一个参数进行传递。</p>
+<h3 id="45-缺点"><strong>4.5 缺点</strong></h3>
+<p>如果是较为简单的方法调用，其执行效率也许会比本地执行慢很多，即使和远程Socket
+机制的简单数据返回的应用相比，也会慢一些，原因是，其在网络间需要传递的信息不仅仅
+包含该函数的返回值信息，还会包含该对象序列化后的字节内容。</p>
+<h3 id="46-ejb-是以rmi-为基础的"><strong>4.6 EJB 是以RMI 为基础的</strong></h3>
+<p>通过RMI 技术，J2EE 将EJB 组件创建为远程对象，EJB 虽然用了RMI 技术，但是却只需
+要定义远程接口而无需生成他们的实现类，这样就将RMI 技术中的一些细节问题屏蔽了。
+但不管怎么说，EJB 的基础仍然是RMI，所以，如果你想了解EJB 的原理，只要把RMI
+的原理搞清楚就行了。你也就弄清楚了什么时候用EJB 什么时候不需要用EJB 了。</p>
+<h2 id="5-ejb-中所谓的服务群集"><strong>5. EJB 中所谓的&quot;服务群集&quot;</strong></h2>
+<p>既然已经知道了，RMI 是将各种任务与功能的类放到不同的服务器上，然后通过各个服
+务器间建立的调用规则实现分布式的运算，也就明白EJB 所谓的&quot;服务群集&quot;的概念。
+就是将原来在一个计算机上运算的几个类，分别放到其他计算机上去运行，以便分担运
+行这几个类所需要占用的CPU 和内存资源。同时，也可以将不同的软件功能模块放到不同的
+服务器上，当需要修改某些功能的时候直接修改这些服务器上的类就行了，修改以后所有客
+户端的软件都被修改了。如图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.jpg"
+        data-srcset="./4.jpg, ./4.jpg 1.5x, ./4.jpg 2x"
+        data-sizes="auto"
+        alt="./4.jpg"
+        title="4" /></p>
+<h2 id="6-这种部署难道是无懈可击"><strong>6. 这种部署难道是无懈可击</strong></h2>
+<p>图2 14所示的这个&quot;服务群集&quot;看似&quot;无懈可击&quot;，其实是它这个图没有画完整，我们来
+把这个图画完整，再来看看有什么问题没有。</p>
+<h3 id="61-瓶颈在数据库端"><strong>6.1 瓶颈在数据库端</strong></h3>
+<p>仔细观察之后，发现这种配置是有瓶颈的，如图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.jpg"
+        data-srcset="./5.jpg, ./5.jpg 1.5x, ./5.jpg 2x"
+        data-sizes="auto"
+        alt="./5.jpg"
+        title="5" /></p>
+<p>我们看看图2 15的结构图，现在如果想实现各个服务器针对同一个数据库的查询，那
+么，不管你部署多少个功能服务器，都需要针对一个数据库服务器进行查询操作。也就是说，
+不管你的&quot;计算&quot;有多么&quot;分布&quot;也同样需要从一台服务器中取得数据。虽然，看起来将各个功
+能模块分布在不同的服务器上从而分担了各个主计算机的CPU 资源，然而，真正的瓶颈并不
+在这里，而是，数据库服务器那里。数据库服务器都会非常忙的应付各个服务器的查询及操
+作请求。
+因此，通过这个结构图使我们了解到了EJB 根本不能完全解决负载的问题，因为，瓶颈
+并不在功能模块的所在位置，而是在数据库服务器这里。</p>
+<h3 id="62-假如分开数据库数据共享怎么办"><strong>6.2 假如分开数据库，数据共享怎么办</strong></h3>
+<p>有的读者一定会想到下面的这个应用结构，如图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.jpg"
+        data-srcset="./6.jpg, ./6.jpg 1.5x, ./6.jpg 2x"
+        data-sizes="auto"
+        alt="./6.jpg"
+        title="6" /></p>
+<p>就是把每一个功能服务器后面都部署一个数据库，这样不就解决了上节所说的问题了
+吗？是的解决了数据库查询负载的问题，然而又出现了新的问题，就是&quot;数据共享&quot;的问题就
+又不容易解决了。</p>
+<p><strong>6.3 网络面临较大压力，让你的应用慢如老牛</strong>
+我们再向前翻看看如图2 15所示的这种架构中存在两个网络，一个是&quot;A 网&quot;一个是&quot;B
+网&quot;，这两个网络是不同的。&ldquo;B 网&quot;往往是局域网，一般带宽是10M/100M，速度较快，因此
+到还好说，然而，&ldquo;A 网&quot;往往是互联网或者是利用电信网络互联VPN 网或称广域网。&ldquo;A 网&rdquo;
+的特点是带宽一般较窄，如ADSL 的网络仅仅有512K-2M 的带宽，由于广域网互联的成本较
+高，所以一般不会有较高的带宽。</p>
+<p>而在这个网络上恰恰跑的是功能模块和客户端软件之间交换的数据，而这部分数据恰恰
+优势非常占用带宽的。
+因此，这个应用架构其运行速度可以想见是多么的慢了。说句不夸张的话，有点想老牛
+拉破车一样的慢。
+一个如老牛的系统：
+目前在中国互联网做运营商网络管理系统的一个大公司，它的一个早期的网管软件就是
+采用了这种架构来做的C/S 结构的应用系统。
+有一次，我作为评估者来对其应用系统进行评估，将其部署到一个非运营商大型的网络
+中的时候，便出现了我们上述描述的情况，速度已经到了难以忍受的地步，打开一个流量图，
+有时候需要用15分钟的时间才能呈现完整。然而，该系统在开发阶段并没有发现这个问题，
+为什么呢？因为，他们没有考虑到应用的实际用户连接网络的复杂性，从而给该公司造成较
+大损失，以至于，这个开发架构被最终遗弃。</p>
+<h2 id="7-ejb-活学活用j2ee-不是必须使用ejb"><strong>7. EJB 活学活用，J2EE 不是必须使用EJB</strong></h2>
+<p>通过上面小节的讲解似乎好像EJB 和开发Web 应用的B/S 结构的系统关系并不大，其实
+倒也不然。我们如果把&quot;客户端程序&quot;理解成某一台服务器，这样也是可以被应用的，而且，
+如果是服务器互相之间做EJB 的调用的话，也就不存在广域网带宽限制的问题了。
+但是，如下情况尽量就不要使用EJB 了：
+1、较为简单的纯Web 应用开发，不需要用EJB。
+2、需要与其他服务程序配合使用的应用，但调用或返回的自定义的网络协议可以解决
+的应用程序,不需要使用EJB。
+3、较多人并发访问的C/S 结构的应用程序，尽量不要使用EJB。</p>
+<h2 id="总结"><strong>总结</strong></h2>
+<p><font color=#F33B45 size=3>a.EJB实现原理   </font>： 就是把原来放到客户端实现的代码放到服务器端，并依靠RMI进行通信。</p>
+<p><font color=#F33B45 size=3>b.RMI实现原理   </font> ：就是通过Java对象可序列化机制实现分布计算。</p>
+<p><font color=#F33B45 size=3>c.服务器集群   </font>： 就是通过RMI的通信，连接不同功能模块的服务器，以实现一个完整的功能。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-09-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/ejb-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/ejb-note/" data-title="EJB解释分析" data-hashtags="Microservices,EJB"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/ejb-note/" data-hashtag="Microservices"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/ejb-note/" data-title="EJB解释分析" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/ejb-note/" data-title="EJB解释分析"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/microservices/">Microservices</a>,&nbsp;<a href="/tags/ejb/">EJB</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/lombok-note/" class="prev" rel="prev" title="lombok常用注解及其使用方法"><i class="fas fa-angle-left fa-fw"></i>lombok常用注解及其使用方法</a>
+            <a href="/spring-aop-note/" class="next" rel="next" title="Spring @Aspect、@Before、@After 注解实现 AOP 切面功能">Spring @Aspect、@Before、@After 注解实现 AOP 切面功能<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>
