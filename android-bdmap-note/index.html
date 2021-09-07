@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Android 百度地图SDK 自动定位、标记定位教程 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Android 百度地图SDK 自动定位、标记定位教程的笔记"><meta property="og:title" content="Android 百度地图SDK 自动定位、标记定位教程" />
+<meta property="og:description" content="记录Android 百度地图SDK 自动定位、标记定位教程的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/android-bdmap-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/android-bdmap-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-06T15:20:19&#43;08:00" />
+<meta property="article:modified_time" content="2021-09-06T15:20:19&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/android-bdmap-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Android 百度地图SDK 自动定位、标记定位教程"/>
+<meta name="twitter:description" content="记录Android 百度地图SDK 自动定位、标记定位教程的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/android-bdmap-note/" /><link rel="prev" href="https://kkkpjskey.github.io/androidstudio-no-gradle-task-error/" /><link rel="next" href="https://kkkpjskey.github.io/android-avd-sms-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Android 百度地图SDK 自动定位、标记定位教程",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/android-bdmap-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/android-bdmap-note\/featured-image.jpg",
+                            "width":  1222 ,
+                            "height":  598 
+                        }],"genre": "posts","keywords": "Android, BDMap","wordcount":  5882 ,
+        "url": "https:\/\/kkkpjskey.github.io\/android-bdmap-note\/","datePublished": "2021-09-06T15:20:19+08:00","dateModified": "2021-09-06T15:20:19+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Android 百度地图SDK 自动定位、标记定位教程的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/android-bdmap-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/android-bdmap-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Android 百度地图SDK 自动定位、标记定位教程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/total/"><i class="far fa-folder fa-fw"></i>Total</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-06">2021-09-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5882 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/android-bdmap-note/" class="leancloud_visitors" data-flag-title="Android 百度地图SDK 自动定位、标记定位教程">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/android-bdmap-note/featured-image.jpg"
+        data-srcset="/android-bdmap-note/featured-image.jpg, /android-bdmap-note/featured-image.jpg 1.5x, /android-bdmap-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/android-bdmap-note/featured-image.jpg"
+        title="记录Android 百度地图SDK 自动定位、标记定位教程的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一创建项目引入sdk">一、创建项目引入SDK</a></li>
+    <li><a href="#二显示地图">二、显示地图</a></li>
+    <li><a href="#三定位当前所在位置">三、定位当前所在位置</a></li>
+    <li><a href="#四标点定位回到原位">四、标点定位、回到原位</a></li>
+    <li><a href="#五源码">五、源码</a></li>
+    <li><a href="#六疑问解决">六、疑问解决</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>先看效果图,如果不是你想要的，也就不浪费你时间了，这样对大家都好。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.gif"
+        data-srcset="./1.gif, ./1.gif 1.5x, ./1.gif 2x"
+        data-sizes="auto"
+        alt="./1.gif"
+        title="1" /></p>
+<h2 id="一创建项目引入sdk">一、创建项目引入SDK</h2>
+<p>如果是你满意的那样，我们就可以开始写了，首先创建一个名为MapDemo的项目。
+打开AndroidManifest.xml，复制你的包名</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>然后进入<a href="http://lbsyun.baidu.com/apiconsole/key#/home" target="_blank" rel="noopener noreferrer">百度地图开放平台</a>，没有注册的小伙伴先注册，已注册的就直接登录，登录进去之后找到控制台→我的应用→创建应用</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p>点击之后进入,填写相关资料</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p>输入了应用名称、选择了应用类型和启用的服务，输入了包名。还差开发版和发布版的SHA1了</p>
+<p>① 获取开发版SHA1
+鼠标点击右侧边栏的<strong>Gradle</strong>→ <strong>app</strong>→<strong>Tasks</strong>→ <strong>android</strong>→ 双击<strong>signingReport</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p>当你的AS版本为最新版时，你会发现这里好像有点不一样了，找不到signingReport了，这是AS更新之后默认这个功能关掉了，需要去手动打开它。在设置里面</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<p>如下图这里默认勾选上了，现在把这根勾选上的去掉，</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>然后Sync，或者点击这个小图标。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+<p>然后你的项目的右侧边栏就会出现这个熟悉的task了。</p>
+<p>粘贴到开发版SHA1的输入框</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
+        data-sizes="auto"
+        alt="./9.png"
+        title="9" /></p>
+<p>② 获取发布版SHA1
+<strong>Build</strong> → <strong>Generate Signed Bundle or APK</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.png"
+        data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
+        data-sizes="auto"
+        alt="./10.png"
+        title="10" /></p>
+<p>选择APK 点击Next</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<p>这里是没有秘钥的，需要创建一个新的秘钥，点击 <strong>Create New…</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+<p>先创建项目的jks文件,点击右侧的文件夹图标，指定对应的文件</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<p>没有文件夹就先自己创建一个，选择好文件夹之后，输入jks的名字，这里你可以自己取名，然后点击OK</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+<p>输入密码，点击OK</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+<p>别管这个，点击OK</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.png"
+        data-srcset="./16.png, ./16.png 1.5x, ./16.png 2x"
+        data-sizes="auto"
+        alt="./16.png"
+        title="16" /></p>
+<p>勾选上记住密码，然后OK</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./17.png"
+        data-srcset="./17.png, ./17.png 1.5x, ./17.png 2x"
+        data-sizes="auto"
+        alt="./17.png"
+        title="17" /></p>
+<p>下面还有一个地方要改一下就是APK生成的位置，我不希望它生成在项目里面的默认文件夹，因为找起来不方便，还有一个原因就是clean Project的时候会删除掉你的APK，不管是调试版还是发布版，点击那个小文件夹进行路径修改</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./18.png"
+        data-srcset="./18.png, ./18.png 1.5x, ./18.png 2x"
+        data-sizes="auto"
+        alt="./18.png"
+        title="18" /></p>
+<p>选中APK,点击创建文件图标，新建一个子文件夹</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./19.png"
+        data-srcset="./19.png, ./19.png 1.5x, ./19.png 2x"
+        data-sizes="auto"
+        alt="./19.png"
+        title="19" /></p>
+<p>输入文件夹名称，点击OK</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./20.png"
+        data-srcset="./20.png, ./20.png 1.5x, ./20.png 2x"
+        data-sizes="auto"
+        alt="./20.png"
+        title="20" /></p>
+<p>然后选中这个刚创建的文件夹,点击Finish</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./21.png"
+        data-srcset="./21.png, ./21.png 1.5x, ./21.png 2x"
+        data-sizes="auto"
+        alt="./21.png"
+        title="21" /></p>
+<p>这个时候，底部会出现一个进度条，表示在生成APK文件，然后底部右侧出现这个这个提示弹窗表示，生成APK成功。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./22.png"
+        data-srcset="./22.png, ./22.png 1.5x, ./22.png 2x"
+        data-sizes="auto"
+        alt="./22.png"
+        title="22" /></p>
+<p>然后找到这个APK的所在目录</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./23.png"
+        data-srcset="./23.png, ./23.png 1.5x, ./23.png 2x"
+        data-sizes="auto"
+        alt="./23.png"
+        title="23" /></p>
+<p>这个就是你生成的APK所在地址。以你自己前面设置的路径为准。接下来进入Android Studio的<strong>Terminal</strong>工具输入如下图所示的命令和jks存放路径。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./24.png"
+        data-srcset="./24.png, ./24.png 1.5x, ./24.png 2x"
+        data-sizes="auto"
+        alt="./24.png"
+        title="24" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#//如果你前面的步骤和我一模一样的话，这里你就可以复制粘贴，不一样的话就修改jks的路径就可以了</span>
+keytool -list -v -keystore D:<span class="se">\A</span>PK<span class="se">\m</span>apdemo.jks
+</code></pre></td></tr></table>
+</div>
+</div><p>输入这行命令之后回车会让你输入密码，就是之前创建秘钥的的那个密码，输入的过程中你是看不见密码的，光标也不会移动，不过不用担心，输入无误后回车就可以了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./25.png"
+        data-srcset="./25.png, ./25.png 1.5x, ./25.png 2x"
+        data-sizes="auto"
+        alt="./25.png"
+        title="25" /></p>
+<p>找到这个SHA1，然后复制，粘贴到发布版SHA1的输入框里</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./26.png"
+        data-srcset="./26.png, ./26.png 1.5x, ./26.png 2x"
+        data-sizes="auto"
+        alt="./26.png"
+        title="26" /></p>
+<p>那么这个页面的所需资料就填写完毕，点击提交</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./27.png"
+        data-srcset="./27.png, ./27.png 1.5x, ./27.png 2x"
+        data-sizes="auto"
+        alt="./27.png"
+        title="27" /></p>
+<p>应用创建成功</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./28.png"
+        data-srcset="./28.png, ./28.png 1.5x, ./28.png 2x"
+        data-sizes="auto"
+        alt="./28.png"
+        title="28" /></p>
+<p>点击<strong>开发文档</strong>选择<strong>Android地图SDK</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./29.png"
+        data-srcset="./29.png, ./29.png 1.5x, ./29.png 2x"
+        data-sizes="auto"
+        alt="./29.png"
+        title="29" /></p>
+<p>点击自定义下载</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./30.png"
+        data-srcset="./30.png, ./30.png 1.5x, ./30.png 2x"
+        data-sizes="auto"
+        alt="./30.png"
+        title="30" /></p>
+<p>选择Jar</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./31.png"
+        data-srcset="./31.png, ./31.png 1.5x, ./31.png 2x"
+        data-sizes="auto"
+        alt="./31.png"
+        title="31" /></p>
+<p>下载开发包</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./32.png"
+        data-srcset="./32.png, ./32.png 1.5x, ./32.png 2x"
+        data-sizes="auto"
+        alt="./32.png"
+        title="32" /></p>
+<p>下载后解压文件夹，进入libs里面</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./33.png"
+        data-srcset="./33.png, ./33.png 1.5x, ./33.png 2x"
+        data-sizes="auto"
+        alt="./33.png"
+        title="33" /></p>
+<p>复制这些文件，然后进入你的Android Studio,切换到Project模式，找到libs，然后粘贴</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./34.png"
+        data-srcset="./34.png, ./34.png 1.5x, ./34.png 2x"
+        data-sizes="auto"
+        alt="./34.png"
+        title="34" /></p>
+<p>打开build.gradle，复制如下代码进去，注意放置的位置是在android闭包中，然后Sync，保存修改配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json">	<span class="err">sourceSets</span><span class="p">{</span>
+        <span class="err">main{</span>
+            <span class="err">jniLibs.srcDir</span> <span class="err">&#39;libs&#39;</span>
+            <span class="err">jni.srcDirs</span> <span class="err">=</span> <span class="err">[]</span>    <span class="err">//disable</span> <span class="err">automatic</span> <span class="err">ndk-build</span>
+        <span class="p">}</span>
+    <span class="err">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./35.png"
+        data-srcset="./35.png, ./35.png 1.5x, ./35.png 2x"
+        data-sizes="auto"
+        alt="./35.png"
+        title="35" /></p>
+<p>配置成功，jar包就是可以展开的</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./36.png"
+        data-srcset="./36.png, ./36.png 1.5x, ./36.png 2x"
+        data-sizes="auto"
+        alt="./36.png"
+        title="36" /></p>
+<p>然后进入开放平台，复制你的应用AK</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./37.png"
+        data-srcset="./37.png, ./37.png 1.5x, ./37.png 2x"
+        data-sizes="auto"
+        alt="./37.png"
+        title="37" /></p>
+<h2 id="二显示地图">二、显示地图</h2>
+<p>切换到Android文件模式，打开AndroidManifest.xml,在application标签下写入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">		<span class="c">&lt;!--百度定位AK--&gt;</span>
+        <span class="nt">&lt;meta-data</span>
+            <span class="na">android:name=</span><span class="s">&#34;com.baidu.lbsapi.API_KEY&#34;</span>
+            <span class="na">android:value=</span><span class="s">&#34;WpVg5eIh4kYWPHtPjG3arHIf6bGEn49s&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意这个value里面的值是你自己的应用的，你用我的是没用的。
+然后放入定位服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">		<span class="c">&lt;!--百度定位服务  这个服务也是放在application标签下的--&gt;</span>
+        <span class="nt">&lt;service</span>
+            <span class="na">android:name=</span><span class="s">&#34;com.baidu.location.f&#34;</span>
+            <span class="na">android:enabled=</span><span class="s">&#34;true&#34;</span>
+            <span class="na">android:process=</span><span class="s">&#34;:remote&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./38.png"
+        data-srcset="./38.png, ./38.png 1.5x, ./38.png 2x"
+        data-sizes="auto"
+        alt="./38.png"
+        title="38" /></p>
+<p>最后放入权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">	<span class="c">&lt;!--以下权限与application标签是平级的--&gt;</span>
+    <span class="c">&lt;!-- 这个权限用于进行网络定位--&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.ACCESS_COARSE_LOCATION&#34;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- 这个权限用于访问GPS定位--&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.ACCESS_FINE_LOCATION&#34;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位--&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.ACCESS_WIFI_STATE&#34;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- 获取运营商信息，用于支持提供运营商信息相关的接口--&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.ACCESS_NETWORK_STATE&#34;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位--&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.CHANGE_WIFI_STATE&#34;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据--&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.WRITE_EXTERNAL_STORAGE&#34;</span> <span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- 访问网络，网络定位需要上网--&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.INTERNET&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>创建一个MapApplication类，继承Application，在onCreate方法中完成SDK的初始化，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.llw.mapdemo</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.app.Application</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.baidu.mapapi.CoordType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.baidu.mapapi.SDKInitializer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MapApplication</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+        <span class="c1">//在使用SDK各组件之前初始化context信息，传入ApplicationContext
+</span><span class="c1"></span>        <span class="n">SDKInitializer</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+
+        <span class="c1">//自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.
+</span><span class="c1"></span>        <span class="c1">//包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。
+</span><span class="c1"></span>        <span class="n">SDKInitializer</span><span class="o">.</span><span class="na">setCoordType</span><span class="o">(</span><span class="n">CoordType</span><span class="o">.</span><span class="na">BD09LL</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后在AndroidManifest.xml文件中声明该Application</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./39.png"
+        data-srcset="./39.png, ./39.png 1.5x, ./39.png 2x"
+        data-sizes="auto"
+        alt="./39.png"
+        title="39" /></p>
+<p>现在修改activity_main.xml文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span class="nt">&lt;LinearLayout</span>
+    <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+    <span class="na">xmlns:tools=</span><span class="s">&#34;http://schemas.android.com/tools&#34;</span>
+    <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+    <span class="na">tools:context=</span><span class="s">&#34;.MainActivity&#34;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;com.baidu.mapapi.map.MapView</span>
+        <span class="na">android:id=</span><span class="s">&#34;@+id/bmapView&#34;</span>
+        <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
+        <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span>
+        <span class="na">android:clickable=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后在MainActivity中</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./40.png"
+        data-srcset="./40.png, ./40.png 1.5x, ./40.png 2x"
+        data-sizes="auto"
+        alt="./40.png"
+        title="40" /></p>
+<p>这个时候你的地图就会显示出来，可能会比较慢，这个与网络有关。运行起来</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./41.gif"
+        data-srcset="./41.gif, ./41.gif 1.5x, ./41.gif 2x"
+        data-sizes="auto"
+        alt="./41.gif"
+        title="41" /></p>
+<p>SDK默认指定了北京的坐标，那么这肯定不是你想要的，所以要定位到实际的位置才行。</p>
+<h2 id="三定位当前所在位置">三、定位当前所在位置</h2>
+<p>修改一下styles.xml文件</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./42.png"
+        data-srcset="./42.png, ./42.png 1.5x, ./42.png 2x"
+        data-sizes="auto"
+        alt="./42.png"
+        title="42" /></p>
+<p>进入MainActivity</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./43.png"
+        data-srcset="./43.png, ./43.png 1.5x, ./43.png 2x"
+        data-sizes="auto"
+        alt="./43.png"
+        title="43" /></p>
+<p>initLocation方法代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="cm">/**
+</span><span class="cm">     * 定位初始化
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initLocation</span><span class="o">(){</span>
+
+        <span class="c1">// 开启定位图层
+</span><span class="c1"></span>        <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">setMyLocationEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="c1">// 定位初始化
+</span><span class="c1"></span>        <span class="n">mLocClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocationClient</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="n">MyLocationListener</span> <span class="n">myListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyLocationListener</span><span class="o">();</span>
+        <span class="n">mLocClient</span><span class="o">.</span><span class="na">registerLocationListener</span><span class="o">(</span><span class="n">myListener</span><span class="o">);</span>
+        <span class="n">LocationClientOption</span> <span class="n">option</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocationClientOption</span><span class="o">();</span>
+        <span class="c1">// 打开gps
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setOpenGps</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="c1">// 设置坐标类型
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setCoorType</span><span class="o">(</span><span class="s">&#34;bd09ll&#34;</span><span class="o">);</span>
+        <span class="n">option</span><span class="o">.</span><span class="na">setScanSpan</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+        <span class="n">mLocClient</span><span class="o">.</span><span class="na">setLocOption</span><span class="o">(</span><span class="n">option</span><span class="o">);</span>
+        <span class="n">mLocClient</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>MyLocationListener 代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="cm">/**
+</span><span class="cm">     * 定位SDK监听函数
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyLocationListener</span> <span class="kd">implements</span> <span class="n">BDLocationListener</span> <span class="o">{</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceiveLocation</span><span class="o">(</span><span class="n">BDLocation</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// MapView 销毁后不在处理新接收的位置
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">location</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">mMapView</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">MyLocationData</span> <span class="n">locData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyLocationData</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">accuracy</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getRadius</span><span class="o">())</span><span class="c1">// 设置定位数据的精度信息，单位：米
+</span><span class="c1"></span>                    <span class="o">.</span><span class="na">direction</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getDirection</span><span class="o">())</span> <span class="c1">// 此处设置开发者获取到的方向信息，顺时针0-360
+</span><span class="c1"></span>                    <span class="o">.</span><span class="na">latitude</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getLatitude</span><span class="o">())</span>
+                    <span class="o">.</span><span class="na">longitude</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getLongitude</span><span class="o">())</span>
+                    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+            <span class="c1">// 设置定位数据, 只有先允许定位图层后设置数据才会生效
+</span><span class="c1"></span>            <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">setMyLocationData</span><span class="o">(</span><span class="n">locData</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">isFirstLoc</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">isFirstLoc</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+                <span class="n">LatLng</span> <span class="n">latLng</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LatLng</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getLatitude</span><span class="o">(),</span> <span class="n">location</span><span class="o">.</span><span class="na">getLongitude</span><span class="o">());</span>
+                <span class="n">MapStatus</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MapStatus</span><span class="o">.</span><span class="na">Builder</span><span class="o">();</span>
+                <span class="n">builder</span><span class="o">.</span><span class="na">target</span><span class="o">(</span><span class="n">latLng</span><span class="o">).</span><span class="na">zoom</span><span class="o">(</span><span class="n">20</span><span class="o">.</span><span class="na">0f</span><span class="o">);</span>
+                <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">animateMapStatus</span><span class="o">(</span><span class="n">MapStatusUpdateFactory</span><span class="o">.</span><span class="na">newMapStatus</span><span class="o">(</span><span class="n">builder</span><span class="o">.</span><span class="na">build</span><span class="o">()));</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>最后改动一下onDestroy</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDestroy</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+        <span class="c1">// 退出时销毁定位
+</span><span class="c1"></span>        <span class="n">mLocClient</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+        <span class="c1">// 关闭定位图层
+</span><span class="c1"></span>        <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">setMyLocationEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        <span class="c1">// 在activity执行onDestroy时必须调用mMapView.onDestroy()
+</span><span class="c1"></span>        <span class="n">mMapView</span><span class="o">.</span><span class="na">onDestroy</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>运行效果如下图</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./44.gif"
+        data-srcset="./44.gif, ./44.gif 1.5x, ./44.gif 2x"
+        data-sizes="auto"
+        alt="./44.gif"
+        title="44" /></p>
+<p>现在就已经在地图上定位到当前所在位置了。</p>
+<p>当然光是定位到自己的位置也是不够的，我还希望点击地图的时候能够定位过去，</p>
+<h2 id="四标点定位回到原位">四、标点定位、回到原位</h2>
+<p>先修改MainActivity.xml文件，
+根布局改为RelativeLayout，然后增加一个ImageButton</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./45.png"
+        data-srcset="./45.png, ./45.png 1.5x, ./45.png 2x"
+        data-sizes="auto"
+        alt="./45.png"
+        title="45" /></p>
+<p>里面用到的图标</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./46.png"
+        data-srcset="./46.png, ./46.png 1.5x, ./46.png 2x"
+        data-sizes="auto"
+        alt="./46.png"
+        title="46" /></p>
+<p>写完之后你会发现你的你少了一个resetLocation方法,进入MainActivity,写下如下方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="cm">/**
+</span><span class="cm">     * 点切换到其他标点位置时，重置定位显示，点击之后回到自动定位
+</span><span class="cm">     *
+</span><span class="cm">     * @param view
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">resetLocation</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+        
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./47.png"
+        data-srcset="./47.png, ./47.png 1.5x, ./47.png 2x"
+        data-sizes="auto"
+        alt="./47.png"
+        title="47" /></p>
+<p>既然要定位到其他地方肯定是要先点击地图的，所以写一个地图的点击方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="cm">/**
+</span><span class="cm">     * 地图点击
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">mapOnClick</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 设置marker图标
+</span><span class="c1"></span>        <span class="n">bitmap</span> <span class="o">=</span> <span class="n">BitmapDescriptorFactory</span><span class="o">.</span><span class="na">fromResource</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">drawable</span><span class="o">.</span><span class="na">icon_marka</span><span class="o">);</span>
+        <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">setOnMapClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">BaiduMap</span><span class="o">.</span><span class="na">OnMapClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMapPoiClick</span><span class="o">(</span><span class="n">MapPoi</span> <span class="n">mapPoi</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="o">}</span>
+
+            <span class="c1">//此方法就是点击地图监听
+</span><span class="c1"></span>            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMapClick</span><span class="o">(</span><span class="n">LatLng</span> <span class="n">latLng</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">//获取经纬度
+</span><span class="c1"></span>                <span class="n">markerLatitude</span> <span class="o">=</span> <span class="n">latLng</span><span class="o">.</span><span class="na">latitude</span><span class="o">;</span>
+                <span class="n">markerLongitude</span> <span class="o">=</span> <span class="n">latLng</span><span class="o">.</span><span class="na">longitude</span><span class="o">;</span>
+                <span class="c1">//先清除图层
+</span><span class="c1"></span>                <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+                <span class="c1">// 定义Maker坐标点
+</span><span class="c1"></span>                <span class="n">LatLng</span> <span class="n">point</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LatLng</span><span class="o">(</span><span class="n">markerLatitude</span><span class="o">,</span> <span class="n">markerLongitude</span><span class="o">);</span>
+                <span class="c1">// 构建MarkerOption，用于在地图上添加Marker
+</span><span class="c1"></span>                <span class="n">MarkerOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MarkerOptions</span><span class="o">().</span><span class="na">position</span><span class="o">(</span><span class="n">point</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">icon</span><span class="o">(</span><span class="n">bitmap</span><span class="o">);</span>
+                <span class="c1">// 在地图上添加Marker，并显示
+</span><span class="c1"></span>                <span class="c1">//mBaiduMap.addOverlay(options);
+</span><span class="c1"></span>                <span class="n">marker</span> <span class="o">=</span> <span class="o">(</span><span class="n">Marker</span><span class="o">)</span> <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">addOverlay</span><span class="o">(</span><span class="n">options</span><span class="o">);</span>
+                <span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>
+                <span class="n">bundle</span><span class="o">.</span><span class="na">putSerializable</span><span class="o">(</span><span class="s">&#34;info&#34;</span><span class="o">,</span> <span class="s">&#34;纬度：&#34;</span> <span class="o">+</span> <span class="n">markerLatitude</span> <span class="o">+</span> <span class="s">&#34;   经度：&#34;</span> <span class="o">+</span> <span class="n">markerLongitude</span><span class="o">);</span>
+                <span class="n">marker</span><span class="o">.</span><span class="na">setExtraInfo</span><span class="o">(</span><span class="n">bundle</span><span class="o">);</span><span class="c1">//将bundle值传入marker中，给baiduMap设置监听时可以得到它
+</span><span class="c1"></span>
+                <span class="c1">//点击地图之后重新定位
+</span><span class="c1"></span>                <span class="n">initLocation</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里面有一个图标icon_marka</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./48.png"
+        data-srcset="./48.png, ./48.png 1.5x, ./48.png 2x"
+        data-sizes="auto"
+        alt="./48.png"
+        title="48" /></p>
+<p>上面的代码很明确了吧，当点击地图时添加一个标点，同时绑定它的经纬度，当点击标点的时候就会显示出经纬度。当标点在地图上绘制之后，就重新定位。再来看看这个方法吧</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="cm">/**
+</span><span class="cm">     * 定位初始化
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initLocation</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="c1">// 开启定位图层
+</span><span class="c1"></span>        <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">setMyLocationEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="c1">// 定位初始化
+</span><span class="c1"></span>        <span class="n">mLocClient</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocationClient</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="n">MyLocationListener</span> <span class="n">myListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyLocationListener</span><span class="o">();</span>
+        <span class="n">mLocClient</span><span class="o">.</span><span class="na">registerLocationListener</span><span class="o">(</span><span class="n">myListener</span><span class="o">);</span>
+        <span class="n">LocationClientOption</span> <span class="n">option</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocationClientOption</span><span class="o">();</span>
+
+        <span class="n">option</span><span class="o">.</span><span class="na">setOpenGps</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span><span class="c1">// 打开gps
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setLocationMode</span><span class="o">(</span><span class="n">LocationClientOption</span><span class="o">.</span><span class="na">LocationMode</span><span class="o">.</span><span class="na">Hight_Accuracy</span><span class="o">);</span><span class="c1">// 设置高精度定位
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setCoorType</span><span class="o">(</span><span class="s">&#34;bd09ll&#34;</span><span class="o">);</span><span class="c1">//可选，默认gcj02，设置返回的定位结果坐标系
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setScanSpan</span><span class="o">(</span><span class="n">0</span><span class="o">);</span><span class="c1">//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setIsNeedAddress</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span><span class="c1">//可选，设置是否需要地址信息，默认不需要
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setOpenGps</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span><span class="c1">//可选，默认false,设置是否使用gps
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setIsNeedLocationDescribe</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span><span class="c1">//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setIsNeedLocationPoiList</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span><span class="c1">//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setIgnoreKillProcess</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span><span class="c1">//可选，默认false，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认杀死
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">SetIgnoreCacheException</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span><span class="c1">//可选，默认false，设置是否收集CRASH信息，默认收集
+</span><span class="c1"></span>        <span class="n">option</span><span class="o">.</span><span class="na">setEnableSimulateGps</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span><span class="c1">//可选，默认false，设置是否需要过滤gps仿真结果，默认需要
+</span><span class="c1"></span>        <span class="n">mLocClient</span><span class="o">.</span><span class="na">setLocOption</span><span class="o">(</span><span class="n">option</span><span class="o">);</span>
+        <span class="n">mLocClient</span><span class="o">.</span><span class="na">start</span><span class="o">();</span><span class="c1">//开始定位
+</span><span class="c1"></span>    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里面我增加了一些属性，重点不是这个，是定位后的监听。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="cm">/**
+</span><span class="cm">     * 定位SDK监听函数
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyLocationListener</span> <span class="kd">implements</span> <span class="n">BDLocationListener</span> <span class="o">{</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceiveLocation</span><span class="o">(</span><span class="n">BDLocation</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// MapView 销毁后不在处理新接收的位置
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">location</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">mMapView</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="kt">double</span> <span class="n">resultLatitude</span><span class="o">;</span>
+            <span class="kt">double</span> <span class="n">resultLongitude</span><span class="o">;</span>
+
+            <span class="k">if</span> <span class="o">(</span><span class="n">markerLatitude</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span><span class="c1">//自动定位
+</span><span class="c1"></span>                <span class="n">resultLatitude</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="na">getLatitude</span><span class="o">();</span>
+                <span class="n">resultLongitude</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="na">getLongitude</span><span class="o">();</span>
+                <span class="n">ibLocation</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">GONE</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span><span class="c1">//标点定位
+</span><span class="c1"></span>                <span class="n">resultLatitude</span> <span class="o">=</span> <span class="n">markerLatitude</span><span class="o">;</span>
+                <span class="n">resultLongitude</span> <span class="o">=</span> <span class="n">markerLongitude</span><span class="o">;</span>
+                <span class="n">ibLocation</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">VISIBLE</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="n">MyLocationData</span> <span class="n">locData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyLocationData</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">accuracy</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getRadius</span><span class="o">())</span><span class="c1">// 设置定位数据的精度信息，单位：米
+</span><span class="c1"></span>                    <span class="o">.</span><span class="na">direction</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">getDirection</span><span class="o">())</span> <span class="c1">// 此处设置开发者获取到的方向信息，顺时针0-360
+</span><span class="c1"></span>                    <span class="o">.</span><span class="na">latitude</span><span class="o">(</span><span class="n">resultLatitude</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">longitude</span><span class="o">(</span><span class="n">resultLongitude</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+            <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">setMyLocationData</span><span class="o">(</span><span class="n">locData</span><span class="o">);</span><span class="c1">// 设置定位数据, 只有先允许定位图层后设置数据才会生效
+</span><span class="c1"></span>            <span class="n">LatLng</span> <span class="n">latLng</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LatLng</span><span class="o">(</span><span class="n">resultLatitude</span><span class="o">,</span> <span class="n">resultLongitude</span><span class="o">);</span>
+            <span class="n">MapStatus</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MapStatus</span><span class="o">.</span><span class="na">Builder</span><span class="o">();</span>
+            <span class="n">builder</span><span class="o">.</span><span class="na">target</span><span class="o">(</span><span class="n">latLng</span><span class="o">).</span><span class="na">zoom</span><span class="o">(</span><span class="n">20</span><span class="o">.</span><span class="na">0f</span><span class="o">);</span>
+            <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">animateMapStatus</span><span class="o">(</span><span class="n">MapStatusUpdateFactory</span><span class="o">.</span><span class="na">newMapStatus</span><span class="o">(</span><span class="n">builder</span><span class="o">.</span><span class="na">build</span><span class="o">()));</span>
+
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在一开始我生命两个double类型的变量，分别是标点的经度和纬度，当一开始进来的时候判断是否等于0，如果是，则使用自动的定位，如果不是，则使用标点的定位，我在点击地图时，将获得的位置坐标赋值给了这两个变量，所以当你点击其他地方的时候就会马上定位过去。这时候就要显示出重置定位这个图标，在手机屏幕的左下角。
+然后在这个定位图标的点击时写入如下代碼。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="cm">/**
+</span><span class="cm">     * 点切换到其他标点位置时，重置定位显示，点击之后回到自动定位
+</span><span class="cm">     *
+</span><span class="cm">     * @param view
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">resetLocation</span><span class="o">(</span><span class="n">View</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">markerLatitude</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="n">initLocation</span><span class="o">();</span>
+        <span class="n">marker</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span><span class="c1">//清除标点
+</span><span class="c1"></span>    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>最后还差一个标点的点击，那就重新写一个initView,把相关的findById都写到这里面吧。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">initView</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 地图初始化
+</span><span class="c1"></span>        <span class="n">mMapView</span> <span class="o">=</span> <span class="o">(</span><span class="n">MapView</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bmapView</span><span class="o">);</span>
+        <span class="c1">//回到当前定位
+</span><span class="c1"></span>        <span class="n">ibLocation</span> <span class="o">=</span> <span class="o">(</span><span class="n">ImageButton</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">ib_location</span><span class="o">);</span>
+        <span class="n">mMapView</span><span class="o">.</span><span class="na">showScaleControl</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>  <span class="c1">// 设置比例尺是否可见（true 可见/false不可见）
+</span><span class="c1"></span>        <span class="c1">//mMapView.showZoomControls(false);  // 设置缩放控件是否可见（true 可见/false不可见）
+</span><span class="c1"></span>        <span class="n">mMapView</span><span class="o">.</span><span class="na">removeViewAt</span><span class="o">(</span><span class="n">1</span><span class="o">);</span><span class="c1">// 删除百度地图Logo
+</span><span class="c1"></span>
+        <span class="n">mBaiduMap</span> <span class="o">=</span> <span class="n">mMapView</span><span class="o">.</span><span class="na">getMap</span><span class="o">();</span>
+
+        <span class="n">mBaiduMap</span><span class="o">.</span><span class="na">setOnMarkerClickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">BaiduMap</span><span class="o">.</span><span class="na">OnMarkerClickListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">onMarkerClick</span><span class="o">(</span><span class="n">Marker</span> <span class="n">marker</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kd">final</span> <span class="n">String</span> <span class="n">info</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">marker</span><span class="o">.</span><span class="na">getExtraInfo</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;info&#34;</span><span class="o">);</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">info</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后你再看这个onCreate方法</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./49.png"
+        data-srcset="./49.png, ./49.png 1.5x, ./49.png 2x"
+        data-sizes="auto"
+        alt="./49.png"
+        title="49" /></p>
+<p>只要调用就可以了。运行效果如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./50.gif"
+        data-srcset="./50.gif, ./50.gif 1.5x, ./50.gif 2x"
+        data-sizes="auto"
+        alt="./50.gif"
+        title="50" /></p>
+<h2 id="五源码">五、源码</h2>
+<p>  做一个Demo，自然要把源码放上去，先看效果图，合适再运行源码，OK，最后不理解代码再来看博客的讲述，你就知道是怎么回事了，至于自己写的原因是在于官方的文档我觉得并不详细，而我可以把每一步写进来，这才是我写作的初衷。</p>
+<p>源码地址：<a href="https://github.com/lilongweidev/MapDemo" target="_blank" rel="noopener noreferrer">MapDemo</a>，还是我懂你吧！</p>
+<h2 id="六疑问解决">六、疑问解决</h2>
+<p>如果你运行源码之后发现定位到的地方并不是当前的位置，甚至偏了十万八千里，那么你就要检查一下是不是鉴权信息错误了，这其实是你当前相关的开发版SHA1和当前平台上的不一致造成了，比如我现在在家里的电脑克隆源码下来，然后运行在自己的手机上，发现定位在海里，等我放大之后发现在几内亚湾，都到了非洲的海域了。</p>
+<p>你可以看一下你运行时你的Run里面有没有如下这样的异常信息。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./51.png"
+        data-srcset="./51.png, ./51.png 1.5x, ./51.png 2x"
+        data-sizes="auto"
+        alt="./51.png"
+        title="51" /></p>
+<p>如果有的话，那么现在就来解决一下。首先重新获取一下当前的开发版SHA1，如果你不记得了，往上滑动再看看就好。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./52.png"
+        data-srcset="./52.png, ./52.png 1.5x, ./52.png 2x"
+        data-sizes="auto"
+        alt="./52.png"
+        title="52" /></p>
+<p>然后你再看看平台上的开发版SHA1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./53.png"
+        data-srcset="./53.png, ./53.png 1.5x, ./53.png 2x"
+        data-sizes="auto"
+        alt="./53.png"
+        title="53" /></p>
+<p>你都不用全部看完，只要有一个鉴权失败，铁定就不行，那么只要改变一下平台上的开发版SHA1就可以了，复制刚才控制台中的SHA1，然后粘贴到平台的这个输入框中，然后点击提交，之前你再运行刚才的项目。</p>
+<p>然后你会发现，还是在几内亚湾，不过你看Run中的报错已经没有了，不过还有一个错误，我之前写这个文章的时候这个地图的SDK还不需要我写数据，所以我就没有动态请求权限，而现在又要了，很明显是百度的人动了手脚。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./54.png"
+        data-srcset="./54.png, ./54.png 1.5x, ./54.png 2x"
+        data-sizes="auto"
+        alt="./54.png"
+        title="54" /></p>
+<p>那么下面就来动态请求一下写入文件的权限。</p>
+<p>在app的build.gralde中的android闭包下增加如下jdk1.8的使用代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json">	<span class="err">compileOptions</span> <span class="p">{</span>
+        <span class="err">sourceCompatibility</span> <span class="err">=</span> <span class="err">1.8</span>
+        <span class="err">targetCompatibility</span> <span class="err">=</span> <span class="err">1.8</span>
+    <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后在dependencies闭包下增加如下依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json">	<span class="err">//动态权限请求</span>
+    <span class="err">implementation</span> <span class="err">&#39;com.tbruyelle.rxpermissions</span><span class="mi">2</span><span class="err">:rxpermissions:</span><span class="mf">0.9</span><span class="err">.</span><span class="mi">4</span><span class="err">@aar&#39;</span>
+    <span class="err">implementation</span> <span class="err">&#39;io.reactivex.rxjava</span><span class="mi">2</span><span class="err">:rxandroid:</span><span class="mf">2.0</span><span class="err">.</span><span class="mi">2</span><span class="err">&#39;</span>
+    <span class="err">implementation</span> <span class="s2">&#34;io.reactivex.rxjava2:rxjava:2.0.0&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后点击Sync同步一下，然后进入到MainActivity，新增检查权限的方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">	<span class="cm">/**
+</span><span class="cm">     * 检查版本
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkVersion</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">Build</span><span class="o">.</span><span class="na">VERSION</span><span class="o">.</span><span class="na">SDK_INT</span><span class="o">&gt;=</span><span class="n">Build</span><span class="o">.</span><span class="na">VERSION_CODES</span><span class="o">.</span><span class="na">M</span><span class="o">){</span>
+            <span class="n">RxPermissions</span> <span class="n">rxPermissions</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RxPermissions</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+            <span class="n">rxPermissions</span><span class="o">.</span><span class="na">request</span><span class="o">(</span><span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_COARSE_LOCATION</span><span class="o">,</span>
+                    <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">ACCESS_FINE_LOCATION</span><span class="o">,</span>
+                    <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">READ_PHONE_STATE</span><span class="o">,</span>
+                    <span class="n">Manifest</span><span class="o">.</span><span class="na">permission</span><span class="o">.</span><span class="na">WRITE_EXTERNAL_STORAGE</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">subscribe</span><span class="o">(</span><span class="n">granted</span> <span class="o">-&gt;</span> <span class="o">{</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">granted</span><span class="o">)</span> <span class="o">{</span><span class="c1">//申请成功
+</span><span class="c1"></span>                            <span class="c1">//发起连续定位请求
+</span><span class="c1"></span>                            <span class="n">initLocation</span><span class="o">();</span><span class="c1">// 定位初始化
+</span><span class="c1"></span>                        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span><span class="c1">//申请失败
+</span><span class="c1"></span>                            <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span><span class="s">&#34;权限未开启&#34;</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_SHORT</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+                        <span class="o">}</span>
+                    <span class="o">});</span>
+        <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+            <span class="n">initLocation</span><span class="o">();</span><span class="c1">// 定位初始化
+</span><span class="c1"></span>        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Android6.0以下和动态权限请求允许之后调用initLocation()进行定位，然后在onCreate中调用</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./55.png"
+        data-srcset="./55.png, ./55.png 1.5x, ./55.png 2x"
+        data-sizes="auto"
+        alt="./55.png"
+        title="55" /></p>
+<p>最后在AndroidManifest.xml中增加一个静态权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">	<span class="c">&lt;!--读取手机状态--&gt;</span>
+    <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&#34;android.permission.READ_PHONE_STATE&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后运行，发现就可以了，终于不是在几内亚湾了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./56.png"
+        data-srcset="./56.png, ./56.png 1.5x, ./56.png 2x"
+        data-sizes="auto"
+        alt="./56.png"
+        title="56" /></p>
+<p>下载源码和APK，通过CSDN资源下载，原作者设置的0积分。</p>
+<p>地址： <a href="https://download.csdn.net/download/qq_38436214/16685804" target="_blank" rel="noopener noreferrer">百度地图Demo源码和APK</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-09-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/android-bdmap-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/android-bdmap-note/" data-title="Android 百度地图SDK 自动定位、标记定位教程" data-hashtags="Android,BDMap"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/android-bdmap-note/" data-hashtag="Android"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/android-bdmap-note/" data-title="Android 百度地图SDK 自动定位、标记定位教程" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/android-bdmap-note/" data-title="Android 百度地图SDK 自动定位、标记定位教程"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/android/">Android</a>,&nbsp;<a href="/tags/bdmap/">BDMap</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/androidstudio-no-gradle-task-error/" class="prev" rel="prev" title="Android Studio 的 Gradle Task 没有显示"><i class="fas fa-angle-left fa-fw"></i>Android Studio 的 Gradle Task 没有显示</a>
+            <a href="/android-avd-sms-note/" class="next" rel="next" title="Android Studio向AVD模拟器发送短信">Android Studio向AVD模拟器发送短信<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

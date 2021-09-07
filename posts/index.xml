@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 06 Sep 2021 14:46:46 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Sep 2021 00:20:20 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>基于广播和服务功能的音乐播放器</title>
     <link>https://kkkpjskey.github.io/android-music-box/</link>
     <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-music-box/</guid>
@@ -15,6 +15,36 @@
     <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
     <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
 </item><item>
+    <title>Windows安装绿色版Redis教程</title>
+    <link>https://kkkpjskey.github.io/redis-green-install-note/</link>
+    <pubDate>Tue, 07 Sep 2021 00:20:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/redis-green-install-note/</guid>
+    <description><![CDATA[前言: 项目使用到了Redis,服务器的Redis总是挂,难受,于是有了接下来的这篇windows端安装绿色版Redis的教程 1.欢迎来到世界]]></description>
+</item><item>
+    <title>Choco安装Vctools报错</title>
+    <link>https://kkkpjskey.github.io/vue-install-base-error/</link>
+    <pubDate>Mon, 06 Sep 2021 18:08:48 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-install-base-error/</guid>
+    <description><![CDATA[报错 Windows安装Vue时说vctools没有安装成功，本机装的2019VS，为了使用SAS，node版本用的比较低，所以要再装一个20]]></description>
+</item><item>
+    <title>Module build failed: Error: Node Sass does not yet support your current environment</title>
+    <link>https://kkkpjskey.github.io/vue-node-sass-not-support-error/</link>
+    <pubDate>Mon, 06 Sep 2021 17:18:19 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-node-sass-not-support-error/</guid>
+    <description><![CDATA[问题概述 公司的项目想跑一下前端，执行npm install报错 再执行npm audit fix还报错 查看对应的日志目录发现里面报错，&quot;Modul]]></description>
+</item><item>
+    <title>Android Studio向AVD模拟器发送短信</title>
+    <link>https://kkkpjskey.github.io/android-avd-sms-note/</link>
+    <pubDate>Mon, 06 Sep 2021 16:22:33 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-avd-sms-note/</guid>
+    <description><![CDATA[步骤 如上图所示，点击&quot;Tools&quot;&ndash;&gt;&ldquo;Android&rdquo;&ndash;&gt;]]></description>
+</item><item>
+    <title>Android 百度地图SDK 自动定位、标记定位教程</title>
+    <link>https://kkkpjskey.github.io/android-bdmap-note/</link>
+    <pubDate>Mon, 06 Sep 2021 15:20:19 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bdmap-note/</guid>
+    <description><![CDATA[先看效果图,如果不是你想要的，也就不浪费你时间了，这样对大家都好。 一、创建项目引入SDK 如果是你满意的那样，我们就可以开始写了，首先创建一个]]></description>
+</item><item>
+    <title>Android Studio 的 Gradle Task 没有显示</title>
+    <link>https://kkkpjskey.github.io/androidstudio-no-gradle-task-error/</link>
+    <pubDate>Mon, 06 Sep 2021 15:08:14 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/androidstudio-no-gradle-task-error/</guid>
+    <description><![CDATA[问题描述 Android Studio Gradle 窗口没有显示 task 列表的问题，如下图所示： 网上找了好久都没有找到原因，最后自己摸索，找了解决方法。 解决方法 依次点击：File -&gt; Settings -&gt;]]></description>
+</item><item>
     <title>Spring的通过@Value注入自定义类型教程</title>
     <link>https://kkkpjskey.github.io/spring-value-collection-overide-note/</link>
     <pubDate>Mon, 06 Sep 2021 14:46:46 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/spring-value-collection-overide-note/</guid>
@@ -24,35 +54,5 @@
     <link>https://kkkpjskey.github.io/restful-note/</link>
     <pubDate>Mon, 06 Sep 2021 14:26:12 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/restful-note/</guid>
     <description><![CDATA[老婆经常喜欢翻看我订阅的技术杂志，她总能从她的视角提出很多有趣的问题。 一个悠闲的周日下午，她午觉醒来，又习惯性的抓起这个月的杂志，饶有兴趣地]]></description>
-</item><item>
-    <title>SpringBoot读取yml/properties的几种方法</title>
-    <link>https://kkkpjskey.github.io/springboot-config-note/</link>
-    <pubDate>Thu, 02 Sep 2021 11:27:32 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springboot-config-note/</guid>
-    <description><![CDATA[前言 由于一些众所周知且不可抗拒的力量，个人的Spring底子很差，Boot和MVC部分还可以。特别是学习了设计模式，认为开发一个软件时Spr]]></description>
-</item><item>
-    <title>log4j和slf4j分析及教程</title>
-    <link>https://kkkpjskey.github.io/java-log4j-slf4j-note/</link>
-    <pubDate>Thu, 02 Sep 2021 11:18:14 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-log4j-slf4j-note/</guid>
-    <description><![CDATA[为什么要log4j和slf4j代替System.out.println()输出日志 内容： 1.什么是log4j 2.log4j的特点 3.为什么要]]></description>
-</item><item>
-    <title>Spring @Aspect、@Before、@After 注解实现 AOP 切面功能</title>
-    <link>https://kkkpjskey.github.io/spring-aop-note/</link>
-    <pubDate>Wed, 01 Sep 2021 14:45:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/spring-aop-note/</guid>
-    <description><![CDATA[Spring AOP 注解概述 1、Spring 的 AOP 功能除了在配置文件中配置一大堆的配置，比如切入点、表达式、通知等等以外，使用注解的方式更为方便快捷，特别是 Spring]]></description>
-</item><item>
-    <title>EJB解释分析</title>
-    <link>https://kkkpjskey.github.io/ejb-note/</link>
-    <pubDate>Wed, 01 Sep 2021 14:18:32 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/ejb-note/</guid>
-    <description><![CDATA[1. 我们不禁要问，什么是&quot;服务集群&quot;？什么是&quot;企业级开发&quot;？ 既然说了EJB 是为了&quot;服务集群&]]></description>
-</item><item>
-    <title>lombok常用注解及其使用方法</title>
-    <link>https://kkkpjskey.github.io/lombok-note/</link>
-    <pubDate>Wed, 01 Sep 2021 10:33:29 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/lombok-note/</guid>
-    <description><![CDATA[以下类为例 1 2 3 4 5 public class User { int id; String name; List list; } @Data、@Value @Data注解在类上，将类提供的所有属性都添加get、set方法，并添加e]]></description>
-</item><item>
-    <title>Feign 基本使用教程和原理分析</title>
-    <link>https://kkkpjskey.github.io/springcloud-feign-note/</link>
-    <pubDate>Wed, 01 Sep 2021 10:25:37 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springcloud-feign-note/</guid>
-    <description><![CDATA[Feign 基本使用 在开发 Spring Cloud 微服务的时候，我们知道，服务之间都是以 HTTP 接口的形式对外提供服务的，因此消费者在进行调用的时候，底层就是通过 HTTP Client 的这种方式]]></description>
 </item></channel>
 </rss>
