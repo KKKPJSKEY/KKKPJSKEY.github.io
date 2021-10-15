@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>查找算法和对应的数据结构 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录查找算法和对应的数据结构的笔记"><meta property="og:title" content="查找算法和对应的数据结构" />
+<meta property="og:description" content="记录查找算法和对应的数据结构的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/search-algorithm-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/search-algorithm-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-11T09:28:27&#43;08:00" />
+<meta property="article:modified_time" content="2021-10-14T11:47:40&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/search-algorithm-note/featured-image.jpg"/>
+<meta name="twitter:title" content="查找算法和对应的数据结构"/>
+<meta name="twitter:description" content="记录查找算法和对应的数据结构的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/search-algorithm-note/" /><link rel="prev" href="https://kkkpjskey.github.io/git-error/" /><link rel="next" href="https://kkkpjskey.github.io/sql-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "查找算法和对应的数据结构",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/search-algorithm-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/search-algorithm-note\/featured-image.jpg",
+                            "width":  3200 ,
+                            "height":  960 
+                        }],"genre": "posts","keywords": "DataStructure, Algorithm, Search","wordcount":  8632 ,
+        "url": "https:\/\/kkkpjskey.github.io\/search-algorithm-note\/","datePublished": "2021-10-11T09:28:27+08:00","dateModified": "2021-10-14T11:47:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录查找算法和对应的数据结构的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/search-algorithm-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/search-algorithm-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">查找算法和对应的数据结构</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-11">2021-10-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8632 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 18 分钟&nbsp;<span id="/search-algorithm-note/" class="leancloud_visitors" data-flag-title="查找算法和对应的数据结构">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/search-algorithm-note/featured-image.jpg"
+        data-srcset="/search-algorithm-note/featured-image.jpg, /search-algorithm-note/featured-image.jpg 1.5x, /search-algorithm-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/search-algorithm-note/featured-image.jpg"
+        title="记录查找算法和对应的数据结构的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#七大查找算法">七大查找算法</a>
+      <ul>
+        <li><a href="#1-顺序查找">1. 顺序查找</a></li>
+        <li><a href="#2-二分查找">2. 二分查找</a></li>
+        <li><a href="#3-插值查找">3. 插值查找</a></li>
+        <li><a href="#4-斐波那契查找">4. 斐波那契查找</a></li>
+        <li><a href="#5-树表查找">5. 树表查找</a></li>
+        <li><a href="#6-分块查找"><strong>6.</strong> 分块查找</a></li>
+        <li><a href="#7-哈希查找">7. 哈希查找</a></li>
+      </ul>
+    </li>
+    <li><a href="#查找数据结构">查找数据结构</a>
+      <ul>
+        <li><a href="#查找概论">查找概论</a>
+          <ul>
+            <li><a href="#查找表">查找表</a>
+              <ul>
+                <li><a href="#定义">定义</a></li>
+                <li><a href="#查找表分类">查找表分类</a>
+                  <ul>
+                    <li><a href="#静态查找表">静态查找表</a></li>
+                    <li><a href="#动态查找表">动态查找表</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#关键字">关键字</a></li>
+            <li><a href="#查找定义">查找定义</a></li>
+            <li><a href="#查找结构">查找结构</a></li>
+          </ul>
+        </li>
+        <li><a href="#顺序表查找">顺序表查找</a>
+          <ul>
+            <li><a href="#概念">概念</a></li>
+            <li><a href="#代码">代码</a></li>
+            <li><a href="#顺序表查找代码优化">顺序表查找代码优化</a></li>
+            <li><a href="#时间复杂度">时间复杂度</a></li>
+          </ul>
+        </li>
+        <li><a href="#有序表查找">有序表查找</a>
+          <ul>
+            <li><a href="#折半查找">折半查找</a>
+              <ul>
+                <li><a href="#摘抄">摘抄</a></li>
+                <li><a href="#代码-1">代码</a></li>
+              </ul>
+            </li>
+            <li><a href="#差值查找">差值查找</a>
+              <ul>
+                <li><a href="#差值计算公式">差值计算公式</a></li>
+                <li><a href="#代码-2">代码</a></li>
+                <li><a href="#时间复杂度-1">时间复杂度</a></li>
+              </ul>
+            </li>
+            <li><a href="#斐波那契查找">斐波那契查找</a>
+              <ul>
+                <li><a href="#代码-3">代码</a></li>
+                <li><a href="#摘抄-1">摘抄</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#线性索引查找">线性索引查找</a>
+          <ul>
+            <li><a href="#摘抄-2">摘抄</a>
+              <ul>
+                <li><a href="#概念-1">概念</a></li>
+                <li><a href="#稠密索引">稠密索引</a>
+                  <ul>
+                    <li><a href="#概念-2">概念</a></li>
+                  </ul>
+                </li>
+                <li><a href="#分块索引">分块索引</a>
+                  <ul>
+                    <li><a href="#概念-3">概念</a></li>
+                    <li><a href="#时间复杂度不懂">时间复杂度（不懂）</a></li>
+                  </ul>
+                </li>
+                <li><a href="#倒排索引">倒排索引</a>
+                  <ul>
+                    <li><a href="#概念-4">概念</a></li>
+                    <li><a href="#存储技巧">存储技巧</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#二叉排序树">二叉排序树</a>
+          <ul>
+            <li><a href="#二叉排序树查找操作代码">二叉排序树查找操作代码</a></li>
+            <li><a href="#二叉排序树插入操作代码">二叉排序树插入操作代码</a></li>
+            <li><a href="#二叉排序树删除操作代码">二叉排序树删除操作代码</a>
+              <ul>
+                <li><a href="#代码-4">代码</a></li>
+                <li><a href="#代码解读">代码解读</a></li>
+              </ul>
+            </li>
+            <li><a href="#摘抄-3">摘抄</a>
+              <ul>
+                <li><a href="#概念-5">概念</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#平衡二叉树avl树">平衡二叉树（AVL树）</a>
+          <ul>
+            <li><a href="#概念-6">概念</a>
+              <ul>
+                <li><a href="#平衡二叉树">平衡二叉树</a></li>
+                <li><a href="#平衡因子">平衡因子</a></li>
+                <li><a href="#最小不平衡子树">最小不平衡子树</a></li>
+              </ul>
+            </li>
+            <li><a href="#平衡二叉树实现算法代码">平衡二叉树实现算法代码</a>
+              <ul>
+                <li><a href="#旋转操作">旋转操作</a></li>
+                <li><a href="#左平衡旋转处理函数代码">左平衡旋转处理函数代码</a>
+                  <ul>
+                    <li><a href="#代码-5">代码</a></li>
+                    <li><a href="#代码解读-1">代码解读</a></li>
+                  </ul>
+                </li>
+                <li><a href="#主函数代码">主函数代码</a>
+                  <ul>
+                    <li><a href="#代码-6">代码</a></li>
+                    <li><a href="#代码解读-2">代码解读</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#多路查找树b树">多路查找树（B树）</a>
+          <ul>
+            <li><a href="#摘抄-4">摘抄</a>
+              <ul>
+                <li><a href="#必要性">必要性</a></li>
+                <li><a href="#定义-1">定义</a></li>
+                <li><a href="#2-3树">2-3树</a>
+                  <ul>
+                    <li><a href="#概念-7">概念</a></li>
+                    <li><a href="#2-3树的插入实现">2-3树的插入实现</a></li>
+                    <li><a href="#2-3树的删除实现">2-3树的删除实现</a></li>
+                  </ul>
+                </li>
+                <li><a href="#2-3-4树">2-3-4树</a>
+                  <ul>
+                    <li><a href="#概念-8">概念</a></li>
+                    <li><a href="#2-3-4树的插入和删除">2-3-4树的插入和删除</a></li>
+                  </ul>
+                </li>
+                <li><a href="#b树">B树</a>
+                  <ul>
+                    <li><a href="#概念与性质">概念与性质</a></li>
+                    <li><a href="#减少内存与外存交换数据的频率的原因">减少内存与外存交换数据的频率的原因</a></li>
+                  </ul>
+                </li>
+                <li><a href="#b树-1">B+树</a>
+                  <ul>
+                    <li><a href="#产生原因--优化b树">产生原因&ndash;优化B树</a></li>
+                    <li><a href="#概念-9">概念</a></li>
+                    <li><a href="#与b树的对比">与B树的对比</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#散列查找表概述">散列查找表概述</a>
+          <ul>
+            <li><a href="#摘抄-5">摘抄</a>
+              <ul>
+                <li><a href="#定义-2">定义</a></li>
+                <li><a href="#散列表查找步骤">散列表查找步骤</a></li>
+                <li><a href="#散列表适用场景">散列表适用场景</a></li>
+              </ul>
+            </li>
+            <li><a href="#冲突">冲突</a>
+              <ul>
+                <li><a href="#散列函数的构造方法">散列函数的构造方法</a>
+                  <ul>
+                    <li><a href="#设计好的散列函数的原则">设计好的散列函数的原则</a></li>
+                    <li><a href="#直接定址法">直接定址法</a></li>
+                    <li><a href="#数字分析法">数字分析法</a></li>
+                  </ul>
+                </li>
+                <li><a href="#平方取中法">平方取中法</a>
+                  <ul>
+                    <li><a href="#折叠法">折叠法</a></li>
+                    <li><a href="#除留余数法">除留余数法</a></li>
+                    <li><a href="#随机数法">随机数法</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#处理散列冲突的方法">处理散列冲突的方法</a>
+          <ul>
+            <li><a href="#摘抄-6">摘抄</a>
+              <ul>
+                <li><a href="#开放定址法">开放定址法</a></li>
+                <li><a href="#再散列函数法">再散列函数法</a></li>
+                <li><a href="#链接地址法">链接地址法</a></li>
+                <li><a href="#公共溢出法">公共溢出法</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#散列表查找实现">散列表查找实现</a>
+          <ul>
+            <li><a href="#代码-7">代码</a></li>
+            <li><a href="#散列表查找性能分析">散列表查找性能分析</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="七大查找算法">七大查找算法</h2>
+<h3 id="1-顺序查找">1. 顺序查找</h3>
+<ul>
+<li>顺序查找适合于存储结构为顺序存储或链接存储的线性表，时间复杂度为O(n)</li>
+</ul>
+<h3 id="2-二分查找">2. 二分查找</h3>
+<ul>
+<li>元素必须是有序的，如果是无序的则要先进行排序操作。</li>
+</ul>
+<h3 id="3-插值查找">3. 插值查找</h3>
+<ul>
+<li>基于二分查找算法，将查找点的选择改进为自适应选择，mid=low+(key-a[low])/(a[high]-a[low])*(high-low)，适合表长较大，而关键字分布又比较均匀的查找表</li>
+</ul>
+<h3 id="4-斐波那契查找">4. 斐波那契查找</h3>
+<ul>
+<li>二分查找的一种提升算法，通过运用黄金比例的概念在数列中选择查找点进行查找，要求开始表中记录的个数为某个斐波那契数小1，及n=F(k)-1;开始将k值与第F(k-1)位置的记录进行比较(及mid=low+F(k-1)-1)。如果&gt;，low=mid+1,k-=2;如果&lt;，high=mid-1,k-=1。</li>
+</ul>
+<h3 id="5-树表查找">5. 树表查找</h3>
+<p>（1）二叉查找树与平衡二叉树（AVL）</p>
+<p>（2）平衡查找树之2-3查找树**（2-3 Tree）** ：其实和B树很像，只不过限定了m=3，节点只有1个或者2个key</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>效率：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p><strong>（3）平衡查找树之红黑树（Red-Black Tree）</strong></p>
+<p>　　2-3树实现起来比较复杂，于是就有了一种简单实现2-3树的数据结构，即红黑树（Red-Black Tree）。</p>
+<p>　**基本思想：**红黑树的思想就是对2-3查找树进行编码，尤其是对2-3查找树中的3-nodes节点添加额外的信息。红黑树中将节点之间的链接分为两种不同类型，红色链接，他用来链接两个2-nodes节点来表示一个3-nodes节点。黑色链接用来链接普通的2-3节点。特别的，**使用红色链接的两个2-nodes来表示一个3-nodes节点，并且向左倾斜，即一个2-node是另一个2-node的左子节点。**这种做法的好处是查找的时候不用做任何修改，和普通的二叉查找树相同。</p>
+<p>　　红黑树是一种具有红色和黑色链接的平衡查找树，同时满足：</p>
+<ul>
+<li>红色节点向左倾斜</li>
+<li>一个节点不可能有两个红色链接</li>
+<li>整个树完全黑色平衡，即从根节点到所以叶子结点的路径上，黑色链接的个数都相同。</li>
+</ul>
+<p>　　下图可以看到红黑树其实是2-3树的另外一种表现形式：如果我们将红色的连线水平绘制，那么他链接的两个2-node节点就是2-3树中的一个3-node节点了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p>　　红黑树的特性:</p>
+<ul>
+<li>（1）每个节点或者是黑色，或者是红色。</li>
+<li>（2）根节点是黑色。</li>
+<li>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]</li>
+<li>（4）如果一个节点是红色的，则它的子节点必须是黑色的。</li>
+<li>（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。</li>
+</ul>
+<p>下图是一个典型的红黑树，从中可以看到最长的路径(红黑相间的路径)是最短路径的2倍：<strong>平均高度大约为logn</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p>红黑树这种数据结构应用十分广泛，在多种编程语言中被用作符号表的实现，如：</p>
+<ul>
+<li>Java中的java.util.TreeMap,java.util.TreeSet；</li>
+<li>C++ STL中的：<strong>map,multimap,multiset</strong>；</li>
+<li>.NET中的：SortedDictionary,SortedSet 等。</li>
+</ul>
+<p><strong>（4）B树和B+树（B Tree/B+ Tree）</strong></p>
+<p>平衡查找树中的2-3树以及其实现红黑树。2-3树中，一个节点最多有2个key，而红黑树则使用染色的方式来标识这两个key。B树，概括来说是一个节点可以拥有多于2个子节点的二叉查找树。与自平衡二叉查找树不同，B树为系统<strong>最优化大块数据的读和写操作</strong>。B-tree算法减少定位记录时所经历的中间过程，从而加<strong>快存取速度。普遍运用在数据库和文件系统</strong>。</p>
+<p><strong>所以B树其实是对*<em>2-3树的扩展*</em></strong></p>
+<p><em><strong>*B+树是对B树的变形：*</strong></em></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<p>B+ 树的优点在于：</p>
+<ul>
+<li>由于B+树在内部节点上不好含数据信息，因此在内存页中能够存放更多的key。 数据存放的更加紧密，具有更好的空间局部性。因此访问叶子几点上关联的数据也具有更好的缓存命中率。</li>
+<li>B+树的叶子结点都是相链的，因此对整棵树的便利只需要一次线性遍历叶子结点即可。而且由于数据顺序排列并且相连，所以便于区间查找和搜索。而B树则需要进行每一层的递归遍历。相邻的元素可能在内存中不相邻，所以缓存命中性没有B+树好。</li>
+</ul>
+<p>　　<strong>但是B树也有优点，其优点在于，由于B树的每一个节点都包含key和value，因此经常访问的元素可能离根节点更近，因此访问也更迅速。</strong></p>
+<p>B/B+树常用于文件系统和数据库系统中，它通过对每个节点存储个数的扩展，使得对连续的数据能够进行较快的定位和访问，能够有效减少查找时间，提高存储的空间局部性从而减少IO操作。它广泛用于文件系统及数据库中，如：</p>
+<ul>
+<li>Windows：HPFS文件系统；</li>
+<li>Mac：HFS，HFS+文件系统；</li>
+<li>Linux：ResiserFS，XFS，Ext3FS，JFS文件系统；</li>
+<li>数据库：ORACLE，MYSQL，SQLSERVER等中。</li>
+</ul>
+<p><strong>树表查找总结：</strong></p>
+<p>　　二叉查找树平均查找性能不错，为O(logn)，但是最坏情况会退化为O(n)。在二叉查找树的基础上进行优化，我们可以使用平衡查找树。平衡查找树中的2-3查找树，这种数据结构在插入之后能够进行自平衡操作，从而保证了树的高度在一定的范围内进而能够保证最坏情况下的时间复杂度。但是2-3查找树实现起来比较困难，红黑树是2-3树的一种简单高效的实现，他巧妙地使用颜色标记来替代2-3树中比较难处理的3-node节点问题。红黑树是一种比较高效的平衡查找树，应用非常广泛，很多编程语言的内部实现都或多或少的采用了红黑树。</p>
+<p>　　除此之外，2-3查找树的另一个扩展——B/B+平衡树，在文件系统和数据库系统中有着广泛的应用。</p>
+<hr>
+<h3 id="6-分块查找"><strong>6.</strong> 分块查找</h3>
+<ul>
+<li>分块查找又称索引顺序查找，它是顺序查找的一种改进方法。</li>
+</ul>
+<h3 id="7-哈希查找">7. 哈希查找</h3>
+<ul>
+<li>散列查找（直接定址），哈希函数构造方法（尽量减少冲突）+解决冲突的方法（开放定址和拉链法）</li>
+</ul>
+<p>以空间换时间，map的本质就是Hash表</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<hr>
+<p>字符串匹配算法：<strong>KMP（从O（mn）降低到O（m+n））</strong></p>
+<p>KMP如何借助next数组移位 
+　　道理其实很简单，如果目标串和模式串的字符匹配，那么就同时移动两者的下标；如果不能匹配，就使用next数组来获得移动的数目。但编程方法实现的话，next数组我们需要再修改一下，这样就能够直接获得当前失配位置应当对应的新的模式串字符下标（因为我们关注的是在失配字符之前有几个匹配的字符）。</p>
+<p>所以，next数组来对每个位置找到最长公共前缀</p>
+<p>适合主串和子串有很多部分匹配的情况</p>
+<p>大致求next数组的代码：注意这里是设置最开始是-1和0，也可以设置0，1</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">kmp</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">match</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">pattern</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">posP</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">posM</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lenM</span> <span class="o">=</span> <span class="n">match</span><span class="p">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">lenP</span> <span class="o">=</span> <span class="n">pattern</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">posP</span> <span class="o">&lt;</span> <span class="n">lenP</span> <span class="o">&amp;&amp;</span> <span class="n">posM</span> <span class="o">&lt;</span> <span class="n">lenM</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">posP</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">pattern</span><span class="p">[</span><span class="n">posP</span><span class="p">]</span> <span class="o">==</span> <span class="n">match</span><span class="p">[</span><span class="n">posM</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">posP</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">posM</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">posP</span> <span class="o">=</span> <span class="n">nextArr</span><span class="p">[</span><span class="n">posP</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="查找数据结构">查找数据结构</h2>
+<h3 id="查找概论">查找概论</h3>
+<h4 id="查找表">查找表</h4>
+<h5 id="定义">定义</h5>
+<p>查找表（Search Table）是同一类型的数据元素（或记录）的集合。</p>
+<h5 id="查找表分类">查找表分类</h5>
+<h6 id="静态查找表">静态查找表</h6>
+<p>静态查找表（Static Search Table）：只做查找操作的查找表。</p>
+<p>它的主要操作有：</p>
+<ol>
+<li>查找某个“特定的”数据元素是否存在于查找表中。</li>
+<li>检索某个“特定的”数据元素和各种属性。</li>
+</ol>
+<h6 id="动态查找表">动态查找表</h6>
+<p>动态查找表（Dynamic Search Table）：在查找过程中同时插入不存在的数据元素，
+或在查找过程中删除已经存在的数据元素。</p>
+<p>它的主要操作有：</p>
+<ol>
+<li>查找时插入数据元素。</li>
+<li>查找时删除数据元素。</li>
+</ol>
+<h4 id="关键字">关键字</h4>
+<p>关键字（Key）是数据元素中某个数据项的值，又称为键值。（难理解）</p>
+<p>若此关键字可以唯一地标识一个记录，则称此关键字为主关键字（Primary key）。</p>
+<p>可以识别多个数据元素（或记录）的关键字，是次关键字（Secondary Key）。
+意思是根据次关键字可以查询到多条数据元素吗？</p>
+<h4 id="查找定义">查找定义</h4>
+<p>查找（Searching）是根据给定的某个值，在查找表中确定一个其关键字等于给定
+值的数据元素（或记录）。</p>
+<p>若查找到了数据元素，则查找成功；否则，查找失败。</p>
+<h4 id="查找结构">查找结构</h4>
+<p>面向查找操作的数据结构叫做查找结构。</p>
+<h3 id="顺序表查找">顺序表查找</h3>
+<h4 id="概念">概念</h4>
+<p>顺序表查找（Sequential Search）又叫线性查找，是最基本的查找技术。它的查找过程是：</p>
+<ol>
+<li>从表中第一个（或最后一个）记录开始，逐个比较记录的关键字和给定值。</li>
+<li>若某个记录的关键字和给定值相等，则查找成功。</li>
+<li>若一直查找到最后一个（或第一个）记录，其关键字都不等于给定值，则查找失败。</li>
+</ol>
+<h4 id="代码">代码</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Sequential_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">){</span>
+            <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="顺序表查找代码优化">顺序表查找代码优化</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Sequential_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">key</span><span class="p">){</span>
+        <span class="n">i</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>   <span class="c1">// 当i等于0时查找失败
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Sequential_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">key</span><span class="p">){</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="p">;</span>   <span class="c1">// 当i等于n-1时查找失败
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="时间复杂度">时间复杂度</h4>
+<p><code>$O(n)$</code></p>
+<h3 id="有序表查找">有序表查找</h3>
+<h4 id="折半查找">折半查找</h4>
+<h5 id="摘抄">摘抄</h5>
+<p>一看就懂的知识点，一般不再打字记录笔记，直接摘抄书本。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.webp"
+        data-srcset="./8.webp, ./8.webp 1.5x, ./8.webp 2x"
+        data-sizes="auto"
+        alt="./8.webp"
+        title="8" /></p>
+<p>数据结构_查找_折半查找</p>
+<h5 id="代码-1">代码</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Binary_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">mid</span><span class="p">;</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">){</span>
+        <span class="cm">/*1*/</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]){</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]){</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="cm">/*2*/</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>第1行，取值相当于PHP中的 <code>floor</code> 函数。</p>
+<p>第2行，查找结果不是 <code>mid</code> 就是查找失败。这说明，若查找表中存在要
+查找的关键字，那么该关键字的位置一定是某个中间位置。<strong>不能理解这点。</strong></p>
+<h4 id="差值查找">差值查找</h4>
+<h5 id="差值计算公式">差值计算公式</h5>
+<p><code>$key-a[low]\over a[high]-a[low]$</code></p>
+<p>这个公式是如何得到的？</p>
+<h5 id="代码-2">代码</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Binary_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">mid</span><span class="p">;</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">){</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">key</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">high</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">low</span><span class="p">]);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]){</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]){</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="cm">/*2*/</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="时间复杂度-1">时间复杂度</h5>
+<p><code>$O(logn)$</code></p>
+<h4 id="斐波那契查找">斐波那契查找</h4>
+<h5 id="代码-3">代码</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Fibonacci_Search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="cm">/*1*/</span> <span class="k">while</span><span class="p">(</span><span class="n">n</span><span class="o">&gt;</span><span class="n">F</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">){</span>  <span class="c1">// 计算n位于斐波那契数列的位置
+</span><span class="c1"></span>        <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">F</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>    <span class="c1">// 将不满的数值补全
+</span><span class="c1"></span>        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">){</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">low</span> <span class="o">+</span> <span class="n">F</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>     <span class="c1">// 计算当前分隔的下标
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]){</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="cm">/*2*/</span> <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// 斐波那契数列下标减一位
+</span><span class="c1"></span>        <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]){</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="cm">/*3*/</span> <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>    <span class="c1">// 斐波那契数列下标减二位
+</span><span class="c1"></span>        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">mid</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">){</span>
+                <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>     <span class="c1">// 若相等则说明mid即为查找到的位置
+</span><span class="c1"></span>            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="k">return</span> <span class="n">n</span><span class="p">;</span>       <span class="c1">// 若mid&gt;n说明是补全数值，返回n
+</span><span class="c1"></span>            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>理解不了第1行、第2行、第3行。</p>
+<h5 id="摘抄-1">摘抄</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.webp"
+        data-srcset="./9.webp, ./9.webp 1.5x, ./9.webp 2x"
+        data-sizes="auto"
+        alt="./9.webp"
+        title="9" /></p>
+<p>数据结构_查找_斐波那契查找_核心</p>
+<p>不理解上图中的范围个数是怎么得到的。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.webp"
+        data-srcset="./10.webp, ./10.webp 1.5x, ./10.webp 2x"
+        data-sizes="auto"
+        alt="./10.webp"
+        title="10" /></p>
+<p>数据结构_查找_斐波那契查找_范围个数示意图</p>
+<p>这个图好像有助于理解某些东西。</p>
+<h3 id="线性索引查找">线性索引查找</h3>
+<h4 id="摘抄-2">摘抄</h4>
+<h5 id="概念-1">概念</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.webp"
+        data-srcset="./11.webp, ./11.webp 1.5x, ./11.webp 2x"
+        data-sizes="auto"
+        alt="./11.webp"
+        title="11" /></p>
+<p>数据结构_查找_线性索引查找_概念</p>
+<h5 id="稠密索引">稠密索引</h5>
+<h6 id="概念-2">概念</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.webp"
+        data-srcset="./12.webp, ./12.webp 1.5x, ./12.webp 2x"
+        data-sizes="auto"
+        alt="./12.webp"
+        title="12" /></p>
+<p>数据结构_查找_线性索引查找_稠密索引_概念</p>
+<p>对于稠密索引的的索引表，索引项一定是按照关键码有序的排列。</p>
+<h5 id="分块索引">分块索引</h5>
+<h6 id="概念-3">概念</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.webp"
+        data-srcset="./13.webp, ./13.webp 1.5x, ./13.webp 2x"
+        data-sizes="auto"
+        alt="./13.webp"
+        title="13" /></p>
+<p>数据结构_查找_线性索引查找_分块索引_概念</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.webp"
+        data-srcset="./14.webp, ./14.webp 1.5x, ./14.webp 2x"
+        data-sizes="auto"
+        alt="./14.webp"
+        title="14" /></p>
+<p>数据结构_查找_线性索引查找_分块索引_例子</p>
+<h6 id="时间复杂度不懂">时间复杂度（不懂）</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.webp"
+        data-srcset="./15.webp, ./15.webp 1.5x, ./15.webp 2x"
+        data-sizes="auto"
+        alt="./15.webp"
+        title="15" /></p>
+<p>数据结构_查找_线性索引查找_分块索引_时间复杂度</p>
+<h5 id="倒排索引">倒排索引</h5>
+<h6 id="概念-4">概念</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.webp"
+        data-srcset="./16.webp, ./16.webp 1.5x, ./16.webp 2x"
+        data-sizes="auto"
+        alt="./16.webp"
+        title="16" /></p>
+<p>数据结构_查找_线性索引查找_倒排索引_概念</p>
+<h6 id="存储技巧">存储技巧</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./17.webp"
+        data-srcset="./17.webp, ./17.webp 1.5x, ./17.webp 2x"
+        data-sizes="auto"
+        alt="./17.webp"
+        title="17" /></p>
+<p>数据结构_查找_线性索引查找_倒排索引_存储技巧</p>
+<h3 id="二叉排序树">二叉排序树</h3>
+<h4 id="二叉排序树查找操作代码">二叉排序树查找操作代码</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">BiTNode</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">BiTNode</span> <span class="o">*</span><span class="n">lchild</span><span class="p">,</span> <span class="o">*</span><span class="n">rchild</span><span class="p">;</span>
+<span class="p">}</span><span class="n">BiTNode</span><span class="p">,</span> <span class="o">*</span><span class="n">BiTree</span><span class="p">;</span>
+
+<span class="n">Status</span> <span class="nf">SearchBST</span><span class="p">(</span><span class="n">BiTree</span> <span class="n">T</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="n">BiTree</span> <span class="n">f</span><span class="p">,</span> <span class="n">BiTree</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">T</span><span class="p">){</span>
+        <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="n">T</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">){</span>
+        <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">T</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">SearchBST</span><span class="p">(</span><span class="n">T</span><span class="o">-&gt;</span><span class="n">rchild</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">SearchBST</span><span class="p">(</span><span class="n">T</span><span class="o">-&gt;</span><span class="n">lchild</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="二叉排序树插入操作代码">二叉排序树插入操作代码</h4>
+<p>二叉排序树插入操作代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">Status</span> <span class="nx">InsertBST</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">T</span><span class="p">,</span> <span class="nx">int</span> <span class="nx">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">BiTree</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">s</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">SearchBST</span><span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)){</span>
+        <span class="nx">s</span> <span class="o">=</span> <span class="p">(</span><span class="nx">BiTree</span><span class="p">)</span><span class="nx">malloc</span><span class="p">(</span><span class="nx">sizeof</span><span class="p">(</span><span class="nx">BiTNode</span><span class="p">));</span>
+        <span class="nx">s</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="nx">key</span><span class="p">;</span>
+        <span class="nx">s</span><span class="o">-&gt;</span><span class="na">lchild</span> <span class="o">=</span> <span class="nx">s</span><span class="o">-&gt;</span><span class="na">rchild</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">p</span><span class="p">){</span>
+            <span class="o">*</span><span class="nx">T</span> <span class="o">=</span> <span class="nx">s</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">key</span> <span class="o">&gt;</span> <span class="nx">p</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">){</span>
+            <span class="nx">p</span><span class="o">-&gt;</span><span class="na">rchild</span> <span class="o">=</span> <span class="nx">s</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="nx">p</span><span class="o">-&gt;</span><span class="na">lchild</span> <span class="o">=</span> <span class="nx">s</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">TRUE</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果查找到的是叶子结点，插入新的结点很容易。</p>
+<p>如果查找到的不是叶子结点，假如此结点刚好有左右孩子结点，如何插入新的结点？</p>
+<p>查找停止的情况有两种：找到了和关键字匹配的记录；查找失败。第二种情况，必然
+是遍历到了叶子结点。好不能透彻地理解这点，只能大概不确定地得出这样的结论。</p>
+<p>创建二叉排序树代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">CreateBST</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">62</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">93</span><span class="p">};</span>
+    <span class="n">BiTree</span> <span class="n">T</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">InsertBST</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="二叉排序树删除操作代码">二叉排序树删除操作代码</h4>
+<h5 id="代码-4">代码</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">Status</span> <span class="nx">Delete</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">BiTree</span> <span class="nx">q</span><span class="p">,</span> <span class="nx">s</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">((</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">rchild</span> <span class="o">==</span> <span class="k">NULL</span><span class="p">){</span>
+        <span class="nx">q</span> <span class="o">=</span> <span class="o">*</span><span class="nx">p</span><span class="p">;</span>
+        <span class="o">*</span><span class="nx">p</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">;</span>
+        <span class="nx">free</span><span class="p">(</span><span class="nx">q</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">((</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span> <span class="o">==</span> <span class="k">NULL</span><span class="p">){</span>
+        <span class="nx">q</span> <span class="o">=</span> <span class="o">*</span><span class="nx">p</span><span class="p">;</span>
+        <span class="o">*</span><span class="nx">p</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">rchild</span><span class="p">;</span>
+        <span class="nx">free</span><span class="p">(</span><span class="nx">q</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="nx">q</span> <span class="o">=</span> <span class="o">*</span><span class="nx">p</span><span class="p">;</span>
+        <span class="nx">s</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="nx">s</span><span class="o">-&gt;</span><span class="na">rchild</span><span class="p">){</span>
+            <span class="nx">q</span> <span class="o">=</span> <span class="nx">s</span><span class="p">;</span>
+            <span class="nx">s</span> <span class="o">=</span> <span class="nx">s</span><span class="o">-&gt;</span><span class="na">rchild</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="nx">s</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">q</span> <span class="o">!=</span> <span class="o">*</span><span class="nx">p</span><span class="p">){</span>
+            <span class="nx">q</span><span class="o">-&gt;</span><span class="na">rchild</span> <span class="o">=</span> <span class="nx">s</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">;</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="nx">q</span><span class="o">-&gt;</span><span class="na">lchild</span> <span class="o">=</span> <span class="nx">s</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">free</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>二叉排序树删除结点代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">Status</span> <span class="n">DeleteBST</span><span class="p">(</span><span class="n">BiTree</span> <span class="p">*</span><span class="n">T</span><span class="p">,</span> <span class="n">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(!*</span><span class="n">T</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="p">(*</span><span class="n">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="k">data</span><span class="p">){</span>
+            <span class="k">return</span> <span class="n">Delete</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+        <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="p">&lt;</span> <span class="p">(*</span><span class="n">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="k">data</span><span class="p">){</span>
+            <span class="k">return</span> <span class="n">DeleteBST</span><span class="p">(&amp;(*</span><span class="n">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">lchild</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="k">return</span> <span class="n">DeleteBST</span><span class="p">(&amp;(*</span><span class="n">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rchild</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>删除操作有四种情况：</p>
+<ol>
+<li>要删除的结点是叶子结点。</li>
+<li>要删除的结点有左孩子。</li>
+<li>要删除的结点有右孩子。</li>
+<li>要删除的结点有左右孩子。理解不了这种情况的代码。</li>
+</ol>
+<h5 id="代码解读">代码解读</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./18.webp"
+        data-srcset="./18.webp, ./18.webp 1.5x, ./18.webp 2x"
+        data-sizes="auto"
+        alt="./18.webp"
+        title="18" /></p>
+<p>数据结构_查找_二叉排序树_二叉排序树删除操作代码_代码解读_7</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./19.webp"
+        data-srcset="./19.webp, ./19.webp 1.5x, ./19.webp 2x"
+        data-sizes="auto"
+        alt="./19.webp"
+        title="19" /></p>
+<p>数据结构_查找_二叉排序树_二叉排序树删除操作代码_代码解读_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./20.webp"
+        data-srcset="./20.webp, ./20.webp 1.5x, ./20.webp 2x"
+        data-sizes="auto"
+        alt="./20.webp"
+        title="20" /></p>
+<p>数据结构_查找_二叉排序树_二叉排序树删除操作代码_代码解读_2</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./21.webp"
+        data-srcset="./21.webp, ./21.webp 1.5x, ./21.webp 2x"
+        data-sizes="auto"
+        alt="./21.webp"
+        title="21" /></p>
+<p>数据结构_查找_二叉排序树_二叉排序树删除操作代码_代码解读_3</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./22.webp"
+        data-srcset="./22.webp, ./22.webp 1.5x, ./22.webp 2x"
+        data-sizes="auto"
+        alt="./22.webp"
+        title="22" /></p>
+<p>数据结构_查找_二叉排序树_二叉排序树删除操作代码_代码解读_4</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./23.webp"
+        data-srcset="./23.webp, ./23.webp 1.5x, ./23.webp 2x"
+        data-sizes="auto"
+        alt="./23.webp"
+        title="23" /></p>
+<p>数据结构_查找_二叉排序树_二叉排序树删除操作代码_代码解读_5</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./24.webp"
+        data-srcset="./24.webp, ./24.webp 1.5x, ./24.webp 2x"
+        data-sizes="auto"
+        alt="./24.webp"
+        title="24" /></p>
+<p>数据结构_查找_二叉排序树_二叉排序树删除操作代码_代码解读_6</p>
+<h4 id="摘抄-3">摘抄</h4>
+<h5 id="概念-5">概念</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./25.webp"
+        data-srcset="./25.webp, ./25.webp 1.5x, ./25.webp 2x"
+        data-sizes="auto"
+        alt="./25.webp"
+        title="25" /></p>
+<p>数据结构_查找_二叉排序树_概念</p>
+<h3 id="平衡二叉树avl树">平衡二叉树（AVL树）</h3>
+<h4 id="概念-6">概念</h4>
+<h5 id="平衡二叉树">平衡二叉树</h5>
+<p>平衡二叉树（Self-Balancing Binary Search Tree 或 Height-Balanced Binary Search Tree），
+是一种二叉排序树，其中每一个结点的左子树和右子树的高度差至多等于1。</p>
+<h5 id="平衡因子">平衡因子</h5>
+<p>平衡二叉树上的结点的左子树减去右子树的得到的差值，叫做平衡因子（Balance Factor）。</p>
+<p>平衡因子可能的值是 -1，0 和 1。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./26.webp"
+        data-srcset="./26.webp, ./26.webp 1.5x, ./26.webp 2x"
+        data-sizes="auto"
+        alt="./26.webp"
+        title="26" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_平衡因子</p>
+<p>书中认为图3中，结点58的左子树的高度是2，我认为是3。</p>
+<h5 id="最小不平衡子树">最小不平衡子树</h5>
+<p>距离插入结点最近的、平衡因子的绝对值大于 1 的结点为根的子树，叫做最小不平衡子树。</p>
+<p>什么叫插入结点？是指插入新结点的那个位置吗？</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./27.webp"
+        data-srcset="./27.webp, ./27.webp 1.5x, ./27.webp 2x"
+        data-sizes="auto"
+        alt="./27.webp"
+        title="27" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_最小不平衡子树</p>
+<p>结点58的左子树的高度，我认为是3。</p>
+<h4 id="平衡二叉树实现算法代码">平衡二叉树实现算法代码</h4>
+<h5 id="旋转操作">旋转操作</h5>
+<p>树的结点结构</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">BiTNode</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">data</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">bf</span><span class="p">;</span>     <span class="c1">// 结点的平衡因子
+</span><span class="c1"></span>    <span class="k">struct</span> <span class="nc">BiTNode</span> <span class="o">*</span><span class="n">lchild</span><span class="p">,</span> <span class="o">*</span><span class="n">rchild</span><span class="p">;</span>
+<span class="p">}</span><span class="n">BiTNode</span><span class="p">,</span> <span class="o">*</span><span class="n">BiTree</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>右旋转操作代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">void</span> <span class="nx">R_Rotate</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">BiTree</span> <span class="nx">L</span><span class="p">;</span>
+    <span class="nx">L</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">;</span>   <span class="c1">// L指向p的左子树根结点
+</span><span class="c1"></span>    <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span> <span class="o">=</span> <span class="nx">L</span><span class="o">-&gt;</span><span class="na">rchild</span><span class="p">;</span>   <span class="c1">// L的右子树挂结为p的左子树
+</span><span class="c1"></span>    <span class="nx">L</span><span class="o">-&gt;</span><span class="na">rchild</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">);</span>
+    <span class="o">*</span><span class="nx">p</span> <span class="o">=</span> <span class="nx">L</span><span class="p">;</span>     <span class="c1">// P指向新的根结点
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>左旋操作代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">void</span> <span class="nx">L_Rotate</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">BiTree</span> <span class="nx">R</span><span class="p">;</span>
+    <span class="nx">R</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">rchild</span><span class="p">;</span>   <span class="c1">// R指向p的右子树根结点
+</span><span class="c1"></span>    <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">rchild</span> <span class="o">=</span> <span class="nx">R</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">;</span>   <span class="c1">// R的左子树挂接为p的右子树
+</span><span class="c1"></span>    <span class="nx">R</span><span class="o">-&gt;</span><span class="na">lchild</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">);</span>
+    <span class="o">*</span><span class="nx">p</span> <span class="o">=</span> <span class="nx">R</span><span class="p">;</span>     <span class="c1">// p指向新的根结点
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>理解不了。按照我的思路，<code>p</code> 是 <code>R-&gt;lchild</code> 的左子树，可是这和左旋转
+后的结果不吻合。</p>
+<p>重新画了几次，根据代码，可以得到预期效果图了。可是，<code>L</code> 的右子树为何
+会变成 <code>p</code> 的左子树？</p>
+<p>旋转操作的关键在于：第一步的时候，原树拆成了两棵树。旋转过程见纸质笔记。</p>
+<h5 id="左平衡旋转处理函数代码">左平衡旋转处理函数代码</h5>
+<h6 id="代码-5">代码</h6>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">#define LH +1;      // 左高
+</span><span class="c1">#define EH 0;       // 等高
+</span><span class="c1">#define RH -1;      // 右高
+</span><span class="c1"></span><span class="nx">void</span> <span class="nx">LeftBalance</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">T</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">BiTree</span> <span class="nx">L</span><span class="p">,</span> <span class="nx">Lr</span><span class="p">;</span>
+    <span class="nx">L</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">;</span>       <span class="c1">// L指向T的左子树根结点
+</span><span class="c1"></span>    <span class="k">switch</span><span class="p">(</span><span class="nx">L</span><span class="o">-&gt;</span><span class="na">bf</span><span class="p">){</span>
+        <span class="k">case</span> <span class="nx">LH</span><span class="o">:</span>
+            <span class="cm">/*1*/</span> <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">L</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">EH</span><span class="p">;</span>
+            <span class="nx">R_Rotate</span><span class="p">(</span><span class="nx">T</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="nx">RH</span><span class="o">:</span>
+            <span class="nx">Lr</span> <span class="o">=</span> <span class="nx">L</span><span class="o">-&gt;</span><span class="na">rchild</span><span class="p">;</span>     <span class="c1">// Lr指向T的左孩子的右子树的根
+</span><span class="c1"></span>            <span class="k">switch</span><span class="p">(</span><span class="nx">Lr</span><span class="o">-&gt;</span><span class="na">bf</span><span class="p">){</span>     <span class="c1">// 修改T及其左孩子的平衡因子
+</span><span class="c1"></span>                <span class="k">case</span> <span class="nx">LH</span><span class="o">:</span>
+                    <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">RH</span><span class="p">;</span>
+                    <span class="nx">L</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">EH</span><span class="p">;</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="k">case</span> <span class="nx">EH</span><span class="o">:</span>
+                    <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">L</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">EH</span><span class="p">;</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="k">case</span> <span class="nx">RH</span><span class="o">:</span>
+                    <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">EH</span><span class="p">;</span>
+                    <span class="nx">L</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">LH</span><span class="p">;</span>
+                    <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="nx">Lr</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">EH</span><span class="p">;</span>
+            <span class="nx">L_Rotate</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">);</span>    <span class="c1">// 对T的左子树作左旋平衡处理
+</span><span class="c1"></span>            <span class="nx">R_Rotate</span><span class="p">(</span><span class="nx">T</span><span class="p">);</span>    <span class="c1">// 对T做右旋平衡处理
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h6 id="代码解读-1">代码解读</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./28.webp"
+        data-srcset="./28.webp, ./28.webp 1.5x, ./28.webp 2x"
+        data-sizes="auto"
+        alt="./28.webp"
+        title="28" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_最小不平衡子树_左平衡旋转处理函数代码_代码解读_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./29.webp"
+        data-srcset="./29.webp, ./29.webp 1.5x, ./29.webp 2x"
+        data-sizes="auto"
+        alt="./29.webp"
+        title="29" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_最小不平衡子树_左平衡旋转处理函数代码_代码解读_2</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./30.webp"
+        data-srcset="./30.webp, ./30.webp 1.5x, ./30.webp 2x"
+        data-sizes="auto"
+        alt="./30.webp"
+        title="30" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_最小不平衡子树_左平衡旋转处理函数代码_代码解读_3</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./31.webp"
+        data-srcset="./31.webp, ./31.webp 1.5x, ./31.webp 2x"
+        data-sizes="auto"
+        alt="./31.webp"
+        title="31" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_最小不平衡子树_左平衡旋转处理函数代码_代码解读_4</p>
+<h5 id="主函数代码">主函数代码</h5>
+<h6 id="代码-6">代码</h6>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">Status</span> <span class="nx">InsertAVL</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">T</span><span class="p">,</span> <span class="nx">int</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">Status</span> <span class="o">*</span><span class="nx">taller</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">T</span><span class="p">){</span>
+        <span class="o">*</span><span class="nx">T</span> <span class="o">=</span> <span class="p">(</span><span class="nx">BiTree</span><span class="p">)</span><span class="nx">malloc</span><span class="p">(</span><span class="nx">sizeof</span><span class="p">(</span><span class="nx">BiTNode</span><span class="p">));</span>
+        <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="nx">e</span><span class="p">;</span>
+        <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">rchild</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">;</span>
+        <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">EH</span><span class="p">;</span>
+        <span class="o">*</span><span class="nx">taller</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">e</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">){</span>
+            <span class="o">*</span><span class="nx">taller</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
+            <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">e</span> <span class="o">&lt;</span><span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">InsertAVL</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">taller</span><span class="p">)){</span>
+                <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">taller</span><span class="p">){</span>
+                <span class="k">switch</span><span class="p">((</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span><span class="p">){</span>
+                    <span class="k">case</span> <span class="nx">LH</span><span class="o">:</span>
+                        <span class="nx">LeftBalance</span><span class="p">(</span><span class="nx">T</span><span class="p">);</span>
+                        <span class="o">*</span><span class="nx">taller</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="nx">EH</span><span class="o">:</span>
+                        <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">LH</span><span class="p">;</span>
+                        <span class="o">*</span><span class="nx">taller</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="nx">RH</span><span class="o">:</span>
+                        <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">EH</span><span class="p">;</span>
+                        <span class="o">*</span><span class="nx">taller</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">InsertAVL</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">rchild</span><span class="p">,</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">taller</span><span class="p">)){</span>
+                <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="o">*</span><span class="nx">taller</span><span class="p">){</span>
+                <span class="k">switch</span><span class="p">((</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span><span class="p">){</span>
+                    <span class="k">case</span> <span class="nx">LH</span><span class="o">:</span>
+                        <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">EH</span><span class="p">;</span>
+                        <span class="o">*</span><span class="nx">taller</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="nx">EH</span><span class="o">:</span>
+                        <span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">bf</span> <span class="o">=</span> <span class="nx">RH</span><span class="p">;</span>
+                        <span class="o">*</span><span class="nx">taller</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="nx">RH</span><span class="o">:</span>
+                        <span class="nx">RightBalance</span><span class="p">(</span><span class="nx">T</span><span class="p">);</span>
+                        <span class="o">*</span><span class="nx">taller</span> <span class="o">=</span> <span class="k">FALSE</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="k">TRUE</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h6 id="代码解读-2">代码解读</h6>
+<p>《大话数据结构》中的代码，好像有很多错误，只可以当作逼真的伪代码去看待。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./32.webp"
+        data-srcset="./32.webp, ./32.webp 1.5x, ./32.webp 2x"
+        data-sizes="auto"
+        alt="./32.webp"
+        title="32" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_平衡二叉树实现算法代码_代码解读_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./33.webp"
+        data-srcset="./33.webp, ./33.webp 1.5x, ./33.webp 2x"
+        data-sizes="auto"
+        alt="./33.webp"
+        title="33" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_平衡二叉树实现算法代码_代码解读_2</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./34.webp"
+        data-srcset="./34.webp, ./34.webp 1.5x, ./34.webp 2x"
+        data-sizes="auto"
+        alt="./34.webp"
+        title="34" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_平衡二叉树实现算法代码_代码解读_3</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./35.webp"
+        data-srcset="./35.webp, ./35.webp 1.5x, ./35.webp 2x"
+        data-sizes="auto"
+        alt="./35.webp"
+        title="35" /></p>
+<p>数据结构_查找_平衡二叉树（AVL树）_平衡二叉树实现算法代码_代码解读_4</p>
+<h3 id="多路查找树b树">多路查找树（B树）</h3>
+<h4 id="摘抄-4">摘抄</h4>
+<h5 id="必要性">必要性</h5>
+<p>要操作的数据非常大，大到无法在内存中处理。</p>
+<h5 id="定义-1">定义</h5>
+<p>多路查找树（multi-way search tree）的每一个结点的孩子数可以多于两个，且每一个结点
+处可以存储多个元素。元素之间存在某种特定的排序关系。</p>
+<h5 id="2-3树">2-3树</h5>
+<h6 id="概念-7">概念</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./36.webp"
+        data-srcset="./36.webp, ./36.webp 1.5x, ./36.webp 2x"
+        data-sizes="auto"
+        alt="./36.webp"
+        title="36" /></p>
+<p>数据结构_查找_多路查找树_23树_概念_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./37.webp"
+        data-srcset="./37.webp, ./37.webp 1.5x, ./37.webp 2x"
+        data-sizes="auto"
+        alt="./37.webp"
+        title="37" /></p>
+<p>数据结构_查找_多路查找树_23树_概念_2</p>
+<h6 id="2-3树的插入实现">2-3树的插入实现</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./38.webp"
+        data-srcset="./38.webp, ./38.webp 1.5x, ./38.webp 2x"
+        data-sizes="auto"
+        alt="./38.webp"
+        title="38" /></p>
+<p>数据结构_查找_多路查找树_23树_插入_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./39.webp"
+        data-srcset="./39.webp, ./39.webp 1.5x, ./39.webp 2x"
+        data-sizes="auto"
+        alt="./39.webp"
+        title="39" /></p>
+<p>数据结构_查找_多路查找树_23树_插入_2</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./40.webp"
+        data-srcset="./40.webp, ./40.webp 1.5x, ./40.webp 2x"
+        data-sizes="auto"
+        alt="./40.webp"
+        title="40" /></p>
+<p>数据结构_查找_多路查找树_23树_插入_3</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./41.webp"
+        data-srcset="./41.webp, ./41.webp 1.5x, ./41.webp 2x"
+        data-sizes="auto"
+        alt="./41.webp"
+        title="41" /></p>
+<p>数据结构_查找_多路查找树_23树_插入_4</p>
+<h6 id="2-3树的删除实现">2-3树的删除实现</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./42.webp"
+        data-srcset="./42.webp, ./42.webp 1.5x, ./42.webp 2x"
+        data-sizes="auto"
+        alt="./42.webp"
+        title="42" /></p>
+<p>数据结构_查找_多路查找树_23树_删除_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./43.webp"
+        data-srcset="./43.webp, ./43.webp 1.5x, ./43.webp 2x"
+        data-sizes="auto"
+        alt="./43.webp"
+        title="43" /></p>
+<p>数据结构_查找_多路查找树_23树_删除_2</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./44.webp"
+        data-srcset="./44.webp, ./44.webp 1.5x, ./44.webp 2x"
+        data-sizes="auto"
+        alt="./44.webp"
+        title="44" /></p>
+<p>数据结构_查找_多路查找树_23树_删除_3</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./45.webp"
+        data-srcset="./45.webp, ./45.webp 1.5x, ./45.webp 2x"
+        data-sizes="auto"
+        alt="./45.webp"
+        title="45" /></p>
+<p>数据结构_查找_多路查找树_23树_删除_4</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./46.webp"
+        data-srcset="./46.webp, ./46.webp 1.5x, ./46.webp 2x"
+        data-sizes="auto"
+        alt="./46.webp"
+        title="46" /></p>
+<p>数据结构_查找_多路查找树_23树_删除_5</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./47.webp"
+        data-srcset="./47.webp, ./47.webp 1.5x, ./47.webp 2x"
+        data-sizes="auto"
+        alt="./47.webp"
+        title="47" /></p>
+<p>数据结构_查找_多路查找树_23树_删除_6</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./48.webp"
+        data-srcset="./48.webp, ./48.webp 1.5x, ./48.webp 2x"
+        data-sizes="auto"
+        alt="./48.webp"
+        title="48" /></p>
+<p>数据结构_查找_多路查找树_23树_删除_7</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./49.webp"
+        data-srcset="./49.webp, ./49.webp 1.5x, ./49.webp 2x"
+        data-sizes="auto"
+        alt="./49.webp"
+        title="49" /></p>
+<p>数据结构_查找_多路查找树_23树_删除_8</p>
+<p>可以理解这些方法能够保证删除的元素在被删除后，新树仍然是2-3树，但不明白这么做的规律性，
+更无能力用代码实现删除操作。</p>
+<h5 id="2-3-4树">2-3-4树</h5>
+<h6 id="概念-8">概念</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./50.webp"
+        data-srcset="./50.webp, ./50.webp 1.5x, ./50.webp 2x"
+        data-sizes="auto"
+        alt="./50.webp"
+        title="50" /></p>
+<p>数据结构_查找_多路查找树_234树_概念</p>
+<h6 id="2-3-4树的插入和删除">2-3-4树的插入和删除</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./51.webp"
+        data-srcset="./51.webp, ./51.webp 1.5x, ./51.webp 2x"
+        data-sizes="auto"
+        alt="./51.webp"
+        title="51" /></p>
+<p>数据结构_查找_多路查找树_234树_插入删除_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./52.webp"
+        data-srcset="./52.webp, ./52.webp 1.5x, ./52.webp 2x"
+        data-sizes="auto"
+        alt="./52.webp"
+        title="52" /></p>
+<p>数据结构_查找_多路查找树_234树_插入删除_2</p>
+<h5 id="b树">B树</h5>
+<h6 id="概念与性质">概念与性质</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./53.webp"
+        data-srcset="./53.webp, ./53.webp 1.5x, ./53.webp 2x"
+        data-sizes="auto"
+        alt="./53.webp"
+        title="53" /></p>
+<p>数据结构_查找_多路查找树_B树_概念与性质_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./54.webp"
+        data-srcset="./54.webp, ./54.webp 1.5x, ./54.webp 2x"
+        data-sizes="auto"
+        alt="./54.webp"
+        title="54" /></p>
+<p>数据结构_查找_多路查找树_B树_概念与性质_2</p>
+<h6 id="减少内存与外存交换数据的频率的原因">减少内存与外存交换数据的频率的原因</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./55.webp"
+        data-srcset="./55.webp, ./55.webp 1.5x, ./55.webp 2x"
+        data-sizes="auto"
+        alt="./55.webp"
+        title="55" /></p>
+<p>数据结构_查找_多路查找树_B树_减少内存与外存交换数据的频率的原因_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./56.webp"
+        data-srcset="./56.webp, ./56.webp 1.5x, ./56.webp 2x"
+        data-sizes="auto"
+        alt="./56.webp"
+        title="56" /></p>
+<p>数据结构_查找_多路查找树_B树_减少内存与外存交换数据的频率的原因_2</p>
+<h5 id="b树-1">B+树</h5>
+<h6 id="产生原因--优化b树">产生原因&ndash;优化B树</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91_B%E6%A0%91_%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0.png"
+        data-srcset="http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91_B%E6%A0%91_%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0.png, http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91_B%E6%A0%91_%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0.png 1.5x, http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91_B%E6%A0%91_%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0.png 2x"
+        data-sizes="auto"
+        alt="http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E5%A4%9A%E8%B7%AF%E6%9F%A5%E6%89%BE%E6%A0%91_B%E6%A0%91_%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0.png"
+        title="数据结构_查找_多路查找树_B加树_产生原因" /></p>
+<p>数据结构_查找_多路查找树_B加树_产生原因</p>
+<h6 id="概念-9">概念</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./58.webp"
+        data-srcset="./58.webp, ./58.webp 1.5x, ./58.webp 2x"
+        data-sizes="auto"
+        alt="./58.webp"
+        title="58" /></p>
+<p>数据结构_查找_多路查找树_B加树_概念_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./59.webp"
+        data-srcset="./59.webp, ./59.webp 1.5x, ./59.webp 2x"
+        data-sizes="auto"
+        alt="./59.webp"
+        title="59" /></p>
+<p>数据结构_查找_多路查找树_B加树_概念_2</p>
+<h6 id="与b树的对比">与B树的对比</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./60.webp"
+        data-srcset="./60.webp, ./60.webp 1.5x, ./60.webp 2x"
+        data-sizes="auto"
+        alt="./60.webp"
+        title="60" /></p>
+<p>数据结构_查找_多路查找树_B加树_与B树的对比</p>
+<h3 id="散列查找表概述">散列查找表概述</h3>
+<h4 id="摘抄-5">摘抄</h4>
+<h5 id="定义-2">定义</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./61.webp"
+        data-srcset="./61.webp, ./61.webp 1.5x, ./61.webp 2x"
+        data-sizes="auto"
+        alt="./61.webp"
+        title="61" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_定义_1</p>
+<h5 id="散列表查找步骤">散列表查找步骤</h5>
+<p>1.存储时，通过散列函数计算记录的散列地址，并按该存储地址存储这条记录。</p>
+<p>2.查找时，通过相同的散列函数计算记录的散列地址，并按该散列地址读取记录。</p>
+<h5 id="散列表适用场景">散列表适用场景</h5>
+<p>1.最适合的求解问题是查找与给定关键字等值的记录。</p>
+<p>2.同样的关键字对应很多记录的问题，不适合用散列表查找。</p>
+<p>3.范围查找，不适合用散列表查找。</p>
+<h4 id="冲突">冲突</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./62.webp"
+        data-srcset="./62.webp, ./62.webp 1.5x, ./62.webp 2x"
+        data-sizes="auto"
+        alt="./62.webp"
+        title="62" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_冲突</p>
+<h5 id="散列函数的构造方法">散列函数的构造方法</h5>
+<h6 id="设计好的散列函数的原则">设计好的散列函数的原则</h6>
+<p>1.计算简单。</p>
+<p>2.散列地址分布均匀。这和“使用连续的存储空间存储记录”有关吗？</p>
+<h6 id="直接定址法">直接定址法</h6>
+<p><strong>概念</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E6%A6%82%E5%BF%B5.png"
+        data-srcset="http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E6%A6%82%E5%BF%B5.png, http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E6%A6%82%E5%BF%B5.png 1.5x, http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E6%A6%82%E5%BF%B5.png 2x"
+        data-sizes="auto"
+        alt="http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E6%A6%82%E5%BF%B5.png"
+        title="数据结构_查找_散列查找表概述_摘抄_直接定址法_概念" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_直接定址法_概念</p>
+<p><strong>优缺点</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E4%BC%98%E7%BC%BA%E7%82%B9.png"
+        data-srcset="http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E4%BC%98%E7%BC%BA%E7%82%B9.png, http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E4%BC%98%E7%BC%BA%E7%82%B9.png 1.5x, http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E4%BC%98%E7%BC%BA%E7%82%B9.png 2x"
+        data-sizes="auto"
+        alt="http://7xt25g.com1.z0.glb.clouddn.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E6%9F%A5%E6%89%BE_%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE%E8%A1%A8%E6%A6%82%E8%BF%B0_%E7%9B%B4%E6%8E%A5%E5%AE%9A%E5%9D%80%E6%B3%95_%E4%BC%98%E7%BC%BA%E7%82%B9.png"
+        title="数据结构_查找_散列查找表概述_摘抄_直接定址法_优缺点" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_直接定址法_优缺点</p>
+<h6 id="数字分析法">数字分析法</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./65.webp"
+        data-srcset="./65.webp, ./65.webp 1.5x, ./65.webp 2x"
+        data-sizes="auto"
+        alt="./65.webp"
+        title="65" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_数字分析法</p>
+<p>只强调了抽取，对散列函数并无固定要求。</p>
+<h5 id="平方取中法">平方取中法</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./66.webp"
+        data-srcset="./66.webp, ./66.webp 1.5x, ./66.webp 2x"
+        data-sizes="auto"
+        alt="./66.webp"
+        title="66" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_平方取中法</p>
+<h6 id="折叠法">折叠法</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./67.webp"
+        data-srcset="./67.webp, ./67.webp 1.5x, ./67.webp 2x"
+        data-sizes="auto"
+        alt="./67.webp"
+        title="67" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_折叠法</p>
+<p>存储标签id时，我常用的方法是，存储“1,2,3,4”这样的字段。有人提出，
+计算这4个标签ID的“位运算”，存储“位运算”的结果。具体应用方法已经
+忘记。这也是折叠法。它们都减少了占用的存储空间。</p>
+<h6 id="除留余数法">除留余数法</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./68.webp"
+        data-srcset="./68.webp, ./68.webp 1.5x, ./68.webp 2x"
+        data-sizes="auto"
+        alt="./68.webp"
+        title="68" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_除留余数法_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./69.webp"
+        data-srcset="./69.webp, ./69.webp 1.5x, ./69.webp 2x"
+        data-sizes="auto"
+        alt="./69.webp"
+        title="69" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_除留余数法_2</p>
+<h6 id="随机数法">随机数法</h6>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./70.webp"
+        data-srcset="./70.webp, ./70.webp 1.5x, ./70.webp 2x"
+        data-sizes="auto"
+        alt="./70.webp"
+        title="70" /></p>
+<p>数据结构_查找_散列查找表概述_摘抄_随机数法</p>
+<h3 id="处理散列冲突的方法">处理散列冲突的方法</h3>
+<h4 id="摘抄-6">摘抄</h4>
+<h5 id="开放定址法">开放定址法</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./71.webp"
+        data-srcset="./71.webp, ./71.webp 1.5x, ./71.webp 2x"
+        data-sizes="auto"
+        alt="./71.webp"
+        title="71" /></p>
+<p>数据结构_查找_处理散列冲突的方法_摘抄_开放定址法_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./72.webp"
+        data-srcset="./72.webp, ./72.webp 1.5x, ./72.webp 2x"
+        data-sizes="auto"
+        alt="./72.webp"
+        title="72" /></p>
+<p>数据结构_查找_处理散列冲突的方法_摘抄_开放定址法_2</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./73.webp"
+        data-srcset="./73.webp, ./73.webp 1.5x, ./73.webp 2x"
+        data-sizes="auto"
+        alt="./73.webp"
+        title="73" /></p>
+<p>数据结构_查找_处理散列冲突的方法_摘抄_开放定址法_3</p>
+<h5 id="再散列函数法">再散列函数法</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./74.webp"
+        data-srcset="./74.webp, ./74.webp 1.5x, ./74.webp 2x"
+        data-sizes="auto"
+        alt="./74.webp"
+        title="74" /></p>
+<p>数据结构_查找_处理散列冲突的方法_摘抄_再散列函数法</p>
+<p>存储的时候，是否应该记录解决冲突使用的散列函数？若不记录，读取
+数据的时候，如何计算存储时候的地址？</p>
+<h5 id="链接地址法">链接地址法</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./75.webp"
+        data-srcset="./75.webp, ./75.webp 1.5x, ./75.webp 2x"
+        data-sizes="auto"
+        alt="./75.webp"
+        title="75" /></p>
+<p>数据结构_查找_处理散列冲突的方法_摘抄_链接地址法_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./76.webp"
+        data-srcset="./76.webp, ./76.webp 1.5x, ./76.webp 2x"
+        data-sizes="auto"
+        alt="./76.webp"
+        title="76" /></p>
+<p>数据结构_查找_处理散列冲突的方法_摘抄_链接地址法_1</p>
+<h5 id="公共溢出法">公共溢出法</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./77.webp"
+        data-srcset="./77.webp, ./77.webp 1.5x, ./77.webp 2x"
+        data-sizes="auto"
+        alt="./77.webp"
+        title="77" /></p>
+<p>数据结构_查找_处理散列冲突的方法_摘抄_公共溢出法_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./78.webp"
+        data-srcset="./78.webp, ./78.webp 1.5x, ./78.webp 2x"
+        data-sizes="auto"
+        alt="./78.webp"
+        title="78" /></p>
+<p>数据结构_查找_处理散列冲突的方法_摘抄_公共溢出法_2</p>
+<h3 id="散列表查找实现">散列表查找实现</h3>
+<h4 id="代码-7">代码</h4>
+<p>散列表结构</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#define SUCCESS 1
+</span><span class="cp">#define UNSUCCESS 0
+</span><span class="cp">#define HASHSIZE 12
+</span><span class="cp">#define NULLKEY -32768
+</span><span class="cp"></span><span class="k">typedef</span> <span class="k">struct</span> 
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">elem</span><span class="p">;</span>      <span class="c1">// 数据元素存储基址
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>      <span class="c1">// 当前数据元素个数
+</span><span class="c1"></span><span class="p">}</span><span class="n">HashTable</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>          <span class="c1">// 散列表表长，全局变量
+</span></code></pre></td></tr></table>
+</div>
+</div><p>散列表初始化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Status</span> <span class="nf">InitHashTable</span><span class="p">(</span><span class="n">HashTable</span> <span class="o">*</span><span class="n">H</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">HASHSIZE</span><span class="p">;</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">count</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">NULLKEY</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>散列函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Hash</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">key</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>插入操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">InsertHash</span><span class="p">(</span><span class="n">HashTable</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">Hash</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>       <span class="c1">// 求散列地址
+</span><span class="c1"></span>    <span class="k">while</span><span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">!=</span> <span class="n">NULLKEY</span><span class="p">)</span>
+        <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="n">addr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>查询操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">SearchHash</span><span class="p">(</span><span class="n">HashTable</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">Hash</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">!=</span> <span class="n">key</span><span class="p">){</span>
+        <span class="n">addr</span> <span class="o">=</span> <span class="p">(</span><span class="n">addr</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">!=</span> <span class="n">key</span>  <span class="o">||</span> <span class="n">addr</span> <span class="o">==</span> <span class="n">Hash</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">UNSUCCESS</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>if(H-&gt;elem[addr] != key || addr == Hash(key))</code> 中的 <code>addr == Hash(key)</code> 说明
+循环回到原点，我不理解这点。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">if</span><span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">!=</span> <span class="n">key</span>  <span class="o">||</span> <span class="n">addr</span> <span class="o">==</span> <span class="n">Hash</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">UNSUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这块代码是否有问题？</p>
+<p>当 <code>H-&gt;elem[addr] != key</code> 成立时，应该继续计算哈希地址。</p>
+<h4 id="散列表查找性能分析">散列表查找性能分析</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./79.webp"
+        data-srcset="./79.webp, ./79.webp 1.5x, ./79.webp 2x"
+        data-sizes="auto"
+        alt="./79.webp"
+        title="79" /></p>
+<p>数据结构_查找_散列表查找实现_摘抄_散列表查找性能分析_1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./80.webp"
+        data-srcset="./80.webp, ./80.webp 1.5x, ./80.webp 2x"
+        data-sizes="auto"
+        alt="./80.webp"
+        title="80" /></p>
+<p>数据结构_查找_散列表查找实现_摘抄_散列表查找性能分析_2</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-10-14</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/search-algorithm-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/search-algorithm-note/" data-title="查找算法和对应的数据结构" data-hashtags="DataStructure,Algorithm,Search"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/search-algorithm-note/" data-hashtag="DataStructure"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/search-algorithm-note/" data-title="查找算法和对应的数据结构" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/search-algorithm-note/" data-title="查找算法和对应的数据结构"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/datastructure/">DataStructure</a>,&nbsp;<a href="/tags/algorithm/">Algorithm</a>,&nbsp;<a href="/tags/search/">Search</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/git-error/" class="prev" rel="prev" title="Git: &#39;error: Your local changes to the following files would be overwritten by merge&#39;"><i class="fas fa-angle-left fa-fw"></i>Git: &#39;error: Your local changes to the following files would be overwritten by merge&#39;</a>
+            <a href="/sql-note/" class="next" rel="next" title="Sql笔记">Sql笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

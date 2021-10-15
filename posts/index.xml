@@ -4,55 +4,55 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Sep 2021 00:20:20 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>基于广播和服务功能的音乐播放器</title>
-    <link>https://kkkpjskey.github.io/android-music-box/</link>
-    <pubDate>Tue, 11 May 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-music-box/</guid>
-    <description><![CDATA[1、应用知识点 1.1、Android 广播接收器(Broadcast Receivers) 广播接收器用于响应来自其他应用程序或者系统的广播消息。这些消息有时被称为]]></description>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 15 Oct 2021 20:05:47 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>ElasticSearch运维指令笔记</title>
+    <link>https://kkkpjskey.github.io/es-operation-note/</link>
+    <pubDate>Fri, 15 Oct 2021 20:05:47 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/es-operation-note/</guid>
+    <description><![CDATA[ElasticSearch关闭重启命令 很多人学习elasticSearch都是自学，想百度一下如何重启es也是没有答案，我硬着头皮，算是琢磨]]></description>
 </item><item>
-    <title>类微信界面设计</title>
-    <link>https://kkkpjskey.github.io/android-bottom-navigation/</link>
-    <pubDate>Sun, 04 Apr 2021 19:12:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bottom-navigation/</guid>
-    <description><![CDATA[使用Meterial_Design的BottomNavigationView组件构建底类似微信的四个底部导航栏的切换]]></description>
+    <title>Docker修改容器中的配置文件启动报错</title>
+    <link>https://kkkpjskey.github.io/docker-edit-start-error/</link>
+    <pubDate>Fri, 15 Oct 2021 20:01:21 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/docker-edit-start-error/</guid>
+    <description><![CDATA[原因 因为修改了容器的/etc/rc.d/rc.local 文件导致 容器无法启动，查看容器报错日志 1 docker logs 容器ID 把rc.local修改过来 容器数]]></description>
 </item><item>
-    <title>Windows安装绿色版Redis教程</title>
-    <link>https://kkkpjskey.github.io/redis-green-install-note/</link>
-    <pubDate>Tue, 07 Sep 2021 00:20:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/redis-green-install-note/</guid>
-    <description><![CDATA[前言: 项目使用到了Redis,服务器的Redis总是挂,难受,于是有了接下来的这篇windows端安装绿色版Redis的教程 1.欢迎来到世界]]></description>
+    <title>Java-Collection笔记</title>
+    <link>https://kkkpjskey.github.io/java-collection-note/</link>
+    <pubDate>Fri, 15 Oct 2021 15:04:57 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-collection-note/</guid>
+    <description><![CDATA[前言 java中的集合主要分为三种类型： Set（集） List（列表） Map（映射） **数组：**几乎所有集合实现的底层都有数据的身影存在，因此]]></description>
 </item><item>
-    <title>Choco安装Vctools报错</title>
-    <link>https://kkkpjskey.github.io/vue-install-base-error/</link>
-    <pubDate>Mon, 06 Sep 2021 18:08:48 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-install-base-error/</guid>
-    <description><![CDATA[报错 Windows安装Vue时说vctools没有安装成功，本机装的2019VS，为了使用SAS，node版本用的比较低，所以要再装一个20]]></description>
+    <title>Java不同数字对比不同笔记</title>
+    <link>https://kkkpjskey.github.io/java-integer-equal-note/</link>
+    <pubDate>Fri, 15 Oct 2021 14:29:41 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-integer-equal-note/</guid>
+    <description><![CDATA[介绍 Integer 不同大小和不同创建方式equal和等于后产生了不同的结果 代码 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37]]></description>
 </item><item>
-    <title>Module build failed: Error: Node Sass does not yet support your current environment</title>
-    <link>https://kkkpjskey.github.io/vue-node-sass-not-support-error/</link>
-    <pubDate>Mon, 06 Sep 2021 17:18:19 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vue-node-sass-not-support-error/</guid>
-    <description><![CDATA[问题概述 公司的项目想跑一下前端，执行npm install报错 再执行npm audit fix还报错 查看对应的日志目录发现里面报错，&quot;Modul]]></description>
+    <title>Linux指令操作笔记</title>
+    <link>https://kkkpjskey.github.io/linux-cmd-note/</link>
+    <pubDate>Fri, 15 Oct 2021 14:13:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/linux-cmd-note/</guid>
+    <description><![CDATA[使用grep筛选多个条件 1.grep 同时满足多个关键字和满足任意关键字 1 2 #① grep -E &#34;word1|word2|word3&#34; file.txt 2.满足任意条件（word1、word2和word3之一）将匹配]]></description>
 </item><item>
-    <title>Android Studio向AVD模拟器发送短信</title>
-    <link>https://kkkpjskey.github.io/android-avd-sms-note/</link>
-    <pubDate>Mon, 06 Sep 2021 16:22:33 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-avd-sms-note/</guid>
-    <description><![CDATA[步骤 如上图所示，点击&quot;Tools&quot;&ndash;&gt;&ldquo;Android&rdquo;&ndash;&gt;]]></description>
+    <title>Css笔记</title>
+    <link>https://kkkpjskey.github.io/css-note/</link>
+    <pubDate>Fri, 15 Oct 2021 14:05:42 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/css-note/</guid>
+    <description><![CDATA[div布局根据内容自适应宽度 1 2 3 display:inline-block; *display:inline; *zoom:1;]]></description>
 </item><item>
-    <title>Android 百度地图SDK 自动定位、标记定位教程</title>
-    <link>https://kkkpjskey.github.io/android-bdmap-note/</link>
-    <pubDate>Mon, 06 Sep 2021 15:20:19 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-bdmap-note/</guid>
-    <description><![CDATA[先看效果图,如果不是你想要的，也就不浪费你时间了，这样对大家都好。 一、创建项目引入SDK 如果是你满意的那样，我们就可以开始写了，首先创建一个]]></description>
+    <title>Mysql和PostgreSql的Truncate指令区别</title>
+    <link>https://kkkpjskey.github.io/mysql-postgresql-truncate-diff/</link>
+    <pubDate>Fri, 15 Oct 2021 13:58:53 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mysql-postgresql-truncate-diff/</guid>
+    <description><![CDATA[介绍 清空数据表数据使用 Truncate指令 区别 在 mysql中，只需要执行： 1 TRUNCATE table_name; 即可，数据会情况，而且自增id也会变回0； 但在 postgresql 则稍有不同，]]></description>
 </item><item>
-    <title>Android Studio 的 Gradle Task 没有显示</title>
-    <link>https://kkkpjskey.github.io/androidstudio-no-gradle-task-error/</link>
-    <pubDate>Mon, 06 Sep 2021 15:08:14 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/androidstudio-no-gradle-task-error/</guid>
-    <description><![CDATA[问题描述 Android Studio Gradle 窗口没有显示 task 列表的问题，如下图所示： 网上找了好久都没有找到原因，最后自己摸索，找了解决方法。 解决方法 依次点击：File -&gt; Settings -&gt;]]></description>
+    <title>Jmeter笔记</title>
+    <link>https://kkkpjskey.github.io/jmeter-note/</link>
+    <pubDate>Fri, 15 Oct 2021 13:55:22 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/jmeter-note/</guid>
+    <description><![CDATA[线程数、Ramp-Up时间、循环次数的关系 线程数：a Ramp-Up时间:b 循环次数：c 说明： （1）每个线程可以看做是一个用户 （2）循环次数指]]></description>
 </item><item>
-    <title>Spring的通过@Value注入自定义类型教程</title>
-    <link>https://kkkpjskey.github.io/spring-value-collection-overide-note/</link>
-    <pubDate>Mon, 06 Sep 2021 14:46:46 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/spring-value-collection-overide-note/</guid>
-    <description><![CDATA[之前写了一篇关于Spring的@Value注入的文章《SpringBoot读取yml/properties的几种方法》里面列出了@Value]]></description>
+    <title>时间戳笔记</title>
+    <link>https://kkkpjskey.github.io/timestraip-note/</link>
+    <pubDate>Fri, 15 Oct 2021 13:47:43 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/timestraip-note/</guid>
+    <description><![CDATA[介绍 时间戳是自 1970 年 1 月 1 日（08:00:00 GMT）至当前时间的总秒数，它也被称为 Unix 时间戳。 规则 时间戳（timestamp），一个能表示一份]]></description>
 </item><item>
-    <title>RESTful笔记</title>
-    <link>https://kkkpjskey.github.io/restful-note/</link>
-    <pubDate>Mon, 06 Sep 2021 14:26:12 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/restful-note/</guid>
-    <description><![CDATA[老婆经常喜欢翻看我订阅的技术杂志，她总能从她的视角提出很多有趣的问题。 一个悠闲的周日下午，她午觉醒来，又习惯性的抓起这个月的杂志，饶有兴趣地]]></description>
+    <title>Java类序列化与反序列化工具笔记</title>
+    <link>https://kkkpjskey.github.io/json-and-collection-note/</link>
+    <pubDate>Thu, 14 Oct 2021 17:08:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/json-and-collection-note/</guid>
+    <description><![CDATA[1 Alibaba Fastjson 1.Map转JSON 1 2 3 4 Map&lt;String, Object&gt; Map = new HashMap&lt;String, Object&gt;(); Map.put(&#34;a&#34;, &#34;a&#34;); Map.put(&#34;b&#34;, &#34;123&#34;); JSONObject json = new JSONObject(Map); 2.Map转string 1 2 3 Map&lt;String, Object&gt; map = new HashMap&lt;&gt;(); map.put(&#34;a&#34;, &#34;b&#34;); String s = JSONObject.toJSONString(map); 3.JSON转Str]]></description>
 </item></channel>
 </rss>

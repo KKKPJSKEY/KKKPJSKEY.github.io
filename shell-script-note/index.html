@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/shell-script-note\/featured-image.jpg",
                             "width":  470 ,
                             "height":  194 
-                        }],"genre": "posts","keywords": "Linux, CentOS7, Shell, Script","wordcount":  2967 ,
+                        }],"genre": "posts","keywords": "Linux, CentOS7, Shell, Script","wordcount":  3122 ,
         "url": "https:\/\/kkkpjskey.github.io\/shell-script-note\/","datePublished": "2018-11-11T18:17:25+08:00","dateModified": "2020-03-04T12:13:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">ShellScript（.sh）脚本语法知识</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-11-11">2018-11-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2967 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/shell-script-note/" class="leancloud_visitors" data-flag-title="ShellScript（.sh）脚本语法知识">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2018-11-11">2018-11-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3122 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/shell-script-note/" class="leancloud_visitors" data-flag-title="ShellScript（.sh）脚本语法知识">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -147,11 +147,12 @@
         <li><a href="#2数字的判断"><strong>2、数字的判断</strong></a></li>
         <li><a href="#3文件的判断"><strong>3、文件的判断</strong></a></li>
         <li><a href="#4复杂逻辑判断"><strong>4、复杂逻辑判断</strong></a></li>
-        <li><a href="#结尾"><strong>结尾</strong>：</a></li>
-        <li><a href="#附-表"><strong>附 表：</strong></a></li>
+        <li><a href="#结尾"><strong>结尾</strong></a></li>
+        <li><a href="#附-表"><strong>附 表</strong></a></li>
       </ul>
     </li>
     <li><a href="#运行">运行</a></li>
+    <li><a href="#脚本换行符如何在bash-shell中使用换行符n">脚本换行符,如何在Bash Shell中使用换行符（\n）</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="set--e的作用">set -e的作用</h2>
@@ -533,10 +534,10 @@ $ ./test.sh <span class="m">1</span> <span class="m">2</span> <span class="m">3<
 </tr>
 </tbody>
 </table>
-<h3 id="结尾"><strong>结尾</strong>：</h3>
+<h3 id="结尾"><strong>结尾</strong></h3>
 <p>语法虽然简单，但是在SHELL里使用的时候，他的功能变得强大了。</p>
 <p>==================================================================</p>
-<h3 id="附-表"><strong>附 表：</strong></h3>
+<h3 id="附-表"><strong>附 表</strong></h3>
 <table>
 <thead>
 <tr>
@@ -711,6 +712,14 @@ $ ./test.sh <span class="m">1</span> <span class="m">2</span> <span class="m">3<
         data-sizes="auto"
         alt="./4.png"
         title="4" /></p>
+<h2 id="脚本换行符如何在bash-shell中使用换行符n">脚本换行符,如何在Bash Shell中使用换行符（\n）</h2>
+<p><code>\n</code>(换行)用作基于Unix的系统的换行符。下面是在bash shell脚本中使用换行符的简单示例。</p>
+<ul>
+<li>双引号中的字符串：$ echo -e &ldquo;This is First Line \nThis is Second Line&rdquo;</li>
+<li>单引号中的字符串：$ echo -e &lsquo;This is First Line \nThis is Second Line&rsquo;</li>
+<li>带$前缀的字符串：$ echo $&lsquo;This is First Line \nThis is Second Line&rsquo;</li>
+<li>使用printf命令：$ printf &ldquo;This is First Line \nThis is Second Line&rdquo;</li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

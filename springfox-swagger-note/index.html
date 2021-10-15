@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/springfox-swagger-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/springfox-swagger-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-22T23:32:28&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-22T23:32:28&#43;08:00" />
+<meta property="article:modified_time" content="2021-10-14T13:44:56&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/springfox-swagger-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/springfox-swagger-note\/featured-image.jpg",
                             "width":  1600 ,
                             "height":  480 
-                        }],"genre": "posts","keywords": "ShellScript, Markdown, GitHub, CodeIt, Blog","wordcount":  2588 ,
-        "url": "https:\/\/kkkpjskey.github.io\/springfox-swagger-note\/","datePublished": "2021-08-22T23:32:28+08:00","dateModified": "2021-08-22T23:32:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "ShellScript, Markdown, GitHub, CodeIt, Blog","wordcount":  2783 ,
+        "url": "https:\/\/kkkpjskey.github.io\/springfox-swagger-note\/","datePublished": "2021-08-22T23:32:28+08:00","dateModified": "2021-10-14T13:44:56+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">springfox-swagger笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-22">2021-08-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2588 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-22">2021-08-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2783 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/springfox-swagger-note/" class="leancloud_visitors" data-flag-title="springfox-swagger笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -141,6 +141,7 @@
     <li><a href="#2swagger-配置">2.swagger 配置</a></li>
     <li><a href="#3相关注解使用和说明">3.相关注解使用和说明</a></li>
     <li><a href="#4对应关系">4.对应关系</a></li>
+    <li><a href="#表示接口过时了-warning-deprecated">表示接口过时了 Warning: Deprecated</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="1spring-boot依赖">1.spring-boot依赖</h2>
@@ -687,11 +688,46 @@
         data-sizes="auto"
         alt="./3.png"
         title="3" /></p>
+<h2 id="表示接口过时了-warning-deprecated">表示接口过时了 Warning: Deprecated</h2>
+<p>在该接口的方法上添加@Deprecated</p>
+<p>@Deprecated简单来讲就是，若某类或某方法加上该注解之后，表示此方法或类不再建议使用，调用时也会出现删除线，但并不代表不能用，只是说，不推荐使用，因为还有更好的方法可以调用。</p>
+<p>在swagger中的使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@ApiOperation</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;通过站点id查询栏目列表&#34;</span><span class="o">)</span>
+    <span class="nd">@Deprecated</span>
+    <span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;findByTerminalId&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">AjaxResponse</span><span class="o">&lt;</span><span class="n">SelectOutputBean</span><span class="o">&lt;</span><span class="n">AppNavigationInternalOutputBean</span><span class="o">&gt;&gt;</span> <span class="nf">findByTerminalId</span><span class="o">(</span>
+            <span class="nd">@RequestBody</span> <span class="nd">@Validated</span> <span class="nd">@ApiParam</span><span class="o">(</span><span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span> <span class="n">ConditionOfSiteModel</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">SelectOutputBean</span><span class="o">&lt;</span><span class="n">AppNavigationInternalOutputBean</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">getService</span><span class="o">().</span><span class="na">findByTerminalId</span><span class="o">(</span><span class="n">model</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">AjaxResponse</span><span class="o">.</span><span class="na">success</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+   <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>效果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-08-22</span>
+                <span>更新于 2021-10-14</span>
             </div>
             <div class="post-info-license"></div>
         </div>

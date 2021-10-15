@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/featured-image.jpg",
                             "width":  640 ,
                             "height":  205 
-                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  1362 ,
+                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  2520 ,
         "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/","datePublished": "2021-07-28T10:29:58+08:00","dateModified": "2021-07-28T10:29:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">PostgreSQL相关笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1362 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/postgresql-note/" class="leancloud_visitors" data-flag-title="PostgreSQL相关笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2520 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/postgresql-note/" class="leancloud_visitors" data-flag-title="PostgreSQL相关笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -146,6 +146,13 @@
     <li><a href="#二配置">二、配置</a></li>
     <li><a href="#重置自增序列">重置自增序列</a></li>
     <li><a href="#schemas问题">schemas问题</a></li>
+    <li><a href="#postgresql----inexists">postgresql&mdash;-IN&amp;&amp;EXISTS</a>
+      <ul>
+        <li><a href="#一in--not-in">一.IN &amp;&amp; NOT IN</a></li>
+        <li><a href="#二xists--not-exists">二.XISTS &amp;&amp; NOT EXISTS</a></li>
+      </ul>
+    </li>
+    <li><a href="#postgresql-查看退出-replication-slot">Postgresql 查看退出 Replication Slot</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="一介绍">一、介绍</h2>
@@ -311,7 +318,287 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </div><h2 id="schemas问题">schemas问题</h2>
 <p>PGSql默认的是public,如果用MybatisPlus的内置方法的话,是需要指定连接的CurrentSchema的,否则只会默认查询public,自己写Sql可以在前面加上schemas
 但是使用内置方法没有,必须在连接url指定schemsa,否则会报ERROR: relation &ldquo;item&rdquo; does not exist表不存在</p>
-</div><div class="post-footer" id="post-footer">
+<h2 id="postgresql----inexists">postgresql&mdash;-IN&amp;&amp;EXISTS</h2>
+<h3 id="一in--not-in">一.IN &amp;&amp; NOT IN</h3>
+<p>WHERE expression IN (subquery)</p>
+<p>右边圆括号内是返回一个字段的子查询结果集，左边的表达式（或字段）对查询结果每一行进行一次运算和比较，如果结果集中存在相等的行，则IN结果为&rsquo;TRUE'，否则为&rsquo;FALSE';</p>
+<p>WHERE expression NOT IN (subquery)</p>
+<p>NOT IN与IN正相反，如果结果集中不存在相等的行结果为&rsquo;TRUE'，否则为&rsquo;FALSE'。</p>
+<p>测试表：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># \d tbl_test </span>
+   Table <span class="s2">&#34;public.tbl_test&#34;</span>
+ Column <span class="p">|</span>  Type   <span class="p">|</span> Modifiers 
+--------+---------+-----------
+ f      <span class="p">|</span> integer <span class="p">|</span> 
+
+<span class="nv">test</span><span class="o">=</span><span class="c1"># \d tbl_insert</span>
+         Table <span class="s2">&#34;public.tbl_insert&#34;</span>
+ Column <span class="p">|</span>         Type          <span class="p">|</span> Modifiers 
+--------+-----------------------+-----------
+ a      <span class="p">|</span> integer               <span class="p">|</span> 
+ b      <span class="p">|</span> integer               <span class="p">|</span> 
+ c      <span class="p">|</span> character varying<span class="o">(</span>12<span class="o">)</span> <span class="p">|</span>
+ 
+ 
+ <span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_test ;</span>
+ f 
+---
+ <span class="m">1</span>
+ <span class="m">3</span>
+ <span class="m">5</span>
+<span class="o">(</span><span class="m">3</span> rows<span class="o">)</span>
+
+<span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert;</span>
+ a <span class="p">|</span> b <span class="p">|</span>   c   
+---+---+-------
+ <span class="m">1</span> <span class="p">|</span> <span class="m">1</span> <span class="p">|</span> <span class="m">11</span>
+ <span class="m">2</span> <span class="p">|</span> <span class="m">2</span> <span class="p">|</span> <span class="m">22</span>
+ <span class="m">3</span> <span class="p">|</span> <span class="m">3</span> <span class="p">|</span> <span class="m">33</span>
+ <span class="m">4</span> <span class="p">|</span> <span class="m">4</span> <span class="p">|</span> <span class="m">44</span>
+ <span class="m">5</span> <span class="p">|</span> <span class="m">5</span> <span class="p">|</span> <span class="m">51</span>
+ <span class="m">6</span> <span class="p">|</span> <span class="m">6</span> <span class="p">|</span> <span class="m">1</span>
+ <span class="m">6</span> <span class="p">|</span> <span class="m">6</span> <span class="p">|</span> <span class="m">61</span>
+ <span class="m">6</span> <span class="p">|</span> <span class="m">6</span> <span class="p">|</span> <span class="m">661</span>
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> 3%1
+ <span class="m">8</span> <span class="p">|</span> <span class="m">8</span> <span class="p">|</span> 3%_1
+ <span class="m">8</span> <span class="p">|</span> <span class="m">8</span> <span class="p">|</span> 3_%_1
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> abc
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> ABc
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> aBC
+<span class="o">(</span><span class="m">14</span> rows<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>示例1.查询tbl_insert表,且a字段值在tbl_test表字段f中的行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a in (select f from tbl_test);</span>
+ a <span class="p">|</span> b <span class="p">|</span> c  
+---+---+----
+ <span class="m">1</span> <span class="p">|</span> <span class="m">1</span> <span class="p">|</span> <span class="m">11</span>
+ <span class="m">3</span> <span class="p">|</span> <span class="m">3</span> <span class="p">|</span> <span class="m">33</span>
+ <span class="m">5</span> <span class="p">|</span> <span class="m">5</span> <span class="p">|</span> <span class="m">51</span>
+<span class="o">(</span><span class="m">3</span> rows<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>示例2.查询tbl_insert表,且a字段值比tbl_test表字段f小1的行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a+1 in (select f from tbl_test);</span>
+ a <span class="p">|</span> b <span class="p">|</span> c  
+---+---+----
+ <span class="m">2</span> <span class="p">|</span> <span class="m">2</span> <span class="p">|</span> <span class="m">22</span>
+ <span class="m">4</span> <span class="p">|</span> <span class="m">4</span> <span class="p">|</span> <span class="m">44</span>
+<span class="o">(</span><span class="m">2</span> rows<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>示例3.查询tbl_insert表,且a字段值不在tbl_test表字段f中的行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a not in (select f from tbl_test);</span>
+ a <span class="p">|</span> b <span class="p">|</span>   c   
+---+---+-------
+ <span class="m">2</span> <span class="p">|</span> <span class="m">2</span> <span class="p">|</span> <span class="m">22</span>
+ <span class="m">4</span> <span class="p">|</span> <span class="m">4</span> <span class="p">|</span> <span class="m">44</span>
+ <span class="m">6</span> <span class="p">|</span> <span class="m">6</span> <span class="p">|</span> <span class="m">1</span>
+ <span class="m">6</span> <span class="p">|</span> <span class="m">6</span> <span class="p">|</span> <span class="m">61</span>
+ <span class="m">6</span> <span class="p">|</span> <span class="m">6</span> <span class="p">|</span> <span class="m">661</span>
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> 3%1
+ <span class="m">8</span> <span class="p">|</span> <span class="m">8</span> <span class="p">|</span> 3%_1
+ <span class="m">8</span> <span class="p">|</span> <span class="m">8</span> <span class="p">|</span> 3_%_1
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> abc
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> ABc
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> aBC
+<span class="o">(</span><span class="m">11</span> rows<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>示例4.查询tbl_insert表,且a字段值等于5或7的行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a in (5,7);</span>
+ a <span class="p">|</span> b <span class="p">|</span>  c  
+---+---+-----
+ <span class="m">5</span> <span class="p">|</span> <span class="m">5</span> <span class="p">|</span> <span class="m">51</span>
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> 3%1
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> abc
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> ABc
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> aBC
+<span class="o">(</span><span class="m">5</span> rows<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="二xists--not-exists">二.XISTS &amp;&amp; NOT EXISTS</h3>
+<p>WHERE EXISTS (subquery)</p>
+<p>括号内同样是一个子查询，如果子查询有返回结果，则EXISTS结果为&rsquo;TRUE'，否则为&rsquo;FALSE'。</p>
+<p>WHERE NOT EXISTS(subquery)</p>
+<p>NOT EXISTS与EXISTS正好相反，如果子查询没有返回结果，为&rsquo;TRUE'，否则&rsquo;FALSE'。</p>
+<p>示例1.查询tbl_insert表,且a字段值在tbl_test表字段f中的行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where exists (select null from tbl_test where tbl_test.f=tbl_insert.a);</span>
+ a <span class="p">|</span> b <span class="p">|</span> c  
+---+---+----
+ <span class="m">1</span> <span class="p">|</span> <span class="m">1</span> <span class="p">|</span> <span class="m">11</span>
+ <span class="m">3</span> <span class="p">|</span> <span class="m">3</span> <span class="p">|</span> <span class="m">33</span>
+ <span class="m">5</span> <span class="p">|</span> <span class="m">5</span> <span class="p">|</span> <span class="m">51</span>
+<span class="o">(</span><span class="m">3</span> rows<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>示例2.查询tbl_insert表,且a字段值不在tbl_test表字段f中的行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where not exists (select null from tbl_test where tbl_test.f=tbl_insert.a);</span>
+ a <span class="p">|</span> b <span class="p">|</span>   c   
+---+---+-------
+ <span class="m">2</span> <span class="p">|</span> <span class="m">2</span> <span class="p">|</span> <span class="m">22</span>
+ <span class="m">4</span> <span class="p">|</span> <span class="m">4</span> <span class="p">|</span> <span class="m">44</span>
+ <span class="m">6</span> <span class="p">|</span> <span class="m">6</span> <span class="p">|</span> <span class="m">1</span>
+ <span class="m">6</span> <span class="p">|</span> <span class="m">6</span> <span class="p">|</span> <span class="m">61</span>
+ <span class="m">6</span> <span class="p">|</span> <span class="m">6</span> <span class="p">|</span> <span class="m">661</span>
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> 3%1
+ <span class="m">8</span> <span class="p">|</span> <span class="m">8</span> <span class="p">|</span> 3%_1
+ <span class="m">8</span> <span class="p">|</span> <span class="m">8</span> <span class="p">|</span> 3_%_1
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> abc
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> ABc
+ <span class="m">7</span> <span class="p">|</span> <span class="m">7</span> <span class="p">|</span> aBC
+<span class="o">(</span><span class="m">11</span> rows<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><font color=#FF0000 size=3>PS:NOT IN的效率非常低，如果可以的话建议使用NOT EXISTS。</font></p>
+<h2 id="postgresql-查看退出-replication-slot">Postgresql 查看退出 Replication Slot</h2>
+<p>查看Replication Slot：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pg_replication_slots</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>删除一个Replication Slot：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="n">pg_drop_replication_slot</span><span class="p">(</span><span class="s1">&#39;debezium&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
