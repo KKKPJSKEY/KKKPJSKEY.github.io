@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  10312 ,
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  12668 ,
         "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-10-14T22:37:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10312 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 21 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 12668 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 26 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -138,7 +138,13 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#oracle-java-下载jdk账号">Oracle Java 下载JDK账号</a></li>
-    <li><a href="#java获取系统时间">Java获取系统时间</a></li>
+    <li><a href="#java获取系统时间">Java获取系统时间</a>
+      <ul>
+        <li><a href="#整理一">整理一</a></li>
+        <li><a href="#整理二">整理二</a></li>
+        <li><a href="#整理三">整理三</a></li>
+      </ul>
+    </li>
     <li><a href="#java代码实现double类型数字格式化为百分数">Java代码实现double类型数字格式化为百分数</a></li>
     <li><a href="#数组操作">数组操作</a></li>
     <li><a href="#字符串操作">字符串操作</a></li>
@@ -190,6 +196,24 @@
         <li><a href="#运行结果">运行结果</a></li>
       </ul>
     </li>
+    <li><a href="#java-jar-带环境变量参数启动">java-jar 带环境变量(参数)启动</a>
+      <ul>
+        <li><a href="#需求">需求</a>
+          <ul>
+            <li><a href="#方式一-dpropnamepropvalue">方式一：-DpropName=propValue</a></li>
+            <li><a href="#方式二参数直接跟在命令后面多个参数之间用空格隔开">方式二：参数直接跟在命令后面，多个参数之间用空格隔开</a></li>
+            <li><a href="#方式三使用springboot的方式--propnamepropvalue方式">方式三：使用springboot的方式，&ndash;propName=propValue方式</a></li>
+          </ul>
+        </li>
+        <li><a href="#用clojure开发的jar里有惊喜">用clojure开发的jar里有惊喜</a>
+          <ul>
+            <li><a href="#代码里的env">代码里的env</a></li>
+            <li><a href="#cprop加载配置">cprop加载配置</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#java8函数作为参数">Java8函数作为参数</a></li>
     <li><a href="#end">End</a></li>
   </ul>
 </nav></div>
@@ -200,15 +224,18 @@
 <h2 id="java获取系统时间">Java获取系统时间</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
@@ -218,11 +245,164 @@
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> 
           <span class="n">SimpleDateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="o">);</span><span class="c1">//设置日期格式
 </span><span class="c1"></span>          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">df</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">()));</span><span class="c1">// new Date()为获取当前系统时间
-</span><span class="c1"></span>    <span class="o">}</span>
+</span><span class="c1"></span>        <span class="c1">//---------------------
+</span><span class="c1"></span>          <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>       
+		 <span class="n">Timestamp</span> <span class="n">nousedate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Timestamp</span><span class="o">(</span><span class="n">date</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="java代码实现double类型数字格式化为百分数">Java代码实现double类型数字格式化为百分数</h2>
+</div><h3 id="整理一">整理一</h3>
+<p>这里的一片文章，我个人认为讲解的很详细，有对 java.sql.Date的使用还有困惑的请看。</p>
+<p>java.sql.Date 只存储日期数据不存储时间数据</p>
+<p>// 会丢失时间数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">preparedStatement</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">date</span><span class="o">.</span><span class="na">getTime</span><span class="o">()));</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>//可以这样来处理</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">preparedStatement</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Timestamp</span><span class="o">(</span><span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()));</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>//想要得到完整的数据，包括日期和时间，可以这样</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">resultSet</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="n">1</span><span class="o">);</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>//这样处理更合适一些，可以避免一些潜在Timestamp 问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">getTime</span><span class="o">());</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>自己补的话：</p>
+<blockquote>
+<p>往数据库存储的时候可以接收 java.util.Date类型 再用getTime()方法得到代表那个Date对象的long值，再以这个long值 构造一个Timestamp对象 存进数据库中。</p>
+<p>从存数据库里取的时候，可以先得到Timestamp用他的getTime()方法得到long值，再以这个long值构造一个 java.util.Date对象，这样就可以对这个Date对象操作了。不如说 new SimpleTimeFormat(&ldquo;yyyyy-MM-dd HH:mm:ss&rdquo;).format()等等</p>
+</blockquote>
+<h3 id="整理二">整理二</h3>
+<p>用Timestamp来记录日期时间还是很方便的，但有时候显示的时候是不需要小数位后面的毫秒的，这样就需要在转换为String时重新定义格式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nl">Timestamp转化为String:</span> <span class="n">SimpleDateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="o">);</span>
+<span class="c1">//定义格式，不显示毫秒
+</span><span class="c1"></span><span class="n">Timestamp</span> <span class="n">now</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Timestamp</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span>
+<span class="c1">//获取系统当前时间 String str = df.format(now);
+</span><span class="c1"></span><span class="nl">String转化为Timestamp:</span> <span class="n">SimpleDateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">time</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span> <span class="n">Timestamp</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">Timestamp</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">time</span><span class="o">);</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="整理三">整理三</h3>
+<p>在 ResultSet中我们经常使用的setDate或getDate的数据类型是java.sql.Date，而在平时java程序中我们一般习惯使用 java.util.Date。因此在DAO层我们经常会碰到这俩种数据类型的相互转换，经过了一个下午的折腾，鄙人对两者的转换方法做出了小小总结，希望大家不吝指教。
+两者的关系</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Object</span>
+  <span class="o">|</span>
+  <span class="o">+---</span><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span>
+      <span class="o">|</span>
+      <span class="o">+----</span><span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Date</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>从这个图中我们可以知道java.sql.Date是从java.util.Date继承过来的。</p>
+<p>相互转换</p>
+<ol>
+<li>
+<p>使用getTime()函数
+这两个类都提供了getTime()函数，用于返回对应的毫秒数（long类型）。利用这个函数可以实现转换：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">utilDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">sqlDate</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>  <span class="c1">// sql -&gt; util
+</span><span class="c1"></span><span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Date</span> <span class="n">sqlDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">utilDate</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>  <span class="c1">// util -&gt; sql
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用SimpleDateFormat类实现转换</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">SimpleDateFormat</span> <span class="n">是一个以国别敏感的方式格式化和分析数据的具体类</span><span class="err">。</span> <span class="n">它允许格式化</span> <span class="o">(</span><span class="n">date</span> <span class="o">-&gt;</span> <span class="n">text</span><span class="o">)</span><span class="err">、</span><span class="n">语法分析</span> <span class="o">(</span><span class="n">text</span> <span class="o">-&gt;</span> <span class="n">date</span><span class="o">)</span><span class="n">和标准化</span><span class="err">。</span>
+<span class="n">SimpleDateFormat</span> <span class="n">dateFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormate</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="o">);</span>
+<span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">utilDate</span> <span class="o">=</span> <span class="n">dateFormat</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">sqlDate</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>直接转换
+由于java.sql.Date是从java.util.Date中继承过来的，所以可以直接用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">utilDate</span> <span class="o">=</span> <span class="n">sqlDate</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>另类获得日期的方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">SimpleDateFormat</span> <span class="n">sy</span><span class="o">=</span><span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy&#34;</span><span class="o">);</span>
+<span class="n">SimpleDateFormat</span> <span class="n">sm</span><span class="o">=</span><span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;MM&#34;</span><span class="o">);</span>
+<span class="n">SimpleDateFormat</span> <span class="n">sd</span><span class="o">=</span><span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;dd&#34;</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">syear</span><span class="o">=</span><span class="n">sy</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">smon</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">sday</span><span class="o">=</span><span class="n">sd</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p>ps： java.util.Date类中的getYear()要加上1900才可得到实际值，getMonth()则要加上1</p>
+<h2 id="java代码实现double类型数字格式化为百分数">Java代码实现double类型数字格式化为百分数</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -1632,6 +1812,230 @@ java只能调用。</p>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">id:123
 User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><span class="s1">&#39;123&#39;</span>, <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;pibigstar&#39;</span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="java-jar-带环境变量参数启动">java-jar 带环境变量(参数)启动</h2>
+<h3 id="需求">需求</h3>
+<p>java工程我们可以编译成jar也可以翻译成war，一般地，war包我会丢到tomcat容器里，启动tomcat来访问服务，端口、SSL证书、日志等等，都托给tomcat。</p>
+<p>如果打的是jar包，我通常会用nohup启动，比如生产环境的一些db、redis、第三方secret等不会配置到项目里，今天要记录的便是用nohup java -jar 启动jar包时如何加载环境变量配置的问题。</p>
+<p>java语言开发的jar包启动时可以按照如下方式加启动参数。</p>
+<h4 id="方式一-dpropnamepropvalue">方式一：-DpropName=propValue</h4>
+<p>这种方式应该很快都能找到</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yml" data-lang="yml">-<span class="l">DpropName=propValue</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">java -jar -DdatabaseUrl<span class="o">=</span><span class="s2">&#34;mysql://localhost:3306/pdb?user=root&amp;password=root&#34;</span>  -Dapp.key<span class="o">=</span><span class="s2">&#34;123&#34;</span> -Dapp.secret<span class="o">=</span><span class="s2">&#34;xxx&#34;</span>  demo.jar
+</code></pre></td></tr></table>
+</div>
+</div><p>多个参数也可以。</p>
+<h4 id="方式二参数直接跟在命令后面多个参数之间用空格隔开">方式二：参数直接跟在命令后面，多个参数之间用空格隔开</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">java -jar demo.jar JOURNAL_TREENODE_DATA-20190404174502.txt processType=1
+</code></pre></td></tr></table>
+</div>
+</div><p>这种方式参数就是jar包里主启动类中main方法的args参数，按顺序来</p>
+<h4 id="方式三使用springboot的方式--propnamepropvalue方式">方式三：使用springboot的方式，&ndash;propName=propValue方式</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">java -jar demo.jar  --spring.profiles.active=dev  --server.port=8181
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意：</strong>
+运行jar包时指定端口：java -jar xxx.jar &ndash;server.port=8088
+若命令行传入的server.port没有作用，服务仍然使用8081端口启动，原因是spring-cloud-config会覆盖命令行传入的参数，这是有意为之，</p>
+<p>办法是在web-prod.yml中做点小改动，让“配置”变得“可配置”：加一对花括符</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">server.port={port:8081}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="用clojure开发的jar里有惊喜">用clojure开发的jar里有惊喜</h3>
+<p>在clojure上面的配置就变得诡异了，猜猜下面的配置能不能生效呢？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">java -jar -Ddatabase-url<span class="o">=</span><span class="s2">&#34;mysql://localhost:3306/pdb?user=root&amp;password=root&#34;</span>  -Dapp.key<span class="o">=</span><span class="s2">&#34;123&#34;</span> -Dapp.secret<span class="o">=</span><span class="s2">&#34;xxx&#34;</span>  demo.jar
+</code></pre></td></tr></table>
+</div>
+</div><p>如果你用<code>cider-conect</code>通过nrepl的端口连接上你的服务，你会发现，这个配置导致<code>database-url</code>的值确实已经改了，但是后面两个没有。</p>
+<p>究其原因，我们java从classpath里获取参数使用的是properties形式的，也就是json的格式。这不难理解，spring有它的办法，clojure当然也有自己的方式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="s2">&#34;app&#34;</span>: <span class="o">{</span>
+    <span class="s2">&#34;key&#34;</span>: <span class="s2">&#34;123&#34;</span>,
+    <span class="s2">&#34;secret&#34;</span>:<span class="s2">&#34;xxx&#34;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>虽然json和我们的edn里map是很像的，但是毕竟是不同，于是要分析下现在的edn里的配置信息他是怎么读取的呢？</p>
+<h4 id="代码里的env">代码里的env</h4>
+<p>在<code>config</code>这个namespace里找到了env</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>defstate env
+  :start
+  <span class="o">(</span>load-config
+   :merge
+   <span class="o">[(</span>args<span class="o">)</span>
+    <span class="o">(</span>source/from-system-props<span class="o">)</span>
+    <span class="o">(</span>source/from-env<span class="o">)]))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="cprop加载配置">cprop加载配置</h4>
+<p><code>cprop.source</code>这个文件就是用来加载edn文件的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="p">(</span><span class="n">defn</span><span class="o">-</span><span class="w"> </span><span class="n">env</span>-&gt;<span class="nc">path</span><span class="w"> </span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="p">(</span><span class="n">k</span>-&gt;<span class="nc">path</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="s">&#34;_&#34;</span><span class="w"> </span><span class="err">#</span><span class="s">&#34;__&#34;</span><span class="p">))</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="n">defn</span><span class="w"> </span><span class="n">read</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">env</span><span class="w">
+</span><span class="w">  </span><span class="p">([]</span><span class="w">
+</span><span class="w">   </span><span class="p">(</span><span class="n">read</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">env</span><span class="w"> </span><span class="p">{}))</span><span class="w">
+</span><span class="w">  </span><span class="p">([</span><span class="n">opts</span><span class="p">]</span><span class="w">
+</span><span class="w">   </span><span class="p">(</span>-&gt;<span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="o">/</span><span class="n">getenv</span><span class="p">)</span><span class="w">
+</span><span class="w">        </span><span class="p">(</span><span class="n">map</span><span class="w"> </span><span class="p">(</span><span class="k">fn</span> <span class="p">[[</span><span class="n">k</span><span class="w"> </span><span class="n">v</span><span class="p">]]</span><span class="w"> </span><span class="p">[(</span><span class="n">env</span>-&gt;<span class="nc">path</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w">
+</span><span class="w">                          </span><span class="p">(</span><span class="kt">str</span>-&gt;<span class="nc">value</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="n">opts</span><span class="p">)]))</span><span class="w">
+</span><span class="w">        </span><span class="p">(</span><span class="n">into</span><span class="w"> </span><span class="p">{}))))</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>从获取的过程看，应该是会把<code>_</code>做为单元节点断开，因此需要改成这样</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">java -jar -Ddatabase-url<span class="o">=</span><span class="s2">&#34;mysql://localhost:3306/pdb?user=root&amp;password=root&#34;</span>  -Dapp_key<span class="o">=</span><span class="s2">&#34;123&#34;</span> -Dapp_secret<span class="o">=</span><span class="s2">&#34;xxx&#34;</span>  demo.jar
+</code></pre></td></tr></table>
+</div>
+</div><p>对应到edn里应该是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="err">:app</span>
+    <span class="err">{:key</span> <span class="nt">&#34;123&#34;</span>
+     <span class="p">:</span><span class="err">secret</span> <span class="s2">&#34;xxx&#34;</span><span class="p">}</span><span class="err">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果仔细看看<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Ftolitius%2Fcprop%23loading-config" target="_blank" rel="noopener noreferrer">cprop</a>这个库就不难理解了。
+cprop加载配置文件的顺序是 :</p>
+<blockquote>
+<p>By default cprop will merge all configurations it can find in the following order:
+classpath resource config
+file on a file system (pointed by a conf system property or by (load-config :file <path>))
+custom configurations, maps from various sources, etc.
+System properties
+ENV variables</p>
+</blockquote>
+<p>对于ENV的加载也有明确说明</p>
+<blockquote>
+<p>ENV variables lack structure. The only way to mimic the structure is via use of an underscore character. The _ is converted to - by cprop, so instead, to identify nesting, two underscores can be used.</p>
+</blockquote>
+<p>了解更多详情，请阅读<a href="https://github.com/tolitius/cprop#speaking-env-variables" target="_blank" rel="noopener noreferrer">cprop介绍</a></p>
+<h2 id="java8函数作为参数">Java8函数作为参数</h2>
+<p>创建Function有多种方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FunctionParams</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">f01</span><span class="o">=(</span><span class="n">password</span><span class="o">)-&gt;</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">password</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+<span class="c1">// 输出加密后的字符串
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f01</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="s">&#34;123456&#34;</span><span class="o">));</span>
+<span class="c1">//--------------------------------------------------------
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">addApi</span><span class="o">(</span><span class="n">1</span><span class="o">,</span><span class="n">FunctionParams</span><span class="o">::</span><span class="n">add1</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">addApi</span><span class="o">(</span><span class="n">1</span><span class="o">,</span><span class="n">FunctionParams</span><span class="o">::</span><span class="n">add2</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">add1</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">n</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">add2</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">n</span> <span class="o">+</span> <span class="n">2</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">addApi</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">add</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">add</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="n">n</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="end">End</h2>

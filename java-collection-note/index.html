@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/featured-image.jpg",
                             "width":  721 ,
                             "height":  330 
-                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  17892 ,
+                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  23093 ,
         "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/","datePublished": "2021-10-15T15:04:57+08:00","dateModified": "2021-10-15T15:04:57+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java-Collection笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 17892 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 36 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 23093 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 47 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -138,6 +138,7 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#前言">前言</a></li>
+    <li><a href="#arraylist初始化的4种方法">ArrayList初始化的4种方法</a></li>
     <li><a href="#list的交集差集并集">list的交集,差集,并集</a></li>
     <li><a href="#list数据去重的五种方法">List数据去重的五种方法</a>
       <ul>
@@ -180,6 +181,11 @@
             <li><a href="#简单性能测试">简单性能测试</a></li>
             <li><a href="#总结">总结</a></li>
             <li><a href="#分析">分析</a></li>
+            <li><a href="#扩容机制">扩容机制</a>
+              <ul>
+                <li><a href="#hashmap设计时就是没有保证线程安全的-所以在多线程环境请使用concurrenthashmap">HashMap设计时就是没有保证线程安全的, 所以在多线程环境请使用ConcurrentHashMap;</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
@@ -251,7 +257,78 @@
 <p><strong>总结一下上面两段话：</strong></p>
 <p>数组的大小是固定不变的，并且同一个数组只能存储相同类型的数据，该数据类型可以是基本类型也可以是引用类型。Java中集合可以存储操作不同类型和大小不固定的数据，但是Java中集合只能存储引用类型，不能存储基本类型。</p>
 <hr>
-<h2 id="list的交集差集并集">list的交集,差集,并集</h2>
+<h2 id="arraylist初始化的4种方法">ArrayList初始化的4种方法</h2>
+<p><a href="https://beginnersbook.com/2013/12/how-to-initialize-an-arraylist/" target="_blank" rel="noopener noreferrer">参考</a></p>
+<p>1、Arrays.asList</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">Object</span> <span class="n">o1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">o2</span><span class="o">,</span> <span class="n">Object</span> <span class="n">o3</span><span class="o">,</span> <span class="o">....</span><span class="na">so</span> <span class="n">on</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>2、生成匿名内部内进行初始化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;()</span> <span class="o">{{</span>
+    <span class="n">add</span><span class="o">(</span><span class="n">Object</span> <span class="n">o1</span><span class="o">);</span>
+    <span class="n">add</span><span class="o">(</span><span class="n">Object</span> <span class="n">o2</span><span class="o">);</span>
+    <span class="o">...</span>
+    <span class="o">...</span>
+<span class="o">}};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>3、常规方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;();</span>
+<span class="n">obj</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;o1&#34;</span><span class="o">);</span>
+<span class="n">obj</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;o2&#34;</span><span class="o">);</span>
+<span class="o">...</span>
+<span class="o">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;();</span>
+<span class="n">List</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">&#34;o1&#34;</span><span class="o">,</span><span class="s">&#34;o2&#34;</span><span class="o">,...);</span>
+<span class="n">obj</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>4、Collections.ncopies</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;(</span><span class="n">Collections</span><span class="o">.</span><span class="na">nCopies</span><span class="o">(</span><span class="n">count</span><span class="o">,</span><span class="n">element</span><span class="o">));</span>
+<span class="c1">//把element复制count次填入ArrayList中
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="list的交集差集并集">list的交集,差集,并集</h2>
 <p>工作中用到了list的取差集，发现还是挺好用的。
 所以记录下。</p>
 <table>
@@ -1085,6 +1162,469 @@ abc--&gt;22
 <p>如果需要在遍历过程中增加元素，可以新建一个临时map存放新增的元素，等遍历完毕，再把临时map放到原来的map中</p>
 <h4 id="分析">分析</h4>
 <p>一般来讲使用entrySet的方式进行遍历是效率最高的，因为hashMap内部的存储结构就是基于Entry的数组，在用这种方式进行遍历时，只需要遍历一次即可。而使用其他方式的时间复杂度可以会提高，例如：keySet方式，每次都需要通过key值去计算对应的hash,然后再通过hash获取对应的结果值，因此效率较低。</p>
+<h4 id="扩容机制">扩容机制</h4>
+<ol>
+<li>
+<p>导读
+上期分享了HashMap的key定位以及数据节点的设计, 本期就下面三个问题来分享下个人对于HashMap扩容的理解:
+.1 HashMap为什么要扩容? 何时扩容?
+.2 负载因子为什么是0.75?
+.3 HashMap如何扩容;</p>
+</li>
+<li>
+<p>HashMap为什么要扩容
+经过上期分享, 我们都知道HashMap在构建初始是可以指定table(hash槽)的长度的, 假设我们设定了2, 这时候有10万数据要插入, 最好的情况就是两边各是5万, 最差的情况就是一边是10万, 显然这个时候hash冲突已经很严重了, 为了解决冲突, 我们就需要对table进行扩容, 所以HashMap的扩容就是加长table的长度, 来减少hash冲突的概率;</p>
+</li>
+<li>
+<p>HashMap何时扩容
+HashMap是如何来判定何时该扩容的呢?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">     <span class="kd">final</span> <span class="n">V</span> <span class="nf">putVal</span><span class="o">(</span><span class="kt">int</span> <span class="n">hash</span><span class="o">,</span> <span class="n">K</span> <span class="n">key</span><span class="o">,</span> <span class="n">V</span> <span class="n">value</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">onlyIfAbsent</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">evict</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">((</span><span class="n">tab</span> <span class="o">=</span> <span class="n">table</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="o">(</span><span class="n">n</span> <span class="o">=</span> <span class="n">tab</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span>
+                <span class="n">n</span> <span class="o">=</span> <span class="o">(</span><span class="n">tab</span> <span class="o">=</span> <span class="n">resize</span><span class="o">()).</span><span class="na">length</span><span class="o">;</span>
+        <span class="o">...</span>
+        <span class="k">if</span> <span class="o">(++</span><span class="n">size</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="o">)</span>
+            <span class="n">resize</span><span class="o">();</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p>上面代码是HashMap::put的核心实现, 我将与本问题无关的代码都省略了, HashMap会在两个地方进行resize(扩容):
+.1 HashMap实行了懒加载, 新建HashMap时不会对table进行赋值, 而是到第一次插入时, 进行resize时构建table;
+.2 当HashMap.size 大于 threshold时, 会进行resize;threshold的值我们在上一次分享中提到过: 当第一次构建时, 如果没有指定HashMap.table的初始长度, 就用默认值16, 否则就是指定的值; 然后不管是第一次构建还是后续扩容, threshold = table.length * loadFactor;</p>
+<ol start="3">
+<li>为什么是0.75
+HashMap的扩容时取决于threshold, 而threshold取决于loadFactor, loadFactor(负载因子)HashMap的默认值是0.75(3/4), 那么为什么当HashMap的容量超过3/4时就需要扩容了呢? 为什么不是1/2扩容 或者 等于table.length时扩容呢?
+答案就在HashMap的注释中:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"> <span class="cm">/**
+</span><span class="cm">     *  Ideally, under random hashCodes, the frequency of
+</span><span class="cm">     *     nodes in bins follows a Poisson distribution
+</span><span class="cm">     *  (http://en.wikipedia.org/wiki/Poisson_distribution) with a
+</span><span class="cm">     *     parameter of about 0.5 on average for the default resizing
+</span><span class="cm">     *     threshold of 0.75, although with a large variance because of
+</span><span class="cm">     *     resizing granularity. Ignoring variance, the expected
+</span><span class="cm">     *     occurrences of list size k are (exp(-0.5) * pow(0.5, k) /
+</span><span class="cm">     *     factorial(k)). The first values are:
+</span><span class="cm">     *
+</span><span class="cm">     * 0:    0.60653066
+</span><span class="cm">     * 1:    0.30326533
+</span><span class="cm">     * 2:    0.07581633
+</span><span class="cm">     * 3:    0.01263606
+</span><span class="cm">     * 4:    0.00157952
+</span><span class="cm">     * 5:    0.00015795
+</span><span class="cm">     * 6:    0.00001316
+</span><span class="cm">     * 7:    0.00000094
+</span><span class="cm">     * 8:    0.00000006
+</span><span class="cm">     * 
+</span><span class="cm">     */</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>根据统计学的结果, hash冲突是符合泊松分布的, 而冲突概率最小的是在7-8之间, 都小于百万分之一了; 所以HashMap.loadFactor选取只要在7-8之间的任意值即可, 但是为什么就选了3/4这个值, 我们看了HashMap的扩容机制也就知道了;</p>
+<ol start="4">
+<li>HashMap如何扩容
+因为扩容的代码比较长, 我用文字来叙述下HashMap扩容的过程:
+.1 如果table == null, 则为HashMap的初始化, 生成空table返回即可;
+.2 如果table不为空, 需要重新计算table的长度, newLength = oldLength &laquo; 1(注, 如果原oldLength已经到了上限, 则newLength = oldLength);
+.3 遍历oldTable:
+.3.2 首节点为空, 本次循环结束;
+.3.1 无后续节点, 重新计算hash位, 本次循环结束;
+.3.2 当前是红黑树, 走红黑树的重定位;
+.3.3 当前是链表, JAVA7时还需要重新计算hash位, 但是JAVA8做了优化, 通过(e.hash &amp; oldCap) == 0来判断是否需要移位; 如果为真则在原位不动, 否则则需要移动到当前hash槽位 + oldCap的位置;</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<p>HashMap::resize的核心就是上图, 链表与红黑树的resize过程大同小异: 红黑树是把构建新链表的过程变为构建两颗新的红黑树, 定位table中的index都是用的 e.hash &amp; oldCap == 0 来判断;
+再来看下 e.hash &amp; oldCap == 0为什么可以判断当前节点是否需要移位, 而不是再次计算hash;
+仍然是原始长度为16举例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">   <span class="n">old</span><span class="o">:</span>
+   <span class="n">10</span><span class="o">:</span> <span class="n">0000</span> <span class="n">1010</span>
+   <span class="n">15</span><span class="o">:</span> <span class="n">0000</span> <span class="n">1111</span>
+    <span class="o">&amp;:</span> <span class="n">0000</span> <span class="n">1010</span>    
+    
+   <span class="k">new</span><span class="o">:</span>
+   <span class="n">10</span><span class="o">:</span> <span class="n">0000</span> <span class="n">1010</span>
+   <span class="n">31</span><span class="o">:</span> <span class="n">0001</span> <span class="n">1111</span>
+    <span class="o">&amp;:</span> <span class="n">0001</span> <span class="n">1010</span>    
+</code></pre></td></tr></table>
+</div>
+</div><p>从上面的示例可以很轻易的看出, 两次indexFor()的差别只是第二次参与位于比第一次左边有一位从0变为1, 而这个变化的1刚好是oldCap, 那么只需要判断原key的hash这个位上是否为1: 若是1, 则需要移动至oldCap + i的槽位, 若为0, 则不需要移动;
+这也是HashMap的长度必须保证是2的倍数的原因, 正因为这种环环相扣的设计, HashMap.loadFactor的选值是3/4就能理解了, table.length * 3/4可以被优化为(table.length &raquo; 2) &laquo; 2) - (table.length &raquo; 2) == table.length - (table.lenght &raquo; 2), JAVA的位运算比乘除的效率更高, 所以取3/4在保证hash冲突小的情况下兼顾了效率;</p>
+<ol start="5">
+<li>
+<p>JDK8对JDK7的优化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kt">void</span> <span class="nf">transfer</span><span class="o">(</span><span class="n">Entry</span><span class="o">[]</span> <span class="n">newTable</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">rehash</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">newCapacity</span> <span class="o">=</span> <span class="n">newTable</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">:</span> <span class="n">table</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">while</span><span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">rehash</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">hash</span> <span class="o">=</span> <span class="kc">null</span> <span class="o">==</span> <span class="n">e</span><span class="o">.</span><span class="na">key</span> <span class="o">?</span> <span class="n">0</span> <span class="o">:</span> <span class="n">hash</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">key</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">indexFor</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">hash</span><span class="o">,</span> <span class="n">newCapacity</span><span class="o">);</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">newTable</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="n">newTable</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+<p>上面的代码是JAVA7中对于HashMap节点重新定位的代码, 我们都知道HashMap是非线程安全的, 最主要的原因是他在resize的时候会形成环形链表, 然后导致get时死循环;
+resize前的HashMap如下图所示:</p>
+<p>这时候有两个线程需要插入第四个节点, 这个时候HashMap就需要做resize了,我们先假设线程已经resize完成, 而线程二必须等线程一完成再resize:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<p>经过线程一resize后, 可以发现a b节点的顺序被反转了, 这时候我们来看线程二:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+<p>.1 线程二的开始点是只获取到A节点, 还没获取他的next;
+.2 这时候线程一resize完成, a.next = null; b.next = a; newTable[i] = b;
+.3 线程二开始执行, 获取A节点的next节点, a.next = null;
+.4 接着执行 a.next = newTable[i]; 因为这时候newTable[i]已经是B节点了, 并且b.next = a; 那么我们把newTablei赋值给a.next后, 就会线程a-b-a这样的环形链表了, 也就是上图的结果;
+.5 因为第三步的a.next已经是null, 所以C节点就丢失了;
+.6 那这时候来查位于1节点的数据D(其实不存在), 因为 d != a, 会接着查a.next, 也就是b; 但是b != d, 所以接着查b.next, 但是b.next还是a; 这就悲剧了, 在循环里出不去了;
+这就是JDK7resize最大的缺陷, 会形成死循环;
+那么JDK8做了优化以后, 死循环的问题解除了吗?</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+<p>通过上图我们发现JDK8的resize是让节点的顺序发生改变的, 也就是没有倒排问题了;也是假设有两个线程, 线程一已执行完成, 这时候线程二来执行:
+.1 因为顺序没变, 所以node1.next还是node2, 只是node2.next从node3变成了null;
+.2 而且JDK8是在遍历完所有节点之后, 才对形成的两个链表进行关联table的, 所以不会像JAVA7一般形成A-B-A问题了;
+.3 但是如果并发了, JAVA的HashMap还是没有解决丢数据的问题, 但是不和JAVA7一般有数据倒排以及死循环的问题了;</p>
+<h5 id="hashmap设计时就是没有保证线程安全的-所以在多线程环境请使用concurrenthashmap">HashMap设计时就是没有保证线程安全的, 所以在多线程环境请使用ConcurrentHashMap;</h5>
+<hr>
+<p><a href="https://blog.csdn.net/weixin_39667787/article/details/86678215" target="_blank" rel="noopener noreferrer">原文</a></p>
+<p>以下为JDK8 resize方法详解</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">final</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;[]</span> <span class="nf">resize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;[]</span> <span class="n">oldTab</span> <span class="o">=</span> <span class="n">table</span><span class="o">;</span> <span class="c1">//当前所有元素所在的数组，称为老的元素数组
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">oldCap</span> <span class="o">=</span> <span class="o">(</span><span class="n">oldTab</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">?</span> <span class="n">0</span> <span class="o">:</span> <span class="n">oldTab</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="c1">//老的元素数组长度
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">oldThr</span> <span class="o">=</span> <span class="n">threshold</span><span class="o">;</span>	<span class="c1">// 老的扩容阀值设置
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">newCap</span><span class="o">,</span> <span class="n">newThr</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>	<span class="c1">// 新数组的容量，新数组的扩容阀值都初始化为0
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">oldCap</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>	<span class="c1">// 如果老数组长度大于0，说明已经存在元素
+</span><span class="c1"></span>            <span class="c1">// PS1
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">oldCap</span> <span class="o">&gt;=</span> <span class="n">MAXIMUM_CAPACITY</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 如果数组元素个数大于等于限定的最大容量（2的30次方）
+</span><span class="c1"></span>                <span class="c1">// 扩容阀值设置为int最大值（2的31次方 -1 ），因为oldCap再乘2就溢出了。
+</span><span class="c1"></span>                <span class="n">threshold</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>	
+                <span class="k">return</span> <span class="n">oldTab</span><span class="o">;</span>	<span class="c1">// 返回老的元素数组
+</span><span class="c1"></span>            <span class="o">}</span>
+ 
+           <span class="cm">/*
+</span><span class="cm">            * 如果数组元素个数在正常范围内，那么新的数组容量为老的数组容量的2倍（左移1位相当于乘以2）
+</span><span class="cm">            * 如果扩容之后的新容量小于最大容量  并且  老的数组容量大于等于默认初始化容量（16），那么新数组的扩容阀值设置为老阀值的2倍。（老的数组容量大于16意味着：要么构造函数指定了一个大于16的初始化容量值，要么已经经历过了至少一次扩容）
+</span><span class="cm">            */</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="o">((</span><span class="n">newCap</span> <span class="o">=</span> <span class="n">oldCap</span> <span class="o">&lt;&lt;</span> <span class="n">1</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">MAXIMUM_CAPACITY</span> <span class="o">&amp;&amp;</span>
+                     <span class="n">oldCap</span> <span class="o">&gt;=</span> <span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="o">)</span>
+                <span class="n">newThr</span> <span class="o">=</span> <span class="n">oldThr</span> <span class="o">&lt;&lt;</span> <span class="n">1</span><span class="o">;</span> <span class="c1">// double threshold
+</span><span class="c1"></span>        <span class="o">}</span>
+ 
+        <span class="c1">// PS2
+</span><span class="c1"></span>        <span class="c1">// 运行到这个else if  说明老数组没有任何元素
+</span><span class="c1"></span>        <span class="c1">// 如果老数组的扩容阀值大于0，那么设置新数组的容量为该阀值
+</span><span class="c1"></span>        <span class="c1">// 这一步也就意味着构造该map的时候，指定了初始化容量。
+</span><span class="c1"></span>        <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">oldThr</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="c1">// initial capacity was placed in threshold
+</span><span class="c1"></span>            <span class="n">newCap</span> <span class="o">=</span> <span class="n">oldThr</span><span class="o">;</span>
+        <span class="k">else</span> <span class="o">{</span>               <span class="c1">// zero initial threshold signifies using defaults
+</span><span class="c1"></span>            <span class="c1">// 能运行到这里的话，说明是调用无参构造函数创建的该map，并且第一次添加元素
+</span><span class="c1"></span>            <span class="n">newCap</span> <span class="o">=</span> <span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="o">;</span>	<span class="c1">// 设置新数组容量 为 16
+</span><span class="c1"></span>            <span class="n">newThr</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">DEFAULT_LOAD_FACTOR</span> <span class="o">*</span> <span class="n">DEFAULT_INITIAL_CAPACITY</span><span class="o">);</span> <span class="c1">// 设置新数组扩容阀值为 16*0.75 = 12。0.75为负载因子（当元素个数达到容量了4分之3，那么扩容）
+</span><span class="c1"></span>        <span class="o">}</span>
+ 
+        <span class="c1">// 如果扩容阀值为0 （PS2的情况）
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">newThr</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">float</span> <span class="n">ft</span> <span class="o">=</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span><span class="n">newCap</span> <span class="o">*</span> <span class="n">loadFactor</span><span class="o">;</span>
+            <span class="n">newThr</span> <span class="o">=</span> <span class="o">(</span><span class="n">newCap</span> <span class="o">&lt;</span> <span class="n">MAXIMUM_CAPACITY</span> <span class="o">&amp;&amp;</span> <span class="n">ft</span> <span class="o">&lt;</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span><span class="n">MAXIMUM_CAPACITY</span> <span class="o">?</span>
+                      <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">ft</span> <span class="o">:</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>  <span class="c1">// 参见：PS2
+</span><span class="c1"></span>        <span class="o">}</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="n">newThr</span><span class="o">;</span> <span class="c1">// 设置map的扩容阀值为 新的阀值
+</span><span class="c1"></span>        <span class="nd">@SuppressWarnings</span><span class="o">({</span><span class="s">&#34;rawtypes&#34;</span><span class="o">,</span><span class="s">&#34;unchecked&#34;</span><span class="o">})</span>
+            <span class="c1">// 创建新的数组（对于第一次添加元素，那么这个数组就是第一个数组；对于存在oldTab的时候，那么这个数组就是要需要扩容到的新数组）
+</span><span class="c1"></span>            <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;[]</span> <span class="n">newTab</span> <span class="o">=</span> <span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;[])</span><span class="k">new</span> <span class="n">Node</span><span class="o">[</span><span class="n">newCap</span><span class="o">];</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">newTab</span><span class="o">;</span>	<span class="c1">// 将该map的table属性指向到该新数组
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">oldTab</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>	<span class="c1">// 如果老数组不为空，说明是扩容操作，那么涉及到元素的转移操作
+</span><span class="c1"></span>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">oldCap</span><span class="o">;</span> <span class="o">++</span><span class="n">j</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 遍历老数组
+</span><span class="c1"></span>                <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">e</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">((</span><span class="n">e</span> <span class="o">=</span> <span class="n">oldTab</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 如果当前位置元素不为空，那么需要转移该元素到新数组
+</span><span class="c1"></span>                    <span class="n">oldTab</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// 释放掉老数组对于要转移走的元素的引用（主要为了使得数组可被回收）
+</span><span class="c1"></span>                    <span class="k">if</span> <span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">next</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="c1">// 如果元素没有有下一个节点，说明该元素不存在hash冲突
+</span><span class="c1"></span>                        <span class="c1">// PS3
+</span><span class="c1"></span>                        <span class="c1">// 把元素存储到新的数组中，存储到数组的哪个位置需要根据hash值和数组长度来进行取模
+</span><span class="c1"></span>                        <span class="c1">// 【hash值  %   数组长度】   =    【  hash值   &amp; （数组长度-1）】
+</span><span class="c1"></span>                        <span class="c1">//  这种与运算求模的方式要求  数组长度必须是2的N次方，但是可以通过构造函数随意指定初始化容量呀，如果指定了17,15这种，岂不是出问题了就？没关系，最终会通过tableSizeFor方法将用户指定的转化为大于其并且最相近的2的N次方。 15 -&gt; 16、17-&gt; 32
+</span><span class="c1"></span>                        <span class="n">newTab</span><span class="o">[</span><span class="n">e</span><span class="o">.</span><span class="na">hash</span> <span class="o">&amp;</span> <span class="o">(</span><span class="n">newCap</span> <span class="o">-</span> <span class="n">1</span><span class="o">)]</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+ 
+                        <span class="c1">// 如果该元素有下一个节点，那么说明该位置上存在一个链表了（hash相同的多个元素以链表的方式存储到了老数组的这个位置上了）
+</span><span class="c1"></span>                        <span class="c1">// 例如：数组长度为16，那么hash值为1（1%16=1）的和hash值为17（17%16=1）的两个元素都是会存储在数组的第2个位置上（对应数组下标为1），当数组扩容为32（1%32=1）时，hash值为1的还应该存储在新数组的第二个位置上，但是hash值为17（17%32=17）的就应该存储在新数组的第18个位置上了。
+</span><span class="c1"></span>                        <span class="c1">// 所以，数组扩容后，所有元素都需要重新计算在新数组中的位置。
+</span><span class="c1"></span> 
+ 
+                    <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">e</span> <span class="k">instanceof</span> <span class="n">TreeNode</span><span class="o">)</span>  <span class="c1">// 如果该节点为TreeNode类型
+</span><span class="c1"></span>                        <span class="o">((</span><span class="n">TreeNode</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;)</span><span class="n">e</span><span class="o">).</span><span class="na">split</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">newTab</span><span class="o">,</span> <span class="n">j</span><span class="o">,</span> <span class="n">oldCap</span><span class="o">);</span>  <span class="c1">// 此处单独展开讨论
+</span><span class="c1"></span>                    <span class="k">else</span> <span class="o">{</span> <span class="c1">// preserve order
+</span><span class="c1"></span>                        <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">loHead</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">loTail</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  <span class="c1">// 按命名来翻译的话，应该叫低位首尾节点
+</span><span class="c1"></span>                        <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">hiHead</span> <span class="o">=</span> <span class="kc">null</span><span class="o">,</span> <span class="n">hiTail</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  <span class="c1">// 按命名来翻译的话，应该叫高位首尾节点
+</span><span class="c1"></span>                        <span class="c1">// 以上的低位指的是新数组的 0  到 oldCap-1 、高位指定的是oldCap 到 newCap - 1
+</span><span class="c1"></span>                        <span class="n">Node</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">next</span><span class="o">;</span>
+                        <span class="c1">// 遍历链表
+</span><span class="c1"></span>                        <span class="k">do</span> <span class="o">{</span>  
+                            <span class="n">next</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                            <span class="c1">// 这一步判断好狠，拿元素的hash值  和  老数组的长度  做与运算
+</span><span class="c1"></span>                            <span class="c1">// PS3里曾说到，数组的长度一定是2的N次方（例如16），如果hash值和该长度做与运算，结果为0，就说明该hash值小于数组长度（例如hash值为7），
+</span><span class="c1"></span>                            <span class="c1">// 那么该hash值再和新数组的长度取摸的话mod值也不会放生变化，所以该元素的在新数组的位置和在老数组的位置是相同的，所以该元素可以放置在低位链表中。
+</span><span class="c1"></span>                            <span class="k">if</span> <span class="o">((</span><span class="n">e</span><span class="o">.</span><span class="na">hash</span> <span class="o">&amp;</span> <span class="n">oldCap</span><span class="o">)</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>  
+                                <span class="c1">// PS4
+</span><span class="c1"></span>                                <span class="k">if</span> <span class="o">(</span><span class="n">loTail</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="c1">// 如果没有尾，说明链表为空
+</span><span class="c1"></span>                                    <span class="n">loHead</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span> <span class="c1">// 链表为空时，头节点指向该元素
+</span><span class="c1"></span>                                <span class="k">else</span>
+                                    <span class="n">loTail</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span> <span class="c1">// 如果有尾，那么链表不为空，把该元素挂到链表的最后。
+</span><span class="c1"></span>                                <span class="n">loTail</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span> <span class="c1">// 把尾节点设置为当前元素
+</span><span class="c1"></span>                            <span class="o">}</span>
+ 
+                            <span class="c1">// 如果与运算结果不为0，说明hash值大于老数组长度（例如hash值为17）
+</span><span class="c1"></span>                            <span class="c1">// 此时该元素应该放置到新数组的高位位置上
+</span><span class="c1"></span>                            <span class="c1">// 例：老数组长度16，那么新数组长度为32，hash为17的应该放置在数组的第17个位置上，也就是下标为16，那么下标为16已经属于高位了，低位是[0-15]，高位是[16-31]
+</span><span class="c1"></span>                            <span class="k">else</span> <span class="o">{</span>  <span class="c1">// 以下逻辑同PS4
+</span><span class="c1"></span>                                <span class="k">if</span> <span class="o">(</span><span class="n">hiTail</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+                                    <span class="n">hiHead</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+                                <span class="k">else</span>
+                                    <span class="n">hiTail</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+                                <span class="n">hiTail</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span> <span class="k">while</span> <span class="o">((</span><span class="n">e</span> <span class="o">=</span> <span class="n">next</span><span class="o">)</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">loTail</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// 低位的元素组成的链表还是放置在原来的位置
+</span><span class="c1"></span>                            <span class="n">loTail</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                            <span class="n">newTab</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">loHead</span><span class="o">;</span>
+                        <span class="o">}</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">hiTail</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// 高位的元素组成的链表放置的位置只是在原有位置上偏移了老数组的长度个位置。
+</span><span class="c1"></span>                            <span class="n">hiTail</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                            <span class="n">newTab</span><span class="o">[</span><span class="n">j</span> <span class="o">+</span> <span class="n">oldCap</span><span class="o">]</span> <span class="o">=</span> <span class="n">hiHead</span><span class="o">;</span> <span class="c1">// 例：hash为 17 在老数组放置在0下标，在新数组放置在16下标；    hash为 18 在老数组放置在1下标，在新数组放置在17下标；                   
+</span><span class="c1"></span>                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">newTab</span><span class="o">;</span> <span class="c1">// 返回新数组
+</span><span class="c1"></span>    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://blog.csdn.net/weixin_42340670/article/details/80503517" target="_blank" rel="noopener noreferrer">原文</a></p>
 <h2 id="java-collectors常用的20个方法">Java-Collectors常用的20个方法</h2>
 <div style="background-color: #f9f2f4;border-radius: 2px; display:inline-block;*display:inline;*zoom:1;">
     <font color=#c7254e size=5>返回List集合: toList()</font>

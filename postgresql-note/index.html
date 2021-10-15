@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/featured-image.jpg",
                             "width":  640 ,
                             "height":  205 
-                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  2520 ,
+                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  3568 ,
         "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/","datePublished": "2021-07-28T10:29:58+08:00","dateModified": "2021-07-28T10:29:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">PostgreSQL相关笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2520 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/postgresql-note/" class="leancloud_visitors" data-flag-title="PostgreSQL相关笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3568 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/postgresql-note/" class="leancloud_visitors" data-flag-title="PostgreSQL相关笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -152,7 +152,10 @@
         <li><a href="#二xists--not-exists">二.XISTS &amp;&amp; NOT EXISTS</a></li>
       </ul>
     </li>
-    <li><a href="#postgresql-查看退出-replication-slot">Postgresql 查看退出 Replication Slot</a></li>
+    <li><a href="#postgresql-查看退出-replication-slot">PostgreSql 查看退出 Replication Slot</a></li>
+    <li><a href="#postgresql-查询所有表名">PostgreSql 查询所有表名</a></li>
+    <li><a href="#postgresql数据库表实现id自增">PostgreSql数据库表实现ID自增</a></li>
+    <li><a href="#pg_catalogdefault作用">pg_catalog.&ldquo;default&quot;作用</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="一介绍">一、介绍</h2>
@@ -579,7 +582,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </code></pre></td></tr></table>
 </div>
 </div><p><font color=#FF0000 size=3>PS:NOT IN的效率非常低，如果可以的话建议使用NOT EXISTS。</font></p>
-<h2 id="postgresql-查看退出-replication-slot">Postgresql 查看退出 Replication Slot</h2>
+<h2 id="postgresql-查看退出-replication-slot">PostgreSql 查看退出 Replication Slot</h2>
 <p>查看Replication Slot：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -598,7 +601,185 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="n">pg_drop_replication_slot</span><span class="p">(</span><span class="s1">&#39;debezium&#39;</span><span class="p">);</span>
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="postgresql-查询所有表名">PostgreSql 查询所有表名</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>   <span class="n">tablename</span>   <span class="k">FROM</span>   <span class="n">pg_tables</span> 
+<span class="k">WHERE</span>   <span class="n">tablename</span>   <span class="k">NOT</span>   <span class="k">LIKE</span>   <span class="s1">&#39;pg%&#39;</span>
+<span class="k">AND</span> <span class="n">tablename</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;sql_%&#39;</span> 
+ <span class="k">ORDER</span>   <span class="k">BY</span>   <span class="n">tablename</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="n">tablename</span> <span class="k">from</span> <span class="n">pg_tables</span> <span class="k">where</span> <span class="n">schemaname</span><span class="o">=</span><span class="s1">&#39;public&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="postgresql数据库表实现id自增">PostgreSql数据库表实现ID自增</h2>
+<p>postgresql数据库可以创建主键，但是没有像mysql那样直接指定主键自增的auto_increment关键字，因此如果在postgresql中创建表指定主键自增使用auto_increment会报错。那么如何实现主键自增，postgresql通过序列来实现。序列可以实现自动增长，而且表字段可以指定默认值，因此可以通过指定默认值的方式来实现主键自增。</p>
+<p>postgresql提供了三种serial类型：smallserial,serial,bigserial，他不是真正的类型，而是在创建唯一标识符列的标志以方便使用。bigserial会创建一个bigint类型的自增，serial用以创建一个int类型的自增，依次类推。</p>
+<p>下面通过实例演示自增ID的实现：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>通过建表语句，可以看到，因为使用了serial类型，所以会创建一个关联的sequece，名为aaa_id_seq。</p>
+<p>接着查看表结构，并向表中插入数据：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+<p>表aaa实现了id自增功能，表的id默认值是nextval(&lsquo;aaa_id_seq&rsquo;::regclass)。</p>
+<p>按照这个思路，我们可以这么来干，一般的主键表，没有使用serial类型，那么我们可以通过创建序列，并修改表ID默认值字段，指定默认值字段为序列的nextval。</p>
+<p>我们创建一个普通的int类型ID，并设置为主键。建表不会出现创建序列的notice内容。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
+        data-sizes="auto"
+        alt="./9.png"
+        title="9" /></p>
+<p>这个表的插入，如果不指定id,那么就会出现错误：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.png"
+        data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
+        data-sizes="auto"
+        alt="./10.png"
+        title="10" /></p>
+<p>接着我们创建一个序列：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="n">sequence</span> <span class="n">bbb_id_seq</span> <span class="k">start</span> <span class="k">with</span> <span class="mi">1</span> <span class="k">increment</span> <span class="k">by</span> <span class="mi">1</span> <span class="k">no</span> <span class="k">minvalue</span> <span class="k">no</span> <span class="k">maxvalue</span> <span class="k">cache</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<p>设置表bbb的ID字段的默认值为nextval(bbb_id_seq)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">alter</span> <span class="k">table</span> <span class="n">bbb</span> <span class="k">alter</span> <span class="k">column</span> <span class="n">id</span> <span class="k">set</span> <span class="k">default</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;bbb_id_seq&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+<p>再次向bbb中插入记录，这次不用关心ID字段了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<p>通过查看表结构，看看两种方式产生的表：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+<p>postgresql查找索引的方法也是和mysql不一样，postgresql查看索引的语法是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_indexes</span> <span class="k">where</span> <span class="n">tablename</span><span class="o">=</span><span class="s1">&#39;bbb&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_statio_all_indexes</span> <span class="k">where</span> <span class="n">relname</span><span class="o">=</span><span class="s1">&#39;bbb&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+<p>可以看到，postgresql默认索引也是通过btree来创建的。</p>
+<p>最后再补充一点内容，查看序列和查看表结构是一样的，都是使用\d来查看，比如\d aaa_id_seq。</p>
+<h2 id="pg_catalogdefault作用">pg_catalog.&ldquo;default&quot;作用</h2>
+<p>字段使用lc_collate作为排序标准</p>
+<p>查看default collate</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SHOW</span> <span class="n">lc_collate</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>创建表时修改collate</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">collate_test</span>
+<span class="p">(</span>
+  <span class="n">default_collate</span> <span class="nb">text</span><span class="p">,</span> <span class="c1">--Default collation
+</span><span class="c1"></span>  <span class="n">custom_collate</span> <span class="nb">text</span> <span class="k">COLLATE</span> <span class="n">pg_catalog</span><span class="p">.</span><span class="s2">&#34;C&#34;</span> <span class="c1">--Custom collation
+</span><span class="c1"></span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.postgresql.org/docs/current/static/collation.html" target="_blank" rel="noopener noreferrer">文档</a></p>
+<blockquote>
+<p>The collation feature allows specifying the sort order and character classification (&hellip;)</p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

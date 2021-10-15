@@ -5,25 +5,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Mysql数据库笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Mysql数据库相关的笔记"><meta property="og:title" content="Mysql数据库笔记" />
-<meta property="og:description" content="记录Mysql数据库相关的笔记" />
+        <title>concat以及group_concat的用法 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录MySQL的concat以及group_concat的用法笔记"><meta property="og:title" content="concat以及group_concat的用法" />
+<meta property="og:description" content="记录MySQL的concat以及group_concat的用法笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mysql-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mysql-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-15T12:49:51&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-15T12:49:51&#43;08:00" />
+<meta property="article:published_time" content="2021-10-15T22:10:43&#43;08:00" />
+<meta property="article:modified_time" content="2021-10-15T22:10:43&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mysql-note/featured-image.jpg"/>
-<meta name="twitter:title" content="Mysql数据库笔记"/>
-<meta name="twitter:description" content="记录Mysql数据库相关的笔记"/>
+<meta name="twitter:title" content="concat以及group_concat的用法"/>
+<meta name="twitter:description" content="记录MySQL的concat以及group_concat的用法笔记"/>
 <meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
 <meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/mysql-note/" /><link rel="next" href="https://kkkpjskey.github.io/emoji-support/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/mysql-note/" /><link rel="prev" href="https://kkkpjskey.github.io/java-selfclass-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Mysql数据库笔记",
+        "headline": "concat以及group_concat的用法",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -31,10 +31,10 @@
         },"image": [{
                             "@type": "ImageObject",
                             "url": "https:\/\/kkkpjskey.github.io\/mysql-note\/featured-image.jpg",
-                            "width":  769 ,
-                            "height":  300 
-                        }],"genre": "posts","keywords": "DataBase, SQL, MySql","wordcount":  2575 ,
-        "url": "https:\/\/kkkpjskey.github.io\/mysql-note\/","datePublished": "2021-07-15T12:49:51+08:00","dateModified": "2021-07-15T12:49:51+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                            "width":  650 ,
+                            "height":  260 
+                        }],"genre": "posts","keywords": "Database, Mysql, Function","wordcount":  1146 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mysql-note\/","datePublished": "2021-10-15T22:10:43+08:00","dateModified": "2021-10-15T22:10:43+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -44,7 +44,7 @@
                 }},"author": {
                 "@type": "Person",
                 "name": "KKKPSJKEY"
-            },"description": "记录Mysql数据库相关的笔记"
+            },"description": "记录MySQL的concat以及group_concat的用法笔记"
     }
     </script></head>
     <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -117,10 +117,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Mysql数据库笔记</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">concat以及group_concat的用法</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-15">2021-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2575 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/mysql-note/" class="leancloud_visitors" data-flag-title="Mysql数据库笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1146 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/mysql-note/" class="leancloud_visitors" data-flag-title="concat以及group_concat的用法">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -130,47 +130,13 @@
         data-srcset="/mysql-note/featured-image.jpg, /mysql-note/featured-image.jpg 1.5x, /mysql-note/featured-image.jpg 2x"
         data-sizes="auto"
         alt="/mysql-note/featured-image.jpg"
-        title="记录Mysql数据库相关的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+        title="记录MySQL的concat以及group_concat的用法笔记" /></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#下载">下载</a>
-      <ul>
-        <li><a href="#最新版本">最新版本</a></li>
-        <li><a href="#历史版本">历史版本</a></li>
-      </ul>
-    </li>
-    <li><a href="#安装">安装</a>
-      <ul>
-        <li><a href="#windows">Windows</a>
-          <ul>
-            <li><a href="#登录-mysql">登录 MySQL</a></li>
-            <li><a href="#修改初始密码">修改初始密码</a></li>
-          </ul>
-        </li>
-        <li><a href="#linux">Linux</a>
-          <ul>
-            <li><a href="#验证-mysql-安装">验证 MySQL 安装</a></li>
-            <li><a href="#使用-mysql-clientmysql客户端-执行简单的sql命令">使用 MySQL Client(Mysql客户端) 执行简单的SQL命令</a></li>
-            <li><a href="#mysql安装后需要做的">Mysql安装后需要做的</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#管理">管理</a>
-      <ul>
-        <li><a href="#windows-1">Windows</a></li>
-        <li><a href="#linux-1">Linux</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content"><h2 id="下载">下载</h2>
-<h3 id="最新版本">最新版本</h3>
-<p><a href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a></p>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>本文中使用的例子均在下面的数据库表tt2下执行：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -179,6 +145,12 @@
         data-sizes="auto"
         alt="./1.jpg"
         title="1" /></p>
+<p><strong>一、concat()函数</strong></p>
+<p>1、功能：将多个字符串连接成一个字符串。</p>
+<p>2、语法：concat(str1, str2,&hellip;)</p>
+<p>返回结果为连接参数产生的字符串，如果有任何一个参数为null，则返回值为null。</p>
+<p>3、举例：</p>
+<p>例1:select concat (id, name, score) as info from tt2;</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -187,8 +159,8 @@
         data-sizes="auto"
         alt="./2.jpg"
         title="2" /></p>
-<h3 id="历史版本">历史版本</h3>
-<p><a href="https://downloads.mysql.com/archives/community/">https://downloads.mysql.com/archives/community/</a></p>
+<p>中间有一行为null是因为tt2表中有一行的score值为null。</p>
+<p>例2：在例1的结果中三个字段id，name，score的组合没有分隔符，我们可以加一个逗号作为分隔符：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -197,457 +169,90 @@
         data-sizes="auto"
         alt="./3.jpg"
         title="3" /></p>
-<h2 id="安装">安装</h2>
-<h3 id="windows">Windows</h3>
-<p>下载完后，我们将 zip 包解压到相应的目录，这里我将解压后的文件夹放在 <strong>C:\Program_Green\Java_env\mysql-5.7.33-winx64</strong> 下。</p>
-<p><strong>接下来我们需要配置下 MySQL 的配置文件</strong></p>
-<p>打开刚刚解压的文件夹 <strong>C:\Program_Green\Java_env\mysql-5.7.33-winx64</strong> ，在该文件夹下创建 <strong>my.ini</strong> 配置文件，编辑 <strong>my.ini</strong> 配置以下基本信息：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>client<span class="o">]</span>
-<span class="c1"># 设置mysql客户端默认字符集</span>
-default-character-set<span class="o">=</span>utf8
- 
-<span class="o">[</span>mysqld<span class="o">]</span>
-<span class="c1"># 设置3306端口</span>
-<span class="nv">port</span> <span class="o">=</span> <span class="m">3306</span>
-<span class="c1"># 设置mysql的安装目录</span>
-<span class="nv">basedir</span><span class="o">=</span>C:<span class="se">\\</span>Program_Green<span class="se">\\</span>Java_env<span class="se">\\</span>mysql-5.7.33-winx64
-<span class="c1"># 设置 mysql数据库的数据的存放目录，MySQL 8+ 不需要以下配置，系统自己生成即可，否则有可能报错</span>
-<span class="c1"># datadir=C:\\Program_Green\\Java_env\\mysql-5.7.33-winx64\\data</span>
-<span class="c1"># 允许最大连接数</span>
-<span class="nv">max_connections</span><span class="o">=</span><span class="m">20</span>
-<span class="c1"># 服务端使用的字符集默认为8比特编码的latin1字符集</span>
-character-set-server<span class="o">=</span>utf8
-<span class="c1"># 创建新表时将使用的默认存储引擎</span>
-default-storage-engine<span class="o">=</span>INNODB
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>配置环境变量</strong></p>
-<p>在系统变量处新建MYSQL_HOME项</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">MYSQL_HOME</th>
-<th style="text-align:center">C:\Program_Green\Java_env\mysql-5.7.33-winx64</th>
-</tr>
-</thead>
-</table>
-<p>在Path处添加<code>%MYSQL_HOME%\bin</code>（或者用<code>;</code>（英文）分割，Append到最后）</p>
-<p><strong>接下来我们来启动下 MySQL 数据库：</strong></p>
-<p>以管理员身份打开 cmd 命令行工具，切换目录：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> C:<span class="se">\P</span>rogram_Green<span class="se">\J</span>ava_env<span class="se">\m</span>ysql-5.7.33-winx64<span class="se">\b</span>in
-</code></pre></td></tr></table>
-</div>
-</div><p>初始化数据库：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysqld --initialize --console
-</code></pre></td></tr></table>
-</div>
-</div><p>执行完成后，会输出 root 用户的初始默认密码，如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">...
-2018-04-20T02:35:05.464644Z <span class="m">5</span> <span class="o">[</span>Note<span class="o">]</span> <span class="o">[</span>MY-010454<span class="o">]</span> <span class="o">[</span>Server<span class="o">]</span> A temporary password is generated <span class="k">for</span> root@localhost: APWCY5ws<span class="p">&amp;</span>hjQ
-...
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>APWCY5ws&amp;hjQ</strong> 就是初始密码，后续登录需要用到，你也可以在登陆后修改密码。</p>
-<p>输入以下安装命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysqld install
-</code></pre></td></tr></table>
-</div>
-</div><p>启动输入以下命令即可：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">net start mysql
-</code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>注意: 在 5.7 需要初始化 data 目录：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">C:<span class="se">\P</span>rogram_Green<span class="se">\J</span>ava_env<span class="se">\m</span>ysql-5.7.33-winx64
-mysqld --initialize-insecure 
-</code></pre></td></tr></table>
-</div>
-</div><p>初始化后再运行 net start mysql 即可启动 mysql。</p>
-</blockquote>
-<h4 id="登录-mysql">登录 MySQL</h4>
-<p>当 MySQL 服务已经运行时, 我们可以通过 MySQL 自带的客户端工具登录到 MySQL 数据库中, 首先打开命令提示符, 输入以下格式的命名:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql -h 主机名 -u 用户名 -p
-</code></pre></td></tr></table>
-</div>
-</div><p>参数说明：</p>
-<ul>
-<li><strong>-h</strong> : 指定客户端所要登录的 MySQL 主机名, 登录本机(localhost 或 127.0.0.1)该参数可以省略;</li>
-<li><strong>-u</strong> : 登录的用户名;</li>
-<li><strong>-p</strong> : 告诉服务器将会使用一个密码来登录, 如果所要登录的用户名密码为空, 可以忽略此选项。</li>
-</ul>
-<p>如果我们要登录本机的 MySQL 数据库，只需要输入以下命令即可：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql -u root -p
-</code></pre></td></tr></table>
-</div>
-</div><p>按回车确认, 如果安装正确且 MySQL 正在运行, 会得到以下响应:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">Enter password:
-</code></pre></td></tr></table>
-</div>
-</div><p>若密码存在, 输入密码登录, 不存在则直接按回车登录。登录成功后你将会看到 Welcome to the MySQL monitor&hellip; 的提示语。</p>
-<p>然后命令提示符会一直以 <strong>mysq&gt;</strong> 加一个闪烁的光标等待命令的输入, 输入 <strong>exit</strong> 或 <strong>quit</strong> 退出登录。</p>
-<h4 id="修改初始密码">修改初始密码</h4>
-<p>不重置初始密码什么都不能做</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ERROR <span class="m">1820</span> <span class="o">(</span>HY000<span class="o">)</span>: You must reset your password using ALTER USER statement before executing this statement.
-</code></pre></td></tr></table>
-</div>
-</div><p>修改密码的方法：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; alter user root@localhost identified by <span class="s1">&#39;ZfL001!&#39;</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="linux">Linux</h3>
-<p>Linux平台上推荐使用RPM包来安装Mysql,MySQL AB提供了以下RPM包的下载地址：</p>
-<ul>
-<li><strong>MySQL</strong> - MySQL服务器。你需要该选项，除非你只想连接运行在另一台机器上的MySQL服务器。</li>
-<li><strong>MySQL-client</strong> - MySQL 客户端程序，用于连接并操作Mysql服务器。</li>
-<li><strong>MySQL-devel</strong> - 库和包含文件，如果你想要编译其它MySQL客户端，例如Perl模块，则需要安装该RPM包。</li>
-<li><strong>MySQL-shared</strong> - 该软件包包含某些语言和应用程序需要动态装载的共享库(libmysqlclient.so*)，使用MySQL。</li>
-<li><strong>MySQL-bench</strong> - MySQL数据库服务器的基准和性能测试工具。</li>
-</ul>
-<p>安装前，我们可以检测系统是否自带安装 MySQL:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">rpm -qa | grep mysql
-</code></pre></td></tr></table>
-</div>
-</div><p>如果你系统有安装，那可以选择进行卸载:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">rpm -e mysql　　// 普通删除模式
-rpm -e --nodeps mysql　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>安装 MySQL：</strong></p>
-<p>接下来我们在 Centos7 系统下使用 yum 命令安装 MySQL，需要注意的是 CentOS 7 版本中 MySQL数据库已从默认的程序列表中移除，所以在安装前我们需要先去官网下载 Yum 资源包，下载地址为：https://dev.mysql.com/downloads/repo/yum/</p>
+<p>这样看上去似乎顺眼了许多～～</p>
+<p>但是输入sql语句麻烦了许多，三个字段需要输入两次逗号，如果10个字段，要输入九次逗号&hellip;麻烦死了啦，有没有什么简便方法呢？——于是可以指定参数之间的分隔符的concat_ws()来了！！！</p>
+<p><strong>二、concat_ws()函数</strong></p>
+<p>1、功能：和concat()一样，将多个字符串连接成一个字符串，但是可以一次性指定分隔符～（concat_ws就是concat with separator）</p>
+<p>2、语法：concat_ws(separator, str1, str2, &hellip;)</p>
+<p>说明：第一个参数指定分隔符。需要注意的是分隔符不能为null，如果为null，则返回结果为null。</p>
+<p>3、举例：</p>
+<p>例3:我们使用concat_ws()将 分隔符指定为逗号，达到与例2相同的效果：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="./4.png"
-        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-src="./4.jpg"
+        data-srcset="./4.jpg, ./4.jpg 1.5x, ./4.jpg 2x"
         data-sizes="auto"
-        alt="./4.png"
+        alt="./4.jpg"
         title="4" /></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-rpm -ivh mysql-community-release-el7-5.noarch.rpm
-yum update
-yum install mysql-server
-</code></pre></td></tr></table>
-</div>
-</div><p>权限设置：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">chown mysql:mysql -R /var/lib/mysql
-</code></pre></td></tr></table>
-</div>
-</div><p>初始化 MySQL：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysqld --initialize
-</code></pre></td></tr></table>
-</div>
-</div><p>启动 MySQL：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl start mysqld
-</code></pre></td></tr></table>
-</div>
-</div><p>查看 MySQL 运行状态：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl status mysqld
-</code></pre></td></tr></table>
-</div>
-</div><p>**注意：**如果我们是第一次启动 mysql 服务，mysql 服务器首先会进行初始化的配置。</p>
-<blockquote>
-<p>此外,你也可以使用 MariaDB 代替，MariaDB 数据库管理系统是 MySQL 的一个分支，主要由开源社区在维护，采用 GPL 授权许可。开发这个分支的原因之一是：甲骨文公司收购了 MySQL 后，有将 MySQL 闭源的潜在风险，因此社区采用分支的方式来避开这个风险。</p>
-<p>MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">yum install mariadb-server mariadb 
-</code></pre></td></tr></table>
-</div>
-</div><p>mariadb数据库的相关命令是：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl start mariadb  <span class="c1">#启动MariaDB</span>
-systemctl stop mariadb  <span class="c1">#停止MariaDB</span>
-systemctl restart mariadb  <span class="c1">#重启MariaDB</span>
-systemctl <span class="nb">enable</span> mariadb  <span class="c1">#设置开机启动</span>
-</code></pre></td></tr></table>
-</div>
-</div></blockquote>
-<hr>
-<h4 id="验证-mysql-安装">验证 MySQL 安装</h4>
-<p>在成功安装 MySQL 后，一些基础表会表初始化，在服务器启动后，你可以通过简单的测试来验证 MySQL 是否工作正常。</p>
-<p>使用 mysqladmin 工具来获取服务器状态：</p>
-<p>使用 mysqladmin 命令来检查服务器的版本, 在 linux 上该二进制文件位于 /usr/bin 目录，在 Windows 上该二进制文件位于C:\mysql\bin 。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysqladmin --version</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>linux上该命令将输出以下结果，该结果基于你的系统信息：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysqladmin  Ver 8.23 Distrib 5.0.9-0, <span class="k">for</span> redhat-linux-gnu on i386
-</code></pre></td></tr></table>
-</div>
-</div><p>如果以上命令执行后未输出任何信息，说明你的Mysql未安装成功。</p>
-<hr>
-<h4 id="使用-mysql-clientmysql客户端-执行简单的sql命令">使用 MySQL Client(Mysql客户端) 执行简单的SQL命令</h4>
-<p>你可以在 MySQL Client(Mysql客户端) 使用 mysql 命令连接到 MySQL 服务器上，默认情况下 MySQL 服务器的登录密码为空，所以本实例不需要输入密码。</p>
-<p>命令如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysql</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>以上命令执行后会输出 mysql&gt;提示符，这说明你已经成功连接到Mysql服务器上，你可以在 mysql&gt; 提示符执行SQL命令：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; SHOW DATABASES<span class="p">;</span>
-+----------+
-<span class="p">|</span> Database <span class="p">|</span>
-+----------+
-<span class="p">|</span> mysql    <span class="p">|</span>
-<span class="p">|</span> <span class="nb">test</span>     <span class="p">|</span>
-+----------+
-<span class="m">2</span> rows in <span class="nb">set</span> <span class="o">(</span>0.13 sec<span class="o">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><hr>
-<h4 id="mysql安装后需要做的">Mysql安装后需要做的</h4>
-<p>Mysql安装成功后，默认的root用户密码为空，你可以使用以下命令来创建root用户的密码：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysqladmin -u root password &#34;new_password&#34;;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>现在你可以通过以下命令来连接到Mysql服务器：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysql -u root -p</span>
-Enter password:*******
-</code></pre></td></tr></table>
-</div>
-</div><p>**注意：**在输入密码时，密码是不会显示了，你正确输入即可。</p>
-<h2 id="管理">管理</h2>
-<h3 id="windows-1">Windows</h3>
-<p>在 Windows 系统下，打开命令窗口(cmd)，进入 MySQL 安装目录的 bin 目录。</p>
-<p>启动：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> c:/mysql/bin
-net start mysql <span class="c1">#管理员模式控制台</span>
-<span class="c1"># 或</span>
-mysqld --console <span class="c1">#(服务不启动，需要在手动去服务界面启动或执行上面一条指令)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>关闭：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> c:/mysql/bin
-net stop mysql <span class="c1">#管理员模式控制台</span>
-<span class="c1"># 或</span>
-mysqladmin -u root shutdown <span class="c1">#无密码</span>
-mysqladmin -u root -p shutdown <span class="c1"># 要输入密码</span>
-</code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>在安装mysql时系统会添加服务，可以通过管理工具里面的 &lt;服务&gt; 一项来停止和启动mysql。这样修改的my.ini就会生效了。</p>
-</blockquote>
-<h3 id="linux-1">Linux</h3>
-<p>首先，我们需要通过以下命令来检查MySQL服务器是否启动：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ps -ef <span class="p">|</span> grep mysqld
-</code></pre></td></tr></table>
-</div>
-</div><p>如果MySql已经启动，以上命令将输出mysql进程列表， 如果mysql未启动，你可以使用以下命令来启动mysql服务器:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">root@host# <span class="nb">cd</span> /usr/bin
-./mysqld_safe <span class="p">&amp;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>如果你想关闭目前运行的 MySQL 服务器, 你可以执行以下命令:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">root@host# <span class="nb">cd</span> /usr/bin
-./mysqladmin -u root -p shutdown
-Enter password: ******
-</code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer" id="post-footer">
+<p>例4：把分隔符指定为null，结果全部变成了null：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.jpg"
+        data-srcset="./5.jpg, ./5.jpg 1.5x, ./5.jpg 2x"
+        data-sizes="auto"
+        alt="./5.jpg"
+        title="5" /></p>
+<p><strong>三、group_concat()函数</strong></p>
+<p>前言：在有group by的查询语句中，select指定的字段要么就包含在group by语句的后面，作为分组的依据，要么就包含在聚合函数中。（有关group by的知识请戳：浅析SQL中Group By的使用）。</p>
+<p>例5：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.jpg"
+        data-srcset="./6.jpg, ./6.jpg 1.5x, ./6.jpg 2x"
+        data-sizes="auto"
+        alt="./6.jpg"
+        title="6" /></p>
+<p>该例查询了name相同的的人中最小的id。如果我们要查询name相同的人的所有的id呢？</p>
+<p>当然我们可以这样查询：</p>
+<p>例6：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.jpg"
+        data-srcset="./7.jpg, ./7.jpg 1.5x, ./7.jpg 2x"
+        data-sizes="auto"
+        alt="./7.jpg"
+        title="7" /></p>
+<p>但是这样同一个名字出现多次，看上去非常不直观。有没有更直观的方法，既让每个名字都只出现一次，又能够显示所有的名字相同的人的id呢？——使用group_concat()</p>
+<p>1、功能：将group by产生的同一个分组中的值连接起来，返回一个字符串结果。</p>
+<p>2、语法：group_concat( [distinct] 要连接的字段 [order by 排序字段 asc/desc ] [separator &lsquo;分隔符&rsquo;] )</p>
+<p>说明：通过使用distinct可以排除重复值；如果希望对结果中的值进行排序，可以使用order by子句；separator是一个字符串值，缺省为一个逗号。</p>
+<p>3、举例：</p>
+<p>例7：使用group_concat()和group by显示相同名字的人的id号：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.jpg"
+        data-srcset="./8.jpg, ./8.jpg 1.5x, ./8.jpg 2x"
+        data-sizes="auto"
+        alt="./8.jpg"
+        title="8" /></p>
+<p>例8：将上面的id号从大到小排序，且用'_&lsquo;作为分隔符：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.jpg"
+        data-srcset="./9.jpg, ./9.jpg 1.5x, ./9.jpg 2x"
+        data-sizes="auto"
+        alt="./9.jpg"
+        title="9" /></p>
+<p>例9：上面的查询中显示了以name分组的每组中所有的id。接下来我们要查询以name分组的所有组的id和score：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.jpg"
+        data-srcset="./10.jpg, ./10.jpg 1.5x, ./10.jpg 2x"
+        data-sizes="auto"
+        alt="./10.jpg"
+        title="10" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-07-15</span>
+                <span>更新于 2021-10-15</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -656,20 +261,19 @@ Enter password: ******
                             <a class="link-to-markdown" href="/mysql-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/mysql-note/" data-title="Mysql数据库笔记" data-hashtags="DataBase,SQL,MySql"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/mysql-note/" data-hashtag="DataBase"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/mysql-note/" data-title="Mysql数据库笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/mysql-note/" data-title="Mysql数据库笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/mysql-note/" data-title="concat以及group_concat的用法" data-hashtags="Database,Mysql,Function"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/mysql-note/" data-hashtag="Database"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/mysql-note/" data-title="concat以及group_concat的用法" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/mysql-note/" data-title="concat以及group_concat的用法"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/sql/">Sql</a>,&nbsp;<a href="/tags/mysql/">Mysql</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/mysql/">Mysql</a>,&nbsp;<a href="/tags/function/">Function</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav">
-            <a href="/emoji-support/" class="next" rel="next" title="Emoji 支持">Emoji 支持<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/java-selfclass-note/" class="prev" rel="prev" title="Java自建类操作笔记"><i class="fas fa-angle-left fa-fw"></i>Java自建类操作笔记</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

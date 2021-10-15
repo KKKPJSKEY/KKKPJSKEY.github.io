@@ -34,7 +34,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "ShellScript, Markdown, GitHub, CodeIt, Blog","wordcount":  352 ,
+                        }],"genre": "posts","keywords": "ShellScript, Markdown, GitHub, CodeIt, Blog","wordcount":  4845 ,
         "url": "https:\/\/kkkpjskey.github.io\/mysql-index-note\/","datePublished": "2021-08-25T09:38:28+08:00","dateModified": "2021-07-28T10:29:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -120,8 +120,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">new与newInstance()的区别</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 352 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/mysql-index-note/" class="leancloud_visitors" data-flag-title="new与newInstance()的区别">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4845 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/mysql-index-note/" class="leancloud_visitors" data-flag-title="new与newInstance()的区别">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -137,10 +137,16 @@
         <li><a href="#缺点"><strong>缺点</strong></a></li>
       </ul>
     </li>
+    <li><a href="#mysql的索引底层原理">mysql的索引底层原理</a>
+      <ul>
+        <li><a href="#什么是索引"><strong>什么是索引</strong></a></li>
+        <li><a href="#mysql索引原理"><strong>Mysql索引原理</strong></a></li>
+        <li><a href="#mysql引擎"><strong>Mysql引擎</strong></a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>1</p>
-<h2 id="b-树的优缺点">B+ 树的优缺点</h2>
+            </div><div class="content" id="content"><h2 id="b-树的优缺点">B+ 树的优缺点</h2>
 <h3 id="优点"><strong>优点</strong></h3>
 <ol>
 <li>单次请求涉及的磁盘IO次数少（出度d大，且非叶子节点不包含表数据，树的高度小）；</li>
@@ -172,6 +178,157 @@
 <li>主键不是有序递增的，导致每次插入数据产生大量的数据迁移和空间碎片；</li>
 <li>即使主键是有序递增的，大量写请求的分布仍是随机的；</li>
 </ol>
+<h2 id="mysql的索引底层原理">mysql的索引底层原理</h2>
+<h3 id="什么是索引"><strong>什么是索引</strong></h3>
+<p>概念：索引是提高mysql查询效率的数据结构。总的一句话概括就是索引是一种数据结构。</p>
+<p>数据库查询是数据库的最主要功能之一。设计者们都希望查询数据的速度能尽可能的快，因此数据库系统的设计者会从查询算法的角度进行优化。最基本的查询算法当然是顺序查找（linear search），这种复杂度为O(n)的算法在数据量很大时显然是糟糕的，好在计算机科学的发展提供了很多更优秀的查找算法，例如：有顺序查找、折半查找、快速查找等。</p>
+<p>但是每种查找算法都只能应用于特定的数据结构之上，例如顺序查找依赖于顺序结构，折半查找通过二叉查找树或红黑树实现二分搜索。因此在数据之外，数据库系统还维护着满足特定查找算法的数据结构。这种数据结构，就是索引。</p>
+<h3 id="mysql索引原理"><strong>Mysql索引原理</strong></h3>
+<p>目前大多数数据库系统及文件系统都采用 B-Tree 或其变种 B+Tree 作为索引结构。B+ 树索引是 B+ 树在数据库中的一种实现，是最常见也是数据库中使用最为频繁的一种索引。</p>
+<p>从最早的平衡二叉树演化而来的。B+ 树是由二叉查找树、平衡二叉树（AVLTree）和平衡多路查找树（B-Tree）逐步优化而来。</p>
+<p><strong>那么为什么mysql的索引选择B+数呢？</strong></p>
+<p>红黑树也可以作为数据结构也可以用来实现索引，但是文件系统以及数据库系统普遍采用B树或者B+树，这里结合计算的组成原理来深入的分析。</p>
+<p>一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储在磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，硬盘I/O存取的消耗要高几个数量级，查找过程中磁盘I/O的存取次数。</p>
+<p><strong>为什么硬盘的存取会如此的慢呢？</strong></p>
+<p>这个就要讲硬盘的读写原理，硬盘有很多种，但是都是由盘片、磁头、盘片主轴、控制电机、磁头控制器、数据转换器、接口、缓存等几个部分组成。</p>
+<p>所有的盘片都固定在一条轴上，那条轴叫做盘片主轴，所有的盘片都是绝对平行的，也形成一个柱体，每个盘片上都有一个磁头，每个磁头都在同意轴线上，就是从上方往下看，磁头是绝对重叠的。</p>
+<p>所有的磁头连在一个磁头控制器上，由磁头控制器负责各个磁头的运动，磁头可沿盘片的半径方向移动，实际上是斜切运动，每个磁头同一时刻必须是同轴的盘片以每分钟数千转到上万转的速度在高速运转，这样磁头就能对盘片上的指定位置进行数据的读写操作。结构图如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c3.gif"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c3.gif, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c3.gif 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c3.gif 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\3.gif"
+        title="3" /></p>
+<p><strong>磁盘数据的读写原理</strong></p>
+<p>盘片被划分成一系列同心环，圆心是盘片中心，每个同心环叫做一个磁道，所有半径相同的磁道组成一个柱面。磁道被沿半径线划分成一个个小的段，每个段叫做一个扇区，每个扇区是磁盘的最小存储单元。为了简单起见，我们下面假设磁盘只有一个盘片和一个磁头。</p>
+<p>当磁盘读取数据时，系统会将数据逻辑地址传给磁盘，磁盘的控制电路按照寻址逻辑将逻辑地址翻译成物理地址，即确定要读的数据在哪个磁道，哪个扇区。</p>
+<p>为了读取这个扇区的数据，需要将磁头放到这个扇区上方，为了实现这一点，磁头需要移动对准相应磁道，这个过程叫做寻道，所耗费时间叫做寻道时间，然后磁盘旋转将目标扇区旋转到磁头下，这个过程耗费的时间叫做旋转时间。</p>
+<p>即一次磁盘的读写操作完成过程由三个动作组成：</p>
+<ol>
+<li>寻道（时间）：磁头移动定位到指定磁道。</li>
+<li>旋转延迟（时间）：等待指定扇区从磁头下旋转经过。</li>
+<li>数据传输（时间）：数据在磁盘与内存之间的实际传输</li>
+</ol>
+<blockquote>
+<p><strong>额外知识：</strong> （1）盘面：硬盘的每一个盘片都有上下两个盘面，一般每个盘面都会得到利用，都可以存储数据，盘面号又叫磁头号，因为每一个有效盘面都有一个对应的读写磁头。 （2）磁道：磁盘在格式化时被划分成许多同心圆，这些同心圆轨迹叫做磁道，磁道从外向内从 0 开始顺序编号，信息以脉冲串的形式记录在这些轨迹中，这些同心圆不是连续记录数据，而是被划分成一段段的圆弧。 （3）所有盘面上的同一磁道构成一个圆柱，通常称作柱面。所有盘面上的同一磁道构成一个圆柱，通常称作柱面。数据的读 / 写按柱面进行，而不按盘面进行，当一个磁道写满数据后，就在同一柱面的下一个盘面来写，一个柱面写满后，才移到下一个扇区开始写数据，读数据也按照这种方式进行，这样就提高了硬盘的读 / 写效率。</p>
+</blockquote>
+<p><strong>提高磁盘数据读写原理</strong></p>
+<p>局部性原理与磁盘预读。由于存储介质的特性，磁盘本身存取就比主存慢很多，再加上机械运动耗费，磁盘的存取速度往往是主存的几百分分之一，因此为了提高效率，要尽量减少磁盘I/O。</p>
+<p>为了达到这个目的，磁盘往往不是严格按需读取，而是每次都会预读，即使只需要一个字节，磁盘也会从这个位置开始，顺序向后读取一定长度的数据放入内存。</p>
+<p>这样做的理论依据是计算机科学中著名的局部性原理：当一个数据被用到时，其附近的数据也通常会马上被使用。</p>
+<p>所以，程序运行期间所需要的数据通常应当比较集中。由于磁盘顺序读取的效率很高（不需要寻道时间，只需很少的旋转时间），因此对于具有局部性的程序来说，预读可以提高I/O效率。</p>
+<p>预读的长度一般为页（page）4k的整倍数。页是计算机管理存储器的逻辑块，硬件及操作系统往往将主存和磁盘存储区分割为连续的大小相等的块，每个存储块称为一页（在许多操作系统中，页得大小通常为4k），主存和磁盘以页为单位交换数据。</p>
+<p>当程序要读取的数据不在主存中时，会触发一个缺页异常，此时系统会向磁盘发出读盘信号，磁盘会找到数据的起始位置并向后连续读取一页或几页载入内存中，然后异常返回，程序继续运行。</p>
+<p>在硬盘中由于涉及到机械运动，所以一次的磁盘IO消耗的时间是非常大的，于内存的读取速度相比，就好比光速与声速的比较。那么回到我们的主题上为什么使用B+树作为数据结构呢？</p>
+<p><strong>B树、B-树、B+树、红黑树性能分析</strong></p>
+<p>对于B树和、B-树、B+树这里只做简单的介绍，详细的特性请看着一篇[]。</p>
+<p>B树性能分析：B树是二叉查找平衡树，但是B树一个节点只存一个关键字，在大量数据的时候，B树树高非常大，性能低下。</p>
+<p>B-树性能分析：B-树对B树性能做了很大优化，但是B-树在大量数据的时候，也会访问到叶子节点，这样性能也是大大降低。</p>
+<p>根据B-Tree的定义，可知检索一次最多需要访问h个节点。数据库系统的设计者巧妙利用了磁盘预读原理，将一个节点的大小设为等于一个页，这样每个节点只需要一次I/O就可以完全载入。</p>
+<p>B-Tree中一次检索最多需要h-1次I/O（根节点常驻内存）。一般实际应用中，出度d（树中各个节点的度的最大值）是非常大的数字，通常超过100，因此树高h非常小（通常不超过3）。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c4.jpg"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c4.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c4.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c4.jpg 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\4.jpg"
+        title="4" /></p>
+<p>模拟查找关键字 36 的过程：</p>
+<ol>
+<li>根据根节点找到磁盘块 1，读入内存。【磁盘 I/O 操作第 1 次】</li>
+<li>比较关键字 36在区间（17,35），找到磁盘块 1 的指针 P3。</li>
+<li>根据 P3指针找到磁盘块 4，读入内存。【磁盘 I/O 操作第 2 次】</li>
+<li>比较关键字 36在区间（65,87），找到磁盘块 4 的指针 P1。</li>
+<li>根据 P1 指针找到磁盘块 9，读入内存。【磁盘 I/O 操作第 3 次】</li>
+<li>在磁盘块 98中的关键字列表中找到关键字 36。</li>
+</ol>
+<p>分析上面过程，发现需要 3 次磁盘 I/O 操作，和 3 次内存查找操作。而 3 次磁盘 I/O 操作是影响整个 B-Tree 查找效率的决定因素。</p>
+<p>红黑树性能分析：而红黑树这种结构，h明显要深的多。由于逻辑上很近的节点（父子）物理上可能很远，无法利用局部性，所以红黑树的I/O渐进复杂度也为O(h)，效率明显比B-Tree差很多。</p>
+<p>B+树性能分析：B+Tree 是在 B-Tree 基础上的一种优化，使其更适合实现外存储索引结构，InnoDB 存储引擎就是用 B+Tree 实现其索引结构。</p>
+<p>在 B+Tree 中，所有数据记录节点都是按照键值大小顺序存放在同一层的叶子节点上，而非叶子节点上只存储 key 值信息，这样可以大大加大每个节点存储的 key 值数量，降低 B+Tree 的高度。</p>
+<p>B+Tree更适合外存索引，从上面分析可以看到，d越大索引的性能越好，而出度的上限取决于节点内key和data的大小。</p>
+<p>在B+树的结构中，只在叶子节点存储数据，在非叶子节点中只存储的索引，在非叶子节点中可以有更大的空间储存更多的索引，这样B+树的出度d就可以大大的增加，从而降低的B+树的高度h，B树中一个节点的大小为一个page的大小，也就是一次IO的读取，h越小IO的次数就可以减少：</p>
+<p>dmax=floor(pagesize/(keysize+datasize+pointsize))</p>
+<p>floor表示向下取整。由于B+Tree内节点去掉了data域，因此可以拥有更大的出度，拥有更好的性能。</p>
+<p>Mysql的InnoDB的索引的结构如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c5.jpg"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c5.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c5.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c5.jpg 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\5.jpg"
+        title="5" /></p>
+<p>在MySQL中，不同存储引擎对索引的实现方式是不同的，Mysql有MyISAM和InnoDB两个存储引擎的索引实现方式，下面就来分别介绍这两种存储引擎。</p>
+<h3 id="mysql引擎"><strong>Mysql引擎</strong></h3>
+<p><strong>MyISAM</strong></p>
+<p>在MyISAM储存引擎中，数据和索引文件试试分开储存的，Myisam 的存储文件有三个，后缀名分别是 .frm、.MYD、MYI，其中 .frm 是表的定义文件，.MYD 是数据文件，.MYI 是索引文件。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c6.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c6.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c6.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c6.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\6.png"
+        title="6" /></p>
+<p>Myisam 只支持表锁，且不支持事务。Myisam 由于有单独的索引文件，在读取数据方面的性能很高 。</p>
+<p>Myisam 也是B+树结构，但是MyISAM索引的叶子节点的数据保存的是行数据的地址。因此，MyISAM中索引检索的算法首先在索引树中找到行数据的地址，然后根据地址找到对应的行数据。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c7.jpg"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c7.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c7.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c7.jpg 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\7.jpg"
+        title="7" /></p>
+<p>可以看出MyISAM的索引文件仅仅保存数据记录的地址。主键索引和辅助索引，只是主索引要求key是唯一的，而辅助索引的key可以重复。如果我们在Col2上建立一个辅助索引，则此索引的如下图：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c8.jpg"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c8.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c8.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c8.jpg 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\8.jpg"
+        title="8" /></p>
+<p>MyISAM的索引方式也叫做“非聚集”的，之所以这么称呼是为了与InnoDB的聚集索引区分。</p>
+<p><strong>InnoDB</strong></p>
+<p>在InnoDB中，数据和索引文件是合起来储存的，如图所示，InnoDB 的存储文件有两个，后缀名分别是 .frm 和 .idb，其中 .frm 是表的定义文件，而 idb 是数据文件。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c9.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c9.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c9.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c9.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\9.png"
+        title="9" /></p>
+<p>在InnoDB虽然底层也是B+树实现的方式，当时与MyISAM却有明显的区别，在InnoDB实现的索引结构中，索引文件和数据文件是一起的，InnoDB中索引文件中的key就是数据表中的主键索引，因此InnoDB的索引文件也是主索引文件。如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c10.jpg"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c10.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c10.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c10.jpg 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\10.jpg"
+        title="10" /></p>
+<p>在InnoDB中的叶子节点中把保存和完整的数据，这就是聚集索引。因为InnoDB是按照主键聚集的，要是InnoDB没有主键就会找数据表中的位置标志的字段作为主键，要是没有这种字段就会隐世的生成唯一标识的主键，生成的主键默认为长整型，6个字节。</p>
+<p>而MyISAM可以要求没有主键，这是这两者的一个明显的区别。另一个区别就是辅助索引的叶子节点的data域存储的是主键的值，而不是行数据。</p>
+<p>所以，当查询不是按照主键查询时候就会先在辅助索引树上先找到主键的值，然后再到主索引树找到对应的行数据的值，这叫做回表，回表降低了表的查询效率。</p>
+<p>如果给另一个字段指定为普通索引，则普通索引树的结构如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c11.jpg"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c11.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c11.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c11.jpg 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\11.jpg"
+        title="11" /></p>
+<p>知道了索引的底层原理的实现还是有很大的帮助的，例如：主键至不要过大，因为所有的普通索引都引用主索引，索引本身是占内存的，若是索引过大，这样就会大大影响查询的效率。</p>
+<blockquote>
+<p><strong>InnoDB其它特点：</strong> 在InnoDB 中存在表锁和行锁，不过行锁是在命中索引的情况下才会起作用，当索引失效时行锁也会失效。InnoDB 支持事务，且支持四种隔离级别（读未提交、读已提交、可重复读、串行化），默认的为可重复读；而在 Oracle 数据库中，只支持串行化级别和读已提交这两种级别，其中默认的为读已提交级别。</p>
+</blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
