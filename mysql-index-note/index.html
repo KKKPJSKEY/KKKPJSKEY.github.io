@@ -5,37 +5,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>new与newInstance()的区别 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录new与newInstance()的区别"><meta property="og:title" content="new与newInstance()的区别" />
-<meta property="og:description" content="记录new与newInstance()的区别" />
+        <title>Mysql索引笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Mysql索引笔记"><meta property="og:title" content="Mysql索引笔记" />
+<meta property="og:description" content="记录Mysql索引笔记" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kkkpjskey.github.io/mysql-index-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-25T09:38:28&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-28T10:29:58&#43;08:00" />
+<meta property="og:url" content="https://kkkpjskey.github.io/mysql-index-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mysql-index-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-19T13:27:58&#43;08:00" />
+<meta property="article:modified_time" content="2021-10-19T13:27:58&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://kkkpjskey.github.io/logo.png"/>
-
-<meta name="twitter:title" content="new与newInstance()的区别"/>
-<meta name="twitter:description" content="记录new与newInstance()的区别"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/mysql-index-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Mysql索引笔记"/>
+<meta name="twitter:description" content="记录Mysql索引笔记"/>
 <meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
 <meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/mysql-index-note/" /><link rel="prev" href="https://kkkpjskey.github.io/xml-idea-format-error/" /><link rel="next" href="https://kkkpjskey.github.io/idea-selfmaven-nexus-init-error/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/mysql-index-note/" /><link rel="prev" href="https://kkkpjskey.github.io/redis-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "new与newInstance()的区别",
+        "headline": "Mysql索引笔记",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kkkpjskey.github.io\/mysql-index-note\/"
         },"image": [{
                             "@type": "ImageObject",
-                            "url": "https:\/\/kkkpjskey.github.io\/images\/Apple-Devices-Preview.png",
-                            "width":  3200 ,
-                            "height":  2048 
-                        }],"genre": "posts","keywords": "ShellScript, Markdown, GitHub, CodeIt, Blog","wordcount":  4845 ,
-        "url": "https:\/\/kkkpjskey.github.io\/mysql-index-note\/","datePublished": "2021-08-25T09:38:28+08:00","dateModified": "2021-07-28T10:29:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                            "url": "https:\/\/kkkpjskey.github.io\/mysql-index-note\/featured-image.jpg",
+                            "width":  636 ,
+                            "height":  380 
+                        }],"genre": "posts","keywords": "DataBase, Mysql, Index, MysqlNote","wordcount":  4845 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mysql-index-note\/","datePublished": "2021-10-19T13:27:58+08:00","dateModified": "2021-10-19T13:27:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -45,7 +44,7 @@
                 }},"author": {
                 "@type": "Person",
                 "name": "KKKPSJKEY"
-            },"description": "记录new与newInstance()的区别"
+            },"description": "记录Mysql索引笔记"
     }
     </script></head>
     <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -118,13 +117,20 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">new与newInstance()的区别</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4845 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/mysql-index-note/" class="leancloud_visitors" data-flag-title="new与newInstance()的区别">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Mysql索引笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-19">2021-10-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4845 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/mysql-index-note/" class="leancloud_visitors" data-flag-title="Mysql索引笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/mysql-index-note/featured-image.jpg"
+        data-srcset="/mysql-index-note/featured-image.jpg, /mysql-index-note/featured-image.jpg 1.5x, /mysql-index-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/mysql-index-note/featured-image.jpg"
+        title="记录Mysql索引笔记" /></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -196,10 +202,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c3.gif"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c3.gif, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c3.gif 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c3.gif 2x"
+        data-src="./3.gif"
+        data-srcset="./3.gif, ./3.gif 1.5x, ./3.gif 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\3.gif"
+        alt="./3.gif"
         title="3" /></p>
 <p><strong>磁盘数据的读写原理</strong></p>
 <p>盘片被划分成一系列同心环，圆心是盘片中心，每个同心环叫做一个磁道，所有半径相同的磁道组成一个柱面。磁道被沿半径线划分成一个个小的段，每个段叫做一个扇区，每个扇区是磁盘的最小存储单元。为了简单起见，我们下面假设磁盘只有一个盘片和一个磁头。</p>
@@ -231,10 +237,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c4.jpg"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c4.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c4.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c4.jpg 2x"
+        data-src="./4.jpg"
+        data-srcset="./4.jpg, ./4.jpg 1.5x, ./4.jpg 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\4.jpg"
+        alt="./4.jpg"
         title="4" /></p>
 <p>模拟查找关键字 36 的过程：</p>
 <ol>
@@ -257,10 +263,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c5.jpg"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c5.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c5.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c5.jpg 2x"
+        data-src="./5.jpg"
+        data-srcset="./5.jpg, ./5.jpg 1.5x, ./5.jpg 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\5.jpg"
+        alt="./5.jpg"
         title="5" /></p>
 <p>在MySQL中，不同存储引擎对索引的实现方式是不同的，Mysql有MyISAM和InnoDB两个存储引擎的索引实现方式，下面就来分别介绍这两种存储引擎。</p>
 <h3 id="mysql引擎"><strong>Mysql引擎</strong></h3>
@@ -269,29 +275,29 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c6.png"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c6.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c6.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c6.png 2x"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\6.png"
+        alt="./6.png"
         title="6" /></p>
 <p>Myisam 只支持表锁，且不支持事务。Myisam 由于有单独的索引文件，在读取数据方面的性能很高 。</p>
 <p>Myisam 也是B+树结构，但是MyISAM索引的叶子节点的数据保存的是行数据的地址。因此，MyISAM中索引检索的算法首先在索引树中找到行数据的地址，然后根据地址找到对应的行数据。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c7.jpg"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c7.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c7.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c7.jpg 2x"
+        data-src="./7.jpg"
+        data-srcset="./7.jpg, ./7.jpg 1.5x, ./7.jpg 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\7.jpg"
+        alt="./7.jpg"
         title="7" /></p>
 <p>可以看出MyISAM的索引文件仅仅保存数据记录的地址。主键索引和辅助索引，只是主索引要求key是唯一的，而辅助索引的key可以重复。如果我们在Col2上建立一个辅助索引，则此索引的如下图：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c8.jpg"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c8.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c8.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c8.jpg 2x"
+        data-src="./8.jpg"
+        data-srcset="./8.jpg, ./8.jpg 1.5x, ./8.jpg 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\8.jpg"
+        alt="./8.jpg"
         title="8" /></p>
 <p>MyISAM的索引方式也叫做“非聚集”的，之所以这么称呼是为了与InnoDB的聚集索引区分。</p>
 <p><strong>InnoDB</strong></p>
@@ -299,19 +305,19 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c9.png"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c9.png, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c9.png 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c9.png 2x"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\9.png"
+        alt="./9.png"
         title="9" /></p>
 <p>在InnoDB虽然底层也是B+树实现的方式，当时与MyISAM却有明显的区别，在InnoDB实现的索引结构中，索引文件和数据文件是一起的，InnoDB中索引文件中的key就是数据表中的主键索引，因此InnoDB的索引文件也是主索引文件。如下图所示：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c10.jpg"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c10.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c10.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c10.jpg 2x"
+        data-src="./10.jpg"
+        data-srcset="./10.jpg, ./10.jpg 1.5x, ./10.jpg 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\10.jpg"
+        alt="./10.jpg"
         title="10" /></p>
 <p>在InnoDB中的叶子节点中把保存和完整的数据，这就是聚集索引。因为InnoDB是按照主键聚集的，要是InnoDB没有主键就会找数据表中的位置标志的字段作为主键，要是没有这种字段就会隐世的生成唯一标识的主键，生成的主键默认为长整型，6个字节。</p>
 <p>而MyISAM可以要求没有主键，这是这两者的一个明显的区别。另一个区别就是辅助索引的叶子节点的data域存储的是主键的值，而不是行数据。</p>
@@ -320,10 +326,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c11.jpg"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c11.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c11.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMysql-Index-Note%5c11.jpg 2x"
+        data-src="./11.jpg"
+        data-srcset="./11.jpg, ./11.jpg 1.5x, ./11.jpg 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mysql-Index-Note\11.jpg"
+        alt="./11.jpg"
         title="11" /></p>
 <p>知道了索引的底层原理的实现还是有很大的帮助的，例如：主键至不要过大，因为所有的普通索引都引用主索引，索引本身是占内存的，若是索引过大，这样就会大大影响查询的效率。</p>
 <blockquote>
@@ -333,7 +339,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-07-28</span>
+                <span>更新于 2021-10-19</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -342,20 +348,19 @@
                             <a class="link-to-markdown" href="/mysql-index-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/mysql-index-note/" data-title="new与newInstance()的区别" data-hashtags="ShellScript,Markdown,GitHub,CodeIt,Blog"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/mysql-index-note/" data-hashtag="ShellScript"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/mysql-index-note/" data-title="new与newInstance()的区别" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/mysql-index-note/" data-title="new与newInstance()的区别"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/mysql-index-note/" data-title="Mysql索引笔记" data-hashtags="DataBase,Mysql,Index,MysqlNote"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/mysql-index-note/" data-hashtag="DataBase"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/mysql-index-note/" data-title="Mysql索引笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/mysql-index-note/" data-title="Mysql索引笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/shellscript/">ShellScript</a>,&nbsp;<a href="/tags/markdown/">Markdown</a>,&nbsp;<a href="/tags/github/">GitHub</a>,&nbsp;<a href="/tags/codeit/">CodeIt</a>,&nbsp;<a href="/tags/blog/">Blog</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/mysql/">Mysql</a>,&nbsp;<a href="/tags/index/">Index</a>,&nbsp;<a href="/tags/mysqlnote/">MysqlNote</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/xml-idea-format-error/" class="prev" rel="prev" title="Idea格式化Xml后替换换行符接口提交报错"><i class="fas fa-angle-left fa-fw"></i>Idea格式化Xml后替换换行符接口提交报错</a>
-            <a href="/idea-selfmaven-nexus-init-error/" class="next" rel="next" title="Idea使用Maven连接Nexus打开别人代码时报错Cannot resolve包">Idea使用Maven连接Nexus打开别人代码时报错Cannot resolve包<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/redis-note/" class="prev" rel="prev" title="Redis缓存机制与应用"><i class="fas fa-angle-left fa-fw"></i>Redis缓存机制与应用</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

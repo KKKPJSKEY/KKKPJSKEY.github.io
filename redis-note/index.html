@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Redis缓存机制与应用 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Redis缓存机制与应用的笔记"><meta property="og:title" content="Redis缓存机制与应用" />
+<meta property="og:description" content="记录Redis缓存机制与应用的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/redis-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/redis-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-18T11:55:34&#43;08:00" />
+<meta property="article:modified_time" content="2021-10-18T11:55:34&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/redis-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Redis缓存机制与应用"/>
+<meta name="twitter:description" content="记录Redis缓存机制与应用的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/redis-note/" /><link rel="prev" href="https://kkkpjskey.github.io/mysql-note/" /><link rel="next" href="https://kkkpjskey.github.io/mysql-index-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Redis缓存机制与应用",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/redis-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/redis-note\/featured-image.jpg",
+                            "width":  2000 ,
+                            "height":  600 
+                        }],"genre": "posts","keywords": "Database, Redis, Cash","wordcount":  4228 ,
+        "url": "https:\/\/kkkpjskey.github.io\/redis-note\/","datePublished": "2021-10-18T11:55:34+08:00","dateModified": "2021-10-18T11:55:34+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Redis缓存机制与应用的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/redis-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/redis-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Redis缓存机制与应用</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-18">2021-10-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4228 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/redis-note/" class="leancloud_visitors" data-flag-title="Redis缓存机制与应用">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/redis-note/featured-image.jpg"
+        data-srcset="/redis-note/featured-image.jpg, /redis-note/featured-image.jpg 1.5x, /redis-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/redis-note/featured-image.jpg"
+        title="记录Redis缓存机制与应用的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础知识介绍">基础知识介绍</a></li>
+    <li><a href="#常用技术讲解与缓存机制">常用技术讲解与缓存机制</a></li>
+    <li><a href="#使用场景缓存问题">使用场景、缓存问题</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>Redis是目前最为主流的缓存技术之一，Redis基于内存操作从而拥有强大的性能，可以达到每秒10万次的请求，可以说是一款非常强大的缓存技术了。</p>
+</blockquote>
+<h2 id="基础知识介绍">基础知识介绍</h2>
+<p><strong>NoSQL概述</strong></p>
+<p>什么是NoSQL？</p>
+<p>NoSQL = Not Only SQL （不仅仅是SQL）</p>
+<p>关系型数据库：表格 ，行 ，列</p>
+<p>非关系型数据库：没有固定的查询语言，键值对存储，列存储，文档存储</p>
+<p>随着web2.0互联网的诞生！传统的关系型数据库很难对付web2.0时代！尤其是超大规模的高并发的社区。</p>
+<p>NoSQL 特点</p>
+<p>1、方便扩展</p>
+<p>2、大数据量高性能（Redis 一秒写8万次，读取11万）</p>
+<p>3、数据类型是多样性的</p>
+<p>NoSQL四大分类</p>
+<p>KV键值对：如Redis主要是用于内容缓存，主要是为了处理大量数据高访问负载</p>
+<p>文档型数据库：如MongoDBMongoDB 是一个基于分布式文件存储的数据库</p>
+<p>列存储数据库：如HBase分布式文件系统，以列簇式存储，将同一列数据存储在一起</p>
+<p>图关系数据库：如Neo4j他不是存图形，放的是关系，比如：朋友圈社交网络，广告推荐！</p>
+<p><strong>Redis简介</strong></p>
+<p>Redis 是什么？</p>
+<p>Redis（Remote Dictionary Server )，即远程字典服务，它是一个开源的由ANSI C语言编写，性能优秀、支持网络、可持久化的Key-Value内存的NoSQL数据库!</p>
+<p>Redis 能干嘛？</p>
+<p>1、内存存储、持久化。</p>
+<p>2、效率高，可以用于高速缓存</p>
+<p>3、发布订阅系统</p>
+<p>4、计时器、浏览量！ 5、&hellip;&hellip;..</p>
+<p><strong>Redis好处</strong></p>
+<p>主要从“高性能”和“高并发”这两点来介绍。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>把数据库数据存入缓存，请求直接从内存中读取不用经过数据库，减轻数据库压力并且提升性能。</p>
+<h2 id="常用技术讲解与缓存机制">常用技术讲解与缓存机制</h2>
+<p>Redis主要有5种数据类型，包括String，List，Set，Zset，Hash，满足大部分的使用要求</p>
+<p><strong>String</strong></p>
+<ul>
+<li>String：session、对象、小文件（存文件流字节数组，比磁盘IO快）？</li>
+<li>int：秒杀、限流、计数</li>
+<li>bitmap：</li>
+</ul>
+<p>场景1.setbit和bitcount结合可以统计一年365天哪天有用户操作过，getbit可以获取某一天是否用户操作过</p>
+<p>场景2.权限控制，比如每个权限对应一个bit,哪个用户有该权限，该位为1，没权限为0</p>
+<p><strong>list</strong></p>
+<p>替换java jvm中的集合，可以作为数据共享，java的话多进程间不能共享或不好共享</p>
+<p><strong>hash</strong></p>
+<p>可以使redis key变少，类似对象。</p>
+<p>场景1.商品详情页、商品对应的收藏数、库存啊，放在redis中因为是原子性的，多地方访问都是实时性的</p>
+<p>场景2.聚合场景：一个对象在数据库中可能各个属性在不同表，可以聚合到redis同个对象中</p>
+<p><strong>set</strong></p>
+<p>set性能慢，可以单独redis实例</p>
+<p>场景1.SRANDMEMBER或者spop命令可以用来抽奖</p>
+<p>场景2.随机事件</p>
+<p>场景3.共同好友（交集）</p>
+<p>场景4.推荐好友（差集）</p>
+<p><strong>sorted_set</strong></p>
+<p>有序集合，数量少时底层是zipList压缩表，数据多了变skiplist</p>
+<p>场景1.排行榜</p>
+<p>场景2.有序事件</p>
+<p>场景3.评论分页</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>Redis 中除开最常用的 5 种数据类型之外，还有 3 种特殊的数据类型</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p>可以通过help命令查询相关类型命令说明，比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">help</span> @string <span class="nb">help</span> @list1
+</code></pre></td></tr></table>
+</div>
+</div><p>分享一下我记录的几种数据类型的基本命令</p>
+<p><strong>String</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">#设置值 set key value  
+#获取值 get key  
+#获取值类型（set的都是String） type key   
+#获取值编码类型(raw/int) object encoding key  
+#获取字节长度(注意1字节等于8位bit) strlen key  #+1计算
+#incr key1
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>bitmap</strong>（二进制操作）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#设置该值左边第几位为1，bit长度不是8位整数的补成8的整数长度,如 10会补成00000010，  0100000001 会补成0000000100000001 格式：setbit key offset value setbit k1 1 1 </span>
+<span class="c1">#01000000  对应ascii码为‘@’ get k1 #&#39;@&#39;</span>
+<span class="c1">#将k1值得第7位设置为1 setbit k1 7 1</span>
+<span class="c1">#01000001 对应ascii码为‘A’ setbit k1 8 1 #0100000110000000   </span>
+<span class="c1">#获取对应位置bit的值（1或0） getbit key offset  getbit k1 7 </span>
+<span class="c1">#假如k1值位00000001，第7位返回1 getbit k1 5 </span>
+<span class="c1">#假如k1值位00000001，第5位返回0 </span>
+<span class="c1">#获取对应范围内1的数量（注意范围是字节区间，不是Bit位区间） bitcount key [start end] bitcount k1</span>
+<span class="c1">#获取bit位为1的数量 相当于bitcount k1 0 -1（假如k1值位00001001，返回2，假如k1值位0000000100001001，返回3） bitcount k1 0 0</span>
+<span class="c1">#获取第一个字节的8位Bit中有几位为1 （假如k1值位0000000100001001，返回1），注意是从左边开始数每8位为一个字节 </span>
+<span class="c1">#与、或、非、异或操作 bitop opration destkey key [key...] </span>
+<span class="c1">#opration可选值（and/or/not）,destkey为计算完后要保存的新的key bitop and k3 k1 k2</span>
+<span class="c1">#与运算，假如k1为01000000，k2为00000001，则结果k3为00000000 bitop or k3 k1 k2</span>
+<span class="c1">#或运算，假如k1为01000000，k2为00000001，则结果k3为01000001 bitop xor k3 k1 k2</span>
+<span class="c1">#异或运算，假如k1为01000000，k2为01000001，则结果k3为00000001 bitop not k3 k1 </span>
+<span class="c1">#非运算，假如k1为01000000，则结果k3为101111111</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>list(链表)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#左边插入 格式：lpush key value [value...] lpush k1 1 2 3 4 5 6 </span>
+<span class="c1">#k1值为六项：6 5 4 3 2 1 </span>
+<span class="c1">#右边插入 格式：rpush key value [value...] rpush k1 1 2 3 4 5 6 </span>
+<span class="c1">#k1值为六项：1 2 3 4 5 6 </span>
+<span class="c1">#获取k1范围内的的值 lrange k1 0 -1  </span>
+<span class="c1">#获取第一个数（最左边的数）并删除该值（像栈操作） lpop key </span>
+<span class="c1">#k1值为六项：1 2 3 4 5 6 那么会返回1，k1值变为2 3 4 5 6 </span>
+<span class="c1">#获取指定下标值 lindex key </span>
+<span class="c1">#删除范围之外的数值 ltrim key start end  ltrim k1 0 3</span>
+<span class="c1">#k1值为六项：1 2 3 4 5 6,那么k1只留下1 2 3 41</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>hash（对象）</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#设置对象属性值 hset key field value hset user1 name huangtl</span>
+<span class="c1">#设置user1的name属性为huangtl hset user1 age  18</span>
+<span class="c1">#设置user1的age属性为18 </span>
+<span class="c1">#单个属性获取 hget user1 age #18 </span>
+<span class="c1">#所有属性获取 hgetall user1</span>
+<span class="c1">#返回属性、值、属性、值 ：name huangtl age 18 </span>
+<span class="c1">#获取对象所有key hkeys user1</span>
+<span class="c1">#返回user1的所有属性:name age </span>
+<span class="c1">#获取对象所有kvalue hvals user1</span>
+<span class="c1">#返回user1的所有属性得值:huangtl 181</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>set(无序、去重集合)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#存入集合数据 sadd key member [member...] sadd k1 1 2 3 4 5 6 2</span>
+<span class="c1">#两个2知会存一个2，集合内数值有1 2 3 4 5 6 </span>
+<span class="c1">#获取集合数据 SMEMBERS k1 </span>
+<span class="c1">#随机获取集合几条数据 SRANDMEMBER k1 [count] SRANDMEMBER k1</span>
+<span class="c1">#随机获取一条 SRANDMEMBER k1 8</span>
+<span class="c1">#随机获取8条数据，不会重复的数据，集合不足8条取集合全部数据 SRANDMEMBER k1 -8</span>
+<span class="c1">#随机取8条，可能会重复的数据，集合不足8条也会取8条数据 </span>
+<span class="c1">#取数值并删除 spop key [count] spop key </span>
+<span class="c1">#随机取一条并删除 spop key 5</span>
+<span class="c1">#随机取5条并删除 </span>
+<span class="c1">#多个集合取并集 SUNION key [key...] SUNION k1 k2</span>
+<span class="c1">#假如k1为1 2 3 4 5 6 ，k2为4 5 6 7 8 9，则返回1 2 3 4 5 6 7 8 9 </span>
+<span class="c1">#多个集合取交集 SINTER key [key...] SINTER k1 k2</span>
+<span class="c1">#假如k1为1 2 3 4 5 6 ，k2为4 5 6 7 8 9，则返回4 5 6  </span>
+<span class="c1">#多个集合取差集 sdiff key [key...] sdiff k1 k2</span>
+<span class="c1">#按顺序取k1减掉k2中的值后剩下的值</span>
+<span class="c1">#假如k1为1 2 3 4 5 6 ，k2为4 5 6 7 8 9，则返回1 2 3  sdiff k2 k1</span>
+<span class="c1">#按顺序取k2不减掉k1中的值值后剩下的值</span>
+<span class="c1">#假如k1为1 2 3 4 5 6 ，k2为4 5 6 7 8 9，则返回7 8 9  1</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>sorted_set（有序集合）</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#新建key并添加元素 zadd key score member [score member...] zadd set1 1 apple 2 orange 3 banana  </span>
+<span class="c1">#返回范围内集合数据，按score分值正序 zrange set1 0 -1  </span>
+<span class="c1">#默认返回 apple orange banana zrange set1 -2 -1 </span>
+<span class="c1">#按正序取最后两名，返回 orange banana ZREVRANGE set1 0 1 </span>
+<span class="c1">#倒序返回前两名，返回  banana orange  </span>
+<span class="c1">#获取元素位置 zrank set1 apple #返回0，代表apple在第一位1</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>事务</strong></p>
+<p>Redis 事务本质：一组命令的集合！ 一个事务中的所有命令都会被序列化，在事务执行过程的中，会按照顺序执行！</p>
+<p>Redis单条命令式保存原子性的，但是事务不保证原子性！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 开启事务 multi   #命令入队 set k1 v1  set k2 v2   get k2    # 执行事务 exec   1</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p><strong>Redis持久化</strong></p>
+<p>持久化就是把内存的数据写到磁盘中去，防止服务宕机了内存数据丢失。</p>
+<p>redis提供两种持久化机制 RDB（默认） 和 AOF 机制。</p>
+<p>1、RDB</p>
+<p>RDB是Redis DataBase缩写快照 ，默认的持久化方式。按照一定的时间将内存的数据以快照的形式保存到硬盘中，对应产生的数据文件为dump.rdb</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p>触发机制</p>
+<p>（1）save的规则满足的情况下</p>
+<p>（2）执行 flushall 命令</p>
+<p>（3）退出redis，也会产生 rdb 文件</p>
+<p>2、AOF：</p>
+<p>持久化，AOF持久化(即Append Only File持久化)，则是将Redis执行的每次写命令记录到单独的日志文件中，当重启Redis会重新将持久化的日志中文件恢复数据。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<p>AOF的三种策略（1）always （2）everysec(默认值) （3）no always</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>在应用时，要根据自己的实际需求，选择RDB或者AOF，其实，如果想要数据足够安全，可以两种方式都开启，但两种持久化方式同时进行IO操作，会严重影响服务器性能，因此有时候不得不做出选择。</p>
+<p><strong>redis主从复制</strong></p>
+<p>概念主从复制，是指将一台Redis服务器的数据，复制到其他的Redis服务器。前者称为主节点(master/leader)，后者称为从节点(slave/follower)；数据的复制是单向的，只能由主节点到从节点。</p>
+<p>优点：（1）读写分离 （2）备份</p>
+<p>缺点：主服务器宕机，需要人工启动</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+<p><strong>哨兵模式</strong></p>
+<p>哨兵模式是一种特殊的模式，首先Redis提供了哨兵的命令，哨兵是一个独立的进程，作为进程，它会独立运行。其原理是哨兵通过发送命令，等待Redis服务器响应，从而监控运行的多个Redis实例。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
+        data-sizes="auto"
+        alt="./9.png"
+        title="9" /></p>
+<h2 id="使用场景缓存问题">使用场景、缓存问题</h2>
+<p>1、热点数据的缓存</p>
+<p>公司项目用户量达到一定数量的时候，这时合理的利用缓存不仅能够提升项目访问速度，还能大大降低数据库的压力。</p>
+<p>2、业务上的统计，排行榜</p>
+<p>为了保证数据实时效，比如项目的访问量，每次浏览都得给+1，并发量高时如果每次都请求数据库操作无疑是种挑战和压力</p>
+<p>3、限时业务的运用</p>
+<p>每日签到、限制登录功能等业务场景</p>
+<p>4、消息队列</p>
+<p>提供基本的发布订阅功能，但不像消息队列那种专业级别</p>
+<p><strong>缓存雪崩</strong></p>
+<p>原因：大量redis key在同一时间失效，导致大量请求访问数据库，数据库服务器宕机，线上服务大面积报错。</p>
+<p>解决办法：</p>
+<p>（1）redis高可用</p>
+<p>（2）加锁排队，限流降级</p>
+<p>（3）缓存失效时间均匀分布</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.png"
+        data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
+        data-sizes="auto"
+        alt="./10.png"
+        title="10" /></p>
+<p><strong>缓存穿透</strong></p>
+<p>原因：指缓存和数据库中都没有的数据，导致所有的请求都落到数据库上，造成数据库短时间内承受大量请求而崩掉。</p>
+<p>解决办法： （1）接口层增加校验 （2）采用布隆过滤器</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<p><strong>缓存击穿</strong></p>
+<p>原因：指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力。比如微博热搜。</p>
+<p>解决办法：</p>
+<p>（1）设置热点数据缓存没有过期时间</p>
+<p>（2）加互斥锁</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-10-18</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/redis-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/redis-note/" data-title="Redis缓存机制与应用" data-hashtags="Database,Redis,Cash"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/redis-note/" data-hashtag="Database"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/redis-note/" data-title="Redis缓存机制与应用" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/redis-note/" data-title="Redis缓存机制与应用"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/redis/">Redis</a>,&nbsp;<a href="/tags/cash/">Cash</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/mysql-note/" class="prev" rel="prev" title="concat以及group_concat的用法"><i class="fas fa-angle-left fa-fw"></i>concat以及group_concat的用法</a>
+            <a href="/mysql-index-note/" class="next" rel="next" title="Mysql索引笔记">Mysql索引笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/rank-algorithm-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/rank-algorithm-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-10-15T20:35:05&#43;08:00" />
-<meta property="article:modified_time" content="2021-10-15T20:35:05&#43;08:00" />
+<meta property="article:modified_time" content="2021-10-18T12:08:30&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/rank-algorithm-note/featured-image.jpg"/>
@@ -30,11 +30,11 @@
             "@id": "https:\/\/kkkpjskey.github.io\/rank-algorithm-note\/"
         },"image": [{
                             "@type": "ImageObject",
-                            "url": "https:\/\/kkkpjskey.github.io\/rank-algorithm-note\/featured-image.jpg",
-                            "width":  878 ,
-                            "height":  453 
-                        }],"genre": "posts","keywords": "Rank","wordcount":  301 ,
-        "url": "https:\/\/kkkpjskey.github.io\/rank-algorithm-note\/","datePublished": "2021-10-15T20:35:05+08:00","dateModified": "2021-10-15T20:35:05+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                            "url": "https:\/\/kkkpjskey.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "Rank","wordcount":  3416 ,
+        "url": "https:\/\/kkkpjskey.github.io\/rank-algorithm-note\/","datePublished": "2021-10-15T20:35:05+08:00","dateModified": "2021-10-18T12:08:30+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,18 +119,11 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">常见排序算法总结笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/algorithm/"><i class="far fa-folder fa-fw"></i>Algorithm</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 301 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/rank-algorithm-note/" class="leancloud_visitors" data-flag-title="常见排序算法总结笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3416 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/rank-algorithm-note/" class="leancloud_visitors" data-flag-title="常见排序算法总结笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
-        </div><div class="featured-image"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/rank-algorithm-note/featured-image.jpg"
-        data-srcset="/rank-algorithm-note/featured-image.jpg, /rank-algorithm-note/featured-image.jpg 1.5x, /rank-algorithm-note/featured-image.jpg 2x"
-        data-sizes="auto"
-        alt="/rank-algorithm-note/featured-image.jpg"
-        title="记录常见排序算法总结笔记" /></div><div class="details toc" id="toc-static"  kept="">
+        </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -138,6 +131,23 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#快速排序最坏的情况">快速排序最坏的情况</a></li>
+    <li><a href="#冒泡排序">冒泡排序</a>
+      <ul>
+        <li><a href="#一冒泡排序简介从小到大排序">一.冒泡排序简介(从小到大排序）</a></li>
+        <li><a href="#二代码案例">二.代码案例</a></li>
+      </ul>
+    </li>
+    <li><a href="#有内存限制的海量数据排序">有内存限制的海量数据排序</a>
+      <ul>
+        <li><a href="#磁盘文件排序">磁盘文件排序</a>
+          <ul>
+            <li><a href="#1位图方案">1、位图方案</a></li>
+            <li><a href="#2多路归并">2、多路归并</a></li>
+            <li><a href="#3通过这个问题我们学到了两种方法">3、通过这个问题，我们学到了两种方法：</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="快速排序最坏的情况">快速排序最坏的情况</h2>
@@ -146,11 +156,698 @@
 2）数组已经是倒序排过序的。
 3）所有的元素都相同（1、2的特殊情况）</p>
 <p>因为这些案例在用例中十分常见，所以这个问题可以通过要么选择一个随机的枢轴，或者选择一个分区中间的下标作为枢轴，或者（特别是对于相比更长的分区）选择分区的第一个、中间、最后一个元素的中值作为枢轴。有了这些修改，那快排的最差的情况就不那么容易出现了，但是如果输入的数组最大（或者最小元素）被选为枢轴，那最坏的情况就又来了。</p>
+<h2 id="冒泡排序">冒泡排序</h2>
+<h3 id="一冒泡排序简介从小到大排序">一.冒泡排序简介(从小到大排序）</h3>
+<ul>
+<li>
+<p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p>
+</li>
+<li>
+<p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p>
+</li>
+<li>
+<p>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。</p>
+</li>
+<li>
+<p>针对所有的元素重复以上的步骤，除了最后一个，即需要进行length-1次。</p>
+</li>
+<li>
+<p>第一次是对n个数进行n-1次比较，进行到最后第n个的一个是最大的；</p>
+</li>
+<li>
+<p>第二次是对n-1个数进行n-2次比较，进行到最后第n-1个的一个是最大的；</p>
+</li>
+<li>
+<p>&hellip;&hellip;</p>
+</li>
+<li>
+<p>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+</li>
+</ul>
+<p>动态图：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.gif"
+        data-srcset="./1.gif, ./1.gif 1.5x, ./1.gif 2x"
+        data-sizes="auto"
+        alt="./1.gif"
+        title="1" /></p>
+<h3 id="二代码案例">二.代码案例</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">day0515</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">demo_sort</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//冒泡排序算法
+</span><span class="c1"></span>        <span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">=</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">1</span><span class="o">,</span><span class="n">5</span><span class="o">,</span><span class="n">8</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">9</span><span class="o">,</span><span class="n">4</span><span class="o">};</span>
+        <span class="c1">//需进行length-1次冒泡
+</span><span class="c1"></span>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>
+        <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="o">-</span><span class="n">i</span><span class="o">;</span><span class="n">j</span><span class="o">++)</span>
+            <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">numbers</span><span class="o">[</span><span class="n">j</span><span class="o">]&gt;</span><span class="n">numbers</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="n">1</span><span class="o">])</span>
+                <span class="o">{</span>
+                    <span class="kt">int</span> <span class="n">temp</span><span class="o">=</span><span class="n">numbers</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+                    <span class="n">numbers</span><span class="o">[</span><span class="n">j</span><span class="o">]=</span><span class="n">numbers</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="n">1</span><span class="o">];</span>
+                    <span class="n">numbers</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="n">1</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;从小到大排序后的结果是:&#34;</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">numbers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">]+</span><span class="s">&#34; &#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="有内存限制的海量数据排序">有内存限制的海量数据排序</h2>
+<h3 id="磁盘文件排序">磁盘文件排序</h3>
+<blockquote>
+<p><strong>问题描述</strong>：</p>
+<p><strong>输入</strong>：给定一个文件，里面最多含有n个不重复的正整数（也就是说可能含有少于n个不重复正整数），且其中每个数都小于等于n，n = 10^7。</p>
+<p><strong>输出</strong>：得到按从小到大升序排列的包含所有输入的整数的列表。</p>
+<p><strong>条件</strong>：最多有大约1MB的内存空间可用，但磁盘空间足够。且要求运行时间在五分钟以下，10秒为最佳结果。</p>
+<p><strong>分析</strong>： 首先注意的是它的内存要求，基本上否决了大多数的排序算法。 文件里面的数据是不重复的，这个很关键，因为下面的方案前提就是数据不重复。</p>
+</blockquote>
+<h4 id="1位图方案">1、位图方案</h4>
+<p>用数组或者字符串代表位图。下标代表数字，值代表这个数字出现的次数。
+以位为最小单位，对应位为1，代表位数值，可以用20位长的字符串来表示一个所有元素都小于20的简单的非负数集合，边框用如下字符串来表示集合{1,2,3,5,8,13}：
+01110100100001000000
+对应位置则置1，没用对应数的位置则置0，开始扳手指头数数吧。我们可以采用一个具有1000万个位的字符串来表示这个文件，其中，当整数i在文件中时，第i位为1。
+第一步，所有位置0,将集合初始化。
+第二步，通过读入文件中的每个整数来建立集合，将对应的位都置1.
+第三步，检验每一位，如果该位为1，就输出对应的整数。
+这里不得不提一下c++库中的一个容器bitset,发现这个在处理位的时候简直牛，先来瞅瞅。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;bitset&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">};</span>
+    <span class="n">bitset</span><span class="o">&lt;</span><span class="n">max</span><span class="o">&gt;</span> <span class="n">bit_map</span><span class="p">;</span>  <span class="c1">//一种类模板，放入长度，定义了一个max位，每位都为0
+</span><span class="c1"></span>    <span class="n">bit_map</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>  <span class="c1">//所有位置0
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">bit_map</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>  <span class="c1">//将对应位置1
+</span><span class="c1"></span>    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span> <span class="n">max</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">bit_map</span><span class="p">.</span><span class="n">test</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>  <span class="c1">//判断第i位，如果为1，返回true
+</span><span class="c1"></span>            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>再加上文件操作，就是针对海量数据排序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;bitset&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">MAX</span> <span class="o">=</span> <span class="mi">5000000</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">clock_t</span> <span class="n">begin</span> <span class="o">=</span> <span class="n">clock</span><span class="p">();</span>
+    <span class="n">bitset</span><span class="o">&lt;</span><span class="n">MAX</span><span class="o">&gt;</span> <span class="n">bit_map</span><span class="p">;</span>
+    <span class="n">bit_map</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+
+    <span class="n">FILE</span> <span class="o">*</span> <span class="n">fp_unsort_file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;data.txt&#34;</span><span class="p">,</span><span class="s">&#34;r&#34;</span><span class="p">);</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">fp_unsort_file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">fscanf</span><span class="p">(</span><span class="n">fp_unsort_file</span><span class="p">,</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">)</span><span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="n">MAX</span><span class="p">)</span>   <span class="c1">//先对1-4999999的数进行排序
+</span><span class="c1"></span>            <span class="n">bit_map</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">FILE</span> <span class="o">*</span> <span class="n">fp_sort_file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;sort.txt&#34;</span><span class="p">,</span><span class="s">&#34;w&#34;</span><span class="p">);</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">fp_sort_file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">MAX</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">bit_map</span><span class="p">.</span><span class="n">test</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">fprintf</span><span class="p">(</span><span class="n">fp_sort_file</span><span class="p">,</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">fseek</span><span class="p">(</span><span class="n">fp_sort_file</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">SEEK_SET</span><span class="p">);</span> <span class="c1">//指针回到文件开始处
+</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;fseek failed&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">bit_map</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">fscanf</span><span class="p">(</span><span class="n">fp_unsort_file</span><span class="p">,</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">)</span> <span class="o">!=</span><span class="n">EOF</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="n">MAX</span> <span class="o">&amp;&amp;</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">10000000</span><span class="p">)</span>  <span class="c1">//再对5000000-10000000的数排序
+</span><span class="c1"></span>            <span class="p">{</span>
+                <span class="n">num</span> <span class="o">-=</span><span class="n">MAX</span><span class="p">;</span>
+                <span class="n">bit_map</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">MAX</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">bit_map</span><span class="p">.</span><span class="n">test</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+                <span class="n">fprintf</span><span class="p">(</span><span class="n">fp_sort_file</span><span class="p">,</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="n">MAX</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">clock_t</span> <span class="n">end</span> <span class="o">=</span> <span class="n">clock</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;time is:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">begin</span><span class="p">)</span><span class="o">/</span><span class="n">CLOCKS_PER_SEC</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;s&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">fp_sort_file</span><span class="p">);</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">fp_unsort_file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>第一次只处理1-4999999之间的数据，对这些数进行位图排序，只需要约5000000/8 = 625000byte，就是0.625M,排序后输出。
+第二次,扫描输入文件，只处理4999999-10000000的数据项，只需要0.625M,因此只需要0.625M。</p>
+<h4 id="2多路归并">2、多路归并</h4>
+<p>我们先了解一下，归并排序的过程，归并排序就是2路归并。</p>
+<p><strong>归并排序的过程</strong>：
+（1）把无序表的每一个元素看做是一个有序表，则有n个有序子表；
+（2）把n个有序表按相邻位置分成若干对，每对中的两个表进行归并，归并后子表数减少一半。
+（3）反复进行这一过程，直到归并为一个有序表为止。</p>
+<p><strong>是采用分治法的典型应用</strong></p>
+<p>首先考虑下如何将二个有序数列合并，比较二个数列第一个数，谁小就放入到临时数组中，然后再进行比较，如果一个数列到达结尾，直接将另一个数列放入就临时数组中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">MemeryArray</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="kt">int</span> <span class="n">b</span><span class="p">[],</span><span class="kt">int</span> <span class="n">m</span><span class="p">,</span><span class="kt">int</span> <span class="n">c</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">j</span><span class="o">=</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">&lt;</span> <span class="n">m</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+        <span class="k">else</span>
+            <span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>下一步考虑如何让两个A,B数组有序，可以将A,B各自再分成二组，依次类推，当分出来的小组只有一个元素时，这个小组内已经达到有序了，然后再合并相邻的二个小组就可以了，先递归分解，再合并数列就完成了归并排序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//将二个有序数列a[first...mid] 和a[mid+1...last]合并
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">MemeryArray</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span><span class="kt">int</span> <span class="n">first</span><span class="p">,</span><span class="kt">int</span> <span class="n">mid</span><span class="p">,</span><span class="kt">int</span> <span class="n">last</span><span class="p">,</span><span class="kt">int</span> <span class="n">temp</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span>  <span class="o">=</span> <span class="n">first</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">last</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">&lt;</span> <span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">temp</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+        <span class="k">else</span>
+            <span class="n">temp</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">)</span>
+        <span class="n">temp</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">];</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">j</span> <span class="o">&lt;=</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">temp</span><span class="p">[</span><span class="n">k</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="o">++</span><span class="p">];</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">k</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">first</span><span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">mergesort</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[],</span><span class="kt">int</span> <span class="n">first</span><span class="p">,</span><span class="kt">int</span> <span class="n">last</span><span class="p">,</span><span class="kt">int</span> <span class="n">temp</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">first</span> <span class="o">&lt;</span> <span class="n">last</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">first</span> <span class="o">+</span> <span class="n">last</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+        <span class="n">mergesort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">first</span><span class="p">,</span><span class="n">mid</span><span class="p">,</span><span class="n">tmep</span><span class="p">);</span>
+        <span class="n">mergesort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">last</span><span class="p">,</span><span class="n">temp</span><span class="p">);</span>
+        <span class="n">MemeryArray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">first</span><span class="p">,</span><span class="n">mid</span> <span class="p">,</span><span class="n">last</span><span class="p">,</span><span class="n">temp</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>归并排序是一种稳定排序，时间复杂度最好情况下和最坏情况下均是O（nlogn）</p>
+<p><strong>多路归并就是从多个有序数列中归并。</strong>
+比如将10000000的数据，分成40个有序文件，分别在内存中排序，然后对这40个有序文件进行归并排序。
+（1）读取每个文件中第一个数（每个文件的最小数），存放在一个大小为40的data数组中，
+（2）选择data数组中最小的数min_data，及其相应的文件索引（来自哪个文件）index
+（3）将min_data写入到文件result，然后更新数组data(根据index,读取该文件的下一个数代替min_data）
+（4）判读是否所有数据都读取完毕，否则返回到2步。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">sort_num</span> <span class="o">=</span> <span class="mi">10000000</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">memory_size</span> <span class="o">=</span> <span class="mi">250000</span><span class="p">;</span>  <span class="c1">//每次排序250000个数据
+</span><span class="c1"></span>
+<span class="kt">int</span> <span class="nf">read_data</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">,</span><span class="kt">int</span> <span class="o">*</span><span class="n">space</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">memory</span> <span class="o">&amp;&amp;</span> <span class="n">fscanf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">space</span><span class="p">[</span><span class="n">index</span><span class="p">])</span><span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span>
+        <span class="n">index</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">index</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">write_data</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span> <span class="n">fp</span><span class="p">,</span><span class="kt">int</span> <span class="o">*</span><span class="n">space</span><span class="p">,</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="n">space</span><span class="p">[</span><span class="n">index</span><span class="p">]);</span>
+        <span class="n">index</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">check_fp</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">fp</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;the file not open&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">compare</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">a</span><span class="p">,</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="o">*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">a</span><span class="o">-*</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">string</span> <span class="nf">new_filename</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">char</span> <span class="n">file_name</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+    <span class="n">sprintf</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="s">&#34;data%d.txt&#34;</span><span class="p">,</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">file_name</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//将原文件分割成多个小文件，并在内存中排序
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">memroy_sort</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">FILE</span> <span class="o">*</span> <span class="n">fp_in_file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;data.txt&#34;</span><span class="p">,</span><span class="s">&#34;r&#34;</span><span class="p">);</span>
+    <span class="n">check_fp</span><span class="p">(</span><span class="n">fp_in_file</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="o">*</span> <span class="n">space</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="n">memory_size</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">fp_in_file</span><span class="p">,</span><span class="n">space</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="n">qsort</span><span class="p">(</span><span class="n">space</span><span class="p">,</span><span class="n">num</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span><span class="n">compare</span><span class="p">);</span>
+        <span class="n">string</span> <span class="n">file_name</span> <span class="o">=</span> <span class="n">new_filename</span><span class="p">(</span><span class="o">++</span><span class="n">counter</span><span class="p">);</span>
+        <span class="n">FILE</span> <span class="o">*</span><span class="n">fp_aux_file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="s">&#34;w&#34;</span><span class="p">);</span>
+        <span class="n">check_fp</span><span class="p">(</span><span class="n">fp_aux_file</span><span class="p">);</span>
+        <span class="n">write_data</span><span class="p">(</span><span class="n">fp_aux_file</span><span class="p">,</span><span class="n">space</span><span class="p">,</span><span class="n">num</span><span class="p">);</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">fp_aux_file</span><span class="p">);</span>
+        <span class="k">delete</span> <span class="p">[]</span><span class="n">space</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">fp_in_file</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">counter</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//将n个小文件归并为一个文件，多路归并
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="kt">int</span> <span class="n">file_num</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">file_num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="n">FILE</span> <span class="o">*</span><span class="n">fp_out_file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;result.txt&#34;</span><span class="p">,</span><span class="s">&#34;w&#34;</span><span class="p">);</span>
+    <span class="n">check_fp</span><span class="p">(</span><span class="n">fp_out_file</span><span class="p">);</span>
+    <span class="n">FILE</span> <span class="o">**</span> <span class="n">fp_array</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FILE</span><span class="o">*</span><span class="p">[</span><span class="n">file_num</span><span class="p">];</span>  <span class="c1">//存放每个小文件的指针的数组
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">file_num</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">string</span> <span class="n">file_name</span> <span class="o">=</span> <span class="n">new_file_name</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">fp_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span><span class="s">&#34;r&#34;</span><span class="p">);</span>
+        <span class="n">check_fp</span><span class="p">(</span><span class="n">fp_array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="o">*</span> <span class="n">first_data</span>  <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="p">[</span><span class="n">file_num</span><span class="p">];</span>
+    <span class="kt">bool</span> <span class="o">*</span> <span class="n">finish</span>  <span class="o">=</span> <span class="k">new</span> <span class="kt">bool</span><span class="p">[</span><span class="n">file_num</span><span class="p">];</span>  <span class="c1">//文件是否读取到结尾
+</span><span class="c1"></span>    <span class="n">memset</span><span class="p">(</span><span class="n">finish</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">bool</span><span class="p">)</span> <span class="o">*</span> <span class="n">file_num</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">file_num</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">fscanf</span><span class="p">(</span><span class="n">fp_array</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">first_data</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">file_num</span> <span class="o">&amp;&amp;</span> <span class="n">finish</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
+            <span class="n">index</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">index</span> <span class="o">&gt;=</span><span class="n">file_name</span><span class="p">)</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">min_data</span> <span class="o">=</span> <span class="n">first_data</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">file_name</span><span class="p">,</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">min_data</span> <span class="o">&gt;</span> <span class="n">first_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">finish</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+            <span class="p">{</span>
+                <span class="n">min_data</span> <span class="o">=</span> <span class="n">first_data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">fp_out_file</span> <span class="p">,</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="n">min_data</span><span class="p">);</span>  <span class="c1">//将最小的输出
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">fscanf</span><span class="p">(</span><span class="n">fp_array</span><span class="p">[</span><span class="n">index</span><span class="p">],</span><span class="s">&#34;%d &#34;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">first_data</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="o">==</span> <span class="n">EOF</span><span class="p">)</span> <span class="c1">//根据index，找到该文件的下一个数，放入到first_data中。如果这个文件已经读取到结尾，则将标志置为true。
+</span><span class="c1"></span>            <span class="n">finish</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">fclose</span><span class="p">(</span><span class="n">fp_out_file</span><span class="p">);</span>
+    <span class="k">delete</span> <span class="p">[]</span><span class="n">finish</span><span class="p">;</span>
+    <span class="k">delete</span><span class="p">[]</span><span class="n">first_data</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">file_num</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">fp_array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="k">delete</span><span class="p">[]</span> <span class="n">fp_array</span><span class="p">;</span>
+
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">clock_t</span> <span class="n">start</span> <span class="o">=</span> <span class="n">clock</span><span class="p">();</span>
+    <span class="kt">int</span> <span class="n">aux_file_num</span> <span class="o">=</span> <span class="n">memory_sort</span><span class="p">();</span>
+    <span class="n">clock_t</span> <span class="n">memory_end</span> <span class="o">=</span> <span class="n">clock</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;time need in memory sort&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">memory_end</span><span class="o">-</span><span class="n">start</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">merge_sort</span><span class="p">(</span><span class="n">aux_file_num</span><span class="p">);</span>
+    <span class="n">clock_t</span> <span class="n">end</span> <span class="o">=</span> <span class="n">clock</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;the time need in merge sort&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">end</span> <span class="o">-</span> <span class="n">memory_end</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>qsort()用法</p>
+<p>int cmp(const void* a,const void * b);
+void qsort(char *,int n,int m,cmp);
+包含在stdlib.h中，函数四个参数，
+参与排序的数组，元素个数，单个元素到小(sizeof),比较函数。
+再说比较函数，返回正数，a要放在b后面，返回负数，a要放在b前面，返回0，相等。</p>
+<p>解决问题的关键是在于熟悉一个算法，而不是某一问题，</p>
+<h4 id="3通过这个问题我们学到了两种方法">3、通过这个问题，我们学到了两种方法：</h4>
+<blockquote>
+<p>一种：<strong>位图法</strong>。 针对与不重复数据排序，进行数据的快速查找，判重，删除。</p>
+<p>二中：<strong>多路归并</strong>。 海量数据，内存有限的情况下。</p>
+</blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-10-15</span>
+                <span>更新于 2021-10-18</span>
             </div>
             <div class="post-info-license"></div>
         </div>

@@ -4,9 +4,19 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 15 Oct 2021 22:10:43 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 Oct 2021 13:27:58 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Mysql索引笔记</title>
+    <link>https://kkkpjskey.github.io/mysql-index-note/</link>
+    <pubDate>Tue, 19 Oct 2021 13:27:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mysql-index-note/</guid>
+    <description><![CDATA[B+ 树的优缺点 优点 单次请求涉及的磁盘IO次数少（出度d大，且非叶子节点不包含表数据，树的高度小）； 查询效率稳定（任何关键字的查询必须走从根结点]]></description>
+</item><item>
+    <title>Redis缓存机制与应用</title>
+    <link>https://kkkpjskey.github.io/redis-note/</link>
+    <pubDate>Mon, 18 Oct 2021 11:55:34 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/redis-note/</guid>
+    <description><![CDATA[Redis是目前最为主流的缓存技术之一，Redis基于内存操作从而拥有强大的性能，可以达到每秒10万次的请求，可以说是一款非常强大的缓存技术]]></description>
+</item><item>
     <title>concat以及group_concat的用法</title>
     <link>https://kkkpjskey.github.io/mysql-note/</link>
     <pubDate>Fri, 15 Oct 2021 22:10:43 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mysql-note/</guid>
@@ -46,15 +56,5 @@
     <link>https://kkkpjskey.github.io/java-integer-equal-note/</link>
     <pubDate>Fri, 15 Oct 2021 14:29:41 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-integer-equal-note/</guid>
     <description><![CDATA[介绍 Integer 不同大小和不同创建方式equal和等于后产生了不同的结果 代码 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37]]></description>
-</item><item>
-    <title>Linux指令操作笔记</title>
-    <link>https://kkkpjskey.github.io/linux-cmd-note/</link>
-    <pubDate>Fri, 15 Oct 2021 14:13:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/linux-cmd-note/</guid>
-    <description><![CDATA[使用grep筛选多个条件 1.grep 同时满足多个关键字和满足任意关键字 1 2 #① grep -E &#34;word1|word2|word3&#34; file.txt 2.满足任意条件（word1、word2和word3之一）将匹配]]></description>
-</item><item>
-    <title>Css笔记</title>
-    <link>https://kkkpjskey.github.io/css-note/</link>
-    <pubDate>Fri, 15 Oct 2021 14:05:42 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/css-note/</guid>
-    <description><![CDATA[div布局根据内容自适应宽度 1 2 3 display:inline-block; *display:inline; *zoom:1;]]></description>
 </item></channel>
 </rss>
