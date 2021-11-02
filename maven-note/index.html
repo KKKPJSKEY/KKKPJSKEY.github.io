@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/maven-note\/featured-image.jpg",
                             "width":  2430 ,
                             "height":  729 
-                        }],"genre": "posts","keywords": "Package, Maven","wordcount":  800 ,
+                        }],"genre": "posts","keywords": "Package, Maven","wordcount":  2270 ,
         "url": "https:\/\/kkkpjskey.github.io\/maven-note\/","datePublished": "2021-08-31T15:39:58+08:00","dateModified": "2021-08-31T15:39:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Maven笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-31">2021-08-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 800 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/maven-note/" class="leancloud_visitors" data-flag-title="Maven笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-31">2021-08-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2270 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/maven-note/" class="leancloud_visitors" data-flag-title="Maven笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -138,6 +138,22 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#transitive-dependenciesmaven依赖可传递性">Transitive Dependencies（Maven依赖可传递性）</a></li>
+    <li><a href="#maven的六类属性projectbasedirprojectbuilddirectory">Maven的六类属性，${project.basedir}，${project.build.directory}</a>
+      <ul>
+        <li><a href="#内置属性">内置属性</a></li>
+        <li><a href="#pom属性">POM属性</a></li>
+        <li><a href="#自定义属性">自定义属性</a></li>
+        <li><a href="#settings属性">Settings属性</a></li>
+        <li><a href="#java系统属性">Java系统属性</a></li>
+        <li><a href="#环境变量属性">环境变量属性</a></li>
+        <li><a href="#在依赖中-使用pom变量">在依赖中 使用pom变量</a></li>
+        <li><a href="#在插件中使用pom变量">在插件中使用pom变量</a></li>
+        <li><a href="#自定义变量">自定义变量</a></li>
+      </ul>
+    </li>
+    <li><a href="#resource元素的作用">resource元素的作用</a></li>
+    <li><a href="#子工程获取父工程路径">子工程获取父工程路径</a></li>
+    <li><a href="#打包过程排除文件夹">打包过程排除文件夹</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="transitive-dependenciesmaven依赖可传递性">Transitive Dependencies（Maven依赖可传递性）</h2>
@@ -214,6 +230,196 @@
 <p>For example, assume that your project A specifies a dependency on another project B, and project B specifies a dependency on project C. If you are directly using components in project C, and you don&rsquo;t specify project C in your project A, it may cause build failure when project B suddenly updates/removes its dependency on project C.</p>
 <p>Another reason to directly specify dependencies is that it provides better documentation for your project: one can learn more information by just reading the POM file in your project, or by executing <strong>mvn dependency:tree</strong>.</p>
 <p>Maven also provides <a href="https://maven.apache.org/plugins/maven-dependency-plugin/analyze-mojo.html" target="_blank" rel="noopener noreferrer">dependency:analyze</a> plugin goal for analyzing the dependencies: it helps making this best practice more achievable.</p>
+<h2 id="maven的六类属性projectbasedirprojectbuilddirectory">Maven的六类属性，${project.basedir}，${project.build.directory}</h2>
+<h3 id="内置属性">内置属性</h3>
+<p>主要有两个常用内置属性：<em>basedir</em>项目的根目录(包含<em>pom.xml</em>文件的目录)，{<em>version</em>}项目版本</p>
+<h3 id="pom属性">POM属性</h3>
+<p>用户可以使用该属性引用POM文件中对应元素的值，常用的POM属性包括：</p>
+<p>${project.build.sourceDirectory}：项目的主源码目录，默认为 src/main/java</p>
+<p>${project.build.testSourceDirectory}：项目的测试源码目录，默认为 src/test/java</p>
+<p>${project.build.directory}：项目构件输出目录，默认为 target/</p>
+<p>${project.outputDirectory}：项目主代码编译输出目录，默认为 target/classes/</p>
+<p>${project.testOutputDirectory}：项目测试代码编译输出目录，默认为 target/test-classes/</p>
+<p>${project.groupId}：项目的 groupId</p>
+<p>${project.artifactId}：项目的 artifactId</p>
+<p><em>project.version：<em>项目的</em>version</em>，与{<em>version</em>}等价</p>
+<p>*project.build.fianlName：*项目打包输出文件的名称。默认为{<em>project.artifactId</em>}-${<em>project.version</em>}</p>
+<h3 id="自定义属性">自定义属性</h3>
+<p>用户可以在POM的元素下自定义Maven属性</p>
+<h3 id="settings属性">Settings属性</h3>
+<p>用户使用settings.开头的属性引用 settings.xml 文件中XML元素的值</p>
+<h3 id="java系统属性">Java系统属性</h3>
+<p>所有Java系统属性都可以使用Maven属性引用</p>
+<h3 id="环境变量属性">环境变量属性</h3>
+<p>所有环境变量都可以使用以env.开头的Maven属性引用</p>
+<h3 id="在依赖中-使用pom变量">在依赖中 使用pom变量</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>${project.groupId}<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>part-a<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>${project.version}<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>${project.groupId}<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>part-b<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>${project-version}<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+123456789101112
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="在插件中使用pom变量">在插件中使用pom变量</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-surefire-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.5<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;repositoryDirectory&gt;</span>${project.build.directory}/test-reports<span class="nt">&lt;/repositoryDirectory&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+12345678
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="自定义变量">自定义变量</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"> <span class="nt">&lt;properties&gt;</span>
+     <span class="nt">&lt;db.driver&gt;</span>com.mysql.jdbc.Driver<span class="nt">&lt;/db.driver&gt;</span>
+     <span class="nt">&lt;db.url&gt;</span>jdbc:mysql://localhost:3360/test<span class="nt">&lt;/db.url&gt;</span>
+     <span class="nt">&lt;db.username&gt;</span>username<span class="nt">&lt;/db.username&gt;</span>
+     <span class="nt">&lt;db.password&gt;</span>password&gt;<span class="nt">&lt;/db.password&gt;</span>
+ <span class="nt">&lt;/properties&gt;</span>
+<span class="nt">&lt;/profiles&gt;</span>
+1234567
+</code></pre></td></tr></table>
+</div>
+</div><p>Maven属性默认只有在POM中才会被解析，因此需要让Maven解析资源文件中的Maven属性。Maven用maven-resources-plugin处理资源文件。它默认的行为只是将项目主资源文件复制到主代码编译输出目录中，将测试资源文件复制到测试代码编译输出目录中。</p>
+<p>Maven默认的主资源目录和测试资源目录的定义是在超级POM中，要为资源目录开启过滤，只要在此基础上添加一行filtering配置即可。</p>
+<p>Filtering是maven resource插件的功能，作用是用环境变量，pom文件里定义的属性和指定文件里的属性替换属性文件的占位符。（超级pom在 apache-maven-3.3.9\lib\maven-model-builder-3.3.9.jar\org\apache\maven\model\pom-4.0.0.xml）</p>
+<h2 id="resource元素的作用">resource元素的作用</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMaven-Note%5c1.jpg"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMaven-Note%5c1.jpg, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMaven-Note%5c1.jpg 1.5x, C:%5cProgram_Green%5chugo_extended_0.82.0_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMaven-Note%5c1.jpg 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_0.82.0_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Maven-Note\1.jpg"
+        title="1" /></p>
+<h2 id="子工程获取父工程路径">子工程获取父工程路径</h2>
+<p>尝试在每个pom中设置属性以查找主项目目录。 在父级：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;main.basedir&gt;</span>${project.basedir}<span class="nt">&lt;/main.basedir&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在子元素们身上：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;main.basedir&gt;</span>${project.parent.basedir}<span class="nt">&lt;/main.basedir&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在孙辈中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;main.basedir&gt;</span>${project.parent.parent.basedir}<span class="nt">&lt;/main.basedir&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意</strong></p>
+<p>由于maven插件的生命周期原因，传递给子模块basedir属性为子模块属性，类似懒加载，传递至子目录才读取值，故需要添加parent，且忽略编译异常。此属性禁止在父POM工程中使用，仅允许传递给子模块使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;jar.target&gt;</span>D:/tmp/target<span class="nt">&lt;/jar.target&gt;</span>
+<span class="c">&lt;!--suppress UnresolvedMavenProperty --&gt;</span>
+<span class="nt">&lt;jar.target&gt;</span>${project.parent.basedir}/target/<span class="nt">&lt;/jar.parent.target&gt;</span>
+<span class="c">&lt;!--suppress UnresolvedMavenProperty --&gt;</span>
+<span class="nt">&lt;jar.target1&gt;</span>${project.parent.parent.basedir}/target/<span class="nt">&lt;/jar.parent2.target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在<a href="https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/#%E6%89%93%E5%8C%85%E6%AD%A5%E9%AA%A4" target="_blank" rel="noopener noreferrer">这篇文章</a>中有详细的例子</p>
+<p>其他方式方法未验证，<a href="https://oomake.com/question/177442" target="_blank" rel="noopener noreferrer">中文参考</a>，<a href="https://stackoverflow.com/questions/1012402/maven2-property-that-indicates-the-parent-directory" target="_blank" rel="noopener noreferrer">英文参考</a></p>
+<h2 id="打包过程排除文件夹">打包过程排除文件夹</h2>
+<p>排除的文件夹位置<code>src/main/dml</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;excludes&gt;</span>
+    <span class="nt">&lt;exclude&gt;</span>dml/**<span class="nt">&lt;/exclude&gt;</span>
+<span class="nt">&lt;/excludes&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>**注意：**避免使用<code>&lt;exclude&gt;src/main/dml/**&lt;/exclude&gt;</code>会导致找不到</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

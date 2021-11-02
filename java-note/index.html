@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-25T12:33:19&#43;08:00" />
-<meta property="article:modified_time" content="2021-10-14T22:37:55&#43;08:00" />
+<meta property="article:modified_time" content="2021-11-02T16:10:18&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  12668 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-10-14T22:37:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  13612 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-11-02T16:10:18+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 12668 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 26 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 13612 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 28 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -211,6 +211,13 @@
             <li><a href="#cprop加载配置">cprop加载配置</a></li>
           </ul>
         </li>
+      </ul>
+    </li>
+    <li><a href="#java--djavaextdirs启动的坑">Java -Djava.ext.dirs启动的坑</a></li>
+    <li><a href="#java以jar包形式启动启动">java以jar包形式启动启动</a>
+      <ul>
+        <li><a href="#-djavaextdirslib的作用">-Djava.ext.dirs=lib的作用</a></li>
+        <li><a href="#下面来说说-djavaextdirs的坑">下面来说说-Djava.ext.dirs的坑</a></li>
       </ul>
     </li>
     <li><a href="#java8函数作为参数">Java8函数作为参数</a></li>
@@ -1986,6 +1993,42 @@ ENV variables</p>
 <p>ENV variables lack structure. The only way to mimic the structure is via use of an underscore character. The _ is converted to - by cprop, so instead, to identify nesting, two underscores can be used.</p>
 </blockquote>
 <p>了解更多详情，请阅读<a href="https://github.com/tolitius/cprop#speaking-env-variables" target="_blank" rel="noopener noreferrer">cprop介绍</a></p>
+<h2 id="java--djavaextdirs启动的坑">Java -Djava.ext.dirs启动的坑</h2>
+<h2 id="java以jar包形式启动启动">java以jar包形式启动启动</h2>
+<h3 id="-djavaextdirslib的作用">-Djava.ext.dirs=lib的作用</h3>
+<p>以bat形式启动项目，linux环境需要改变语法</p>
+<hr>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">java -Djava.ext.dirs<span class="o">=</span>d:<span class="se">\l</span>ibs -classpath classes com.xxxclass
+</code></pre></td></tr></table>
+</div>
+</div><p>或者
+设置环境变量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">set</span> <span class="nv">lib</span> <span class="o">=</span> d:<span class="se">\l</span>ibs
+java -Djava.ext.dirs<span class="o">=</span>%lib% -classpath classes com.xxxclass
+</code></pre></td></tr></table>
+</div>
+</div><p>java命令引入jar时可以-cp参数，但-cp只能指定一个固定jar包，不能用通配符(多个jar时要一个个写,不能*.jar)，通常情况jar都在同一目录，且多于1个。可以使用-Djava.ext.dirs。</p>
+<hr>
+<h3 id="下面来说说-djavaextdirs的坑">下面来说说-Djava.ext.dirs的坑</h3>
+<p><strong>-Djava.ext.dirs</strong>是通过设置系统属性的方式也加载jar包的，这个级别就有点高，和-classpath的区别在于-Djava.ext.dirs会覆盖Java本身的ext设置，java.ext.dirs指定的目录由ExtClassLoader加载器加载，如果您的程序没有指定该系统属性（-Djava.ext.dirs=d:\libs）那么该加载器默认加载$JAVA_HOME/lib/ext目录下的所有jar文件。但如果你手动指定系统属性且忘了把$JAVA_HOME/lib/ext路径给加上，那么ExtClassLoader不会去加载$JAVA_HOME/lib/ext下面的jar文件，这意味着你将失去一些功能，例如java自带的加解密算法实现。</p>
+<p>具体说是jre的ext目录：C:\Program Files\Java\jdk1.8.0_45。一般情况下普通程序运行并无差异，因为可以看到ext目录下也就几个jar，但是如果使用java.security相关类时，也就是使用加密解决相关的算法，就会发现-Djava.ext.dirs会导致library找不到相关类而报错。如报错：</p>
+<p><strong>NoSuchAlgorithmException: Cannot find any provider supporting RSA</strong></p>
+<p>这个错误当然也有可能是security\java.security文件中配置错误引起 。</p>
+<p>当然也有解决方法：</p>
+<p>1、将ext下相关jar包复制到新的ext director。</p>
+<p>2、在-D.java.ext.dirs中配置多个目录。可以使用冒号分隔（windows下使用分号）。</p>
+<p>比如：-Djava.ext.dirs=-Djava.ext.dirs=&ldquo;libs;%JAVA_HOME%\jre\lib\ext&rdquo;。</p>
 <h2 id="java8函数作为参数">Java8函数作为参数</h2>
 <p>创建Function有多种方式</p>
 <div class="highlight"><div class="chroma">
@@ -2043,7 +2086,7 @@ ENV variables</p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-10-14</span>
+                <span>更新于 2021-11-02</span>
             </div>
             <div class="post-info-license"></div>
         </div>

@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>SpringCloud/SpringBoot分离依赖打包 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录SpringCloud/SpringBoot分离依赖打包的笔记"><meta property="og:title" content="SpringCloud/SpringBoot分离依赖打包" />
+<meta property="og:description" content="记录SpringCloud/SpringBoot分离依赖打包的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-26T17:48:59&#43;08:00" />
+<meta property="article:modified_time" content="2021-10-26T17:48:59&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/featured-image.jpg"/>
+<meta name="twitter:title" content="SpringCloud/SpringBoot分离依赖打包"/>
+<meta name="twitter:description" content="记录SpringCloud/SpringBoot分离依赖打包的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/" /><link rel="prev" href="https://kkkpjskey.github.io/maven-dep-note/" /><link rel="next" href="https://kkkpjskey.github.io/maven-jar-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SpringCloud/SpringBoot分离依赖打包",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/springserver-maven-exclude-lib-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/springserver-maven-exclude-lib-note\/featured-image.jpg",
+                            "width":  2397 ,
+                            "height":  589 
+                        }],"genre": "posts","keywords": "Maven, SpringCloud, SpringBoot","wordcount":  5782 ,
+        "url": "https:\/\/kkkpjskey.github.io\/springserver-maven-exclude-lib-note\/","datePublished": "2021-10-26T17:48:59+08:00","dateModified": "2021-10-26T17:48:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录SpringCloud/SpringBoot分离依赖打包的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/springserver-maven-exclude-lib-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/springserver-maven-exclude-lib-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">SpringCloud/SpringBoot分离依赖打包</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-26">2021-10-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5782 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/springserver-maven-exclude-lib-note/" class="leancloud_visitors" data-flag-title="SpringCloud/SpringBoot分离依赖打包">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/springserver-maven-exclude-lib-note/featured-image.jpg"
+        data-srcset="/springserver-maven-exclude-lib-note/featured-image.jpg, /springserver-maven-exclude-lib-note/featured-image.jpg 1.5x, /springserver-maven-exclude-lib-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/springserver-maven-exclude-lib-note/featured-image.jpg"
+        title="记录SpringCloud/SpringBoot分离依赖打包的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#需求">需求</a></li>
+    <li><a href="#打包步骤">打包步骤</a></li>
+    <li><a href="#启动指令">启动指令</a></li>
+    <li><a href="#一些说明">一些说明</a></li>
+    <li><a href="#未验证知识">未验证知识</a>
+      <ul>
+        <li><a href="#将项目resources下的文件复制到config下将bin下的启动脚本复制到打包目录可根据自己的需求修改">将项目resources下的文件，复制到config下。将bin下的启动脚本复制到打包目录，可根据自己的需求修改。</a></li>
+        <li><a href="#配置清理插件每次打包前清理之前生成的打包目录">配置清理插件，每次打包前，清理之前生成的打包目录。</a></li>
+        <li><a href="#跳过测试">跳过测试</a></li>
+        <li><a href="#其它说明">其它说明</a></li>
+        <li><a href="#启动时省略-dloaderpath">启动时省略<code>-Dloader.path</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="需求">需求</h2>
+<p>由于公司Gitlab服务器和部署服务器之间似乎无法内网访问，找了IT部门好几次没有什么结果。但是紧急的需求增加或者变更需要使用公司提供连接方式手动上传jar包，一个jar包有个几十到几百M不等，重新部署一次各个微服务需要很久时间。于是项目组下定决心搭一下CI/CD，我由于学校有事情，就远程完成开发。技术组长就将这个不是那么着急的事情给我了，并提了一个开头的需求，及分离jar包中的依赖部分。因为依赖部分所占内存很大，并且更新并不会很频繁，于是打算“懒更新”。</p>
+<p>说做就做，技术组长提供的技术参考是Maven下的assembly插件，于是开始学习插件。</p>
+<h2 id="打包步骤">打包步骤</h2>
+<p>完事开头难，其实也还行。查阅相关资料，网上关于SpringCloud和assembly二者的笔记寥寥无几。于是转战单独assembly插件研究和SpringBoot和assembly插件组合的研究，毕竟每个微服务其实还是SpringBoot。跟据相关的笔记自己创建了一个SpringBoot项目进行测试(<a href="http://maven.apache.org/plugins/maven-assembly-plugin/assembly.html" target="_blank" rel="noopener noreferrer">Assembly官方文档</a>)</p>
+<p>Pom</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugins&gt;</span>
+    <span class="c">&lt;!--            &lt;plugin&gt;--&gt;</span>
+    <span class="c">&lt;!--                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;--&gt;</span>
+    <span class="c">&lt;!--                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;--&gt;</span>
+    <span class="c">&lt;!--            &lt;/plugin&gt;--&gt;</span>
+    <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;configuration&gt;</span>
+            <span class="nt">&lt;archive&gt;</span>
+                <span class="nt">&lt;manifest&gt;</span>
+                    <span class="c">&lt;!-- 项目启动类，这里需要替换成启动类 --&gt;</span>
+                    <span class="nt">&lt;mainClass&gt;</span>cn.edu.hubu.lhy.assembly_test.AssemblyTestApplication<span class="nt">&lt;/mainClass&gt;</span>
+                    <span class="c">&lt;!-- 依赖的jar的目录前缀 --&gt;</span>
+                    <span class="nt">&lt;classpathPrefix&gt;</span>../lib<span class="nt">&lt;/classpathPrefix&gt;</span>
+                    <span class="nt">&lt;addClasspath&gt;</span>true<span class="nt">&lt;/addClasspath&gt;</span>
+                <span class="nt">&lt;/manifest&gt;</span>
+            <span class="nt">&lt;/archive&gt;</span>
+            <span class="nt">&lt;excludes&gt;</span>
+                <span class="nt">&lt;exclude&gt;</span>assembly.xml<span class="nt">&lt;/exclude&gt;</span>
+                <span class="nt">&lt;exclude&gt;</span>application.properties<span class="nt">&lt;/exclude&gt;</span>
+                <span class="nt">&lt;exclude&gt;</span>application.yml<span class="nt">&lt;/exclude&gt;</span>
+            <span class="nt">&lt;/excludes&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+    <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;configuration&gt;</span>
+            <span class="nt">&lt;appendAssemblyId&gt;</span>true<span class="nt">&lt;/appendAssemblyId&gt;</span>
+            <span class="nt">&lt;descriptors&gt;</span>
+                <span class="nt">&lt;descriptor&gt;</span>src/main/resources/assembly.xml<span class="nt">&lt;/descriptor&gt;</span>
+            <span class="nt">&lt;/descriptors&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;executions&gt;</span>
+            <span class="c">&lt;!-- 配置执行器 --&gt;</span>
+            <span class="nt">&lt;execution&gt;</span>
+                <span class="nt">&lt;id&gt;</span>make-assembly<span class="nt">&lt;/id&gt;</span>
+                <span class="c">&lt;!-- 绑定到 package 生命周期阶段上 --&gt;</span>
+                <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+                <span class="nt">&lt;goals&gt;</span>
+                    <span class="c">&lt;!-- 只运行一次 --&gt;</span>
+                    <span class="nt">&lt;goal&gt;</span>single<span class="nt">&lt;/goal&gt;</span>
+                <span class="nt">&lt;/goals&gt;</span>
+                <span class="nt">&lt;configuration&gt;</span>
+                    <span class="nt">&lt;finalName&gt;</span>skywalking<span class="nt">&lt;/finalName&gt;</span>
+                    <span class="nt">&lt;descriptors&gt;</span>
+                        <span class="c">&lt;!-- 配置描述文件路径 --&gt;</span>
+                        <span class="nt">&lt;descriptor&gt;</span>src/main/resources/assembly.xml<span class="nt">&lt;/descriptor&gt;</span>
+                    <span class="nt">&lt;/descriptors&gt;</span>
+                <span class="nt">&lt;/configuration&gt;</span>
+            <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;/executions&gt;</span>
+    <span class="nt">&lt;/plugin&gt;</span>
+<span class="nt">&lt;/plugins&gt;</span>
+<span class="c">&lt;!-- 以下是多环境中的配置 --&gt;</span>
+<span class="nt">&lt;profiles&gt;</span>
+    <span class="nt">&lt;profile&gt;</span>
+        <span class="nt">&lt;id&gt;</span>local<span class="nt">&lt;/id&gt;</span>
+        <span class="nt">&lt;properties&gt;</span>
+            <span class="nt">&lt;env&gt;</span>local<span class="nt">&lt;/env&gt;</span>
+        <span class="nt">&lt;/properties&gt;</span>
+        <span class="c">&lt;!-- 如果不指定ID，默认是本地环境--&gt;</span>
+        <span class="nt">&lt;activation&gt;</span>
+            <span class="nt">&lt;activeByDefault&gt;</span>true<span class="nt">&lt;/activeByDefault&gt;</span>
+        <span class="nt">&lt;/activation&gt;</span>
+    <span class="nt">&lt;/profile&gt;</span>
+    <span class="nt">&lt;profile&gt;</span>
+        <span class="nt">&lt;id&gt;</span>test<span class="nt">&lt;/id&gt;</span>
+        <span class="nt">&lt;properties&gt;</span>
+            <span class="nt">&lt;env&gt;</span>test<span class="nt">&lt;/env&gt;</span>
+        <span class="nt">&lt;/properties&gt;</span>
+    <span class="nt">&lt;/profile&gt;</span>
+    <span class="nt">&lt;profile&gt;</span>
+        <span class="nt">&lt;id&gt;</span>product<span class="nt">&lt;/id&gt;</span>
+        <span class="nt">&lt;properties&gt;</span>
+            <span class="nt">&lt;env&gt;</span>product<span class="nt">&lt;/env&gt;</span>
+        <span class="nt">&lt;/properties&gt;</span>
+    <span class="nt">&lt;/profile&gt;</span>
+<span class="nt">&lt;/profiles&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>assembly配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;assembly&gt;</span>
+    <span class="c">&lt;!-- 可自定义--&gt;</span>
+    <span class="nt">&lt;id&gt;</span>assembly-${project.version}<span class="nt">&lt;/id&gt;</span>
+
+    <span class="c">&lt;!-- 打包的类型，如果有N个，将会打N个类型的包 --&gt;</span>
+    <span class="nt">&lt;formats&gt;</span>
+        <span class="nt">&lt;format&gt;</span>zip<span class="nt">&lt;/format&gt;</span>
+        <span class="c">&lt;!-- &lt;format&gt;tar.gz&lt;/format&gt; --&gt;</span>
+    <span class="nt">&lt;/formats&gt;</span>
+    <span class="c">&lt;!-- tar.gz 压缩包下是否生成和项目名相同的根目录，有需要请设置成 true --&gt;</span>
+    <span class="nt">&lt;includeBaseDirectory&gt;</span>false<span class="nt">&lt;/includeBaseDirectory&gt;</span>
+    <span class="c">&lt;!-- 将依赖jar打包到lib文件夹中 --&gt;</span>
+    <span class="nt">&lt;dependencySets&gt;</span>
+        <span class="nt">&lt;dependencySet&gt;</span>
+            <span class="c">&lt;!-- 是否把本项目添加到依赖文件夹下，有需要请设置成 true --&gt;</span>
+            <span class="nt">&lt;useProjectArtifact&gt;</span>false<span class="nt">&lt;/useProjectArtifact&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>lib<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="c">&lt;!-- 将 scope 为 runtime 的依赖包打包 --&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
+            <span class="nt">&lt;excludes&gt;</span>
+                <span class="nt">&lt;exclude&gt;</span>${groupId}:${artifactId}<span class="nt">&lt;/exclude&gt;</span>
+            <span class="nt">&lt;/excludes&gt;</span>
+        <span class="nt">&lt;/dependencySet&gt;</span>
+        <span class="c">&lt;!--        也可以配置在下面--&gt;</span>
+        <span class="c">&lt;!--        &lt;fileSets&gt;--&gt;</span>
+        <span class="c">&lt;!--            &lt;fileSet&gt;--&gt;</span>
+        <span class="c">&lt;!--                &amp;lt;!&amp;ndash; 设置需要打包的文件路径 &amp;ndash;&amp;gt;--&gt;</span>
+        <span class="c">&lt;!--                &lt;directory&gt;agent&lt;/directory&gt;--&gt;</span>
+        <span class="c">&lt;!--                &amp;lt;!&amp;ndash; 打包后的输出路径 &amp;ndash;&amp;gt;--&gt;</span>
+        <span class="c">&lt;!--                &lt;outputDirectory&gt;&lt;/outputDirectory&gt;--&gt;</span>
+        <span class="c">&lt;!--            &lt;/fileSet&gt;--&gt;</span>
+        <span class="c">&lt;!--        &lt;/fileSets&gt;--&gt;</span>
+    <span class="nt">&lt;/dependencySets&gt;</span>
+
+    <span class="nt">&lt;fileSets&gt;</span>
+        <span class="c">&lt;!-- 0755-&gt;即用户具有读/写/执行权限，组用户和其它用户具有读写权限； 0644-&gt;即用户具有读写权限，组用户和其它用户具有只读权限； --&gt;</span>
+        <span class="c">&lt;!-- 将src/bin目录下的所有文件输出到打包后的bin目录中 --&gt;</span>
+        <span class="nt">&lt;fileSet&gt;</span>
+            <span class="nt">&lt;directory&gt;</span>${basedir}/bin<span class="nt">&lt;/directory&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>bin<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="nt">&lt;fileMode&gt;</span>0755<span class="nt">&lt;/fileMode&gt;</span>
+            <span class="nt">&lt;includes&gt;</span>
+                <span class="nt">&lt;include&gt;</span>**.sh<span class="nt">&lt;/include&gt;</span>
+                <span class="nt">&lt;include&gt;</span>**.bat<span class="nt">&lt;/include&gt;</span>
+            <span class="nt">&lt;/includes&gt;</span>
+        <span class="nt">&lt;/fileSet&gt;</span>
+
+        <span class="c">&lt;!-- 指定输出target/classes中的配置文件到config目录中 --&gt;</span>
+        <span class="nt">&lt;fileSet&gt;</span>
+            <span class="nt">&lt;directory&gt;</span>${basedir}/target/classes<span class="nt">&lt;/directory&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>bin<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="nt">&lt;fileMode&gt;</span>0644<span class="nt">&lt;/fileMode&gt;</span>
+            <span class="nt">&lt;includes&gt;</span>
+                <span class="nt">&lt;include&gt;</span>application.properties<span class="nt">&lt;/include&gt;</span>
+                <span class="nt">&lt;include&gt;</span>application.yml<span class="nt">&lt;/include&gt;</span>
+            <span class="nt">&lt;/includes&gt;</span>
+        <span class="nt">&lt;/fileSet&gt;</span>
+
+        <span class="c">&lt;!-- 将第三方依赖打包到lib目录中 --&gt;</span>
+        <span class="nt">&lt;fileSet&gt;</span>
+            <span class="nt">&lt;directory&gt;</span>${basedir}/target/lib<span class="nt">&lt;/directory&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>lib<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="nt">&lt;fileMode&gt;</span>0755<span class="nt">&lt;/fileMode&gt;</span>
+        <span class="nt">&lt;/fileSet&gt;</span>
+
+        <span class="c">&lt;!-- 将项目启动jar打包到bin目录中 --&gt;</span>
+        <span class="nt">&lt;fileSet&gt;</span>
+            <span class="nt">&lt;directory&gt;</span>${basedir}/target<span class="nt">&lt;/directory&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>bin<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="nt">&lt;fileMode&gt;</span>0755<span class="nt">&lt;/fileMode&gt;</span>
+            <span class="nt">&lt;includes&gt;</span>
+                <span class="nt">&lt;include&gt;</span>${project.build.finalName}.jar<span class="nt">&lt;/include&gt;</span>
+            <span class="nt">&lt;/includes&gt;</span>
+        <span class="nt">&lt;/fileSet&gt;</span>
+
+        <span class="c">&lt;!-- 包含根目录下的文件 --&gt;</span>
+        <span class="c">&lt;!--        &lt;fileSet&gt;--&gt;</span>
+        <span class="c">&lt;!--            &lt;directory&gt;${basedir}&lt;/directory&gt;--&gt;</span>
+        <span class="c">&lt;!--            &lt;includes&gt;--&gt;</span>
+        <span class="c">&lt;!--                &lt;include&gt;NOTICE&lt;/include&gt;--&gt;</span>
+        <span class="c">&lt;!--                &lt;include&gt;LICENSE&lt;/include&gt;--&gt;</span>
+        <span class="c">&lt;!--                &lt;include&gt;*.md&lt;/include&gt;--&gt;</span>
+        <span class="c">&lt;!--            &lt;/includes&gt;--&gt;</span>
+        <span class="c">&lt;!--        &lt;/fileSet&gt;--&gt;</span>
+        <span class="c">&lt;!-- 以下是多环境中的配置 --&gt;</span>
+        <span class="c">&lt;!--需要包含的文件与输出的路径--&gt;</span>
+        <span class="nt">&lt;fileSet&gt;</span>
+            <span class="nt">&lt;directory&gt;</span>src/main/bin<span class="nt">&lt;/directory&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>bin/<span class="nt">&lt;/outputDirectory&gt;</span>
+        <span class="nt">&lt;/fileSet&gt;</span>
+        <span class="nt">&lt;fileSet&gt;</span>
+            <span class="nt">&lt;directory&gt;</span>src/main/resources<span class="nt">&lt;/directory&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>/<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="c">&lt;!-- 去除需要多环境配置的文件--&gt;</span>
+            <span class="nt">&lt;excludes&gt;</span>
+                <span class="nt">&lt;exclude&gt;</span>application.properties<span class="nt">&lt;/exclude&gt;</span>
+            <span class="nt">&lt;/excludes&gt;</span>
+        <span class="nt">&lt;/fileSet&gt;</span>
+        <span class="c">&lt;!--多环境配置--&gt;</span>
+        <span class="nt">&lt;fileSet&gt;</span>
+            <span class="c">&lt;!--${env} 可以获取打包命令里的参数--&gt;</span>
+            <span class="nt">&lt;directory&gt;</span>src/main/resources/env/${env}/<span class="nt">&lt;/directory&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>/<span class="nt">&lt;/outputDirectory&gt;</span>
+        <span class="nt">&lt;/fileSet&gt;</span>
+        <span class="nt">&lt;fileSet&gt;</span>
+            <span class="nt">&lt;directory&gt;</span>${project.build.directory}<span class="nt">&lt;/directory&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>/<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="nt">&lt;includes&gt;</span>
+                <span class="nt">&lt;include&gt;</span>*.jar<span class="nt">&lt;/include&gt;</span>
+            <span class="nt">&lt;/includes&gt;</span>
+        <span class="nt">&lt;/fileSet&gt;</span>
+    <span class="nt">&lt;/fileSets&gt;</span>
+<span class="nt">&lt;/assembly&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>跑完的结果</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.jpg"
+        data-srcset="./1.jpg, ./1.jpg 1.5x, ./1.jpg 2x"
+        data-sizes="auto"
+        alt="./1.jpg"
+        title="1" /></p>
+<p>和项目组长交流后，需求变更。。。</p>
+<p>需要将所有微服务的lib包放置到一个外部文件夹，并将jar包单独放置，个人见解，assembly是一个能将jar包各种自定义的插件，而我们的需求比较简单，并且spring-boot-maven-plugin插件可以将lib排除于是转换思路，放弃assembly插件，修改原来的spring-boot-maven-plugin为排除lib依赖，并使用maven-dependency-plugin插件将lib库重定向，就很好的解决了问题。（<a href="urlurlurlurl" rel="">spring-boot-maven-plugin这个插件的笔记点我</a>）</p>
+<p>SpringCloud父工程Pom或者SpringBoot同一个Pom:</p>
+<p>上面可以指定输出路径，指定的好处是多个微服务、多个插件都可以使用</p>
+<p>下面是使用<code>${project.parent.basedir}</code>属性获得父目录路径，最终打包在项目根目录的target中。但是由于maven插件的生命周期原因，传递给子模块basedir属性为子模块属性，类似懒加载，传递至子目录才读取值，故需要添加parent，且忽略编译异常。此属性禁止在父POM工程中使用，仅允许传递给子模块使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;jar.target&gt;</span>D:/tmp/target<span class="nt">&lt;/jar.target&gt;</span>
+
+<span class="c">&lt;!--suppress UnresolvedMavenProperty --&gt;</span>
+<span class="nt">&lt;jar.target&gt;</span>${project.parent.basedir}/target/<span class="nt">&lt;/jar.parent.target&gt;</span>
+<span class="c">&lt;!--suppress UnresolvedMavenProperty --&gt;</span>
+<span class="nt">&lt;jar.target1&gt;</span>${project.parent.parent.basedir}/target/<span class="nt">&lt;/jar.parent2.target&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>子工程Pom:</p>
+<p>打可直接运行的Jar包</p>
+<blockquote>
+<p>spring boot repackage，依赖 maven-jar-plugin 打包的jar包 重新打包成 spring boot 的jar包</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"> <span class="nt">&lt;plugin&gt;</span>
+     <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+     <span class="nt">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+     <span class="nt">&lt;configuration&gt;</span>
+         <span class="nt">&lt;executable&gt;</span>true<span class="nt">&lt;/executable&gt;</span>
+         <span class="c">&lt;!-- 指定项目启动类 --&gt;</span>
+         <span class="nt">&lt;mainClass&gt;</span>cn.edu.hubu.lhy.assembly_test.AssemblyTestApplication<span class="nt">&lt;/mainClass&gt;</span>
+         <span class="nt">&lt;layout&gt;</span>ZIP<span class="nt">&lt;/layout&gt;</span>
+         <span class="c">&lt;!--使用外部配置文件，jar包里没有资源文件--&gt;</span>
+         <span class="c">&lt;!--&lt;addResources&gt;true&lt;/addResources&gt;--&gt;</span>
+         <span class="c">&lt;!--重写包含依赖，包含不存在的依赖，jar里没有pom里的依赖--&gt;</span>
+         <span class="c">&lt;!-- 加了这个includes就可以排除第三方依赖 --&gt;</span>
+         <span class="c">&lt;!-- 也此处可以指定包含jar包 --&gt;</span>
+         <span class="nt">&lt;includes&gt;</span>
+             <span class="nt">&lt;include&gt;</span>
+                 <span class="c">&lt;!-- 可以null，也可以non-exists，或者nothing --&gt;</span>
+                 <span class="nt">&lt;groupId&gt;</span>null<span class="nt">&lt;/groupId&gt;</span>
+                 <span class="nt">&lt;artifactId&gt;</span>null<span class="nt">&lt;/artifactId&gt;</span>
+             <span class="nt">&lt;/include&gt;</span>
+         <span class="nt">&lt;/includes&gt;</span>
+         <span class="c">&lt;!--或者填写groupId、artifactId，只包含自己--&gt;</span>
+         <span class="c">&lt;!-- &lt;include&gt; --&gt;</span>
+         <span class="c">&lt;!--     &lt;groupId&gt;${groupId}&lt;/groupId&gt; --&gt;</span>
+         <span class="c">&lt;!--     &lt;artifactId&gt;${artifactId}&lt;/artifactId&gt; --&gt;</span>
+         <span class="c">&lt;!-- &lt;/include&gt; --&gt;</span>
+         <span class="c">&lt;!--不包含哪些--&gt;</span>
+         <span class="c">&lt;!--&lt;excludeGroupIds&gt;--&gt;</span>
+         <span class="c">&lt;!--com.hundsun.jrescloud,--&gt;</span>
+         <span class="c">&lt;!--org.springframework.boot,--&gt;</span>
+         <span class="c">&lt;!--org.springframework--&gt;</span>
+         <span class="c">&lt;!--&lt;/excludeGroupIds&gt;--&gt;</span>
+         <span class="c">&lt;!-- 包含根目录下的文件 --&gt;</span>
+         <span class="nt">&lt;outputDirectory&gt;</span>${jar.target}<span class="nt">&lt;/outputDirectory&gt;</span>
+     <span class="nt">&lt;/configuration&gt;</span>
+     <span class="nt">&lt;executions&gt;</span>
+         <span class="nt">&lt;execution&gt;</span>
+             <span class="c">&lt;!-- repackage的目的是将jar包重新打包为能直接运行的jar包，原来的编译连接为代码class文件的包被命名*.jar.original --&gt;</span>
+             <span class="c">&lt;!--配置jar包特殊标识 配置后，保留原文件，生成新文件 *-run.jar --&gt;</span>
+             <span class="c">&lt;!--配置jar包特殊标识 不配置，原文件命名为 *.jar.original，生成新文件 *.jar --&gt;</span>
+             <span class="c">&lt;!--&lt;classifier&gt;run&lt;/classifier&gt;--&gt;</span>
+             <span class="nt">&lt;goals&gt;</span>
+                 <span class="nt">&lt;goal&gt;</span>repackage<span class="nt">&lt;/goal&gt;</span>
+             <span class="nt">&lt;/goals&gt;</span>
+         <span class="nt">&lt;/execution&gt;</span>
+     <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>也可以用maven-jar-plugin插件替换spring-boot-maven-plugin进行打包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;resources&gt;</span>
+    <span class="c">&lt;!-- Resource Filter --&gt;</span>
+    <span class="nt">&lt;resource&gt;</span>
+        <span class="nt">&lt;directory&gt;</span>src/main/java<span class="nt">&lt;/directory&gt;</span>
+        <span class="nt">&lt;includes&gt;</span>
+            <span class="nt">&lt;include&gt;</span>**/*.xml<span class="nt">&lt;/include&gt;</span>
+        <span class="nt">&lt;/includes&gt;</span>
+    <span class="nt">&lt;/resource&gt;</span>
+    <span class="c">&lt;!--指定资源的位置--&gt;</span>
+    <span class="nt">&lt;resource&gt;</span>
+        <span class="nt">&lt;directory&gt;</span>src/main/resources<span class="nt">&lt;/directory&gt;</span>
+    <span class="nt">&lt;/resource&gt;</span>
+    <span class="c">&lt;!--无法分离的jar包如果jar包不大可以选择直接打入源码jar包--&gt;</span>
+    <span class="c">&lt;!--&lt;resource&gt;
+</span><span class="c">        &amp;lt;!&amp;ndash;jar包路径&amp;ndash;&amp;gt;
+</span><span class="c">        &lt;directory&gt;${project.basedir}/libs&lt;/directory&gt;
+</span><span class="c">        &lt;targetPath&gt;BOOT-INF/lib/&lt;/targetPath&gt;
+</span><span class="c">        &lt;includes&gt;
+</span><span class="c">            &lt;include&gt;**/*.jar&lt;/include&gt;
+</span><span class="c">        &lt;/includes&gt;
+</span><span class="c">    &lt;/resource&gt;--&gt;</span>
+<span class="nt">&lt;/resources&gt;</span>
+<span class="nt">&lt;plugins&gt;</span>
+    <span class="c">&lt;!--打包jar--&gt;</span>
+    <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;configuration&gt;</span>
+            <span class="c">&lt;!--不打包资源文件--&gt;</span>
+            <span class="nt">&lt;excludes&gt;</span>
+                <span class="nt">&lt;exclude&gt;</span>*.**<span class="nt">&lt;/exclude&gt;</span>
+            <span class="nt">&lt;/excludes&gt;</span>
+            <span class="nt">&lt;archive&gt;</span>
+                <span class="nt">&lt;manifest&gt;</span>
+                    <span class="nt">&lt;addClasspath&gt;</span>true<span class="nt">&lt;/addClasspath&gt;</span>
+                    <span class="c">&lt;!--MANIFEST.MF 中 Class-Path 加入前缀--&gt;</span>
+                    <span class="nt">&lt;classpathPrefix&gt;</span>lib/<span class="nt">&lt;/classpathPrefix&gt;</span>
+                    <span class="c">&lt;!--jar包不包含唯一版本标识--&gt;</span>
+                    <span class="nt">&lt;useUniqueVersions&gt;</span>false<span class="nt">&lt;/useUniqueVersions&gt;</span>
+                    <span class="c">&lt;!--指定入口类--&gt;</span>
+                    <span class="nt">&lt;mainClass&gt;</span>com.seawater.mybatisPlus.MybatisPlusApplication.java<span class="nt">&lt;/mainClass&gt;</span>
+                <span class="nt">&lt;/manifest&gt;</span>
+                <span class="c">&lt;!--不打包资源文件--&gt;</span>
+                <span class="nt">&lt;manifestEntries&gt;</span>
+                    <span class="c">&lt;!--MANIFEST.MF 中 Class-Path 加入资源文件目录--&gt;</span>
+                    <span class="c">&lt;!--本地依赖包需要手动 加入Class-Path ，否则无法找到--&gt;</span>
+                    <span class="nt">&lt;Class-Path&gt;</span>./resources/<span class="nt">&lt;/Class-Path&gt;</span>
+                <span class="nt">&lt;/manifestEntries&gt;</span>
+            <span class="nt">&lt;/archive&gt;</span>
+            <span class="nt">&lt;excludes&gt;</span>
+                <span class="nt">&lt;exclude&gt;</span>*/*.xml<span class="nt">&lt;/exclude&gt;</span>
+                <span class="nt">&lt;exclude&gt;</span>*/*/*.xml<span class="nt">&lt;/exclude&gt;</span>
+            <span class="nt">&lt;/excludes&gt;</span>
+            <span class="nt">&lt;outputDirectory&gt;</span>${project.build.directory}<span class="nt">&lt;/outputDirectory&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+    <span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>拷贝第三方依赖文件到指定目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">    <span class="c">&lt;!--拷贝依赖 copy-dependencies--&gt;</span>
+<span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-dependency-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;executions&gt;</span>
+        <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>copy-dependencies<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>copy-dependencies<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="c">&lt;!--target/lib是依赖jar包的输出目录--&gt;</span>
+                <span class="nt">&lt;outputDirectory&gt;</span>D:/workspace/demo-service/target/lib<span class="nt">&lt;/outputDirectory&gt;</span>
+                <span class="c">&lt;!--&lt;excludeTransitive&gt;false&lt;/excludeTransitive&gt;
+</span><span class="c">                &lt;stripVersion&gt;false&lt;/stripVersion&gt;
+</span><span class="c">                &lt;includeScope&gt;compile&lt;/includeScope&gt;--&gt;</span>
+                <span class="nt">&lt;resources&gt;</span>
+                    <span class="nt">&lt;resource&gt;</span>
+                        <span class="c">&lt;!-- 文件地址 --&gt;</span>
+                        <span class="nt">&lt;directory&gt;</span>${basedir}/src/main/docker<span class="nt">&lt;/directory&gt;</span>
+                        <span class="nt">&lt;includes&gt;</span>
+                            <span class="nt">&lt;include&gt;</span>*<span class="nt">&lt;/include&gt;</span>
+                        <span class="nt">&lt;/includes&gt;</span>
+                    <span class="nt">&lt;/resource&gt;</span>
+                <span class="nt">&lt;/resources&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/execution&gt;</span>
+    <span class="nt">&lt;/executions&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="c">&lt;!-- 本地Jar包不进行分离,不输出到outputDirectory --&gt;</span>
+        <span class="nt">&lt;excludeGroupIds&gt;</span>cn.edu.hubu.lhy.assembly_test.AssemblyTestApplication<span class="nt">&lt;/excludeGroupIds&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>拷贝资源文件</strong>（可选）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--拷贝资源文件 copy-resources--&gt;</span>
+<span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-resources-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;executions&gt;</span>
+        <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>copy-resources<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>copy-resources<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;resources&gt;</span>
+                    <span class="nt">&lt;resource&gt;</span>
+                        <span class="nt">&lt;directory&gt;</span>src/main/resources<span class="nt">&lt;/directory&gt;</span>
+                    <span class="nt">&lt;/resource&gt;</span>
+                <span class="nt">&lt;/resources&gt;</span>
+                <span class="nt">&lt;outputDirectory&gt;</span>${project.build.directory}/resources<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/execution&gt;</span>
+    <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="启动指令">启动指令</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># Windows平台</span>
+<span class="c1">## -Dloader.path</span>
+<span class="c1">### 绝对路径</span>
+java -Dloader.path<span class="o">=</span>D:/tmp/target/libs -jar xxx.jar
+<span class="c1">### 相对路径</span>
+java -Dloader.path<span class="o">=</span>libs -jar xxx.jar
+
+<span class="c1"># Windows平台</span>
+<span class="c1">## -Djava.ext.dirs</span>
+<span class="c1">### 绝对路径</span>
+java -Djava.ext.dirs<span class="o">=</span>D:/tmp/target/libs -jar xxx.jar
+<span class="c1">### 相对路径</span>
+java -Djava.ext.dirs<span class="o">=</span>libs -jar xxx.jar
+
+<span class="c1"># Linux平台 TODO</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意：spring-boot-maven-plugin下没有这句话，经测试无法使用-Dloader.path指定外部依赖进行运行</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--拷贝资源文件 copy-resources--&gt;</span>
+<span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-resources-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;executions&gt;</span>
+        <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>copy-resources<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>copy-resources<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;resources&gt;</span>
+                    <span class="nt">&lt;resource&gt;</span>
+                        <span class="nt">&lt;directory&gt;</span>src/main/resources<span class="nt">&lt;/directory&gt;</span>
+                    <span class="nt">&lt;/resource&gt;</span>
+                <span class="nt">&lt;/resources&gt;</span>
+                <span class="nt">&lt;outputDirectory&gt;</span>${mzservice.path}/config<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/execution&gt;</span>
+        <span class="c">&lt;!--copy 脚本，把bin目录下的文件复制到，打包目录下--&gt;</span>
+        <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>copy-bin<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>copy-resources<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;resources&gt;</span>
+                    <span class="nt">&lt;resource&gt;</span>
+                        <span class="nt">&lt;directory&gt;</span>bin/<span class="nt">&lt;/directory&gt;</span>
+                    <span class="nt">&lt;/resource&gt;</span>
+                <span class="nt">&lt;/resources&gt;</span>
+                <span class="nt">&lt;outputDirectory&gt;</span>${mzservice.path}<span class="nt">&lt;/outputDirectory&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/execution&gt;</span>
+    <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="一些说明">一些说明</h2>
+<p>1、通常，一个工程项目架构确定后，引入的jar包基本上不会变，改变的大部分是业务逻辑；</p>
+<p>2、后面如果需要变更业务逻辑，只需要轻量地编译工程，大大提高项目部署的效率。</p>
+<p>3、之前都是直接在idea里改好再打包了，所以没有直接引用外部文件过，通过查看SpringBoot官网，得知有下面的几种方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">24</span><span class="o">.</span><span class="na">3</span> <span class="n">Application</span> <span class="n">Property</span> <span class="n">Files</span>
+<span class="n">SpringApplication</span> <span class="n">loads</span> <span class="n">properties</span> <span class="n">from</span> <span class="n">application</span><span class="o">.</span><span class="na">properties</span> <span class="n">files</span> <span class="n">in</span> <span class="n">the</span> <span class="n">following</span> <span class="n">locations</span> <span class="n">and</span> <span class="n">adds</span> <span class="n">them</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Spring</span> <span class="n">Environment</span><span class="o">:</span>
+<span class="n">1</span><span class="err">、</span><span class="n">A</span> <span class="o">/</span><span class="n">config</span> <span class="n">subdirectory</span> <span class="n">of</span> <span class="n">the</span> <span class="n">current</span> <span class="n">directory</span> <span class="c1">//  大概意思是：放在jar包同级目录下的子目录config
+</span><span class="c1"></span><span class="n">2</span><span class="err">、</span><span class="n">The</span> <span class="n">current</span> <span class="n">directory</span>  <span class="c1">//大概意思是：放在jar包目录同级
+</span><span class="c1"></span><span class="n">3</span><span class="err">、</span><span class="n">A</span> <span class="n">classpath</span> <span class="o">/</span><span class="n">config</span> <span class="kn">package</span> <span class="err">// </span><span class="nn">大概意思是在classpath下的config目录</span>
+<span class="n">4</span><span class="err">、</span><span class="n">The</span> <span class="n">classpath</span> <span class="n">root</span> <span class="c1">// classpath中
+</span></code></pre></td></tr></table>
+</div>
+</div><p>引用的优先级和上面的顺序是一样的。</p>
+<p>其中springboot对于配置文件读取中文解释有如下方式：</p>
+<p>1、读取jar包同级目录下的config目录中的properties文件，优先级最高；
+2、读取jar包同级目录下的properties文件，优先级次之；
+3、读取classpath下的config文件夹中的properties文件，优先级第三；
+4、在classpath下直接放配置文件，优先级最低。</p>
+<p>还有一种是用命令行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">bootdemo</span><span class="o">-</span><span class="n">0</span><span class="o">.</span><span class="na">0</span><span class="o">.</span><span class="na">1</span><span class="o">-</span><span class="n">SNAPSHOT</span><span class="o">.</span><span class="na">jar</span> <span class="o">--</span><span class="n">spring</span><span class="o">.</span><span class="na">config</span><span class="o">.</span><span class="na">location</span><span class="o">=./</span><span class="n">test</span><span class="o">.</span><span class="na">properties</span> <span class="c1">//此时test.properties和jar是同级目录
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="未验证知识">未验证知识</h2>
+<h3 id="将项目resources下的文件复制到config下将bin下的启动脚本复制到打包目录可根据自己的需求修改">将项目resources下的文件，复制到config下。将bin下的启动脚本复制到打包目录，可根据自己的需求修改。</h3>
+<h3 id="配置清理插件每次打包前清理之前生成的打包目录">配置清理插件，每次打包前，清理之前生成的打包目录。</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-clean-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.5<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;executions&gt;</span>
+        <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>auto-clean<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>initialize<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>clean<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;skip&gt;</span>false<span class="nt">&lt;/skip&gt;</span>
+                <span class="nt">&lt;filesets&gt;</span>
+                    <span class="nt">&lt;fileset&gt;</span>
+                        <span class="nt">&lt;directory&gt;</span>${mzservice.path}<span class="nt">&lt;/directory&gt;</span>
+                    <span class="nt">&lt;/fileset&gt;</span>
+                <span class="nt">&lt;/filesets&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/execution&gt;</span>
+    <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="跳过测试">跳过测试</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--maven打包时，跳过测试--&gt;</span>
+<span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-surefire-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;skip&gt;</span>true<span class="nt">&lt;/skip&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="其它说明">其它说明</h3>
+<p>网上有些其它文章会使用<code>spring-boot-maven-plugin 这个插件打包项目jar，个人觉得这个插件是对其它插件的一些封装，打包的jar会包含spring boot的一些东西,测试之后觉得和</code>maven-jar-plugin打包的jar，使用上没什么区别。</p>
+<h3 id="启动时省略-dloaderpath">启动时省略<code>-Dloader.path</code></h3>
+<p>另外一种启动方案是可以不加-Dloader.path=&ldquo;D:develop/shared/fjar&quot;来指定路径，直接使用如下指令启动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">java -jar mytest.jar
+</code></pre></td></tr></table>
+</div>
+</div><p>使用上述启动的话需要添加<strong>maven-jar-plugin</strong>插件，配置<code>&lt;classpathPrefix&gt;</code>属性，<strong>另外在处理一些读取可执行jar中的文件时，可以使用maven-jar-plugin插件替换spring-boot-maven-plugin进行打包操作</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;archive&gt;</span>
+            <span class="nt">&lt;manifest&gt;</span>
+                <span class="c">&lt;!--addClasspath表示需要加入到类构建路径--&gt;</span>
+                <span class="nt">&lt;addClasspath&gt;</span>true<span class="nt">&lt;/addClasspath&gt;</span>
+                <span class="c">&lt;!--classpathPrefix指定生成的Manifest文件中Class-Path依赖lib前面都加上路径,构建出lib/xx.jar--&gt;</span>
+                <span class="nt">&lt;classpathPrefix&gt;</span>lib/<span class="nt">&lt;/classpathPrefix&gt;</span>
+                <span class="nt">&lt;mainClass&gt;</span>com.common.util.CommonUtilsApplication<span class="nt">&lt;/mainClass&gt;</span>
+            <span class="nt">&lt;/manifest&gt;</span>
+        <span class="nt">&lt;/archive&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述插件效果就是在打成的包里META_INF目录下的MANIFEST.MF文件里增加Class-path对应jar,这样在后面应用刚启动时就会根据Class-Path的只去加载需要的版本依赖（<strong>解决在共享目录里存在多版本加载引用冲突问题</strong>），<strong>这个效果就等效加参数-classpath xxx（具体的jar）</strong>。此时就是将需要的jar目录lib放在和要运行的xxx.jar同级目录即可，启动时就可以不加-Dloader.path参数了，如果lib目录和要运行的xxx.jar不在同级目录的话，则需要使用-Dloader.path来启动</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>如下：在同一级目录启动</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p>不在同一级目录启动：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p>其中**-Dloader.path可以指定多个目录**，这样在存在多个微服务情况下可将一些公共用到的jar放在一个共享目录中，每个微服务独有的jar可以放在微服务私有的目录下（解决jar版本冲突问题）,示例如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p><strong>注意：</strong></p>
+<p><strong>1、使用-Dloader.path需要在打包的时候增加<code>&lt;layout&gt;ZIP&lt;/layout&gt;</code>，不指定的话-Dloader.path不生效。<strong>对于多个微服务瘦身打包建议使用maven-jar-plugin打包，避免因为spring-boot-maven-plugin打包机制导致的一些应用启动问题</strong>（已踩坑）</strong></p>
+<p>2、若存在不同版本依赖：比如项目A依赖Y库的1.0版本，项目B依赖Y库的2.0版本，那么可能会出现版本依赖冲突（两个版本不兼容的情况下），解决方案：</p>
+<p>　　2.1、能做到版本一致就保持使用同一个版本，保证版本一致。<strong>可以使用maven的版本依赖管理进行处理，即在父pom文件使用<code>&lt;dependencyManagement&gt;</code>统一管理依赖版本</strong></p>
+<p>　　<em>2.2、让项目各自依赖所需的版本并打进war包中，把其他同版本的jar包放在同一个共享包下</em></p>
+<p><strong>测试发现依赖在查找时从上往下找，匹配到就用第一个，如下图会使用comm-0.0.1.jar版本的</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<p><strong>附注：</strong></p>
+<p>使用spring-boot-maven-plugin插件，会将依赖的jar包全部打包进去，这样就可以直接运行生成的 JAR 包，简化了我们开发操作。</p>
+<p>使用spring-boot-maven-plugin插件如果不指定程序主运行入口类的话默认为Main-Class: org.springframework.boot.loader.JarLauncher</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>这个可以自定义执行主入口类，有以下几种方式：</p>
+<p>1.POM继承spring-boot-starter-parent</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;parent&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>2.1.9.RELEASE<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;relativePath/&gt;</span> <span class="c">&lt;!-- lookup parent from repository --&gt;</span>
+    <span class="nt">&lt;/parent&gt;</span>
+<span class="nt">&lt;properties&gt;</span>
+        <span class="c">&lt;!-- The main class to start by executing java -jar --&gt;</span>
+        <span class="nt">&lt;start-class&gt;</span>ccom.notes.JavaNotesApplication<span class="nt">&lt;/start-class&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>2.POM不是继承spring-boot-starter-parent时需指定</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.1.9.RELEASE<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;mainClass&gt;</span>com.notes.JavaNotesApplication<span class="nt">&lt;/mainClass&gt;</span>
+        <span class="nt">&lt;layout&gt;</span>ZIP<span class="nt">&lt;/layout&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+    <span class="nt">&lt;executions&gt;</span>
+        <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>repackage<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+        <span class="nt">&lt;/execution&gt;</span>
+    <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>3.POM不是继承spring-boot-starter-paren，且使用maven-jar-plugin插件来指定执行的类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+<span class="nt">&lt;plugin&gt;</span>
+<span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+<span class="nt">&lt;artifactId&gt;</span>maven-jar-plugin<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;archive&gt;</span>
+        <span class="nt">&lt;manifest&gt;</span>
+            <span class="nt">&lt;addClasspath&gt;</span>true<span class="nt">&lt;/addClasspath&gt;</span>
+            <span class="nt">&lt;useUniqueVersions&gt;</span>false<span class="nt">&lt;/useUniqueVersions&gt;</span>
+            <span class="nt">&lt;classpathPrefix&gt;</span>lib/<span class="nt">&lt;/classpathPrefix&gt;</span>
+            <span class="nt">&lt;mainClass&gt;</span>com.notes.JavaNotesApplication<span class="nt">&lt;/mainClass&gt;</span>
+        <span class="nt">&lt;/manifest&gt;</span>
+        <span class="nt">&lt;manifestEntries&gt;</span>
+            <span class="nt">&lt;version&gt;</span>${project.version}<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/manifestEntries&gt;</span>
+    <span class="nt">&lt;/archive&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-10-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/springserver-maven-exclude-lib-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/" data-title="SpringCloud/SpringBoot分离依赖打包" data-hashtags="Maven,SpringCloud,SpringBoot"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/" data-hashtag="Maven"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/" data-title="SpringCloud/SpringBoot分离依赖打包" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/" data-title="SpringCloud/SpringBoot分离依赖打包"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/maven/">Maven</a>,&nbsp;<a href="/tags/springcloud/">SpringCloud</a>,&nbsp;<a href="/tags/springboot/">SpringBoot</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/maven-dep-note/" class="prev" rel="prev" title="maven-dependency-plugin插件使用笔记"><i class="fas fa-angle-left fa-fw"></i>maven-dependency-plugin插件使用笔记</a>
+            <a href="/maven-jar-note/" class="next" rel="next" title="Spring Boot 可执行 Jar 包运行原理">Spring Boot 可执行 Jar 包运行原理<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>
