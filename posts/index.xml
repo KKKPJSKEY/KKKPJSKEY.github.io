@@ -4,7 +4,17 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 02 Nov 2021 16:31:06 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Nov 2021 16:23:56 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>SpringBoot报错 There is already &#39;xxxController&#39; bean method</title>
+    <link>https://kkkpjskey.github.io/springboot-thr-is-ard-cntrlr-bin-mthd-error/</link>
+    <pubDate>Sun, 07 Nov 2021 16:23:56 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springboot-thr-is-ard-cntrlr-bin-mthd-error/</guid>
+    <description><![CDATA[原因分析 报这个错的原因是因为你controller里的@RequestMapping中的路径有重复！ 如： 解决 去掉重复就完事了]]></description>
+</item><item>
+    <title>GitHub的Pull Request和GitLab的Merge Request</title>
+    <link>https://kkkpjskey.github.io/git-mr-pr-diff/</link>
+    <pubDate>Sun, 07 Nov 2021 16:17:32 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/git-mr-pr-diff/</guid>
+    <description><![CDATA[起因 在 GitHub 上混久了，对 Pull Request 就…… 在 GitLab 上混久了，对 Merge Request 就…… 然而它们之间有不同吗？为什么要用两个不同的名称？ 分析 要追溯这两个名称，需要追溯 GitHub 和 GitLab]]></description>
+</item><item>
     <title>Linux系统设置指令</title>
     <link>https://kkkpjskey.github.io/linux-system-set-note/</link>
     <pubDate>Tue, 02 Nov 2021 16:31:06 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/linux-system-set-note/</guid>
@@ -44,15 +54,5 @@
     <link>https://kkkpjskey.github.io/redis-note/</link>
     <pubDate>Mon, 18 Oct 2021 11:55:34 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/redis-note/</guid>
     <description><![CDATA[Redis是目前最为主流的缓存技术之一，Redis基于内存操作从而拥有强大的性能，可以达到每秒10万次的请求，可以说是一款非常强大的缓存技术]]></description>
-</item><item>
-    <title>concat以及group_concat的用法</title>
-    <link>https://kkkpjskey.github.io/mysql-note/</link>
-    <pubDate>Fri, 15 Oct 2021 22:10:43 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mysql-note/</guid>
-    <description><![CDATA[本文中使用的例子均在下面的数据库表tt2下执行： 一、concat()函数 1、功能：将多个字符串连接成一个字符串。 2、语法：concat(st]]></description>
-</item><item>
-    <title>Java自建类操作笔记</title>
-    <link>https://kkkpjskey.github.io/java-selfclass-note/</link>
-    <pubDate>Fri, 15 Oct 2021 21:06:24 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-selfclass-note/</guid>
-    <description><![CDATA[使用工具类判断对象里面的属性的值是否相等 例如下述Java类： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 import java.io.Serializable; import java.util.List; public class]]></description>
 </item></channel>
 </rss>
