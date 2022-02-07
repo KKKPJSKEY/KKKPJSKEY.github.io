@@ -9,8 +9,8 @@
 <meta property="og:description" content="Hugo provides multiple built-in shortcodes for author convenience and to keep your markdown content clean." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/en/theme-documentation-built-in-shortcodes/" /><meta property="og:image" content="https://kkkpjskey.github.io/en/theme-documentation-built-in-shortcodes/featured-image.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-03-04T16:29:41&#43;08:00" />
-<meta property="article:modified_time" content="2020-03-04T16:29:41&#43;08:00" /><meta property="og:site_name" content="KKKPJSKEY&#39;s Case Archives" />
+<meta property="article:published_time" content="2020-03-04T16:29:41+08:00" />
+<meta property="article:modified_time" content="2020-03-04T16:29:41+08:00" /><meta property="og:site_name" content="KKKPJSKEY&#39;s Case Archives" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/en/theme-documentation-built-in-shortcodes/featured-image.png"/>
@@ -167,15 +167,14 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 <p>Example <code>figure</code> input:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">figure</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/lighthouse.jpg&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Lighthouse (figure)&#34;</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">figure</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/lighthouse.jpg&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Lighthouse (figure)&#34;</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
-<figure>
-    <img src="/images/lighthouse.jpg"/> <figcaption>
+<figure><img src="/images/lighthouse.jpg"/><figcaption>
             <h4>Lighthouse (figure)</h4>
         </figcaption>
 </figure>
@@ -183,7 +182,7 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 <p>The HTML looks like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -191,7 +190,7 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/lighthouse.jpg&#34;</span><span class="p">/&gt;</span>
   <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Lighthouse (figure)<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
@@ -204,10 +203,10 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 <p>Example <code>gist</code> input:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">gist</span> <span class="na">spf13</span> <span class="na">7896402</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">gist</span> <span class="na">spf13</span> <span class="na">7896402</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -216,13 +215,13 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 <p>The HTML looks like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span>
   <span class="na">type</span><span class="o">=</span><span class="s">&#34;application/javascript&#34;</span>
   <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://gist.github.com/spf13/7896402.js&#34;</span>
 <span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
@@ -233,7 +232,7 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 <p>Example <code>highlight</code> input:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -246,7 +245,7 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">highlight</span> <span class="na">html</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">highlight</span> <span class="na">html</span> <span class="p">&gt;</span>}}
 
 <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -262,7 +261,7 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 </div><p>The rendered output looks like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -272,7 +271,7 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
         {{ range .Pages }}
@@ -287,10 +286,10 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 <p>Example <code>instagram</code> input:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">instagram</span> <span class="na">BWNjjyYFxVx</span> <span class="na">hidecaption</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">instagram</span> <span class="na">BWNjjyYFxVx</span> <span class="na">hidecaption</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -304,7 +303,7 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 <p><a href="https://developers.facebook.com/docs/instagram/oembed" target="_blank" rel="noopener noreferrer">Official documents of<code>instagram</code>(Facebook)</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -315,7 +314,7 @@ A shortcode is a simple snippet that can generate reasonable HTML code and confo
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#1.Officially register with developers</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#1.Officially register with developers</span>
 <span class="c1">#Create a task in the developer tool, get the app-id and app-secret, and fill in the request address below</span>
 curl -X GET <span class="s2">&#34;https://graph.facebook.com/oauth/access_token ?client_id={your-app-id} &amp;client_secret={your-app-secret} &amp;grant_type=client_credentials&#34;</span>
 <span class="c1"># Examples</span>
@@ -452,7 +451,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>The default is to have a <code>myFunction</code> on the right side, and after you delete the whole thing, paste the following code to get an Access Token:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -465,13 +464,13 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span>  <span class="nx">appId</span>  <span class="o">=</span>  <span class="s1">&#39;「Application number」 obtained by FB background&#39;</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span>  <span class="nx">appId</span>  <span class="o">=</span>  <span class="s1">&#39;「Application number」 obtained by FB background&#39;</span><span class="p">;</span>
 <span class="kd">var</span>  <span class="nx">secret</span>  <span class="o">=</span>  <span class="s1">&#39;「Application key」 obtained by FB background&#39;</span><span class="p">;</span>
-   
-   
+
+
 <span class="kd">var</span>  <span class="nx">uri</span>  <span class="o">=</span>  <span class="s1">&#39;https://graph.facebook.com/oauth/access_token?client_id=&#39;</span>  <span class="o">+</span>  <span class="nx">appId</span>  <span class="o">+</span>  <span class="s1">&#39;&amp;client_secret=&#39;</span>  <span class="o">+</span>  <span class="nx">secret</span>  <span class="o">+</span>  <span class="s1">&#39;&amp;grant_type=client_credentials&#39;</span> <span class="p">;</span>
-   
-   
+
+
 <span class="kd">function</span>  <span class="nx">doGet</span> <span class="p">(</span> <span class="nx">e</span> <span class="p">)</span>  <span class="p">{</span>
   <span class="kd">var</span>  <span class="nx">response</span>  <span class="o">=</span>  <span class="nx">UrlFetchApp</span> <span class="p">.</span> <span class="nx">fetch</span> <span class="p">(</span> <span class="nx">uri</span> <span class="p">)</span> <span class="p">;</span>
   <span class="k">return</span>  <span class="nx">ContentService</span> <span class="p">.</span> <span class="nx">createTextOutput</span> <span class="p">(</span> <span class="nx">response</span> <span class="p">)</span> <span class="p">.</span> <span class="nx">setMimeType</span> <span class="p">(</span> <span class="nx">ContentService</span> <span class="p">.</span> <span class="nx">MimeType</span> <span class="p">.</span> <span class="nx">JSON</span> <span class="p">)</span> <span class="p">;</span>
@@ -561,7 +560,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>At the end of the previous step we GET the deployed URL, first we GET the Access Token back using <code>GET</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -569,7 +568,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;Web address obtained after deployment&#39;</span> <span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;Web address obtained after deployment&#39;</span> <span class="p">;</span>
 <span class="nx">fetch</span> <span class="p">(</span> <span class="nx">getToken</span> <span class="p">)</span>
   <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">response</span>  <span class="p">=&gt;</span>  <span class="nx">response</span> <span class="p">.</span> <span class="nx">json</span> <span class="p">(</span> <span class="p">)</span> <span class="p">)</span>
   <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">response</span>  <span class="p">=&gt;</span>  <span class="p">{</span>
@@ -580,13 +579,13 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </div><p>The response data from the Console looks like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="err">access_token:</span> <span class="nt">&#34;405342487221016|50nqwaePxasUkpNVyIwrJpoA2H0&#34;</span><span class="p">,</span>
   <span class="err">token_type:</span> <span class="nt">&#34;bearer&#34;</span>
 <span class="p">}</span>
@@ -606,7 +605,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>With a post URL and a Token, we can use a <code>GET</code> to GET information about the post:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -622,10 +621,10 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;Web address obtained after deployment&#39;</span> <span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;Web address obtained after deployment&#39;</span> <span class="p">;</span>
 <span class="kr">const</span>  <span class="nx">igUri</span>  <span class="o">=</span>  <span class="s1">&#39;Website of IG post&#39;</span> <span class="p">;</span>
 <span class="kr">const</span>  <span class="nx">hideCaption</span>  <span class="o">=</span>  <span class="kc">true</span> <span class="p">;</span>  <span class="c1">//Wheather to hide the description,true to hide,false to not hide
-</span><span class="c1"></span>       
+</span><span class="c1"></span>
 <span class="nx">fetch</span> <span class="p">(</span> <span class="nx">getToken</span> <span class="p">)</span>
   <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">response</span>  <span class="p">=&gt;</span>  <span class="nx">response</span> <span class="p">.</span> <span class="nx">json</span> <span class="p">(</span> <span class="p">)</span> <span class="p">)</span>
   <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">response</span>  <span class="p">=&gt;</span>  <span class="nx">response</span> <span class="p">.</span> <span class="nx">access_token</span> <span class="p">)</span>
@@ -643,10 +642,10 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>In addition, the copied IG post URL itself takes a parameter like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-http" data-lang="http"><span class="err">https://www.instagram.com/p/CK6wSwfpuVi/?igshid=1wy9n8xgtbe89
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="err">https://www.instagram.com/p/CK6wSwfpuVi/?igshid=1wy9n8xgtbe89
 </span></code></pre></td></tr></table>
 </div>
 </div><p>After the actual test, there is no writing igshid this parameter does not matter, have captured the post information back.</p>
@@ -665,10 +664,10 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>And the old methods spit out html, which itself refers to IG’s embedd.html. Js, the new one seems to be merged with FB so it doesn’t exist:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://www.instagram.com/embed.js&#34;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://www.instagram.com/embed.js&#34;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>The response from console looks like this:</p>
@@ -683,7 +682,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>The values you can see are:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -695,7 +694,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">author_name
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">author_name
 html
 provider_name
 provider_url
@@ -711,7 +710,7 @@ width
 <p>The complete code embedded in IG post is as follows:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -740,16 +739,16 @@ width
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span> <span class="nt">div</span>  <span class="na">id </span><span class="o">=</span><span class="s">&#34; ig-iframe &#34;</span> <span class="p">&gt;</span> <span class="p">&lt;/</span> <span class="nt">div</span> <span class="p">&gt;</span>
-     
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span> <span class="nt">div</span>  <span class="na">id </span><span class="o">=</span><span class="s">&#34; ig-iframe &#34;</span> <span class="p">&gt;</span> <span class="p">&lt;/</span> <span class="nt">div</span> <span class="p">&gt;</span>
+
 <span class="p">&lt;</span> <span class="nt">script</span>  <span class="na">src </span><span class="o">=</span><span class="s">&#34; https://www.instagram.com/embed.js &#34;</span> <span class="p">&gt;</span> <span class="p">&lt;/</span> <span class="nt">script</span> <span class="p">&gt;</span>
 <span class="p">&lt;</span> <span class="nt">script</span> <span class="p">&gt;</span>
   <span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;Web address obtained after deployment&#39;</span> <span class="p">;</span>
   <span class="kr">const</span>  <span class="nx">igUri</span>  <span class="o">=</span>  <span class="s1">&#39;IG posted website&#39;</span> <span class="p">;</span>
   <span class="kr">const</span>  <span class="nx">hideCaption</span>  <span class="o">=</span>  <span class="kc">true</span> <span class="p">;</span>  <span class="c1">//Optional,Weather to hide the description or not True to hide, false not to hide. The default is false
 </span><span class="c1"></span>  <span class="kr">const</span>  <span class="nx">maxWidth</span>  <span class="o">=</span>  <span class="mi">400</span> <span class="p">;</span>  <span class="c1">//Optional,What is the maximum width of the post
-</span><span class="c1"></span>   
-   
+</span><span class="c1"></span>
+
   <span class="nx">fetch</span> <span class="p">(</span> <span class="nx">getToken</span> <span class="p">)</span>
     <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">res</span>  <span class="p">=&gt;</span>  <span class="nx">res</span> <span class="p">.</span> <span class="nx">json</span> <span class="p">(</span> <span class="p">)</span> <span class="p">)</span>
     <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">res</span>  <span class="p">=&gt;</span>  <span class="p">{</span>
@@ -786,10 +785,10 @@ width
 <p>Example <code>param</code> input:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">param</span> <span class="na">description</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">param</span> <span class="na">description</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -801,10 +800,10 @@ Hugo provides multiple built-in shortcodes for author convenience and to keep yo
 <p>Example <code>tweet</code> input:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">tweet</span> <span class="na">877500564405444608</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">tweet</span> <span class="na">877500564405444608</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -815,10 +814,10 @@ Hugo provides multiple built-in shortcodes for author convenience and to keep yo
 <p>Example <code>vimeo</code> input:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">vimeo</span> <span class="na">146022717</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">vimeo</span> <span class="na">146022717</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -832,10 +831,10 @@ Hugo provides multiple built-in shortcodes for author convenience and to keep yo
 <p>Example <code>youtube</code> input:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">youtube</span> <span class="na">w7Ft2ymGmfc</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">youtube</span> <span class="na">w7Ft2ymGmfc</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -873,8 +872,8 @@ Hugo provides multiple built-in shortcodes for author convenience and to keep yo
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> | Theme - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

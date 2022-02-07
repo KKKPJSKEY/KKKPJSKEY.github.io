@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Mysql和PostgreSql的Truncate指令区别" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mysql-postgresql-truncate-diff/" /><meta property="og:image" content="https://kkkpjskey.github.io/mysql-postgresql-truncate-diff/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-10-15T13:58:53&#43;08:00" />
-<meta property="article:modified_time" content="2021-10-15T13:58:53&#43;08:00" />
+<meta property="article:published_time" content="2021-10-15T13:58:53+08:00" />
+<meta property="article:modified_time" content="2021-10-15T13:58:53+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mysql-postgresql-truncate-diff/featured-image.jpg"/>
@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mysql-postgresql-truncate-diff\/featured-image.jpg",
                             "width":  640 ,
                             "height":  378 
-                        }],"genre": "posts","keywords": "Mysql, PostgreSql, Truncate, Diff","wordcount":  163 ,
+                        }],"genre": "posts","keywords": "Mysql, PostgreSql, Truncate, Diff","wordcount":  151 ,
         "url": "https:\/\/kkkpjskey.github.io\/mysql-postgresql-truncate-diff\/","datePublished": "2021-10-15T13:58:53+08:00","dateModified": "2021-10-15T13:58:53+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Mysql和PostgreSql的Truncate指令区别</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 163 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 151 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/mysql-postgresql-truncate-diff/" class="leancloud_visitors" data-flag-title="Mysql和PostgreSql的Truncate指令区别">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -147,34 +147,34 @@
 <p>在 mysql中，只需要执行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">TRUNCATE</span> <span class="k">table_name</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>即可，数据会情况，而且自增id也会变回0；</p>
 <p>但在 postgresql 则稍有不同，因为 postgresql 的自增id是通过序列 sequence来完成的，</p>
 <p>所以情况数据后，还需要还原序列 sequence：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">TRUNCATE</span> <span class="n">bigtable</span><span class="p">,</span> <span class="n">fattable</span> <span class="k">RESTART</span> <span class="k">IDENTITY</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">TRUNCATE</span><span class="w"> </span><span class="n">bigtable</span><span class="p">,</span><span class="w"> </span><span class="n">fattable</span><span class="w"> </span><span class="k">RESTART</span><span class="w"> </span><span class="k">IDENTITY</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p><a href="https://www.postgresql.org/docs/9.2/static/sql-truncate.html" target="_blank" rel="noopener noreferrer">官方文档</a></p>
 <p>另一种方式：（因为版本不同，可能命令不同）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">TRUNCATE</span> <span class="k">table</span> <span class="k">table_name</span><span class="p">;</span>
-<span class="k">alter</span> <span class="n">sequence</span> <span class="n">seq_name</span> <span class="k">start</span> <span class="mi">1</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="k">alter</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="n">seq_name</span><span class="w"> </span><span class="k">start</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p><a href="https://stackoverflow.com/questions/13989243/sequence-does-not-reset-after-truncating-the-table" target="_blank" rel="noopener noreferrer">参考</a></p>
 </div><div class="post-footer" id="post-footer">
@@ -209,8 +209,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

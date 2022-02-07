@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Linux进程管理的笔记和相关示例" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/linux-proc-mange-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/linux-proc-mange-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-16T17:00:33&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-30T21:21:54&#43;08:00" />
+<meta property="article:published_time" content="2021-08-16T17:00:33+08:00" />
+<meta property="article:modified_time" content="2021-08-30T21:21:54+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/linux-proc-mange-note/featured-image.jpg"/>
@@ -158,10 +158,10 @@
 <p>1、查看占用端口进程的PID：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">lsof -i:<span class="o">{</span>端口号<span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">lsof -i:<span class="o">{</span>端口号<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -175,12 +175,12 @@
 <p>2、根据PID kill掉相关进程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">kill</span> -9 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#直接杀掉</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">kill</span> -9 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#直接杀掉</span>
 <span class="c1">#或</span>
 <span class="nb">kill</span> -15 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#接收完发送端的数据再杀掉，类似TCP/IP的关闭</span>
 </code></pre></td></tr></table>
@@ -197,10 +197,10 @@
 <p>1、查看占用端口进程的PID：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">netstat -tunlp<span class="p">|</span>grep <span class="o">{</span>port<span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">netstat -tunlp<span class="p">|</span>grep <span class="o">{</span>port<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -214,12 +214,12 @@
 <p>2、kill方法如上。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">kill</span> -9 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#直接杀掉</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">kill</span> -9 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#直接杀掉</span>
 <span class="c1">#或</span>
 <span class="nb">kill</span> -15 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#接收完发送端的数据再杀掉，类似TCP/IP的关闭</span>
 </code></pre></td></tr></table>
@@ -228,13 +228,13 @@
 <p>1、用ps命令（zb专用）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ps -ef <span class="p">|</span> grep <span class="o">{</span>programName<span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ps -ef <span class="p">|</span> grep <span class="o">{</span>programName<span class="o">}</span>
 <span class="nb">kill</span> -9 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#直接杀掉</span>
 <span class="c1">#或</span>
 <span class="nb">kill</span> -15 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#接收完发送端的数据再杀掉，类似TCP/IP的关闭</span>
@@ -243,23 +243,23 @@
 </div><p>查看详细内存占用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ps aux -u root <span class="p">|</span> grep <span class="o">{</span>programName<span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ps aux -u root <span class="p">|</span> grep <span class="o">{</span>programName<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>2、用pgrep命令：</p>
 <p>pgrep命令的p表明了这个命令是专门用于进程查询的grep。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">pgrep <span class="o">{</span>programName<span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">pgrep <span class="o">{</span>programName<span class="o">}</span>
 <span class="nb">kill</span> -9 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#直接杀掉</span>
 <span class="c1">#或</span>
 <span class="nb">kill</span> -15 <span class="o">{</span>PID<span class="o">}</span> <span class="c1">#接收完发送端的数据再杀掉，类似TCP/IP的关闭</span>
@@ -268,34 +268,34 @@
 </div><h3 id="补充2根据pid查看对应的进程">补充2：根据PID查看对应的进程</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ps -aux <span class="p">|</span>grep -v grep<span class="p">|</span>grep <span class="o">{</span><span class="nv">$PID</span><span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ps -aux <span class="p">|</span>grep -v grep<span class="p">|</span>grep <span class="o">{</span><span class="nv">$PID</span><span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="查找进程执行的文件">查找进程执行的文件</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ps aux <span class="p">|</span> grep <span class="m">4874</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ps aux <span class="p">|</span> grep <span class="m">4874</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="确定进程所在的目录">确定进程所在的目录</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ll /proc/4874；
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ll /proc/4874；
 </code></pre></td></tr></table>
 </div>
 </div><p>其他对应信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -311,7 +311,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ls -l /proc/4847
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ls -l /proc/4847
 <span class="c1"># 以下是/proc目录中进程4847的信息</span>
 <span class="c1"># /proc/4847 pid为N的进程信息</span>
 <span class="c1"># /proc/4847/cmdline 进程启动命令</span>
@@ -359,8 +359,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Mysql数据库相关的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mysql-install-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mysql-install-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-15T12:49:51&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-15T12:49:51&#43;08:00" />
+<meta property="article:published_time" content="2021-07-15T12:49:51+08:00" />
+<meta property="article:modified_time" content="2021-07-15T12:49:51+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mysql-install-note/featured-image.jpg"/>
@@ -170,7 +170,7 @@
 </nav></div>
             </div><div class="content" id="content"><h2 id="下载">下载</h2>
 <h3 id="最新版本">最新版本</h3>
-<p><a href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a></p>
+<p><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener noreferrer">https://dev.mysql.com/downloads/mysql/</a></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -188,7 +188,7 @@
         alt="./2.jpg"
         title="2" /></p>
 <h3 id="历史版本">历史版本</h3>
-<p><a href="https://downloads.mysql.com/archives/community/">https://downloads.mysql.com/archives/community/</a></p>
+<p><a href="https://downloads.mysql.com/archives/community/" target="_blank" rel="noopener noreferrer">https://downloads.mysql.com/archives/community/</a></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -204,7 +204,7 @@
 <p>打开刚刚解压的文件夹 <strong>C:\Program_Green\Java_env\mysql-5.7.33-winx64</strong> ，在该文件夹下创建 <strong>my.ini</strong> 配置文件，编辑 <strong>my.ini</strong> 配置以下基本信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -223,7 +223,7 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>client<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>client<span class="o">]</span>
 <span class="c1"># 设置mysql客户端默认字符集</span>
 default-character-set<span class="o">=</span>utf8
  
@@ -257,30 +257,30 @@ default-storage-engine<span class="o">=</span>INNODB
 <p>以管理员身份打开 cmd 命令行工具，切换目录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> C:<span class="se">\P</span>rogram_Green<span class="se">\J</span>ava_env<span class="se">\m</span>ysql-5.7.33-winx64<span class="se">\b</span>in
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> C:<span class="se">\P</span>rogram_Green<span class="se">\J</span>ava_env<span class="se">\m</span>ysql-5.7.33-winx64<span class="se">\b</span>in
 </code></pre></td></tr></table>
 </div>
 </div><p>初始化数据库：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysqld --initialize --console
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mysqld --initialize --console
 </code></pre></td></tr></table>
 </div>
 </div><p>执行完成后，会输出 root 用户的初始默认密码，如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">...
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">...
 2018-04-20T02:35:05.464644Z <span class="m">5</span> <span class="o">[</span>Note<span class="o">]</span> <span class="o">[</span>MY-010454<span class="o">]</span> <span class="o">[</span>Server<span class="o">]</span> A temporary password is generated <span class="k">for</span> root@localhost: APWCY5ws<span class="p">&amp;</span>hjQ
 ...
 </code></pre></td></tr></table>
@@ -289,30 +289,30 @@ default-storage-engine<span class="o">=</span>INNODB
 <p>输入以下安装命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysqld install
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mysqld install
 </code></pre></td></tr></table>
 </div>
 </div><p>启动输入以下命令即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">net start mysql
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">net start mysql
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>注意: 在 5.7 需要初始化 data 目录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">C:<span class="se">\P</span>rogram_Green<span class="se">\J</span>ava_env<span class="se">\m</span>ysql-5.7.33-winx64
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">C:<span class="se">\P</span>rogram_Green<span class="se">\J</span>ava_env<span class="se">\m</span>ysql-5.7.33-winx64
 mysqld --initialize-insecure 
 </code></pre></td></tr></table>
 </div>
@@ -322,10 +322,10 @@ mysqld --initialize-insecure
 <p>当 MySQL 服务已经运行时, 我们可以通过 MySQL 自带的客户端工具登录到 MySQL 数据库中, 首先打开命令提示符, 输入以下格式的命名:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql -h 主机名 -u 用户名 -p
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mysql -h 主机名 -u 用户名 -p
 </code></pre></td></tr></table>
 </div>
 </div><p>参数说明：</p>
@@ -337,19 +337,19 @@ mysqld --initialize-insecure
 <p>如果我们要登录本机的 MySQL 数据库，只需要输入以下命令即可：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql -u root -p
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mysql -u root -p
 </code></pre></td></tr></table>
 </div>
 </div><p>按回车确认, 如果安装正确且 MySQL 正在运行, 会得到以下响应:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">Enter password:
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Enter password:
 </code></pre></td></tr></table>
 </div>
 </div><p>若密码存在, 输入密码登录, 不存在则直接按回车登录。登录成功后你将会看到 Welcome to the MySQL monitor&hellip; 的提示语。</p>
@@ -358,19 +358,19 @@ mysqld --initialize-insecure
 <p>不重置初始密码什么都不能做</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ERROR <span class="m">1820</span> <span class="o">(</span>HY000<span class="o">)</span>: You must reset your password using ALTER USER statement before executing this statement.
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ERROR <span class="m">1820</span> <span class="o">(</span>HY000<span class="o">)</span>: You must reset your password using ALTER USER statement before executing this statement.
 </code></pre></td></tr></table>
 </div>
 </div><p>修改密码的方法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; alter user root@localhost identified by <span class="s1">&#39;ZfL001!&#39;</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; alter user root@localhost identified by <span class="s1">&#39;ZfL001!&#39;</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="linux">Linux</h3>
@@ -385,20 +385,20 @@ mysqld --initialize-insecure
 <p>安装前，我们可以检测系统是否自带安装 MySQL:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">rpm -qa | grep mysql
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">rpm -qa | grep mysql
 </code></pre></td></tr></table>
 </div>
 </div><p>如果你系统有安装，那可以选择进行卸载:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">rpm -e mysql　　// 普通删除模式
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">rpm -e mysql　　// 普通删除模式
 rpm -e --nodeps mysql　　// 强力删除模式，如果使用上面命令删除时，提示有依赖的其它文件，则用该命令可以对其进行强力删除
 </code></pre></td></tr></table>
 </div>
@@ -414,13 +414,13 @@ rpm -e --nodeps mysql　　// 强力删除模式，如果使用上面命令删�
         title="4" /></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 rpm -ivh mysql-community-release-el7-5.noarch.rpm
 yum update
 yum install mysql-server
@@ -429,37 +429,37 @@ yum install mysql-server
 </div><p>权限设置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">chown mysql:mysql -R /var/lib/mysql
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">chown mysql:mysql -R /var/lib/mysql
 </code></pre></td></tr></table>
 </div>
 </div><p>初始化 MySQL：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysqld --initialize
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mysqld --initialize
 </code></pre></td></tr></table>
 </div>
 </div><p>启动 MySQL：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl start mysqld
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">systemctl start mysqld
 </code></pre></td></tr></table>
 </div>
 </div><p>查看 MySQL 运行状态：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl status mysqld
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">systemctl status mysqld
 </code></pre></td></tr></table>
 </div>
 </div><p>**注意：**如果我们是第一次启动 mysql 服务，mysql 服务器首先会进行初始化的配置。</p>
@@ -468,22 +468,22 @@ yum install mysql-server
 <p>MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">yum install mariadb-server mariadb 
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">yum install mariadb-server mariadb 
 </code></pre></td></tr></table>
 </div>
 </div><p>mariadb数据库的相关命令是：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">systemctl start mariadb  <span class="c1">#启动MariaDB</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">systemctl start mariadb  <span class="c1">#启动MariaDB</span>
 systemctl stop mariadb  <span class="c1">#停止MariaDB</span>
 systemctl restart mariadb  <span class="c1">#重启MariaDB</span>
 systemctl <span class="nb">enable</span> mariadb  <span class="c1">#设置开机启动</span>
@@ -497,19 +497,19 @@ systemctl <span class="nb">enable</span> mariadb  <span class="c1">#设置开机
 <p>使用 mysqladmin 命令来检查服务器的版本, 在 linux 上该二进制文件位于 /usr/bin 目录，在 Windows 上该二进制文件位于C:\mysql\bin 。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysqladmin --version</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysqladmin --version</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>linux上该命令将输出以下结果，该结果基于你的系统信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysqladmin  Ver 8.23 Distrib 5.0.9-0, <span class="k">for</span> redhat-linux-gnu on i386
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mysqladmin  Ver 8.23 Distrib 5.0.9-0, <span class="k">for</span> redhat-linux-gnu on i386
 </code></pre></td></tr></table>
 </div>
 </div><p>如果以上命令执行后未输出任何信息，说明你的Mysql未安装成功。</p>
@@ -519,16 +519,16 @@ systemctl <span class="nb">enable</span> mariadb  <span class="c1">#设置开机
 <p>命令如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysql</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysql</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>以上命令执行后会输出 mysql&gt;提示符，这说明你已经成功连接到Mysql服务器上，你可以在 mysql&gt; 提示符执行SQL命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -538,7 +538,7 @@ systemctl <span class="nb">enable</span> mariadb  <span class="c1">#设置开机
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; SHOW DATABASES<span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; SHOW DATABASES<span class="p">;</span>
 +----------+
 <span class="p">|</span> Database <span class="p">|</span>
 +----------+
@@ -553,20 +553,20 @@ systemctl <span class="nb">enable</span> mariadb  <span class="c1">#设置开机
 <p>Mysql安装成功后，默认的root用户密码为空，你可以使用以下命令来创建root用户的密码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysqladmin -u root password &#34;new_password&#34;;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysqladmin -u root password &#34;new_password&#34;;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>现在你可以通过以下命令来连接到Mysql服务器：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysql -u root -p</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@host<span class="o">]</span><span class="c1"># mysql -u root -p</span>
 Enter password:*******
 </code></pre></td></tr></table>
 </div>
@@ -577,13 +577,13 @@ Enter password:*******
 <p>启动：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> c:/mysql/bin
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> c:/mysql/bin
 net start mysql <span class="c1">#管理员模式控制台</span>
 <span class="c1"># 或</span>
 mysqld --console <span class="c1">#(服务不启动，需要在手动去服务界面启动或执行上面一条指令)</span>
@@ -592,14 +592,14 @@ mysqld --console <span class="c1">#(服务不启动，需要在手动去服务�
 </div><p>关闭：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> c:/mysql/bin
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> c:/mysql/bin
 net stop mysql <span class="c1">#管理员模式控制台</span>
 <span class="c1"># 或</span>
 mysqladmin -u root shutdown <span class="c1">#无密码</span>
@@ -613,32 +613,32 @@ mysqladmin -u root -p shutdown <span class="c1"># 要输入密码</span>
 <p>首先，我们需要通过以下命令来检查MySQL服务器是否启动：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">ps -ef <span class="p">|</span> grep mysqld
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ps -ef <span class="p">|</span> grep mysqld
 </code></pre></td></tr></table>
 </div>
 </div><p>如果MySql已经启动，以上命令将输出mysql进程列表， 如果mysql未启动，你可以使用以下命令来启动mysql服务器:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">root@host# <span class="nb">cd</span> /usr/bin
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">root@host# <span class="nb">cd</span> /usr/bin
 ./mysqld_safe <span class="p">&amp;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>如果你想关闭目前运行的 MySQL 服务器, 你可以执行以下命令:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">root@host# <span class="nb">cd</span> /usr/bin
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">root@host# <span class="nb">cd</span> /usr/bin
 ./mysqladmin -u root -p shutdown
 Enter password: ******
 </code></pre></td></tr></table>
@@ -675,8 +675,8 @@ Enter password: ******
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

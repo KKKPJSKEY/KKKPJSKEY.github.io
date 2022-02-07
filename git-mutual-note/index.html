@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Git仓库之间交互指令教程的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/git-mutual-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/git-mutual-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-25T15:18:13&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-25T15:18:13&#43;08:00" />
+<meta property="article:published_time" content="2021-08-25T15:18:13+08:00" />
+<meta property="article:modified_time" content="2021-08-25T15:18:13+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/git-mutual-note/featured-image.jpg"/>
@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/git-mutual-note\/featured-image.jpg",
                             "width":  1200 ,
                             "height":  360 
-                        }],"genre": "posts","keywords": "Git, Mutual","wordcount":  593 ,
+                        }],"genre": "posts","keywords": "Git, Mutual","wordcount":  660 ,
         "url": "https:\/\/kkkpjskey.github.io\/git-mutual-note\/","datePublished": "2021-08-25T15:18:13+08:00","dateModified": "2021-08-25T15:18:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Git仓库之间交互指令教程</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 593 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 660 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/git-mutual-note/" class="leancloud_visitors" data-flag-title="Git仓库之间交互指令教程">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -149,6 +149,7 @@
     <li><a href="#git-fetch">Git Fetch</a></li>
     <li><a href="#git-merge">Git Merge</a></li>
     <li><a href="#git-pull">Git Pull</a></li>
+    <li><a href="#git-clone">Git Clone</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="git-push">Git Push</h2>
@@ -156,19 +157,19 @@
 <p>当远程仓库仅有一个且本地和远程都只有一个分支时可以省略主机名、本地分支名、远程分支名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git push
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git push
 </code></pre></td></tr></table>
 </div>
 </div><p>当远程仓库仅有一个且本地分支和远程分支同名时，将本地[branch]分支推送至origin主机的对应分支</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git push origin <span class="o">[</span>branch<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git push origin <span class="o">[</span>branch<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>将本地mybranch1与origin主机的对应分支建立管道，以后允许使用<code>git push</code>省略提交。</p>
@@ -177,11 +178,11 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git push -u origin mybranch1
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git push -u origin mybranch1
 git branch --set-upstream-to<span class="o">=</span>origin/mybranch1 mybranch1
 </code></pre></td></tr></table>
 </div>
@@ -189,77 +190,77 @@ git branch --set-upstream-to<span class="o">=</span>origin/mybranch1 mybranch1
 <p>提交所有本地分支到远程对应分支</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git push --all
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git push --all
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="条件">条件</h3>
 <p>强制推送，不考虑版本迭代，特别是允许旧版本覆盖新版本从而导致之前提交内容丢失。<a href="https://git-scm.com/docs/git-push" target="_blank" rel="noopener noreferrer">官方文档</a>仅建议我们最多强制推送一个分支</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git push <span class="o">[</span>-f <span class="p">|</span> --force<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git push <span class="o">[</span>-f <span class="p">|</span> --force<span class="o">]</span>
 git push origin <span class="o">[</span>branch<span class="o">]</span> <span class="o">[</span>-f <span class="p">|</span> --force<span class="o">]</span> <span class="c1"># 官方建议</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>删除所有提交，等于在当前分支前加<code>:</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git push <span class="o">[</span>-d <span class="p">|</span> --delete <span class="p">|</span> :<span class="o">[</span>branch<span class="o">]]</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git push <span class="o">[</span>-d <span class="p">|</span> --delete <span class="p">|</span> :<span class="o">[</span>branch<span class="o">]]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="git-remote">Git Remote</h2>
 <p>显示所有的远程仓库</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git remote -v
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git remote -v
 </code></pre></td></tr></table>
 </div>
 </div><p>显示某个远程仓库信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git remote show <span class="o">[</span>remote<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git remote show <span class="o">[</span>remote<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>添加远程版本库，shortname类似Id</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git remote add <span class="o">[</span>shortname<span class="o">]</span> <span class="o">[</span>url<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git remote add <span class="o">[</span>shortname<span class="o">]</span> <span class="o">[</span>url<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>删除</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git remote rm name  <span class="c1"># 删除远程仓库</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git remote rm name  <span class="c1"># 删除远程仓库</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>修改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git remote rename old_name new_name  <span class="c1"># 修改仓库名</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git remote rename old_name new_name  <span class="c1"># 修改仓库名</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="fork">Fork</h2>
@@ -268,33 +269,45 @@ git push origin <span class="o">[</span>branch<span class="o">]</span> <span cla
 <p>从远程仓库获取代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git fetch <span class="o">[</span>shortname<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git fetch <span class="o">[</span>shortname<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="git-merge">Git Merge</h2>
 <p>将shortname主机的branch分支代码合并到当前本地开发分支</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git merge <span class="o">[</span>shortname<span class="o">]</span>/<span class="o">[</span>branch<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git merge <span class="o">[</span>shortname<span class="o">]</span>/<span class="o">[</span>branch<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="git-pull">Git Pull</h2>
 <p>等价于Fetch+Merge，但是不推荐使用，不能清晰查看分支间变更。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git pull origin <span class="o">[</span>branch<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git pull origin <span class="o">[</span>branch<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="git-clone">Git Clone</h2>
+<p>将仓库代码完成克隆一份到本地</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git clone <span class="o">[</span>-b<span class="o">][</span>branch<span class="o">]</span> <span class="o">[</span>url<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>-b参数不加为克隆默认分支（default）加</p>
+<p>上-b 可以在后面添加分支名称，克隆特定分支代码</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -326,8 +339,8 @@ git push origin <span class="o">[</span>branch<span class="o">]</span> <span cla
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>PowerShellGet笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录PowerShellGet笔记"><meta property="og:title" content="PowerShellGet笔记" />
+<meta property="og:description" content="记录PowerShellGet笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/win-powershellget-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/win-powershellget-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-07T13:07:34+08:00" />
+<meta property="article:modified_time" content="2022-02-07T13:07:34+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/win-powershellget-note/featured-image.jpg"/>
+<meta name="twitter:title" content="PowerShellGet笔记"/>
+<meta name="twitter:description" content="记录PowerShellGet笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/win-powershellget-note/" /><link rel="prev" href="https://kkkpjskey.github.io/win10-mail-0x80004005-error/" /><link rel="next" href="https://kkkpjskey.github.io/docker-wsl2-waring-error/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "PowerShellGet笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/win-powershellget-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/win-powershellget-note\/featured-image.jpg",
+                            "width":  2000 ,
+                            "height":  600 
+                        }],"genre": "posts","keywords": "PowerShell, Windows","wordcount":  4239 ,
+        "url": "https:\/\/kkkpjskey.github.io\/win-powershellget-note\/","datePublished": "2022-02-07T13:07:34+08:00","dateModified": "2022-02-07T13:07:34+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录PowerShellGet笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/win-powershellget-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/win-powershellget-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">PowerShellGet笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-07">2022-02-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4239 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/win-powershellget-note/" class="leancloud_visitors" data-flag-title="PowerShellGet笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/win-powershellget-note/featured-image.jpg"
+        data-srcset="/win-powershellget-note/featured-image.jpg, /win-powershellget-note/featured-image.jpg 1.5x, /win-powershellget-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/win-powershellget-note/featured-image.jpg"
+        title="记录PowerShellGet笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#powershell的最佳管理能手">PowerShell的最佳管理能手</a></li>
+    <li><a href="#用powershellget管理你的模块包">用PowerShellGet管理你的模块包</a>
+      <ul>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#packagesource">PackageSource</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="powershell的最佳管理能手">PowerShell的最佳管理能手</h2>
+<p>如果你看了上一篇关于微软的新一代Windows套件包管理器(OneGet)的文章的话，应该对PowerShell如何操作Windows的套件包管理器有了一定的了解。而这篇内容我会着重要谈谈管理PowerShell的PowerShellGet套件包，他与Windows套件包管理器(OneGet)有着密不可分的关系。PowerShellGet的内容还是比较多的，考虑到篇幅我打算拆分几篇文章分别以介绍，使用等角度来分享下这个PowerShell管理能手。
+什么是PowerShellGet</p>
+<p>首先，PowerShellGet是可以用来查找，安装，更新，管理等操作PowerShell模块与脚本的一个套件包，也就是所谓的管理PowerShell的包管理器。PowerShellGet里内置了一系列用于管理PowerShell模块与脚本的相关命令。用户可以使用PowerShellGet内的相关命令获取在线的PowerShell模块和脚本。</p>
+<p>而PowerShellGet作为与用户的交互接口会默认连接PowerShell Gallery站点并从那获取在线资源。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>让我们来看看上一篇我们在OneGet文章中提到的架构图，PowerShellGet作为PackageManagementProviders提供给用户各类相关功能命令使用，而他的Package Source数据源来自于PowerShell Gallery。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>还记得我们文章开头提到PowerShellGet与OneGet有着密不可分的关系吗，我们知道OneGet是用来统一管理Windows平台上各种各样的套件包的组件，而OneGet还支持各种Provider扩展他把各种套件提供者Provider组合在一起供用户使用。而PowerShellGet作为一个Provider扩展套件被集成在OneGet中，可以被用于管理PowerShell。</p>
+<p>我们用命令查看下PackageManagement的Provider，发现是PowerShellGet。这下你应该明白了，PowerShellGet作为一个Provider扩展套件被集成在OneGet中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Get-Package -Name PackageManagement <span class="p">|</span> Format-List
+
+PropertyOfSoftwareIdentity : PropertyOfSoftwareIdentity
+FastPackageReference       : NuGet<span class="p">|</span>PackageManagement<span class="p">|</span>1.1.3.0<span class="p">|</span>https://www.powershellgallery.com/api/v2/<span class="p">|</span>Module
+ProviderName               : PowerShellGet
+Source                     : https://www.powershellgallery.com/api/v2/
+Status                     : Installed
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="用powershellget管理你的模块包">用PowerShellGet管理你的模块包</h2>
+<p>上一篇在PowerShellGet系列中【PowerShellGet系列(一)：PowerShell的最佳管理能手】文章中，我们介绍了有关什么是PowerShellGet，今天这篇我们就来看看如何操作PowerShellGet模块里的命令。</p>
+<p>不过在正式介绍里面的相关命令操作时，先让我们来简单回顾一下什么是PowerShellGet。</p>
+<p>PowerShellGet是可以用来查找，安装，更新，管理等操作PowerShell模块与脚本的一个套件包，也就是所谓的管理PowerShell的包管理器。PowerShellGet里内置了一系列用于管理PowerShell模块与脚本的相关命令。用户可以使用PowerShellGet内的相关命令获取在线的PowerShell模块和脚本。</p>
+<p>大家知道了什么是PowerShellGet，按照上面解释的说法，那是不是说明它里面所包含的Cmdlets就是各种操作的相关命令。让我使用Get-Command -Module PowerShellGet命令行来查看下里面包含的命令。</p>
+<p>友好提示：文章里的一些代码片段单行内容比较长，如果排版有些拥挤，建议手机切换成横屏模式游览会舒服很多。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Get-Command -Module PowerShellGet
+
+CommandType     Name                            Version    Source
+-----------     ----                            -------    ------
+Function        Find-Command                    1.0.0.1    PowerShellGet
+Function        Find-DscResource                1.0.0.1    PowerShellGet
+Function        Find-Module                     1.0.0.1    PowerShellGet
+Function        Find-RoleCapability             1.0.0.1    PowerShellGet
+Function        Find-Script                     1.0.0.1    PowerShellGet
+Function        Get-InstalledModule             1.0.0.1    PowerShellGet
+Function        Get-InstalledScript             1.0.0.1    PowerShellGet
+Function        Get-PSRepository                1.0.0.1    PowerShellGet
+Function        Install-Module                  1.0.0.1    PowerShellGet
+Function        Install-Script                  1.0.0.1    PowerShellGet
+Function        New-ScriptFileInfo              1.0.0.1    PowerShellGet
+Function        Publish-Module                  1.0.0.1    PowerShellGet
+Function        Publish-Script                  1.0.0.1    PowerShellGet
+Function        Register-PSRepository           1.0.0.1    PowerShellGet
+Function        Save-Module                     1.0.0.1    PowerShellGet
+Function        Save-Script                     1.0.0.1    PowerShellGet
+Function        Set-PSRepository                1.0.0.1    PowerShellGet
+Function        Test-ScriptFileInfo             1.0.0.1    PowerShellGet
+Function        Uninstall-Module                1.0.0.1    PowerShellGet
+Function        Uninstall-Script                1.0.0.1    PowerShellGet
+Function        Unregister-PSRepository         1.0.0.1    PowerShellGet
+Function        Update-Module                   1.0.0.1    PowerShellGet
+Function        Update-ModuleManifest           1.0.0.1    PowerShellGet
+Function        Update-Script                   1.0.0.1    PowerShellGet
+Function        Update-ScriptFileInfo           1.0.0.1    PowerShellGet
+</code></pre></td></tr></table>
+</div>
+</div><p>我们获得了各类用于管理的相关命令，为了方便查看我们用下面的命令做些编排以方便梳理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Get-Command -Module PowerShellGet <span class="p">|</span> Group-Object -Property Verb
+
+Count Name              Group
+----- ----              -----
+    5 Find              {Find-Command, Find-DscResource, Find-Module, Find-RoleCapability...}
+    3 Get               {Get-InstalledModule, Get-InstalledScript, Get-PSRepository}
+    2 Install           {Install-Module, Install-Script}
+    1 New               {New-ScriptFileInfo}
+    2 Publish           {Publish-Module, Publish-Script}
+    1 Register          {Register-PSRepository}
+    2 Save              {Save-Module, Save-Script}
+    1 Set               {Set-PSRepository}
+    1 Test              {Test-ScriptFileInfo}
+    2 Uninstall         {Uninstall-Module, Uninstall-Script}
+    1 Unregister        {Unregister-PSRepository}
+    4 Update            {Update-Module, Update-ModuleManifest, Update-Script, Update-ScriptFileInfo}
+</code></pre></td></tr></table>
+</div>
+</div><p>大家可以看到，有Find(查找), Get(获取), Install(安装), New(新建), Publish(发布), Register(注册), Save(保存), Set(设置), Test(检查), Uninstall(卸载), Unregister(注销), Update(更新)一共包含了12大类的功能管理，几乎你可以用PowerShellGet来管理你整个PowerShell了。因为里面涵盖的内容非常多，所以我打算抽其中部分方面来介绍下。</p>
+<p>好吧，我突然想到想用Find-Module查看PowerShellGet的所有包含版本号，因为PowerShellGet的数据源是PSGallery在线站点，所以它会连接PSGallery在线站点去获取我们的数据包，下面列出了目前站点上收录的可用版本号。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Find-Module -Name PowerShellGet -AllVersions
+
+Version    Name                  Repository           Description
+-------    ----                  ----------           -----------
+1.1.2.0    PowerShellGet         PSGallery            PowerShell module with commands for discovering,..
+1.1.1.0    PowerShellGet         PSGallery            PowerShell module with commands for discovering,..
+1.1.0.0    PowerShellGet         PSGallery            PowerShell module with commands for discovering,..
+</code></pre></td></tr></table>
+</div>
+</div><p>我好像记得我当前电脑里的PowerShellGet不是最新的呢，让我用Get-Module查看下PowerShellGet版本号确认下吧。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Get-Module -Name PowerShellGet
+
+ModuleType Version    Name            ExportedCommands
+---------- -------    ----            ----------------
+Script     1.0.0.1    PowerShellGet   {Find-Command, Find-DscResource, Find-Module, Find-RoleCap..
+</code></pre></td></tr></table>
+</div>
+</div><p>果然不是最新的，我电脑里的版本还是1.0.0.1，而之前我用Find-Module列出的在线版本号最新的已经到1.1.2.0了，赶紧升级下看看是不是又多了什么新功能。怎么升级呢？我想到了Update-Module的命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Update-Module -Name PowerShellGet -RequiredVersion 1.1.2.0
+
+Update-Module : Module &#39;PowerShellGet&#39; was not installed by using Install-Module, so it cannot be updated.
+At line:1 char:1
++ Update-Module -Name PowerShellGet -RequiredVersion 1.1.2.0
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (PowerShellGet:String) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : ModuleNotInstalledUsingInstallModuleCmdlet,Update-Module
+</code></pre></td></tr></table>
+</div>
+</div><p>什么情况？居然报错了，提示Module ‘PowerShellGet’ was not installed by using Install-Module, so it cannot be updated. 这段错误提示告诉我，我要升级的PowerShellGet模块并没有通过Install-Module来安装（由于我们目前自带的PowerShellGet是安装WMF 5.0时自带的），所以不能被升级，也就是只有通过Install-Module方式来安装的模块才可以配合Update-Module更新。为了验证下，我用Get-InstalledModule命令查看下，果真下面列出的安装模块列表里显示我之前没用Install-Module方式安装过PowerShellGet模块。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Get-InstalledModule
+
+Version    Name                Repository      Description
+-------    ----                ----------      -----------
+0.1.0.1    AppxGet             PSGallery       Powershell Package Management (OneGet) Provider ...
+1.5.1      AzureRM             PSGallery       Azure Resource Manager Module
+0.5        GitHubProvider      PSGallery       GitHub-as-a-Package - PackageManagement PowerShe...
+1.1.3.0    PackageManagement   PSGallery       PackageManagement (a.k.a. OneGet) is a new way t...
+</code></pre></td></tr></table>
+</div>
+</div><p>既然知道原因了那就简单了，马上用Install-Module安装吧。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Install-Module -Name PowerShellGet -RequiredVersion 1.1.2.0
+
+Untrusted repository
+You are installing the modules from an untrusted repository. If you trust this repository, change its
+InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from
+&#39;PSGallery&#39;?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is <span class="s2">&#34;N&#34;</span>): N
+</code></pre></td></tr></table>
+</div>
+</div><p>咦，这又什么情况？提示You are installing the modules from an untrusted repository. 我正要安装的模块包来自于一个未被信任的仓库来源。虽然我们输入 “Y” 参数可以继续执行，因为我们知道这是安全的。但是我还是想让它所以，这里我还是输入 “N” 先不继续安装。那怎么解决信任问题呢？按照刚才的错误提示用Set-PSRepository来操作，将PSGallery设置为可信任源。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;&gt;</span> Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+</code></pre></td></tr></table>
+</div>
+</div><p>再用下面的命令验证查看下确实已经为信任级别了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;&gt;</span> Get-PSRepository
+
+Name             InstallationPolicy   SourceLocation
+----             ------------------   --------------
+PSGallery        Trusted              https://www.powershellgallery.com/api/v2/
+</code></pre></td></tr></table>
+</div>
+</div><p>现在，终于可以安装PowerShellGet模块了，不过为了后续给大家介绍如何更新模块，我在这里就刻意安装一个非最新版本1.1.0.0的PowerShellGet，等等再来升级它。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Install-Module -Name PowerShellGet -RequiredVersion 1.1.0.0
+</code></pre></td></tr></table>
+</div>
+</div><p>然后再用Update-Module来升级到指定的最新版本。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Update-Module -Name PowerShellGet -RequiredVersion 1.1.2.0
+</code></pre></td></tr></table>
+</div>
+</div><p>就是这么简单，我用Get-Module配合ListAvaliable参数居然发现有3个版本，这是因为在PowerShell 5.0中考虑到了兼容性已经支持了相同模块但是多版本的功能。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Get-Module -Name PowerShellGet -ListAvailable
+
+Directory: C:\Program Files\WindowsPowerShell\Modules
+
+ModuleType Version    Name              ExportedCommands
+---------- -------    ----              ----------------
+Script     1.1.2.0    PowerShellGet     {Install-Module, Find-Module, Save-Module, Update-Module...}
+Script     1.1.0.0    PowerShellGet     {Install-Module, Find-Module, Save-Module, Update-Module...}
+Script     1.0.0.1    PowerShellGet     {Install-Module, Find-Module, Save-Module, Update-Module...}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="总结">总结</h3>
+<p>大致的介绍说完了，虽然只是一个安装升级模块的过程出现了点小插曲，但在这过程中我们却用到了许多相关命令。让我们总结下，我们用Find-Module来查找在线仓库里可用的模块版本。然后用Get-Module获得当前的版本信息号以此来比较是否需要更新。接着我们用Update-Module来更新模块，但知道了一个重要的点一旦能用Update-Module更新的模块包前提必须都是要用Install-Module方式来安装的。在安装的过程中我们用Set-PSRepository设置可信任的安装源，最后终于可以顺利安装了。</p>
+<h2 id="packagesource">PackageSource</h2>
+<blockquote>
+<p>大家一定还发现还有其它三个有关于“PackageSource”相关的命令，我们就来探讨下这些命令。</p>
+</blockquote>
+<p>首先你可以用Get-PackageSource命令查看下你当前配置中具备哪些PackageSource资源，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Get-PackageSource
+
+Name                          Location                      Provider                                          IsTrusted 
+----                          --------                      --------                                          --------- 
+chocolatey                    http://chocolatey.org/api/v2/ Chocolatey                                            False
+</code></pre></td></tr></table>
+</div>
+</div><p>我们可以从上面的输出信息中看到，我们当前只有名为chocolatey的PackageSource资源。聪明的你一定已经发现了，剩下的3个PackageSource命令中，有一个Add-PackageSource的命令，它一定是可以用来帮我们添加额外的PackageSource，如下我们使用了Add-PackageSource命令来添加了一个名为AndersGet的资源池：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Add-PackageSource -Name AndersGet -Provider chocolatey -Location
+
+http://chocolatey.org/api/v2 
+/ -Trusted 
+</code></pre></td></tr></table>
+</div>
+</div><p>创建完毕后，我们再次使用Get-PackageSource命令查看会得到：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Get-PackageSource
+
+Name                          Location                      Provider                                          IsTrusted 
+----                          --------                      --------                                          --------- 
+chocolatey                    http://chocolatey.org/api/v2/ Chocolatey                                            False 
+andersget                     http://chocolatey.org/api/v2/ Chocolatey                                             True 
+</code></pre></td></tr></table>
+</div>
+</div><p>那么添加好后自己的资源池后如何去使用里面的程序包呢？其实方法很简单和之前我们使用Find、Get以及Install来查找，查看以及安装程序包类似，我们依然使用Find-Package命令去查找程序包，只是这次我们需要使用Source参数去指定从我们指定的资源池中查找，方法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Find-Package -Source andersget -Name sysinternals
+
+Name                             Version          Status           Source         Summary 
+----                             -------          ------           ------         ------- 
+sysinternals                     2014.05.13       Available        chocolatey     Sysinternals - utilities to help y... 
+</code></pre></td></tr></table>
+</div>
+</div><p>最后你可以用Remove-PackageSource命令删除你不想用的资源池，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">PS C:\Users\Administrator<span class="p">&gt;</span> Remove-PackageSource -Name andersget
+
+PS C:\Users\Administrator<span class="p">&gt;</span> Get-PackageSource
+
+Name                          Location                      Provider                                          IsTrusted 
+----                          --------                      --------                                          --------- 
+chocolatey                    http://chocolatey.org/api/v2/ Chocolatey                                            False 
+</code></pre></td></tr></table>
+</div>
+</div><p>很简单吧，下次我们将继续探讨关于，如何创建自定义的OneGet。</p>
+<p>featured-image</p>
+<p>featured-image.jpg</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">font</span> <span class="na">color</span><span class="o">=</span><span class="s">#F33B45</span> <span class="na">size</span><span class="o">=</span><span class="s">3</span><span class="p">&gt;</span>切面声明<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sh ./update.sh 
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-02-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/win-powershellget-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/win-powershellget-note/" data-title="PowerShellGet笔记" data-hashtags="PowerShell,Windows"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/win-powershellget-note/" data-hashtag="PowerShell"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/win-powershellget-note/" data-title="PowerShellGet笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/win-powershellget-note/" data-title="PowerShellGet笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/powershell/">PowerShell</a>,&nbsp;<a href="/tags/windows/">Windows</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/win10-mail-0x80004005-error/" class="prev" rel="prev" title="Win10 邮件0x80004005报错"><i class="fas fa-angle-left fa-fw"></i>Win10 邮件0x80004005报错</a>
+            <a href="/docker-wsl2-waring-error/" class="next" rel="next" title="基于WSL2 的 Docker Desktop 启动时 Failed to set version to docker-desktop: exit code: -1的解决方法...">基于WSL2 的 Docker Desktop 启动时 Failed to set version to docker-desktop: exit code: -1的解决方法...<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

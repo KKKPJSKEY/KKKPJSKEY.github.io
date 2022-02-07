@@ -9,8 +9,8 @@
 <meta property="og:description" content="Hugo 提供了多个内置的 Shortcodes, 以方便作者保持 Markdown 内容的整洁." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/theme-documentation-built-in-shortcodes/" /><meta property="og:image" content="https://kkkpjskey.github.io/theme-documentation-built-in-shortcodes/featured-image.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-03-04T16:29:59&#43;08:00" />
-<meta property="article:modified_time" content="2020-03-04T16:29:59&#43;08:00" />
+<meta property="article:published_time" content="2020-03-04T16:29:59+08:00" />
+<meta property="article:modified_time" content="2020-03-04T16:29:59+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/theme-documentation-built-in-shortcodes/featured-image.png"/>
@@ -167,15 +167,14 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 <p>一个 <code>figure</code> 示例:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">figure</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/lighthouse.jpg&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Lighthouse (figure)&#34;</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">figure</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/lighthouse.jpg&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Lighthouse (figure)&#34;</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>呈现的输出效果如下:</p>
-<figure>
-    <img src="/images/lighthouse.jpg"/> <figcaption>
+<figure><img src="/images/lighthouse.jpg"/><figcaption>
             <h4>Lighthouse (figure)</h4>
         </figcaption>
 </figure>
@@ -183,7 +182,7 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 <p>输出的 HTML 看起来像这样:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -191,7 +190,7 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/lighthouse.jpg&#34;</span> <span class="p">/&gt;</span>
   <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Lighthouse (figure)<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
@@ -204,10 +203,10 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 <p>一个 <code>gist</code> 示例:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">gist</span> <span class="na">spf13</span> <span class="na">7896402</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">gist</span> <span class="na">spf13</span> <span class="na">7896402</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>呈现的输出效果如下:</p>
@@ -216,13 +215,13 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 <p>输出的 HTML 看起来像这样:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span>
   <span class="na">type</span><span class="o">=</span><span class="s">&#34;application/javascript&#34;</span>
   <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://gist.github.com/spf13/7896402.js&#34;</span>
 <span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
@@ -233,7 +232,7 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 <p>一个 <code>highlight</code> 示例:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -246,7 +245,7 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">highlight</span> <span class="na">html</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">highlight</span> <span class="na">html</span> <span class="p">&gt;</span>}}
 
 <span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -262,7 +261,7 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 </div><p>呈现的输出效果如下:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -272,7 +271,7 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
         {{ range .Pages }}
@@ -287,10 +286,10 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 <p>一个 <code>instagram</code> 示例:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">instagram</span> <span class="na">BWNjjyYFxVx</span> <span class="na">hidecaption</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">instagram</span> <span class="na">BWNjjyYFxVx</span> <span class="na">hidecaption</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>呈现的输出效果如下:</p>
@@ -304,7 +303,7 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 <p><a href="https://developers.facebook.com/docs/instagram/oembed" target="_blank" rel="noopener noreferrer">instagram官方文档（Facebook）</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -315,7 +314,7 @@ shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#1.在开发者官方注册</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#1.在开发者官方注册</span>
 <span class="c1">#在开发者工具中创建任务获取app-id和app-secret，填入下面的请求地址</span>
 curl -X GET <span class="s2">&#34;https://graph.facebook.com/oauth/access_token ?client_id={your-app-id} &amp;client_secret={your-app-secret} &amp;grant_type=client_credentials&#34;</span>
 <span class="c1"># 示例</span>
@@ -452,7 +451,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>右侧预设会有一个<code>myFunction</code>，整个删掉后，贴上以下程式码，主要是来取得Access Token的：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -465,13 +464,13 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span>  <span class="nx">appId</span>  <span class="o">=</span>  <span class="s1">&#39;从FB后台取得的「应用程式编号」&#39;</span> <span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span>  <span class="nx">appId</span>  <span class="o">=</span>  <span class="s1">&#39;从FB后台取得的「应用程式编号」&#39;</span> <span class="p">;</span>
 <span class="kd">var</span>  <span class="nx">secret</span>  <span class="o">=</span>  <span class="s1">&#39;从FB后台取得的「应用程式密钥」&#39;</span> <span class="p">;</span>
-   
-   
+
+
 <span class="kd">var</span>  <span class="nx">uri</span>  <span class="o">=</span>  <span class="s1">&#39;https://graph.facebook.com/oauth/access_token?client_id=&#39;</span>  <span class="o">+</span>  <span class="nx">appId</span>  <span class="o">+</span>  <span class="s1">&#39;&amp;client_secret=&#39;</span>  <span class="o">+</span>  <span class="nx">secret</span>  <span class="o">+</span>  <span class="s1">&#39;&amp;grant_type=client_credentials&#39;</span> <span class="p">;</span>
-   
-   
+
+
 <span class="kd">function</span>  <span class="nx">doGet</span> <span class="p">(</span> <span class="nx">e</span> <span class="p">)</span>  <span class="p">{</span>
   <span class="kd">var</span>  <span class="nx">response</span>  <span class="o">=</span>  <span class="nx">UrlFetchApp</span> <span class="p">.</span> <span class="nx">fetch</span> <span class="p">(</span> <span class="nx">uri</span> <span class="p">)</span> <span class="p">;</span>
   <span class="k">return</span>  <span class="nx">ContentService</span> <span class="p">.</span> <span class="nx">createTextOutput</span> <span class="p">(</span> <span class="nx">response</span> <span class="p">)</span> <span class="p">.</span> <span class="nx">setMimeType</span> <span class="p">(</span> <span class="nx">ContentService</span> <span class="p">.</span> <span class="nx">MimeType</span> <span class="p">.</span> <span class="nx">JSON</span> <span class="p">)</span> <span class="p">;</span>
@@ -561,7 +560,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>在上一步的最后我们取得了部署的网址，首先我们先用<code>GET</code>取得Access Token回来：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -569,7 +568,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;部署完取得的网址&#39;</span> <span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;部署完取得的网址&#39;</span> <span class="p">;</span>
 <span class="nx">fetch</span> <span class="p">(</span> <span class="nx">getToken</span> <span class="p">)</span>
   <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">response</span>  <span class="p">=&gt;</span>  <span class="nx">response</span> <span class="p">.</span> <span class="nx">json</span> <span class="p">(</span> <span class="p">)</span> <span class="p">)</span>
   <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">response</span>  <span class="p">=&gt;</span>  <span class="p">{</span>
@@ -580,13 +579,13 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </div><p>Console 出来的response 资料会像这样：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{
   access_token: &#34;405342487221016|50nqwaePxasUkpNVyIwrJpoA2H0&#34;,
   token_type: &#34;bearer&#34;
 }
@@ -606,7 +605,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>有了贴文的网址，也有了Token，我们可以用一个<code>GET</code>来取得贴文的资讯：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -622,10 +621,10 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;部署完取得的网址&#39;</span> <span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;部署完取得的网址&#39;</span> <span class="p">;</span>
 <span class="kr">const</span>  <span class="nx">igUri</span>  <span class="o">=</span>  <span class="s1">&#39;IG贴文的网址&#39;</span> <span class="p">;</span>
 <span class="kr">const</span>  <span class="nx">hideCaption</span>  <span class="o">=</span>  <span class="kc">true</span> <span class="p">;</span>  <span class="c1">//要不要隐藏描述，true隐藏、false不隐藏
-</span><span class="c1"></span>       
+</span><span class="c1"></span>
 <span class="nx">fetch</span> <span class="p">(</span> <span class="nx">getToken</span> <span class="p">)</span>
   <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">response</span>  <span class="p">=&gt;</span>  <span class="nx">response</span> <span class="p">.</span> <span class="nx">json</span> <span class="p">(</span> <span class="p">)</span> <span class="p">)</span>
   <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">response</span>  <span class="p">=&gt;</span>  <span class="nx">response</span> <span class="p">.</span> <span class="nx">access_token</span> <span class="p">)</span>
@@ -643,10 +642,10 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>另外，复制出的IG 贴文网址本身会带一个参数，像这样：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">https://www.instagram.com/p/CK6wSwfpuVi/?igshid=1wy9n8xgtbe89
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">https://www.instagram.com/p/CK6wSwfpuVi/?igshid=1wy9n8xgtbe89
 </code></pre></td></tr></table>
 </div>
 </div><p>实测后，有没有写到igshid 这个参数都没关系，都抓得到贴文资料回来。</p>
@@ -665,10 +664,10 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>而且旧的方法吐回来的html，里面会自行引用IG 的embed.js，新的看起来是跟FB 整并所以就没有了，要自行引用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;script src=&#34;https://www.instagram.com/embed.js&#34;&gt;&lt;/script&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;script src=&#34;https://www.instagram.com/embed.js&#34;&gt;&lt;/script&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>console 出来的response 会长这样：</p>
@@ -683,7 +682,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 <p>可以看到的值有：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -695,7 +694,7 @@ curl -X GET <span class="se">\ </span><span class="s1">&#39;https://graph.facebo
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">author_name
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">author_name
 html
 provider_name
 provider_url
@@ -711,7 +710,7 @@ width
 <p>完整嵌入IG 贴文的程式码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -740,16 +739,16 @@ width
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span> <span class="nt">div</span>  <span class="na">id </span><span class="o">=</span><span class="s">&#34; ig-iframe &#34;</span> <span class="p">&gt;</span> <span class="p">&lt;/</span> <span class="nt">div</span> <span class="p">&gt;</span>
-     
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span> <span class="nt">div</span>  <span class="na">id </span><span class="o">=</span><span class="s">&#34; ig-iframe &#34;</span> <span class="p">&gt;</span> <span class="p">&lt;/</span> <span class="nt">div</span> <span class="p">&gt;</span>
+
 <span class="p">&lt;</span> <span class="nt">script</span>  <span class="na">src </span><span class="o">=</span><span class="s">&#34; https://www.instagram.com/embed.js &#34;</span> <span class="p">&gt;</span> <span class="p">&lt;/</span> <span class="nt">script</span> <span class="p">&gt;</span>
 <span class="p">&lt;</span> <span class="nt">script</span> <span class="p">&gt;</span>
   <span class="kr">const</span>  <span class="nx">getToken</span>  <span class="o">=</span>  <span class="s1">&#39;部署完取得的网址&#39;</span> <span class="p">;</span>
   <span class="kr">const</span>  <span class="nx">igUri</span>  <span class="o">=</span>  <span class="s1">&#39;IG贴文的网址&#39;</span> <span class="p">;</span>
   <span class="kr">const</span>  <span class="nx">hideCaption</span>  <span class="o">=</span>  <span class="kc">true</span> <span class="p">;</span>  <span class="c1">//选填，要不要隐藏描述，true隐藏、false不隐藏，预设为false
 </span><span class="c1"></span>  <span class="kr">const</span>  <span class="nx">maxWidth</span>  <span class="o">=</span>  <span class="mi">400</span> <span class="p">;</span>  <span class="c1">//选填，贴文的最大宽度是多少
-</span><span class="c1"></span>   
-   
+</span><span class="c1"></span>
+
   <span class="nx">fetch</span> <span class="p">(</span> <span class="nx">getToken</span> <span class="p">)</span>
     <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">res</span>  <span class="p">=&gt;</span>  <span class="nx">res</span> <span class="p">.</span> <span class="nx">json</span> <span class="p">(</span> <span class="p">)</span> <span class="p">)</span>
     <span class="p">.</span> <span class="nx">then</span> <span class="p">(</span> <span class="nx">res</span>  <span class="p">=&gt;</span>  <span class="p">{</span>
@@ -786,10 +785,10 @@ width
 <p>一个 <code>param</code> 示例:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">param</span> <span class="na">description</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">param</span> <span class="na">description</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>呈现的输出效果如下:</p>
@@ -801,10 +800,10 @@ Hugo 提供了多个内置的 Shortcodes, 以方便作者保持 Markdown 内容�
 <p>一个 <code>tweet</code> 示例:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">tweet</span> <span class="na">877500564405444608</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">tweet</span> <span class="na">877500564405444608</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>呈现的输出效果如下:</p>
@@ -815,10 +814,10 @@ Hugo 提供了多个内置的 Shortcodes, 以方便作者保持 Markdown 内容�
 <p>一个 <code>vimeo</code> 示例:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">vimeo</span> <span class="na">146022717</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">vimeo</span> <span class="na">146022717</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>呈现的输出效果如下:</p>
@@ -832,10 +831,10 @@ Hugo 提供了多个内置的 Shortcodes, 以方便作者保持 Markdown 内容�
 <p>一个 <code>youtube</code> 示例:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">youtube</span> <span class="na">w7Ft2ymGmfc</span> <span class="p">&gt;</span>}}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">youtube</span> <span class="na">w7Ft2ymGmfc</span> <span class="p">&gt;</span>}}
 </code></pre></td></tr></table>
 </div>
 </div><p>呈现的输出效果如下:</p>
@@ -874,8 +873,8 @@ Hugo 提供了多个内置的 Shortcodes, 以方便作者保持 Markdown 内容�
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

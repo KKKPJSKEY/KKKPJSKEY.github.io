@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录一些Spring学习的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/spring-annotation-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/spring-annotation-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-27T15:20:26&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-27T15:20:26&#43;08:00" />
+<meta property="article:published_time" content="2021-07-27T15:20:26+08:00" />
+<meta property="article:modified_time" content="2021-11-22T10:44:22+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/spring-annotation-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/spring-annotation-note\/featured-image.jpg",
                             "width":  533 ,
                             "height":  300 
-                        }],"genre": "posts","keywords": "Spring, Annotation","wordcount":  3014 ,
-        "url": "https:\/\/kkkpjskey.github.io\/spring-annotation-note\/","datePublished": "2021-07-27T15:20:26+08:00","dateModified": "2021-07-27T15:20:26+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Spring, Annotation","wordcount":  3815 ,
+        "url": "https:\/\/kkkpjskey.github.io\/spring-annotation-note\/","datePublished": "2021-07-27T15:20:26+08:00","dateModified": "2021-11-22T10:44:22+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Spring学习笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3014 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/spring-annotation-note/" class="leancloud_visitors" data-flag-title="Spring学习笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3815 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/spring-annotation-note/" class="leancloud_visitors" data-flag-title="Spring学习笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -140,6 +140,7 @@
     <li><a href="#注解serviceservice括号中的service有什么用"><strong>注解@service(&ldquo;service&rdquo;)括号中的service有什么用</strong></a></li>
     <li><a href="#spring注解componentrepositoryservicecontroller区别"><strong>Spring注解@Component、@Repository、@Service、@Controller区别</strong></a></li>
     <li><a href="#spring中autowired注解resource注解的区别"><strong>Spring中@Autowired注解、@Resource注解的区别</strong></a></li>
+    <li><a href="#自定义spring注解bean的命名策略">自定义Spring注解bean的命名策略</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="注解serviceservice括号中的service有什么用"><strong>注解@service(&ldquo;service&rdquo;)括号中的service有什么用</strong></h2>
@@ -150,7 +151,7 @@
 Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -161,7 +162,7 @@ Java代码</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span> 
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span> 
 <span class="nt">&lt;beansxmlns</span><span class="err">=&#34;http://www.springframework.org/schema/beans&#34;</span>
 <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchemainstance&#34;</span><span class="na">xmlns:context=</span><span class="s">&#34;http://www.springframework.org/schema/context&#34;</span>
 <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://www.springframework.org/schema/beans 
@@ -175,7 +176,7 @@ Java代码</p>
 </div><p>\6. 其中base-package为需要扫描的包（含所有子包） @Service用于标注业务层组件，@Controller用于标注控制层组件（如struts中的action）,@Repository用于标注数据访问组件，即DAO组件，而@Component泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -183,7 +184,7 @@ Java代码</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Service</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Service</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">VentorServiceImpl</span> <span class="kd">implements</span> <span class="n">iVentorService</span><span class="o">{</span>     
 <span class="o">}</span>   
 <span class="n">Repository</span>  
@@ -199,7 +200,7 @@ Java代码</p>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -208,7 +209,7 @@ Java代码</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostConstruct</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostConstruct</span>  
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>   
  <span class="o">}</span>   
 
@@ -231,12 +232,12 @@ Java代码</p>
 <p>使用实现类首字母小写的字符串来注入，如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Autowired</span>   
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Autowired</span>   
 <span class="nd">@Qualifier</span><span class="o">(</span><span class="s">&#34;chinese&#34;</span><span class="o">)</span>    
 <span class="kd">private</span> <span class="n">Man</span> <span class="n">man</span><span class="o">;</span>  
 </code></pre></td></tr></table>
@@ -249,7 +250,7 @@ Java代码</p>
 <p><code>@Component</code>泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -258,7 +259,7 @@ Java代码</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Service</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Service</span> 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">VentorServiceImpl</span> <span class="kd">implements</span> <span class="n">iVentorService</span> <span class="o">{</span> 
 <span class="o">}</span> 
 
@@ -272,7 +273,7 @@ Java代码</p>
 <p>可以使用以下方式指定初始化方法和销毁方法（方法名任意）：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -281,7 +282,7 @@ Java代码</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostConstruct</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostConstruct</span> 
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span> 
 <span class="o">}</span> 
 
@@ -339,11 +340,141 @@ Java代码</p>
 </tbody>
 </table>
 <p>推荐使用：@Resource注解在字段上，这样就不用写setter方法了，并且这个注解是属于J2EE的，减少了与spring的耦合。这样代码看起就比较优雅。</p>
-</div><div class="post-footer" id="post-footer">
+<h2 id="自定义spring注解bean的命名策略">自定义Spring注解bean的命名策略</h2>
+<p>由于项目的需要spring的业务相关的bean不是写在xml文件中，因为项目是一个模块一个模块提交的，提交的时候不想修改xml文件，因此就用到了spring的注解Service。</p>
+<p>例如：</p>
+<p>Java代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Service</span><span class="o">(</span><span class="s">&#34;TestService&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestService</span> <span class="o">{</span>
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>这等同于：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;TestService&#34;</span> <span class="na">class=</span><span class="s">&#34;TestService&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>spring会在classpath里面扫描标记有TestService等标签的类，扫描组件的配置如下：</p>
+<p>Xml代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- sdp-service主要是注入服务类 --&gt;</span>
+<span class="nt">&lt;context:component-scanbase-package</span><span class="err">=&#34;org.sdp&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>加上以上的配置后，spring会自动的扫描org.sdp文件下的标记有注释的类。</p>
+<p>以上的配置看似很“完美”，其实如果项目稍微大时就会出现问题，大家都知道spring的bean的id必须唯一，如果两个人同事写代码就有可以造成写同样的bean名称。</p>
+<p>解决这个问题的一个思路是把bean的名称修改为 类的全路径，例如org.sdp.A 和com.bey.A 。</p>
+<p>只要修改spring默认的bean命名策略就可以了。</p>
+<p>AnnotationBeanNameGenerator是bean的默认命名策略，他实现了BeanNameGenerator接口。在Service里面，如果不写bean的名称，那么默认的名曾是类名，但是第一个字母是小写的。</p>
+<p>例如：</p>
+<p>Html代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">com</span><span class="o">.</span><span class="na">xyz</span><span class="o">.</span><span class="na">FooServiceImpl</span> <span class="o">-&gt;</span> <span class="n">fooServiceImpl</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>观察spring的源代码发现，buildDefaultBeanName方法首先了bean名称小写的作用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">protected</span> <span class="n">String</span> <span class="nf">buildDefaultBeanName</span> <span class="o">(</span><span class="n">BeanDefinition</span> <span class="n">definition</span><span class="o">){</span>
+    <span class="n">String</span> <span class="n">shortClassName</span> <span class="o">=</span> <span class="n">ClassUtils</span><span class="o">.</span><span class="na">getShortName</span><span class="o">(</span><span class="n">definition</span><span class="o">.</span><span class="na">getBeanClassName</span><span class="o">());</span>
+    <span class="k">return</span> <span class="n">Introspector</span><span class="o">.</span><span class="na">decapitalize</span><span class="o">(</span><span class="n">shortClassName</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>因此，可以写一个类继承自AnnotationBeanNameGenerator，重写buildDefaultBeanName方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SdpAnnotationBeanNameGenerator</span> <span class="kd">extends</span> <span class="n">AnnotationBeanNameGenerator</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="n">String</span> <span class="nf">buildDefaultBeanName</span><span class="o">(</span><span class="n">BeanDefinitiondefinition</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">definition</span><span class="o">.</span><span class="na">getBeanClassName</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我的改下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="n">String</span> <span class="nf">buildDefaultBeanName</span><span class="o">(</span><span class="n">BeanDefinition</span> <span class="n">definition</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">className</span> <span class="o">=</span> <span class="n">definition</span><span class="o">.</span><span class="na">getBeanClassName</span><span class="o">();</span>
+    <span class="n">className</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">className</span><span class="o">.</span><span class="na">lastIndexOf</span><span class="o">(</span><span class="s">&#34;.&#34;</span><span class="o">)</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">className</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&#34;impl&#34;</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">className</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">className</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="n">4</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">if</span> <span class="o">((</span><span class="n">className</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&#34;service&#34;</span><span class="o">)</span> <span class="o">||</span> <span class="n">className</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&#34;dao&#34;</span><span class="o">))</span> <span class="o">==</span> <span class="kc">false</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">buildDefaultBeanName</span><span class="o">(</span><span class="n">definition</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">className</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">).</span><span class="na">toLowerCase</span><span class="o">()</span> <span class="o">+</span> <span class="n">className</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">className</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在扫描配置中需要添加自己的命名策略类：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- sdp-service主要是注入服务类 --&gt;</span>
+<span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">&#34;org.sdp&#34;</span> <span class="na">name-generator=</span><span class="s">&#34;org.sdp.spring.SdpAnnotationBeanNameGenerator&#34;</span> <span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-07-27</span>
+                <span>更新于 2021-11-22</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -371,8 +502,8 @@ Java代码</p>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

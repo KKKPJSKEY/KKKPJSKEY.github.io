@@ -9,8 +9,8 @@
 <meta property="og:description" content="Docker 容器常见故障排查及处理，将常见问题分类" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/docker-error-by-type/" /><meta property="og:image" content="https://kkkpjskey.github.io/docker-error-by-type/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-12-30T04:15:45&#43;08:00" />
-<meta property="article:modified_time" content="2019-12-30T04:15:45&#43;08:00" />
+<meta property="article:published_time" content="2019-12-30T04:15:45+08:00" />
+<meta property="article:modified_time" content="2019-12-30T04:15:45+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/docker-error-by-type/featured-image.jpg"/>
@@ -167,7 +167,7 @@
         </li>
         <li><a href="#三镜像和仓库问题报错">三、镜像和仓库问题报错</a>
           <ul>
-            <li><a href="#18get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio">18、Get <a href="https://registry-1.docker.io/v2/:">https://registry-1.docker.io/v2/:</a> dial tcp: lookup registry-1.docker.io</a></li>
+            <li><a href="#18get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio">18、Get <a href="https://registry-1.docker.io/v2/">https://registry-1.docker.io/v2/</a>: dial tcp: lookup registry-1.docker.io</a></li>
             <li><a href="#19推送本地镜像报错">19、推送本地镜像报错</a></li>
             <li><a href="#20usrbindocker-current-error-response-from-daemon-oci-runtime-error-container_linuxgo-starting-container-process-caused-exec-binbash-executable-file-not-found-in-path">20、/usr/bin/docker-current: Error response from daemon: oci runtime error: container_linux.go: starting container process caused “exec: “/bin/bash”: executable file not found in $PATH”.</a></li>
             <li><a href="#21构建镜像执行chown--r非常慢">21、构建镜像，执行chown -R非常慢</a></li>
@@ -328,7 +328,7 @@ systemctl start docker</p>
 <p>解决方式：</p>
 <p>chmod +x 加一个执行权限</p>
 <h3 id="三镜像和仓库问题报错">三、镜像和仓库问题报错</h3>
-<h4 id="18get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio">18、Get <a href="https://registry-1.docker.io/v2/:">https://registry-1.docker.io/v2/:</a> dial tcp: lookup registry-1.docker.io</h4>
+<h4 id="18get-httpsregistry-1dockeriov2-dial-tcp-lookup-registry-1dockerio">18、Get <a href="https://registry-1.docker.io/v2/" target="_blank" rel="noopener noreferrer">https://registry-1.docker.io/v2/</a>: dial tcp: lookup registry-1.docker.io</h4>
 <p>原因：Docker仓库无法访问</p>
 <p>解决方式：</p>
 <p>修改Docker仓库源为国内或者自建的仓库源</p>
@@ -429,7 +429,7 @@ systemctl start docker</p>
 <p>原因：container-selinux版本低或者是没安装的原因</p>
 <p>解决方式：</p>
 <p>wget -O /etc/yum.repos.d/CentOS-Base.repo</p>
-<p><a href="http://mirrors.aliyun.com/repo/Centos-7.repo">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>
+<p><a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener noreferrer">http://mirrors.aliyun.com/repo/Centos-7.repo</a></p>
 <p>yum install epel-release</p>
 <p>yum makecache</p>
 <p>yum install container-selinux</p>
@@ -443,7 +443,7 @@ systemctl start docker</p>
 <p>DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won’t be maintained after that date. A future version of pip will drop support for Python 2.7.</p>
 <p>原因：python2.7提示升级</p>
 <p>解决方式：</p>
-<p>pip install -i <a href="https://pypi.douban.com/simple">https://pypi.douban.com/simple</a> docker-compose</p>
+<p>pip install -i <a href="https://pypi.douban.com/simple" target="_blank" rel="noopener noreferrer">https://pypi.douban.com/simple</a> docker-compose</p>
 <h3 id="八docker删除报错">八、Docker删除报错</h3>
 <h4 id="41docker删除容器报错">41、docker删除容器报错</h4>
 <p>Error response from daemon:Driver overlay failed to remove root filesystem xxxxx: remove/var/lib/docker/overlay2/xxxxx/merged: device or resource busy</p>
@@ -546,8 +546,8 @@ WARNING: bridge-nf-call-ip6tables is disabled</p>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

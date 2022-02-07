@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录SpringBoot的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/springboot-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/springboot-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-26T16:20:48&#43;08:00" />
-<meta property="article:modified_time" content="2021-10-14T10:47:07&#43;08:00" />
+<meta property="article:published_time" content="2021-08-26T16:20:48+08:00" />
+<meta property="article:modified_time" content="2021-10-14T10:47:07+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/springboot-note/featured-image.jpg"/>
@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/springboot-note\/featured-image.jpg",
                             "width":  1016 ,
                             "height":  367 
-                        }],"genre": "posts","keywords": "Java, SpringBoot","wordcount":  1325 ,
+                        }],"genre": "posts","keywords": "Java, SpringBoot","wordcount":  1928 ,
         "url": "https:\/\/kkkpjskey.github.io\/springboot-note\/","datePublished": "2021-08-26T16:20:48+08:00","dateModified": "2021-10-14T10:47:07+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">SpringBoot笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-26">2021-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1325 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/springboot-note/" class="leancloud_visitors" data-flag-title="SpringBoot笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-26">2021-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1928 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/springboot-note/" class="leancloud_visitors" data-flag-title="SpringBoot笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -181,6 +181,7 @@
       </ul>
     </li>
     <li><a href="#scheduled">@Scheduled</a></li>
+    <li><a href="#logging-level级别">logging level级别</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="springboot-controller接收参数的几种常用方式">SpringBoot Controller接收参数的几种常用方式</h2>
@@ -195,14 +196,14 @@
 对应的java代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/demo/{id}&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/demo/{id}&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">demo</span><span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;id&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;name&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;id=&#34;</span><span class="o">+</span><span class="n">id</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;name=&#34;</span><span class="o">+</span><span class="n">name</span><span class="o">);</span>
@@ -212,11 +213,11 @@
 </div><p>输出结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">id</span><span class="o">=</span><span class="m">123</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">id</span><span class="o">=</span><span class="m">123</span>
 <span class="nv">name</span><span class="o">=</span>suki_rong
 </code></pre></td></tr></table>
 </div>
@@ -235,13 +236,13 @@
 对应的java代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;/demo1&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;/demo1&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">demo1</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
 <span class="o">}</span>
@@ -250,22 +251,22 @@
 </div><p>输出结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">name:suki_rong<span class="p">;</span><span class="nv">age</span><span class="o">=</span>18<span class="p">;</span>hobby:programing
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">name:suki_rong<span class="p">;</span><span class="nv">age</span><span class="o">=</span>18<span class="p">;</span>hobby:programing
 </code></pre></td></tr></table>
 </div>
 </div><p>也可以是这样</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;/demo1&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;/demo1&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">demo1</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="n">Map</span> <span class="n">person</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">));</span>
 <span class="o">}</span>
@@ -274,10 +275,10 @@
 </div><p>输出结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">suki_rong
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">suki_rong
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="2无注解">2、无注解</h4>
@@ -293,13 +294,13 @@
 对应的java代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;/demo2&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">&#34;/demo2&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">demo2</span><span class="o">(</span><span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
 <span class="o">}</span>
@@ -308,16 +309,16 @@
 </div><p>输出结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">name:suki_rong<span class="p">;</span><span class="nv">age</span><span class="o">=</span>18<span class="p">;</span>hobby:programing
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">name:suki_rong<span class="p">;</span><span class="nv">age</span><span class="o">=</span>18<span class="p">;</span>hobby:programing
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="person类">Person类</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -332,7 +333,7 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="kt">long</span> <span class="n">id</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
@@ -353,7 +354,7 @@
 <p>java代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -361,7 +362,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/demo3&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/demo3&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">demo3</span><span class="o">(</span><span class="nd">@RequestHeader</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;myHeader&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">myHeader</span><span class="o">,</span>
         <span class="nd">@CookieValue</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;myCookie&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">myCookie</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;myHeader=&#34;</span> <span class="o">+</span> <span class="n">myHeader</span><span class="o">);</span>
@@ -372,7 +373,7 @@
 </div><p>也可以这样</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -383,7 +384,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/demo3&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/demo3&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">demo3</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getHeader</span><span class="o">(</span><span class="s">&#34;myHeader&#34;</span><span class="o">));</span>
     <span class="k">for</span> <span class="o">(</span><span class="n">Cookie</span> <span class="n">cookie</span> <span class="o">:</span> <span class="n">request</span><span class="o">.</span><span class="na">getCookies</span><span class="o">())</span> <span class="o">{</span>
@@ -407,7 +408,7 @@
 <h3 id="redirectattributes的使用">RedirectAttributes的使用</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -418,7 +419,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RedirectAttributes</span> <span class="kd">extends</span> <span class="n">Model</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RedirectAttributes</span> <span class="kd">extends</span> <span class="n">Model</span> <span class="o">{</span>
     <span class="n">RedirectAttributes</span> <span class="nf">addAttribute</span><span class="o">(</span><span class="n">String</span> <span class="n">var1</span><span class="o">,</span> <span class="nd">@Nullable</span> <span class="n">Object</span> <span class="n">var2</span><span class="o">);</span>
     <span class="n">RedirectAttributes</span> <span class="nf">addAttribute</span><span class="o">(</span><span class="n">Object</span> <span class="n">var1</span><span class="o">);</span>
     <span class="n">RedirectAttributes</span> <span class="nf">addAllAttributes</span><span class="o">(</span><span class="n">Collection</span><span class="o">&lt;?&gt;</span> <span class="n">var1</span><span class="o">);</span>
@@ -436,7 +437,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -444,7 +445,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostMapping</span><span class="o">(</span><span class="s">&#34;/regist&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostMapping</span><span class="o">(</span><span class="s">&#34;/regist&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">String</span> <span class="nf">register</span><span class="o">(</span><span class="n">RedirectAttributes</span> <span class="n">attribdatautes</span><span class="o">){</span>
     <span class="kt">int</span> <span class="n">data</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
     <span class="n">attributes</span><span class="o">.</span><span class="na">addFlashAttribute</span><span class="o">(</span><span class="s">&#34;data&#34;</span><span class="o">,</span><span class="n">data</span><span class="o">);</span>
@@ -457,7 +458,7 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -465,7 +466,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/addToCartSuccess.html&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/addToCartSuccess.html&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">String</span> <span class="nf">addToCartSuccessPagez</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">&#34;skuId&#34;</span><span class="o">)</span> <span class="n">Long</span> <span class="n">skuId</span><span class="o">,</span><span class="n">Model</span> <span class="n">model</span><span class="o">){</span>
     <span class="n">CartItem</span> <span class="n">cartItem</span> <span class="o">=</span> <span class="n">cartService</span><span class="o">.</span><span class="na">selectCartItemInfo</span><span class="o">(</span><span class="n">skuId</span><span class="o">);</span>
     <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">&#34;item&#34;</span><span class="o">,</span><span class="n">cartItem</span><span class="o">);</span>
@@ -476,7 +477,7 @@
 </div><h2 id="scheduled">@Scheduled</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -493,7 +494,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">ANNOTATION_TYPE</span><span class="o">})</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">ANNOTATION_TYPE</span><span class="o">})</span>
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
 <span class="nd">@Documented</span>
 <span class="nd">@Repeatable</span><span class="o">(</span><span class="n">Schedules</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
@@ -521,6 +522,41 @@
 <li>initialDelay：首次任务执行的延迟时间</li>
 <li>initialDelayString：首次任务执行的延迟时间，使用java.time.Duration#parse解析</li>
 </ul>
+<h2 id="logging-level级别">logging level级别</h2>
+<p>日志记录器(Logger)是日志处理的核心组件。log4j具有5种正常级别(Level)。</p>
+<ol>
+<li>
+<p>static Level DEBUG :
+DEBUG Level指出细粒度信息事件对调试应用程序是非常有帮助的,一般认为比较重要的方法执行需要详细查看运行情况的则开启debug。</p>
+</li>
+<li>
+<p>static Level INFO
+INFO level表明消息在粗粒度级别上突出强调应用程序的运行过程，只需要了解该方法是否运行的可以使用INFO</p>
+</li>
+<li>
+<p>static Level WARN
+WARN level表明会出现潜在错误的情形。</p>
+</li>
+<li>
+<p>static Level ERROR
+ERROR level指出虽然发生错误事件，但仍然不影响系统的继续运行。一般异常处理等情况都需要ERROR</p>
+</li>
+<li>
+<p>static Level FATAL
+FATAL level指出每个严重的错误事件将会导致应用程序的退出。</p>
+</li>
+</ol>
+<p>另外，还有两个可用的特别的日志记录级别:</p>
+<ol>
+<li>static Level ALL
+   ALL Level是最低等级的，用于打开所有日志记录。</li>
+<li>static Level OFF
+   OFF Level是最高等级的，用于关闭所有日志记录。
+      日志记录器（Logger）的行为是分等级的：
+      分为OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL或者您定义的级别。Log4j建议只使用四个级别，优先级 从高到低分别是 ERROR、WARN、INFO、DEBUG。
+      通过在这里定义的级别，您可以控制到应用程序中相应级别的日志信息的开关。比如在这里定义了INFO级别， 则应用程序中所有DEBUG级别的日志信息将不被打印出来。
+      优先级高的将被打印出来。项目上生产环境时候建议把debug的日志级别重新调为warn或者更高，避免产生大量日志。</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -553,8 +589,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

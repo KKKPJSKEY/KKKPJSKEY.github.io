@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录URL汉字编码问题（及乱码解决）的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/url-code-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/url-code-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-23T17:35:09&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-23T17:35:09&#43;08:00" />
+<meta property="article:published_time" content="2021-08-23T17:35:09+08:00" />
+<meta property="article:modified_time" content="2021-08-23T17:35:09+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/url-code-note/featured-image.jpg"/>
@@ -151,7 +151,7 @@
 </nav></div>
             </div><div class="content" id="content"><h2 id="一问题的由来"><strong>一、问题的由来</strong></h2>
 <p>URL就是网址，只要上网，就一定会用到。</p>
-<p>一般来说，URL只能使用英文字母、阿拉伯数字和某些标点符号，不能使用其他文字和符号。比如，世界上有英文字母的网址 &ldquo;<a href="http://www.abc.com">http://www.abc.com</a>&rdquo;，但是没有希腊字母的网址&quot;http://www.aβγ.com&quot;（读作阿尔法-贝塔-伽玛.com）。这是因为网络标准<a href="http://www.ietf.org/rfc/rfc1738.txt" target="_blank" rel="noopener noreferrer">RFC 1738 ;</a>做了硬性规定：</p>
+<p>一般来说，URL只能使用英文字母、阿拉伯数字和某些标点符号，不能使用其他文字和符号。比如，世界上有英文字母的网址 &ldquo;<a href="http://www.abc.com" target="_blank" rel="noopener noreferrer">http://www.abc.com</a>&rdquo;，但是没有希腊字母的网址&quot;http://www.aβγ.com&quot;（读作阿尔法-贝塔-伽玛.com）。这是因为网络标准<a href="http://www.ietf.org/rfc/rfc1738.txt" target="_blank" rel="noopener noreferrer">RFC 1738 ;</a>做了硬性规定：</p>
 <blockquote>
 <p>&ldquo;&hellip;Only alphanumerics [0-9a-zA-Z], the special characters &ldquo;$-<em>.+!*'(),&rdquo; [not including the quotes - ed], and reserved characters used for their reserved purposes may be used unencoded within a URL.&rdquo;
 &ldquo;只有字母和数字[0-9a-zA-Z]、一些特殊符号&rdquo;$-</em>.+!*'(),&quot;[不包括双引号]、以及某些保留字，才可以不经过编码直接用于 URL。&quot;</p>
@@ -159,7 +159,7 @@
 <p>这意味着，如果URL中有汉字，就必须编码后使用。但是麻烦的是，RFC 1738没有规定具体的编码方法，而是交给应用程序（浏览器）自己决定。这导致&quot;URL编码&quot;成为了一个混乱的领域。</p>
 <p>下面就让我们看看，&ldquo;URL编码&quot;到底有多混乱。我会依次分析四种不同的情况，在每一种情况中，浏览器的URL编码方法都不一样。把它们的差异解释清楚之后，我再说如何用Javascript找到一个统一的编码方法。</p>
 <h2 id="二情况1网址路径中包含汉字"><strong>二、情况1：网址路径中包含汉字</strong></h2>
-<p>打开IE（我用的是8.0版），输入网址&rdquo; <strong><a href="http://zh.wikipedia.org/wiki/">http://zh.wikipedia.org/wiki/</a>春节</strong> &ldquo;。注意，&ldquo;春节&quot;这两个字此时是网址路径的一部分。</p>
+<p>打开IE（我用的是8.0版），输入网址&rdquo; <strong><a href="http://zh.wikipedia.org/wiki/" target="_blank" rel="noopener noreferrer">http://zh.wikipedia.org/wiki/</a>春节</strong> &ldquo;。注意，&ldquo;春节&quot;这两个字此时是网址路径的一部分。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -168,7 +168,7 @@
         data-sizes="auto"
         alt="./1.jpg"
         title="1" /></p>
-<p>查看HTTP请求的头信息，会发现IE实际查询的网址是&rdquo; <strong><a href="http://zh.wikipedia.org/wiki/%E6%98%A5%E8%8A%82">http://zh.wikipedia.org/wiki/%E6%98%A5%E8%8A%82</a></strong> &ldquo;。也就是说，IE自动将&quot;春节&quot;编码成了&rdquo;%E6%98%A5%E8%8A%82&rdquo;。</p>
+<p>查看HTTP请求的头信息，会发现IE实际查询的网址是&rdquo; <strong><a href="http://zh.wikipedia.org/wiki/%E6%98%A5%E8%8A%82" target="_blank" rel="noopener noreferrer">http://zh.wikipedia.org/wiki/%E6%98%A5%E8%8A%82</a></strong> &ldquo;。也就是说，IE自动将&quot;春节&quot;编码成了&rdquo;%E6%98%A5%E8%8A%82&rdquo;。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -180,7 +180,7 @@
 <p>我们知道，&ldquo;春&quot;和&quot;节&quot;的utf-8编码分别是&quot;E6 98 A5&quot;和&quot;E8 8A 82&rdquo;，因此，&quot;%E6%98%A5%E8%8A%82&quot;就是按照顺序，在每个字节前加上%而得到的。（具体的转码方法，请参考我写的<a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="noopener noreferrer">《字符编码笔记》</a>。）</p>
 <p>在Firefox中测试，也得到了同样的结果。所以， <strong>结论1就是，网址路径的编码，用的是utf-8编码。</strong></p>
 <h2 id="三情况2查询字符串包含汉字"><strong>三、情况2：查询字符串包含汉字</strong></h2>
-<p>在IE中输入网址&quot; <strong><a href="http://www.baidu.com/s?wd=">http://www.baidu.com/s?wd=</a>春节</strong> &ldquo;。注意，&ldquo;春节&quot;这两个字此时属于查询字符串，不属于网址路径，不要与情况1混淆。</p>
+<p>在IE中输入网址&quot; <strong><a href="http://www.baidu.com/s?wd=" target="_blank" rel="noopener noreferrer">http://www.baidu.com/s?wd=</a>春节</strong> &ldquo;。注意，&ldquo;春节&quot;这两个字此时属于查询字符串，不属于网址路径，不要与情况1混淆。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -416,8 +416,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

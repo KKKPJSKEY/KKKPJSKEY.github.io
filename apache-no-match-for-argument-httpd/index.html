@@ -9,8 +9,8 @@
 <meta property="og:description" content="解决centos安装不上apache:No match for argument: httpd" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/" /><meta property="og:image" content="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-02-01T09:14:35&#43;08:00" />
-<meta property="article:modified_time" content="2020-02-01T09:14:35&#43;08:00" />
+<meta property="article:published_time" content="2020-02-01T09:14:35+08:00" />
+<meta property="article:modified_time" content="2020-02-01T09:14:35+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/apache-no-match-for-argument-httpd/featured-image.jpg"/>
@@ -144,18 +144,18 @@
             </div><div class="content" id="content"><h2 id="找到yumconf">找到yum.conf</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@d78acc291c9e var<span class="o">]</span><span class="c1"># find / -name yum.conf</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@d78acc291c9e var<span class="o">]</span><span class="c1"># find / -name yum.conf</span>
 /etc/yum.conf
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="注释掉exclude那行也可只删除httpd">注释掉exclude那行，也可只删除httpd</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -163,7 +163,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">main</span><span class="p">]</span>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">main</span><span class="p">]</span>
 <span class="nx">gpgcheck</span><span class="p">=</span><span class="mi">1</span>
 <span class="nx">installonly_limit</span><span class="p">=</span><span class="mi">3</span>
 <span class="nx">clean_requirements_on_remove</span><span class="p">=</span><span class="nx">True</span>
@@ -173,13 +173,13 @@
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">//重新安装yum install httpd -y
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">//重新安装yum install httpd -y
 systemctl <span class="nb">enable</span> httpd
 systemctl start httpd
 systemctl status httpd
@@ -189,12 +189,12 @@ systemctl status httpd
 <p>　　Status: &ldquo;Started, listening on: port 80&rdquo;</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@d78acc291c9e var<span class="o">]</span><span class="c1"># httpd -v</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@d78acc291c9e var<span class="o">]</span><span class="c1"># httpd -v</span>
 Server version: Apache/2.4.37 <span class="o">(</span>centos<span class="o">)</span>
 Server built:   Dec <span class="m">23</span> <span class="m">2019</span> 20:45:34
 </code></pre></td></tr></table>
@@ -239,8 +239,8 @@ Server built:   Dec <span class="m">23</span> <span class="m">2019</span> 20:45:
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

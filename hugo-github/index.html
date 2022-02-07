@@ -9,8 +9,8 @@
 <meta property="og:description" content="部署Hugo，并使用其创建静态网站，推送到Github，配置GitHub Pages" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/hugo-github/" /><meta property="og:image" content="https://kkkpjskey.github.io/hugo-github/featured-image-preview.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-01-01T19:12:15&#43;08:00" />
-<meta property="article:modified_time" content="2021-01-01T19:12:15&#43;08:00" />
+<meta property="article:published_time" content="2021-01-01T19:12:15+08:00" />
+<meta property="article:modified_time" content="2021-01-01T19:12:15+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/hugo-github/featured-image-preview.jpg"/>
@@ -179,19 +179,19 @@
 </blockquote>
 <p>不同的操作系统有着不同的安装方式，官方推荐Linux或者Mac下可以使用brew或者port 进行安装Windows推荐使用Chocolatey或者Scoop进行安装，或者使用GitHub中的源码进行安装，我选择GitHub的Relaeases包进行安装，因为它不需要其他包管理工具进行安装。其他安装方式请参阅官方安装文档</p>
 <blockquote>
-<p><a href="https://gohugo.io/getting-started/installing">https://gohugo.io/getting-started/installing</a></p>
+<p><a href="https://gohugo.io/getting-started/installing" target="_blank" rel="noopener noreferrer">https://gohugo.io/getting-started/installing</a></p>
 </blockquote>
 <p>可以使用Git工具进行下载源码，或者使用GitHub自带的Donwload Zip进行下载速度慢的话考虑码云转移仓库加速或csdn相关加速服务~~，甚至孙悟空的魔法~~</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">git clone <span class="o">[</span>ssh address<span class="o">][</span>http address<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git clone <span class="o">[</span>ssh address<span class="o">][</span>http address<span class="o">]</span>
 <span class="c1">#示例</span>
 git clone git@github.com:gohugoio/hugo.git <span class="c1">#SSH</span>
 <span class="c1">#或者</span>
@@ -237,11 +237,11 @@ git clone https://github.com/gohugoio/hugo.git <span class="c1">#HTTP</span>
 <p>任意处执行（配置环境变量）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> bin
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> bin
 hugo version
 </code></pre></td></tr></table>
 </div>
@@ -258,14 +258,14 @@ hugo version
 <h3 id="12----创建网站">1.2    创建网站</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#返回上一级目录下的网站目录</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#返回上一级目录下的网站目录</span>
 <span class="nb">cd</span> ../sites
 hugo new site <span class="o">[</span>site nme<span class="o">]</span>
 <span class="c1">#示例</span>
@@ -286,7 +286,7 @@ hugo new site KKKPJSKEY<span class="err">&#39;</span>s-Case-Archives
 <p>点击download进入对应的GitHub页面，可以使用Git工具进行下载源码，或者使用GitHub自带的Donwload Zip进行下载速度慢的话考虑码云转移仓库加速或Csdn相关加速服务~~，甚至孙悟空的魔法~~</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -295,7 +295,7 @@ hugo new site KKKPJSKEY<span class="err">&#39;</span>s-Case-Archives
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#切换到新建的网站目录下</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#切换到新建的网站目录下</span>
 <span class="nb">cd</span> KKKPJSKEY<span class="err">&#39;</span>s-Case-Archives
 git clone <span class="o">[</span>ssh address<span class="o">][</span>http address<span class="o">]</span>
 <span class="c1">#示例</span>
@@ -333,12 +333,12 @@ git clone https://github.com/pdevty/material-design.git themes/material-design <
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">hugo new <span class="o">[</span>类别<span class="o">]</span>/<span class="o">[</span>文件名<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">hugo new <span class="o">[</span>类别<span class="o">]</span>/<span class="o">[</span>文件名<span class="o">]</span>
 <span class="c1">#示例</span>
 hugo new blog/使用hugo、GitHub.io搭建个人静态博客.md
 </code></pre></td></tr></table>
@@ -348,12 +348,12 @@ hugo new blog/使用hugo、GitHub.io搭建个人静态博客.md
 <p>项目中其他请参照MarkDown语法规范，其中图片需要注意：图片应放到网站根目录下的static中。我为了国立不同静态资源，创建了imags和文章名两级文件夹，图片在MarkDown中应使用，同时使用顺斜杠替换原来反斜杠，</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">/<span class="o">[</span>分类名<span class="o">]</span>/<span class="o">[</span>项目名<span class="o">]</span>/图片名.格式  <span class="c1">#个人分类法，非强制要求</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">/<span class="o">[</span>分类名<span class="o">]</span>/<span class="o">[</span>项目名<span class="o">]</span>/图片名.格式  <span class="c1">#个人分类法，非强制要求</span>
 <span class="c1">#示例</span>
 ./1.png
 </code></pre></td></tr></table>
@@ -364,7 +364,7 @@ hugo new blog/使用hugo、GitHub.io搭建个人静态博客.md
 <p><code>hugo server [-D]</code>（这里没有切换路径，但必须在网站根目录下进行）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -387,7 +387,7 @@ hugo new blog/使用hugo、GitHub.io搭建个人静态博客.md
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">Start building sites …
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Start building sites …
 
                    <span class="p">|</span> EN
 -------------------+-----
@@ -415,7 +415,7 @@ Press Ctrl+C to stop
 <p>使用<code>hugo [-D]</code>生成静态文件，-D参数在1.6.1介绍的功能相同（这里没有切换路径，但必须在网站根目录下进行）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -431,7 +431,7 @@ Press Ctrl+C to stop
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">Start building sites …
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Start building sites …
 
                    <span class="p">|</span> EN
 -------------------+-----
@@ -471,7 +471,7 @@ Total in <span class="m">167</span> ms
 <h2 id="3----使用git提交生成的静态页面162">3    使用Git提交生成的静态页面（1.6.2）</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -484,7 +484,7 @@ Total in <span class="m">167</span> ms
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#切换到网站名字下的public下</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#切换到网站名字下的public下</span>
 <span class="nb">cd</span> public
 <span class="c1">#以下为git指令</span>
 <span class="c1">##git 初始化</span>
@@ -542,8 +542,8 @@ git push
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

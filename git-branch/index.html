@@ -9,8 +9,8 @@
 <meta property="og:description" content="Git-Branch分支操作的常用指令笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/git-branch/" /><meta property="og:image" content="https://kkkpjskey.github.io/git-branch/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-05-01T20:14:45&#43;08:00" />
-<meta property="article:modified_time" content="2019-05-01T20:14:45&#43;08:00" />
+<meta property="article:published_time" content="2019-05-01T20:14:45+08:00" />
+<meta property="article:modified_time" content="2019-05-01T20:14:45+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/git-branch/featured-image.jpg"/>
@@ -153,7 +153,7 @@
             </div><div class="content" id="content"><h2 id="创建分支">创建分支</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -164,7 +164,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 根据名称创建分支,并切换分支</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 根据名称创建分支,并切换分支</span>
 git checkout -b <span class="o">{</span>name<span class="o">}</span>
 <span class="c1"># 示例</span>
 git checkout -b zhangsan
@@ -178,7 +178,7 @@ git branch zhangsan
 </div><h2 id="查看分支">查看分支</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -187,7 +187,7 @@ git branch zhangsan
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 查看所有分支，当前分支为绿色</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 查看所有分支，当前分支为绿色</span>
 git branch <span class="o">[</span>-a<span class="o">]</span>
 <span class="c1"># -a 所有分支</span>
 <span class="c1"># 创建分支</span>
@@ -199,7 +199,7 @@ git checkout mybranch
 </div><h2 id="修改分支名称">修改分支名称</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -214,7 +214,7 @@ git checkout mybranch
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 需要将分支br_rename_old修改为br_rename_new，执行如下步骤：</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 需要将分支br_rename_old修改为br_rename_new，执行如下步骤：</span>
 <span class="c1">## 1、切换到br_rename_old分支，如果已经在这个分支下，可以不执行此步骤</span>
 git checkout br_rename_old
 <span class="c1">## 2、将代码更新到和远程仓库一致</span>
@@ -233,32 +233,32 @@ git push --set-upstream origin br_rename_new
 <p>根据git当前提交节点创建分支button-and-input，继承之前所有提交代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">git branch button-and-input
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git branch button-and-input
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="方法一">方法一</h3>
 <p>将本地创建的button-and-input分支提交到远程，名字为button-and-input</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">git push origin button-and-input:button-and-input
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git push origin button-and-input:button-and-input
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="方法二">方法二</h3>
 <p>正常提交代码流程但最后一步提交到新创建的仓库或之前做过直接可以提交至新创建的远程仓库分支</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">git add .
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git add .
 git commit -m <span class="s2">&#34;Message&#34;</span>
 git push origin button-and-input
 </code></pre></td></tr></table>
@@ -267,14 +267,14 @@ git push origin button-and-input
 <h2 id="其他">其他</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">合并分支：<span class="o">(</span>merge from<span class="o">)</span> $ git checkout master
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">合并分支：<span class="o">(</span>merge from<span class="o">)</span> $ git checkout master
 $ git merge mybranch <span class="o">(</span>merge from mybranch<span class="o">)</span>
 删除本地分支： $ git branch -d mybranch
 强制删除分支： $ git branch -D mybranch
@@ -284,11 +284,11 @@ $ git merge mybranch <span class="o">(</span>merge from mybranch<span class="o">
 </div><h2 id="非绝对必要且明白产生其他后果时才能进行的操作">非绝对必要且明白产生其他后果时才能进行的操作</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 切换分支 在没有commit时请备份代码或者commit、push后再进行提交否则，会导致当前代码全部丢失</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 切换分支 在没有commit时请备份代码或者commit、push后再进行提交否则，会导致当前代码全部丢失</span>
 git checkout mybranch
 </code></pre></td></tr></table>
 </div>
@@ -324,8 +324,8 @@ git checkout mybranch
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

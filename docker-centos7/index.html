@@ -9,8 +9,8 @@
 <meta property="og:description" content="在Linux的Centos7系统上安装Docker" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/docker-centos7/" /><meta property="og:image" content="https://kkkpjskey.github.io/docker-centos7/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-03-20T11:19:49&#43;08:00" />
-<meta property="article:modified_time" content="2020-03-20T11:19:49&#43;08:00" />
+<meta property="article:published_time" content="2020-03-20T11:19:49+08:00" />
+<meta property="article:modified_time" content="2020-03-20T11:19:49+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/docker-centos7/featured-image.jpg"/>
@@ -149,46 +149,46 @@
 <p>通过 <strong>uname -r</strong> 命令查看你当前的内核版本</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"> $ uname -r
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"> $ uname -r
 </code></pre></td></tr></table>
 </div>
 </div><p>2、使用 <code>root</code> 权限登录 Centos。确保 yum 包更新到最新。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum update
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum update
 </code></pre></td></tr></table>
 </div>
 </div><p>3、卸载旧版本(如果安装过旧版本的话)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum remove docker  docker-common docker-selinux docker-engine
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum remove docker  docker-common docker-selinux docker-engine
 </code></pre></td></tr></table>
 </div>
 </div><p>4、安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 </code></pre></td></tr></table>
 </div>
 </div><p>5、设置yum源</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -202,10 +202,10 @@
 <p>6、可以查看所有仓库中所有docker版本，并选择特定版本安装</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ yum list docker-ce --showduplicates | sort -r
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ yum list docker-ce --showduplicates | sort -r
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -219,11 +219,11 @@
 <p>7、安装docker</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版17.12.0
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版17.12.0
 $ sudo yum install &lt;FQPN&gt;  # 例如：sudo yum install docker-ce-17.12.0.ce
 </code></pre></td></tr></table>
 </div>
@@ -238,21 +238,21 @@ $ sudo yum install &lt;FQPN&gt;  # 例如：sudo yum install docker-ce-17.12.0.c
 <p>8、启动并加入开机启动</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo systemctl start docker
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo systemctl start docker
 $ sudo systemctl enable docker
 </code></pre></td></tr></table>
 </div>
 </div><p>9、验证安装是否成功(有client和service两部分表示docker安装启动都成功了)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ docker version
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ docker version
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -267,14 +267,14 @@ $ sudo systemctl enable docker
 <p>1、因为之前已经安装过旧版本的docker，在安装的时候报错如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">Transaction</span> <span class="nx">check</span> <span class="kt">error</span><span class="p">:</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="nx">Transaction</span> <span class="nx">check</span> <span class="kt">error</span><span class="p">:</span>
   <span class="nx">file</span> <span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span> <span class="nx">from</span> <span class="nx">install</span> <span class="nx">of</span> <span class="nx">docker</span><span class="o">-</span><span class="nx">ce</span><span class="o">-</span><span class="mf">17.12.0</span><span class="p">.</span><span class="nx">ce</span><span class="o">-</span><span class="mf">1.</span><span class="nx">el7</span><span class="p">.</span><span class="nx">centos</span><span class="p">.</span><span class="nx">x86_64</span> <span class="nx">conflicts</span> <span class="nx">with</span> <span class="nx">file</span> <span class="nx">from</span> <span class="kn">package</span> <span class="nx">docker</span><span class="o">-</span><span class="nx">common</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mf">1.12.6</span><span class="o">-</span><span class="mf">68.</span><span class="nx">gitec8512b</span><span class="p">.</span><span class="nx">el7</span><span class="p">.</span><span class="nx">centos</span><span class="p">.</span><span class="nx">x86_64</span>
   <span class="nx">file</span> <span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span><span class="o">-</span><span class="nx">containerd</span> <span class="nx">from</span> <span class="nx">install</span> <span class="nx">of</span> <span class="nx">docker</span><span class="o">-</span><span class="nx">ce</span><span class="o">-</span><span class="mf">17.12.0</span><span class="p">.</span><span class="nx">ce</span><span class="o">-</span><span class="mf">1.</span><span class="nx">el7</span><span class="p">.</span><span class="nx">centos</span><span class="p">.</span><span class="nx">x86_64</span> <span class="nx">conflicts</span> <span class="nx">with</span> <span class="nx">file</span> <span class="nx">from</span> <span class="kn">package</span> <span class="nx">docker</span><span class="o">-</span><span class="nx">common</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mf">1.12.6</span><span class="o">-</span><span class="mf">68.</span><span class="nx">gitec8512b</span><span class="p">.</span><span class="nx">el7</span><span class="p">.</span><span class="nx">centos</span><span class="p">.</span><span class="nx">x86_64</span>
   <span class="nx">file</span> <span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">docker</span><span class="o">-</span><span class="nx">containerd</span><span class="o">-</span><span class="nx">shim</span> <span class="nx">from</span> <span class="nx">install</span> <span class="nx">of</span> <span class="nx">docker</span><span class="o">-</span><span class="nx">ce</span><span class="o">-</span><span class="mf">17.12.0</span><span class="p">.</span><span class="nx">ce</span><span class="o">-</span><span class="mf">1.</span><span class="nx">el7</span><span class="p">.</span><span class="nx">centos</span><span class="p">.</span><span class="nx">x86_64</span> <span class="nx">conflicts</span> <span class="nx">with</span> <span class="nx">file</span> <span class="nx">from</span> <span class="kn">package</span> <span class="nx">docker</span><span class="o">-</span><span class="nx">common</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mf">1.12.6</span><span class="o">-</span><span class="mf">68.</span><span class="nx">gitec8512b</span><span class="p">.</span><span class="nx">el7</span><span class="p">.</span><span class="nx">centos</span><span class="p">.</span><span class="nx">x86_64</span>
@@ -284,10 +284,10 @@ $ sudo systemctl enable docker
 </div><p>2、卸载旧版本的包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum erase docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum erase docker-common-2:1.12.6-68.gitec8512b.el7.centos.x86_64
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -301,10 +301,10 @@ $ sudo systemctl enable docker
 <p>3、再次安装docker</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum install docker-ce
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ sudo yum install docker-ce
 </code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
@@ -339,8 +339,8 @@ $ sudo systemctl enable docker
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

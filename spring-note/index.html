@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Spring的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/spring-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/spring-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-25T17:59:59&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-25T17:59:59&#43;08:00" />
+<meta property="article:published_time" content="2021-08-25T17:59:59+08:00" />
+<meta property="article:modified_time" content="2021-08-25T17:59:59+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/spring-note/featured-image.jpg"/>
@@ -181,13 +181,13 @@
 <p>先来看一下这两个包中的copyProperties方法的定义：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//org.springframework.beans.BeanUtils
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//org.springframework.beans.BeanUtils
 </span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">copyProperties</span><span class="o">(</span><span class="n">Object</span> <span class="n">source</span><span class="o">,</span> <span class="n">Object</span> <span class="n">target</span><span class="o">){....}</span>
 <span class="c1">//org.apache.commons.beanutils.BeanUtils
 </span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">copyProperties</span><span class="o">(</span><span class="n">Object</span> <span class="n">dest</span><span class="o">,</span><span class="n">Object</span> <span class="n">orig</span><span class="o">){....}</span>
@@ -197,7 +197,7 @@
 <p>1）接下来定义两个实体类Student和Teacher，用来模拟目标对象（target/dest）中包含被copy的对象（source/orig）的所有字段时</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -227,7 +227,7 @@
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
 	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
 	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
@@ -260,7 +260,7 @@
 </div><p>先使用org.springframework.beans.BeanUtils下的copyProperties来进行测试，执行代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -271,7 +271,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.springframework.beans.BeanUtils</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.springframework.beans.BeanUtils</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
 	<span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">(</span><span class="n">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">(),</span> <span class="s">&#34;zhangsan&#34;</span><span class="o">,</span> <span class="s">&#34;19&#34;</span><span class="o">);</span>
@@ -284,12 +284,12 @@
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">执行结果如下：
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">执行结果如下：
 	Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>00c47e77-785d-4939-89db-e757979050ec, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
 	Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>00c47e77-785d-4939-89db-e757979050ec, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19, <span class="nv">sex</span><span class="o">=</span>null<span class="o">)</span>
 </code></pre></td></tr></table>
@@ -297,20 +297,20 @@
 </div><p>当将引入的包改为org.apache.commons.beanutils.BeanUtils时，将上述中的执行代码进行如下修改：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">BeanUtils</span><span class="o">.</span><span class="na">copyProperties</span><span class="o">(</span><span class="n">teacher</span><span class="o">,</span><span class="n">student</span><span class="o">);</span> <span class="c1">//因为apache包下被copy的参数在第二个位置
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">BeanUtils</span><span class="o">.</span><span class="na">copyProperties</span><span class="o">(</span><span class="n">teacher</span><span class="o">,</span><span class="n">student</span><span class="o">);</span> <span class="c1">//因为apache包下被copy的参数在第二个位置
 </span></code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">执行结果如下：
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">执行结果如下：
 	Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>900d0b93-1913-4022-b86b-127682cd9f5c, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
 	Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>00c47e77-785d-4939-89db-e757979050ec, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19, <span class="nv">sex</span><span class="o">=</span>null<span class="o">)</span>
 </code></pre></td></tr></table>
@@ -321,7 +321,7 @@
 <p>2）对上述中说到的实体类进行修改，即目标对象（target/dest）中不包含被copy的对象（source/orig）的所有字段时，修改后的内容如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -347,7 +347,7 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
 	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
 	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
@@ -376,7 +376,7 @@
 </div><p>执行代码与1）中的一样这里就不写了，先使用org.apache.commons.beanutils.BeanUtils中的copyProperties方法，执行结果如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -392,7 +392,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">    Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>6f6711ef-fa2f-420d-b0b3-b76998356533, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">    Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>6f6711ef-fa2f-420d-b0b3-b76998356533, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
 
     Exception in thread <span class="s2">&#34;main&#34;</span> java.lang.NoClassDefFoundError: org/apache/commons/collections/FastHashMap
         at org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor<span class="o">(</span>PropertyUtilsBean.java:964<span class="o">)</span>
@@ -411,11 +411,11 @@
 </div><p>接下来使用org.springframework.beans.BeanUtils下的copyProperties方法，执行结果如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">    Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>87665c46-9a6f-4936-9c9d-1513e29f2bca, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">    Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>87665c46-9a6f-4936-9c9d-1513e29f2bca, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
     Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>87665c46-9a6f-4936-9c9d-1513e29f2bca, <span class="nv">name</span><span class="o">=</span>zhangsan<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
@@ -425,7 +425,7 @@
 <p>3）基于2）中的实体类来看下另外一种情况，修改下执行代码，实体类不变：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -434,7 +434,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
 		<span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">(</span><span class="n">UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">(),</span> <span class="s">&#34;zhangsan&#34;</span><span class="o">,</span> <span class="s">&#34;19&#34;</span><span class="o">);</span>
 		<span class="n">Teacher</span> <span class="n">teacher</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="o">(</span><span class="s">&#34;12334&#34;</span><span class="o">,</span><span class="s">&#34;lisi&#34;</span><span class="o">);</span>
 		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
@@ -446,12 +446,12 @@
 </div><p>先使用org.apache.commons.beanutils.BeanUtils中的copyProperties方法，执行结果如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>16bf375a-5925-4411-8bdf-158b3373d261, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>16bf375a-5925-4411-8bdf-158b3373d261, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
 Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>12334, <span class="nv">name</span><span class="o">=</span>zhangsan<span class="o">)</span>
 Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>12334, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
 </code></pre></td></tr></table>
@@ -459,12 +459,12 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </div><p>接下来使用org.springframework.beans.BeanUtils下的copyProperties方法，执行结果如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>2df2fba9-22a2-4cb6-86d7-3d5b47475114, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>2df2fba9-22a2-4cb6-86d7-3d5b47475114, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
 Teacher<span class="o">(</span><span class="nv">id</span><span class="o">=</span>12334, <span class="nv">name</span><span class="o">=</span>zhangsan<span class="o">)</span>
 Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>12334, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19<span class="o">)</span>
 </code></pre></td></tr></table>
@@ -491,7 +491,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <p>新增加一个实体类Life，接下来我们将上述中的代码进行一个改造：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -527,7 +527,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Life</span> <span class="o">{</span>
 	<span class="kd">private</span> <span class="n">String</span> <span class="n">life</span><span class="o">;</span>
 
@@ -565,7 +565,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -581,7 +581,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.springframework.beans.BeanUtils</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.springframework.beans.BeanUtils</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeanController</span> <span class="o">{</span>
 
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
@@ -599,12 +599,12 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">执行结果如下：
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">执行结果如下：
 	Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>988cac88-638c-4e52-8421-db39590ed32c, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19, <span class="nv">life</span><span class="o">=</span>Life<span class="o">(</span><span class="nv">life</span><span class="o">=</span>young<span class="o">))</span>
 Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span>988cac88-638c-4e52-8421-db39590ed32c, <span class="nv">name</span><span class="o">=</span>zhangsan, <span class="nv">age</span><span class="o">=</span>19, <span class="nv">life</span><span class="o">=</span>Life<span class="o">(</span><span class="nv">life</span><span class="o">=</span>old<span class="o">))</span>
 </code></pre></td></tr></table>
@@ -613,7 +613,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <p>这里介绍一种深拷贝的方法，先将集合转化为字节数组输出流，然后在读取，这样就可以实现深度拷贝，代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -627,7 +627,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">	<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">deepCopy</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">src</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">	<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">deepCopy</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">src</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
 
 	    <span class="n">ByteArrayOutputStream</span> <span class="n">byteOut</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
 	    <span class="n">ObjectOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="o">(</span><span class="n">byteOut</span><span class="o">);</span>
@@ -665,12 +665,12 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <p>可以对消息的内容或者结构进行修改，最常见的是修改消息内容的格式，或者对消息头的内容进行添加、修改和删除。用法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:transformer</span> <span class="na">id=</span><span class="s">&#34;testTransformer&#34;</span> <span class="na">ref=</span><span class="s">&#34;testTransformerBean&#34;</span> <span class="na">input-channel=</span><span class="s">&#34;inChannel&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:transformer</span> <span class="na">id=</span><span class="s">&#34;testTransformer&#34;</span> <span class="na">ref=</span><span class="s">&#34;testTransformerBean&#34;</span> <span class="na">input-channel=</span><span class="s">&#34;inChannel&#34;</span>
              <span class="na">method=</span><span class="s">&#34;transform&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;outChannel&#34;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;beans:bean</span> <span class="na">id=</span><span class="s">&#34;testTransformerBean&#34;</span> <span class="na">class=</span><span class="s">&#34;org.foo.TestTransformer&#34;</span> <span class="nt">/&gt;</span>
 </code></pre></td></tr></table>
@@ -678,12 +678,12 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </div><p>决定一个消息是否被过滤掉，只有没有被过滤掉的消息才发送到输出通道上。<code>filter</code>多用于<code>publish</code> <code>subscribe</code>模式中，很多<code>consumer</code>消费者可以收到相同的<code>message</code>并且可以用<code>filter</code>来接收指定类型的消息并将其加工处理。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:filter</span> <span class="na">input-channel=</span><span class="s">&#34;input&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;output&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:filter</span> <span class="na">input-channel=</span><span class="s">&#34;input&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;output&#34;</span>
          <span class="na">ref=</span><span class="s">&#34;exampleObject&#34;</span> <span class="na">method=</span><span class="s">&#34;someBooleanReturningMethod&#34;</span><span class="nt">/&gt;</span>
  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;exampleObject&#34;</span> <span class="na">class=</span><span class="s">&#34;example.SomeObject&#34;</span><span class="nt">/&gt;</span>
 </code></pre></td></tr></table>
@@ -692,32 +692,32 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <p>路由器，通常是一个输入通道，多个输出通道。根据消息头或者消息体的内容，决定将消息转发到哪个输出通道上。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:router</span> <span class="na">input-channel=</span><span class="s">&#34;drinks&#34;</span> <span class="na">ref=</span><span class="s">&#34;drinkRouter&#34;</span> <span class="na">method=</span><span class="s">&#34;route&#34;</span><span class="nt">/&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:router</span> <span class="na">input-channel=</span><span class="s">&#34;drinks&#34;</span> <span class="na">ref=</span><span class="s">&#34;drinkRouter&#34;</span> <span class="na">method=</span><span class="s">&#34;route&#34;</span><span class="nt">/&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="234----splitter">2.3.4    Splitter</h3>
 <p>对应一个输入通道，多个输出通道。Splitter把消息从输入通道上分割发送到它的输出通道上。比如用于把一个复合型的<code>payload</code>负载分割成很多子负载<code>payloads</code>，发送到多个输出通道上。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:splitter</span> <span class="na">input-channel=</span><span class="s">&#34;orders&#34;</span> <span class="na">ref=</span><span class="s">&#34;orderSplitter&#34;</span> <span class="na">method=</span><span class="s">&#34;split&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;drinksTransform&#34;</span><span class="nt">/&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:splitter</span> <span class="na">input-channel=</span><span class="s">&#34;orders&#34;</span> <span class="na">ref=</span><span class="s">&#34;orderSplitter&#34;</span> <span class="na">method=</span><span class="s">&#34;split&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;drinksTransform&#34;</span><span class="nt">/&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="235----aggregator">2.3.5    Aggregator</h3>
 <p>集合器，和<code>splitter</code>对应。用于把多种<code>message</code>组合成一个单一的<code>message</code>。事实上<code>aggregator</code>比<code>splitter</code>要复杂一些，因为它需要维持message的状态，决定什么时候提供组合,什么时候超时<code>timeout</code>，甚至可以将一个局部的结果放弃，并发送到一个隔离的<code>channel</code>里。<code>Spring integration</code>提供了一个CompletionStrategy来配置<code>timeout</code>超时，是否在超时的时候发送一个结果并且废弃这个<code>channel</code>（这里应该是说消息废弃这个<code>channel</code>）。<code>Aggregator</code>在聚合时，会将消息头中消息<code>ID</code>相同的消息进行聚合。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:aggregator</span> <span class="na">input-channel=</span><span class="s">&#34;preparedDrinks&#34;</span>  <span class="na">method=</span><span class="s">&#34;prepareDelivery&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;deliveries&#34;</span><span class="nt">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:aggregator</span> <span class="na">input-channel=</span><span class="s">&#34;preparedDrinks&#34;</span>  <span class="na">method=</span><span class="s">&#34;prepareDelivery&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;deliveries&#34;</span><span class="nt">&gt;</span>
               <span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">&#34;com.abc.springintegration.cafe.xml.Waiter&#34;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/int:aggregator&gt;</span>
 </code></pre></td></tr></table>
@@ -726,10 +726,10 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <p>用来连接应用的接口和<code>message framework</code>消息框架的组件，一个输入的频道<code>input message</code> channel必须被设定，一个<code>service activator</code>的方法被执行并且返回了一个值，那么可以提供一个输出频道output message channel（如果消息提供自己的返回地址，那么这是可选的）。这个规则适用于所有的consumer endpoints。输入从<code>input channel</code>到<code>service activator</code>再到<code>message handler</code>，然后返回<code>output message</code>到<code>service activator</code>到<code>output message channel</code>。归根结底：被继承组件的主要对外接口。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;coldDrinks&#34;</span> <span class="na">ref=</span><span class="s">&#34;barista&#34;</span> <span class="na">method=</span><span class="s">&#34;prepareColdDrink&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;preparedDrinks&#34;</span><span class="nt">/&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int:service-activator</span> <span class="na">input-channel=</span><span class="s">&#34;coldDrinks&#34;</span> <span class="na">ref=</span><span class="s">&#34;barista&#34;</span> <span class="na">method=</span><span class="s">&#34;prepareColdDrink&#34;</span> <span class="na">output-channel=</span><span class="s">&#34;preparedDrinks&#34;</span><span class="nt">/&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="237----channel-adapter">2.3.7    Channel Adapter</h3>
@@ -757,7 +757,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <p><code>Spring</code>社区中也没有好的处理办法，这种情况下，可以使用下载到本地后对文件进行改名的方法进行规避，使用方法如下，见红色部分：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -773,7 +773,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int-sftp:inbound-channel-adapter</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int-sftp:inbound-channel-adapter</span>
         <span class="na">id=</span><span class="s">&#34;sftpInboundAdapter&#34;</span>
         <span class="na">session-factory=</span><span class="s">&#34;sftpSessionFactory&#34;</span>
         <span class="na">remote-directory=</span><span class="s">&#34;/srv/data/stc/crm/&#34;</span>
@@ -793,13 +793,13 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <h3 id="32-如何控制inbound-channel-adapter类的对象是否工作">3.2 如何控制inbound-channel-adapter类的对象是否工作</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileSystemXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;/conf/stc-job.xml&#34;</span><span class="o">);</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileSystemXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;/conf/stc-job.xml&#34;</span><span class="o">);</span>
     <span class="n">SourcePollingChannelAdapter</span> <span class="n">adapter</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;sftpInboundAdapter&#34;</span><span class="o">,</span> <span class="n">SourcePollingChannelAdapter</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="n">adapter</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span> <span class="c1">//停止工作
 </span><span class="c1"></span>    <span class="n">adapter</span><span class="o">.</span><span class="na">start</span><span class="o">();</span> <span class="c1">//开始工作
@@ -809,7 +809,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <p><code>Spring Integration</code>的配置如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -835,7 +835,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;file:inbound-channel-adapter</span> <span class="na">directory=</span><span class="s">&#34;file:///srv/data/stc/crm&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;file:inbound-channel-adapter</span> <span class="na">directory=</span><span class="s">&#34;file:///srv/data/stc/crm&#34;</span>
         <span class="na">channel=</span><span class="s">&#34;inputFileChannel&#34;</span> <span class="na">filename-pattern=</span><span class="s">&#34;*.csv&#34;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;int:poller</span> <span class="na">max-messages-per-poll=</span><span class="s">&#34;1&#34;</span> <span class="na">cron=</span><span class="s">&#34;0/1 * * * * * &#34;</span> <span class="nt">/&gt;</span>
  <span class="nt">&lt;/file:inbound-channel-adapter&gt;</span>
@@ -864,7 +864,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </div><p>对于<code>Spring Job</code>的触发类<code>FileToJobLaunchRequestAdapter</code>，代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -907,7 +907,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileToJobLaunchRequestAdapter</span> <span class="kd">implements</span> <span class="n">InitializingBean</span><span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FileToJobLaunchRequestAdapter</span> <span class="kd">implements</span> <span class="n">InitializingBean</span><span class="o">{</span>
     <span class="kd">private</span> <span class="n">Job</span> <span class="n">job</span><span class="o">;</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setJob</span><span class="o">(</span><span class="n">Job</span> <span class="n">job</span><span class="o">){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">job</span> <span class="o">=</span> <span class="n">job</span><span class="o">;</span>
@@ -954,11 +954,11 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <p><code>Java</code>代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Message</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span> <span class="n">message</span> <span class="o">=</span> <span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="n">file</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Message</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span> <span class="n">message</span> <span class="o">=</span> <span class="n">MessageBuilder</span><span class="o">.</span><span class="na">withPayload</span><span class="o">(</span><span class="n">file</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
 <span class="n">sftpChannel</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
 </code></pre></td></tr></table>
 </div>
@@ -966,7 +966,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 <p>在<code>Spring Integration</code>的配置文件中，做如下的配置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -974,7 +974,7 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int-sftp:outbound-channel-adapter</span> <span class="na">id=</span><span class="s">&#34;sftpOutboundAdapter&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;int-sftp:outbound-channel-adapter</span> <span class="na">id=</span><span class="s">&#34;sftpOutboundAdapter&#34;</span>
             <span class="na">session-factory=</span><span class="s">&#34;sftpSessionFactory&#34;</span>
             <span class="na">channel=</span><span class="s">&#34;outFileChannel&#34;</span>
             <span class="na">charset=</span><span class="s">&#34;UTF-8&#34;</span>
@@ -1015,8 +1015,8 @@ Student<span class="o">(</span><span class="nv">id</span><span class="o">=</span
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

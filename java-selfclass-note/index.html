@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Java自建类操作笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-selfclass-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-selfclass-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-10-15T21:06:24&#43;08:00" />
-<meta property="article:modified_time" content="2021-10-15T21:06:24&#43;08:00" />
+<meta property="article:published_time" content="2021-10-15T21:06:24+08:00" />
+<meta property="article:modified_time" content="2021-10-15T21:06:24+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-selfclass-note/featured-image.jpg"/>
@@ -19,7 +19,7 @@
 <meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
 <meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/java-selfclass-note/" /><link rel="prev" href="https://kkkpjskey.github.io/rank-algorithm-note/" /><link rel="next" href="https://kkkpjskey.github.io/mysql-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/java-selfclass-note/" /><link rel="prev" href="https://kkkpjskey.github.io/rank-algorithm-note/" /><link rel="next" href="https://kkkpjskey.github.io/mysql-func-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -150,7 +150,7 @@
 <p>例如下述Java类：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -186,7 +186,7 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Bean_Topology</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
@@ -225,7 +225,7 @@
 </div><p>如下想判断下面两个对象中全部属性值是否一致时，有哪些办法呢？</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -233,7 +233,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Bean_Topology</span> <span class="n">topology1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bean_Topology</span><span class="o">();</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Bean_Topology</span> <span class="n">topology1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bean_Topology</span><span class="o">();</span>
 	<span class="n">topology1</span><span class="o">.</span><span class="na">setTopology_id</span><span class="o">(</span><span class="s">&#34;1&#34;</span><span class="o">);</span>
 
 <span class="n">Bean_Topology</span> <span class="n">topology2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bean_Topology</span><span class="o">();</span>
@@ -244,7 +244,7 @@
 </div><h2 id="方法一重写bean_topology的equals方法和hashcode方法代码如下">方法一：重写Bean_Topology的equals方法和hashcode方法，代码如下</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -280,7 +280,7 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Override</span>
 <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
@@ -319,14 +319,14 @@
 </div><p>测试代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">topology1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">topology2</span><span class="o">))</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">topology1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">topology2</span><span class="o">))</span> <span class="o">{</span>
 	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;对象1与对象2的属性值无差异。&#34;</span><span class="o">);</span>
 <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
 	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;对象1与对象2的属性值有差异。&#34;</span><span class="o">);</span>	
@@ -336,16 +336,16 @@
 </div><p>输出结果为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">对象1与对象2的属性值有差异</span><span class="err">。</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">对象1与对象2的属性值有差异</span><span class="err">。</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="方法二调用文章末尾的工具类代码如下">方法二：调用文章末尾的工具类，代码如下</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -360,7 +360,7 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">resultMap</span><span class="o">=</span><span class="n">compareFields</span><span class="o">(</span><span class="n">topology1</span><span class="o">,</span><span class="n">topology2</span><span class="o">);</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">resultMap</span><span class="o">=</span><span class="n">compareFields</span><span class="o">(</span><span class="n">topology1</span><span class="o">,</span><span class="n">topology2</span><span class="o">);</span>
 <span class="kt">int</span> <span class="n">size</span><span class="o">=</span><span class="n">resultMap</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
 <span class="k">if</span><span class="o">(</span><span class="n">size</span><span class="o">&gt;</span><span class="n">0</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;对象1与对象2的属性值有差异,差异结果如下：&#34;</span><span class="o">);</span>
@@ -378,18 +378,18 @@
 </div><p>输出结果为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">  <span class="n">对象1与对象2的属性值有差异</span><span class="o">,</span><span class="n">差异结果如下</span><span class="err">：</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">  <span class="n">对象1与对象2的属性值有差异</span><span class="o">,</span><span class="n">差异结果如下</span><span class="err">：</span>
   <span class="n">topology_pk</span><span class="o">(</span><span class="n">oldValue</span><span class="o">:</span><span class="kc">null</span><span class="o">,</span><span class="n">newValue</span><span class="o">:</span><span class="n">1</span><span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="工具类如下">工具类如下</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -502,7 +502,7 @@
 </span><span class="lnt">111
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.sitech.modual.util.compare</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.sitech.modual.util.compare</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.beans.Introspector</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.beans.PropertyDescriptor</span><span class="o">;</span>
@@ -660,14 +660,14 @@
     </div>
 
     <div class="post-nav"><a href="/rank-algorithm-note/" class="prev" rel="prev" title="常见排序算法总结笔记"><i class="fas fa-angle-left fa-fw"></i>常见排序算法总结笔记</a>
-            <a href="/mysql-note/" class="next" rel="next" title="concat以及group_concat的用法">concat以及group_concat的用法<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/mysql-func-note/" class="next" rel="next" title="concat以及group_concat的用法">concat以及group_concat的用法<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

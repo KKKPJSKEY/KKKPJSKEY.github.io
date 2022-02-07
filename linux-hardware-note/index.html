@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Linux硬件相关的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/linux-hardware-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/linux-hardware-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-30T22:22:22&#43;08:00" />
-<meta property="article:modified_time" content="2021-10-15T13:44:24&#43;08:00" />
+<meta property="article:published_time" content="2021-08-30T22:22:22+08:00" />
+<meta property="article:modified_time" content="2021-10-15T13:44:24+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/linux-hardware-note/featured-image.jpg"/>
@@ -160,11 +160,11 @@
 <h3 id="一查看cpu高占用">一、查看CPU高占用</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">## 执行top命令</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">## 执行top命令</span>
 top
 </code></pre></td></tr></table>
 </div>
@@ -182,11 +182,11 @@ top
 <h3 id="二查看进程中最占cpu的线程">二、查看进程中最占CPU的线程</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># top中最高占用CPU的PID</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># top中最高占用CPU的PID</span>
 top -p <span class="m">24212</span> -H
 </code></pre></td></tr></table>
 </div>
@@ -201,10 +201,10 @@ top -p <span class="m">24212</span> -H
 <h3 id="三最耗cpu的线程pid转换为16进制输出">三、最耗CPU的线程PID转换为16进制输出</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"> <span class="n">printf</span> <span class="s">&#34;%x </span><span class="se">\n</span><span class="s">&#34;</span> <span class="mi">24213</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"> <span class="n">printf</span> <span class="s">&#34;%x </span><span class="se">\n</span><span class="s">&#34;</span> <span class="mi">24213</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -218,11 +218,11 @@ top -p <span class="m">24212</span> -H
 <h3 id="四查看高占用cpu具体问题">四、查看高占用CPU具体问题</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># jstack 进程pid | grep 线程pid</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># jstack 进程pid | grep 线程pid</span>
 jstack 24212<span class="p">|</span> grep 5e95  -A <span class="m">30</span>
 </code></pre></td></tr></table>
 </div>
@@ -239,7 +239,7 @@ jstack 24212<span class="p">|</span> grep 5e95  -A <span class="m">30</span>
 <p><code>lscpu</code>命令，查看的是CPU的统计信息.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -261,7 +261,7 @@ jstack 24212<span class="p">|</span> grep 5e95  -A <span class="m">30</span>
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">blue@blue-pc:~$ lscpu
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">blue@blue-pc:~$ lscpu
 Architecture:          i686            <span class="c1">#cpu架构</span>
 CPU op-mode<span class="o">(</span>s<span class="o">)</span>:        32-bit, 64-bit
 Byte Order:            Little Endian   <span class="c1">#小尾序</span>
@@ -286,7 +286,7 @@ L3 cache:              6144K
 </div><p>查看<code>/proc/cpuinfo</code>,可以知道每个CPU信息，如每个CPU的型号，主频等。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -295,7 +295,7 @@ L3 cache:              6144K
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#cat /proc/cpuinfo</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#cat /proc/cpuinfo</span>
 processor    : <span class="m">0</span>
 vendor_id    : GenuineIntel
 cpu family    : <span class="m">6</span>
@@ -309,14 +309,14 @@ model name    : Intel<span class="o">(</span>R<span class="o">)</span> Core<span
 <p>概要查看内存情况</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">free -m
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">free -m
              total       used       free     shared    buffers     cached
 Mem:          <span class="m">3926</span>       <span class="m">3651</span>        <span class="m">274</span>          <span class="m">0</span>         <span class="m">12</span>        <span class="m">404</span>
 -/+ buffers/cache:       <span class="m">3235</span>        <span class="m">691</span>
@@ -327,7 +327,7 @@ Swap:         <span class="m">9536</span>         <span class="m">31</span>     
 <p>查看内存详细使用</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -336,7 +336,7 @@ Swap:         <span class="m">9536</span>         <span class="m">31</span>     
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># cat /proc/meminfo </span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># cat /proc/meminfo </span>
 MemTotal:        <span class="m">4020868</span> kB
 MemFree:          <span class="m">230884</span> kB
 Buffers:            <span class="m">7600</span> kB
@@ -348,7 +348,7 @@ SwapCached:          <span class="m">836</span> kB
 </div><p>查看内存硬件信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -370,7 +370,7 @@ SwapCached:          <span class="m">836</span> kB
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">dmidecode -t memory
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">dmidecode -t memory
 <span class="c1"># dmidecode 2.11</span>
 SMBIOS 2.7 present.
 
@@ -397,7 +397,7 @@ Memory Device
 <p>查看硬盘和分区分布</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -408,7 +408,7 @@ Memory Device
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># lsblk</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># lsblk</span>
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda      8:0    <span class="m">0</span> 465.8G  <span class="m">0</span> disk 
 ├─sda1   8:1    <span class="m">0</span>     1G  <span class="m">0</span> part /boot
@@ -423,7 +423,7 @@ sda      8:0    <span class="m">0</span> 465.8G  <span class="m">0</span> disk
 <p>如果要看硬盘和分区的详细信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -440,7 +440,7 @@ sda      8:0    <span class="m">0</span> 465.8G  <span class="m">0</span> disk
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># fdisk -l</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># fdisk -l</span>
 
 Disk /dev/sda: 500.1 GB, <span class="m">500107862016</span> bytes
 <span class="m">255</span> heads, <span class="m">63</span> sectors/track, <span class="m">60801</span> cylinders, total <span class="m">976773168</span> sectors
@@ -461,18 +461,18 @@ Disk identifier: 0x00023728
 <p>查看网卡硬件信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># lspci | grep -i &#39;eth&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># lspci | grep -i &#39;eth&#39;</span>
 02:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168B PCI Express Gigabit Ethernet controller <span class="o">(</span>rev 06<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>查看系统的所有网络接口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -480,7 +480,7 @@ Disk identifier: 0x00023728
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># ifconfig -a</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># ifconfig -a</span>
 eth0      Link encap:以太网  硬件地址 b8:97:5a:17:b3:8f  
           .....
 
@@ -491,14 +491,14 @@ lo        Link encap:本地环回
 </div><p>或者是</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ip link show
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ip link show
 1: lo: &lt;LOOPBACK&gt; mtu <span class="m">16436</span> qdisc noqueue state DOWN 
 link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP qlen <span class="m">1000</span>
@@ -508,7 +508,7 @@ link/ether b8:97:5a:17:b3:8f brd ff:ff:ff:ff:ff:ff
 </div><p>如果要查看某个网络接口的详细信息，例如eth0的详细参数和指标</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -530,7 +530,7 @@ link/ether b8:97:5a:17:b3:8f brd ff:ff:ff:ff:ff:ff
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># ethtool eth0</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># ethtool eth0</span>
 Settings <span class="k">for</span> eth0:
     Supported ports: <span class="o">[</span> TP MII <span class="o">]</span>
     Supported link modes:   10baseT/Half 10baseT/Full 
@@ -556,7 +556,7 @@ Settings <span class="k">for</span> eth0:
 <p>查看pci信息，即主板所有硬件槽信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -575,7 +575,7 @@ Settings <span class="k">for</span> eth0:
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">lspci
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">lspci
 00:00.0 Host bridge: Intel Corporation 2nd Generation Core Processor Family DRAM Controller <span class="o">(</span>rev 09<span class="o">)</span> <span class="c1">#主板芯片</span>
 00:02.0 VGA compatible controller: Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller <span class="o">(</span>rev 09<span class="o">)</span> <span class="c1">#显卡</span>
 00:14.0 USB controller: Intel Corporation Panther Point USB xHCI Host Controller <span class="o">(</span>rev 04<span class="o">)</span> <span class="c1">#usb控制器</span>
@@ -599,7 +599,7 @@ Settings <span class="k">for</span> eth0:
 <p>查看bios信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -610,7 +610,7 @@ Settings <span class="k">for</span> eth0:
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># dmidecode -t bios</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># dmidecode -t bios</span>
 ......
 BIOS Information
     Vendor: American Megatrends Inc.
@@ -625,10 +625,10 @@ BIOS Information
 <p>如果要查看所有有用信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">dmidecode -q
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">dmidecode -q
 </code></pre></td></tr></table>
 </div>
 </div><p>里面包含了很多硬件信息。</p>
@@ -664,8 +664,8 @@ BIOS Information
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

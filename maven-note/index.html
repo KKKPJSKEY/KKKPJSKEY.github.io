@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Maven的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/maven-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/maven-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-31T15:39:58&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-31T15:39:58&#43;08:00" />
+<meta property="article:published_time" content="2021-08-31T15:39:58+08:00" />
+<meta property="article:modified_time" content="2022-02-07T14:38:44+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/maven-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/maven-note\/featured-image.jpg",
                             "width":  2430 ,
                             "height":  729 
-                        }],"genre": "posts","keywords": "Package, Maven","wordcount":  2270 ,
-        "url": "https:\/\/kkkpjskey.github.io\/maven-note\/","datePublished": "2021-08-31T15:39:58+08:00","dateModified": "2021-08-31T15:39:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Package, Maven","wordcount":  2923 ,
+        "url": "https:\/\/kkkpjskey.github.io\/maven-note\/","datePublished": "2021-08-31T15:39:58+08:00","dateModified": "2022-02-07T14:38:44+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Maven笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-31">2021-08-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2270 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/maven-note/" class="leancloud_visitors" data-flag-title="Maven笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-31">2021-08-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2923 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/maven-note/" class="leancloud_visitors" data-flag-title="Maven笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -154,6 +154,15 @@
     <li><a href="#resource元素的作用">resource元素的作用</a></li>
     <li><a href="#子工程获取父工程路径">子工程获取父工程路径</a></li>
     <li><a href="#打包过程排除文件夹">打包过程排除文件夹</a></li>
+    <li><a href="#windows环境下maven--安装与环境变量配置">Windows环境下maven  安装与环境变量配置</a>
+      <ul>
+        <li><a href="#一下载-maven">一、下载 Maven</a></li>
+        <li><a href="#二解压-maven-压缩包">二、解压 maven 压缩包。</a></li>
+        <li><a href="#三配置maven-的环境变量">三、配置maven 的环境变量</a></li>
+        <li><a href="#四检测是否安装成功">四、检测是否安装成功。</a></li>
+        <li><a href="#五升级">五、升级。</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="transitive-dependenciesmaven依赖可传递性">Transitive Dependencies（Maven依赖可传递性）</h2>
@@ -171,7 +180,7 @@
 <p>&ldquo;nearest definition&rdquo; means that the version used will be the closest one to your project in the tree of dependencies. Consider this tree of dependencies:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -179,7 +188,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  A
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  A
   ├── B
   │   └── C
   │       └── D 2.0
@@ -190,7 +199,7 @@
 </div><p>In text, dependencies for A, B, and C are defined as A -&gt; B -&gt; C -&gt; D 2.0 and A -&gt; E -&gt; D 1.0, then D 1.0 will be used when building A because the path from A to D through E is shorter. You could explicitly add a dependency to D 2.0 in A to force the use of D 2.0, as shown here:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -200,7 +209,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  A
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  A
   ├── B
   │   └── C
   │       └── D 2.0
@@ -255,7 +264,7 @@
 <h3 id="在依赖中-使用pom变量">在依赖中 使用pom变量</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -270,7 +279,7 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
     <span class="nt">&lt;dependency&gt;</span>
         <span class="nt">&lt;groupId&gt;</span>${project.groupId}<span class="nt">&lt;/groupId&gt;</span>
         <span class="nt">&lt;artifactId&gt;</span>part-a<span class="nt">&lt;/artifactId&gt;</span>
@@ -288,7 +297,7 @@
 </div><h3 id="在插件中使用pom变量">在插件中使用pom变量</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -299,7 +308,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugin&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugin&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>maven-surefire-plugin<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>2.5<span class="nt">&lt;/version&gt;</span>
@@ -313,7 +322,7 @@
 </div><h3 id="自定义变量">自定义变量</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -323,7 +332,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"> <span class="nt">&lt;properties&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"> <span class="nt">&lt;properties&gt;</span>
      <span class="nt">&lt;db.driver&gt;</span>com.mysql.jdbc.Driver<span class="nt">&lt;/db.driver&gt;</span>
      <span class="nt">&lt;db.url&gt;</span>jdbc:mysql://localhost:3360/test<span class="nt">&lt;/db.url&gt;</span>
      <span class="nt">&lt;db.username&gt;</span>username<span class="nt">&lt;/db.username&gt;</span>
@@ -349,12 +358,12 @@
 <p>尝试在每个pom中设置属性以查找主项目目录。 在父级：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;properties&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;properties&gt;</span>
     <span class="nt">&lt;main.basedir&gt;</span>${project.basedir}<span class="nt">&lt;/main.basedir&gt;</span>
 <span class="nt">&lt;/properties&gt;</span>
 </code></pre></td></tr></table>
@@ -362,12 +371,12 @@
 </div><p>在子元素们身上：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;properties&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;properties&gt;</span>
     <span class="nt">&lt;main.basedir&gt;</span>${project.parent.basedir}<span class="nt">&lt;/main.basedir&gt;</span>
 <span class="nt">&lt;/properties&gt;</span>
 </code></pre></td></tr></table>
@@ -375,12 +384,12 @@
 </div><p>在孙辈中：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;properties&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;properties&gt;</span>
     <span class="nt">&lt;main.basedir&gt;</span>${project.parent.parent.basedir}<span class="nt">&lt;/main.basedir&gt;</span>
 <span class="nt">&lt;/properties&gt;</span>
 </code></pre></td></tr></table>
@@ -389,14 +398,14 @@
 <p>由于maven插件的生命周期原因，传递给子模块basedir属性为子模块属性，类似懒加载，传递至子目录才读取值，故需要添加parent，且忽略编译异常。此属性禁止在父POM工程中使用，仅允许传递给子模块使用。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;jar.target&gt;</span>D:/tmp/target<span class="nt">&lt;/jar.target&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;jar.target&gt;</span>D:/tmp/target<span class="nt">&lt;/jar.target&gt;</span>
 <span class="c">&lt;!--suppress UnresolvedMavenProperty --&gt;</span>
 <span class="nt">&lt;jar.target&gt;</span>${project.parent.basedir}/target/<span class="nt">&lt;/jar.parent.target&gt;</span>
 <span class="c">&lt;!--suppress UnresolvedMavenProperty --&gt;</span>
@@ -409,22 +418,116 @@
 <p>排除的文件夹位置<code>src/main/dml</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;excludes&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;excludes&gt;</span>
     <span class="nt">&lt;exclude&gt;</span>dml/**<span class="nt">&lt;/exclude&gt;</span>
 <span class="nt">&lt;/excludes&gt;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>**注意：**避免使用<code>&lt;exclude&gt;src/main/dml/**&lt;/exclude&gt;</code>会导致找不到</p>
+<h2 id="windows环境下maven--安装与环境变量配置">Windows环境下maven  安装与环境变量配置</h2>
+<blockquote>
+<p>Maven是一个项目管理的Java 工具，在JavaEE中，我们可以使用Maven方便地管理团队合作的项目，现在我们在学习JavaEE框架，使用Maven可以管理类库，有效方便地供团队中的其他人员使用。</p>
+</blockquote>
+<h3 id="一下载-maven">一、下载 Maven</h3>
+<p>请访问Maven的下载页面：http://maven.apache.org/download.html，其中包含针对不同平台的各种版本的Maven下载文件。</p>
+<p>注意：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="2.png"
+        data-srcset="/maven-note/2.png, 2.png 1.5x, /maven-note/2.png 2x"
+        data-sizes="auto"
+        alt="/maven-note/2.png"
+        title="2" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="3.png"
+        data-srcset="/maven-note/3.png, 3.png 1.5x, /maven-note/3.png 2x"
+        data-sizes="auto"
+        alt="/maven-note/3.png"
+        title="3" /></p>
+<p>我这里下载的是：<code>apache-maven-3.3.9-bin.zip</code> 版本。</p>
+<h3 id="二解压-maven-压缩包">二、解压 maven 压缩包。</h3>
+<p>解压apache-maven-3.1.1-bin.zip，并把解压后的文件夹下的apache-maven-3.1.1文件夹移动到E:\Maven 下，如果没有Maven 这个文件夹的话，请自行创建。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="4.png"
+        data-srcset="/maven-note/4.png, 4.png 1.5x, /maven-note/4.png 2x"
+        data-sizes="auto"
+        alt="/maven-note/4.png"
+        title="4" /></p>
+<h3 id="三配置maven-的环境变量">三、配置maven 的环境变量</h3>
+<p>右键“计算机”，选择“属性”，之后点击“高级系统设置”，点击“环境变量”，来设置环境变量，有以下系统变量需要配置：</p>
+<table>
+<thead>
+<tr>
+<th>新建系统变量</th>
+<th>MAVEN_HOME</th>
+<th>变量值：</th>
+<th>E:\Maven\apache-maven-3.3.9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>编辑系统变量</td>
+<td>Path</td>
+<td>添加变量值：</td>
+<td>;%MAVEN_HOME%\bin</td>
+</tr>
+</tbody>
+</table>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="5.png"
+        data-srcset="/maven-note/5.png, 5.png 1.5x, /maven-note/5.png 2x"
+        data-sizes="auto"
+        alt="/maven-note/5.png"
+        title="5" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="6.png"
+        data-srcset="/maven-note/6.png, 6.png 1.5x, /maven-note/6.png 2x"
+        data-sizes="auto"
+        alt="/maven-note/6.png"
+        title="6" /></p>
+<p>注意：注意多个值之间需要有分号隔开，然后点击<strong>确定</strong>。</p>
+<h3 id="四检测是否安装成功">四、检测是否安装成功。</h3>
+<p>最后检验配置是否成功：用<code>win键+R</code>，来打开命令行提示符窗口，即<code>Dos</code>界面，输入<code>mvn --version</code>若出现以下情况说明配置成功</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="7.png"
+        data-srcset="/maven-note/7.png, 7.png 1.5x, /maven-note/7.png 2x"
+        data-sizes="auto"
+        alt="/maven-note/7.png"
+        title="7" /></p>
+<p>或是输入：<strong>echo %M2_HOME%</strong></p>
+<p>查看版本：<code>mvn -v</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="8.png"
+        data-srcset="/maven-note/8.png, 8.png 1.5x, /maven-note/8.png 2x"
+        data-sizes="auto"
+        alt="/maven-note/8.png"
+        title="8" /></p>
+<h3 id="五升级">五、升级。</h3>
+<p>Maven还比较年轻，更新比较频繁，因此用户往往会需要更新Maven安装以获得更多更酷的新特性，以及避免一些旧的bu</p>
+<p>只需要按照上面的配置过程换成新的包即可。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-08-31</span>
+                <span>更新于 2022-02-07</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -452,8 +555,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Linux指令操作笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/linux-common-cmd-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/linux-common-cmd-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-10-15T14:13:20&#43;08:00" />
-<meta property="article:modified_time" content="2021-10-15T14:13:20&#43;08:00" />
+<meta property="article:published_time" content="2021-10-15T14:13:20+08:00" />
+<meta property="article:modified_time" content="2021-10-15T14:13:20+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/linux-common-cmd-note/featured-image.jpg"/>
@@ -152,22 +152,22 @@
 <p>1.grep 同时满足多个关键字和满足任意关键字</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#① </span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#① </span>
 grep -E <span class="s2">&#34;word1|word2|word3&#34;</span>   file.txt
 </code></pre></td></tr></table>
 </div>
 </div><p>2.满足任意条件（word1、word2和word3之一）将匹配。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># ② </span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># ② </span>
 grep word1 file.txt <span class="p">|</span> grep word2 <span class="p">|</span>grep word3
 </code></pre></td></tr></table>
 </div>
@@ -176,39 +176,39 @@ grep word1 file.txt <span class="p">|</span> grep word2 <span class="p">|</span>
 <p>*.log &mdash;&mdash;-当前目录下所有以.log结尾的日志</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">grep word1  *.log <span class="p">|</span> grep word2 <span class="p">|</span> wc -l 
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">grep word1  *.log <span class="p">|</span> grep word2 <span class="p">|</span> wc -l 
 </code></pre></td></tr></table>
 </div>
 </div><p>4.分页查看符合条件的内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">grep word1 *.log <span class="p">|</span> grep word2 <span class="p">|</span> more
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">grep word1 *.log <span class="p">|</span> grep word2 <span class="p">|</span> more
 </code></pre></td></tr></table>
 </div>
 </div><p>不说废话, 例如需要排除 abc.txt 中的  mmm   nnn</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">grep -v <span class="s1">&#39;mmm\|nnn&#39;</span> abc.txt 
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">grep -v <span class="s1">&#39;mmm\|nnn&#39;</span> abc.txt 
 </code></pre></td></tr></table>
 </div>
 </div><p>但是这样还是很多，需要从这几条信息里面去找到所需要的 ip 地址，我们可能想到了使用 grep -v 屏蔽掉 inet6，结果如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">	bash-3.2# ifconfig <span class="p">|</span> grep inet <span class="p">|</span> grep -v inet6
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">	bash-3.2# ifconfig <span class="p">|</span> grep inet <span class="p">|</span> grep -v inet6
     inet 127.0.0.1 netmask 0xff000000
     inet 10.60.104.38 netmask 0xfffffe00 broadcast 10.60.105.255
 </code></pre></td></tr></table>
@@ -220,10 +220,10 @@ grep word1 file.txt <span class="p">|</span> grep word2 <span class="p">|</span>
 <h3 id="2命令格式">2、命令格式</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">md5sum <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>FILE<span class="o">]</span>...
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">md5sum <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>FILE<span class="o">]</span>...
 </code></pre></td></tr></table>
 </div>
 </div><p>命令选项</p>
@@ -248,7 +248,7 @@ grep word1 file.txt <span class="p">|</span> grep word2 <span class="p">|</span>
 <p>1）生成一个文件的md5值，如下所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -258,7 +258,7 @@ grep word1 file.txt <span class="p">|</span> grep word2 <span class="p">|</span>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># ll</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># ll</span>
 total <span class="m">16</span>
 -rw-r--r--1 root root <span class="m">240</span> Sep <span class="m">4</span> 22:26 aaa_pkg.tgz
 -rw-r--r--1 root root  <span class="m">11</span> Sep <span class="m">4</span> 22:01 aaa.txt
@@ -271,18 +271,18 @@ drwxr-xr-x2 root root <span class="m">4096</span> Sep <span class="m">4</span> 2
 </div><p>这样，就生成了文件aaa.txt的md5校验文件aaa.md5，打开可以看到如下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># cat checksum/aaa.md5</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># cat checksum/aaa.md5</span>
 d700cf9bb133858df4d3e0486848be78 aaa.txt
 </code></pre></td></tr></table>
 </div>
 </div><p>2）md5sum支持多个文件输入或通配符</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -293,7 +293,7 @@ d700cf9bb133858df4d3e0486848be78 aaa.txt
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># md5sum aaa.txt bbb.log aaa_pkg.tgz &gt; checksum/all.md5</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># md5sum aaa.txt bbb.log aaa_pkg.tgz &gt; checksum/all.md5</span>
 <span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># cat checksum/all.md5</span>
 d700cf9bb133858df4d3e0486848be78 aaa.txt
 fff62b77988e5b9d83a2872bb2247b21 bbb.log
@@ -307,7 +307,7 @@ d700cf9bb133858df4d3e0486848be78 aaa.txt
 </div><p>3）文件内容校验</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -323,7 +323,7 @@ d700cf9bb133858df4d3e0486848be78 aaa.txt
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># md5sum -c ./checksum/aaa.md5</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># md5sum -c ./checksum/aaa.md5</span>
 aaa.txt:OK
 <span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># md5sum -c ./checksum/all.md5</span>
 aaa.txt:OK
@@ -342,7 +342,7 @@ md5sum: WARNING: <span class="m">1</span> of <span class="m">3</span> computed c
 </div><p>4）文件路径的考虑（$PWD即当前路径/home/hanlzh/test/）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -354,7 +354,7 @@ md5sum: WARNING: <span class="m">1</span> of <span class="m">3</span> computed c
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># pwd</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># pwd</span>
 /home/hanlzh/test
 <span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># md5sum $PWD/aaa.txt &gt; ./checksum/aaa.md5</span>
 <span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># cat checksum/aaa.md5</span>
@@ -369,7 +369,7 @@ d700cf9bb133858df4d3e0486848be78 /home/hanlzh/test/aaa.txt
 </div><p>4）文件缺失或不存在情况</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -377,7 +377,7 @@ d700cf9bb133858df4d3e0486848be78 /home/hanlzh/test/aaa.txt
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># rm -rf aaa_pkg.tgz</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># rm -rf aaa_pkg.tgz</span>
 <span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># md5sum -c ./checksum/aaa_all.md5</span>
 md5sum: aaa_pkg.tgz: No such file or directory
 aaa_pkg.tgz: FAILED open or <span class="nb">read</span>
@@ -399,7 +399,7 @@ md5sum: WARNING: <span class="m">1</span> of <span class="m">2</span> listed fil
 <p>以下仅简单列举一例，不再赘述。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -407,7 +407,7 @@ md5sum: WARNING: <span class="m">1</span> of <span class="m">2</span> listed fil
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># sha512sum aaa.txt &gt; aaa.sha512</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># sha512sum aaa.txt &gt; aaa.sha512</span>
 <span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1"># cat aaa.sha512</span>
 8edb9790359ef641112fa85eea5c8f09b7330564a58cddf39aef66006f32454a8879b1e63d9f667ecf86264d4d5b6a602a4c94c79d962ec755345a3837217f89 aaa.txt
 <span class="o">[</span>root@HLZ test<span class="o">]</span><span class="c1">#</span>
@@ -447,8 +447,8 @@ aaa.txt:OK
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录简单安装PostgreSQL(绿色版)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/postgresql-install/" /><meta property="og:image" content="https://kkkpjskey.github.io/postgresql-install/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-28T10:29:58&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-28T10:29:58&#43;08:00" />
+<meta property="article:published_time" content="2021-07-28T10:29:58+08:00" />
+<meta property="article:modified_time" content="2021-07-28T10:29:58+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/postgresql-install/featured-image.jpg"/>
@@ -154,7 +154,7 @@ Windows 2008
 在windows下可以用安装版安装，也可以用免安装版安装，这里主要是演示免安装版</p>
 <h2 id="一下载">一.下载</h2>
 <p>选择免安装版zip版：
-<a href="https://www.postgresql.org/download/windows/">https://www.postgresql.org/download/windows/</a></p>
+<a href="https://www.postgresql.org/download/windows/" target="_blank" rel="noopener noreferrer">https://www.postgresql.org/download/windows/</a></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -164,7 +164,7 @@ Windows 2008
         alt="./1.png"
         title="1" /></p>
 <p>然后选择你的系统环境，我的是win10 64位所以我选的如下图：
-<a href="https://www.enterprisedb.com/download-postgresql-binaries">https://www.enterprisedb.com/download-postgresql-binaries</a></p>
+<a href="https://www.enterprisedb.com/download-postgresql-binaries" target="_blank" rel="noopener noreferrer">https://www.enterprisedb.com/download-postgresql-binaries</a></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -198,10 +198,10 @@ Windows 2008
 进入bin目录并执行初始化命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">initdb.exe -D D:<span class="se">\t</span>ools<span class="se">\p</span>ostgres<span class="se">\p</span>gsql<span class="se">\d</span>ata -E UTF-8 --locale<span class="o">=</span>chs -U postgres -W
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">initdb.exe -D D:<span class="se">\t</span>ools<span class="se">\p</span>ostgres<span class="se">\p</span>gsql<span class="se">\d</span>ata -E UTF-8 --locale<span class="o">=</span>chs -U postgres -W
 </code></pre></td></tr></table>
 </div>
 </div><p>注：</p>
@@ -228,10 +228,10 @@ Windows 2008
 <p>4）启动数据库</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">pg_ctl -D D:<span class="se">\t</span>ools<span class="se">\p</span>ostgres<span class="se">\p</span>gsql<span class="se">\d</span>ata -l logfile start
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">pg_ctl -D D:<span class="se">\t</span>ools<span class="se">\p</span>ostgres<span class="se">\p</span>gsql<span class="se">\d</span>ata -l logfile start
 </code></pre></td></tr></table>
 </div>
 </div><p>这样就可以简单的安装成功了</p>
@@ -267,10 +267,10 @@ Windows 2008
 在bin目录下用管理员身份执行命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">pg_ctl register -N PostgreSQL -D D:<span class="se">\t</span>ools<span class="se">\p</span>ostgres<span class="se">\p</span>gsql<span class="se">\d</span>ata
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">pg_ctl register -N PostgreSQL -D D:<span class="se">\t</span>ools<span class="se">\p</span>ostgres<span class="se">\p</span>gsql<span class="se">\d</span>ata
 </code></pre></td></tr></table>
 </div>
 </div><p>然后查看是否成功：
@@ -316,8 +316,8 @@ Windows 2008
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

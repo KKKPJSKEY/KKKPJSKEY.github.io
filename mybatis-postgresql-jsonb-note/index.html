@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录MybatisPlus访问PostgreSql教程的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mybatis-postgresql-jsonb-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mybatis-postgresql-jsonb-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-23T09:42:08&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-28T10:29:58&#43;08:00" />
+<meta property="article:published_time" content="2021-08-23T09:42:08+08:00" />
+<meta property="article:modified_time" content="2021-07-28T10:29:58+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mybatis-postgresql-jsonb-note/featured-image.jpg"/>
@@ -152,7 +152,7 @@
 <h3 id="如果是使用mybatisplus的内置方法则需要在实体字段加上tablefield注解并且需要在类名上启动tablenameautoresultmap--true">如果是使用mybatisplus的内置方法,则需要在实体字段加上@TableField注解,并且需要在类名上启动@TableName(autoResultMap = true)</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -172,7 +172,7 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// autoResultMap = true 必须写,否则无法识别
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// autoResultMap = true 必须写,否则无法识别
 </span><span class="c1"></span><span class="nd">@TableName</span><span class="o">(</span><span class="n">autoResultMap</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BlogUser</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
 
@@ -195,7 +195,7 @@
 </div><h3 id="如果是写在xml里面则必须在对应字段注明转换器class">如果是写在xml里面,则必须在对应字段注明转换器class:</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -206,7 +206,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">    <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">&#34;addxml&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;com.hou.postgresql.blog.entity.po.BlogUser&#34;</span><span class="nt">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">    <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">&#34;addxml&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;com.hou.postgresql.blog.entity.po.BlogUser&#34;</span><span class="nt">&gt;</span>
         INSERT INTO blog_user (name, relation, fans, birthday, points, login_time, write_interval, numbers, adult, address, weight)
         VALUES (#{name},
         /*必须显式的指明转换器,否则编译过程就会报错,主要是List,map这种数组,jsonb对应的实体类型*/
@@ -221,10 +221,10 @@
 <p>即使写了转换器,查询的时候没问题,但是插入的时候依然会报这个错,这时需要在连接的url后面加上参数stringtype=unspecified就可以正常添加了</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">url: jdbc:postgresql://192.168.1.11:5432/postgres?currentSchema=sys&amp;stringtype=unspecified
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">url: jdbc:postgresql://192.168.1.11:5432/postgres?currentSchema=sys&amp;stringtype=unspecified
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="所有数据类型参数格式">所有数据类型参数格式</h2>
@@ -232,7 +232,7 @@
 参数如下:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -249,21 +249,21 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;address&#34;</span><span class="p">:</span> <span class="s2">&#34;192.168.1.70&#34;</span><span class="p">,</span>   <span class="err">//</span> <span class="err">inet</span>
-  <span class="nt">&#34;adult&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>  <span class="err">//</span> <span class="err">boolean</span>
-  <span class="nt">&#34;birthday&#34;</span><span class="p">:</span> <span class="s2">&#34;1994-12-16&#34;</span><span class="p">,</span>  <span class="err">//</span> <span class="err">date</span>
-  <span class="nt">&#34;fans&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;zhangpeng&#34;</span><span class="p">,</span><span class="s2">&#34;zhouhang&#34;</span><span class="p">,</span><span class="s2">&#34;pengle&#34;</span><span class="p">],</span>
-  <span class="nt">&#34;loginTime&#34;</span><span class="p">:</span> <span class="s2">&#34;09:12&#34;</span><span class="p">,</span>  <span class="err">//</span> <span class="err">time</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;侯征&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;numbers&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">56</span><span class="p">,</span><span class="mi">42</span><span class="p">],</span>   <span class="err">//</span> <span class="err">array</span>
-  <span class="nt">&#34;points&#34;</span><span class="p">:</span> <span class="mf">10.522</span><span class="p">,</span>  <span class="err">//</span> <span class="err">numeric</span>
-  <span class="nt">&#34;relation&#34;</span><span class="p">:</span> <span class="p">{</span>       <span class="err">//</span> <span class="err">jsonb</span>
-      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;address&#34;</span><span class="p">:</span> <span class="s2">&#34;192.168.1.70&#34;</span><span class="p">,</span>   <span class="c1">// inet
+</span><span class="c1"></span>  <span class="nt">&#34;adult&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>  <span class="c1">// boolean
+</span><span class="c1"></span>  <span class="nt">&#34;birthday&#34;</span><span class="p">:</span> <span class="s2">&#34;1994-12-16&#34;</span><span class="p">,</span>  <span class="c1">// date
+</span><span class="c1"></span>  <span class="nt">&#34;fans&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;zhangpeng&#34;</span><span class="p">,</span><span class="s2">&#34;zhouhang&#34;</span><span class="p">,</span><span class="s2">&#34;pengle&#34;</span><span class="p">],</span>
+  <span class="nt">&#34;loginTime&#34;</span><span class="p">:</span> <span class="s2">&#34;09:12&#34;</span><span class="p">,</span>  <span class="c1">// time
+</span><span class="c1"></span>  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;侯征&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;numbers&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">56</span><span class="p">,</span><span class="mi">42</span><span class="p">],</span>   <span class="c1">// array
+</span><span class="c1"></span>  <span class="nt">&#34;points&#34;</span><span class="p">:</span> <span class="mf">10.522</span><span class="p">,</span>  <span class="c1">// numeric
+</span><span class="c1"></span>  <span class="nt">&#34;relation&#34;</span><span class="p">:</span> <span class="p">{</span>       <span class="c1">// jsonb
+</span><span class="c1"></span>      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
   <span class="p">},</span>
-  <span class="nt">&#34;weight&#34;</span><span class="p">:</span> <span class="s2">&#34;[45,50]&#34;</span><span class="p">,</span>    <span class="err">//</span> <span class="err">区间</span>
-  <span class="nt">&#34;writeInterval&#34;</span><span class="p">:</span> <span class="s2">&#34;800&#34;</span>  <span class="err">//</span> <span class="err">时间间隔</span><span class="p">,</span><span class="err">单位秒</span>
-<span class="p">}</span>
+  <span class="nt">&#34;weight&#34;</span><span class="p">:</span> <span class="s2">&#34;[45,50]&#34;</span><span class="p">,</span>    <span class="c1">// 区间
+</span><span class="c1"></span>  <span class="nt">&#34;writeInterval&#34;</span><span class="p">:</span> <span class="s2">&#34;800&#34;</span>  <span class="c1">// 时间间隔,单位秒
+</span><span class="c1"></span><span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
@@ -298,8 +298,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

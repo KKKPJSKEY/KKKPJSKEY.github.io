@@ -9,8 +9,8 @@
 <meta property="og:description" content="解决CentOS7运行Docker报错 &#34;Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?&#34; 问题" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/docker-daemon-is-running/" /><meta property="og:image" content="https://kkkpjskey.github.io/docker-daemon-is-running/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2019-11-01T09:18:34&#43;08:00" />
-<meta property="article:modified_time" content="2019-11-01T09:18:34&#43;08:00" />
+<meta property="article:published_time" content="2019-11-01T09:18:34+08:00" />
+<meta property="article:modified_time" content="2019-11-01T09:18:34+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/docker-daemon-is-running/featured-image.jpg"/>
@@ -146,13 +146,13 @@
 sudo vim /etc/docker/daemon.json</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
 <span class="nt">&#34;registry-mirrors&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;https://zydiol88.mirror.aliyuncs.com&#34;</span><span class="p">],</span>
 <span class="nt">&#34;insecure-registries&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;161.17.60.38:85&#34;</span><span class="p">]</span>
 <span class="p">}</span>
@@ -161,7 +161,7 @@ sudo vim /etc/docker/daemon.json</p>
 </div><p>如果是在 docker.service 解决办法：在 ExecStart 添加 &ndash;insecure-registry</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -172,7 +172,7 @@ sudo vim /etc/docker/daemon.json</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">find / -name docker.service -type f
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">find / -name docker.service -type f
 /usr/lib/systemd/system/docker.service
 
 <span class="c1"># 在 ExecStart 这行后面加上 -insecure-registry=Harbor登录地址</span>
@@ -186,11 +186,11 @@ sudo systemctl restart docker
 </div><p>重启完成后重新登录即可</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在linux总端登录Harbor：</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在linux总端登录Harbor：</span>
 sudo docker login -u tens -p Tens123456 161.17.60.38:85
 </code></pre></td></tr></table>
 </div>
@@ -226,8 +226,8 @@ sudo docker login -u tens -p Tens123456 161.17.60.38:85
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

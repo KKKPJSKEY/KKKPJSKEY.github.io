@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Jsp相关笔记合示例" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/jsp-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/jsp-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-16T17:00:33&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-25T16:37:52&#43;08:00" />
+<meta property="article:published_time" content="2021-08-16T17:00:33+08:00" />
+<meta property="article:modified_time" content="2021-08-25T16:37:52+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/jsp-note/featured-image.jpg"/>
@@ -165,10 +165,10 @@
 <p>JSTL标签提供了对国际化（I18N）的支持，它可以根据发出请求的客户端地域的不同来显示不同的语言。同时还提供了格式化数据和日期的方法。实现这些功能需要I18N格式标签库（I18N-capable formation tags liberary）。引入该标签库的方法为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;fmt&#34; uri=&#34;http://java.sun.com/jsp/jstl/fmt&#34; %&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;fmt&#34; uri=&#34;http://java.sun.com/jsp/jstl/fmt&#34; %&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>I18N格式标签库提供了11个标签，这些 标签从功能上可以划分为3类如下：</p>
@@ -183,13 +183,13 @@
 <p>【语法1】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;frm:formatNumber value=”被格式化的数据”[type=”number|currency|percent”][pattern=”pattern”]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;frm:formatNumber value=”被格式化的数据”[type=”number|currency|percent”][pattern=”pattern”]
 [currencyCode=”code”][currencySymbol=”symbol”][groupingUsed=”true|false”]
 [maxIntergerDigits=”maxDigits”][minIntergerDigits=”minDigits”][maxFractionDigits=”maxDigits”]
 [minFractionDigits=”minDigits”][var=”name”][scope=page|request|session|application]/&gt;
@@ -198,13 +198,13 @@
 </div><p>【语法2】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;frm:formatNumber [type=”number|currency|percent”][pattern=”pattern”][currencyCode=”code”]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;frm:formatNumber [type=”number|currency|percent”][pattern=”pattern”][currencyCode=”code”]
 [currencySymbol=”symbol”][groupingUsed=”true|false”][maxIntergerDigits=”maxDigits”]
 [minIntergerDigits=”minDigits”][maxFractionDigits=”maxDigits”][minFractionDigits=”minDigits”]
 [var=”name”][scope=page|request|session|application]\&gt; 
@@ -351,7 +351,7 @@
 <p>【示例代码】：实现了对数字的格式化、货币的格式、货币的格式化。使用<code>&lt;frm:formatNumber&gt;</code>的各种属性的设定。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -404,7 +404,7 @@
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;table border=1 cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; align=&#34;center&#34;&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;table border=1 cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; align=&#34;center&#34;&gt;
 &lt;tr align=&#34;center&#34;&gt;
 &lt;td width=&#34;100&#34;&gt;类型 &lt;/td&gt;
 &lt;td width=&#34;100&#34;&gt;使用数据&lt;/td&gt;
@@ -469,24 +469,24 @@
 <p>【语法1】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseNumber value=&#34;number&#34; [type=”number|currency|percent”][pattern=”pattern”]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseNumber value=&#34;number&#34; [type=”number|currency|percent”][pattern=”pattern”]
 [parseLocale=”locale”][intergerOnly=”true|false”][scope=”page|request|session|application”]/&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>【语法2】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseNumber [type=”number|currency|percent”][pattern=”pattern”] [parseLocale=”locale”]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseNumber [type=”number|currency|percent”][pattern=”pattern”] [parseLocale=”locale”]
 [intergerOnly=”true|false”][scope=”page|request|session|application”]\&gt; 
 Number
 &lt;/fmt:parseNumber
@@ -559,7 +559,7 @@ Number
 <p>【示例代码】：实现了从字符串中提取数据，并用合适的数据类型进行存储（浮点性、整型等）。可以对转换后的数据进行加法运算。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -569,7 +569,7 @@ Number
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"> &lt;fmt:formatNumber type=&#34;currency&#34; var=&#34;money&#34;&gt;188.8&lt;/fmt:formatNumber&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"> &lt;fmt:formatNumber type=&#34;currency&#34; var=&#34;money&#34;&gt;188.8&lt;/fmt:formatNumber&gt;
  &lt;li&gt;格式化前的数据为：&lt;c:out value=&#34;${money}&#34;&gt;&lt;/c:out&gt;
  &lt;fmt:parseNumber var=&#34;money&#34; type=&#34;currency&#34;&gt;${money}&lt;/fmt:parseNumber&gt;
  &lt;li&gt;格式化后的数据为:&lt;c:out value=&#34;${money}&#34;&gt;&lt;/c:out&gt;
@@ -587,11 +587,11 @@ Number
 <p>【示例代码】：实现了保留两位小数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:formatNumber type=&#34;number&#34; value=&#34;${br.price}&#34; pattern=&#34;#.00&#34;/&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:formatNumber type=&#34;number&#34; value=&#34;${br.price}&#34; pattern=&#34;#.00&#34;/&gt;
 &lt;!--pattern=&#34;#.00&#34;表示规定必须保存2位小数，如果最多保存2位，使用 pattern=&#34;#.##&#34;--&gt;
 </code></pre></td></tr></table>
 </div>
@@ -601,12 +601,12 @@ Number
 <p>【语法】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt: formatDate value=”date” [type=”time|date|both”][pattern=”pattern”]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt: formatDate value=”date” [type=”time|date|both”][pattern=”pattern”]
 [dateStyle=”default|short|medium|long|full”][timeStyle=”default|short|medium|long|full”]
 [timeZone=”timeZone”][var=”name”][scope=”page|request|session|application”]/&gt;
 </code></pre></td></tr></table>
@@ -716,7 +716,7 @@ Number
 <p>【示例程序】：实现了对日期的格式化，使用了type、dateStyle、timeStyle等属性。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -730,7 +730,7 @@ Number
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:formatDate value=&#34;${date}&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:formatDate value=&#34;${date}&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
 &lt;fmt:formatDate value=&#34;${date}&#34; type=&#34;both&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
 &lt;fmt:formatDate value=&#34;${date}&#34; type=&#34;both&#34; dateStyle=&#34;default&#34;
  timeStyle=&#34;default&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
@@ -750,10 +750,10 @@ timeStyle=&#34;full&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;input name=&#34;discoverTime&#34;  value=&#34;${estiDetail.discoverTime}&#34;   class=&#34;easyui-datebox&#34;  style=&#34;width:100&#34; disabled=&#34;disabled&#34;/&gt;${estiDetail.discoverTime}
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;input name=&#34;discoverTime&#34;  value=&#34;${estiDetail.discoverTime}&#34;   class=&#34;easyui-datebox&#34;  style=&#34;width:100&#34; disabled=&#34;disabled&#34;/&gt;${estiDetail.discoverTime}
 </code></pre></td></tr></table>
 </div>
 </div><p>这样datebox 的value里面获取的一直是当天的日期，并不是后台传过来的日期，如果放在input外面就能获取到，但是格式不对，就像这样</p>
@@ -769,10 +769,10 @@ timeStyle=&#34;full&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
 <p>引用jstl fmt标签</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;input name=&#34;discoverTime&#34;  value=&#34;&lt;fmt:formatDate value=&#34;${estiDetail.discoverTime}&#34; pattern=&#34;yyyy-MM-dd&#34; /&gt;&#34;   class=&#34;easyui-datebox&#34;  style=&#34;width:100&#34; disabled=&#34;disabled&#34;/&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;input name=&#34;discoverTime&#34;  value=&#34;&lt;fmt:formatDate value=&#34;${estiDetail.discoverTime}&#34; pattern=&#34;yyyy-MM-dd&#34; /&gt;&#34;   class=&#34;easyui-datebox&#34;  style=&#34;width:100&#34; disabled=&#34;disabled&#34;/&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>注意：是将<code>&lt;fmt:formatDate value=&quot;${estiDetail.discoverTime}&quot; pattern=&quot;yyyy-MM-dd&quot; /&gt;</code>放在value里面</p>
@@ -790,10 +790,10 @@ timeStyle=&#34;full&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
 <p>（1）首先通过配置JavaBean在页面上实例化java.util.Date对象。实现代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;jsp:useBean id=&#34;date&#34; class=&#34;java.util.Date&#34;&gt;&lt;/jsp:useBean&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;jsp:useBean id=&#34;date&#34; class=&#34;java.util.Date&#34;&gt;&lt;/jsp:useBean&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>（2）对日期对象进行格式化时${date}是一个日期对象，如果给value设的值为String时程序会报错。</p>
@@ -803,12 +803,12 @@ timeStyle=&#34;full&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
 <p>【语法1】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseDate value=”date” [type=”time|date|both”][pattern=”pattern”][parseLocale=”locale”]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseDate value=”date” [type=”time|date|both”][pattern=”pattern”][parseLocale=”locale”]
 [dateStyle=”default|short|medium|long|full”][timeStyle=”default|short|medium|long|full”]
 [timeZone=”timezone”][var=”name”][scope=”page|request|session|application”]/&gt;
 </code></pre></td></tr></table>
@@ -816,14 +816,14 @@ timeStyle=&#34;full&#34;&gt;&lt;/fmt:formatDate&gt;&lt;br&gt;
 </div><p>【语法2】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseDate [type=”time|date|both”][pattern=”pattern”][parseLocale=”locale”]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:parseDate [type=”time|date|both”][pattern=”pattern”][parseLocale=”locale”]
 [dateStyle=”default|short|medium|long|full”][timeStyle=”default|short|medium|long|full”]
 [timeZone=”timezone”][var=”name”][scope=”page|request|session|application”]\&gt; 
 Date
@@ -917,10 +917,10 @@ Date
 </tr>
 </tbody>
 </table>
-<p>【示例代码】：实现了以下功能：首先，使用了<a href="fmt:formatDate">fmt:formatDate</a>把一个日期对象格式化成一个日期的字符串，并把该字符串以参数名为a存储page范围内。其次，使用<a href="fmt:parseDate">fmt:parseDate</a>方法把a的值（字符串）格式化成一个Date并以参数名为b存储在page范围内。最后，使用Java脚本证明生成的b为对象。</p>
+<p>【示例代码】：实现了以下功能：首先，使用了<a href="fmt:formatDate" rel="">fmt:formatDate</a>把一个日期对象格式化成一个日期的字符串，并把该字符串以参数名为a存储page范围内。其次，使用<a href="fmt:parseDate" rel="">fmt:parseDate</a>方法把a的值（字符串）格式化成一个Date并以参数名为b存储在page范围内。最后，使用Java脚本证明生成的b为对象。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -934,7 +934,7 @@ Date
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:formatDate value=&#34;${date}&#34; var=&#34;a&#34; type=&#34;both&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:formatDate value=&#34;${date}&#34; var=&#34;a&#34; type=&#34;both&#34;
 dateStyle=&#34;full&#34; timeStyle=&#34;full&#34;&gt;&lt;/fmt:formatDate&gt;
 &lt;fmt:parseDate var=&#34;b&#34; type=&#34;both&#34; dateStyle=&#34;full&#34; timeStyle=&#34;full&#34;&gt;
 ${a}
@@ -957,10 +957,10 @@ ${a}
 <p>【语法】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setTimeZone value=”value” [var=”name”][scope=”page|request|session|application”]/&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setTimeZone value=”value” [var=”name”][scope=”page|request|session|application”]/&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p><code>&lt;fmt:setTimeZone&gt;</code>标签属性说明:</p>
@@ -1006,10 +1006,10 @@ ${a}
 <p>【示例代码】</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setTimeZone value=”EST” scope=”session”/&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setTimeZone value=”EST” scope=”session”/&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>提示：有关TimeZone的说明见JDK帮助文档的java.util.TimeZone类。</p>
@@ -1018,12 +1018,12 @@ ${a}
 <p>【语法】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:timeZone value=”timeZone”&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:timeZone value=”timeZone”&gt;
 …..
 &lt;/fmt:timeZone&gt;
 </code></pre></td></tr></table>
@@ -1036,12 +1036,12 @@ ${a}
 <p>【语法】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:bundle basename=”name”[prefix=”prefix”]&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:bundle basename=”name”[prefix=”prefix”]&gt;
 ….标签主题
 &lt;/fmt:bundle&gt;
 </code></pre></td></tr></table>
@@ -1082,10 +1082,10 @@ ${a}
 <p>【语法】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setBundle basename=”name” [var=”name”][scope=”page|request|session|application”]\&gt; 
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setBundle basename=”name” [var=”name”][scope=”page|request|session|application”]\&gt; 
 </code></pre></td></tr></table>
 </div>
 </div><p><code>&lt;fmt:setBundle&gt;</code>标签属性说明：</p>
@@ -1132,21 +1132,21 @@ ${a}
 <p>【语法1】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:message key=”keyName”[bundle=”bundle”][scope=”page|request|session|application”]/&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:message key=”keyName”[bundle=”bundle”][scope=”page|request|session|application”]/&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>【语法2】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:message key=”keyName”[bundle=”bundle”][scope=”page|request|session|application”]\&gt; 
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:message key=”keyName”[bundle=”bundle”][scope=”page|request|session|application”]\&gt; 
 &lt;fmt:param/&gt;
 &lt;/fmt:message
 </code></pre></td></tr></table>
@@ -1154,14 +1154,14 @@ ${a}
 </div><p>【语法3】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:message key=”keyName”[bundle=”bundle”][scope=”page|request|session|application”]\&gt; 
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:message key=”keyName”[bundle=”bundle”][scope=”page|request|session|application”]\&gt; 
 key
 &lt;fmt:param/&gt;
 …
@@ -1220,18 +1220,18 @@ key
 <p>首先编写一个资源文件内容下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">name=olive
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">name=olive
 password=01234
 </code></pre></td></tr></table>
 </div>
 </div><p>使用标签从资源文件中读取相应的值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1240,7 +1240,7 @@ password=01234
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  &lt;fmt:bundle basename=&#34;message&#34;&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  &lt;fmt:bundle basename=&#34;message&#34;&gt;
   &lt;c:out value=&#34;从message资源文件中得到的key为name的值为：&#34;&gt;&lt;/c:out&gt;
   &lt;fmt:message key=&#34;name&#34; &gt;&lt;/fmt:message&gt;
   &lt;/fmt:bundle&gt;
@@ -1259,24 +1259,24 @@ password=01234
 <p><code>&lt;fmt:bundle&gt;</code>标签中有一个prefix属性，该标签用来指明前缀。例如配置文件内容如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">org.person.name=olive
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">org.person.name=olive
 org.personpassword=01234
 </code></pre></td></tr></table>
 </div>
 </div><p>如果不使用prefix标签，在取值是要指明前缀。例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:bundle basename=”message”&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:bundle basename=”message”&gt;
 &lt;fmt:message key=”org.person.name”&gt;&lt;/fmt:message&gt;
 &lt;fmt:message key=”org.person.password”&gt;&lt;/fmt:message&gt;
 &lt;/fmt:bundle
@@ -1285,13 +1285,13 @@ org.personpassword=01234
 </div><p>使用prefix属性可以简化取值时的代码。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:bundle basename=”message” prefix=”org.person”&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:bundle basename=”message” prefix=”org.person”&gt;
 &lt;fmt:message key=”name”&gt;&lt;/fmt:message&gt;
 &lt;fmt:message key=”password”&gt;&lt;/fmt:message&gt;
 &lt;/fmt:bundle&gt;
@@ -1302,21 +1302,21 @@ org.personpassword=01234
 <p>【语法1】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:param value=”value”/&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:param value=”value”/&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>【语法2】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:param &gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:param &gt;
 …标签主体
 &lt;/fmt:param&gt;
 </code></pre></td></tr></table>
@@ -1325,11 +1325,11 @@ org.personpassword=01234
 <p>（1）创建资源文件。在message.properties文件中增加一个key和value。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">news={0} welcome to out website!
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">news={0} welcome to out website!
 &lt;br&gt;today is :{1,date}
 </code></pre></td></tr></table>
 </div>
@@ -1337,7 +1337,7 @@ org.personpassword=01234
 <p>（2）通过标签从资源文件中取出键值，并给动态变量赋值显示在页面。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1345,7 +1345,7 @@ org.personpassword=01234
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  &lt;fmt:bundle basename=&#34;message&#34;&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">  &lt;fmt:bundle basename=&#34;message&#34;&gt;
   &lt;fmt:message key=&#34;news&#34;&gt;
   &lt;fmt:param value=&#34;olive&#34; /&gt;
   &lt;fmt:param value=&#34;${date}&#34;/&gt;
@@ -1364,13 +1364,13 @@ org.personpassword=01234
 <p>【语法】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setLocale value=”locale”[variant=”variant”][scope=”page|request|session|application”]&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:setLocale value=”locale”[variant=”variant”][scope=”page|request|session|application”]&gt;
 </code></pre></td></tr></table>
 </div>
-</div><p><a href="fmt:setLocale">fmt:setLocale</a>标签属性说明：</p>
+</div><p><a href="fmt:setLocale" rel="">fmt:setLocale</a>标签属性说明：</p>
 <table>
 <thead>
 <tr>
@@ -1413,7 +1413,7 @@ org.personpassword=01234
 <p>【示例代码】：实现了设定不同的区域代码，根据不同的区域代码浏览将显示不同格式的日期。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1423,7 +1423,7 @@ org.personpassword=01234
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-jsx" data-lang="jsx">  <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">setLocale</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;en_us&#34;</span> <span class="p">/&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx">  <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">setLocale</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;en_us&#34;</span> <span class="p">/&gt;</span>
   <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">formatDate</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;${date}&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;both&#34;</span> <span class="na">dateStyle</span><span class="o">=</span><span class="s">&#34;full&#34;</span> <span class="na">timeStyle</span><span class="o">=</span><span class="s">&#34;full&#34;</span><span class="p">/&gt;</span>
   <span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">fmt</span><span class="err">:</span><span class="na">setLocale</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;zh_cn&#34;</span> <span class="p">/&gt;</span>
@@ -1434,7 +1434,7 @@ org.personpassword=01234
 </code></pre></td></tr></table>
 </div>
 </div><p>【代码解析】：</p>
-<p>（1）浏览器默认跟您使用的操作系统的语言相同，因此默认值zh_cn。使用<a href="fmt:setLocale/">fmt:setLocale/</a>标签设置使用的语言为en_us（英语）。使用<a href="fmt:formateDate">fmt:formateDate</a>格式化输出的时间字符串，该标签会根据不同的语言输出不同的日期格式。</p>
+<p>（1）浏览器默认跟您使用的操作系统的语言相同，因此默认值zh_cn。使用<a href="fmt:setLocale/" rel="">fmt:setLocale/</a>标签设置使用的语言为en_us（英语）。使用<a href="fmt:formateDate" rel="">fmt:formateDate</a>格式化输出的时间字符串，该标签会根据不同的语言输出不同的日期格式。</p>
 <p>（2）使用的语言修改为zh_cn，再次用格式化输出。</p>
 <p>（3）使用语言修改为zh_TW，输出格式化后的时间。</p>
 <p>2．<code>&lt;fmt:requestEncoding&gt;</code>标签</p>
@@ -1442,10 +1442,10 @@ org.personpassword=01234
 <p>【语法】：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:requestEncoding [value=”charEncoding”]/&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;fmt:requestEncoding [value=”charEncoding”]/&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>【参数说明】：</p>
@@ -1474,7 +1474,7 @@ org.personpassword=01234
 <p>接下来我们在 web.xml 文件中添加以下配置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1517,7 +1517,7 @@ org.personpassword=01234
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
 &lt;web-app version=&#34;2.4&#34; 
     xmlns=&#34;http://java.sun.com/xml/ns/j2ee&#34; 
     xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;
@@ -1566,10 +1566,10 @@ org.personpassword=01234
 <p>核心标签是最常用的 JSTL标签。引用核心标签库的语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;c&#34; uri=&#34;http://java.sun.com/jsp/jstl/core&#34; %&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;c&#34; uri=&#34;http://java.sun.com/jsp/jstl/core&#34; %&gt;
 </code></pre></td></tr></table>
 </div>
 </div><table>
@@ -1643,11 +1643,11 @@ org.personpassword=01234
 <p>JSTL格式化标签用来格式化并输出文本、日期、时间、数字。引用格式化标签库的语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;fmt&#34; 
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;fmt&#34; 
            uri=&#34;http://java.sun.com/jsp/jstl/fmt&#34; %&gt;
 </code></pre></td></tr></table>
 </div>
@@ -1710,11 +1710,11 @@ org.personpassword=01234
 <p>JSTL SQL标签库提供了与关系型数据库（Oracle，MySQL，SQL Server等等）进行交互的标签。引用SQL标签库的语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;sql&#34; 
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;sql&#34; 
            uri=&#34;http://java.sun.com/jsp/jstl/sql&#34; %&gt;
 </code></pre></td></tr></table>
 </div>
@@ -1757,11 +1757,11 @@ org.personpassword=01234
 <p>JSTL XML标签库提供了创建和操作XML文档的标签。引用XML标签库的语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;x&#34; 
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;x&#34; 
            uri=&#34;http://java.sun.com/jsp/jstl/xml&#34; %&gt;
 </code></pre></td></tr></table>
 </div>
@@ -1769,11 +1769,11 @@ org.personpassword=01234
 <ul>
 <li>
 <p>XercesImpl.jar</p>
-<p>下载地址： <a href="http://www.apache.org/dist/xerces/j/">http://www.apache.org/dist/xerces/j/</a></p>
+<p>下载地址： <a href="http://www.apache.org/dist/xerces/j/" target="_blank" rel="noopener noreferrer">http://www.apache.org/dist/xerces/j/</a></p>
 </li>
 <li>
 <p>xalan.jar</p>
-<p>下载地址： <a href="http://xml.apache.org/xalan-j/index.html">http://xml.apache.org/xalan-j/index.html</a></p>
+<p>下载地址： <a href="http://xml.apache.org/xalan-j/index.html" target="_blank" rel="noopener noreferrer">http://xml.apache.org/xalan-j/index.html</a></p>
 </li>
 </ul>
 <table>
@@ -1831,11 +1831,11 @@ org.personpassword=01234
 <p>JSTL包含一系列标准函数，大部分是通用的字符串处理函数。引用JSTL函数库的语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;fn&#34; 
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;%@ taglib prefix=&#34;fn&#34; 
            uri=&#34;http://java.sun.com/jsp/jstl/functions&#34; %&gt;
 </code></pre></td></tr></table>
 </div>
@@ -1916,8 +1916,8 @@ org.personpassword=01234
 <h2 id="jstl-11-与-jstl-12-之间的区别如何下载-jstl-12">JSTL 1.1 与 JSTL 1.2 之间的区别？如何下载 JSTL 1.2?</h2>
 <p>JSTL 1.2 中不要求 standard.jar 包。</p>
 <p>您可以在 Maven 中央仓库中找到它们。</p>
-<p><a href="http://repo2.maven.org/maven2/javax/servlet/jstl/">http://repo2.maven.org/maven2/javax/servlet/jstl/</a></p>
-<p><a href="http://repo2.maven.org/maven2/taglibs/standard/">http://repo2.maven.org/maven2/taglibs/standard/</a></p>
+<p><a href="http://repo2.maven.org/maven2/javax/servlet/jstl/" target="_blank" rel="noopener noreferrer">http://repo2.maven.org/maven2/javax/servlet/jstl/</a></p>
+<p><a href="http://repo2.maven.org/maven2/taglibs/standard/" target="_blank" rel="noopener noreferrer">http://repo2.maven.org/maven2/taglibs/standard/</a></p>
 <p>由于<code>JSTL 1.1</code>已经过时，Apache已将其置于<a href="http://archive.apache.org/dist/jakarta/taglibs/standard/" target="_blank" rel="noopener noreferrer">存档中</a>。选择<code>jakarta-taglibs-standard-current.zip</code>文件。但是，如果您正在运行<code>Servlet 2.5</code>兼容容器并且<code>web.xml</code>声明为至少<code>Servlet 2.5</code>，那么您应该能够使用新的<a href="http://central.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar" target="_blank" rel="noopener noreferrer">JSTL 1.2</a>。需要注意的是<code>JSTL 1.2</code>并没有要求<code>standard.jar</code>。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -1951,8 +1951,8 @@ org.personpassword=01234
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

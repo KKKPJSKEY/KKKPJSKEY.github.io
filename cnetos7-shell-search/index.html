@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录CentOS7 查询的几种方式和区别解释" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/cnetos7-shell-search/" /><meta property="og:image" content="https://kkkpjskey.github.io/cnetos7-shell-search/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-12T12:22:42&#43;08:00" />
-<meta property="article:modified_time" content="2020-12-12T12:22:42&#43;08:00" />
+<meta property="article:published_time" content="2020-12-12T12:22:42+08:00" />
+<meta property="article:modified_time" content="2020-12-12T12:22:42+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/cnetos7-shell-search/featured-image.jpg"/>
@@ -150,10 +150,10 @@
 <p>　　find的使用格式如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;
 </code></pre></td></tr></table>
 </div>
 </div><p>　　- &lt;指定目录&gt;: 所要搜索的目录及其所有子目录。默认为当前目录。</p>
@@ -163,47 +163,47 @@
 <p>　　find的使用实例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ find . -name <span class="s1">&#39;my*&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ find . -name <span class="s1">&#39;my*&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>　　搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ find . -name <span class="s1">&#39;my*&#39;</span> -ls
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ find . -name <span class="s1">&#39;my*&#39;</span> -ls
 </code></pre></td></tr></table>
 </div>
 </div><p>　　搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ find . -type f -mmin -10
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ find . -type f -mmin -10
 </code></pre></td></tr></table>
 </div>
 </div><p>　　搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件+特殊文件+目录。</p>
 <p>根据文件名查询</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">find -name <span class="o">[</span>文件名<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">find -name <span class="o">[</span>文件名<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>根据文件夹名查询</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">find <span class="o">[</span>文件夹名<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">find <span class="o">[</span>文件夹名<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="2-locate">2. locate</h2>
@@ -212,28 +212,28 @@
 <p>　　locate命令的使用实例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ locate /etc/sh
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ locate /etc/sh
 </code></pre></td></tr></table>
 </div>
 </div><p>　　搜索etc目录下所有以sh开头的文件。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ locate ~/m
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ locate ~/m
 </code></pre></td></tr></table>
 </div>
 </div><p>　　搜索用户主目录下，所有以m开头的文件。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ locate -i ~/m
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ locate -i ~/m
 </code></pre></td></tr></table>
 </div>
 </div><p>　　搜索用户主目录下，所有以m开头的文件，并且忽略大小写。</p>
@@ -243,10 +243,10 @@
 <p>　　whereis命令的使用实例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ whereis grep
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ whereis grep
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="4-which">4. which</h2>
@@ -255,10 +255,10 @@
 <p>　　which命令的使用实例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ which grep
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ which grep
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="5-type">5. type</h2>
@@ -267,28 +267,28 @@
 <p>　　type命令的使用实例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">type</span> <span class="nb">cd</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">type</span> <span class="nb">cd</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>　　系统会提示，cd是shell的自带命令（build-in）。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">type</span> grep
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">type</span> grep
 </code></pre></td></tr></table>
 </div>
 </div><p>　　系统会提示，grep是一个外部命令，并显示该命令的路径。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">type</span> -p grep
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">type</span> -p grep
 </code></pre></td></tr></table>
 </div>
 </div><p>　　加上-p参数后，就相当于which命令</p>
@@ -324,8 +324,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

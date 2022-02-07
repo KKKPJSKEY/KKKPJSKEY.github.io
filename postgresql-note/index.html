@@ -9,8 +9,8 @@
 <meta property="og:description" content="SpringBoot连接使用PostgreSQL数据库" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/postgresql-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/postgresql-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-28T10:29:58&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-28T10:29:58&#43;08:00" />
+<meta property="article:published_time" content="2021-07-28T10:29:58+08:00" />
+<meta property="article:modified_time" content="2021-07-28T10:29:58+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/postgresql-note/featured-image.jpg"/>
@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/featured-image.jpg",
                             "width":  640 ,
                             "height":  205 
-                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  3568 ,
+                        }],"genre": "posts","keywords": "DataBase, SQL, PostgreSQL, SpringBoot","wordcount":  3677 ,
         "url": "https:\/\/kkkpjskey.github.io\/postgresql-note\/","datePublished": "2021-07-28T10:29:58+08:00","dateModified": "2021-07-28T10:29:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">PostgreSQL相关笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3568 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3677 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/postgresql-note/" class="leancloud_visitors" data-flag-title="PostgreSQL相关笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -222,7 +222,7 @@
 <p><strong>resources</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -233,7 +233,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">//数据库的地址以及端口号
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">//数据库的地址以及端口号
 spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
 //账号（默认为postgres）
 spring.datasource.username=postgres
@@ -247,7 +247,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </div><p><strong>yml</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -261,7 +261,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">spring</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">spring</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
 </span><span class="w"></span><span class="c">#    primary:</span><span class="w">
 </span><span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">jdbc:postgresql://localhost:5432/postgres</span><span class="w">
@@ -288,14 +288,14 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
         title="6" /></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.postgresql<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>postgresql<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;scope&gt;</span>runtime<span class="nt">&lt;/scope&gt;</span>
@@ -306,17 +306,17 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <p>分为从43开始、从43开始、从42开始</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;myseq&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>           			<span class="o">#</span><span class="k">Next</span> <span class="n">nextval</span> <span class="n">will</span> <span class="k">return</span> <span class="mi">43</span>
-<span class="k">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;myseq&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>     			<span class="o">#</span><span class="n">Same</span> <span class="k">as</span> <span class="n">above</span>
-<span class="k">SELECT</span> <span class="n">setval</span><span class="p">(</span><span class="s1">&#39;myseq&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>    			<span class="o">#</span><span class="k">Next</span> <span class="n">nextval</span> <span class="n">will</span> <span class="k">return</span> <span class="mi">42</span>
-<span class="k">alter</span> <span class="n">sequence</span> <span class="n">dataset_id_seq</span> <span class="k">start</span> <span class="k">with</span> <span class="mi">1</span> <span class="p">;</span>     <span class="o">#</span><span class="err">只能增大</span> <span class="err">不能减小</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="n">setval</span><span class="p">(</span><span class="s1">&#39;myseq&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span><span class="w">           			</span><span class="o">#</span><span class="k">Next</span><span class="w"> </span><span class="n">nextval</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">43</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">setval</span><span class="p">(</span><span class="s1">&#39;myseq&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">);</span><span class="w">     			</span><span class="o">#</span><span class="n">Same</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">above</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">setval</span><span class="p">(</span><span class="s1">&#39;myseq&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span><span class="w">    			</span><span class="o">#</span><span class="k">Next</span><span class="w"> </span><span class="n">nextval</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">42</span><span class="w">
+</span><span class="w"></span><span class="k">alter</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="n">dataset_id_seq</span><span class="w"> </span><span class="k">start</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">;</span><span class="w">     </span><span class="o">#</span><span class="err">只能增大</span><span class="w"> </span><span class="err">不能减小</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="schemas问题">schemas问题</h2>
 <p>PGSql默认的是public,如果用MybatisPlus的内置方法的话,是需要指定连接的CurrentSchema的,否则只会默认查询public,自己写Sql可以在前面加上schemas
@@ -330,7 +330,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <p>测试表：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -373,7 +373,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># \d tbl_test </span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># \d tbl_test </span>
    Table <span class="s2">&#34;public.tbl_test&#34;</span>
  Column <span class="p">|</span>  Type   <span class="p">|</span> Modifiers 
 --------+---------+-----------
@@ -419,7 +419,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </div><p>示例1.查询tbl_insert表,且a字段值在tbl_test表字段f中的行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -428,7 +428,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a in (select f from tbl_test);</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a in (select f from tbl_test);</span>
  a <span class="p">|</span> b <span class="p">|</span> c  
 ---+---+----
  <span class="m">1</span> <span class="p">|</span> <span class="m">1</span> <span class="p">|</span> <span class="m">11</span>
@@ -440,7 +440,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </div><p>示例2.查询tbl_insert表,且a字段值比tbl_test表字段f小1的行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -448,7 +448,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a+1 in (select f from tbl_test);</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a+1 in (select f from tbl_test);</span>
  a <span class="p">|</span> b <span class="p">|</span> c  
 ---+---+----
  <span class="m">2</span> <span class="p">|</span> <span class="m">2</span> <span class="p">|</span> <span class="m">22</span>
@@ -459,7 +459,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </div><p>示例3.查询tbl_insert表,且a字段值不在tbl_test表字段f中的行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -476,7 +476,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a not in (select f from tbl_test);</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a not in (select f from tbl_test);</span>
  a <span class="p">|</span> b <span class="p">|</span>   c   
 ---+---+-------
  <span class="m">2</span> <span class="p">|</span> <span class="m">2</span> <span class="p">|</span> <span class="m">22</span>
@@ -496,7 +496,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </div><p>示例4.查询tbl_insert表,且a字段值等于5或7的行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -507,7 +507,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a in (5,7);</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where a in (5,7);</span>
  a <span class="p">|</span> b <span class="p">|</span>  c  
 ---+---+-----
  <span class="m">5</span> <span class="p">|</span> <span class="m">5</span> <span class="p">|</span> <span class="m">51</span>
@@ -526,7 +526,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <p>示例1.查询tbl_insert表,且a字段值在tbl_test表字段f中的行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -535,7 +535,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where exists (select null from tbl_test where tbl_test.f=tbl_insert.a);</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where exists (select null from tbl_test where tbl_test.f=tbl_insert.a);</span>
  a <span class="p">|</span> b <span class="p">|</span> c  
 ---+---+----
  <span class="m">1</span> <span class="p">|</span> <span class="m">1</span> <span class="p">|</span> <span class="m">11</span>
@@ -547,7 +547,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </div><p>示例2.查询tbl_insert表,且a字段值不在tbl_test表字段f中的行</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -564,7 +564,7 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where not exists (select null from tbl_test where tbl_test.f=tbl_insert.a);</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">test</span><span class="o">=</span><span class="c1"># select * from tbl_insert where not exists (select null from tbl_test where tbl_test.f=tbl_insert.a);</span>
  a <span class="p">|</span> b <span class="p">|</span>   c   
 ---+---+-------
  <span class="m">2</span> <span class="p">|</span> <span class="m">2</span> <span class="p">|</span> <span class="m">22</span>
@@ -586,44 +586,44 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <p>查看Replication Slot：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pg_replication_slots</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pg_replication_slots</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>删除一个Replication Slot：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="n">pg_drop_replication_slot</span><span class="p">(</span><span class="s1">&#39;debezium&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">pg_drop_replication_slot</span><span class="p">(</span><span class="s1">&#39;debezium&#39;</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="postgresql-查询所有表名">PostgreSql 查询所有表名</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>   <span class="n">tablename</span>   <span class="k">FROM</span>   <span class="n">pg_tables</span> 
-<span class="k">WHERE</span>   <span class="n">tablename</span>   <span class="k">NOT</span>   <span class="k">LIKE</span>   <span class="s1">&#39;pg%&#39;</span>
-<span class="k">AND</span> <span class="n">tablename</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;sql_%&#39;</span> 
- <span class="k">ORDER</span>   <span class="k">BY</span>   <span class="n">tablename</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w">   </span><span class="n">tablename</span><span class="w">   </span><span class="k">FROM</span><span class="w">   </span><span class="n">pg_tables</span><span class="w"> 
+</span><span class="w"></span><span class="k">WHERE</span><span class="w">   </span><span class="n">tablename</span><span class="w">   </span><span class="k">NOT</span><span class="w">   </span><span class="k">LIKE</span><span class="w">   </span><span class="s1">&#39;pg%&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">AND</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;sql_%&#39;</span><span class="w"> 
+</span><span class="w"> </span><span class="k">ORDER</span><span class="w">   </span><span class="k">BY</span><span class="w">   </span><span class="n">tablename</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>或</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="n">tablename</span> <span class="k">from</span> <span class="n">pg_tables</span> <span class="k">where</span> <span class="n">schemaname</span><span class="o">=</span><span class="s1">&#39;public&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">tablename</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">pg_tables</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">schemaname</span><span class="o">=</span><span class="s1">&#39;public&#39;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="postgresql数据库表实现id自增">PostgreSql数据库表实现ID自增</h2>
 <p>postgresql数据库可以创建主键，但是没有像mysql那样直接指定主键自增的auto_increment关键字，因此如果在postgresql中创建表指定主键自增使用auto_increment会报错。那么如何实现主键自增，postgresql通过序列来实现。序列可以实现自动增长，而且表字段可以指定默认值，因此可以通过指定默认值的方式来实现主键自增。</p>
@@ -670,11 +670,11 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <p>接着我们创建一个序列：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="n">sequence</span> <span class="n">bbb_id_seq</span> <span class="k">start</span> <span class="k">with</span> <span class="mi">1</span> <span class="k">increment</span> <span class="k">by</span> <span class="mi">1</span> <span class="k">no</span> <span class="k">minvalue</span> <span class="k">no</span> <span class="k">maxvalue</span> <span class="k">cache</span> <span class="mi">1</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="n">bbb_id_seq</span><span class="w"> </span><span class="k">start</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">increment</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="k">minvalue</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="k">maxvalue</span><span class="w"> </span><span class="k">cache</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -687,11 +687,11 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <p>设置表bbb的ID字段的默认值为nextval(bbb_id_seq)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">alter</span> <span class="k">table</span> <span class="n">bbb</span> <span class="k">alter</span> <span class="k">column</span> <span class="n">id</span> <span class="k">set</span> <span class="k">default</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;bbb_id_seq&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">bbb</span><span class="w"> </span><span class="k">alter</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;bbb_id_seq&#39;</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -722,20 +722,20 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <p>postgresql查找索引的方法也是和mysql不一样，postgresql查看索引的语法是：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_indexes</span> <span class="k">where</span> <span class="n">tablename</span><span class="o">=</span><span class="s1">&#39;bbb&#39;</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">pg_indexes</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">tablename</span><span class="o">=</span><span class="s1">&#39;bbb&#39;</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>或者</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">pg_statio_all_indexes</span> <span class="k">where</span> <span class="n">relname</span><span class="o">=</span><span class="s1">&#39;bbb&#39;</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">pg_statio_all_indexes</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">relname</span><span class="o">=</span><span class="s1">&#39;bbb&#39;</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p><img
         class="lazyload"
@@ -752,28 +752,28 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
 <p>查看default collate</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SHOW</span> <span class="n">lc_collate</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SHOW</span><span class="w"> </span><span class="n">lc_collate</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>创建表时修改collate</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">collate_test</span>
-<span class="p">(</span>
-  <span class="n">default_collate</span> <span class="nb">text</span><span class="p">,</span> <span class="c1">--Default collation
-</span><span class="c1"></span>  <span class="n">custom_collate</span> <span class="nb">text</span> <span class="k">COLLATE</span> <span class="n">pg_catalog</span><span class="p">.</span><span class="s2">&#34;C&#34;</span> <span class="c1">--Custom collation
-</span><span class="c1"></span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">collate_test</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="w">
+</span><span class="w">  </span><span class="n">default_collate</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="c1">--Default collation
+</span><span class="c1"></span><span class="w">  </span><span class="n">custom_collate</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">pg_catalog</span><span class="p">.</span><span class="s2">&#34;C&#34;</span><span class="w"> </span><span class="c1">--Custom collation
+</span><span class="c1"></span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p><a href="https://www.postgresql.org/docs/current/static/collation.html" target="_blank" rel="noopener noreferrer">文档</a></p>
 <blockquote>
@@ -811,8 +811,8 @@ spring.jpa.properties.hibernate.hbm2ddl.auto=update
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

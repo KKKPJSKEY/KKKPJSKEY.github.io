@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>SpringCloud RPC Read timed out - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录SpringCloud RPC Read timed out报错的解决办法"><meta property="og:title" content="SpringCloud RPC Read timed out" />
+<meta property="og:description" content="记录SpringCloud RPC Read timed out报错的解决办法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/springcloud-rpc-readtimeout-error/" /><meta property="og:image" content="https://kkkpjskey.github.io/springcloud-rpc-readtimeout-error/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-23T14:43:27+08:00" />
+<meta property="article:modified_time" content="2021-11-23T14:43:27+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/springcloud-rpc-readtimeout-error/featured-image.jpg"/>
+<meta name="twitter:title" content="SpringCloud RPC Read timed out"/>
+<meta name="twitter:description" content="记录SpringCloud RPC Read timed out报错的解决办法"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/springcloud-rpc-readtimeout-error/" /><link rel="prev" href="https://kkkpjskey.github.io/java-file-note/" /><link rel="next" href="https://kkkpjskey.github.io/windows-md5-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SpringCloud RPC Read timed out",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/springcloud-rpc-readtimeout-error\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/springcloud-rpc-readtimeout-error\/featured-image.jpg",
+                            "width":  2000 ,
+                            "height":  600 
+                        }],"genre": "posts","keywords": "Java, J2EE, SpringCloud, RPC, Feign, ribbon","wordcount":  1559 ,
+        "url": "https:\/\/kkkpjskey.github.io\/springcloud-rpc-readtimeout-error\/","datePublished": "2021-11-23T14:43:27+08:00","dateModified": "2021-11-23T14:43:27+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录SpringCloud RPC Read timed out报错的解决办法"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/springcloud-rpc-readtimeout-error/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/springcloud-rpc-readtimeout-error/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">SpringCloud RPC Read timed out</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-23">2021-11-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1559 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/springcloud-rpc-readtimeout-error/" class="leancloud_visitors" data-flag-title="SpringCloud RPC Read timed out">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/springcloud-rpc-readtimeout-error/featured-image.jpg"
+        data-srcset="/springcloud-rpc-readtimeout-error/featured-image.jpg, /springcloud-rpc-readtimeout-error/featured-image.jpg 1.5x, /springcloud-rpc-readtimeout-error/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/springcloud-rpc-readtimeout-error/featured-image.jpg"
+        title="记录SpringCloud RPC Read timed out报错的解决办法" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#起因">起因</a></li>
+    <li><a href="#原因">原因</a></li>
+    <li><a href="#解决方案">解决方案</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="起因">起因</h2>
+<p>在使用SpringCloud进行服务间调用时出现连接超时的错误，错误信息：<code>Read timed out executing GET http://service-batch/batchmanagement/datatransfer/querybyplanid?planid=PL00000102。</code></p>
+<p><strong>报错日志</strong></p>
+<p><strong>消费端报错</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">feign.RetryableException: Read timed out executing GET http://localhost:8080/UserApi/exportFormalUserHotline
+at feign.FeignException.errorExecuting<span class="o">(</span>FeignException.java:67<span class="o">)</span>
+at feign.SynchronousMethodHandler.executeAndDecode<span class="o">(</span>SynchronousMethodHandler.java:104<span class="o">)</span>
+at feign.SynchronousMethodHandler.invoke<span class="o">(</span>SynchronousMethodHandler.java:76<span class="o">)</span>
+at feign.ReflectiveFeign<span class="nv">$FeignInvocationHandler</span>.invoke<span class="o">(</span>ReflectiveFeign.java:103<span class="o">)</span>
+at com.sun.proxy.<span class="nv">$Proxy125</span>.exportFormalUserHotline<span class="o">(</span>Unknown Source<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController.exportFormalUserHotline<span class="o">(</span>UserController.java:396<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController<span class="nv">$$</span>FastClassBySpringCGLIB<span class="nv">$$</span>2fbde74b.invoke<span class="o">(</span>&lt;generated&gt;<span class="o">)</span>
+at org.springframework.cglib.proxy.MethodProxy.invoke<span class="o">(</span>MethodProxy.java:204<span class="o">)</span>
+at org.springframework.aop.framework.CglibAopProxy<span class="nv">$CglibMethodInvocation</span>.invokeJoinpoint<span class="o">(</span>CglibAopProxy.java:746<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:163<span class="o">)</span>
+at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed<span class="o">(</span>MethodInvocationProceedingJoinPoint.java:100<span class="o">)</span>
+at com.tinet.bigboss.web.operatelog.OperateLogAspect.operateLogAdvice<span class="o">(</span>OperateLogAspect.java:96<span class="o">)</span>
+at sun.reflect.NativeMethodAccessorImpl.invoke0<span class="o">(</span>Native Method<span class="o">)</span>
+at sun.reflect.NativeMethodAccessorImpl.invoke<span class="o">(</span>NativeMethodAccessorImpl.java:62<span class="o">)</span>
+at sun.reflect.DelegatingMethodAccessorImpl.invoke<span class="o">(</span>DelegatingMethodAccessorImpl.java:43<span class="o">)</span>
+at java.lang.reflect.Method.invoke<span class="o">(</span>Method.java:498<span class="o">)</span>
+at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs<span class="o">(</span>AbstractAspectJAdvice.java:644<span class="o">)</span>
+at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod<span class="o">(</span>AbstractAspectJAdvice.java:633<span class="o">)</span>
+at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke<span class="o">(</span>AspectJAroundAdvice.java:70<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:174<span class="o">)</span>
+at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor<span class="nv">$1</span>.proceed<span class="o">(</span>AopAllianceAnnotationsAuthorizingMethodInterceptor.java:82<span class="o">)</span>
+at org.apache.shiro.authz.aop.AuthorizingMethodInterceptor.invoke<span class="o">(</span>AuthorizingMethodInterceptor.java:39<span class="o">)</span>
+at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor.invoke<span class="o">(</span>AopAllianceAnnotationsAuthorizingMethodInterceptor.java:115<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:185<span class="o">)</span>
+at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke<span class="o">(</span>ExposeInvocationInterceptor.java:92<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:185<span class="o">)</span>
+at org.springframework.aop.framework.CglibAopProxy<span class="nv">$DynamicAdvisedInterceptor</span>.intercept<span class="o">(</span>CglibAopProxy.java:688<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController<span class="nv">$$</span>EnhancerBySpringCGLIB<span class="nv">$$</span>954ef189.exportFormalUserHotline<span class="o">(</span>&lt;generated&gt;<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController<span class="nv">$$</span>FastClassBySpringCGLIB<span class="nv">$$</span>2fbde74b.invoke<span class="o">(</span>&lt;generated&gt;<span class="o">)</span>
+at org.springframework.cglib.proxy.MethodProxy.invoke<span class="o">(</span>MethodProxy.java:204<span class="o">)</span>
+at org.springframework.aop.framework.CglibAopProxy<span class="nv">$CglibMethodInvocation</span>.invokeJoinpoint<span class="o">(</span>CglibAopProxy.java:746<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:163<span class="o">)</span>
+at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor<span class="nv">$1</span>.proceed<span class="o">(</span>AopAllianceAnnotationsAuthorizingMethodInterceptor.java:82<span class="o">)</span>
+at org.apache.shiro.authz.aop.AuthorizingMethodInterceptor.invoke<span class="o">(</span>AuthorizingMethodInterceptor.java:39<span class="o">)</span>
+at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor.invoke<span class="o">(</span>AopAllianceAnnotationsAuthorizingMethodInterceptor.java:115<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:185<span class="o">)</span>
+at org.springframework.aop.framework.CglibAopProxy<span class="nv">$DynamicAdvisedInterceptor</span>.intercept<span class="o">(</span>CglibAopProxy.java:688<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController<span class="nv">$$</span>EnhancerBySpringCGLIB<span class="nv">$$</span>936c2b6f.exportFormalUserHotline<span class="o">(</span>&lt;generated&gt;<span class="o">)</span>
+at sun.reflect.NativeMethodAccessorImpl.invoke0<span class="o">(</span>Native Method<span class="o">)</span>
+at sun.reflect.NativeMethodAccessorImpl.invoke<span class="o">(</span>NativeMethodAccessorImpl.java:62<span class="o">)</span>
+at sun.reflect.DelegatingMethodAccessorImpl.invoke<span class="o">(</span>DelegatingMethodAccessorImpl.java:43<span class="o">)</span>
+at java.lang.reflect.Method.invoke<span class="o">(</span>Method.java:498<span class="o">)</span>
+at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke<span class="o">(</span>InvocableHandlerMethod.java:209<span class="o">)</span>
+at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest<span class="o">(</span>InvocableHandlerMethod.java:136<span class="o">)</span>
+at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle<span class="o">(</span>ServletInvocableHandlerMethod.java:102<span class="o">)</span>
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod<span class="o">(</span>RequestMappingHandlerAdapter.java:877<span class="o">)</span>
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal<span class="o">(</span>RequestMappingHandlerAdapter.java:783<span class="o">)</span>
+at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle<span class="o">(</span>AbstractHandlerMethodAdapter.java:87<span class="o">)</span>
+at org.springframework.web.servlet.DispatcherServlet.doDispatch<span class="o">(</span>DispatcherServlet.java:991<span class="o">)</span>
+at org.springframework.web.servlet.DispatcherServlet.doService<span class="o">(</span>DispatcherServlet.java:925<span class="o">)</span>
+at org.springframework.web.servlet.FrameworkServlet.processRequest<span class="o">(</span>FrameworkServlet.java:974<span class="o">)</span>
+at org.springframework.web.servlet.FrameworkServlet.doGet<span class="o">(</span>FrameworkServlet.java:866<span class="o">)</span>
+at javax.servlet.http.HttpServlet.service<span class="o">(</span>HttpServlet.java:635<span class="o">)</span>
+at org.springframework.web.servlet.FrameworkServlet.service<span class="o">(</span>FrameworkServlet.java:851<span class="o">)</span>
+at javax.servlet.http.HttpServlet.service<span class="o">(</span>HttpServlet.java:742<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:231<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.tomcat.websocket.server.WsFilter.doFilter<span class="o">(</span>WsFilter.java:52<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:112<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.executeChain<span class="o">(</span>AdviceFilter.java:108<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal<span class="o">(</span>AdviceFilter.java:137<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:125<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.executeChain<span class="o">(</span>AdviceFilter.java:108<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal<span class="o">(</span>AdviceFilter.java:137<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:125<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics<span class="o">(</span>WebMvcMetricsFilter.java:158<span class="o">)</span>
+at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics<span class="o">(</span>WebMvcMetricsFilter.java:126<span class="o">)</span>
+at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal<span class="o">(</span>WebMvcMetricsFilter.java:111<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter<span class="o">(</span>ProxiedFilterChain.java:61<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.executeChain<span class="o">(</span>AdviceFilter.java:108<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal<span class="o">(</span>AdviceFilter.java:137<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:125<span class="o">)</span>
+at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter<span class="o">(</span>ProxiedFilterChain.java:66<span class="o">)</span>
+at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain<span class="o">(</span>AbstractShiroFilter.java:449<span class="o">)</span>
+at org.apache.shiro.web.servlet.AbstractShiroFilter<span class="nv">$1</span>.call<span class="o">(</span>AbstractShiroFilter.java:365<span class="o">)</span>
+at org.apache.shiro.subject.support.SubjectCallable.doCall<span class="o">(</span>SubjectCallable.java:90<span class="o">)</span>
+at org.apache.shiro.subject.support.SubjectCallable.call<span class="o">(</span>SubjectCallable.java:83<span class="o">)</span>
+at org.apache.shiro.subject.support.DelegatingSubject.execute<span class="o">(</span>DelegatingSubject.java:387<span class="o">)</span>
+at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal<span class="o">(</span>AbstractShiroFilter.java:362<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:125<span class="o">)</span>
+at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate<span class="o">(</span>DelegatingFilterProxy.java:357<span class="o">)</span>
+at org.springframework.web.filter.DelegatingFilterProxy.doFilter<span class="o">(</span>DelegatingFilterProxy.java:270<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal<span class="o">(</span>HttpTraceFilter.java:90<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at com.tinet.bigboss.web.filter.CorsFilter.doFilterInternal<span class="o">(</span>CorsFilter.java:38<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.web.filter.RequestContextFilter.doFilterInternal<span class="o">(</span>RequestContextFilter.java:99<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal<span class="o">(</span>HttpPutFormContentFilter.java:109<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal<span class="o">(</span>HiddenHttpMethodFilter.java:93<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal<span class="o">(</span>SessionRepositoryFilter.java:147<span class="o">)</span>
+at org.springframework.session.web.http.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:81<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal<span class="o">(</span>CharacterEncodingFilter.java:200<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.catalina.core.StandardWrapperValve.invoke<span class="o">(</span>StandardWrapperValve.java:198<span class="o">)</span>
+at org.apache.catalina.core.StandardContextValve.invoke<span class="o">(</span>StandardContextValve.java:96<span class="o">)</span>
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke<span class="o">(</span>AuthenticatorBase.java:496<span class="o">)</span>
+at org.apache.catalina.core.StandardHostValve.invoke<span class="o">(</span>StandardHostValve.java:140<span class="o">)</span>
+at org.apache.catalina.valves.ErrorReportValve.invoke<span class="o">(</span>ErrorReportValve.java:81<span class="o">)</span>
+at org.apache.catalina.core.StandardEngineValve.invoke<span class="o">(</span>StandardEngineValve.java:87<span class="o">)</span>
+at org.apache.catalina.connector.CoyoteAdapter.service<span class="o">(</span>CoyoteAdapter.java:342<span class="o">)</span>
+at org.apache.coyote.http11.Http11Processor.service<span class="o">(</span>Http11Processor.java:803<span class="o">)</span>
+at org.apache.coyote.AbstractProcessorLight.process<span class="o">(</span>AbstractProcessorLight.java:66<span class="o">)</span>
+at org.apache.coyote.AbstractProtocol<span class="nv">$ConnectionHandler</span>.process<span class="o">(</span>AbstractProtocol.java:790<span class="o">)</span>
+at org.apache.tomcat.util.net.NioEndpoint<span class="nv">$SocketProcessor</span>.doRun<span class="o">(</span>NioEndpoint.java:1468<span class="o">)</span>
+at org.apache.tomcat.util.net.SocketProcessorBase.run<span class="o">(</span>SocketProcessorBase.java:49<span class="o">)</span>
+at java.util.concurrent.ThreadPoolExecutor.runWorker<span class="o">(</span>ThreadPoolExecutor.java:1142<span class="o">)</span>
+at java.util.concurrent.ThreadPoolExecutor<span class="nv">$Worker</span>.run<span class="o">(</span>ThreadPoolExecutor.java:617<span class="o">)</span>
+at org.apache.tomcat.util.threads.TaskThread<span class="nv">$WrappingRunnable</span>.run<span class="o">(</span>TaskThread.java:61<span class="o">)</span>
+at java.lang.Thread.run<span class="o">(</span>Thread.java:745<span class="o">)</span>
+Caused by: java.net.SocketTimeoutException: Read timed out
+at java.net.SocketInputStream.socketRead0<span class="o">(</span>Native Method<span class="o">)</span>
+at java.net.SocketInputStream.socketRead<span class="o">(</span>SocketInputStream.java:116<span class="o">)</span>
+at java.net.SocketInputStream.read<span class="o">(</span>SocketInputStream.java:170<span class="o">)</span>
+at java.net.SocketInputStream.read<span class="o">(</span>SocketInputStream.java:141<span class="o">)</span>
+at org.apache.http.impl.io.SessionInputBufferImpl.streamRead<span class="o">(</span>SessionInputBufferImpl.java:137<span class="o">)</span>
+at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer<span class="o">(</span>SessionInputBufferImpl.java:153<span class="o">)</span>
+at org.apache.http.impl.io.SessionInputBufferImpl.readLine<span class="o">(</span>SessionInputBufferImpl.java:282<span class="o">)</span>
+at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead<span class="o">(</span>DefaultHttpResponseParser.java:138<span class="o">)</span>
+at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead<span class="o">(</span>DefaultHttpResponseParser.java:56<span class="o">)</span>
+at org.apache.http.impl.io.AbstractMessageParser.parse<span class="o">(</span>AbstractMessageParser.java:259<span class="o">)</span>
+at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader<span class="o">(</span>DefaultBHttpClientConnection.java:163<span class="o">)</span>
+at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader<span class="o">(</span>CPoolProxy.java:165<span class="o">)</span>
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse<span class="o">(</span>HttpRequestExecutor.java:273<span class="o">)</span>
+at org.apache.http.protocol.HttpRequestExecutor.execute<span class="o">(</span>HttpRequestExecutor.java:125<span class="o">)</span>
+at org.apache.http.impl.execchain.MainClientExec.execute<span class="o">(</span>MainClientExec.java:272<span class="o">)</span>
+at org.apache.http.impl.execchain.ProtocolExec.execute<span class="o">(</span>ProtocolExec.java:185<span class="o">)</span>
+at org.apache.http.impl.execchain.RetryExec.execute<span class="o">(</span>RetryExec.java:89<span class="o">)</span>
+at org.apache.http.impl.execchain.RedirectExec.execute<span class="o">(</span>RedirectExec.java:111<span class="o">)</span>
+at org.apache.http.impl.client.InternalHttpClient.doExecute<span class="o">(</span>InternalHttpClient.java:185<span class="o">)</span>
+at org.apache.http.impl.client.CloseableHttpClient.execute<span class="o">(</span>CloseableHttpClient.java:83<span class="o">)</span>
+at org.apache.http.impl.client.CloseableHttpClient.execute<span class="o">(</span>CloseableHttpClient.java:108<span class="o">)</span>
+at org.apache.http.impl.client.CloseableHttpClient.execute<span class="o">(</span>CloseableHttpClient.java:56<span class="o">)</span>
+at feign.httpclient.ApacheHttpClient.execute<span class="o">(</span>ApacheHttpClient.java:87<span class="o">)</span>
+at feign.SynchronousMethodHandler.executeAndDecode<span class="o">(</span>SynchronousMethodHandler.java:97<span class="o">)</span>
+... <span class="m">137</span> common frames omitted
+
+2019-12-09 17:05:19.933 WARN <span class="m">11780</span> --- <span class="o">[</span>nio-8081-exec-3<span class="o">]</span> .m.m.a.ExceptionHandlerExceptionResolver : Resolved exception caused by Handler execution: feign.RetryableException: Read timed out executing GET http://localhost:8080/UserApi/exportFormalUserHotline
+
+ 
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>服务端报错</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">feign.RetryableException: Read timed out executing GET http://localhost:8080/UserApi/exportFormalUserHotline
+
+at feign.FeignException.errorExecuting<span class="o">(</span>FeignException.java:67<span class="o">)</span>
+at feign.SynchronousMethodHandler.executeAndDecode<span class="o">(</span>SynchronousMethodHandler.java:104<span class="o">)</span>
+at feign.SynchronousMethodHandler.invoke<span class="o">(</span>SynchronousMethodHandler.java:76<span class="o">)</span>
+at feign.ReflectiveFeign<span class="nv">$FeignInvocationHandler</span>.invoke<span class="o">(</span>ReflectiveFeign.java:103<span class="o">)</span>
+at com.sun.proxy.<span class="nv">$Proxy125</span>.exportFormalUserHotline<span class="o">(</span>Unknown Source<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController.exportFormalUserHotline<span class="o">(</span>UserController.java:396<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController<span class="nv">$$</span>FastClassBySpringCGLIB<span class="nv">$$</span>2fbde74b.invoke<span class="o">(</span>&lt;generated&gt;<span class="o">)</span>
+at org.springframework.cglib.proxy.MethodProxy.invoke<span class="o">(</span>MethodProxy.java:204<span class="o">)</span>
+at org.springframework.aop.framework.CglibAopProxy<span class="nv">$CglibMethodInvocation</span>.invokeJoinpoint<span class="o">(</span>CglibAopProxy.java:746<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:163<span class="o">)</span>
+at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed<span class="o">(</span>MethodInvocationProceedingJoinPoint.java:100<span class="o">)</span>
+at com.tinet.bigboss.web.operatelog.OperateLogAspect.operateLogAdvice<span class="o">(</span>OperateLogAspect.java:96<span class="o">)</span>
+at sun.reflect.NativeMethodAccessorImpl.invoke0<span class="o">(</span>Native Method<span class="o">)</span>
+at sun.reflect.NativeMethodAccessorImpl.invoke<span class="o">(</span>NativeMethodAccessorImpl.java:62<span class="o">)</span>
+at sun.reflect.DelegatingMethodAccessorImpl.invoke<span class="o">(</span>DelegatingMethodAccessorImpl.java:43<span class="o">)</span>
+at java.lang.reflect.Method.invoke<span class="o">(</span>Method.java:498<span class="o">)</span>
+at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs<span class="o">(</span>AbstractAspectJAdvice.java:644<span class="o">)</span>
+at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod<span class="o">(</span>AbstractAspectJAdvice.java:633<span class="o">)</span>
+at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke<span class="o">(</span>AspectJAroundAdvice.java:70<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:174<span class="o">)</span>
+at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor<span class="nv">$1</span>.proceed<span class="o">(</span>AopAllianceAnnotationsAuthorizingMethodInterceptor.java:82<span class="o">)</span>
+at org.apache.shiro.authz.aop.AuthorizingMethodInterceptor.invoke<span class="o">(</span>AuthorizingMethodInterceptor.java:39<span class="o">)</span>
+at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor.invoke<span class="o">(</span>AopAllianceAnnotationsAuthorizingMethodInterceptor.java:115<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:185<span class="o">)</span>
+at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke<span class="o">(</span>ExposeInvocationInterceptor.java:92<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:185<span class="o">)</span>
+at org.springframework.aop.framework.CglibAopProxy<span class="nv">$DynamicAdvisedInterceptor</span>.intercept<span class="o">(</span>CglibAopProxy.java:688<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController<span class="nv">$$</span>EnhancerBySpringCGLIB<span class="nv">$$</span>954ef189.exportFormalUserHotline<span class="o">(</span>&lt;generated&gt;<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController<span class="nv">$$</span>FastClassBySpringCGLIB<span class="nv">$$</span>2fbde74b.invoke<span class="o">(</span>&lt;generated&gt;<span class="o">)</span>
+at org.springframework.cglib.proxy.MethodProxy.invoke<span class="o">(</span>MethodProxy.java:204<span class="o">)</span>
+at org.springframework.aop.framework.CglibAopProxy<span class="nv">$CglibMethodInvocation</span>.invokeJoinpoint<span class="o">(</span>CglibAopProxy.java:746<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:163<span class="o">)</span>
+at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor<span class="nv">$1</span>.proceed<span class="o">(</span>AopAllianceAnnotationsAuthorizingMethodInterceptor.java:82<span class="o">)</span>
+at org.apache.shiro.authz.aop.AuthorizingMethodInterceptor.invoke<span class="o">(</span>AuthorizingMethodInterceptor.java:39<span class="o">)</span>
+at org.apache.shiro.spring.security.interceptor.AopAllianceAnnotationsAuthorizingMethodInterceptor.invoke<span class="o">(</span>AopAllianceAnnotationsAuthorizingMethodInterceptor.java:115<span class="o">)</span>
+at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed<span class="o">(</span>ReflectiveMethodInvocation.java:185<span class="o">)</span>
+at org.springframework.aop.framework.CglibAopProxy<span class="nv">$DynamicAdvisedInterceptor</span>.intercept<span class="o">(</span>CglibAopProxy.java:688<span class="o">)</span>
+at com.tinet.bigboss.web.controller.UserController<span class="nv">$$</span>EnhancerBySpringCGLIB<span class="nv">$$</span>936c2b6f.exportFormalUserHotline<span class="o">(</span>&lt;generated&gt;<span class="o">)</span>
+at sun.reflect.NativeMethodAccessorImpl.invoke0<span class="o">(</span>Native Method<span class="o">)</span>
+at sun.reflect.NativeMethodAccessorImpl.invoke<span class="o">(</span>NativeMethodAccessorImpl.java:62<span class="o">)</span>
+at sun.reflect.DelegatingMethodAccessorImpl.invoke<span class="o">(</span>DelegatingMethodAccessorImpl.java:43<span class="o">)</span>
+at java.lang.reflect.Method.invoke<span class="o">(</span>Method.java:498<span class="o">)</span>
+at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke<span class="o">(</span>InvocableHandlerMethod.java:209<span class="o">)</span>
+at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest<span class="o">(</span>InvocableHandlerMethod.java:136<span class="o">)</span>
+at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle<span class="o">(</span>ServletInvocableHandlerMethod.java:102<span class="o">)</span>
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod<span class="o">(</span>RequestMappingHandlerAdapter.java:877<span class="o">)</span>
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal<span class="o">(</span>RequestMappingHandlerAdapter.java:783<span class="o">)</span>
+at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle<span class="o">(</span>AbstractHandlerMethodAdapter.java:87<span class="o">)</span>
+at org.springframework.web.servlet.DispatcherServlet.doDispatch<span class="o">(</span>DispatcherServlet.java:991<span class="o">)</span>
+at org.springframework.web.servlet.DispatcherServlet.doService<span class="o">(</span>DispatcherServlet.java:925<span class="o">)</span>
+at org.springframework.web.servlet.FrameworkServlet.processRequest<span class="o">(</span>FrameworkServlet.java:974<span class="o">)</span>
+at org.springframework.web.servlet.FrameworkServlet.doGet<span class="o">(</span>FrameworkServlet.java:866<span class="o">)</span>
+at javax.servlet.http.HttpServlet.service<span class="o">(</span>HttpServlet.java:635<span class="o">)</span>
+at org.springframework.web.servlet.FrameworkServlet.service<span class="o">(</span>FrameworkServlet.java:851<span class="o">)</span>
+at javax.servlet.http.HttpServlet.service<span class="o">(</span>HttpServlet.java:742<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:231<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.tomcat.websocket.server.WsFilter.doFilter<span class="o">(</span>WsFilter.java:52<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:112<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.executeChain<span class="o">(</span>AdviceFilter.java:108<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal<span class="o">(</span>AdviceFilter.java:137<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:125<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.executeChain<span class="o">(</span>AdviceFilter.java:108<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal<span class="o">(</span>AdviceFilter.java:137<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:125<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics<span class="o">(</span>WebMvcMetricsFilter.java:158<span class="o">)</span>
+at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics<span class="o">(</span>WebMvcMetricsFilter.java:126<span class="o">)</span>
+at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal<span class="o">(</span>WebMvcMetricsFilter.java:111<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter<span class="o">(</span>ProxiedFilterChain.java:61<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.executeChain<span class="o">(</span>AdviceFilter.java:108<span class="o">)</span>
+at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal<span class="o">(</span>AdviceFilter.java:137<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:125<span class="o">)</span>
+at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter<span class="o">(</span>ProxiedFilterChain.java:66<span class="o">)</span>
+at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain<span class="o">(</span>AbstractShiroFilter.java:449<span class="o">)</span>
+at org.apache.shiro.web.servlet.AbstractShiroFilter<span class="nv">$1</span>.call<span class="o">(</span>AbstractShiroFilter.java:365<span class="o">)</span>
+at org.apache.shiro.subject.support.SubjectCallable.doCall<span class="o">(</span>SubjectCallable.java:90<span class="o">)</span>
+at org.apache.shiro.subject.support.SubjectCallable.call<span class="o">(</span>SubjectCallable.java:83<span class="o">)</span>
+at org.apache.shiro.subject.support.DelegatingSubject.execute<span class="o">(</span>DelegatingSubject.java:387<span class="o">)</span>
+at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal<span class="o">(</span>AbstractShiroFilter.java:362<span class="o">)</span>
+at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:125<span class="o">)</span>
+at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate<span class="o">(</span>DelegatingFilterProxy.java:357<span class="o">)</span>
+at org.springframework.web.filter.DelegatingFilterProxy.doFilter<span class="o">(</span>DelegatingFilterProxy.java:270<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal<span class="o">(</span>HttpTraceFilter.java:90<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at com.tinet.bigboss.web.filter.CorsFilter.doFilterInternal<span class="o">(</span>CorsFilter.java:38<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.web.filter.RequestContextFilter.doFilterInternal<span class="o">(</span>RequestContextFilter.java:99<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal<span class="o">(</span>HttpPutFormContentFilter.java:109<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal<span class="o">(</span>HiddenHttpMethodFilter.java:93<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal<span class="o">(</span>SessionRepositoryFilter.java:147<span class="o">)</span>
+at org.springframework.session.web.http.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:81<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal<span class="o">(</span>CharacterEncodingFilter.java:200<span class="o">)</span>
+at org.springframework.web.filter.OncePerRequestFilter.doFilter<span class="o">(</span>OncePerRequestFilter.java:107<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter<span class="o">(</span>ApplicationFilterChain.java:193<span class="o">)</span>
+at org.apache.catalina.core.ApplicationFilterChain.doFilter<span class="o">(</span>ApplicationFilterChain.java:166<span class="o">)</span>
+at org.apache.catalina.core.StandardWrapperValve.invoke<span class="o">(</span>StandardWrapperValve.java:198<span class="o">)</span>
+at org.apache.catalina.core.StandardContextValve.invoke<span class="o">(</span>StandardContextValve.java:96<span class="o">)</span>
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke<span class="o">(</span>AuthenticatorBase.java:496<span class="o">)</span>
+at org.apache.catalina.core.StandardHostValve.invoke<span class="o">(</span>StandardHostValve.java:140<span class="o">)</span>
+at org.apache.catalina.valves.ErrorReportValve.invoke<span class="o">(</span>ErrorReportValve.java:81<span class="o">)</span>
+at org.apache.catalina.core.StandardEngineValve.invoke<span class="o">(</span>StandardEngineValve.java:87<span class="o">)</span>
+at org.apache.catalina.connector.CoyoteAdapter.service<span class="o">(</span>CoyoteAdapter.java:342<span class="o">)</span>
+at org.apache.coyote.http11.Http11Processor.service<span class="o">(</span>Http11Processor.java:803<span class="o">)</span>
+at org.apache.coyote.AbstractProcessorLight.process<span class="o">(</span>AbstractProcessorLight.java:66<span class="o">)</span>
+at org.apache.coyote.AbstractProtocol<span class="nv">$ConnectionHandler</span>.process<span class="o">(</span>AbstractProtocol.java:790<span class="o">)</span>
+at org.apache.tomcat.util.net.NioEndpoint<span class="nv">$SocketProcessor</span>.doRun<span class="o">(</span>NioEndpoint.java:1468<span class="o">)</span>
+at org.apache.tomcat.util.net.SocketProcessorBase.run<span class="o">(</span>SocketProcessorBase.java:49<span class="o">)</span>
+at java.util.concurrent.ThreadPoolExecutor.runWorker<span class="o">(</span>ThreadPoolExecutor.java:1142<span class="o">)</span>
+at java.util.concurrent.ThreadPoolExecutor<span class="nv">$Worker</span>.run<span class="o">(</span>ThreadPoolExecutor.java:617<span class="o">)</span>
+at org.apache.tomcat.util.threads.TaskThread<span class="nv">$WrappingRunnable</span>.run<span class="o">(</span>TaskThread.java:61<span class="o">)</span>
+at java.lang.Thread.run<span class="o">(</span>Thread.java:745<span class="o">)</span>
+Caused by: java.net.SocketTimeoutException: Read timed out
+at java.net.SocketInputStream.socketRead0<span class="o">(</span>Native Method<span class="o">)</span>
+at java.net.SocketInputStream.socketRead<span class="o">(</span>SocketInputStream.java:116<span class="o">)</span>
+at java.net.SocketInputStream.read<span class="o">(</span>SocketInputStream.java:170<span class="o">)</span>
+at java.net.SocketInputStream.read<span class="o">(</span>SocketInputStream.java:141<span class="o">)</span>
+at org.apache.http.impl.io.SessionInputBufferImpl.streamRead<span class="o">(</span>SessionInputBufferImpl.java:137<span class="o">)</span>
+at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer<span class="o">(</span>SessionInputBufferImpl.java:153<span class="o">)</span>
+at org.apache.http.impl.io.SessionInputBufferImpl.readLine<span class="o">(</span>SessionInputBufferImpl.java:282<span class="o">)</span>
+at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead<span class="o">(</span>DefaultHttpResponseParser.java:138<span class="o">)</span>
+at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead<span class="o">(</span>DefaultHttpResponseParser.java:56<span class="o">)</span>
+at org.apache.http.impl.io.AbstractMessageParser.parse<span class="o">(</span>AbstractMessageParser.java:259<span class="o">)</span>
+at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader<span class="o">(</span>DefaultBHttpClientConnection.java:163<span class="o">)</span>
+at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader<span class="o">(</span>CPoolProxy.java:165<span class="o">)</span>
+at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse<span class="o">(</span>HttpRequestExecutor.java:273<span class="o">)</span>
+at org.apache.http.protocol.HttpRequestExecutor.execute<span class="o">(</span>HttpRequestExecutor.java:125<span class="o">)</span>
+at org.apache.http.impl.execchain.MainClientExec.execute<span class="o">(</span>MainClientExec.java:272<span class="o">)</span>
+at org.apache.http.impl.execchain.ProtocolExec.execute<span class="o">(</span>ProtocolExec.java:185<span class="o">)</span>
+at org.apache.http.impl.execchain.RetryExec.execute<span class="o">(</span>RetryExec.java:89<span class="o">)</span>
+at org.apache.http.impl.execchain.RedirectExec.execute<span class="o">(</span>RedirectExec.java:111<span class="o">)</span>
+at org.apache.http.impl.client.InternalHttpClient.doExecute<span class="o">(</span>InternalHttpClient.java:185<span class="o">)</span>
+at org.apache.http.impl.client.CloseableHttpClient.execute<span class="o">(</span>CloseableHttpClient.java:83<span class="o">)</span>
+at org.apache.http.impl.client.CloseableHttpClient.execute<span class="o">(</span>CloseableHttpClient.java:108<span class="o">)</span>
+at org.apache.http.impl.client.CloseableHttpClient.execute<span class="o">(</span>CloseableHttpClient.java:56<span class="o">)</span>
+at feign.httpclient.ApacheHttpClient.execute<span class="o">(</span>ApacheHttpClient.java:87<span class="o">)</span>
+at feign.SynchronousMethodHandler.executeAndDecode<span class="o">(</span>SynchronousMethodHandler.java:97<span class="o">)</span>
+... <span class="m">137</span> more
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="原因">原因</h2>
+<p>用idea开发debug模式调试代码时，在处理服务间调用时，由于debug模式调试代码花费一些时间，或者是数据量过大，或者是网络波动，结果出现Fegin连接超时问题，</p>
+<h2 id="解决方案">解决方案</h2>
+<p>在配置文件中添加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">ribbon</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">ReadTimeout</span><span class="p">:</span><span class="w"> </span><span class="m">60000</span><span class="w">
+</span><span class="w">    </span><span class="nt">ConnectTimeout</span><span class="p">:</span><span class="w"> </span><span class="m">60000</span><span class="w">
+</span><span class="w">    </span><span class="c"># 以下三个不知道干嘛，Todo查资料</span><span class="w">
+</span><span class="w">    </span><span class="nt">MaxAutoRetries</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="w">    </span><span class="nt">MaxAutoRetriesNextServer</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">    </span><span class="nt">eureka</span><span class="p">:</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>服务间调用其实走的是http请求，debug了一下默认的ReadTimeout时间为5s，ConnectTimeout时间为2s。用Fegin进行服务间调用，底层用的还是Ribbon</p>
+<p>也可以直接用feign的配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="c"># feign调用超时时间配置</span><span class="w">
+</span><span class="w"></span><span class="nt">feign</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">client</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">default</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">connectTimeout</span><span class="p">:</span><span class="w"> </span><span class="m">600000</span><span class="w">
+</span><span class="w">        </span><span class="nt">readTimeout</span><span class="p">:</span><span class="w"> </span><span class="m">600000</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-11-23</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/springcloud-rpc-readtimeout-error/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/springcloud-rpc-readtimeout-error/" data-title="SpringCloud RPC Read timed out" data-hashtags="Java,J2EE,SpringCloud,RPC,Feign,ribbon"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/springcloud-rpc-readtimeout-error/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/springcloud-rpc-readtimeout-error/" data-title="SpringCloud RPC Read timed out" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/springcloud-rpc-readtimeout-error/" data-title="SpringCloud RPC Read timed out"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/j2ee/">J2EE</a>,&nbsp;<a href="/tags/springcloud/">SpringCloud</a>,&nbsp;<a href="/tags/rpc/">RPC</a>,&nbsp;<a href="/tags/feign/">Feign</a>,&nbsp;<a href="/tags/ribbon/">ribbon</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/java-file-note/" class="prev" rel="prev" title="Java文件操作笔记"><i class="fas fa-angle-left fa-fw"></i>Java文件操作笔记</a>
+            <a href="/windows-md5-note/" class="next" rel="next" title="Windows获取文件的hash值">Windows获取文件的hash值<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录JPA @Id 和 @GeneratedValue 注解详解的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/jpa-id-gnrtvlu/" /><meta property="og:image" content="https://kkkpjskey.github.io/jpa-id-gnrtvlu/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-16T08:58:59&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-16T08:58:59&#43;08:00" />
+<meta property="article:published_time" content="2021-07-16T08:58:59+08:00" />
+<meta property="article:modified_time" content="2021-07-16T08:58:59+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/jpa-id-gnrtvlu/featured-image.jpg"/>
@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/jpa-id-gnrtvlu\/featured-image.jpg",
                             "width":  1200 ,
                             "height":  360 
-                        }],"genre": "posts","keywords": "Java, Jpa","wordcount":  6517 ,
+                        }],"genre": "posts","keywords": "Java, Jpa","wordcount":  6493 ,
         "url": "https:\/\/kkkpjskey.github.io\/jpa-id-gnrtvlu\/","datePublished": "2021-07-16T08:58:59+08:00","dateModified": "2021-07-16T08:58:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">JPA @Id 和 @GeneratedValue 注解详解</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-16">2021-07-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6517 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/jpa-id-gnrtvlu/" class="leancloud_visitors" data-flag-title="JPA @Id 和 @GeneratedValue 注解详解">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-16">2021-07-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6493 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;<span id="/jpa-id-gnrtvlu/" class="leancloud_visitors" data-flag-title="JPA @Id 和 @GeneratedValue 注解详解">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -219,7 +219,7 @@
 <h3 id="属性之上">属性之上：</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -237,7 +237,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;CUSTOMERS&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;CUSTOMERS&#34;</span><span class="o">)</span>
 <span class="nd">@Entity</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
     <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span><span class="o">=</span><span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span>
@@ -258,7 +258,7 @@
 </div><h3 id="getter方法之上">getter方法之上：</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -276,7 +276,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;CUSTOMERS&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;CUSTOMERS&#34;</span><span class="o">)</span>
 <span class="nd">@Entity</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
@@ -298,7 +298,7 @@
 <p>但是不能某个注解在属性之上，某个注解在getter之上，将抛出异常，对其他注解也相同</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -316,7 +316,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;CUSTOMERS&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;CUSTOMERS&#34;</span><span class="o">)</span>
 <span class="nd">@Entity</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="o">{</span>
     <span class="nd">@Id</span>
@@ -342,7 +342,7 @@ JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</p
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -350,7 +350,7 @@ JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</p
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">METHOD</span><span class="o">,</span><span class="n">FIELD</span><span class="o">})</span>    
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">METHOD</span><span class="o">,</span><span class="n">FIELD</span><span class="o">})</span>    
     <span class="nd">@Retention</span><span class="o">(</span><span class="n">RUNTIME</span><span class="o">)</span>    
     <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">GeneratedValue</span><span class="o">{</span>    
         <span class="n">GenerationType</span> <span class="nf">strategy</span><span class="o">()</span> <span class="k">default</span> <span class="n">AUTO</span><span class="o">;</span>    
@@ -362,7 +362,7 @@ JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</p
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -373,7 +373,7 @@ JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</p
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span>  
 <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">TABLE</span><span class="o">,</span> <span class="n">generator</span><span class="o">=</span><span class="s">&#34;payablemoney_gen&#34;</span><span class="o">)</span>  
 <span class="nd">@TableGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;pk_gen&#34;</span><span class="o">,</span>  
     <span class="n">table</span><span class="o">=</span><span class="s">&#34;tb_generator&#34;</span><span class="o">,</span>  
@@ -388,7 +388,7 @@ JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</p
 <p>Sql代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -396,29 +396,29 @@ JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</p
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span>  <span class="n">tb_generator</span> <span class="p">(</span>  
-  <span class="n">id</span> <span class="nb">NUMBER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
-  <span class="n">gen_name</span> <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
-  <span class="n">gen_value</span> <span class="nb">NUMBER</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>  
-  <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>  
-<span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w">  </span><span class="n">tb_generator</span><span class="w"> </span><span class="p">(</span><span class="w">  
+</span><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">  
+</span><span class="w">  </span><span class="n">gen_name</span><span class="w"> </span><span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">  
+</span><span class="w">  </span><span class="n">gen_value</span><span class="w"> </span><span class="nb">NUMBER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">  
+</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">  
+</span><span class="w"></span><span class="p">)</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h4 id="插入纪录供生成主键使用">插入纪录，供生成主键使用，</h4>
 <p>Sql代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tb_generator</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">gen_name</span><span class="p">,</span> <span class="n">gen_value</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">PAYABLEMOENY_PK</span><span class="s1">&#39;, 1); 
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">tb_generator</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">gen_name</span><span class="p">,</span><span class="w"> </span><span class="n">gen_value</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">PAYABLEMOENY_PK</span><span class="s1">&#39;, 1); 
 </span></code></pre></td></tr></table>
 </div>
 </div><h4 id="在主键生成后这条纪录的value值按allocationsize递增">在主键生成后，这条纪录的value值，按allocationSize递增。</h4>
 <p>@TableGenerator的定义：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -434,7 +434,7 @@ JPA提供四种标准用法,由@GeneratedValue的源代码可以明显看出.</p
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">TYPE</span><span class="o">,</span> <span class="n">METHOD</span><span class="o">,</span> <span class="n">FIELD</span><span class="o">})</span>   
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">TYPE</span><span class="o">,</span> <span class="n">METHOD</span><span class="o">,</span> <span class="n">FIELD</span><span class="o">})</span>   
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">RUNTIME</span><span class="o">)</span>  
 <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">TableGenerator</span> <span class="o">{</span>  
   <span class="n">String</span> <span class="nf">name</span><span class="o">();</span>  
@@ -464,12 +464,12 @@ UniqueConstraint与@Table标记中的用法类似。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span>  
 <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">SEQUENCE</span><span class="o">,</span><span class="n">generator</span><span class="o">=</span><span class="s">&#34;payablemoney_seq&#34;</span><span class="o">)</span>  
 <span class="nd">@SequenceGenerator</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;payablemoney_seq&#34;</span><span class="o">,</span> <span class="n">sequenceName</span><span class="o">=</span><span class="s">&#34;seq_payment&#34;</span><span class="o">)</span>  
 </code></pre></td></tr></table>
@@ -478,7 +478,7 @@ UniqueConstraint与@Table标记中的用法类似。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -488,7 +488,7 @@ UniqueConstraint与@Table标记中的用法类似。</p>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">TYPE</span><span class="o">,</span> <span class="n">METHOD</span><span class="o">,</span> <span class="n">FIELD</span><span class="o">})</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">TYPE</span><span class="o">,</span> <span class="n">METHOD</span><span class="o">,</span> <span class="n">FIELD</span><span class="o">})</span>  
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">RUNTIME</span><span class="o">)</span> 
 <span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="nd">@interface</span><span class="o">**</span> <span class="n">SequenceGenerator</span> <span class="o">{</span> 
  <span class="n">String</span> <span class="nf">name</span><span class="o">();</span> 
@@ -506,11 +506,11 @@ allocationSize表示每次主键值增加的大小，例如设置成1，则表�
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
 <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span> 
 </code></pre></td></tr></table>
 </div>
@@ -518,11 +518,11 @@ allocationSize表示每次主键值增加的大小，例如设置成1，则表�
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
 <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span> 
 </code></pre></td></tr></table>
 </div>
@@ -530,21 +530,21 @@ allocationSize表示每次主键值增加的大小，例如设置成1，则表�
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
 </code></pre></td></tr></table>
 </div>
 </div><p>跟下面的定义是一样的。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
 <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span> 
 </code></pre></td></tr></table>
 </div>
@@ -569,14 +569,14 @@ hibernate每种主键生成策略提供接口org.hibernate.id.IdentifierGenerato
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IdentifierGenerator</span> <span class="o">{</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IdentifierGenerator</span> <span class="o">{</span>  
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ENTITY_NAME</span> <span class="o">=</span> <span class="s">&#34;entity_name&#34;</span><span class="o">;</span>  
   <span class="kd">public</span> <span class="n">Serializable</span> <span class="nf">generate</span><span class="o">(</span><span class="n">SessionImplementor</span> <span class="n">session</span><span class="o">,</span> <span class="n">Object</span> <span class="n">object</span><span class="o">)</span>   
     <span class="kd">throws</span> <span class="n">HibernateException</span><span class="o">;</span>  
@@ -591,11 +591,11 @@ hibernate在JPA的基础上进行了扩展，可以用一下方式引入hibernat
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
 <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span> 
 </code></pre></td></tr></table>
 </div>
@@ -603,11 +603,11 @@ hibernate在JPA的基础上进行了扩展，可以用一下方式引入hibernat
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">@GeneratedValue(generator = &#34;paymentableGenerator&#34;)  
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@GeneratedValue(generator = &#34;paymentableGenerator&#34;)  
 @GenericGenerator(name = &#34;paymentableGenerator&#34;, strategy = &#34;assigned&#34;) 
 </code></pre></td></tr></table>
 </div>
@@ -615,7 +615,7 @@ hibernate在JPA的基础上进行了扩展，可以用一下方式引入hibernat
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -624,7 +624,7 @@ hibernate在JPA的基础上进行了扩展，可以用一下方式引入hibernat
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">PACKAGE</span><span class="o">,</span> <span class="n">TYPE</span><span class="o">,</span> <span class="n">METHOD</span><span class="o">,</span> <span class="n">FIELD</span><span class="o">})</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Target</span><span class="o">({</span><span class="n">PACKAGE</span><span class="o">,</span> <span class="n">TYPE</span><span class="o">,</span> <span class="n">METHOD</span><span class="o">,</span> <span class="n">FIELD</span><span class="o">})</span> 
 <span class="nd">@Retention</span><span class="o">(</span><span class="n">RUNTIME</span><span class="o">)</span> 
 <span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="nd">@interface</span><span class="o">**</span> <span class="n">GenericGenerator</span> <span class="o">{</span> 
  <span class="n">String</span> <span class="nf">name</span><span class="o">();</span> 
@@ -640,7 +640,7 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -656,7 +656,7 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="o">**</span><span class="kd">static</span><span class="o">**</span> <span class="o">{</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="o">**</span><span class="kd">static</span><span class="o">**</span> <span class="o">{</span> 
  <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;uuid&#34;</span><span class="o">,</span> <span class="n">UUIDHexGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
  <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;hilo&#34;</span><span class="o">,</span> <span class="n">TableHiLoGenerator</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
  <span class="n">GENERATORS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;assigned&#34;</span><span class="o">,</span> <span class="n">Assigned</span><span class="o">.**</span><span class="n">class</span><span class="o">**);</span> 
@@ -677,11 +677,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;native&#34;</span><span class="o">)</span>  
 </code></pre></td></tr></table>
 </div>
@@ -689,11 +689,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;uuid&#34;</span><span class="o">)</span>  
 </code></pre></td></tr></table>
 </div>
@@ -701,11 +701,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;hilo&#34;</span><span class="o">)</span>  
 </code></pre></td></tr></table>
 </div>
@@ -713,11 +713,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;assigned&#34;</span><span class="o">)</span>  
 </code></pre></td></tr></table>
 </div>
@@ -725,11 +725,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="o">)</span>  
 </code></pre></td></tr></table>
 </div>
@@ -737,12 +737,12 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;select&#34;</span><span class="o">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s">&#34;select&#34;</span><span class="o">,</span> 
    <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;key&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;idstoerung&#34;</span><span class="o">)</span> <span class="o">})</span> 
 </code></pre></td></tr></table>
@@ -751,12 +751,12 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;sequence&#34;</span><span class="o">,</span>  
      <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sequence&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;seq_payablemoney&#34;</span><span class="o">)</span> <span class="o">})</span> 
 </code></pre></td></tr></table>
@@ -765,12 +765,12 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;seqhilo&#34;</span><span class="o">,</span>  
      <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;max_lo&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;5&#34;</span><span class="o">)</span> <span class="o">})</span> 
 </code></pre></td></tr></table>
@@ -779,11 +779,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;increment&#34;</span><span class="o">)</span>  
 </code></pre></td></tr></table>
 </div>
@@ -791,12 +791,12 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;idGenerator&#34;</span><span class="o">)</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;idGenerator&#34;</span><span class="o">)</span> 
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;idGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;foreign&#34;</span><span class="o">,</span>  
      <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;property&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;employee&#34;</span><span class="o">)</span> <span class="o">})</span> 
 </code></pre></td></tr></table>
@@ -805,11 +805,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@OneToOne</span><span class="o">(</span><span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@OneToOne</span><span class="o">(</span><span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>  
 <span class="nd">@PrimaryKeyJoinColumn</span>  
 </code></pre></td></tr></table>
 </div>
@@ -817,7 +817,7 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -826,7 +826,7 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span> 
 <span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="n">class</span><span class="o">**</span> <span class="n">Employee</span> <span class="o">{</span> 
  <span class="nd">@Id</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
  <span class="nd">@OneToOne</span> <span class="nd">@PrimaryKeyJoinColumn</span> 
@@ -839,7 +839,7 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -852,7 +852,7 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Entity</span> 
 <span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="n">class</span><span class="o">**</span> <span class="n">Employee</span> <span class="o">{</span> 
  <span class="nd">@Id</span>  
  <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;idGenerator&#34;</span><span class="o">)</span> 
@@ -869,11 +869,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;guid&#34;</span><span class="o">)</span>  
 </code></pre></td></tr></table>
 </div>
@@ -881,11 +881,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span>  
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;uuid.hex&#34;</span><span class="o">)</span>  
 </code></pre></td></tr></table>
 </div>
@@ -893,12 +893,12 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;sequence-identity&#34;</span><span class="o">,</span>  
      <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sequence&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;seq_payablemoney&#34;</span><span class="o">)</span> <span class="o">})</span> 
 </code></pre></td></tr></table>
@@ -909,7 +909,7 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -937,7 +937,7 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="n">class</span><span class="o">**</span> <span class="n">AssignedSequenceGenerator</span> <span class="o">**</span><span class="kd">extends</span><span class="o">**</span> <span class="n">SequenceGenerator</span> <span class="o">**</span><span class="kd">implements</span><span class="o">**</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="o">**</span><span class="kd">public</span><span class="o">**</span> <span class="o">**</span><span class="n">class</span><span class="o">**</span> <span class="n">AssignedSequenceGenerator</span> <span class="o">**</span><span class="kd">extends</span><span class="o">**</span> <span class="n">SequenceGenerator</span> <span class="o">**</span><span class="kd">implements</span><span class="o">**</span>  
  <span class="n">PersistentIdentifierGenerator</span><span class="o">,</span> <span class="n">Configurable</span> <span class="o">{</span> 
  <span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">String</span> <span class="n">entityName</span><span class="o">;</span> 
 
@@ -969,12 +969,12 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">)</span> 
 <span class="nd">@GenericGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;paymentableGenerator&#34;</span><span class="o">,</span> <span class="n">strategy</span> <span class="o">=</span> <span class="s">&#34;AssignedSequenceGenerator&#34;</span><span class="o">,</span>  
    <span class="n">parameters</span> <span class="o">=</span> <span class="o">{</span> <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sequence&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;seq_payablemoney&#34;</span><span class="o">)</span> <span class="o">})</span> 
 </code></pre></td></tr></table>
@@ -1013,13 +1013,13 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
 <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">TABLE</span><span class="o">,</span> <span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;roleSeq&#34;</span><span class="o">)</span> 
 <span class="nd">@TableGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;roleSeq&#34;</span><span class="o">,</span> <span class="n">allocationSize</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">table</span> <span class="o">=</span> <span class="s">&#34;seq_table&#34;</span><span class="o">,</span> <span class="n">pkColumnName</span> <span class="o">=</span> <span class="s">&#34;seq_id&#34;</span><span class="o">,</span> <span class="n">valueColumnName</span> <span class="o">=</span> <span class="s">&#34;seq_count&#34;</span><span class="o">)</span> 
 <span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
@@ -1031,13 +1031,13 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
 <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">SEQUENCE</span><span class="o">,</span> <span class="n">generator</span> <span class="o">=</span> <span class="s">&#34;menuSeq&#34;</span><span class="o">)</span> 
 <span class="nd">@SequenceGenerator</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;menuSeq&#34;</span><span class="o">,</span> <span class="n">initialValue</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">allocationSize</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">sequenceName</span> <span class="o">=</span> <span class="s">&#34;MENU_SEQUENCE&#34;</span><span class="o">)</span> 
 <span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
@@ -1049,12 +1049,12 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Id</span> 
 <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span> 
 <span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
 </code></pre></td></tr></table>
@@ -1066,11 +1066,11 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span> 
 <span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
 </code></pre></td></tr></table>
 </div>
@@ -1078,20 +1078,20 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
 <p>Java代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GeneratedValue</span> 
 <span class="o">**</span><span class="kd">private</span><span class="o">**</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span> 
 </code></pre></td></tr></table>
 </div>
 </div><p>参考资料:</p>
-<p><a href="http://xiaoyaocao.iteye.com/blog/1874412">http://xiaoyaocao.iteye.com/blog/1874412</a></p>
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-jpaprimarykey/">http://www.ibm.com/developerworks/cn/java/j-lo-jpaprimarykey/</a></p>
-<p><a href="http://www.oracle.com/technetwork/cn/middleware/ias/toplink-jpa-annotations-100895-zhs.html#">http://www.oracle.com/technetwork/cn/middleware/ias/toplink-jpa-annotations-100895-zhs.html#</a></p>
+<p><a href="http://xiaoyaocao.iteye.com/blog/1874412" target="_blank" rel="noopener noreferrer">http://xiaoyaocao.iteye.com/blog/1874412</a></p>
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-jpaprimarykey/" target="_blank" rel="noopener noreferrer">http://www.ibm.com/developerworks/cn/java/j-lo-jpaprimarykey/</a></p>
+<p><a href="http://www.oracle.com/technetwork/cn/middleware/ias/toplink-jpa-annotations-100895-zhs.html#" target="_blank" rel="noopener noreferrer">http://www.oracle.com/technetwork/cn/middleware/ias/toplink-jpa-annotations-100895-zhs.html#</a></p>
 <p>测试实例</p>
-<p><a href="http://download.csdn.net/detail/u012493207/9456135">http://download.csdn.net/detail/u012493207/9456135</a></p>
+<p><a href="http://download.csdn.net/detail/u012493207/9456135" target="_blank" rel="noopener noreferrer">http://download.csdn.net/detail/u012493207/9456135</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -1124,8 +1124,8 @@ parameters得到strategy指定的具体生成器所用到的参数。</p>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

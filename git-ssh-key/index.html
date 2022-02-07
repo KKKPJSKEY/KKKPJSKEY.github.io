@@ -9,8 +9,8 @@
 <meta property="og:description" content="在Linux和Windows环境中为Git配置生成公私密钥" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/git-ssh-key/" /><meta property="og:image" content="https://kkkpjskey.github.io/git-ssh-key/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-11-02T05:59:39&#43;08:00" />
-<meta property="article:modified_time" content="2020-11-02T05:59:39&#43;08:00" />
+<meta property="article:published_time" content="2020-11-02T05:59:39+08:00" />
+<meta property="article:modified_time" content="2020-11-02T05:59:39+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/git-ssh-key/featured-image.jpg"/>
@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/git-ssh-key\/featured-image.jpg",
                             "width":  1032 ,
                             "height":  375 
-                        }],"genre": "posts","keywords": "Git, SSH, Key","wordcount":  1111 ,
+                        }],"genre": "posts","keywords": "Git, SSH, Key","wordcount":  1107 ,
         "url": "https:\/\/kkkpjskey.github.io\/git-ssh-key\/","datePublished": "2020-11-02T05:59:39+08:00","dateModified": "2020-11-02T05:59:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Git生成公私密钥</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-02">2020-11-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1111 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-02">2020-11-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1107 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/git-ssh-key/" class="leancloud_visitors" data-flag-title="Git生成公私密钥">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -159,31 +159,31 @@
 <p>所有执行命令的地方都是在管理员模式下进行，即打开<strong>cmd，Git Bash</strong>客户端<strong>用管理员身份运行程序。</strong></p>
 </blockquote>
 <h3 id="单个">单个</h3>
-<p>在Windows下查看**[c盘-&gt;用户-&gt;自己的用户名-&gt;.ssh]**下是否有*&ldquo;id_rsa、id_rsa.pub&rdquo;*文件，如果没有需要从第一步开始手动生成,有的话直接跳到第二步。</p>
+<p>在Windows下查看**[c盘-&gt;用户-&gt;自己的用户名-&gt;.ssh]*<em>下是否有</em>&ldquo;id_rsa、id_rsa.pub&rdquo;*文件，如果没有需要从第一步开始手动生成,有的话直接跳到第二步。</p>
 <h4 id="第1步创建ssh-key"><strong>第1步：创建SSH Key</strong></h4>
 <p>打开<strong>Git Bash</strong>，在控制台中输入以下命令:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ssh-keygen -t rsa -C <span class="s2">&#34;youremail@example.com&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ssh-keygen -t rsa -C <span class="s2">&#34;youremail@example.com&#34;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>密钥类型可以用 -t 选项指定。如果没有指定则默认生成用于SSH-2的RSA密钥。这里使用的是rsa。</p>
 <p>同时在密钥中有一个注释字段，用-C来指定所指定的注释，可以方便用户标识这个密钥，指出密钥的用途或其他有用的信息。所以在这里输入自己的邮箱或者其他都行,当然，如果不想要这些可以直接输入：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ssh-keygen
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ssh-keygen
 </code></pre></td></tr></table>
 </div>
 </div><p>我一般就是这么做的。</p>
 <p>输入完毕后按回车，程序会要求输入一个密码，输入完密码后按回车会要求再确认一次密码，如果不想要密码可以在要求输入密码的时候按两次回车，表示密码为空，并且确认密码为空，此时**[c盘&gt;用户&gt;自己的用户名&gt;.ssh]**目录下已经生成好了。</p>
 <h4 id="第2步将ssh添加到版本管理仓库"><strong>第2步：将SSH添加到版本管理仓库</strong></h4>
-<p>不同的版本管理代码仓库都大同小异，这里以Github举例，登录Github。打开setting-&gt;SSH keys，点击右上角 New SSH key，把**[c盘-&gt;用户-&gt;自己的用户名-&gt;.ssh]**目录下生成好的公钥*&ldquo;id_rsa.pub&rdquo;*文件以文本打开复制放进 key输入框中，再为当前的key起一个title来区分每个key</p>
+<p>不同的版本管理代码仓库都大同小异，这里以Github举例，登录Github。打开setting-&gt;SSH keys，点击右上角 New SSH key，把**[c盘-&gt;用户-&gt;自己的用户名-&gt;.ssh]*<em>目录下生成好的公钥</em>&ldquo;id_rsa.pub&rdquo;*文件以文本打开复制放进 key输入框中，再为当前的key起一个title来区分每个key</p>
 <h3 id="多个">多个</h3>
 <p>单个创建工程中不要直接连按回车，修改一下对应的文件名即可（可以不要密码）</p>
 <p>然后在两个ssh之间挑选一个用的相对较少的ssh，在对应的文件夹配置当前文件夹local级别的用户名和邮箱，邮箱需要与ssh相对应</p>
@@ -195,33 +195,33 @@ Git的配置一共有三个级别：system(系统级)、global(用户级)和loca
 <strong>system配置</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git config --system user.name <span class="s2">&#34;username&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git config --system user.name <span class="s2">&#34;username&#34;</span>
 git config --system user.email user@email.com
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>global配置</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git config --global user.name <span class="s2">&#34;username&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git config --global user.name <span class="s2">&#34;username&#34;</span>
 git config --global user.email user@email.com
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>local配置</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git config --local user.name <span class="s2">&#34;username&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git config --local user.name <span class="s2">&#34;username&#34;</span>
 git config --local user.email user@email.com
 </code></pre></td></tr></table>
 </div>
@@ -257,8 +257,8 @@ git config --local user.email user@email.com
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

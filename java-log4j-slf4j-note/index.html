@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录log4j和slf4j分析及教程的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-log4j-slf4j-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-log4j-slf4j-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-09-02T11:18:14&#43;08:00" />
-<meta property="article:modified_time" content="2021-09-02T11:18:14&#43;08:00" />
+<meta property="article:published_time" content="2021-09-02T11:18:14+08:00" />
+<meta property="article:modified_time" content="2021-09-02T11:18:14+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-log4j-slf4j-note/featured-image.jpg"/>
@@ -240,12 +240,12 @@
 <p>下面是你用Log4j时的做法，当然这并不好玩而且它增加了不必要的公式化的代码，减少了代码的可读性。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span>
     <span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Processing trade with id: &#34;</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">&#34; symbol: &#34;</span> <span class="o">+</span> <span class="n">symbol</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></td></tr></table>
@@ -253,23 +253,23 @@
 </div><p>而如果你使用SLF4J，你可以使用更简洁的格式达到同样的效果，如下:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Processing trade with id: {} and symbol : {} &#34;</span><span class="o">,</span> <span class="n">id</span><span class="o">,</span> <span class="n">symbol</span><span class="o">);</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">logger</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&#34;Processing trade with id: {} and symbol : {} &#34;</span><span class="o">,</span> <span class="n">id</span><span class="o">,</span> <span class="n">symbol</span><span class="o">);</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>在SLF4J中，我们不需要进行字符串拼接，不会导致使用临时字符串带来的消耗。相反，我们使用带占位符的模板消息来记录日志信息，并提供实际值作为参数。也许你会想，要是有多个参数该怎么办，你可以使用带参数版的日志方法，也可以通过Object数组传入。这确实是非常方便而且高效的记日志的方法。记住，在为日志信息产生最终的字符串之前，该方法会检查是否开启了特定的日志级别，这不仅降低了内存占用，而且预先减少了执行<a href="http://javarevisited.blogspot.com/2011/07/string-vs-stringbuffer-vs-stringbuilder.html" target="_blank" rel="noopener noreferrer">字符串拼接</a>所消耗的CPU时间。下面的SLF4J日志方法的代码，来自于slf4j-log4j12-1.6.1.jar包里的Log4j的适配器类Log4jLoggerAdapter.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">debug</span><span class="o">(</span><span class="n">String</span> <span class="n">format</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span> <span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">debug</span><span class="o">(</span><span class="n">String</span> <span class="n">format</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span> <span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span>
       <span class="n">FormattingTuple</span> <span class="n">ft</span> <span class="o">=</span> <span class="n">MessageFormatter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">format</span><span class="o">,</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">arg2</span><span class="o">);</span>
       <span class="n">logger</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">FQCN</span><span class="o">,</span> <span class="n">Level</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">,</span> <span class="n">ft</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(),</span> <span class="n">ft</span><span class="o">.</span><span class="na">getThrowable</span><span class="o">());</span>
     <span class="o">}</span>
@@ -293,7 +293,7 @@
 <p>如果大家之前使用过log4j，那么一定基本都是这样用的：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -307,7 +307,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.winwill.test</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.winwill.test</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.log4j.Logger</span><span class="o">;</span>
  <span class="o">*</span> <span class="nd">@author</span> <span class="n">qifuguang</span>
  <span class="o">*</span> <span class="nd">@date</span> <span class="n">15</span><span class="o">/</span><span class="n">8</span><span class="o">/</span><span class="n">26</span> <span class="n">21</span><span class="o">:</span><span class="n">54</span>
@@ -324,18 +324,18 @@
 </div><p>注意到log4j的info函数有两种使用方式：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">info</span><span class="o">(</span><span class="n">Object</span> <span class="n">message</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">info</span><span class="o">(</span><span class="n">Object</span> <span class="n">message</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">info</span><span class="o">(</span><span class="n">Object</span> <span class="n">message</span><span class="o">,</span> <span class="n">Throwable</span> <span class="n">t</span><span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>第一个参数是要输出的信息，假设要输出的是一个字符串，并且字符串中包含变量，则message参数就必须使用字符串相加操作，就比如上面测试代码的14行一样。姑且不说字符串相加是一个比较消耗性能的操作，字符串是一个不可变对象，一旦创建就不能被修改，创建的字符串会保存在String池中，占用内存。更糟糕的是如果配置文件中配置的日志级别是ERROR的话，这行info日志根本不会输出，则相加得到的字符串对象是一个非必须对象，白白浪费了内存空间。有人会说了，那我可以这样写啊：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -351,7 +351,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.winwill.test</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.winwill.test</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.apache.log4j.Logger</span><span class="o">;</span>
  <span class="o">*</span> <span class="nd">@author</span> <span class="n">qifuguang</span>
  <span class="o">*</span> <span class="nd">@date</span> <span class="n">15</span><span class="o">/</span><span class="n">8</span><span class="o">/</span><span class="n">26</span> <span class="n">21</span><span class="o">:</span><span class="n">54</span>
@@ -371,7 +371,7 @@
 <p>再来看看slf4j的打日志的方式：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -389,7 +389,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.winwill.test</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.winwill.test</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
@@ -410,7 +410,7 @@
 </div><p>看到没有，打日志的时候使用了{}占位符，这样就不会有字符串拼接操作，减少了无用String对象的数量，节省了内存。并且，记住，在生产最终日志信息的字符串之前，这个方法会检查一个特定的日志级别是不是打开了，这不仅降低了内存消耗而且预先降低了CPU去处理字符串连接命令的时间。这里是使用SLF4J日志方法的代码，来自于slf4j-log4j12-1.6.1.jar中的Log4j的适配器类Log4jLoggerAdapter。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -418,7 +418,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">debug</span><span class="o">(</span><span class="n">String</span> <span class="n">format</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">debug</span><span class="o">(</span><span class="n">String</span> <span class="n">format</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">Object</span> <span class="n">arg2</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isDebugEnabled</span><span class="o">())</span> <span class="o">{</span>
         <span class="n">FormattingTuple</span> <span class="n">ft</span> <span class="o">=</span> <span class="n">MessageFormatter</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">format</span><span class="o">,</span> <span class="n">arg1</span><span class="o">,</span> <span class="n">arg2</span><span class="o">);</span>
         <span class="n">logger</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="n">FQCN</span><span class="o">,</span> <span class="n">Level</span><span class="o">.</span><span class="na">DEBUG</span><span class="o">,</span> <span class="n">ft</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(),</span> <span class="n">ft</span><span class="o">.</span><span class="na">getThrowable</span><span class="o">());</span>
@@ -438,7 +438,7 @@
 <p>首先，slf4j-api作为slf4j的接口类，使用在程序代码中，这个包提供了一个Logger类和LoggerFactory类，Logger类用来打日志，LoggerFactory类用来获取Logger；slf4j-log4j是连接slf4j和log4j的桥梁，怎么连接的呢？我们看看slf4j的LoggerFactory类的getLogger函数的源码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -480,7 +480,7 @@
 </span><span class="lnt">40
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
 </span><span class="cm"> * Return a logger named corresponding to the class passed as parameter, using
 </span><span class="cm"> * the statically bound {@link ILoggerFactory} instance.
 </span><span class="cm"> *
@@ -525,7 +525,7 @@
 </div><p>追踪到最后，发现LoggerFactory.getLogger()首先获取一个ILoggerFactory接口，然后使用该接口获取具体的Logger。获取ILoggerFactory的时候用到了一个StaticLoggerBinder类，仔细研究我们会发现StaticLoggerBinder这个类并不是slf4j-api这个包中的类，而是slf4j-log4j包中的类，这个类就是一个中间类，它用来将抽象的slf4j变成具体的log4j，也就是说具体要使用什么样的日志实现方案，就得靠这个StaticLoggerBinder类。再看看slf4j-log4j包种的这个StaticLoggerBinder类创建ILoggerFactory长什么样子：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -541,7 +541,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">final</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">final</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="o">;</span>
 <span class="kd">private</span> <span class="nf">StaticLoggerBinder</span><span class="o">()</span> <span class="o">{</span>
   <span class="n">loggerFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Log4jLoggerFactory</span><span class="o">();</span>
   <span class="k">try</span> <span class="o">{</span>
@@ -560,7 +560,7 @@
 </div><p>可以看到slf4j-log4j中的StaticLoggerBinder类创建的ILoggerFactory其实是一个 <strong>org.slf4j.impl.Log4jLoggerFactory</strong>，这个类的getLogger函数是这样的：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -578,7 +578,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Logger</span> <span class="nf">getLogger</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Logger</span> <span class="nf">getLogger</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
   <span class="n">Logger</span> <span class="n">slf4jLogger</span> <span class="o">=</span> <span class="n">loggerMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
   <span class="k">if</span> <span class="o">(</span><span class="n">slf4jLogger</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">return</span> <span class="n">slf4jLogger</span><span class="o">;</span>
@@ -605,7 +605,7 @@ slf4j-log4j12-1.6.1.jar - Log4J Adapter for SLF4J</p>
 <p>如果你正在使用<a href="http://javarevisited.blogspot.com/2011/08/increase-heap-size-maven-ant.html" target="_blank" rel="noopener noreferrer">Maven</a>来管理你的项目依赖，你可以只引入SLF4J JAR，然后maven会引入它所依赖的其它JAR包。为了使用Log4J和SLF4J，你可以在你项目的pom.xml中添加下列依赖：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -617,7 +617,7 @@ slf4j-log4j12-1.6.1.jar - Log4J Adapter for SLF4J</p>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
         <span class="nt">&lt;groupId&gt;</span>org.slf4j<span class="nt">&lt;/groupId&gt;</span>
         <span class="nt">&lt;artifactId&gt;</span>slf4j-log4j12<span class="nt">&lt;/artifactId&gt;</span>
         <span class="nt">&lt;version&gt;</span>1.6.1<span class="nt">&lt;/version&gt;</span>
@@ -669,8 +669,8 @@ slf4j-log4j12-1.6.1.jar - Log4J Adapter for SLF4J</p>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

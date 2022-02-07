@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录lombok常用注解及其使用方法的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/lombok-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/lombok-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-09-01T10:33:29&#43;08:00" />
-<meta property="article:modified_time" content="2021-09-01T10:33:29&#43;08:00" />
+<meta property="article:published_time" content="2021-09-01T10:33:29+08:00" />
+<meta property="article:modified_time" content="2021-09-01T10:33:29+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/lombok-note/featured-image.jpg"/>
@@ -172,14 +172,14 @@
             </div><div class="content" id="content"><h2 id="以下类为例">以下类为例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
     <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
     <span class="n">List</span> <span class="n">list</span><span class="o">;</span>
@@ -197,13 +197,13 @@
 <p>使用builder模式创建对象</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//创建新的对象
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//创建新的对象
 </span><span class="c1"></span><span class="n">User</span> <span class="n">aaa</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">id</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">name</span><span class="o">(</span><span class="s">&#34;aaa&#34;</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
 <span class="c1">//修改原有对象的属性值;要求实体上添加@Builder(toBuilder=true)
 </span><span class="c1"></span><span class="n">aaa</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="na">toBuilder</span><span class="o">().</span><span class="na">id</span><span class="o">(</span><span class="n">2</span><span class="o">).</span><span class="na">name</span><span class="o">(</span><span class="err">&#34;</span><span class="n">bbb</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
@@ -213,20 +213,20 @@
 <p>可以给集合更加方便的添加多条数据</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@Singular</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;list&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@Singular</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;list&#34;</span><span class="o">)</span>
     <span class="n">List</span> <span class="n">list</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"> <span class="n">User</span> <span class="n">aaa</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">id</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">name</span><span class="o">(</span><span class="s">&#34;aaa&#34;</span><span class="o">).</span><span class="na">list</span><span class="o">(</span><span class="s">&#34;aaa&#34;</span><span class="o">).</span><span class="na">list</span><span class="o">(</span><span class="s">&#34;djsij&#34;</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="n">User</span> <span class="n">aaa</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">id</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">name</span><span class="o">(</span><span class="s">&#34;aaa&#34;</span><span class="o">).</span><span class="na">list</span><span class="o">(</span><span class="s">&#34;aaa&#34;</span><span class="o">).</span><span class="na">list</span><span class="o">(</span><span class="s">&#34;djsij&#34;</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><a href="https://blog.csdn.net/weixin_41540822/article/details/86606562" target="_blank" rel="noopener noreferrer">参考</a></p>
@@ -240,14 +240,14 @@
 <h2 id="accessorschain--true使用链式创建">@Accessors(chain = true)：使用链式创建</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//添加注解
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//添加注解
 </span><span class="c1"></span><span class="nd">@Data</span>
 <span class="nd">@Accessors</span><span class="o">(</span><span class="n">chain</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
 <span class="c1">//使用方法
@@ -258,7 +258,7 @@
 <p>@Sychronized 是一个处理线程安全问题的annotation， 他的使用方法和关键字 synchronized比较类似，但是有一些不同点就是，关键字synchronized是锁定当前对象（this指针） ， 而@Synchronized则会锁定一个private的常量。如果当前类中没有这个常量，就会自动生成一个</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -273,7 +273,7 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@Synchronized</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@Synchronized</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(){</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hello&#34;</span><span class="o">);</span>
     <span class="o">}</span>
@@ -291,7 +291,7 @@
 </div><p>以下是它生成的方法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -314,7 +314,7 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Object</span> <span class="n">$LOCK</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Object</span> <span class="n">$LOCK</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
 <span class="kd">private</span> <span class="kd">final</span> <span class="n">Object</span> <span class="n">$lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
 <span class="kd">private</span> <span class="kd">final</span> <span class="n">Object</span> <span class="n">readLock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>
 
@@ -340,7 +340,7 @@
 </div><p>@SneakyThrows让你的代码拥有try&hellip;.catch包裹</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -348,7 +348,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SneakyThrows</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SneakyThrows</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">throwException</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">String</span> <span class="n">str</span>  <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
     <span class="n">String</span><span class="o">[]</span> <span class="n">split</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">);</span>
@@ -359,7 +359,7 @@
 </div><p>实际上</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -372,7 +372,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="nf">SneakyThrowsTest</span><span class="o">()</span> <span class="o">{}</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="nf">SneakyThrowsTest</span><span class="o">()</span> <span class="o">{}</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">throwException</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">try</span> <span class="o">{</span>
@@ -390,7 +390,7 @@
 <p>使用前：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -416,7 +416,7 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cleanup01</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cleanup01</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
     <span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="n">0</span><span class="o">]);</span>
     <span class="k">try</span> <span class="o">{</span>
@@ -445,7 +445,7 @@
 </div><p>使用后：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -459,7 +459,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cleanup01</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cleanup01</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
     <span class="nd">@Cleanup</span> <span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="n">0</span><span class="o">]);</span>
     <span class="nd">@Cleanup</span> <span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="n">1</span><span class="o">]);</span>
@@ -496,12 +496,12 @@ java中我们常见的2类异常。
 <p>但是现实，往往事与愿违。大部分情况下的异常，我们都是一路往外抛了事。（强制处理我也处理不了啊！臣妾做不到）所以渐渐的java程序员处理Exception的常见手段就是外面包一层RuntimeException，接着往上丢。这种解决思想尤其在Spring中到处出现。参见《Spring in Action》</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">try</span><span class="o">{}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">try</span><span class="o">{}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
 <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></td></tr></table>
@@ -510,7 +510,7 @@ java中我们常见的2类异常。
 使用注解后不需要担心Exception的处理</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -525,7 +525,7 @@ java中我们常见的2类异常。
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">lombok.SneakyThrows</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">lombok.SneakyThrows</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SneakyThrowsExample</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
   <span class="nd">@SneakyThrows</span><span class="o">(</span><span class="n">UnsupportedEncodingException</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
@@ -543,7 +543,7 @@ java中我们常见的2类异常。
 </div><p>真正生成的代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -564,7 +564,7 @@ java中我们常见的2类异常。
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">lombok.Lombok</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">lombok.Lombok</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SneakyThrowsExample</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
   <span class="kd">public</span> <span class="n">String</span> <span class="nf">utf8ToString</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span><span class="o">)</span> <span class="o">{</span>
@@ -589,7 +589,7 @@ java中我们常见的2类异常。
 <p>显然魔法 藏在<code>Lombok.sneakyThrow(t);</code>中。可能大家都会以为这个方法就是new RuntimeException()之类的。然而事实并非如此。阅读代码可以看出整个方法其实最核心的逻辑是<code>throw (T)t;</code>，利用泛型将我们传入的Throwable强转为RuntimeException。虽然事实上我们不是RuntimeException。但是没关系。因为JVM并不关心这个。泛型最后存储为字节码时并没有泛型的信息。这样写只是为了骗过javac编译器。源码中注释有解释。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -599,7 +599,7 @@ java中我们常见的2类异常。
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">RuntimeException</span> <span class="nf">sneakyThrow</span><span class="o">(</span><span class="n">Throwable</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="n">RuntimeException</span> <span class="nf">sneakyThrow</span><span class="o">(</span><span class="n">Throwable</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">t</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">NullPointerException</span><span class="o">(</span><span class="s">&#34;t&#34;</span><span class="o">);</span>
         <span class="k">return</span> <span class="n">Lombok</span><span class="o">.&lt;</span><span class="n">RuntimeException</span><span class="o">&gt;</span><span class="n">sneakyThrow0</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
     <span class="o">}</span>
@@ -641,8 +641,8 @@ java中我们常见的2类异常。
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

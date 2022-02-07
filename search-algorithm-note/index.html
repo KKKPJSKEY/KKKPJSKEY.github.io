@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录查找算法和对应的数据结构的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/search-algorithm-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/search-algorithm-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-10-11T09:28:27&#43;08:00" />
-<meta property="article:modified_time" content="2021-10-14T11:47:40&#43;08:00" />
+<meta property="article:published_time" content="2021-10-11T09:28:27+08:00" />
+<meta property="article:modified_time" content="2021-10-14T11:47:40+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/search-algorithm-note/featured-image.jpg"/>
@@ -498,7 +498,7 @@
 <p>大致求next数组的代码：注意这里是设置最开始是-1和0，也可以设置0，1</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -511,7 +511,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">kmp</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">match</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">pattern</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">kmp</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">match</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">pattern</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">posP</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">posM</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lenM</span> <span class="o">=</span> <span class="n">match</span><span class="p">.</span><span class="n">length</span><span class="p">(),</span> <span class="n">lenP</span> <span class="o">=</span> <span class="n">pattern</span><span class="p">.</span><span class="n">length</span><span class="p">();</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">posP</span> <span class="o">&lt;</span> <span class="n">lenP</span> <span class="o">&amp;&amp;</span> <span class="n">posM</span> <span class="o">&lt;</span> <span class="n">lenM</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">posP</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">pattern</span><span class="p">[</span><span class="n">posP</span><span class="p">]</span> <span class="o">==</span> <span class="n">match</span><span class="p">[</span><span class="n">posM</span><span class="p">])</span> <span class="p">{</span>
@@ -567,7 +567,7 @@
 <h4 id="代码">代码</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -579,7 +579,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Sequential_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Sequential_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
@@ -594,7 +594,7 @@
 </div><h4 id="顺序表查找代码优化">顺序表查找代码优化</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -606,7 +606,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Sequential_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Sequential_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
@@ -621,7 +621,7 @@
 </div><p>或</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -632,7 +632,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Sequential_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Sequential_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
@@ -661,7 +661,7 @@
 <h5 id="代码-1">代码</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -680,7 +680,7 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Binary_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Binary_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">mid</span><span class="p">;</span>
     <span class="n">low</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -709,7 +709,7 @@
 <h5 id="代码-2">代码</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -728,7 +728,7 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Binary_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Binary_search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">mid</span><span class="p">;</span>
     <span class="n">low</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -753,7 +753,7 @@
 <h5 id="代码-3">代码</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -785,7 +785,7 @@
 </span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Fibonacci_Search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Fibonacci_Search</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span>
     <span class="n">low</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -918,7 +918,7 @@
 <h4 id="二叉排序树查找操作代码">二叉排序树查找操作代码</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -940,7 +940,7 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">BiTNode</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">BiTNode</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">data</span><span class="p">;</span>
     <span class="k">struct</span> <span class="nc">BiTNode</span> <span class="o">*</span><span class="n">lchild</span><span class="p">,</span> <span class="o">*</span><span class="n">rchild</span><span class="p">;</span>
@@ -966,7 +966,7 @@
 <p>二叉排序树插入操作代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -987,7 +987,7 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">Status</span> <span class="nx">InsertBST</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">T</span><span class="p">,</span> <span class="nx">int</span> <span class="nx">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">Status</span> <span class="nx">InsertBST</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">T</span><span class="p">,</span> <span class="nx">int</span> <span class="nx">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="nx">BiTree</span> <span class="nx">p</span><span class="p">,</span> <span class="nx">s</span><span class="p">;</span>
     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">SearchBST</span><span class="p">(</span><span class="o">*</span><span class="nx">T</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">p</span><span class="p">)){</span>
@@ -1015,7 +1015,7 @@
 <p>创建二叉排序树代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1028,7 +1028,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">CreateBST</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">CreateBST</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">62</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">93</span><span class="p">};</span>
@@ -1045,7 +1045,7 @@
 <h5 id="代码-4">代码</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1074,7 +1074,7 @@
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">Status</span> <span class="nx">Delete</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">Status</span> <span class="nx">Delete</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="nx">BiTree</span> <span class="nx">q</span><span class="p">,</span> <span class="nx">s</span><span class="p">;</span>
     <span class="k">if</span><span class="p">((</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">rchild</span> <span class="o">==</span> <span class="k">NULL</span><span class="p">){</span>
@@ -1106,7 +1106,7 @@
 </div><p>二叉排序树删除结点代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1122,7 +1122,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">Status</span> <span class="n">DeleteBST</span><span class="p">(</span><span class="n">BiTree</span> <span class="p">*</span><span class="n">T</span><span class="p">,</span> <span class="n">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="n">Status</span> <span class="n">DeleteBST</span><span class="p">(</span><span class="n">BiTree</span> <span class="p">*</span><span class="n">T</span><span class="p">,</span> <span class="n">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span><span class="p">(!*</span><span class="n">T</span><span class="p">){</span>
         <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
@@ -1256,7 +1256,7 @@
 <p>树的结点结构</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1264,7 +1264,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">BiTNode</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">BiTNode</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">data</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">bf</span><span class="p">;</span>     <span class="c1">// 结点的平衡因子
@@ -1275,7 +1275,7 @@
 </div><p>右旋转操作代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1285,7 +1285,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">void</span> <span class="nx">R_Rotate</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">void</span> <span class="nx">R_Rotate</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="nx">BiTree</span> <span class="nx">L</span><span class="p">;</span>
     <span class="nx">L</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">lchild</span><span class="p">;</span>   <span class="c1">// L指向p的左子树根结点
@@ -1298,7 +1298,7 @@
 </div><p>左旋操作代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1308,7 +1308,7 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">void</span> <span class="nx">L_Rotate</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">void</span> <span class="nx">L_Rotate</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">p</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="nx">BiTree</span> <span class="nx">R</span><span class="p">;</span>
     <span class="nx">R</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="nx">p</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">rchild</span><span class="p">;</span>   <span class="c1">// R指向p的右子树根结点
@@ -1327,7 +1327,7 @@
 <h6 id="代码-5">代码</h6>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1361,7 +1361,7 @@
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">#define LH +1;      // 左高
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="c1">#define LH +1;      // 左高
 </span><span class="c1">#define EH 0;       // 等高
 </span><span class="c1">#define RH -1;      // 右高
 </span><span class="c1"></span><span class="nx">void</span> <span class="nx">LeftBalance</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">T</span><span class="p">)</span>
@@ -1436,7 +1436,7 @@
 <h6 id="代码-6">代码</h6>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1496,7 +1496,7 @@
 </span><span class="lnt">58
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">Status</span> <span class="nx">InsertAVL</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">T</span><span class="p">,</span> <span class="nx">int</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">Status</span> <span class="o">*</span><span class="nx">taller</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">Status</span> <span class="nx">InsertAVL</span><span class="p">(</span><span class="nx">BiTree</span> <span class="o">*</span><span class="nx">T</span><span class="p">,</span> <span class="nx">int</span> <span class="nx">e</span><span class="p">,</span> <span class="nx">Status</span> <span class="o">*</span><span class="nx">taller</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">T</span><span class="p">){</span>
         <span class="o">*</span><span class="nx">T</span> <span class="o">=</span> <span class="p">(</span><span class="nx">BiTree</span><span class="p">)</span><span class="nx">malloc</span><span class="p">(</span><span class="nx">sizeof</span><span class="p">(</span><span class="nx">BiTNode</span><span class="p">));</span>
@@ -2044,7 +2044,7 @@
 <p>散列表结构</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -2056,7 +2056,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#define SUCCESS 1
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#define SUCCESS 1
 </span><span class="cp">#define UNSUCCESS 0
 </span><span class="cp">#define HASHSIZE 12
 </span><span class="cp">#define NULLKEY -32768
@@ -2071,7 +2071,7 @@
 </div><p>散列表初始化</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -2084,7 +2084,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Status</span> <span class="nf">InitHashTable</span><span class="p">(</span><span class="n">HashTable</span> <span class="o">*</span><span class="n">H</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Status</span> <span class="nf">InitHashTable</span><span class="p">(</span><span class="n">HashTable</span> <span class="o">*</span><span class="n">H</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">HASHSIZE</span><span class="p">;</span>
@@ -2100,13 +2100,13 @@
 </div><p>散列函数</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Hash</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">Hash</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="n">key</span> <span class="o">%</span> <span class="n">m</span><span class="p">;</span>
 <span class="p">}</span>
@@ -2115,7 +2115,7 @@
 </div><p>插入操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -2124,7 +2124,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">InsertHash</span><span class="p">(</span><span class="n">HashTable</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">InsertHash</span><span class="p">(</span><span class="n">HashTable</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">Hash</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>       <span class="c1">// 求散列地址
 </span><span class="c1"></span>    <span class="k">while</span><span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">!=</span> <span class="n">NULLKEY</span><span class="p">)</span>
@@ -2136,7 +2136,7 @@
 </div><p>查询操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -2150,7 +2150,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">SearchHash</span><span class="p">(</span><span class="n">HashTable</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">SearchHash</span><span class="p">(</span><span class="n">HashTable</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="kt">int</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">Hash</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
     <span class="k">while</span><span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">!=</span> <span class="n">key</span><span class="p">){</span>
@@ -2168,13 +2168,13 @@
 循环回到原点，我不理解这点。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">if</span><span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">!=</span> <span class="n">key</span>  <span class="o">||</span> <span class="n">addr</span> <span class="o">==</span> <span class="n">Hash</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+<pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">if</span><span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">elem</span><span class="p">[</span><span class="n">addr</span><span class="p">]</span> <span class="o">!=</span> <span class="n">key</span>  <span class="o">||</span> <span class="n">addr</span> <span class="o">==</span> <span class="n">Hash</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="n">UNSUCCESS</span><span class="p">;</span>
 <span class="p">}</span>
@@ -2233,8 +2233,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

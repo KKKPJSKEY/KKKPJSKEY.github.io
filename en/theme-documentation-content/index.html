@@ -9,8 +9,8 @@
 <meta property="og:description" content="Find out how to create and organize your content quickly and intuitively in CodeIT theme." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/en/theme-documentation-content/" /><meta property="og:image" content="https://kkkpjskey.github.io/en/theme-documentation-content/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-03-05T15:58:26&#43;08:00" />
-<meta property="article:modified_time" content="2020-03-05T15:58:26&#43;08:00" /><meta property="og:site_name" content="KKKPJSKEY&#39;s Case Archives" />
+<meta property="article:published_time" content="2020-03-05T15:58:26+08:00" />
+<meta property="article:modified_time" content="2020-03-05T15:58:26+08:00" /><meta property="og:site_name" content="KKKPJSKEY&#39;s Case Archives" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/en/theme-documentation-content/featured-image.jpg"/>
@@ -213,7 +213,7 @@ It is necessary only if the front matters and the <code>page</code> part in your
 <p>Here is a front matter example:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -276,7 +276,7 @@ It is necessary only if the front matters and the <code>page</code> part in your
 </span><span class="lnt">61
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nn">---</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nn">---</span><span class="w">
 </span><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;My First Post&#34;</span><span class="w">
 </span><span class="w"></span><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
 </span><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="ld">2020-03-04T15:58:26</span><span class="m">+08</span><span class="p">:</span><span class="m">00</span><span class="w">
@@ -444,14 +444,14 @@ It is necessary only if the front matters and the <code>page</code> part in your
 it is not necessary to set the parameter <code>featuredImage</code> or <code>featuredImagePreview</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">resources</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">resources</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">featured-image</span><span class="w">
 </span><span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l">featured-image.jpg</span><span class="w">
 </span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">featured-image-preview</span><span class="w">
@@ -463,14 +463,14 @@ it is not necessary to set the parameter <code>featuredImage</code> or <code>fea
     </div>
 <h2 id="3-content-summaries">3 Content Summaries</h2>
 <p><strong>CodeIT</strong> theme uses the summary of the content to display abstract information in the home page. Hugo can generate summaries of your content.</p>
-<p><figure><a class="lightgallery" href="summary.png" title="Summary Preview" data-thumbnail="summary.png" data-sub-html="<h2>Summary Preview</h2><p>Summary Preview</p>">
+<p><figure><a class="lightgallery" href="/en/theme-documentation-content/summary.png" title="Summary Preview" data-thumbnail="/en/theme-documentation-content/summary.png" data-sub-html="<h2>Summary Preview</h2><p>Summary Preview</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
             data-src="summary.png"
-            data-srcset="summary.png, summary.png 1.5x, summary.png 2x"
+            data-srcset="/en/theme-documentation-content/summary.png, summary.png 1.5x, /en/theme-documentation-content/summary.png 2x"
             data-sizes="auto"
-            alt="summary.png" />
+            alt="/en/theme-documentation-content/summary.png" />
     </a><figcaption class="image-caption">Summary Preview</figcaption>
     </figure></p>
 <h3 id="automatic-summary-splitting">Automatic Summary Splitting</h3>
@@ -531,12 +531,12 @@ and the property <code>math: true</code> of the article front matter to enable t
 <p>The default block delimiters are <code>$$</code>/<code>$$</code> and <code>\\[</code>/<code>\\]</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">$$ c = \pm\sqrt{a^2 + b^2} $$
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">$$ c = \pm\sqrt{a^2 + b^2} $$
 
 \\[ f(x)=\int_{-\infty}^{\infty} \hat{f}(\xi) e^{2 \pi i \xi x} d \xi \\]
 </code></pre></td></tr></table>
@@ -548,10 +548,10 @@ and the property <code>math: true</code> of the article front matter to enable t
 <p>The default inline delimiters are <code>$</code>/<code>$</code> and <code>\\(</code>/<code>\\)</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">$ c = \pm\sqrt{a^2 + b^2} $ and \\( f(x)=\int\_{-\infty}^{\infty} \hat{f}(\xi) e^{2 \pi i \xi x} d \xi \\)
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">$ c = \pm\sqrt{a^2 + b^2} $ and \\( f(x)=\int\_{-\infty}^{\infty} \hat{f}(\xi) e^{2 \pi i \xi x} d \xi \\)
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -575,12 +575,12 @@ and the property <code>math: true</code> of the article front matter to enable t
 <p>Set the property <code>mhchem = true</code> under <code>[params.math]</code> in your <a href="../theme-documentation-basics#site-configuration" rel="">site configuration</a> to enable mhchem.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">$$ \ce{CO2 + C -&gt; 2 CO} $$
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">$$ \ce{CO2 + C -&gt; 2 CO} $$
 
 $$ \ce{Hg^2+ -&gt;[I-] HgI2 -&gt;[I-] [Hg^{II}I4]^2-} $$
 </code></pre></td></tr></table>
@@ -592,10 +592,10 @@ $$ \ce{Hg^2+ -&gt;[I-] HgI2 -&gt;[I-] [Hg^{II}I4]^2-} $$
 <p>An extended Markdown syntax for <strong>ruby annotation</strong> is supported in <strong>CodeIT</strong> theme:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Hugo]^(An open-source static site generator)
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[Hugo]^(An open-source static site generator)
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -604,12 +604,12 @@ $$ \ce{Hg^2+ -&gt;[I-] HgI2 -&gt;[I-] [Hg^{II}I4]^2-} $$
 <p>An extended Markdown syntax for <strong>fraction</strong> is supported in <strong>CodeIT</strong> theme:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Light]/[Dark]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[Light]/[Dark]
 
 [99]/[100]
 </code></pre></td></tr></table>
@@ -623,12 +623,12 @@ You can easily use these icons in your articles.</p>
 <p>Get the <code>class</code> of icons you wanted from the <a href="https://fontawesome.com/icons?d=gallery" target="_blank" rel="noopener noreferrer">Font Awesome website</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Gone camping! :(fas fa-campground fa-fw): Be back soon.
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">Gone camping! :(fas fa-campground fa-fw): Be back soon.
 
 That is so funny! :(far fa-grin-tears):
 </code></pre></td></tr></table>
@@ -642,19 +642,19 @@ your content will conflict with basic or extended Markdown syntax, and it is ine
 <p>The escape character syntax can help you build the content you wanted:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{?X} -&gt; X
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{?X} -&gt; X
 </code></pre></td></tr></table>
 </div>
 </div><p>For example, two <code>:</code> will enable emoji syntax, which is not the behavior you want. The escape character syntax is like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{?:}joy:
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{?:}joy:
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -670,10 +670,10 @@ your content will conflict with basic or extended Markdown syntax, and it is ine
 <p>Another example is:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[link{?]}(#escape-character)
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[link{?]}(#escape-character)
 </code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -709,8 +709,8 @@ your content will conflict with basic or extended Markdown syntax, and it is ine
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> | Theme - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

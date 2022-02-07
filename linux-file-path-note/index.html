@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Linux 文件与目录管理教程的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/linux-file-path-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/linux-file-path-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-11-27T10:22:45&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-27T14:40:28&#43;08:00" />
+<meta property="article:published_time" content="2020-11-27T10:22:45+08:00" />
+<meta property="article:modified_time" content="2021-08-27T14:40:28+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/linux-file-path-note/featured-image.jpg"/>
@@ -202,12 +202,12 @@
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># ls [-aAdfFhilnrRSt] 目录名称</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># ls [-aAdfFhilnrRSt] 目录名称</span>
 <span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># ls [--color={never,auto,always}] 目录名称</span>
 <span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># ls [--full-time] 目录名称</span>
 </code></pre></td></tr></table>
@@ -221,10 +221,10 @@
 <p>将家目录下的所有文件列出来(含属性与隐藏档)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># ls -al ~</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># ls -al ~</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="cd-切换目录">cd (切换目录)</h3>
@@ -232,7 +232,7 @@
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -249,7 +249,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"> <span class="nb">cd</span> <span class="o">[</span>相对路径或绝对路径<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> <span class="nb">cd</span> <span class="o">[</span>相对路径或绝对路径<span class="o">]</span>
 <span class="c1">#使用 mkdir 命令创建 runoob 目录</span>
 <span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># mkdir runoob</span>
 
@@ -271,10 +271,10 @@
 <p>pwd 是 <strong>Print Working Directory</strong> 的缩写，也就是显示目前所在目录的命令。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># pwd [-P]</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># pwd [-P]</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>选项与参数：</p>
@@ -284,18 +284,18 @@
 <p>实例：单纯显示出目前的工作目录：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># pwd</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># pwd</span>
 /root   &lt;<span class="o">==</span> 显示出目录啦～
 </code></pre></td></tr></table>
 </div>
 </div><p>实例显示出实际的工作目录，而非连结档本身的目录名而已。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -306,7 +306,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cd /var/mail   &lt;==注意，/var/mail是一个连结档</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cd /var/mail   &lt;==注意，/var/mail是一个连结档</span>
 <span class="o">[</span>root@www mail<span class="o">]</span><span class="c1"># pwd</span>
 /var/mail         &lt;<span class="o">==</span>列出目前的工作目录
 <span class="o">[</span>root@www mail<span class="o">]</span><span class="c1"># pwd -P</span>
@@ -322,10 +322,10 @@ lrwxrwxrwx <span class="m">1</span> root root <span class="m">10</span> Sep  <sp
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">mkdir <span class="o">[</span>-mp<span class="o">]</span> 目录名称
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">mkdir <span class="o">[</span>-mp<span class="o">]</span> 目录名称
 </code></pre></td></tr></table>
 </div>
 </div><p>选项与参数：</p>
@@ -336,7 +336,7 @@ lrwxrwxrwx <span class="m">1</span> root root <span class="m">10</span> Sep  <sp
 <p>实例：请到/tmp底下尝试创建数个新目录看看：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -344,7 +344,7 @@ lrwxrwxrwx <span class="m">1</span> root root <span class="m">10</span> Sep  <sp
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cd /tmp</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cd /tmp</span>
 <span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># mkdir test    &lt;==创建一名为 test 的新目录</span>
 <span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># mkdir test1/test2/test3/test4</span>
 mkdir: cannot create directory <span class="sb">`</span>test1/test2/test3/test4<span class="err">&#39;</span>: 
@@ -356,14 +356,14 @@ No such file or directory       &lt;<span class="o">==</span> 没办法直接创
 <p>实例：创建权限为 <strong>rwx&ndash;x&ndash;x</strong> 的目录。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># mkdir -m 711 test2</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># mkdir -m 711 test2</span>
 <span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># ls -l</span>
 drwxr-xr-x  <span class="m">3</span> root  root <span class="m">4096</span> Jul <span class="m">18</span> 12:50 <span class="nb">test</span>
 drwxr-xr-x  <span class="m">3</span> root  root <span class="m">4096</span> Jul <span class="m">18</span> 12:53 test1
@@ -376,10 +376,10 @@ drwx--x--x  <span class="m">2</span> root  root <span class="m">4096</span> Jul 
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"> rmdir <span class="o">[</span>-p<span class="o">]</span> 目录名称
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"> rmdir <span class="o">[</span>-p<span class="o">]</span> 目录名称
 </code></pre></td></tr></table>
 </div>
 </div><p>选项与参数：</p>
@@ -389,16 +389,16 @@ drwx--x--x  <span class="m">2</span> root  root <span class="m">4096</span> Jul 
 <p>删除 runoob 目录</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># rmdir runoob/</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># rmdir runoob/</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>将 mkdir 实例中创建的目录(/tmp 底下)删除掉！</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -410,7 +410,7 @@ drwx--x--x  <span class="m">2</span> root  root <span class="m">4096</span> Jul 
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># ls -l   &lt;==看看有多少目录存在？</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># ls -l   &lt;==看看有多少目录存在？</span>
 drwxr-xr-x  <span class="m">3</span> root  root <span class="m">4096</span> Jul <span class="m">18</span> 12:50 <span class="nb">test</span>
 drwxr-xr-x  <span class="m">3</span> root  root <span class="m">4096</span> Jul <span class="m">18</span> 12:53 test1
 drwx--x--x  <span class="m">2</span> root  root <span class="m">4096</span> Jul <span class="m">18</span> 12:54 test2
@@ -429,11 +429,11 @@ drwx--x--x  <span class="m">2</span> root  root <span class="m">4096</span> Jul 
 <p>语法:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cp [-adfilprsu] 来源档(source) 目标档(destination)</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cp [-adfilprsu] 来源档(source) 目标档(destination)</span>
 <span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cp [options] source1 source2 source3 .... directory</span>
 </code></pre></td></tr></table>
 </div>
@@ -452,12 +452,12 @@ drwx--x--x  <span class="m">2</span> root  root <span class="m">4096</span> Jul 
 <p>用 root 身份，将 root 目录下的 .bashrc 复制到 /tmp 下，并命名为 bashrc</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cp ~/.bashrc /tmp/bashrc</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cp ~/.bashrc /tmp/bashrc</span>
 <span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cp -i ~/.bashrc /tmp/bashrc</span>
 cp: overwrite <span class="sb">`</span>/tmp/bashrc<span class="err">&#39;</span>? n  &lt;<span class="o">==</span>n不覆盖，y为覆盖
 </code></pre></td></tr></table>
@@ -466,10 +466,10 @@ cp: overwrite <span class="sb">`</span>/tmp/bashrc<span class="err">&#39;</span>
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"> rm <span class="o">[</span>-fir<span class="o">]</span> 文件或目录
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"> rm <span class="o">[</span>-fir<span class="o">]</span> 文件或目录
 </code></pre></td></tr></table>
 </div>
 </div><p>选项与参数：</p>
@@ -481,13 +481,13 @@ cp: overwrite <span class="sb">`</span>/tmp/bashrc<span class="err">&#39;</span>
 <p>将刚刚在 cp 的实例中创建的 bashrc 删除掉！</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># rm -i bashrc</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># rm -i bashrc</span>
 rm: remove regular file <span class="sb">`</span>bashrc<span class="err">&#39;</span>? y<span class="se">\;</span>
 <span class="c1">#递归删除文件夹和文件，没有报错信息</span>
 <span class="o">[</span>root@www tmp<span class="o">]</span> rm -rf <span class="o">[</span>目录名字<span class="o">]</span>
@@ -498,11 +498,11 @@ rm: remove regular file <span class="sb">`</span>bashrc<span class="err">&#39;</
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># mv [-fiu] source destination</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># mv [-fiu] source destination</span>
 <span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># mv [options] source1 source2 source3 .... directory</span>
 </code></pre></td></tr></table>
 </div>
@@ -515,13 +515,13 @@ rm: remove regular file <span class="sb">`</span>bashrc<span class="err">&#39;</
 <p>复制一文件，创建一目录，将文件移动到目录中</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cd /tmp</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cd /tmp</span>
 <span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># cp ~/.bashrc bashrc</span>
 <span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># mkdir mvtest</span>
 <span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># mv bashrc mvtest</span>
@@ -531,12 +531,12 @@ rm: remove regular file <span class="sb">`</span>bashrc<span class="err">&#39;</
 <p>将刚刚的目录名称更名为 mvtest2</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># mv mvtest mvtest2</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># mv mvtest mvtest2</span>
 <span class="c1"># 移动某个目录下所有到另一个目录下</span>
 <span class="o">[</span>root@www tmp<span class="o">]</span><span class="c1"># mv /xxx/* /xxxx/</span>
 </code></pre></td></tr></table>
@@ -559,10 +559,10 @@ rm: remove regular file <span class="sb">`</span>bashrc<span class="err">&#39;</
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">cat <span class="o">[</span>-AbEnTv<span class="o">]</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">cat <span class="o">[</span>-AbEnTv<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>选项与参数：</p>
@@ -577,12 +577,12 @@ rm: remove regular file <span class="sb">`</span>bashrc<span class="err">&#39;</
 <p>检看 /etc/issue 这个文件的内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cat /etc/issue</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># cat /etc/issue</span>
 CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 Kernel <span class="se">\r</span> on an <span class="se">\m</span>
 </code></pre></td></tr></table>
@@ -591,13 +591,13 @@ Kernel <span class="se">\r</span> on an <span class="se">\m</span>
 <p>tac与cat命令刚好相反，文件内容从最后一行开始显示，可以看出 tac 是 cat 的倒着写！如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># tac /etc/issue</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># tac /etc/issue</span>
 
 Kernel <span class="se">\r</span> on an <span class="se">\m</span>
 CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
@@ -608,10 +608,10 @@ CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">nl <span class="o">[</span>-bnw<span class="o">]</span> 文件
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">nl <span class="o">[</span>-bnw<span class="o">]</span> 文件
 </code></pre></td></tr></table>
 </div>
 </div><p>选项与参数：</p>
@@ -628,12 +628,12 @@ CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 <p>实例一：用 nl 列出 /etc/issue 的内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># nl /etc/issue</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># nl /etc/issue</span>
      <span class="m">1</span>  CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
      <span class="m">2</span>  Kernel <span class="se">\r</span> on an <span class="se">\m</span>
 </code></pre></td></tr></table>
@@ -642,7 +642,7 @@ CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 <p>一页一页翻动</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -652,7 +652,7 @@ CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># more /etc/man_db.config </span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># more /etc/man_db.config </span>
 <span class="c1">#</span>
 <span class="c1"># Generated automatically from man.conf.in by the</span>
 <span class="c1"># configure script.</span>
@@ -675,7 +675,7 @@ CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 <p>一页一页翻动，以下实例输出/etc/man.config文件的内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -685,7 +685,7 @@ CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># less /etc/man.config</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># less /etc/man.config</span>
 <span class="c1">#</span>
 <span class="c1"># Generated automatically from man.conf.in by the</span>
 <span class="c1"># configure script.</span>
@@ -711,10 +711,10 @@ CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">head <span class="o">[</span>-n number<span class="o">]</span> 文件 
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">head <span class="o">[</span>-n number<span class="o">]</span> 文件 
 </code></pre></td></tr></table>
 </div>
 </div><p>选项与参数：</p>
@@ -723,19 +723,19 @@ CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># head /etc/man.config</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># head /etc/man.config</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>默认的情况中，显示前面 10 行！若要显示前 20 行，就得要这样：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># head -n 20 /etc/man.config</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># head -n 20 /etc/man.config</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="tail从末尾查看文件">tail（从末尾查看文件）</h3>
@@ -743,12 +743,12 @@ CentOS release 6.4 <span class="o">(</span>Final<span class="o">)</span>
 <p>语法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">tail <span class="o">[</span>参数<span class="o">]</span> <span class="o">[</span>文件<span class="o">]</span>  
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">tail <span class="o">[</span>参数<span class="o">]</span> <span class="o">[</span>文件<span class="o">]</span>  
 <span class="c1"># 或者</span>
 tail <span class="o">[</span>-n number<span class="o">]</span> 文件 
 </code></pre></td></tr></table>
@@ -769,12 +769,12 @@ tail <span class="o">[</span>-n number<span class="o">]</span> 文件
 <p>​       <strong>tail -f filename</strong> 会把 filename 文件里的最尾部的内容显示在屏幕上，并且不断刷新，只要 filename 更新就可以看到最新的文件内容。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># tail /etc/man.config</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># tail /etc/man.config</span>
 <span class="c1"># 默认的情况中，显示最后的十行！若要显示最后的 20 行，就得要这样：</span>
 <span class="o">[</span>root@www ~<span class="o">]</span><span class="c1"># tail -n 20 /etc/man.config</span>
 </code></pre></td></tr></table>
@@ -783,44 +783,44 @@ tail <span class="o">[</span>-n number<span class="o">]</span> 文件
 <p>要显示 notes.log 文件的最后 10 行，请输入以下命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">tail notes.log         <span class="c1"># 默认显示最后 10 行</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">tail notes.log         <span class="c1"># 默认显示最后 10 行</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>要跟踪名为 notes.log 的文件的增长情况，请输入以下命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">tail -f notes.log
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">tail -f notes.log
 </code></pre></td></tr></table>
 </div>
 </div><p>此命令显示 notes.log 文件的最后 10 行。当将某些行添加至 notes.log 文件时，tail 命令会继续显示这些行。 显示一直继续，直到您按下（Ctrl-C）组合键停止显示。</p>
 <p>显示文件 notes.log 的内容，从第 20 行至文件末尾:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">tail -n +20 notes.log
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">tail -n +20 notes.log
 </code></pre></td></tr></table>
 </div>
 </div><p>显示文件 notes.log 的最后 10 个字符:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">tail -c <span class="m">10</span> notes.log
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">tail -c <span class="m">10</span> notes.log
 </code></pre></td></tr></table>
 </div>
 </div><p>其他示例</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -831,7 +831,7 @@ tail <span class="o">[</span>-n number<span class="o">]</span> 文件
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">tail -n <span class="m">100</span> /etc/cron  <span class="c1">#显示最后100行数据</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">tail -n <span class="m">100</span> /etc/cron  <span class="c1">#显示最后100行数据</span>
 tail -n -100 /etc/cron <span class="c1">#除了前99行不显示外，显示第100行到末尾行</span>
 <span class="c1">#---------------------------------------------------------------------</span>
 tail -n -5 /test001/text001 
@@ -845,11 +845,11 @@ tail -n +5 /test001/text001
 </div><h2 id="修改文件权限和群组">修改文件权限和群组</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">sudo chmod -R <span class="m">777</span> etc<span class="o">(</span>文件名<span class="p">|</span>文件夹名<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo chmod -R <span class="m">777</span> etc<span class="o">(</span>文件名<span class="p">|</span>文件夹名<span class="o">)</span>
 <span class="c1"># -R 要大写，代表递归作用，文件夹下所有子目录权限一致</span>
 </code></pre></td></tr></table>
 </div>
@@ -857,13 +857,13 @@ tail -n +5 /test001/text001
 <p>语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">  chown <span class="o">[</span>-R<span class="o">]</span>** 
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">  chown <span class="o">[</span>-R<span class="o">]</span>** 
   <span class="c1">#**账号名称**   **文件****/****目录</span>
   chown <span class="o">[</span>-R<span class="o">]</span>** 
   <span class="c1"># **账号名称**:**组群** **文件****/****目录**</span>
@@ -907,8 +907,8 @@ tail -n +5 /test001/text001
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

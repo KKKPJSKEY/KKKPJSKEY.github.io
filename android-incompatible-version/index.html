@@ -9,8 +9,8 @@
 <meta property="og:description" content="在AndroidStudio中使用Java开发Android应用-版本更替不兼容报各种错误的修正" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/android-incompatible-version/" /><meta property="og:image" content="https://kkkpjskey.github.io/android-incompatible-version/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-03T09:11:55&#43;08:00" />
-<meta property="article:modified_time" content="2021-09-06T16:56:09&#43;08:00" />
+<meta property="article:published_time" content="2021-03-03T09:11:55+08:00" />
+<meta property="article:modified_time" content="2021-09-06T16:56:09+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/android-incompatible-version/featured-image.jpg"/>
@@ -168,13 +168,13 @@
 <p>注意开发工具从28变为30以后即src目录下的bulid.grade文件中的buildTools版本改变</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">android</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">android</span> <span class="p">{</span>
     <span class="err">compileSdkVersion</span> <span class="err">28</span>
 	<span class="err">buildToolsVersion</span> <span class="nt">&#34;28.0.0&#34;</span>
 <span class="p">}</span>
@@ -182,13 +182,13 @@
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">android</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">android</span> <span class="p">{</span>
     <span class="err">compileSdkVersion</span> <span class="err">30</span>
 	<span class="err">buildToolsVersion</span> <span class="nt">&#34;30.0.3&#34;</span>
 <span class="p">}</span>
@@ -203,13 +203,13 @@
 原因：版本28（面向android pie及以下版本）是遗留支持库的最后一个版本，因此我们建议您在使用android q并继续前进时迁移到androidx库。IDE可以帮助您：重构&gt;迁移到AndroidX…，</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">dependencies</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">dependencies</span> <span class="p">{</span>
     <span class="err">implementation</span> <span class="err">&#39;com.android.support:cardview-v7:28.0.0&#39;</span>
 	<span class="err">implementation</span> <span class="err">&#39;com.android.support:recyclerview-v7:28.0.0&#39;</span>
 <span class="p">}</span>
@@ -217,7 +217,7 @@
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -225,11 +225,11 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">dependencies</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">dependencies</span> <span class="p">{</span>
     <span class="err">implementation</span> <span class="nt">&#34;androidx.cardview:cardview:1.0.0&#34;</span>
     <span class="err">implementation</span> <span class="s2">&#34;androidx.recyclerview:recyclerview:1.1.0&#34;</span>
-    <span class="err">//</span> <span class="err">For</span> <span class="err">control</span> <span class="err">over</span> <span class="err">item</span> <span class="err">selection</span> <span class="err">of</span> <span class="err">both</span> <span class="err">touch</span> <span class="err">and</span> <span class="err">mouse</span> <span class="err">driven</span> <span class="err">selection</span>
-    <span class="err">implementation</span> <span class="s2">&#34;androidx.recyclerview:recyclerview-selection:1.1.0&#34;</span>
+    <span class="c1">// For control over item selection of both touch and mouse driven selection
+</span><span class="c1"></span>    <span class="err">implementation</span> <span class="s2">&#34;androidx.recyclerview:recyclerview-selection:1.1.0&#34;</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -240,7 +240,7 @@
 <p>原来CardView</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -253,7 +253,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;android.support.v7.widget.CardView</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;android.support.v7.widget.CardView</span>
     <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
     <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
     <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
@@ -269,7 +269,7 @@
 </div><p>RecyclerView</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -277,7 +277,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">    <span class="nt">&lt;android.support.v7.widget.RecyclerView</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">    <span class="nt">&lt;android.support.v7.widget.RecyclerView</span>
         <span class="na">android:id=</span><span class="s">&#34;@+id/recyclerView&#34;</span>
         <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
         <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span><span class="nt">&gt;</span>
@@ -288,7 +288,7 @@
 </div><p>变为CardView‘</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -317,7 +317,7 @@
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;androidx.constraintlayout.widget.ConstraintLayout</span> 
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;androidx.constraintlayout.widget.ConstraintLayout</span> 
     <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
     <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
     <span class="na">xmlns:tools=</span><span class="s">&#34;http://schemas.android.com/tools&#34;</span>
@@ -349,7 +349,7 @@
 </div><p>RecyclerView&rsquo;</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -358,7 +358,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--    你的可能是这样的--&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--    你的可能是这样的--&gt;</span>
     <span class="nt">&lt;android.support.v7.widget.RecyclerView</span>
 <span class="err">&lt;!--</span>        <span class="err">这才是对的--</span><span class="nt">&gt;</span>
     <span class="nt">&lt;androidx.recyclerview.widget.RecyclerView</span>
@@ -370,12 +370,12 @@
 </div><h2 id="failed-to-find-build-tools-revision-2601">Failed to find Build Tools revision 26.0.1</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">Error:A problem occurred configuring project <span class="s1">&#39;:app&#39;</span>.
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Error:A problem occurred configuring project <span class="s1">&#39;:app&#39;</span>.
 
 <span class="se">\&gt;</span> Failed to find Build Tools revision 26.0.1
 </code></pre></td></tr></table>
@@ -432,20 +432,20 @@
 <p>老的Android工程导入as报错如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">10:36	Gradle sync failed: Could not find com.android.support:appcompat-v7:25.0.0.
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">10:36	Gradle sync failed: Could not find com.android.support:appcompat-v7:25.0.0.
 			Required by:
 			FuNongTong:app:unspecified <span class="o">(</span><span class="m">18</span> s <span class="m">207</span> ms<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>如果是gradle4.0及以下，增加maven { url &ldquo;<a href="https://maven.google.com">https://maven.google.com</a>&rdquo; }，如下：</p>
+</div><p>如果是gradle4.0及以下，增加maven { url &ldquo;<a href="https://maven.google.com" target="_blank" rel="noopener noreferrer">https://maven.google.com</a>&rdquo; }，如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -466,7 +466,7 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">buildscript</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">buildscript</span> <span class="p">{</span>
     <span class="err">repositories</span> <span class="err">{</span>
         <span class="err">jcenter()</span>
         <span class="err">maven</span> <span class="err">{</span> <span class="err">url</span> <span class="nt">&#34;https://maven.google.com&#34;</span> <span class="p">}</span>
@@ -474,9 +474,9 @@
     <span class="err">dependencies</span> <span class="p">{</span>
         <span class="err">classpath</span> <span class="err">&#39;com.android.tools.build:gradle:2.2.3&#39;</span>
  
-        <span class="err">//</span> <span class="err">NOTE:</span> <span class="err">Do</span> <span class="err">not</span> <span class="err">place</span> <span class="err">your</span> <span class="err">application</span> <span class="err">dependencies</span> <span class="err">here;</span> <span class="err">they</span> <span class="err">belong</span>
-        <span class="err">//</span> <span class="err">in</span> <span class="err">the</span> <span class="err">individual</span> <span class="err">module</span> <span class="err">build.gradle</span> <span class="err">files</span>
-    <span class="p">}</span>
+        <span class="c1">// NOTE: Do not place your application dependencies here; they belong
+</span><span class="c1"></span>        <span class="c1">// in the individual module build.gradle files
+</span><span class="c1"></span>    <span class="p">}</span>
 <span class="err">}</span>
  
 <span class="err">allprojects</span> <span class="p">{</span>
@@ -487,11 +487,11 @@
 <span class="err">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>如果是gradle4.0及以上，maven { url &ldquo;<a href="https://maven.google.com">https://maven.google.com</a>&rdquo; }替换为google()</p>
+</div><p>如果是gradle4.0及以上，maven { url &ldquo;<a href="https://maven.google.com" target="_blank" rel="noopener noreferrer">https://maven.google.com</a>&rdquo; }替换为google()</p>
 <p>如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -507,7 +507,7 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">buildscript</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">buildscript</span> <span class="p">{</span>
     <span class="err">repositories</span> <span class="err">{</span>
         <span class="err">jcenter()</span>
         <span class="err">google()</span>
@@ -548,7 +548,7 @@
 <p>改成上图所示的样子就可以正常打包了，另外我也把代码贴出来方便大家复制。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -565,16 +565,16 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"> <span class="err">//打包后应用名称</span>
-        <span class="err">applicationVariants.all</span> <span class="p">{</span> <span class="err">variant</span> <span class="err">-&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"> <span class="c1">//打包后应用名称
+</span><span class="c1"></span>        <span class="err">applicationVariants.all</span> <span class="p">{</span> <span class="err">variant</span> <span class="err">-&gt;</span>
             <span class="err">variant.outputs.all</span> <span class="err">{</span> <span class="err">output</span> <span class="err">-&gt;</span>
                 <span class="err">def</span> <span class="err">outputFile</span> <span class="err">=</span> <span class="err">output.outputFile</span>
                 <span class="err">def</span> <span class="err">fileName</span>
                 <span class="err">if</span> <span class="err">(outputFile</span> <span class="err">!=</span> <span class="err">null</span> <span class="err">&amp;&amp;</span> <span class="err">outputFile.name.endsWith(&#39;.apk&#39;))</span> <span class="err">{</span>
-                    <span class="err">if</span> <span class="err">(variant.buildType.name.equals(&#39;release&#39;))</span> <span class="err">{//如果是release包</span>
-                        <span class="err">fileName</span> <span class="err">=</span> <span class="nt">&#34;anjian_release_v${defaultConfig.versionName}.apk&#34;</span>
-                    <span class="p">}</span> <span class="err">else</span> <span class="err">if</span> <span class="err">(variant.buildType.name.equals(&#39;debug&#39;))</span> <span class="p">{</span><span class="err">//如果是debug包</span>
-                        <span class="err">fileName</span> <span class="err">=</span> <span class="nt">&#34;anjian_debug_v${defaultConfig.versionName}.apk&#34;</span>
+                    <span class="err">if</span> <span class="err">(variant.buildType.name.equals(&#39;release&#39;))</span> <span class="err">{</span><span class="c1">//如果是release包
+</span><span class="c1"></span>                        <span class="err">fileName</span> <span class="err">=</span> <span class="nt">&#34;anjian_release_v${defaultConfig.versionName}.apk&#34;</span>
+                    <span class="p">}</span> <span class="err">else</span> <span class="err">if</span> <span class="err">(variant.buildType.name.equals(&#39;debug&#39;))</span> <span class="p">{</span><span class="c1">//如果是debug包
+</span><span class="c1"></span>                        <span class="err">fileName</span> <span class="err">=</span> <span class="nt">&#34;anjian_debug_v${defaultConfig.versionName}.apk&#34;</span>
                     <span class="p">}</span>
                     <span class="err">outputFileName</span> <span class="err">=</span> <span class="err">fileName</span>
                 <span class="err">}</span>
@@ -585,15 +585,15 @@
 </div><h2 id="buildgradedependence随版本引用关键字改变">build.grade.dependence随版本引用关键字改变</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">//</span>    <span class="err">testCompile-&gt;testImplementation</span>
-<span class="err">//</span>    <span class="err">compile-&gt;implementation</span>
-<span class="err">//</span>    <span class="err">provided-&gt;compileOnly</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="c1">//    testCompile-&gt;testImplementation
+</span><span class="c1">//    compile-&gt;implementation
+</span><span class="c1">//    provided-&gt;compileOnly
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="errorandroid-apt-plugin-is-incompatible-with-the-android-gradle-plugin-please-use-annotationproce">Error:android-apt plugin is incompatible with the Android Gradle plugin. Please use &lsquo;annotationProce</h2>
 <p>AS从2.3.3升级到3.0后，项目没有任何改动就出现了这个错误，解决步骤如下：</p>
@@ -639,35 +639,35 @@
         title="10" /></p>
 <h2 id="更新gradle项目时报错gradle-sync-failed-unsupported-method-baseconfiggetapplicationidsuffix">更新Gradle项目时报错Gradle sync failed: Unsupported method: BaseConfig.getApplicationIdSuffix</h2>
 <p>查看Android Gradle 插件版本说明。
-<a href="https://developer.android.google.cn/studio/releases/gradle-plugin.html#updating-plugin">https://developer.android.google.cn/studio/releases/gradle-plugin.html#updating-plugin</a></p>
+<a href="https://developer.android.google.cn/studio/releases/gradle-plugin.html#updating-plugin" target="_blank" rel="noopener noreferrer">https://developer.android.google.cn/studio/releases/gradle-plugin.html#updating-plugin</a></p>
 <p>修改对应的项目根目录下的build.gradle的依赖（dependencies）下的gradle的build工具版本</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">dependencies</span> <span class="p">{</span><span class="err">classpath</span> <span class="nt">&#34;com.android.tools.build:gradle:4.1.3&#34;</span><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">dependencies</span> <span class="p">{</span><span class="err">classpath</span> <span class="nt">&#34;com.android.tools.build:gradle:4.1.3&#34;</span><span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>和项目根目录下的gradle文件夹中的wrapper文件夹中的build.gradle文件中的gradle版本</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">distributionUrl=https\://services.gradle.org/distributions/gradle</span><span class="mf">-6.5</span><span class="err">-bin.zip</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">distributionUrl=https\:</span><span class="c1">//services.gradle.org/distributions/gradle-6.5-bin.zip
+</span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>注意：第一个文件要在原来jcenter（）位置加上google（）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">repositories</span><span class="p">{</span> <span class="err">google()</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">repositories</span><span class="p">{</span> <span class="err">google()</span>
         	  <span class="err">jcenter()</span><span class="p">}</span>
 
 </code></pre></td></tr></table>
@@ -680,14 +680,14 @@ Searched in the following locations:</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">repositories {
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">repositories {
         google()
         maven{ url &#39;https://maven.aliyun.com/nexus/content/groups/public/&#39;}//加上这行
         //jcenter()
@@ -699,17 +699,17 @@ Searched in the following locations:</p>
 <p>如题修改gradle文件中版本问题报错如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">2020-06-22 13:43:21.205 14538-14538/com.gravty.everyday W/gravty.everyda: Accessing hidden method Landroid/graphics/FontFamily<span class="p">;</span>-&gt;<span class="o">()</span>V <span class="o">(</span>greylist-max-q, reflection, denied<span class="o">)</span> 2020-06-22 13:43:21.206 14538-14538/com.gravty.everyday E/TypefaceCompatApi26Impl: Unable to collect necessary methods <span class="k">for</span> class java.lang.NoSuchMethodException java.lang.NoSuchMethodException: android.graphics.FontFamily. <span class="o">[]</span> at java.lang.Class.getConstructor0<span class="o">(</span>Class.java:2332<span class="o">)</span> at java.lang.Class.getConstructor<span class="o">(</span>Class.java:1728<span class="o">)</span> at androidx.core.graphics.TypefaceCompatApi26Impl.obtainFontFamilyCtor<span class="o">(</span>TypefaceCompatApi26Impl.java:321<span class="o">)</span> at androidx.core.graphics.TypefaceCompatApi26Impl.<span class="o">(</span>TypefaceCompatApi26Impl.java:84<span class="o">)</span> at androidx.core.graphics.TypefaceCompatApi28Impl.<span class="o">(</span>TypefaceCompatApi28Impl.java:36<span class="o">)</span> at androidx.core.graphics.TypefaceCompat.<span class="o">(</span>TypefaceCompat.java:47<span class="o">)</span> at androidx.core.graphics.TypefaceCompat.findFromCache<span class="o">(</span>TypefaceCompat.java:76<span class="o">)</span> at androidx.core.content.res.ResourcesCompat.loadFont<span class="o">(</span>ResourcesCompat.java:393<span class="o">)</span> at androidx.core.content.res.ResourcesCompat.loadFont<span class="o">(</span>ResourcesCompat.java:361<span class="o">)</span> at androidx.core.content.res.ResourcesCompat.getFont<span class="o">(</span>ResourcesCompat.java:339<span class="o">)</span> at androidx.appcompat.widget.TintTypedArray.getFont<span class="o">(</span>TintTypedArray.java:119<span class="o">)</span> at androidx.appcompat.widget.AppCompatTextHelper.updateTypefaceAndStyle<span class="o">(</span>AppCompatTextHelper.java:430<span class="o">)</span> at androidx.appcompat.widget.AppCompatTextHelper.loadFromAttributes<span class="o">(</span>AppCompatTextHelper.java:204<span class="o">)</span> at androidx.appcompat.widget.AppCompatTextView.<span class="o">(</span>AppCompatTextView.java:105<span class="o">)</span> at androidx.appcompat.widget.AppCompatTextView.<span class="o">(</span>AppCompatTextView.java:95<span class="o">)</span> at androidx.appcompat.app.AppCompatViewInflater.createTextView<span class="o">(</span>AppCompatViewInflater.java:182<span class="o">)</span> at androidx.appcompat.app.AppCompatViewInflater.createView<span class="o">(</span>AppCompatViewInflater.java:103<span class="o">)</span> at androidx.appcompat.app.AppCompatDelegateImpl.createView<span class="o">(</span>AppCompatDelegateImpl.java:1407<span class="o">)</span> at androidx.appcompat.app.AppCompatDelegateImpl.onCreateView<span class="o">(</span>AppCompatDelegateImpl.java:1457<span class="o">)</span> at android.view.LayoutInflater.tryCreateView<span class="o">(</span>LayoutInflater.java:1059<span class="o">)</span> at android.view.LayoutInflater.createViewFromTag<span class="o">(</span>LayoutInflater.java:995<span class="o">)</span> at android.view.LayoutInflater.createViewFromTag<span class="o">(</span>LayoutInflater.java:959<span class="o">)</span> at android.view.LayoutInflater.rInflate<span class="o">(</span>LayoutInflater.java:1121<span class="o">)</span> at android.view.LayoutInflater.rInflateChildren<span class="o">(</span>LayoutInflater.java:1082<span class="o">)</span> at android.view.LayoutInflater.parseInclude<span class="o">(</span>LayoutInflater.java:1261<span class="o">)</span> at android.view.LayoutInflater.rInflate<span class="o">(</span>LayoutInflater.java:1117<span class="o">)</span> at android.view.LayoutInflater.rInflateChildren<span class="o">(</span>LayoutInflater.java:1082<span class="o">)</span> at android.view.LayoutInflater.inflate<span class="o">(</span>LayoutInflater.java:680<span class="o">)</span> at android.view.LayoutInflater.inflate<span class="o">(</span>LayoutInflater.java:532<span class="o">)</span> at android.view.LayoutInflater.inflate<span class="o">(</span>LayoutInflater.java:479<span class="o">)</span> at androidx.appcompat.app.AppCompatDelegateImpl.setContentView<span class="o">(</span>AppCompatDelegateImpl.java:555<span class="o">)</span> at androidx.appcompat.app.AppCompatActivity.setContentView<span class="o">(</span>AppCompatActivity.java:161<span class="o">)</span> at com.gravty.everyday.views.activities.LoginActivity.onCreate<span class="o">(</span>LoginActivity.java:53<span class="o">)</span> at android.app.Activity.performCreate<span class="o">(</span>Activity.java:7989<span class="o">)</span> at android.app.Activity.performCreate<span class="o">(</span>Activity.java:7978<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">2020-06-22 13:43:21.205 14538-14538/com.gravty.everyday W/gravty.everyda: Accessing hidden method Landroid/graphics/FontFamily<span class="p">;</span>-&gt;<span class="o">()</span>V <span class="o">(</span>greylist-max-q, reflection, denied<span class="o">)</span> 2020-06-22 13:43:21.206 14538-14538/com.gravty.everyday E/TypefaceCompatApi26Impl: Unable to collect necessary methods <span class="k">for</span> class java.lang.NoSuchMethodException java.lang.NoSuchMethodException: android.graphics.FontFamily. <span class="o">[]</span> at java.lang.Class.getConstructor0<span class="o">(</span>Class.java:2332<span class="o">)</span> at java.lang.Class.getConstructor<span class="o">(</span>Class.java:1728<span class="o">)</span> at androidx.core.graphics.TypefaceCompatApi26Impl.obtainFontFamilyCtor<span class="o">(</span>TypefaceCompatApi26Impl.java:321<span class="o">)</span> at androidx.core.graphics.TypefaceCompatApi26Impl.<span class="o">(</span>TypefaceCompatApi26Impl.java:84<span class="o">)</span> at androidx.core.graphics.TypefaceCompatApi28Impl.<span class="o">(</span>TypefaceCompatApi28Impl.java:36<span class="o">)</span> at androidx.core.graphics.TypefaceCompat.<span class="o">(</span>TypefaceCompat.java:47<span class="o">)</span> at androidx.core.graphics.TypefaceCompat.findFromCache<span class="o">(</span>TypefaceCompat.java:76<span class="o">)</span> at androidx.core.content.res.ResourcesCompat.loadFont<span class="o">(</span>ResourcesCompat.java:393<span class="o">)</span> at androidx.core.content.res.ResourcesCompat.loadFont<span class="o">(</span>ResourcesCompat.java:361<span class="o">)</span> at androidx.core.content.res.ResourcesCompat.getFont<span class="o">(</span>ResourcesCompat.java:339<span class="o">)</span> at androidx.appcompat.widget.TintTypedArray.getFont<span class="o">(</span>TintTypedArray.java:119<span class="o">)</span> at androidx.appcompat.widget.AppCompatTextHelper.updateTypefaceAndStyle<span class="o">(</span>AppCompatTextHelper.java:430<span class="o">)</span> at androidx.appcompat.widget.AppCompatTextHelper.loadFromAttributes<span class="o">(</span>AppCompatTextHelper.java:204<span class="o">)</span> at androidx.appcompat.widget.AppCompatTextView.<span class="o">(</span>AppCompatTextView.java:105<span class="o">)</span> at androidx.appcompat.widget.AppCompatTextView.<span class="o">(</span>AppCompatTextView.java:95<span class="o">)</span> at androidx.appcompat.app.AppCompatViewInflater.createTextView<span class="o">(</span>AppCompatViewInflater.java:182<span class="o">)</span> at androidx.appcompat.app.AppCompatViewInflater.createView<span class="o">(</span>AppCompatViewInflater.java:103<span class="o">)</span> at androidx.appcompat.app.AppCompatDelegateImpl.createView<span class="o">(</span>AppCompatDelegateImpl.java:1407<span class="o">)</span> at androidx.appcompat.app.AppCompatDelegateImpl.onCreateView<span class="o">(</span>AppCompatDelegateImpl.java:1457<span class="o">)</span> at android.view.LayoutInflater.tryCreateView<span class="o">(</span>LayoutInflater.java:1059<span class="o">)</span> at android.view.LayoutInflater.createViewFromTag<span class="o">(</span>LayoutInflater.java:995<span class="o">)</span> at android.view.LayoutInflater.createViewFromTag<span class="o">(</span>LayoutInflater.java:959<span class="o">)</span> at android.view.LayoutInflater.rInflate<span class="o">(</span>LayoutInflater.java:1121<span class="o">)</span> at android.view.LayoutInflater.rInflateChildren<span class="o">(</span>LayoutInflater.java:1082<span class="o">)</span> at android.view.LayoutInflater.parseInclude<span class="o">(</span>LayoutInflater.java:1261<span class="o">)</span> at android.view.LayoutInflater.rInflate<span class="o">(</span>LayoutInflater.java:1117<span class="o">)</span> at android.view.LayoutInflater.rInflateChildren<span class="o">(</span>LayoutInflater.java:1082<span class="o">)</span> at android.view.LayoutInflater.inflate<span class="o">(</span>LayoutInflater.java:680<span class="o">)</span> at android.view.LayoutInflater.inflate<span class="o">(</span>LayoutInflater.java:532<span class="o">)</span> at android.view.LayoutInflater.inflate<span class="o">(</span>LayoutInflater.java:479<span class="o">)</span> at androidx.appcompat.app.AppCompatDelegateImpl.setContentView<span class="o">(</span>AppCompatDelegateImpl.java:555<span class="o">)</span> at androidx.appcompat.app.AppCompatActivity.setContentView<span class="o">(</span>AppCompatActivity.java:161<span class="o">)</span> at com.gravty.everyday.views.activities.LoginActivity.onCreate<span class="o">(</span>LoginActivity.java:53<span class="o">)</span> at android.app.Activity.performCreate<span class="o">(</span>Activity.java:7989<span class="o">)</span> at android.app.Activity.performCreate<span class="o">(</span>Activity.java:7978<span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="解决办法">解决办法</h3>
 <h4 id="法1">法1</h4>
-<p>添加一个稳定的核心库<code>implementation 'androidx.core:core:1.3.0'</code> (<a href="https://developer.android.com/jetpack/androidx/releases/core">https://developer.android.com/jetpack/androidx/releases/core</a>) 在gradle build文件中</p>
+<p>添加一个稳定的核心库<code>implementation 'androidx.core:core:1.3.0'</code> (<a href="https://developer.android.com/jetpack/androidx/releases/core" target="_blank" rel="noopener noreferrer">https://developer.android.com/jetpack/androidx/releases/core</a>) 在gradle build文件中</p>
 <h4 id="法2">法2</h4>
-<p>如果使用了Appcompat库可以用其中的i.e. <code>androidx.appcompat:appcompat:1.3.1</code> (<a href="https://developer.android.com/jetpack/androidx/releases/appcompat#version_131_3">https://developer.android.com/jetpack/androidx/releases/appcompat#version_131_3</a>)</p>
+<p>如果使用了Appcompat库可以用其中的i.e. <code>androidx.appcompat:appcompat:1.3.1</code> (<a href="https://developer.android.com/jetpack/androidx/releases/appcompat#version_131_3" target="_blank" rel="noopener noreferrer">https://developer.android.com/jetpack/androidx/releases/appcompat#version_131_3</a>)</p>
 <h4 id="法3">法3</h4>
 <p>或者委屈求全改回原来的版本如28https://developer.android.com/topic/libraries/support-library/packages#v4</p>
 <h2 id="end">end</h2>
@@ -745,8 +745,8 @@ Searched in the following locations:</p>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

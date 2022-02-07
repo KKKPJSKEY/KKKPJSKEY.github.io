@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Java开发过程中的一些笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-25T12:33:19&#43;08:00" />
-<meta property="article:modified_time" content="2021-11-02T16:10:18&#43;08:00" />
+<meta property="article:published_time" content="2021-05-25T12:33:19+08:00" />
+<meta property="article:modified_time" content="2022-02-07T14:59:00+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  13612 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2021-11-02T16:10:18+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  15908 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2022-02-07T14:59:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 13612 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 28 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 15908 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 32 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -148,11 +148,11 @@
     <li><a href="#java代码实现double类型数字格式化为百分数">Java代码实现double类型数字格式化为百分数</a></li>
     <li><a href="#数组操作">数组操作</a></li>
     <li><a href="#字符串操作">字符串操作</a></li>
-    <li><a href="#java中的-和--和--详细分析">Java中的&laquo; 和 &raquo; 和 &raquo;&gt; 详细分析</a>
+    <li><a href="#java中的-和--和--详细分析">Java中的<code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 和 <code>&gt;&gt;&gt;</code> 详细分析</a>
       <ul>
-        <li><a href="#表示左移移不分正负数低位补0"><strong>&laquo;表示左移移，不分正负数，低位补0；</strong>　</a></li>
-        <li><a href="#表示右移如果该数为正则高位补0若为负数则高位补1"><strong>&raquo;表示右移，如果该数为正，则高位补0，若为负数，则高位补1；</strong></a></li>
-        <li><a href="#表示无符号右移也叫逻辑右移即若该数为正则高位补0而若该数为负数则右移后高位同样补0"><strong>&raquo;&gt;表示无符号右移，也叫逻辑右移，即若该数为正，则高位补0，而若该数为负数，则右移后高位同样补0</strong></a></li>
+        <li><a href="#表示左移移不分正负数低位补0"><strong><code>&lt;&lt;</code>表示左移移，不分正负数，低位补0；</strong>　</a></li>
+        <li><a href="#表示右移如果该数为正则高位补0若为负数则高位补1"><strong><code>&gt;&gt;</code>表示右移，如果该数为正，则高位补0，若为负数，则高位补1；</strong></a></li>
+        <li><a href="#表示无符号右移也叫逻辑右移即若该数为正则高位补0而若该数为负数则右移后高位同样补0"><strong><code>&gt;&gt;&gt;</code>表示无符号右移，也叫逻辑右移，即若该数为正，则高位补0，而若该数为负数，则右移后高位同样补0</strong></a></li>
       </ul>
     </li>
     <li><a href="#操作系统控制台中查看java进程">操作系统控制台中查看Java进程</a>
@@ -221,6 +221,40 @@
       </ul>
     </li>
     <li><a href="#java8函数作为参数">Java8函数作为参数</a></li>
+    <li><a href="#java中反斜杠转义问题">Java中反斜杠转义问题</a>
+      <ul>
+        <li><a href="#1符串中反斜杠">1.符串中反斜杠</a></li>
+        <li><a href="#2-正则表达式中反斜杠">2. 正则表达式中反斜杠</a></li>
+      </ul>
+    </li>
+    <li><a href="#java的三种随机数生成方式">java的三种随机数生成方式</a>
+      <ul>
+        <li><a href="#第一种">第一种</a></li>
+        <li><a href="#第二种">第二种</a></li>
+        <li><a href="#第三种">第三种</a></li>
+      </ul>
+    </li>
+    <li><a href="#时间格式统一">时间格式统一</a>
+      <ul>
+        <li><a href="#需求-1">需求</a></li>
+        <li><a href="#知识介绍">知识介绍</a></li>
+        <li><a href="#我的工具类">我的工具类</a></li>
+      </ul>
+    </li>
+    <li><a href="#windows-10-配置java-环境变量">Windows 10 配置Java 环境变量</a>
+      <ul>
+        <li><a href="#下载-jdk">下载 JDK</a></li>
+        <li><a href="#环境变量配置">环境变量配置</a>
+          <ul>
+            <li><a href="#1-打开-环境变量窗口">1. 打开 环境变量窗口</a></li>
+            <li><a href="#2-新建java_home-变量-点击-new新建-按钮">2. 新建JAVA_HOME 变量 点击 <strong>New（新建）&hellip;</strong> 按钮</a></li>
+            <li><a href="#3-新建修改-classpath-变量">3. 新建/修改 CLASSPATH 变量</a></li>
+            <li><a href="#4-修改path-变量">4. 修改Path 变量</a></li>
+            <li><a href="#4-检查-打开-cmd输入-java出现一连串的指令提示说明配置成功了">4. 检查 打开 cmd，输入 java，出现一连串的指令提示，说明配置成功了:</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li><a href="#end">End</a></li>
   </ul>
 </nav></div>
@@ -231,7 +265,7 @@
 <h2 id="java获取系统时间">Java获取系统时间</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -245,7 +279,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NowString</span> <span class="o">{</span>
@@ -265,37 +299,37 @@
 <p>// 会丢失时间数据</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">preparedStatement</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">date</span><span class="o">.</span><span class="na">getTime</span><span class="o">()));</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">preparedStatement</span><span class="o">.</span><span class="na">setDate</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">date</span><span class="o">.</span><span class="na">getTime</span><span class="o">()));</span> 
 </code></pre></td></tr></table>
 </div>
 </div><p>//可以这样来处理</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">preparedStatement</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Timestamp</span><span class="o">(</span><span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()));</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">preparedStatement</span><span class="o">.</span><span class="na">setTimestamp</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Timestamp</span><span class="o">(</span><span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()));</span> 
 </code></pre></td></tr></table>
 </div>
 </div><p>//想要得到完整的数据，包括日期和时间，可以这样</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">resultSet</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="n">1</span><span class="o">);</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="n">resultSet</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="n">1</span><span class="o">);</span> 
 </code></pre></td></tr></table>
 </div>
 </div><p>//这样处理更合适一些，可以避免一些潜在Timestamp 问题</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">getTime</span><span class="o">());</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">resultSet</span><span class="o">.</span><span class="na">getTimestamp</span><span class="o">(</span><span class="n">1</span><span class="o">).</span><span class="na">getTime</span><span class="o">());</span> 
 </code></pre></td></tr></table>
 </div>
 </div><p>自己补的话：</p>
@@ -307,7 +341,7 @@
 <p>用Timestamp来记录日期时间还是很方便的，但有时候显示的时候是不需要小数位后面的毫秒的，这样就需要在转换为String时重新定义格式。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -315,7 +349,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nl">Timestamp转化为String:</span> <span class="n">SimpleDateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="o">);</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nl">Timestamp转化为String:</span> <span class="n">SimpleDateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="o">);</span>
 <span class="c1">//定义格式，不显示毫秒
 </span><span class="c1"></span><span class="n">Timestamp</span> <span class="n">now</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Timestamp</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span>
 <span class="c1">//获取系统当前时间 String str = df.format(now);
@@ -328,14 +362,14 @@
 两者的关系</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Object</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Object</span>
   <span class="o">|</span>
   <span class="o">+---</span><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span>
       <span class="o">|</span>
@@ -350,11 +384,11 @@
 这两个类都提供了getTime()函数，用于返回对应的毫秒数（long类型）。利用这个函数可以实现转换：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">utilDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">sqlDate</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>  <span class="c1">// sql -&gt; util
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">utilDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">sqlDate</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>  <span class="c1">// sql -&gt; util
 </span><span class="c1"></span><span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Date</span> <span class="n">sqlDate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Date</span><span class="o">(</span><span class="n">utilDate</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>  <span class="c1">// util -&gt; sql
 </span></code></pre></td></tr></table>
 </div>
@@ -363,15 +397,27 @@
 <p>使用SimpleDateFormat类实现转换</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">SimpleDateFormat</span> <span class="n">是一个以国别敏感的方式格式化和分析数据的具体类</span><span class="err">。</span> <span class="n">它允许格式化</span> <span class="o">(</span><span class="n">date</span> <span class="o">-&gt;</span> <span class="n">text</span><span class="o">)</span><span class="err">、</span><span class="n">语法分析</span> <span class="o">(</span><span class="n">text</span> <span class="o">-&gt;</span> <span class="n">date</span><span class="o">)</span><span class="n">和标准化</span><span class="err">。</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">SimpleDateFormat</span> <span class="n">是一个以国别敏感的方式格式化和分析数据的具体类</span><span class="err">。</span> <span class="n">它允许格式化</span> <span class="o">(</span><span class="n">date</span> <span class="o">-&gt;</span> <span class="n">text</span><span class="o">)</span><span class="err">、</span><span class="n">语法分析和标准化</span><span class="err">。</span>
+<span class="o">(</span><span class="n">text</span> <span class="o">-&gt;</span> <span class="n">date</span><span class="o">)</span>
 <span class="n">SimpleDateFormat</span> <span class="n">dateFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormate</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="o">);</span>
 <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">utilDate</span> <span class="o">=</span> <span class="n">dateFormat</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">sqlDate</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-</code></pre></td></tr></table>
+<span class="o">(</span><span class="n">date</span> <span class="o">-&gt;</span> <span class="n">text</span><span class="o">)</span>
+<span class="n">SimpleDateFormat</span> <span class="n">simpleDateFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss:SSS&#34;</span><span class="o">);</span>
+<span class="c1">//Date指定格式：yyyy-MM-dd HH:mm:ss:SSS
+</span><span class="c1"></span><span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span><span class="c1">//创建一个date对象保存当前时间
+</span><span class="c1"></span><span class="n">String</span> <span class="n">dateStr</span> <span class="o">=</span> <span class="n">simpleDateFormat</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">);</span><span class="c1">//format()方法将Date转换成指定格式的String
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -379,10 +425,10 @@
 由于java.sql.Date是从java.util.Date中继承过来的，所以可以直接用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">utilDate</span> <span class="o">=</span> <span class="n">sqlDate</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">utilDate</span> <span class="o">=</span> <span class="n">sqlDate</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -390,7 +436,7 @@
 <p>另类获得日期的方法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -398,7 +444,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">SimpleDateFormat</span> <span class="n">sy</span><span class="o">=</span><span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy&#34;</span><span class="o">);</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">SimpleDateFormat</span> <span class="n">sy</span><span class="o">=</span><span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy&#34;</span><span class="o">);</span>
 <span class="n">SimpleDateFormat</span> <span class="n">sm</span><span class="o">=</span><span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;MM&#34;</span><span class="o">);</span>
 <span class="n">SimpleDateFormat</span> <span class="n">sd</span><span class="o">=</span><span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;dd&#34;</span><span class="o">);</span>
 <span class="n">String</span> <span class="n">syear</span><span class="o">=</span><span class="n">sy</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">date</span><span class="o">);</span>
@@ -412,7 +458,7 @@
 <h2 id="java代码实现double类型数字格式化为百分数">Java代码实现double类型数字格式化为百分数</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -425,7 +471,7 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PercentTest</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PercentTest</span> <span class="o">{</span>
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 		<span class="kt">double</span> <span class="n">rate</span> <span class="o">=</span> <span class="n">0</span><span class="o">.</span><span class="na">26535</span><span class="o">;</span>
 		<span class="n">NumberFormat</span> <span class="n">nf</span> <span class="o">=</span> <span class="n">NumberFormat</span><span class="o">.</span><span class="na">getPercentInstance</span><span class="o">();</span>
@@ -861,12 +907,12 @@ UP：远离零方向舍入的舍入模式。始终对非零舍弃部分前面的
 <p>数组的初始化填充</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span><span class="o">[]</span> <span class="n">iL</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">100</span><span class="o">];</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span><span class="o">[]</span> <span class="n">iL</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">100</span><span class="o">];</span>
 <span class="c1">//将数组填充为100个-1
 </span><span class="c1"></span><span class="n">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">iL</span><span class="o">,-</span><span class="n">1</span><span class="o">)</span>
 </code></pre></td></tr></table>
@@ -875,52 +921,48 @@ UP：远离零方向舍入的舍入模式。始终对非零舍弃部分前面的
 <p>String根据下标访问</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;abcd&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;abcd&#34;</span>
 <span class="n">Char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">0</span><span class="o">)</span><span class="c1">//c结果为a
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="java中的-和--和--详细分析">Java中的&laquo; 和 &raquo; 和 &raquo;&gt; 详细分析</h2>
-<h3 id="表示左移移不分正负数低位补0"><strong>&laquo;表示左移移，不分正负数，低位补0；</strong>　</h3>
+</div><h2 id="java中的-和--和--详细分析">Java中的<code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 和 <code>&gt;&gt;&gt;</code> 详细分析</h2>
+<h3 id="表示左移移不分正负数低位补0"><strong><code>&lt;&lt;</code>表示左移移，不分正负数，低位补0；</strong>　</h3>
 <p>注：以下数据类型默认为byte-8位</p>
 <p>左移时不管正负，低位补0</p>
-<p>正数：<strong>r = 20 &laquo; 2</strong></p>
+<p>正数：<strong>r = 20 <code>&lt;&lt;</code> 2</strong></p>
 <p>　　20的二进制补码：<strong>0001 0100</strong></p>
 <p>　　向左移动两位后：<strong>0101 0000</strong></p>
 <p>　　　　  　　结果：<strong>r = 80</strong></p>
-<p>负数：<strong>r = -20 &laquo; 2</strong></p>
+<p>负数：<strong>r = -20 <code>&lt;&lt;</code> 2</strong></p>
 <p>　　-20 的二进制原码 ：<strong>1001 0100</strong></p>
-<p>　　-20 的二进制反码 **<em>*：*<em>1110 1011</em></em></p>
+<p>　　-20 的二进制原码 ：<strong>1110 1011</strong></p>
 <p>　　-20 的二进制补码 ：<strong>1110 1100</strong></p>
 <p>　　左移两位后的补码：<strong>1011 0000</strong></p>
-<p>　　　　　　　　反码：**1010 1111
-**</p>
-<p>　　　　　　　　原码：**1101 0000
-**</p>
-<p>　　　　　　　　结果：**r = -80
-**</p>
-<h3 id="表示右移如果该数为正则高位补0若为负数则高位补1"><strong>&raquo;表示右移，如果该数为正，则高位补0，若为负数，则高位补1；</strong></h3>
+<p>　　　　　　　　反码：<strong>1010 1111</strong></p>
+<p>　　　　　　　　原码：<strong>1101 0000</strong></p>
+<p>　　　　　　　　结果：<strong>r = -80</strong></p>
+<h3 id="表示右移如果该数为正则高位补0若为负数则高位补1"><strong><code>&gt;&gt;</code>表示右移，如果该数为正，则高位补0，若为负数，则高位补1；</strong></h3>
 <p>注：以下数据类型默认为byte-8位</p>
-<p>正数：<strong>r = 20 &raquo; 2</strong></p>
+<p>正数：<strong>r = 20 <code>&gt;&gt;</code> 2</strong></p>
 <p>　　20的二进制补码：<strong>0001 0100</strong></p>
 <p>　　向右移动两位后：<strong>0000 0101</strong></p>
 <p>　　　　　　　结果：<strong>r = 5</strong></p>
-<p>负数：<strong>r = -20 &raquo; 2</strong></p>
+<p>负数：<strong>r = -20 <code>&gt;&gt;</code> 2</strong></p>
 <p>　　-20 的二进制原码 ：<strong>1001 0100</strong></p>
-<p>　　-20 的二进制反码 **：1110 1011
-**</p>
+<p>　　-20 的二进制反码 ：<strong>1110 1011</strong></p>
 <p>　　-20 的二进制补码 ：<strong>1110 1100</strong></p>
 <p>　　右移两位后的补码：<strong>1111 1011</strong></p>
 <p>　　　　　　　　反码：<strong>1111 1010</strong></p>
 <p>　　　　　　　　原码：<strong>1000 0101</strong></p>
 <p>　　　　　　　　结果：<strong>r = -5</strong></p>
-<h3 id="表示无符号右移也叫逻辑右移即若该数为正则高位补0而若该数为负数则右移后高位同样补0"><strong>&raquo;&gt;表示无符号右移，也叫逻辑右移，即若该数为正，则高位补0，而若该数为负数，则右移后高位同样补0</strong></h3>
-<p>正数：　<strong>r = 20 &raquo;&gt; 2</strong></p>
-<p>　　　　的结果与 r = 20 &raquo; 2 相同；</p>
-<p>负数：　<strong>r = -20 &raquo;&gt; 2</strong></p>
+<h3 id="表示无符号右移也叫逻辑右移即若该数为正则高位补0而若该数为负数则右移后高位同样补0"><strong><code>&gt;&gt;&gt;</code>表示无符号右移，也叫逻辑右移，即若该数为正，则高位补0，而若该数为负数，则右移后高位同样补0</strong></h3>
+<p>正数：　<strong>r = 20 <code>&gt;&gt;&gt;</code> 2</strong></p>
+<p>　　　　的结果与 r = 20 <code>&gt;&gt;</code> 2 相同；</p>
+<p>负数：　<strong>r = -20 <code>&gt;&gt;&gt;</code> 2</strong></p>
 <p>注：以下数据类型默认为int 32位</p>
 <p>　　-20:源码：<strong>10000000 00000000 00000000 00010100</strong></p>
 <p>　　　　反码：<strong>11111111 11111111  11111111  11101011</strong></p>
@@ -932,31 +974,31 @@ UP：远离零方向舍入的舍入模式。始终对非零舍弃部分前面的
 <h4 id="方法一">方法一</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">ps -ef<span class="p">|</span>grep java
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">ps -ef<span class="p">|</span>grep java
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="方法二">方法二</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">jps -l （显示java进程的Id和软件名称）
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">jps -l （显示java进程的Id和软件名称）
 jps -lmv（显示java进程的Id和软件名称；显示启动main输入参数；虚拟机参数）
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="二windows篇">二、Windows篇</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">jps
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">jps
 jps -l（显示java进程的Id和软件路径及名称）
 </code></pre></td></tr></table>
 </div>
@@ -970,7 +1012,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 <p><strong>2.形参与成员名字重名，用this来区分：</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -989,7 +1031,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span><span class="n">10</span><span class="o">;</span>
     <span class="kd">public</span> <span class="nf">Person</span><span class="o">(){</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;初始化年龄：&#34;</span><span class="o">+</span><span class="n">age</span><span class="o">);</span>
@@ -1022,7 +1064,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 <p>2.子类中的成员变量或方法与父类中的成员变量或方法同名</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1045,7 +1087,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Country</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Country</span> <span class="o">{</span>
     <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
     <span class="kt">void</span> <span class="nf">value</span><span class="o">()</span> <span class="o">{</span>
        <span class="n">name</span> <span class="o">=</span><span class="s">&#34;China&#34;</span><span class="o">;</span>
@@ -1077,7 +1119,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 <p>this（参数）：调用本类中另一种形式的构造函数（应该为构造函数中的第一条语句）。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1115,7 +1157,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span> 
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span> 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">prt</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span> 
        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span> 
     <span class="o">}</span> 
@@ -1182,7 +1224,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 <p>测试代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1240,7 +1282,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 </span><span class="lnt">56
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">
         <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">4</span><span class="o">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">5</span><span class="o">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">6</span><span class="o">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">9</span><span class="o">;</span>
 
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
@@ -1301,7 +1343,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 </div><p>运行结果</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1353,7 +1395,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">五舍六入取整:Math.rint<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">五舍六入取整:Math.rint<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
 五舍六入取整:Math.rint<span class="o">(</span>2.4<span class="o">=</span><span class="m">2</span>
 五舍六入取整:Math.rint<span class="o">(</span>2.5<span class="o">)=</span><span class="m">2</span>
 五舍六入取整:Math.rint<span class="o">(</span>2.6<span class="o">)=</span><span class="m">3</span>
@@ -1409,7 +1451,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 <p>将 <code>double</code> 转换为 <code>BigDecimal</code>，后者是 <code>double</code> 的二进制浮点值准确的十进制表示形式。返回的 <code>BigDecimal</code> 的标度是使 $ (10^{scale} × val) $为整数的最小值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1418,7 +1460,7 @@ jps -l（显示java进程的Id和软件路径及名称）
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">        <span class="n">BigDecimal</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="n">9</span><span class="o">.</span><span class="na">655</span> <span class="o">);</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">        <span class="n">BigDecimal</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="n">9</span><span class="o">.</span><span class="na">655</span> <span class="o">);</span>
         <span class="c1">//double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 </span><span class="c1"></span>        <span class="kt">double</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">setScale</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">).</span><span class="na">doubleValue</span><span class="o">();</span>
 
@@ -1479,45 +1521,45 @@ java只能调用。</p>
 <h2 id="java中如何将int-类型转换为-long类型">Java中如何将int 类型转换为 Long类型</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Long</span> <span class="n">l</span> <span class="o">=</span> <span class="o">(</span><span class="n">Long</span><span class="o">)</span><span class="n">3</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Long</span> <span class="n">l</span> <span class="o">=</span> <span class="o">(</span><span class="n">Long</span><span class="o">)</span><span class="n">3</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>很多同学可能会用上面的方法将int类型转换为Long类型，但事实上这样是不可行的。因为Long是包装类，而int是值类型数据，两者是不能这样强转的。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span><span class="n">3</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span><span class="n">3</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>int和long都是基本类型的数据，是可以强转的，那么我就可以以此作为桥梁，强转成long后，再生成Long类型的数据。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Long</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Long</span><span class="o">((</span><span class="kt">long</span><span class="o">)</span><span class="n">3</span><span class="o">);</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Long</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Long</span><span class="o">((</span><span class="kt">long</span><span class="o">)</span><span class="n">3</span><span class="o">);</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>这样就可以将int类型顺利转换为Long类型。</p>
 <p>还有这种</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Long</span> <span class="n">waitTime</span> <span class="o">=</span> <span class="n">Long</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">((</span><span class="n">10</span> <span class="o">*</span> <span class="n">60</span> <span class="o">*</span> <span class="n">1000</span><span class="o">)</span> <span class="o">/</span> <span class="n">5</span><span class="o">));</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Long</span> <span class="n">waitTime</span> <span class="o">=</span> <span class="n">Long</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">((</span><span class="n">10</span> <span class="o">*</span> <span class="n">60</span> <span class="o">*</span> <span class="n">1000</span><span class="o">)</span> <span class="o">/</span> <span class="n">5</span><span class="o">));</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="trycatch多个异常-多个异常采取同样的解决措施">try&hellip;catch(多个异常) 多个异常采取同样的解决措施</h2>
 <h3 id="示例">示例</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1543,7 +1585,7 @@ java只能调用。</p>
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
     <span class="cm">/**
 </span><span class="cm">     * @param args
 </span><span class="cm">     */</span>
@@ -1572,18 +1614,18 @@ java只能调用。</p>
 </div><h3 id="result">result</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">发生了ArithmeticException 或者 ArrayIndexOutOfBoundsException 异常
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">发生了ArithmeticException 或者 ArrayIndexOutOfBoundsException 异常
 发生了ArithmeticException 或者 ArrayIndexOutOfBoundsException 异常
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="java通过反射获给java对象赋值为null">java通过反射获给java对象赋值为null</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1632,7 +1674,7 @@ java只能调用。</p>
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
 </span><span class="cm">	 *
 </span><span class="cm">	 *java通过反射获给java对象赋值为null
 </span><span class="cm">	 * @param obj 对象
@@ -1688,7 +1730,7 @@ java只能调用。</p>
 <h3 id="代码">代码</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1749,7 +1791,7 @@ java只能调用。</p>
 </span><span class="lnt">59
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">com.pibgstar.demo.bean.User</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">com.pibgstar.demo.bean.User</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.beans.IntrospectionException</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.beans.PropertyDescriptor</span><span class="o">;</span>
@@ -1813,11 +1855,11 @@ java只能调用。</p>
 </div><h3 id="运行结果">运行结果</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">id:123
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">id:123
 User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><span class="s1">&#39;123&#39;</span>, <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;pibigstar&#39;</span><span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -1830,39 +1872,39 @@ User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><s
 <p>这种方式应该很快都能找到</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml">-<span class="l">DpropName=propValue</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml">-<span class="l">DpropName=propValue</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>比如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">java -jar -DdatabaseUrl<span class="o">=</span><span class="s2">&#34;mysql://localhost:3306/pdb?user=root&amp;password=root&#34;</span>  -Dapp.key<span class="o">=</span><span class="s2">&#34;123&#34;</span> -Dapp.secret<span class="o">=</span><span class="s2">&#34;xxx&#34;</span>  demo.jar
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">java -jar -DdatabaseUrl<span class="o">=</span><span class="s2">&#34;mysql://localhost:3306/pdb?user=root&amp;password=root&#34;</span>  -Dapp.key<span class="o">=</span><span class="s2">&#34;123&#34;</span> -Dapp.secret<span class="o">=</span><span class="s2">&#34;xxx&#34;</span>  demo.jar
 </code></pre></td></tr></table>
 </div>
 </div><p>多个参数也可以。</p>
 <h4 id="方式二参数直接跟在命令后面多个参数之间用空格隔开">方式二：参数直接跟在命令后面，多个参数之间用空格隔开</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">java -jar demo.jar JOURNAL_TREENODE_DATA-20190404174502.txt processType=1
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">java -jar demo.jar JOURNAL_TREENODE_DATA-20190404174502.txt processType=1
 </code></pre></td></tr></table>
 </div>
 </div><p>这种方式参数就是jar包里主启动类中main方法的args参数，按顺序来</p>
 <h4 id="方式三使用springboot的方式--propnamepropvalue方式">方式三：使用springboot的方式，&ndash;propName=propValue方式</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">java -jar demo.jar  --spring.profiles.active=dev  --server.port=8181
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">java -jar demo.jar  --spring.profiles.active=dev  --server.port=8181
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>注意：</strong>
@@ -1871,33 +1913,33 @@ User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><s
 <p>办法是在web-prod.yml中做点小改动，让“配置”变得“可配置”：加一对花括符</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">server.port={port:8081}
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server.port={port:8081}
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="用clojure开发的jar里有惊喜">用clojure开发的jar里有惊喜</h3>
 <p>在clojure上面的配置就变得诡异了，猜猜下面的配置能不能生效呢？</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">java -jar -Ddatabase-url<span class="o">=</span><span class="s2">&#34;mysql://localhost:3306/pdb?user=root&amp;password=root&#34;</span>  -Dapp.key<span class="o">=</span><span class="s2">&#34;123&#34;</span> -Dapp.secret<span class="o">=</span><span class="s2">&#34;xxx&#34;</span>  demo.jar
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">java -jar -Ddatabase-url<span class="o">=</span><span class="s2">&#34;mysql://localhost:3306/pdb?user=root&amp;password=root&#34;</span>  -Dapp.key<span class="o">=</span><span class="s2">&#34;123&#34;</span> -Dapp.secret<span class="o">=</span><span class="s2">&#34;xxx&#34;</span>  demo.jar
 </code></pre></td></tr></table>
 </div>
 </div><p>如果你用<code>cider-conect</code>通过nrepl的端口连接上你的服务，你会发现，这个配置导致<code>database-url</code>的值确实已经改了，但是后面两个没有。</p>
 <p>究其原因，我们java从classpath里获取参数使用的是properties形式的，也就是json的格式。这不难理解，spring有它的办法，clojure当然也有自己的方式。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="s2">&#34;app&#34;</span>: <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="s2">&#34;app&#34;</span>: <span class="o">{</span>
     <span class="s2">&#34;key&#34;</span>: <span class="s2">&#34;123&#34;</span>,
     <span class="s2">&#34;secret&#34;</span>:<span class="s2">&#34;xxx&#34;</span>
 <span class="o">}</span>
@@ -1908,7 +1950,7 @@ User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><s
 <p>在<code>config</code>这个namespace里找到了env</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1917,7 +1959,7 @@ User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><s
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>defstate env
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">(</span>defstate env
   :start
   <span class="o">(</span>load-config
    :merge
@@ -1930,7 +1972,7 @@ User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><s
 <p><code>cprop.source</code>这个文件就是用来加载edn文件的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1943,8 +1985,8 @@ User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><s
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-rust" data-lang="rust"><span class="p">(</span><span class="n">defn</span><span class="o">-</span><span class="w"> </span><span class="n">env</span>-&gt;<span class="nc">path</span><span class="w"> </span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="w">
-</span><span class="w">  </span><span class="p">(</span><span class="n">k</span>-&gt;<span class="nc">path</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="s">&#34;_&#34;</span><span class="w"> </span><span class="err">#</span><span class="s">&#34;__&#34;</span><span class="p">))</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="p">(</span><span class="n">defn</span><span class="o">-</span><span class="w"> </span><span class="n">env</span>-&gt;<span class="nc">path</span><span class="w"> </span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="w">
+</span><span class="w">  </span><span class="p">(</span><span class="n">k</span>-&gt;<span class="nc">path</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="s">&#34;_&#34;</span><span class="w"> </span>#<span class="s">&#34;__&#34;</span><span class="p">))</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="p">(</span><span class="n">defn</span><span class="w"> </span><span class="n">read</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">env</span><span class="w">
 </span><span class="w">  </span><span class="p">([]</span><span class="w">
@@ -1959,21 +2001,21 @@ User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><s
 </div><p>从获取的过程看，应该是会把<code>_</code>做为单元节点断开，因此需要改成这样</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">java -jar -Ddatabase-url<span class="o">=</span><span class="s2">&#34;mysql://localhost:3306/pdb?user=root&amp;password=root&#34;</span>  -Dapp_key<span class="o">=</span><span class="s2">&#34;123&#34;</span> -Dapp_secret<span class="o">=</span><span class="s2">&#34;xxx&#34;</span>  demo.jar
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">java -jar -Ddatabase-url<span class="o">=</span><span class="s2">&#34;mysql://localhost:3306/pdb?user=root&amp;password=root&#34;</span>  -Dapp_key<span class="o">=</span><span class="s2">&#34;123&#34;</span> -Dapp_secret<span class="o">=</span><span class="s2">&#34;xxx&#34;</span>  demo.jar
 </code></pre></td></tr></table>
 </div>
 </div><p>对应到edn里应该是</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="err">:app</span>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="err">:app</span>
     <span class="err">{:key</span> <span class="nt">&#34;123&#34;</span>
      <span class="p">:</span><span class="err">secret</span> <span class="s2">&#34;xxx&#34;</span><span class="p">}</span><span class="err">}</span>
 </code></pre></td></tr></table>
@@ -2000,21 +2042,21 @@ ENV variables</p>
 <hr>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">java -Djava.ext.dirs<span class="o">=</span>d:<span class="se">\l</span>ibs -classpath classes com.xxxclass
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">java -Djava.ext.dirs<span class="o">=</span>d:<span class="se">\l</span>ibs -classpath classes com.xxxclass
 </code></pre></td></tr></table>
 </div>
 </div><p>或者
 设置环境变量</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">set</span> <span class="nv">lib</span> <span class="o">=</span> d:<span class="se">\l</span>ibs
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">set</span> <span class="nv">lib</span> <span class="o">=</span> d:<span class="se">\l</span>ibs
 java -Djava.ext.dirs<span class="o">=</span>%lib% -classpath classes com.xxxclass
 </code></pre></td></tr></table>
 </div>
@@ -2033,7 +2075,7 @@ java -Djava.ext.dirs<span class="o">=</span>%lib% -classpath classes com.xxxclas
 <p>创建Function有多种方式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -2057,7 +2099,7 @@ java -Djava.ext.dirs<span class="o">=</span>%lib% -classpath classes com.xxxclas
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FunctionParams</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FunctionParams</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">f01</span><span class="o">=(</span><span class="n">password</span><span class="o">)-&gt;</span> <span class="n">Base64</span><span class="o">.</span><span class="na">getEncoder</span><span class="o">().</span><span class="na">encodeToString</span><span class="o">(</span><span class="n">password</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
 <span class="c1">// 输出加密后的字符串
@@ -2081,12 +2123,499 @@ java -Djava.ext.dirs<span class="o">=</span>%lib% -classpath classes com.xxxclas
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="end">End</h2>
+</div><h2 id="java中反斜杠转义问题">Java中反斜杠转义问题</h2>
+<h3 id="1符串中反斜杠">1.符串中反斜杠</h3>
+<p>反斜杠（\）在JAVA中有特别的意义；它和紧跟着它的那个字符构成转义字符，如&quot;\n&quot;（表示换行）&quot; \’ &ldquo;（表示字符[ ’ ]）等，所以在字符串中要表示反斜杠 \ 要用&rdquo; \ &ldquo;来表示。例如这样定义一个字符串String s = &ldquo;name\sex&quot;是错误的，要这样定义String s = “name\sex”</p>
+<p>如下定义一个非法的字符串，会报错</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">regx</span> <span class="o">=</span> <span class="s">&#34;women\halou&#34;</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">regx</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nl">Error:</span><span class="o">(</span><span class="n">17</span><span class="o">,</span> <span class="n">30</span><span class="o">)</span> <span class="n">java</span><span class="o">:</span> <span class="n">非法转义符</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如下定义一个正确的字符串</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">regx</span> <span class="o">=</span> <span class="s">&#34;women\\halou&#34;</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">regx</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">women<span class="se">\h</span>alou
+Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2-正则表达式中反斜杠">2. 正则表达式中反斜杠</h3>
+<p>在正则表达式中的“\”和后面紧跟着的那个字符构成一个转义字符，代表着特殊的意义；所以如果你要在正则表达式中表示一个反斜杠\，应当写成“\\”。</p>
+<p>下面匹配A\</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">regx</span> <span class="o">=</span> <span class="s">&#34;\u0041\\\\&#34;</span><span class="o">;</span>
+<span class="n">Pattern</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">regx</span><span class="o">);</span>
+<span class="n">Matcher</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="s">&#34;A\\\\b&#34;</span><span class="o">);</span>
+<span class="k">while</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">find</span><span class="o">()){</span>
+ 	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">());</span>
+        <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">D:<span class="se">\P</span>rogramFiles<span class="se">\e</span>clipse<span class="se">\e</span>clipse<span class="se">\J</span>DK<span class="se">\b</span>in<span class="se">\j</span>ava.exe...
+A<span class="se">\
+</span><span class="se"></span>Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>下面匹配电话号码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">regx</span> <span class="o">=</span> <span class="s">&#34;\\d\\d\\d\\d-\\d\\d\\d\\d\\d\\d\\d&#34;</span><span class="o">;</span>
+<span class="n">Pattern</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">regx</span><span class="o">);</span>
+<span class="n">Matcher</span> <span class="n">m</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="s">&#34;小明的电话号码为：0563-4667722，小方的电话为：0555-7777777&#34;</span><span class="o">);</span>
+  <span class="k">while</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">find</span><span class="o">()){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">());</span>
+        <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">0563-4667722
+0555-7777777
+Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="java的三种随机数生成方式">java的三种随机数生成方式</h2>
+<p>随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种：</p>
+<ul>
+<li>第一种：new Random()</li>
+<li>第二种：Math.random()</li>
+<li>第三种：currentTimeMillis()</li>
+</ul>
+<h3 id="第一种">第一种</h3>
+<p>第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long seed)。第一个就是以当前时间为默认种子，第二个是以指定的种子值进行。产生之后，借助不同的语句产生不同类型的数。</p>
+<p>种子就是产生随机数的第一次使用值,机制是通过一个函数,将这个种子的值转化为随机数空间中的某一个点上,并且产生的随机数均匀的散布在空间中。以后产生的随机数都与前一个随机数有关。以代码为例。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">ran1</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">100</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ran1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在我的编译器下产生的五个数均为85,88,47,13,54，如果采用Random r = new Random()，产生的随机数就不同，这就是确定种子导致的结果。</p>
+<h3 id="第二种">第二种</h3>
+<p>而第二种方法返回的数值是[0.0,1.0）的double型数值，由于double类数的精度很高，可以在一定程度下看做随机数，借助（int）来进行类型转换就可以得到整数随机数了，代码如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>    
+    <span class="kt">int</span> <span class="n">max</span><span class="o">=</span><span class="n">100</span><span class="o">,</span><span class="n">min</span><span class="o">=</span><span class="n">1</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">ran2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()*(</span><span class="n">max</span><span class="o">-</span><span class="n">min</span><span class="o">)+</span><span class="n">min</span><span class="o">);</span> 
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ran2</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="第三种">第三种</h3>
+<p>至于第三种方法虽然不常用，但是也是一种思路。方法返回从1970年1月1日0时0分0秒（这与UNIX系统有关）到现在的一个long型的毫秒数，取模之后即可得到所需范围内的随机数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>    
+    <span class="kt">int</span> <span class="n">max</span><span class="o">=</span><span class="n">100</span><span class="o">,</span><span class="n">min</span><span class="o">=</span><span class="n">1</span><span class="o">;</span>
+    <span class="kt">long</span> <span class="n">randomNum</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>  
+    <span class="kt">int</span> <span class="n">ran3</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="n">randomNum</span><span class="o">%(</span><span class="n">max</span><span class="o">-</span><span class="n">min</span><span class="o">)+</span><span class="n">min</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ran3</span><span class="o">);</span>
+    
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="时间格式统一">时间格式统一</h2>
+<h3 id="需求-1">需求</h3>
+<p>最近接了一个需求，解析别人从Kafka获取的信息，其中的时间格式乱七八糟，无论怎么改后台都各种报错</p>
+<p>他的格式中部分格式使用T作为日期和时间的分隔符，有的用空格；日期部分有的用斜杠作为分隔符，有的用横杠作为分隔符，这其实两句replace就解决了，最致命的是，他的日期时间一位数，没有补0，比如2021年1月1日1点1分1秒为2021-1-1T1:1:1，这就会导致格式化日期信息报错。于是乎，就有了下面的解决办法。</p>
+<h3 id="知识介绍">知识介绍</h3>
+<p>我使用的是<code>org.apache.commons.lang3</code>的<code>StringUtils</code></p>
+<p>方法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">leftPadTime</span><span class="o">(</span><span class="n">Integer</span> <span class="n">time</span><span class="o">){</span>
+    <span class="k">return</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">leftPad</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">time</span><span class="o">),</span> <span class="n">2</span><span class="o">,</span> <span class="s">&#34;0&#34;</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>左侧填充：
+<code>leftPad()</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">StringUtils</span><span class="o">.</span><span class="na">leftPad</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">,</span><span class="kt">int</span> <span class="n">size</span><span class="o">);</span> 
+<span class="n">StringUtils</span><span class="o">.</span><span class="na">leftPad</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">,</span><span class="kt">int</span> <span class="n">size</span><span class="o">,</span><span class="n">String</span> <span class="n">padStr</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>右侧填充：
+<code>rightPad()</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">StringUtils</span><span class="o">.</span><span class="na">rightPad</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">,</span><span class="kt">int</span> <span class="n">size</span><span class="o">);</span> 
+<span class="n">StringUtils</span><span class="o">.</span><span class="na">rightPad</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">,</span><span class="kt">int</span> <span class="n">size</span><span class="o">,</span><span class="n">String</span> <span class="n">padStr</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>中间填充：
+<code>center()</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">StringUtils</span><span class="o">.</span><span class="na">center</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">,</span> <span class="kt">int</span> <span class="n">size</span><span class="o">);</span> 
+<span class="n">StringUtils</span><span class="o">.</span><span class="na">center</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">,</span> <span class="kt">int</span> <span class="n">size</span><span class="o">,</span> <span class="n">String</span> <span class="n">padString</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">StringUtils</span><span class="o">.</span><span class="na">center</span><span class="o">(</span><span class="s">&#34;abcdef&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">)</span><span class="err">；</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>返回结果(左右各7个空格):<code>abcdef</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">StringUtils</span><span class="o">.</span><span class="na">center</span><span class="o">(</span><span class="s">&#34;abcdef&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">,</span><span class="s">&#34;*_&#34;</span><span class="o">);</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>返回结果：*<code>_*_*_abcdef*_*_*_*_</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">StringUtils</span><span class="o">.</span><span class="na">leftPad</span><span class="o">(</span><span class="s">&#34;abc&#34;</span><span class="o">,</span> <span class="n">10</span><span class="o">,</span> <span class="s">&#34;*&#34;</span><span class="o">);</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>返回结果：<code>*******abc</code></p>
+<h3 id="我的工具类">我的工具类</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="cm">/**
+</span><span class="cm">     * 给带T的日期补0，如2021-1-2T1:1:2-&gt;2021-01-02T01:01:02
+</span><span class="cm">     * @param timeS
+</span><span class="cm">     * @return
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">dataStrAdd0</span><span class="o">(</span><span class="n">String</span> <span class="n">timeS</span><span class="o">){</span>
+        <span class="n">StringBuffer</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">timeS</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;T&#34;</span><span class="o">);</span>
+        <span class="c1">//日期
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">ts</span><span class="o">[</span><span class="n">0</span><span class="o">].</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;-&#34;</span><span class="o">));</span>
+        <span class="c1">//时间
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">time</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">ts</span><span class="o">[</span><span class="n">1</span><span class="o">].</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;:&#34;</span><span class="o">));</span>
+        <span class="n">data</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">t</span><span class="o">-&gt;{</span>
+            <span class="n">res</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">leftPad</span><span class="o">(</span><span class="n">t</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="s">&#34;0&#34;</span><span class="o">));</span>
+            <span class="n">res</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;-&#34;</span><span class="o">);</span>
+        <span class="o">});</span>
+        <span class="n">res</span><span class="o">.</span><span class="na">deleteCharAt</span><span class="o">(</span><span class="n">res</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="n">1</span><span class="o">);</span>
+        <span class="n">res</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;T&#34;</span><span class="o">);</span>
+        <span class="n">time</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">t</span><span class="o">-&gt;{</span>
+            <span class="n">res</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">leftPad</span><span class="o">(</span><span class="n">t</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="s">&#34;0&#34;</span><span class="o">));</span>
+            <span class="n">res</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;:&#34;</span><span class="o">);</span>
+        <span class="o">});</span>
+        <span class="n">res</span><span class="o">.</span><span class="na">deleteCharAt</span><span class="o">(</span><span class="n">res</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="n">1</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="windows-10-配置java-环境变量">Windows 10 配置Java 环境变量</h2>
+<h3 id="下载-jdk">下载 JDK</h3>
+<p><a href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener noreferrer">下载地址</a></p>
+<p>点击下载按钮：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.jpg"
+        data-srcset="./2.jpg, ./2.jpg 1.5x, ./2.jpg 2x"
+        data-sizes="auto"
+        alt="./2.jpg"
+        title="2" /></p>
+<p>开始安装JDK：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.jpg"
+        data-srcset="./3.jpg, ./3.jpg 1.5x, ./3.jpg 2x"
+        data-sizes="auto"
+        alt="./3.jpg"
+        title="3" /></p>
+<p>可以设置为你想安装的路径。</p>
+<hr>
+<h3 id="环境变量配置">环境变量配置</h3>
+<h4 id="1-打开-环境变量窗口">1. 打开 环境变量窗口</h4>
+<p>右键 <strong>This PC(此电脑) -&gt; Properties（属性） -&gt; Advanced system settings（高级系统设置） -&gt; Environment Variables（环境变量）&hellip;</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<h4 id="2-新建java_home-变量-点击-new新建-按钮">2. 新建JAVA_HOME 变量 点击 <strong>New（新建）&hellip;</strong> 按钮</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+<p>输入:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">变量名</span><span class="err">：</span><span class="n">JAVA_HOME</span>
+<span class="n">变量值</span><span class="err">：</span><span class="n">电脑上JDK安装的绝对路径</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输入完毕后点击 OK。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c9.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c9.png, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c9.png 1.5x, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c9.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Java-Note\9.png"
+        title="9" /></p>
+<p>JDK 路径下必须能够看到如下的文件。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c10.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c10.png, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c10.png 1.5x, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c10.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Java-Note\10.png"
+        title="10" /></p>
+<h4 id="3-新建修改-classpath-变量">3. 新建/修改 CLASSPATH 变量</h4>
+<p>如果存在 CLASSPATH 变量，选中点击 <strong>Edit(编辑)</strong>。</p>
+<p>如果没有，点击 <strong>New（新建）&hellip;</strong> 新建。</p>
+<p>输入/在已有的变量值后面添加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">变量名：CLASSPATH
+变量值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;
+</code></pre></td></tr></table>
+</div>
+</div><p>点击 OK 保存。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<h4 id="4-修改path-变量">4. 修改Path 变量</h4>
+<p>由于 win10 的不同，当选中 Path 变量的时候，系统会很方便的把所有不同路径都分开了，不会像 win7 或者 win8 那样连在一起。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+<p>新建两条路径：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-env" data-lang="env">%JAVA_HOME%<span class="se">\b</span>in
+%JAVA_HOME%<span class="se">\j</span>re<span class="se">\b</span>in
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<h4 id="4-检查-打开-cmd输入-java出现一连串的指令提示说明配置成功了">4. 检查 打开 cmd，输入 java，出现一连串的指令提示，说明配置成功了:</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+<h2 id="end">End</h2>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-11-02</span>
+                <span>更新于 2022-02-07</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -2114,8 +2643,8 @@ java -Djava.ext.dirs<span class="o">=</span>%lib% -classpath classes com.xxxclas
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

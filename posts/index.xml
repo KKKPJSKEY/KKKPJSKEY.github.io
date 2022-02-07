@@ -4,55 +4,55 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Nov 2021 16:23:56 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>SpringBoot报错 There is already &#39;xxxController&#39; bean method</title>
-    <link>https://kkkpjskey.github.io/springboot-thr-is-ard-cntrlr-bin-mthd-error/</link>
-    <pubDate>Sun, 07 Nov 2021 16:23:56 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springboot-thr-is-ard-cntrlr-bin-mthd-error/</guid>
-    <description><![CDATA[原因分析 报这个错的原因是因为你controller里的@RequestMapping中的路径有重复！ 如： 解决 去掉重复就完事了]]></description>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 07 Feb 2022 15:12:29 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Gradle中compile，provided，compile files，compile project有何区别？</title>
+    <link>https://kkkpjskey.github.io/gradle-compiles-diff/</link>
+    <pubDate>Mon, 07 Feb 2022 15:12:29 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/gradle-compiles-diff/</guid>
+    <description><![CDATA[在一个Android项目的build.gradle中，dependencies闭包中有以下四种形式的声明： 1 2 3 4 compile &#39;com.android.support:appcompat-v7:22.2.1&#39; provided &#39;com.squareup.dagger:dagger-compiler:1.2.1&#39; compile files(&#39;libs/picasso-2.4.0.jar&#39;) compile project(&#39;:androidPullToRefresh&#39;) 1，3，4]]></description>
 </item><item>
-    <title>GitHub的Pull Request和GitLab的Merge Request</title>
-    <link>https://kkkpjskey.github.io/git-mr-pr-diff/</link>
-    <pubDate>Sun, 07 Nov 2021 16:17:32 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/git-mr-pr-diff/</guid>
-    <description><![CDATA[起因 在 GitHub 上混久了，对 Pull Request 就…… 在 GitLab 上混久了，对 Merge Request 就…… 然而它们之间有不同吗？为什么要用两个不同的名称？ 分析 要追溯这两个名称，需要追溯 GitHub 和 GitLab]]></description>
+    <title>基于WSL2 的 Docker Desktop 启动时 Failed to set version to docker-desktop: exit code: -1的解决方法...</title>
+    <link>https://kkkpjskey.github.io/docker-wsl2-waring-error/</link>
+    <pubDate>Mon, 07 Feb 2022 13:55:13 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/docker-wsl2-waring-error/</guid>
+    <description><![CDATA[报错 在Windows 10 的 2004 版本 中， 启用 使用Docker Desktop 时 发现 根本无法启动， 偶尔 或者频繁的出错: System.InvalidOperationException: Failed to set version to docker-desktop: exit code: -1 各种百度谷歌始终无法解决]]></description>
 </item><item>
-    <title>Linux系统设置指令</title>
-    <link>https://kkkpjskey.github.io/linux-system-set-note/</link>
-    <pubDate>Tue, 02 Nov 2021 16:31:06 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/linux-system-set-note/</guid>
-    <description><![CDATA[Linux export 命令 Linux export 命令用于设置或显示环境变量。 在 shell 中执行程序时，shell 会提供一组环境变量。export 可新增，修改或删除环境变量，供后续执行的]]></description>
+    <title>PowerShellGet笔记</title>
+    <link>https://kkkpjskey.github.io/win-powershellget-note/</link>
+    <pubDate>Mon, 07 Feb 2022 13:07:34 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win-powershellget-note/</guid>
+    <description><![CDATA[PowerShell的最佳管理能手 如果你看了上一篇关于微软的新一代Windows套件包管理器(OneGet)的文章的话，应该对PowerSh]]></description>
 </item><item>
-    <title>Win10下 Redis启动 错误1067导致进程意外终止</title>
-    <link>https://kkkpjskey.github.io/redis-start-error/</link>
-    <pubDate>Tue, 02 Nov 2021 16:06:10 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/redis-start-error/</guid>
-    <description><![CDATA[一、系统环境 操作系统：Windows10专业版 64位 Redis版本：redis-64.3.0.503 二、问题描述 1.命令行启动： 1 redis-server redis.windows.conf 可以启]]></description>
+    <title>Win10 邮件0x80004005报错</title>
+    <link>https://kkkpjskey.github.io/win10-mail-0x80004005-error/</link>
+    <pubDate>Sun, 30 Jan 2022 11:20:31 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win10-mail-0x80004005-error/</guid>
+    <description><![CDATA[处理方法 使用cmd处理一小时之后，猛然想起之前在隐私设置里关闭了邮件。 在设置-&gt;隐私-&gt;电子邮箱-&gt;允许访问电子邮箱-&g]]></description>
 </item><item>
-    <title>Sublime隐藏菜单栏后无法显示</title>
-    <link>https://kkkpjskey.github.io/sublime-menubar-hide-error/</link>
-    <pubDate>Tue, 02 Nov 2021 15:59:41 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/sublime-menubar-hide-error/</guid>
-    <description><![CDATA[原因 尝试点击视图下的显示/隐藏菜单栏按钮时菜单栏消失，并且也无直接快捷键回复显示。 步骤 先看看隐藏后的界面，没了菜单项，怎么设置也不行了 Win]]></description>
+    <title>Windows PowerShell 笔记</title>
+    <link>https://kkkpjskey.github.io/win-powshell-note/</link>
+    <pubDate>Sun, 30 Jan 2022 11:05:28 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win-powshell-note/</guid>
+    <description><![CDATA[PowerShell创建 Profile profile主要用于个性化常用的函数、别名等等。每次加载powershell的时候，都会执行profile中的内]]></description>
 </item><item>
-    <title>Spring Boot 可执行 Jar 包运行原理</title>
-    <link>https://kkkpjskey.github.io/maven-jar-note/</link>
-    <pubDate>Tue, 26 Oct 2021 17:48:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/maven-jar-note/</guid>
-    <description><![CDATA[简介 Spring Boot 有一个很方便的功能就是可以将应用打成可执行的 Jar。那么大家有没想过这个 Jar 是怎么运行起来的呢？本篇博客就来介绍下 Spring Boot 可执行 Jar 包的运行]]></description>
+    <title>Docker容器中bash: vi: command not found</title>
+    <link>https://kkkpjskey.github.io/docker-vi-not-find-error/</link>
+    <pubDate>Sun, 30 Jan 2022 10:55:30 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/docker-vi-not-find-error/</guid>
+    <description><![CDATA[问题 我们在创建基础容器之后，进入容器，进行编辑配置文件的时候，需要使用vim或者vi命令，但是会出现： 1 2 root@700af56070dl:/# vi bash: vi: command not found 解决 使用如下命令安装]]></description>
 </item><item>
-    <title>SpringCloud/SpringBoot分离依赖打包</title>
-    <link>https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/</link>
-    <pubDate>Tue, 26 Oct 2021 17:48:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springserver-maven-exclude-lib-note/</guid>
-    <description><![CDATA[需求 由于公司Gitlab服务器和部署服务器之间似乎无法内网访问，找了IT部门好几次没有什么结果。但是紧急的需求增加或者变更需要使用公司提供连]]></description>
+    <title>Visual Studio 笔记</title>
+    <link>https://kkkpjskey.github.io/vs-note/</link>
+    <pubDate>Sun, 30 Jan 2022 10:43:34 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vs-note/</guid>
+    <description><![CDATA[Visual Studio安装时共享组件、工具和 SDK安装位置不能更改 解决办法 更改注册表 HKEY_LOCAL_MACHINE\SOFTWARE\Micr]]></description>
 </item><item>
-    <title>maven-dependency-plugin插件使用笔记</title>
-    <link>https://kkkpjskey.github.io/maven-dep-note/</link>
-    <pubDate>Tue, 26 Oct 2021 16:08:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/maven-dep-note/</guid>
-    <description><![CDATA[简介 maven-dependency-plugin是处理与依赖相关的插件。它有很多可用的goal，大部分是和依赖构建、分析和解决相关的goa]]></description>
+    <title>Chocolatey : 无法将“choco”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。</title>
+    <link>https://kkkpjskey.github.io/chocolatey-install-others-error/</link>
+    <pubDate>Sun, 30 Jan 2022 10:35:04 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/chocolatey-install-others-error/</guid>
+    <description><![CDATA[报错 1 2 3 4 5 6 7 8 PS C:\WINDOWS\system32&gt; choco install mkcert choco : 无法将“choco”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径]]></description>
 </item><item>
-    <title>Mysql索引笔记</title>
-    <link>https://kkkpjskey.github.io/mysql-index-note/</link>
-    <pubDate>Tue, 19 Oct 2021 13:27:58 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mysql-index-note/</guid>
-    <description><![CDATA[B+ 树的优缺点 优点 单次请求涉及的磁盘IO次数少（出度d大，且非叶子节点不包含表数据，树的高度小）； 查询效率稳定（任何关键字的查询必须走从根结点]]></description>
+    <title>Window10安装Chocolatey &#39;An existing Chocolatey installation was detected&#39;</title>
+    <link>https://kkkpjskey.github.io/chocolatey-install-error/</link>
+    <pubDate>Sun, 30 Jan 2022 10:09:42 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/chocolatey-install-error/</guid>
+    <description><![CDATA[情景 安装Node.js时安装额外组件时安装Chocolatey，安装失败，反馈以下信息： 1 2 3 An existing Chocolatey installation was detected. Installation will not continue. For security reasons, this script will not overwrite existing installations. Please use choco]]></description>
 </item><item>
-    <title>Redis缓存机制与应用</title>
-    <link>https://kkkpjskey.github.io/redis-note/</link>
-    <pubDate>Mon, 18 Oct 2021 11:55:34 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/redis-note/</guid>
-    <description><![CDATA[Redis是目前最为主流的缓存技术之一，Redis基于内存操作从而拥有强大的性能，可以达到每秒10万次的请求，可以说是一款非常强大的缓存技术]]></description>
+    <title>Java泛型笔记</title>
+    <link>https://kkkpjskey.github.io/java-generic-note/</link>
+    <pubDate>Tue, 14 Dec 2021 16:31:28 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-generic-note/</guid>
+    <description><![CDATA[泛型通配符及上下边界 引言 思考这种情形 我们先定义一个水果类： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public class Fruit { private String name; public Fruit(String name){ this.name = name; } public String getName() { return name; } public void setName(String name) {]]></description>
 </item></channel>
 </rss>

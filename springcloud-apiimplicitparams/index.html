@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录@ApiImplicitParams、@ApiImplicitParam使用的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/springcloud-apiimplicitparams/" /><meta property="og:image" content="https://kkkpjskey.github.io/springcloud-apiimplicitparams/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-20T09:22:24&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-20T09:22:24&#43;08:00" />
+<meta property="article:published_time" content="2021-07-20T09:22:24+08:00" />
+<meta property="article:modified_time" content="2021-07-20T09:22:24+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/springcloud-apiimplicitparams/featured-image.jpg"/>
@@ -166,7 +166,7 @@ form 以form表单的形式提交 仅支持POST
 例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -176,7 +176,7 @@ form 以form表单的形式提交 仅支持POST
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ApiOperation</span><span class="o">(</span><span class="s">&#34;查询测试&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ApiOperation</span><span class="o">(</span><span class="s">&#34;查询测试&#34;</span><span class="o">)</span>
 <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;select&#34;</span><span class="o">)</span>
 <span class="c1">//@ApiImplicitParam(name=&#34;name&#34;,value=&#34;用户名&#34;,dataType=&#34;String&#34;, paramType = &#34;query&#34;)
 </span><span class="c1"></span><span class="nd">@ApiImplicitParams</span><span class="o">({</span>
@@ -190,7 +190,7 @@ form 以form表单的形式提交 仅支持POST
 <p>path</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -200,7 +200,7 @@ form 以form表单的形式提交 仅支持POST
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/findById1/{id}&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">produces</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_UTF8_VALUE</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;/findById1/{id}&#34;</span><span class="o">,</span> <span class="n">method</span> <span class="o">=</span> <span class="n">RequestMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">produces</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">APPLICATION_JSON_UTF8_VALUE</span><span class="o">)</span>
 
 <span class="nd">@PathVariable</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;id&#34;</span><span class="o">)</span> <span class="n">Long</span> <span class="n">id</span>
 <span class="n">body</span>
@@ -214,7 +214,7 @@ form 以form表单的形式提交 仅支持POST
 header</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -225,7 +225,7 @@ header</p>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ApiImplicitParams</span><span class="o">({</span> <span class="nd">@ApiImplicitParam</span><span class="o">(</span><span class="n">paramType</span> <span class="o">=</span> <span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">dataType</span> <span class="o">=</span> <span class="s">&#34;Long&#34;</span><span class="o">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;信息id&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span> <span class="o">})</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ApiImplicitParams</span><span class="o">({</span> <span class="nd">@ApiImplicitParam</span><span class="o">(</span><span class="n">paramType</span> <span class="o">=</span> <span class="s">&#34;header&#34;</span><span class="o">,</span> <span class="n">dataType</span> <span class="o">=</span> <span class="s">&#34;Long&#34;</span><span class="o">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;信息id&#34;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span> <span class="o">})</span>
 
 <span class="n">String</span> <span class="n">idstr</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getHeader</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">);</span>
 <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">isNumeric</span><span class="o">(</span><span class="n">idstr</span><span class="o">))</span> <span class="o">{</span>
@@ -261,7 +261,7 @@ response：抛出异常的类
 以上这些就是最常用的几个注解了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -300,7 +300,7 @@ response：抛出异常的类
 </span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestHeader</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMethod</span><span class="o">;</span>
@@ -352,14 +352,14 @@ response：抛出异常的类
 <p>在上面案例中我们可以知道如果在request域中我们使用reques.getHeader()和使用@RequestHeader注解作用是一样的，其它内容类似。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ApiResponses</span><span class="err">：</span><span class="n">用于表示一组响应</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ApiResponses</span><span class="err">：</span><span class="n">用于表示一组响应</span>
 <span class="nd">@ApiResponse</span><span class="err">：</span><span class="n">用在</span><span class="nd">@ApiResponses中</span><span class="err">，</span><span class="n">一般用于表达一个错误的响应信息</span>
 <span class="n">code</span><span class="err">：</span><span class="n">数字</span><span class="err">，</span><span class="n">例如400</span>
 <span class="n">message</span><span class="err">：</span><span class="n">信息</span><span class="err">，</span><span class="n">例如</span><span class="err">”</span><span class="n">请求参数没填好</span><span class="err">”</span>
@@ -368,7 +368,7 @@ response：抛出异常的类
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -383,7 +383,7 @@ response：抛出异常的类
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ApiOperation</span><span class="o">(</span><span class="s">&#34;获取用户信息&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ApiOperation</span><span class="o">(</span><span class="s">&#34;获取用户信息&#34;</span><span class="o">)</span>
 <span class="nd">@ApiImplicitParams</span><span class="o">({</span><span class="nd">@ApiImplicitParam</span><span class="o">(</span><span class="n">paramType</span><span class="o">=</span><span class="s">&#34;header&#34;</span><span class="o">,</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="n">dataType</span><span class="o">=</span><span class="s">&#34;String&#34;</span><span class="o">,</span><span class="n">required</span><span class="o">=</span><span class="kc">true</span><span class="o">,</span><span class="n">value</span><span class="o">=</span><span class="s">&#34;用户的姓名&#34;</span><span class="o">,</span><span class="n">defaultValue</span><span class="o">=</span><span class="s">&#34;zhaojigang&#34;</span><span class="o">),</span>
 <span class="nd">@ApiImplicitParam</span><span class="o">(</span><span class="n">paramType</span><span class="o">=</span><span class="s">&#34;query&#34;</span><span class="o">,</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;pwd&#34;</span><span class="o">,</span><span class="n">dataType</span><span class="o">=</span><span class="s">&#34;String&#34;</span><span class="o">,</span><span class="n">required</span><span class="o">=</span><span class="kc">true</span><span class="o">,</span><span class="n">value</span><span class="o">=</span><span class="s">&#34;用户的密码&#34;</span><span class="o">,</span><span class="n">defaultValue</span><span class="o">=</span><span class="s">&#34;wangna&#34;</span><span class="o">)</span>
 <span class="o">})</span>
@@ -430,8 +430,8 @@ response：抛出异常的类
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

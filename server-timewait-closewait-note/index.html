@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录服务器大量TIME_WAIT和CLOSE_WAIT的原因及解决办法" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/server-timewait-closewait-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/server-timewait-closewait-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-29T22:29:53&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-29T22:29:53&#43;08:00" />
+<meta property="article:published_time" content="2021-08-29T22:29:53+08:00" />
+<meta property="article:modified_time" content="2021-08-29T22:29:53+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/server-timewait-closewait-note/featured-image.jpg"/>
@@ -146,16 +146,16 @@
 <p>Linux服务器下查看网络连接的状态</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">netstat -n <span class="p">|</span> awk <span class="s1">&#39;/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}&#39;</span>  
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">netstat -n <span class="p">|</span> awk <span class="s1">&#39;/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}&#39;</span>  
 </code></pre></td></tr></table>
 </div>
 </div><p>它会显示例如下面的信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -163,7 +163,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">TIME_WAIT <span class="m">814</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">TIME_WAIT <span class="m">814</span>
 CLOSE_WAIT <span class="m">1</span>
 FIN_WAIT1 <span class="m">1</span>
 ESTABLISHED <span class="m">634</span>
@@ -190,7 +190,7 @@ LAST_ACK <span class="m">1</span>
 <p><strong>下面是一篇文章中提到的/etc/sysctl.conf文件的修改</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -214,7 +214,7 @@ LAST_ACK <span class="m">1</span>
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#对于一个新建连接，内核要发送多少个 SYN 连接请求才决定放弃,不应该大于255，默认值是5，对应于180秒左右时间  </span>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1">#对于一个新建连接，内核要发送多少个 SYN 连接请求才决定放弃,不应该大于255，默认值是5，对应于180秒左右时间  </span>
 net.ipv4.tcp_syn_retries<span class="o">=</span><span class="m">2</span> 
 <span class="c1">#net.ipv4.tcp_synack_retries=2 </span>
 <span class="c1">#表示当keepalive起用的时候，TCP发送keepalive消息的频度。缺省是2小时，改为300秒 </span>
@@ -247,16 +247,16 @@ net.core.netdev_max_backlog<span class="o">=</span><span class="m">3000</span>
 <p>修改方法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">sudo vi /etc/sysctl.conf
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">sudo vi /etc/sysctl.conf
 </code></pre></td></tr></table>
 </div>
 </div><p>增加如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -265,7 +265,7 @@ net.core.netdev_max_backlog<span class="o">=</span><span class="m">3000</span>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">net.ipv4.tcp_tw_reuse <span class="o">=</span> <span class="m">1</span> 
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">net.ipv4.tcp_tw_reuse <span class="o">=</span> <span class="m">1</span> 
 
 net.ipv4.tcp_tw_recycle <span class="o">=</span> <span class="m">1</span> 
 net.ipv4.tcp_fin_timeout <span class="o">=</span> <span class="m">30</span> 
@@ -276,10 +276,10 @@ net.ipv4.tcp_max_tw_buckets <span class="o">=</span> <span class="m">10000</span
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">sudo /sbin/sysctl -p
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">sudo /sbin/sysctl -p
 </code></pre></td></tr></table>
 </div>
 </div><p>实时生效</p>
@@ -323,8 +323,8 @@ net.ipv4.tcp_max_tw_buckets <span class="o">=</span> <span class="m">10000</span
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

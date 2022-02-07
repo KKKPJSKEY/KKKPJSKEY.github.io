@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录学习Mybatis的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mybatis-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mybatis-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-27T18:58:15&#43;08:00" />
-<meta property="article:modified_time" content="2021-07-27T18:58:15&#43;08:00" />
+<meta property="article:published_time" content="2021-07-27T18:58:15+08:00" />
+<meta property="article:modified_time" content="2021-12-01T16:34:25+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mybatis-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/featured-image.jpg",
                             "width":  1570 ,
                             "height":  471 
-                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  2621 ,
-        "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/","datePublished": "2021-07-27T18:58:15+08:00","dateModified": "2021-07-27T18:58:15+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  2593 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/","datePublished": "2021-07-27T18:58:15+08:00","dateModified": "2021-12-01T16:34:25+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Mybatis笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2621 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2593 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/mybatis-note/" class="leancloud_visitors" data-flag-title="Mybatis笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -149,25 +149,26 @@
       </ul>
     </li>
     <li><a href="#mybatis动态传入表名">MyBatis动态传入表名</a></li>
+    <li><a href="#-transient注解">@ Transient注解</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="mapperscan注解包含多个包">MapperScan注解包含多个包</h2>
 <p>单个包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@MapperScan</span><span class="o">(</span><span class="s">&#34;com.mysiteforme.admin.dao&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@MapperScan</span><span class="o">(</span><span class="s">&#34;com.mysiteforme.admin.dao&#34;</span><span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>多个包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@MapperScan</span><span class="o">({</span><span class="s">&#34;com.mysiteforme.admin.dao&#34;</span><span class="o">,</span><span class="s">&#34;com.zipon.tpf.dao&#34;</span><span class="o">})</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@MapperScan</span><span class="o">({</span><span class="s">&#34;com.mysiteforme.admin.dao&#34;</span><span class="o">,</span><span class="s">&#34;com.zipon.tpf.dao&#34;</span><span class="o">})</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -181,24 +182,24 @@
 <h2 id="实体类忽略映射字段">实体类忽略映射字段</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@TableField</span><span class="o">(</span><span class="n">exist</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span><span class="c1">//：表示该属性不为数据库表字段，但又是必须使用的。
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@TableField</span><span class="o">(</span><span class="n">exist</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span><span class="c1">//：表示该属性不为数据库表字段，但又是必须使用的。
 </span><span class="c1"></span><span class="nd">@TableField</span><span class="o">(</span><span class="n">exist</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span><span class="c1">//：表示该属性为数据库表字段。
 </span></code></pre></td></tr></table>
 </div>
 </div><p>Mybatis-Plus 插件有这个功能，可以看一下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@TableName</span><span class="c1">//：数据库表相关
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@TableName</span><span class="c1">//：数据库表相关
 </span><span class="c1"></span><span class="nd">@TableId</span><span class="c1">//：表主键标识
 </span><span class="c1"></span><span class="nd">@TableField</span><span class="c1">//：表字段标识
 </span><span class="c1"></span><span class="nd">@TableLogic</span><span class="c1">//：表字段逻辑处理注解（逻辑删除）
@@ -208,7 +209,7 @@
 <p>1、用<code>script</code>标签包围，然后像xml语法一样书写</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -217,7 +218,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Select</span><span class="o">({</span><span class="s">&#34;&lt;script&gt;&#34;</span><span class="o">,</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Select</span><span class="o">({</span><span class="s">&#34;&lt;script&gt;&#34;</span><span class="o">,</span>
     <span class="s">&#34;SELECT * FROM tbl_order&#34;</span><span class="o">,</span>
     <span class="s">&#34;WHERE 1=1&#34;</span><span class="o">,</span>
     <span class="s">&#34;&lt;when test=&#39;title!=null&#39;&gt;&#34;</span><span class="o">,</span>
@@ -229,7 +230,7 @@
 </div><p>2、用<code>Provider</code>去实现SQL拼接，例如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -250,7 +251,7 @@
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderProvider</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderProvider</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TBL_ORDER</span> <span class="o">=</span> <span class="s">&#34;tbl_order&#34;</span><span class="o">;</span>
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">queryOrderByParam</span><span class="o">(</span><span class="n">OrderPara</span> <span class="n">param</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">SQL</span> <span class="n">sql</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SQL</span><span class="o">().</span><span class="na">SELECT</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">).</span><span class="na">FROM</span><span class="o">(</span><span class="n">TBL_ORDER</span><span class="o">);</span>
@@ -277,19 +278,19 @@
 <p>如果XML元素嵌入在<code>&lt;script&gt;</code>XML元素中，则可以在注释值中为动态SQL使用XML元素：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Select</span><span class="o">(</span><span class="s">&#34;&lt;script&gt;SELECT ...&lt;/script&gt;&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Select</span><span class="o">(</span><span class="s">&#34;&lt;script&gt;SELECT ...&lt;/script&gt;&#34;</span><span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>但是使用<code>&lt;include&gt;</code>元素会触发SQL Mapper配置解析异常，由以下原因引起：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">org.apache.ibatis.builder.BuilderException: Unknown element in SQL statement. at org.apache.ibatis.scripting.xmltags.XMLScriptBuilder.parseDynamicTags
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">org.apache.ibatis.builder.BuilderException: Unknown element in SQL statement. at org.apache.ibatis.scripting.xmltags.XMLScriptBuilder.parseDynamicTags
 </code></pre></td></tr></table>
 </div>
 </div><p>如果<code>nodeHandlers</code>在课堂中检查方法<code>org.apache.ibatis.builder.BuilderException</code>，将注意到支持的元素有：</p>
@@ -306,33 +307,33 @@
 </ul>
 <p>然而，包括基于注释的查询中的片段是不可能的。</p>
 <p>参考：</p>
-<p><a href="https://segmentfault.com/q/1010000006875476">https://segmentfault.com/q/1010000006875476</a>（以上内容转自此篇回答）</p>
-<p><a href="https://stackoverflow.com/questions/6685655/how-to-use-dynamic-sql-query-in-mybatis-with-annotationhow-to-use-selectprovide">https://stackoverflow.com/questions/6685655/how-to-use-dynamic-sql-query-in-mybatis-with-annotationhow-to-use-selectprovide</a></p>
-<p><a href="http://www.blogjava.net/dbstar/archive/2011/08/08/355825.html">http://www.blogjava.net/dbstar/archive/2011/08/08/355825.html</a></p>
-<p><a href="http://www.jianshu.com/p/03642b807688">http://www.jianshu.com/p/03642b807688</a></p>
-<p><a href="https://stackoverflow.com/questions/33129344/is-there-a-way-to-reuse-sql-fragments-in-annotation-based-mybatis-ibatis">https://stackoverflow.com/questions/33129344/is-there-a-way-to-reuse-sql-fragments-in-annotation-based-mybatis-ibatis</a></p>
+<p><a href="https://segmentfault.com/q/1010000006875476" target="_blank" rel="noopener noreferrer">https://segmentfault.com/q/1010000006875476</a>（以上内容转自此篇回答）</p>
+<p><a href="https://stackoverflow.com/questions/6685655/how-to-use-dynamic-sql-query-in-mybatis-with-annotationhow-to-use-selectprovide" target="_blank" rel="noopener noreferrer">https://stackoverflow.com/questions/6685655/how-to-use-dynamic-sql-query-in-mybatis-with-annotationhow-to-use-selectprovide</a></p>
+<p><a href="http://www.blogjava.net/dbstar/archive/2011/08/08/355825.html" target="_blank" rel="noopener noreferrer">http://www.blogjava.net/dbstar/archive/2011/08/08/355825.html</a></p>
+<p><a href="http://www.jianshu.com/p/03642b807688" target="_blank" rel="noopener noreferrer">http://www.jianshu.com/p/03642b807688</a></p>
+<p><a href="https://stackoverflow.com/questions/33129344/is-there-a-way-to-reuse-sql-fragments-in-annotation-based-mybatis-ibatis" target="_blank" rel="noopener noreferrer">https://stackoverflow.com/questions/33129344/is-there-a-way-to-reuse-sql-fragments-in-annotation-based-mybatis-ibatis</a></p>
 <h2 id="cdata-的作用使用注意事项"><code>&lt;![CDATA[ ]]&gt;</code>的作用、使用、注意事项。</h2>
 <ol>
 <li>
 <p>sql中字符串拼接</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">tableName</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="n">CONCAT</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="o">#</span><span class="err">{</span><span class="nb">text</span><span class="err">}</span><span class="p">),</span> <span class="s1">&#39;%&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tableName</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="nb">text</span><span class="err">}</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;%&#39;</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>使用 ${&hellip;} 代替 #{&hellip;} （不能防止sql注入 #{}&mdash;&gt;可以防止sql注入的问题）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">tableName</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="s1">&#39;%${text}%&#39;</span><span class="p">;</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tableName</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%${text}%&#39;</span><span class="p">;</span><span class="w"> 
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -340,12 +341,12 @@
 <p>Java</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// or String searchText = &#34;%&#34; + text + &#34;%&#34;;
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// or String searchText = &#34;%&#34; + text + &#34;%&#34;;
 </span><span class="c1"></span><span class="n">String</span> <span class="n">searchText</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">(</span><span class="s">&#34;%&#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;%&#34;</span><span class="o">).</span><span class="na">toString</span><span class="o">();</span>
 <span class="n">parameterMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;text&#34;</span><span class="o">,</span> <span class="n">searchText</span><span class="o">);</span>
 </code></pre></td></tr></table>
@@ -353,11 +354,11 @@
 </div><p>SqlMap.xml</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">tableName</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="k">LIKE</span> <span class="o">#</span><span class="err">{</span><span class="nb">text</span><span class="err">}</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tableName</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="nb">text</span><span class="err">}</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -368,19 +369,19 @@
 <p>错误写法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span>   <span class="o">*</span>   <span class="k">from</span>  <span class="n">xxx</span>  <span class="k">limit</span>  <span class="o">#</span><span class="err">{</span><span class="n">page</span><span class="err">}</span><span class="p">,</span><span class="o">#</span><span class="err">{</span><span class="k">rows</span><span class="err">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="k">from</span><span class="w">  </span><span class="n">xxx</span><span class="w">  </span><span class="k">limit</span><span class="w">  </span><span class="o">#</span><span class="err">{</span><span class="n">page</span><span class="err">}</span><span class="p">,</span><span class="o">#</span><span class="err">{</span><span class="k">rows</span><span class="err">}</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>报错：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">You have an error in your SQL syntax<span class="p">;</span> check the manual that corresponds to your MySQL server version <span class="k">for</span> the right syntax to use near <span class="s1">&#39;&#39;</span>1<span class="s1">&#39;,&#39;</span>3<span class="s1">&#39;&#39;</span> at line <span class="m">1</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">You have an error in your SQL syntax<span class="p">;</span> check the manual that corresponds to your MySQL server version <span class="k">for</span> the right syntax to use near <span class="s1">&#39;&#39;</span>1<span class="s1">&#39;,&#39;</span>3<span class="s1">&#39;&#39;</span> at line <span class="m">1</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>可以看出mybatis自动给我们的参数加了 引号 ' &lsquo;,所以报错</p>
@@ -388,34 +389,34 @@
 <p>正确写法：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span>   <span class="o">*</span>   <span class="k">from</span>  <span class="n">xxx</span>  <span class="k">limit</span>  <span class="err">${</span><span class="n">page</span><span class="err">}</span><span class="p">,</span><span class="err">${</span><span class="k">rows</span><span class="err">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w">   </span><span class="o">*</span><span class="w">   </span><span class="k">from</span><span class="w">  </span><span class="n">xxx</span><span class="w">  </span><span class="k">limit</span><span class="w">  </span><span class="err">${</span><span class="n">page</span><span class="err">}</span><span class="p">,</span><span class="err">${</span><span class="k">rows</span><span class="err">}</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="结果封装为list">结果封装为List</h2>
 <p>1.结果封装为List
 接口示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">接口示例</span><span class="err">：</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">接口示例</span><span class="err">：</span>
 <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Members</span><span class="o">&gt;</span> <span class="nf">selectMembersListByName</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>配置文件示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectMembersListByName&#34;</span> <span class="na">resultType=</span><span class="s">&#34;members&#34;</span><span class="nt">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectMembersListByName&#34;</span> <span class="na">resultType=</span><span class="s">&#34;members&#34;</span><span class="nt">&gt;</span>
     select * from members where member_name like #{member_name}
 <span class="nt">&lt;/select&gt;</span>
 </code></pre></td></tr></table>
@@ -423,12 +424,12 @@
 </div><p>运行结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">运行结果</span><span class="err">：</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">运行结果</span><span class="err">：</span>
 <span class="o">[</span><span class="n">Member</span> <span class="o">[</span><span class="n">id</span><span class="o">=</span><span class="n">3</span><span class="o">,</span> <span class="n">member_name</span><span class="o">=</span><span class="n">关云长</span><span class="o">,</span> <span class="n">password</span><span class="o">=</span><span class="n">123456</span><span class="o">,</span> <span class="n">age</span><span class="o">=</span><span class="n">54</span><span class="o">],</span> 
  <span class="n">Member</span> <span class="o">[</span><span class="n">id</span><span class="o">=</span><span class="n">4</span><span class="o">,</span> <span class="n">member_name</span><span class="o">=</span><span class="n">关云长</span><span class="o">,</span> <span class="n">password</span><span class="o">=</span><span class="n">123456</span><span class="o">,</span> <span class="n">age</span><span class="o">=</span><span class="n">54</span><span class="o">]]</span>
 </code></pre></td></tr></table>
@@ -438,22 +439,22 @@
 <p>接口示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="nf">selectMembersByIdReturnMap</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">);</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="nf">selectMembersByIdReturnMap</span><span class="o">(</span><span class="n">Integer</span> <span class="n">id</span><span class="o">);</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>配置文件示例：
 其中resultType是map，因为mybatis为常用类已经起了别名（typeAliases）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectMembersByIdReturnMap&#34;</span> <span class="na">resultType=</span><span class="s">&#34;map&#34;</span><span class="nt">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectMembersByIdReturnMap&#34;</span> <span class="na">resultType=</span><span class="s">&#34;map&#34;</span><span class="nt">&gt;</span>
     select * from members where id = #{id}
 <span class="nt">&lt;/select&gt;</span>
 </code></pre></td></tr></table>
@@ -461,10 +462,10 @@
 </div><p>运行结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="o">{</span><span class="n">pass_word</span><span class="o">=</span><span class="n">123456</span><span class="o">,</span> <span class="n">id</span><span class="o">=</span><span class="n">1</span><span class="o">,</span> <span class="n">member_name</span><span class="o">=</span><span class="n">张三</span><span class="o">,</span> <span class="n">age</span><span class="o">=</span><span class="n">25</span><span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="o">{</span><span class="n">pass_word</span><span class="o">=</span><span class="n">123456</span><span class="o">,</span> <span class="n">id</span><span class="o">=</span><span class="n">1</span><span class="o">,</span> <span class="n">member_name</span><span class="o">=</span><span class="n">张三</span><span class="o">,</span> <span class="n">age</span><span class="o">=</span><span class="n">25</span><span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="将多条记录封装成map其中key是我们指定字段的名字value是记录对象mapstringmembers">将多条记录封装成Map其中key是我们指定字段的名字，value是记录对象Map&lt;String,Members&gt;</h3>
@@ -472,11 +473,11 @@
 @MapKey就是指定map中key是什么</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@MapKey</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@MapKey</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Members</span><span class="o">&gt;</span> <span class="nf">selectMembersByNameReturnMap</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">);</span>
 </code></pre></td></tr></table>
 </div>
@@ -484,12 +485,12 @@
 返回值类型还是对象</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectMembersByNameReturnMap&#34;</span> <span class="na">resultType=</span><span class="s">&#34;members&#34;</span><span class="nt">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectMembersByNameReturnMap&#34;</span> <span class="na">resultType=</span><span class="s">&#34;members&#34;</span><span class="nt">&gt;</span>
     select * from members where member_name like #{member_name}
 <span class="nt">&lt;/select&gt;</span>
 </code></pre></td></tr></table>
@@ -497,11 +498,11 @@
 </div><p>运行结果：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="err">3=Member</span> <span class="err">[id=3,</span> <span class="err">member_name=关云长,</span> <span class="err">password=123456,</span> <span class="err">age=54],</span> 
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="err">3=Member</span> <span class="err">[id=3,</span> <span class="err">member_name=关云长,</span> <span class="err">password=123456,</span> <span class="err">age=54],</span> 
  <span class="err">4=Member</span> <span class="err">[id=4,</span> <span class="err">member_name=关云长,</span> <span class="err">password=123456,</span> <span class="err">age=54]</span><span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -514,20 +515,20 @@
 <p>　　如以下sql语句</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql">  <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">name</span> <span class="o">=</span> <span class="o">#</span><span class="err">{</span><span class="n">name</span><span class="err">}</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">#</span><span class="err">{</span><span class="n">name</span><span class="err">}</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>　　会被解析为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql">  <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">name</span> <span class="o">=</span> <span class="o">?</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>　　可以看到#{}被解析为一个参数占位符？。</p>
 <blockquote>
@@ -536,20 +537,20 @@
 <p>　　如以下sql语句：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql">  <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">name</span> <span class="o">=</span> <span class="err">${</span><span class="n">name</span><span class="err">}</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">${</span><span class="n">name</span><span class="err">}</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>　　当我们传递参数“sprite”时，sql会解析为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql">  <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;sprite&#34;</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;sprite&#34;</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>　　可以看到预编译之前的sql语句已经不包含变量name了。</p>
 <p>　　综上所得， ${ } 的变量的替换阶段是在动态 SQL 解析阶段，而 #{ }的变量的替换是在 DBMS 中。</p>
@@ -562,19 +563,19 @@
 <p>　　${}在预编译之前已经被变量替换了，这会存在sql注入的风险。如下sql</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql">  <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="err">${</span><span class="n">tableName</span><span class="err">}</span> <span class="k">where</span> <span class="n">name</span> <span class="o">=</span> <span class="err">${</span><span class="n">name</span><span class="err">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="err">${</span><span class="n">tableName</span><span class="err">}</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">${</span><span class="n">name</span><span class="err">}</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>　　如果传入的参数tableName为user; delete user; &ndash;，那么sql动态解析之后，预编译之前的sql将变为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql">  <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span><span class="p">;</span> <span class="k">delete</span> <span class="k">user</span><span class="p">;</span> <span class="c1">-- where name = ?;
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="p">;</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="k">user</span><span class="p">;</span><span class="w"> </span><span class="c1">-- where name = ?;
 </span></code></pre></td></tr></table>
 </div>
 </div><p>　　&ndash;之后的语句将作为注释不起作用，顿时我和我的小伙伴惊呆了！！！看到没，本来的查询语句，竟然偷偷的包含了一个删除表数据的sql，是删除，删除，删除！！！重要的事情说三遍，可想而知，这个风险是有多大。</p>
@@ -585,7 +586,7 @@
 <p>　　进入正题，通过上面的分析，相信大家可能已经对如何动态调用表名和字段名有些思路了。示例如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -593,7 +594,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">  <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;getUser&#34;</span> <span class="na">resultType=</span><span class="s">&#34;java.util.Map&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;java.lang.String&#34;</span> <span class="na">statementType=</span><span class="s">&#34;STATEMENT&#34;</span><span class="nt">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">  <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;getUser&#34;</span> <span class="na">resultType=</span><span class="s">&#34;java.util.Map&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;java.lang.String&#34;</span> <span class="na">statementType=</span><span class="s">&#34;STATEMENT&#34;</span><span class="nt">&gt;</span>
     select 
          ${columns}
     from ${tableName}
@@ -610,19 +611,21 @@
 <p>　　因为${}是将传入的参数直接显示生成sql，如${xxx}传入的参数为字符串数据，需在参数传入前加上引号，如：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">   <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sprite&#34;</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">   <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;sprite&#34;</span><span class="o">;</span>
    <span class="n">name</span> <span class="o">=</span> <span class="s">&#34;&#39;&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#34;&#39;&#34;</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="-transient注解">@ Transient注解</h2>
+<p>ORM框架中是否和数据库的列做映射，帮助理解XmlTransient</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-07-27</span>
+                <span>更新于 2021-12-01</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -650,8 +653,8 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

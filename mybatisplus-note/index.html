@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录MyBatis-Plus使用的笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mybatisplus-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mybatisplus-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-07-28T11:17:10&#43;08:00" />
-<meta property="article:modified_time" content="2021-08-25T16:55:11&#43;08:00" />
+<meta property="article:published_time" content="2021-07-28T11:17:10+08:00" />
+<meta property="article:modified_time" content="2021-08-25T16:55:11+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mybatisplus-note/featured-image.jpg"/>
@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mybatisplus-note\/featured-image.jpg",
                             "width":  1700 ,
                             "height":  510 
-                        }],"genre": "posts","keywords": "Java, ORM, MyBatisPlus","wordcount":  4315 ,
+                        }],"genre": "posts","keywords": "Java, ORM, MyBatisPlus","wordcount":  4436 ,
         "url": "https:\/\/kkkpjskey.github.io\/mybatisplus-note\/","datePublished": "2021-07-28T11:17:10+08:00","dateModified": "2021-08-25T16:55:11+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">MyBatis-Plus笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4315 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-28">2021-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4436 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/mybatisplus-note/" class="leancloud_visitors" data-flag-title="MyBatis-Plus笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -229,7 +229,7 @@
 <p>其对应的数据库 Schema 脚本如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -241,22 +241,22 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="k">user</span><span class="p">;</span>
-
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">user</span>
-<span class="p">(</span>
-	<span class="n">id</span> <span class="nb">BIGINT</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;主键ID&#39;</span><span class="p">,</span>
-	<span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;姓名&#39;</span><span class="p">,</span>
-	<span class="n">age</span> <span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;年龄&#39;</span><span class="p">,</span>
-	<span class="n">email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NULL</span> <span class="k">DEFAULT</span> <span class="k">NULL</span> <span class="k">COMMENT</span> <span class="s1">&#39;邮箱&#39;</span><span class="p">,</span>
-	<span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
-<span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="k">user</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">user</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="n">id</span><span class="w"> </span><span class="nb">BIGINT</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;主键ID&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">	</span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;姓名&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">	</span><span class="n">age</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;年龄&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">	</span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;邮箱&#39;</span><span class="p">,</span><span class="w">
+</span><span class="w">	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>其对应的数据库 Data 脚本如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -266,15 +266,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="k">user</span><span class="p">;</span>
-
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">user</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span> <span class="k">VALUES</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Jone&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;test1@baomidou.com&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;test2@baomidou.com&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="s1">&#39;test3@baomidou.com&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Sandy&#39;</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;test4@baomidou.com&#39;</span><span class="p">),</span>
-<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Billie&#39;</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="s1">&#39;test5@baomidou.com&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">user</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Jone&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test1@baomidou.com&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Jack&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test2@baomidou.com&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test3@baomidou.com&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sandy&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test4@baomidou.com&#39;</span><span class="p">),</span><span class="w">
+</span><span class="w"></span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Billie&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test5@baomidou.com&#39;</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <p>::: danger Question 如果从零开始用 MyBatis-Plus 来实现该表的增删改查我们需要做什么呢？ :::</p>
@@ -285,7 +285,7 @@
 <p>引入 Spring Boot Starter 父工程：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -293,7 +293,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;parent&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;parent&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="nt">&lt;/artifactId&gt;</span>
     <span class="nt">&lt;version&gt;</span>spring-latest-version<span class="nt">&lt;/version&gt;</span>
@@ -314,7 +314,7 @@
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -337,7 +337,7 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependencies&gt;</span>
     <span class="nt">&lt;dependency&gt;</span>
         <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
         <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
@@ -364,7 +364,7 @@
 <p>在 <code>application.yml</code> 配置文件中添加 H2 数据库的相关配置：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -375,7 +375,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="c"># DataSource Config</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="c"># DataSource Config</span><span class="w">
 </span><span class="w"></span><span class="nt">spring</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">datasource</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">driver-class-name</span><span class="p">:</span><span class="w"> </span><span class="l">org.h2.Driver</span><span class="w">
@@ -389,7 +389,7 @@
 </div><p>在 Spring Boot 启动类中添加 <code>@MapperScan</code> 注解，扫描 Mapper 文件夹：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -400,7 +400,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SpringBootApplication</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SpringBootApplication</span>
 <span class="nd">@MapperScan</span><span class="o">(</span><span class="s">&#34;com.baomidou.mybatisplus.samples.quickstart.mapper&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="o">{</span>
 
@@ -415,7 +415,7 @@
 <p>编写实体类 <code>User.java</code>（此处使用了 <a href="https://www.projectlombok.org/" target="_blank" rel="noopener noreferrer">Lombok</a> 简化代码）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -424,7 +424,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Data</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
@@ -436,12 +436,12 @@
 </div><p>编写Mapper类 <code>UserMapper.java</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserMapper</span> <span class="kd">extends</span> <span class="n">BaseMapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserMapper</span> <span class="kd">extends</span> <span class="n">BaseMapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="o">{</span>
 
 <span class="o">}</span>
 </code></pre></td></tr></table>
@@ -450,7 +450,7 @@
 <p>添加测试类，进行功能测试：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -467,7 +467,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SpringBootTest</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@SpringBootTest</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleTest</span> <span class="o">{</span>
 
     <span class="nd">@Autowired</span>
@@ -488,14 +488,14 @@
 <p>控制台输出：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>1, <span class="nv">name</span><span class="o">=</span>Jone, <span class="nv">age</span><span class="o">=</span>18, <span class="nv">email</span><span class="o">=</span>test1@baomidou.com<span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>1, <span class="nv">name</span><span class="o">=</span>Jone, <span class="nv">age</span><span class="o">=</span>18, <span class="nv">email</span><span class="o">=</span>test1@baomidou.com<span class="o">)</span>
 User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>2, <span class="nv">name</span><span class="o">=</span>Jack, <span class="nv">age</span><span class="o">=</span>20, <span class="nv">email</span><span class="o">=</span>test2@baomidou.com<span class="o">)</span>
 User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>3, <span class="nv">name</span><span class="o">=</span>Tom, <span class="nv">age</span><span class="o">=</span>28, <span class="nv">email</span><span class="o">=</span>test3@baomidou.com<span class="o">)</span>
 User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>4, <span class="nv">name</span><span class="o">=</span>Sandy, <span class="nv">age</span><span class="o">=</span>21, <span class="nv">email</span><span class="o">=</span>test4@baomidou.com<span class="o">)</span>
@@ -516,7 +516,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 <p>Service层需要继承IService，当然实现层也要继承对应的实现类。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -540,7 +540,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
 </span><span class="cm"> * &lt;p&gt;
 </span><span class="cm"> * 用户 服务类
 </span><span class="cm"> * &lt;/p&gt;
@@ -568,14 +568,14 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 <p>getOne()，这个是方法返回结果不止一条则会抛出异常，如果想默认取第一条结果，可以给这方法传第二个参数为false。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">  <span class="nd">@Test</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">  <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getOne</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">User</span> <span class="n">one</span> <span class="o">=</span> <span class="n">userService</span><span class="o">.</span><span class="na">getOne</span><span class="o">(</span><span class="n">Wrappers</span><span class="o">.&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="n">lambdaQuery</span><span class="o">().</span><span class="na">eq</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getAge</span><span class="o">,</span> <span class="n">31</span><span class="o">),</span><span class="kc">false</span><span class="o">);</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">one</span><span class="o">);</span>
@@ -585,7 +585,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </div><p><code>saveOrUpdateBatch()</code>，批量新增或者修改方法,判断ID是否存在，如果ID不存在执行新增，如果ID存在先执行查询语句，查询结果为空新增，否则修改。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -602,7 +602,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java">   <span class="nd">@Test</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">   <span class="nd">@Test</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveOrUpdateBatch</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">User</span> <span class="n">user1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
         <span class="n">user1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;兔子&#34;</span><span class="o">);</span>
@@ -622,7 +622,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </div><p>接下来说一下基于lambda的相关操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -650,7 +650,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"> <span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="cm">/**
 </span><span class="cm">     * lombda查询
 </span><span class="cm">     */</span>
     <span class="nd">@Test</span>
@@ -682,66 +682,66 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 <h3 id="1等于当前时间"><strong>1.等于当前时间</strong></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">eq</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">())</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">eq</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">())</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="2不等于当前时间"><strong>2.不等于当前时间</strong></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">ne</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">ne</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="3大于当前时间"><strong>3.大于当前时间</strong></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">gt</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">gt</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="4小于当前时间"><strong>4.小于当前时间</strong></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">lt</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">lt</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="5大于等于当前时间"><strong>5.大于等于当前时间</strong></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">ge</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">ge</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="6小于等于当前时间"><strong>6.小于等于当前时间</strong></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">le</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">taskFlowService</span><span class="o">.</span><span class="na">lambdaQuery</span><span class="o">().</span><span class="na">le</span><span class="o">(</span><span class="n">TaskFlow</span><span class="o">::</span><span class="n">getCreateTime</span><span class="o">,</span><span class="n">DateUtil</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="72个时间段是否相交"><strong>7.2个时间段是否相交</strong></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span><span class="o">((!</span><span class="n">start1</span><span class="o">.</span><span class="na">after</span><span class="o">(</span><span class="n">end2</span><span class="o">))&amp;&amp;(!</span><span class="n">end1</span><span class="o">.</span><span class="na">before</span><span class="o">(</span><span class="n">start2</span><span class="o">))){</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span><span class="o">((!</span><span class="n">start1</span><span class="o">.</span><span class="na">after</span><span class="o">(</span><span class="n">end2</span><span class="o">))&amp;&amp;(!</span><span class="n">end1</span><span class="o">.</span><span class="na">before</span><span class="o">(</span><span class="n">start2</span><span class="o">))){</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;时间重叠&#34;</span><span class="o">);</span>
     <span class="o">}</span>
 </code></pre></td></tr></table>
@@ -749,7 +749,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </div><h2 id="mybatis-plus-更新操作示例">MyBatis-Plus 更新操作示例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -825,7 +825,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </span><span class="lnt">74
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserMapperUpdateTest</span> <span class="kd">extends</span> <span class="n">MybatisPlusSamplesChapter1ApplicationTests</span> <span class="o">{</span>
     <span class="nd">@Resource</span>
     <span class="kd">private</span> <span class="n">UserMapper</span> <span class="n">userMapper</span><span class="o">;</span>
@@ -905,14 +905,14 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 <p>IPage封装了各种分页的信息，包括不限于总页数，当前页数，总个数，是否有上一页或下一页等</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/user/allpage&#34;</span><span class="o">)</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/user/allpage&#34;</span><span class="o">)</span>
 <span class="kd">public</span> <span class="n">IPage</span><span class="o">&lt;</span><span class="n">PrimaryUser</span><span class="o">&gt;</span> <span class="nf">getAllIP</span><span class="o">()</span> <span class="o">{</span>
     <span class="n">IPage</span><span class="o">&lt;</span><span class="n">PrimaryUser</span><span class="o">&gt;</span> <span class="n">primaryUserPage</span> <span class="o">=</span> <span class="n">primaryUserMapper</span><span class="o">.</span><span class="na">selectPage</span><span class="o">(</span><span class="k">new</span> <span class="n">Page</span><span class="o">&lt;&gt;(</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">),</span><span class="kc">null</span><span class="o">);</span>
     <span class="k">return</span> <span class="n">primaryUserPage</span><span class="o">;</span>
@@ -922,7 +922,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </div><h2 id="mybatis-plus-模糊查询及querywrapper常用条件方法介绍">MyBatis-Plus 模糊查询及QueryWrapper&lt;&gt;常用条件方法介绍</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -976,7 +976,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </span><span class="lnt">52
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="err">【</span><span class="n">通用条件</span><span class="err">：】</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="err">【</span><span class="n">通用条件</span><span class="err">：】</span>
 <span class="err">【</span><span class="n">比较大小</span><span class="err">：</span> <span class="o">(</span> <span class="o">=,</span> <span class="o">&lt;&gt;,</span> <span class="o">&gt;,</span> <span class="o">&gt;=,</span> <span class="o">&lt;,</span> <span class="o">&lt;=</span> <span class="o">)</span><span class="err">】</span>
     <span class="n">eq</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 =，例: eq(&#34;name&#34;, &#34;老王&#34;) ---&gt; name = &#39;老王&#39;
 </span><span class="c1"></span>    <span class="n">ne</span><span class="o">(</span><span class="n">R</span> <span class="n">column</span><span class="o">,</span> <span class="n">Object</span> <span class="n">val</span><span class="o">);</span> <span class="c1">// 等价于 &lt;&gt;，例: ne(&#34;name&#34;, &#34;老王&#34;) ---&gt; name &lt;&gt; &#39;老王&#39;
@@ -1033,10 +1033,10 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </div><p><strong>我们直接创建测试类进行展示</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"> <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -1060,7 +1060,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
         title="2" /></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1070,7 +1070,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
 <span class="kt">void</span> <span class="nf">test4</span><span class="o">(){</span>
     <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
     <span class="n">wrapper</span><span class="o">.</span><span class="na">likeRight</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="s">&#34;K&#34;</span><span class="o">);</span>
@@ -1088,7 +1088,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1098,7 +1098,7 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
 <span class="kt">void</span> <span class="nf">test5</span><span class="o">(){</span>
     <span class="c1">//模糊查询
 </span><span class="c1"></span>    <span class="n">QueryWrapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">wrapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueryWrapper</span><span class="o">&lt;&gt;();</span>
@@ -1165,8 +1165,8 @@ User<span class="o">(</span><span class="nv">id</span><span class="o">=</span>5,
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

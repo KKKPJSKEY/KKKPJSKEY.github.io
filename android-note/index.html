@@ -9,8 +9,8 @@
 <meta property="og:description" content="记录Android开发笔记" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/android-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/android-note/featured-image.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-01T03:02:55&#43;08:00" />
-<meta property="article:modified_time" content="2021-09-06T16:51:44&#43;08:00" />
+<meta property="article:published_time" content="2021-05-01T03:02:55+08:00" />
+<meta property="article:modified_time" content="2021-09-06T16:51:44+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/android-note/featured-image.jpg"/>
@@ -205,7 +205,7 @@
 <p>我们可以先定义一个style，然后在这个style中设定每一个Activity或者整个App的颜色，最后在清单文件中来给某个Activity设置主题即可。代码如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -223,7 +223,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&#34;AppTheme.NoActionBar&#34;</span><span class="nt">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&#34;AppTheme.NoActionBar&#34;</span><span class="nt">&gt;</span>
     <span class="c">&lt;!--状态栏颜色--&gt;</span>
     <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;colorPrimaryDark&#34;</span><span class="nt">&gt;</span>@color/colorPrimaryDark<span class="nt">&lt;/item&gt;</span>
     <span class="c">&lt;!--控制各个控件被选中时的颜色--&gt;</span>
@@ -254,13 +254,13 @@
 <p>关于ConstraintLayout的博客、文章想必大家已经见过很多了，都是很全面的，今天这篇博客主要将ConstraintLayout的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">layout_constraintLeft_toLeftOf
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">layout_constraintLeft_toLeftOf
 layout_constraintLeft_toRightOf
 layout_constraintTop_toTopOf
 ...
@@ -308,13 +308,13 @@ layout_constraintTop_toTopOf
 <p>剩余四个:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">layout_constraintTop_toTopOf
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">layout_constraintTop_toTopOf
 layout_constraintTop_toBottomOf
 layout_constraintBottom_toTopOf
 layout_constraintBottom_toBottomOf
@@ -328,7 +328,7 @@ layout_constraintBottom_toBottomOf
 <p>布局xml文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -347,7 +347,7 @@ layout_constraintBottom_toBottomOf
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span class="nt">&lt;android.support.constraint.ConstraintLayout</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
     <span class="na">xmlns:app=</span><span class="s">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
     <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
@@ -369,13 +369,13 @@ layout_constraintBottom_toBottomOf
 </div><p>activity AndroidManifest设置</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">   <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;....xxActivity&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">   <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;....xxActivity&#34;</span>
         <span class="na">android:screenOrientation=</span><span class="s">&#34;portrait&#34;</span>
         <span class="na">android:theme=</span><span class="s">&#34;@style/AppTheme.imgFullScreen&#34;</span>
         <span class="na">android:windowSoftInputMode=</span><span class="s">&#34;adjustPan&#34;</span><span class="nt">/&gt;</span>
@@ -384,14 +384,14 @@ layout_constraintBottom_toBottomOf
 </div><p>stayles.xml 添加style</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&#34;AppTheme.imgFullScreen&#34;</span><span class="nt">&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&#34;AppTheme.imgFullScreen&#34;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;android:windowTranslucentStatus&#34;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/item&gt;</span>
     <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;android:windowTranslucentNavigation&#34;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/item&gt;</span>
     <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;android:statusBarColor&#34;</span><span class="nt">&gt;</span>@android:color/transparent<span class="nt">&lt;/item&gt;</span>
@@ -401,14 +401,14 @@ layout_constraintBottom_toBottomOf
 </div><p>xxActivity添加</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">decorView</span> <span class="p">=</span> <span class="n">window</span><span class="p">.</span><span class="n">decorView</span>
+<pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">val</span> <span class="py">decorView</span> <span class="p">=</span> <span class="n">window</span><span class="p">.</span><span class="n">decorView</span>
 
 <span class="k">val</span> <span class="py">option</span> <span class="p">=</span> <span class="p">(</span><span class="n">View</span><span class="p">.</span><span class="n">SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</span> <span class="n">or</span> <span class="n">View</span><span class="p">.</span><span class="n">SYSTEM_UI_FLAG_LAYOUT_STABLE</span><span class="p">)</span>
 <span class="n">decorView</span><span class="p">.</span><span class="n">systemUiVisibility</span> <span class="p">=</span> <span class="n">option</span>
@@ -447,14 +447,14 @@ layout_constraintBottom_toBottomOf
 <p>broadcastReceiver使用时需要在AndroidManifest.xml注册格式为</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">package=&#34;com&#34;&gt;
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">package=&#34;com&#34;&gt;
 <span class="nt">&lt;activity</span> <span class="na">android:name=</span><span class="s">&#34;.MainActivity&#34;</span><span class="nt">&gt;</span>
     ……
 <span class="nt">&lt;/activity&gt;</span>
@@ -472,7 +472,7 @@ layout_constraintBottom_toBottomOf
 <p>实现</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -496,7 +496,7 @@ layout_constraintBottom_toBottomOf
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span class="nt">&lt;layer-list</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- This is the main color --&gt;</span>
     <span class="nt">&lt;item&gt;</span>
@@ -545,14 +545,14 @@ layout_constraintBottom_toBottomOf
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span class="nt">&lt;shape</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span> <span class="na">android:shape=</span><span class="s">&#34;rectangle&#34;</span> <span class="nt">&gt;</span>
    <span class="nt">&lt;solid</span> <span class="na">android:color=</span><span class="s">&#34;#ffffff&#34;</span> <span class="nt">/&gt;</span>
    <span class="nt">&lt;stroke</span> <span class="na">android:width=</span><span class="s">&#34;1dip&#34;</span> <span class="na">android:color=</span><span class="s">&#34;#4fa5d5&#34;</span><span class="nt">/&gt;</span>
@@ -576,7 +576,7 @@ android:background=&quot;@drawable/textview_border&quot;</li>
 <p>编写一个继承TextView类的自定义组件，并在onDraw事件方法中画边框。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -610,7 +610,7 @@ android:background=&quot;@drawable/textview_border&quot;</li>
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.example.test</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.example.test</span><span class="o">;</span>
  
 <span class="kn">import</span> <span class="nn">android.annotation.SuppressLint</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
@@ -658,7 +658,7 @@ android:background=&quot;@drawable/textview_border&quot;</li>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -687,7 +687,7 @@ android:background=&quot;@drawable/textview_border&quot;</li>
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span class="nt">&lt;RelativeLayout</span> <span class="na">xmlns:android=</span><span class="s">&#34;http://schemas.android.com/apk/res/android&#34;</span>
     <span class="na">android:layout_width=</span><span class="s">&#34;match_parent&#34;</span>
     <span class="na">android:layout_height=</span><span class="s">&#34;match_parent&#34;</span> <span class="nt">&gt;</span>
@@ -725,7 +725,7 @@ android:background=&quot;@drawable/textview_border&quot;</li>
 <p>　　首先创建继承自Application的MusicPlayerStatus类，定义变量update、current,并创建get和set方法。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -749,7 +749,7 @@ android:background=&quot;@drawable/textview_border&quot;</li>
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">android.app.Application</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">android.app.Application</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MusicPlayerStatus</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kt">int</span> <span class="n">update</span><span class="o">=-</span><span class="n">1</span><span class="o">;</span>
@@ -776,14 +776,14 @@ android:background=&quot;@drawable/textview_border&quot;</li>
 </div><p>下面就是如何使用我们创建的全局变量了，在MainActivity中，首先要获得MusicPlayerStatus的对象，因为MusicPlayerStatus继承自Application，所以使用getApplication()方法即可，然后可以调用MusicPlayerStatus的get或set方法进行访问全局变量。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">MusicPlayerStatus</span> <span class="n">musicPlayerStatus</span><span class="o">=</span><span class="k">new</span> <span class="n">MusicPlayerStatus</span><span class="o">();</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">MusicPlayerStatus</span> <span class="n">musicPlayerStatus</span><span class="o">=</span><span class="k">new</span> <span class="n">MusicPlayerStatus</span><span class="o">();</span>
 <span class="kt">int</span> <span class="n">update</span> <span class="o">=</span> <span class="n">musicPlayerStatus</span><span class="o">.</span><span class="na">getUpdate</span><span class="o">();</span>
 <span class="kt">int</span> <span class="n">current</span> <span class="o">=</span> <span class="n">musicPlayerStatus</span><span class="o">.</span><span class="na">getCurrent</span><span class="o">();</span>
 <span class="n">musicPlayerStatus</span><span class="o">.</span><span class="na">setUpdate</span><span class="o">(</span><span class="n">update</span><span class="o">);</span>
@@ -848,7 +848,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 <strong>注意： setUserVisVleHint（）方法在 Fragment 1 第一次加载的时候不走，只有在切换的时候 走该方法。</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -866,7 +866,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
 </span><span class="cm">*第一个 Fragment 需要处理  setUserVisVleHint（）方法，设置为 setUserVisibleHint(true);
 </span><span class="cm">*否则会产空指针异常，因为 setUserVisVleHint（）方法的优先级高于 onCreate（）方法。
 </span><span class="cm">*
@@ -903,7 +903,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 <p>核心代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -917,7 +917,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"> <span class="n">protectedvoidonMeasure</span><span class="o">(</span><span class="n">intwidthMeasureSpec</span><span class="o">,</span><span class="n">intheightMeasureSpec</span><span class="o">){</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="n">protectedvoidonMeasure</span><span class="o">(</span><span class="n">intwidthMeasureSpec</span><span class="o">,</span><span class="n">intheightMeasureSpec</span><span class="o">){</span>
      <span class="n">Drawable</span> <span class="n">d</span> <span class="o">=</span> <span class="n">getDrawable</span><span class="o">();</span>
      <span class="k">if</span><span class="o">(</span><span class="n">d</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
          <span class="c1">// ceil not round - avoid thin vertical gaps along the left/right 
@@ -934,7 +934,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </div><h3 id="2设置imageview的属性">2.设置ImageView的属性：</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -942,7 +942,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml">//宽度填满屏幕
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">//宽度填满屏幕
  android:layout_width=”match_parent”
  android:scaleType=”fitXY”
  android:layout_height=”wrap_content”
@@ -955,7 +955,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 <h4 id="接收线程">接收线程</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -968,7 +968,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Handler</span> <span class="n">mHandler</span><span class="o">=</span><span class="k">new</span> <span class="n">Handler</span><span class="o">(){</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Handler</span> <span class="n">mHandler</span><span class="o">=</span><span class="k">new</span> <span class="n">Handler</span><span class="o">(){</span>  
         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>  
         <span class="k">switch</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">what</span><span class="o">){</span>  
             <span class="k">case</span> <span class="n">CANSHU</span> <span class="o">:</span>   <span class="n">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="na">getData</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="s">&#34;text1&#34;</span><span class="o">);</span><span class="c1">//接受msg传递过来的参数   
@@ -984,7 +984,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </div><h4 id="发送线程">发送线程</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -993,7 +993,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">();</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">();</span>  
             <span class="n">msg</span><span class="o">.</span><span class="na">what</span> <span class="o">=</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">CANSHU</span><span class="o">;</span>  
             <span class="n">Bundle</span> <span class="n">bundle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundle</span><span class="o">();</span>    
                       <span class="n">bundle</span><span class="o">.</span><span class="na">putString</span><span class="o">(</span><span class="s">&#34;text1&#34;</span><span class="o">,</span><span class="s">&#34;大明的消息传递参数的例子！&#34;</span><span class="o">);</span>  <span class="c1">//往Bundle中存放数据   
@@ -1009,7 +1009,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1022,7 +1022,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Persion</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Persion</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
@@ -1041,7 +1041,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1056,7 +1056,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Handler</span> <span class="n">mHandler</span><span class="o">=</span><span class="k">new</span> <span class="n">Handler</span><span class="o">(){</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Handler</span> <span class="n">mHandler</span><span class="o">=</span><span class="k">new</span> <span class="n">Handler</span><span class="o">(){</span>  
         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>  
         <span class="k">switch</span><span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="na">what</span><span class="o">){</span>  
             <span class="k">case</span> <span class="n">CANSHU</span> <span class="o">:</span>   
@@ -1077,7 +1077,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1089,7 +1089,7 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">();</span>  
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">();</span>  
 <span class="n">msg</span><span class="o">.</span><span class="na">what</span> <span class="o">=</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">CANSHU</span><span class="o">;</span> 
 <span class="n">Persion</span> <span class="n">persion</span><span class="o">=</span><span class="k">new</span> <span class="n">Persion</span><span class="o">();</span>
 <span class="n">String</span> <span class="n">Name</span><span class="o">=</span><span class="s">&#34;zhangsan&#34;</span><span class="o">;</span>
@@ -1275,13 +1275,13 @@ Fragment 2 ：走 setUserVisVleHint（）方法</p>
 在xml文件中设置的ImageButton的宽和高为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
     <span class="nt">&lt;ImageButton</span>
         <span class="na">android:layout_width=</span><span class="s">&#34;100dp&#34;</span>
         <span class="na">android:layout_height=</span><span class="s">&#34;100dp&#34;</span><span class="nt">/&gt;</span>
@@ -1403,8 +1403,8 @@ android:scaleType值的意义区别：</p>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.82.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
