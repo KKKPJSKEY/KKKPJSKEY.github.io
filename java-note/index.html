@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  15908 ,
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  15243 ,
         "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2022-02-07T14:59:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 15908 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 32 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 15243 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 31 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -187,13 +187,6 @@
       <ul>
         <li><a href="#示例">示例</a></li>
         <li><a href="#result">result</a></li>
-      </ul>
-    </li>
-    <li><a href="#java通过反射获给java对象赋值为null">java通过反射获给java对象赋值为null</a></li>
-    <li><a href="#使用propertydescriptor反射调用settergetter方法">使用PropertyDescriptor反射调用setter/getter方法</a>
-      <ul>
-        <li><a href="#代码">代码</a></li>
-        <li><a href="#运行结果">运行结果</a></li>
       </ul>
     </li>
     <li><a href="#java-jar-带环境变量参数启动">java-jar 带环境变量(参数)启动</a>
@@ -1620,247 +1613,6 @@ java只能调用。</p>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">发生了ArithmeticException 或者 ArrayIndexOutOfBoundsException 异常
 发生了ArithmeticException 或者 ArrayIndexOutOfBoundsException 异常
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="java通过反射获给java对象赋值为null">java通过反射获给java对象赋值为null</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
-</span><span class="cm">	 *
-</span><span class="cm">	 *java通过反射获给java对象赋值为null
-</span><span class="cm">	 * @param obj 对象
-</span><span class="cm">	 * @param propertyName 字段
-</span><span class="cm">	 * @return java.lang.Object
-</span><span class="cm">	 */</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span> <span class="nf">setPropertyNull</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">,</span> <span class="n">String</span> <span class="n">propertyName</span><span class="o">)</span> <span class="o">{</span>
-		<span class="c1">//利用反射获取类属性
-</span><span class="c1"></span>		<span class="n">Field</span><span class="o">[]</span> <span class="n">field</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getDeclaredFields</span><span class="o">();</span>
-		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">field</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-			<span class="n">Field</span> <span class="n">f</span> <span class="o">=</span> <span class="n">field</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-			<span class="n">f</span><span class="o">.</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
-			<span class="c1">//获取属性名
-</span><span class="c1"></span>			<span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">();</span>
-			<span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">).</span><span class="na">toUpperCase</span><span class="o">()</span> <span class="o">+</span> <span class="n">name</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
-			<span class="n">Method</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-			<span class="c1">//获取属性类型
-</span><span class="c1"></span>			<span class="n">String</span> <span class="n">type</span> <span class="o">=</span> <span class="n">field</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getGenericType</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
-			<span class="k">try</span> <span class="o">{</span>
-			<span class="c1">//
-</span><span class="c1"></span>				<span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;class java.lang.String&#34;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">propertyName</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
-					<span class="n">method</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getMethod</span><span class="o">(</span><span class="s">&#34;set&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-					<span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="o">(</span><span class="n">Object</span><span class="o">)</span><span class="kc">null</span><span class="o">);</span>
-				<span class="o">}</span>
-				<span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;class java.lang.Integer&#34;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">propertyName</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
-					<span class="n">method</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getMethod</span><span class="o">(</span><span class="s">&#34;set&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">,</span> <span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-					<span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="o">(</span><span class="n">Object</span><span class="o">)</span><span class="kc">null</span><span class="o">);</span>
-				<span class="o">}</span>
-				<span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;int&#34;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">propertyName</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
-					<span class="n">method</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getMethod</span><span class="o">(</span><span class="s">&#34;set&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-					<span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="o">(</span><span class="n">Object</span><span class="o">)</span><span class="kc">null</span><span class="o">);</span>
-				<span class="o">}</span>
-				<span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;class java.lang.Long&#34;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">propertyName</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
-					<span class="n">method</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getMethod</span><span class="o">(</span><span class="s">&#34;set&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">,</span> <span class="n">Long</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-					<span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="o">(</span><span class="n">Object</span><span class="o">)</span><span class="kc">null</span><span class="o">);</span>
-				<span class="o">}</span>
-				<span class="k">if</span> <span class="o">(</span><span class="n">type</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;class java.math.BigDecimal&#34;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">propertyName</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">name</span><span class="o">))</span> <span class="o">{</span>
-					<span class="n">method</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getMethod</span><span class="o">(</span><span class="s">&#34;set&#34;</span> <span class="o">+</span> <span class="n">name</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-					<span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="o">(</span><span class="n">Object</span><span class="o">)</span><span class="kc">null</span><span class="o">);</span>
-				<span class="o">}</span>
-			<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-				<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-			<span class="o">}</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">obj</span><span class="o">;</span>
-	<span class="o">}</span><span class="err">```</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="使用propertydescriptor反射调用settergetter方法">使用PropertyDescriptor反射调用setter/getter方法</h2>
-<blockquote>
-<p>有时候我们只知道一个对象的字段，我们想通过反射的方式将此字段赋值，可直接写反射又太浪费时间，还需要自己手动拼接方法名，而java为我们提供了一个很方便的类(PropertyDescriptor)来操作这一过程。使用很简单，直接看代码：</p>
-</blockquote>
-<h3 id="代码">代码</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">com.pibgstar.demo.bean.User</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.beans.IntrospectionException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.beans.PropertyDescriptor</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.lang.reflect.InvocationTargetException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.lang.reflect.Method</span><span class="o">;</span>
-
-<span class="cm">/**
-</span><span class="cm"> * @author pibigstar
-</span><span class="cm"> * @create 2018-12-03 18:36
-</span><span class="cm"> * @desc
-</span><span class="cm"> **/</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestPropertyDescriptor</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
-        <span class="n">TestPropertyDescriptor</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestPropertyDescriptor</span><span class="o">();</span>
-        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
-        <span class="n">user</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">&#34;123&#34;</span><span class="o">);</span>
-
-        <span class="n">Object</span> <span class="n">id</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">,</span> <span class="n">user</span><span class="o">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;id:&#34;</span><span class="o">+</span><span class="n">id</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-
-        <span class="n">test</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span><span class="n">user</span><span class="o">,</span><span class="s">&#34;pibigstar&#34;</span><span class="o">);</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * @Author:pibigstar
-</span><span class="cm">     * @Description: 根据字段获取属性值
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="n">Object</span> <span class="nf">getAttribute</span><span class="o">(</span><span class="n">String</span> <span class="n">filed</span><span class="o">,</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">try</span> <span class="o">{</span>
-            <span class="n">PropertyDescriptor</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PropertyDescriptor</span><span class="o">(</span><span class="n">filed</span><span class="o">,</span><span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">());</span>
-            <span class="c1">// 获取getter方法
-</span><span class="c1"></span>            <span class="n">Method</span> <span class="n">method</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">getReadMethod</span><span class="o">();</span>
-            <span class="n">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">obj</span><span class="o">);</span>
-            <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IntrospectionException</span> <span class="o">|</span> <span class="n">IllegalAccessException</span> <span class="o">|</span> <span class="n">InvocationTargetException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-        <span class="o">}</span>
-      <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * @Author:pibigstar
-</span><span class="cm">     * @Description: 设置属性字段值
-</span><span class="cm">     */</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setAttribute</span><span class="o">(</span><span class="n">String</span> <span class="n">filed</span><span class="o">,</span><span class="n">Object</span> <span class="n">obj</span><span class="o">,</span><span class="n">Object</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">try</span> <span class="o">{</span>
-            <span class="n">PropertyDescriptor</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PropertyDescriptor</span><span class="o">(</span><span class="n">filed</span><span class="o">,</span><span class="n">obj</span><span class="o">.</span><span class="na">getClass</span><span class="o">());</span>
-            <span class="c1">// 获取setter方法
-</span><span class="c1"></span>            <span class="n">Method</span> <span class="n">method</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">getWriteMethod</span><span class="o">();</span>
-            <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IntrospectionException</span> <span class="o">|</span> <span class="n">IllegalAccessException</span> <span class="o">|</span> <span class="n">InvocationTargetException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="运行结果">运行结果</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">id:123
-User<span class="o">{</span><span class="nv">id</span><span class="o">=</span><span class="s1">&#39;123&#39;</span>, <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;pibigstar&#39;</span><span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="java-jar-带环境变量参数启动">java-jar 带环境变量(参数)启动</h2>
