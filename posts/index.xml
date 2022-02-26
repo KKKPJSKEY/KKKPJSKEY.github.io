@@ -4,7 +4,12 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 07 Feb 2022 15:45:09 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Feb 2022 10:06:06 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>面经</title>
+    <link>https://kkkpjskey.github.io/face-exp-note/</link>
+    <pubDate>Sat, 26 Feb 2022 10:06:06 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/face-exp-note/</guid>
+    <description><![CDATA[XLXS汽车一面 ArrayLsit循环删除重复元素 方法 结果 for正序 部分元素删不掉 for倒叙 正确、单线程多线程ok foreach ConcurrentModificationException ArrayList Remove ConcurrentModificationException Iterator Remove 正确、单线程]]></description>
+</item><item>
     <title>Java反射笔记</title>
     <link>https://kkkpjskey.github.io/java-reflect-note/</link>
     <pubDate>Mon, 07 Feb 2022 15:45:09 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-reflect-note/</guid>
@@ -49,10 +54,5 @@
     <link>https://kkkpjskey.github.io/chocolatey-install-others-error/</link>
     <pubDate>Sun, 30 Jan 2022 10:35:04 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/chocolatey-install-others-error/</guid>
     <description><![CDATA[报错 1 2 3 4 5 6 7 8 PS C:\WINDOWS\system32&gt; choco install mkcert choco : 无法将“choco”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径]]></description>
-</item><item>
-    <title>Window10安装Chocolatey &#39;An existing Chocolatey installation was detected&#39;</title>
-    <link>https://kkkpjskey.github.io/chocolatey-install-error/</link>
-    <pubDate>Sun, 30 Jan 2022 10:09:42 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/chocolatey-install-error/</guid>
-    <description><![CDATA[情景 安装Node.js时安装额外组件时安装Chocolatey，安装失败，反馈以下信息： 1 2 3 An existing Chocolatey installation was detected. Installation will not continue. For security reasons, this script will not overwrite existing installations. Please use choco]]></description>
 </item></channel>
 </rss>
