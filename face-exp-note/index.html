@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/face-exp-note\/featured-image.jpg",
                             "width":  1711 ,
                             "height":  832 
-                        }],"genre": "posts","keywords": "Java, Spring, Mysql","wordcount":  1996 ,
+                        }],"genre": "posts","keywords": "Java, Spring, Mysql","wordcount":  2228 ,
         "url": "https:\/\/kkkpjskey.github.io\/face-exp-note\/","datePublished": "2022-02-26T10:06:06+08:00","dateModified": "2022-02-26T10:06:06+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">面经</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-26">2022-02-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1996 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/face-exp-note/" class="leancloud_visitors" data-flag-title="面经">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-26">2022-02-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2228 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/face-exp-note/" class="leancloud_visitors" data-flag-title="面经">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -237,15 +237,43 @@
 <p>当查询某条数据时，会对非主键的数据加间隙锁比如每天访客顺序属性（非主键），1、3，那么无法重新添加2，但是可以添加4。与隔离级别无关</p>
 <h3 id="spring设计模式">Spring设计模式</h3>
 <ol>
-<li>简单工厂(非23种设计模式中的一种)</li>
-<li>工厂方法</li>
-<li>单例模式</li>
-<li>适配器模式</li>
-<li>装饰器模式</li>
-<li>代理模式</li>
-<li>观察者模式</li>
-<li>策略模式</li>
-<li>模版方法模式</li>
+<li>
+<p>简单工厂(非23种设计模式中的一种)</p>
+<p>BeanFactory创建Spring Bean</p>
+</li>
+<li>
+<p>工厂方法</p>
+<p>FactoryBean延迟创建Bean</p>
+</li>
+<li>
+<p>单例模式</p>
+<p>提供单例注册器、创建出的Spring Bean</p>
+</li>
+<li>
+<p>适配器模式</p>
+<p>AOP 的增强或通知(Advice)，适配方法前后通知</p>
+<p>Spring MVC中，<code>DispatcherServlet</code>适配不同Controller重定向</p>
+</li>
+<li>
+<p>装饰器模式</p>
+<p>DataSource 装饰多个数据源</p>
+</li>
+<li>
+<p>代理模式</p>
+<p>aop面向切面编程运行时增强的动态代理</p>
+</li>
+<li>
+<p>观察者模式</p>
+<p>事件驱动模型中事件、事件监听、时间发布者</p>
+</li>
+<li>
+<p>策略模式</p>
+<p><strong>MethodNameResolver</strong>设置类可以处理那些请求，已过时</p>
+</li>
+<li>
+<p>模版方法模式</p>
+<p>jdbcTemplate<code>、</code>hibernateTemplate</p>
+</li>
 </ol>
 <h3 id="redis缓存穿透和雪崩">Redis缓存穿透和雪崩</h3>
 <h4 id="缓存雪崩">缓存雪崩</h4>
