@@ -19,7 +19,7 @@
 <meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
 <meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/algorithm-note/" /><link rel="prev" href="https://kkkpjskey.github.io/cron-express-note/" /><link rel="next" href="https://kkkpjskey.github.io/es-transportclient-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/algorithm-note/" /><link rel="prev" href="https://kkkpjskey.github.io/java-audition-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/algorithm-note\/featured-image.jpg",
                             "width":  1036 ,
                             "height":  584 
-                        }],"genre": "posts","keywords": "Algorithm","wordcount":  1528 ,
+                        }],"genre": "posts","keywords": "Algorithm","wordcount":  5290 ,
         "url": "https:\/\/kkkpjskey.github.io\/algorithm-note\/","datePublished": "2021-10-14T12:08:18+08:00","dateModified": "2021-10-14T12:08:18+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">算法笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-14">2021-10-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1528 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/algorithm-note/" class="leancloud_visitors" data-flag-title="算法笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-14">2021-10-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5290 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/algorithm-note/" class="leancloud_visitors" data-flag-title="算法笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -137,40 +137,608 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#二维数组按行和按列遍历的效率">二维数组按行和按列遍历的效率</a></li>
-    <li><a href="#查找两个数组的相同字符">查找两个数组的相同字符</a>
+    <li><a href="#数组">数组</a>
       <ul>
-        <li><a href="#方法">方法</a></li>
-        <li><a href="#海量数据">海量数据</a></li>
-        <li><a href="#注">注</a></li>
+        <li><a href="#排序">排序</a>
+          <ul>
+            <li><a href="#知识">知识</a>
+              <ul>
+                <li><a href="#总结">总结</a>
+                  <ul>
+                    <li><a href="#时间复杂度">时间复杂度</a></li>
+                    <li><a href="#稳定性">稳定性</a></li>
+                    <li><a href="#稳定性和时间空间对比">稳定性和时间空间对比</a></li>
+                    <li><a href="#其他">其他</a></li>
+                  </ul>
+                </li>
+                <li><a href="#插入排序">插入排序</a></li>
+                <li><a href="#选择排序">选择排序</a></li>
+                <li><a href="#计数排序">计数排序</a></li>
+                <li><a href="#奇数排序桶排序">奇数排序（桶排序）</a></li>
+                <li><a href="#归并排序">归并排序</a></li>
+              </ul>
+            </li>
+            <li><a href="#题目">题目</a>
+              <ul>
+                <li><a href="#二分排序">二分排序</a>
+                  <ul>
+                    <li><a href="#二分查找">二分查找</a></li>
+                    <li><a href="#找大于等于某个数的最左侧index">找大于等于某个数的最左侧index</a></li>
+                    <li><a href="#局部最小">局部最小</a></li>
+                    <li><a href="#数值整数次方">数值整数次方</a></li>
+                  </ul>
+                </li>
+                <li><a href="#奇数排序">奇数排序</a>
+                  <ul>
+                    <li><a href="#奇偶分开">奇偶分开</a></li>
+                  </ul>
+                </li>
+                <li><a href="#归并排序-1">归并排序</a>
+                  <ul>
+                    <li><a href="#小和问题">小和问题</a></li>
+                    <li><a href="#逆序对问题">逆序对问题</a></li>
+                    <li><a href="#查找两个数组的相同字符">查找两个数组的相同字符</a></li>
+                  </ul>
+                </li>
+                <li><a href="#快速排序">快速排序</a>
+                  <ul>
+                    <li><a href="#荷兰国旗问题">荷兰国旗问题</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#二维数组排序">二维数组排序</a>
+          <ul>
+            <li><a href="#知识-1">知识</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#二维数组按行和按列遍历的效率">二维数组按行和按列遍历的效率</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#题目-1">题目</a>
+              <ul>
+                <li><a href="#有序二维数组查找">有序二维数组查找</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#异或">异或</a>
+          <ul>
+            <li><a href="#题目-2">题目</a>
+              <ul>
+                <li><a href="#数组中有一个数不一样">数组中有一个数不一样</a></li>
+                <li><a href="#数组中有两个数不一样">数组中有两个数不一样</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#字符串">字符串</a>
+      <ul>
+        <li><a href="#搜索">搜索</a>
+          <ul>
+            <li><a href="#知识-2">知识</a>
+              <ul>
+                <li><a href="#kmp-算法">KMP 算法</a></li>
+                <li><a href="#bm算法">BM算法</a></li>
+                <li><a href="#sunday算法">Sunday算法</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#回文">回文</a>
+          <ul>
+            <li><a href="#题目-3">题目</a>
+              <ul>
+                <li><a href="#最长回文串">最长回文串</a></li>
+                <li><a href="#最长回文串2">最长回文串2</a></li>
+                <li><a href="#验证回文串">验证回文串</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#其他-1">其他</a>
+          <ul>
+            <li><a href="#题目-4">题目</a>
+              <ul>
+                <li><a href="#替换空格">替换空格</a></li>
+                <li><a href="#字符串数组最长公共前缀序列">字符串数组最长公共前缀序列</a></li>
+                <li><a href="#括号深度">括号深度</a></li>
+                <li><a href="#字符串转int">字符串转int</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#链表">链表</a>
+      <ul>
+        <li><a href="#其他-2">其他</a>
+          <ul>
+            <li><a href="#题目-5">题目</a>
+              <ul>
+                <li><a href="#翻转链表">翻转链表</a></li>
+                <li><a href="#链表中倒数第k个节点">链表中倒数第k个节点</a></li>
+                <li><a href="#删除链表的倒数第n个节点">删除链表的倒数第N个节点</a></li>
+                <li><a href="#合并两个排序的链表">合并两个排序的链表</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#栈">栈</a>
+      <ul>
+        <li><a href="#其他-3">其他</a>
+          <ul>
+            <li><a href="#题目-6">题目</a>
+              <ul>
+                <li><a href="#两个栈实现队列">两个栈实现队列</a></li>
+                <li><a href="#判断栈的弹出序列">判断栈的弹出序列</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#堆">堆</a>
+      <ul>
+        <li><a href="#排序-1">排序</a>
+          <ul>
+            <li><a href="#知识-3">知识</a>
+              <ul>
+                <li><a href="#大分堆加入">大分堆加入</a></li>
+                <li><a href="#大分堆堆弹出堆顶">大分堆堆弹出（堆顶）</a></li>
+                <li><a href="#特点">特点</a></li>
+              </ul>
+            </li>
+            <li><a href="#题目-7">题目</a>
+              <ul>
+                <li><a href="#队列前k部分有序怎么排序最好">队列前k部分有序，怎么排序最好</a></li>
+                <li><a href="#给二叉树堆排序">给二叉树堆排序</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#其他数据结构">其他数据结构</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#递归">递归</a>
+      <ul>
+        <li><a href="#时间复杂度-1">时间复杂度</a>
+          <ul>
+            <li><a href="#知识-4">知识</a>
+              <ul>
+                <li><a href="#master公式">Master公式</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#动态规划">动态规划</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#题目-8">题目</a>
+              <ul>
+                <li><a href="#青蛙跳1或2n阶方法个数">青蛙跳1或2，n阶方法个数</a></li>
+                <li><a href="#青蛙1-nn阶方法个数">青蛙1-n，n阶方法个数</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
+
+  <ul>
+    <li><a href="#取中点">取中点</a></li>
+    <li><a href="#取一个数二进制最低位为1的数">取一个数二进制最低位为1的数</a></li>
+  </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="二维数组按行和按列遍历的效率">二维数组按行和按列遍历的效率</h2>
+            </div><div class="content" id="content"><h1 id="结构">结构</h1>
+<h2 id="数组">数组</h2>
+<h3 id="排序">排序</h3>
+<h4 id="知识">知识</h4>
+<h5 id="总结">总结</h5>
+<h6 id="时间复杂度">时间复杂度</h6>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>最好</th>
+<th>最好情况</th>
+<th>最坏</th>
+<th>最坏情况</th>
+<th>平均时间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>冒泡排序</td>
+<td>O(n)</td>
+<td>原序列顺序</td>
+<td>O(n^2)</td>
+<td>原序列顺序倒序</td>
+<td>O(n^2)</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td>O(n)</td>
+<td>原序列顺序</td>
+<td>O(n^2)</td>
+<td>原序列顺序倒序</td>
+<td>O(n^2)</td>
+</tr>
+<tr>
+<td>选择排序</td>
+<td>O(n^2)</td>
+<td>原序列顺序</td>
+<td>O(n^2)</td>
+<td>原序列顺序倒序</td>
+<td>O(n^2)</td>
+</tr>
+<tr>
+<td>希尔排序</td>
+<td>O(n)</td>
+<td>原序列顺序</td>
+<td>O(n^1.5)？O(n^2)</td>
+<td>原序列顺序倒序</td>
+<td>O(n^1.3)</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>O(nlogn)</td>
+<td>每一次划分的时候都是轴值</td>
+<td>O(n^2)</td>
+<td>正序或者逆序</td>
+<td>O(nlogn)</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>O(nlogn)</td>
+<td>两个序列直接连接</td>
+<td>O(nlogn)</td>
+<td>最后一次比较两个有序子序列各自剩最后一个数据元素</td>
+<td>O(nlogn)</td>
+</tr>
+<tr>
+<td>计数排序</td>
+<td>O(n+k)，k 是数据范围</td>
+<td>原序列顺序</td>
+<td>O(n+k)，k 是数据范围</td>
+<td>原序列顺序倒序</td>
+<td>O(n+k)，k 是数据范围</td>
+</tr>
+<tr>
+<td>桶排序</td>
+<td>O(n)</td>
+<td>n个元素平均分桶</td>
+<td>O(n)</td>
+<td>n个元素一直一个桶</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>基数排序</td>
+<td>O(nk)，k 是维度</td>
+<td>原序列顺序</td>
+<td>O(nk)，k 是维度</td>
+<td>原序列顺序倒序</td>
+<td>O(n*k)，k 是维度</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>O(nlogn)</td>
+<td>所有叶子铺满最底层</td>
+<td>O(nlogn)</td>
+<td>所有叶子铺满半层的时候</td>
+<td>O(nlogn)</td>
+</tr>
+</tbody>
+</table>
+<h6 id="稳定性">稳定性</h6>
+<p><strong>重要稳定算法：冒泡、插入、归并、桶</strong></p>
+<p><strong>重要不稳定算法：选择、快排、堆</strong></p>
+<p>也就是说一个序列中的相同值，它排序后，它的相同值的顺序不会改变即稳定</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">排序名称</th>
+<th style="text-align:center">稳定性</th>
+<th style="text-align:center">分析</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">冒泡</td>
+<td style="text-align:center">稳定</td>
+<td style="text-align:center">冒泡原理遵循大数下沉小数冒泡，思路是每次相邻两个进行交换，因为是每次找到当前最小数然后进行一格一格的移动，因为是一格一格的一道，相同的数字并不会出现后一个数字跳两格的情况跳到前面，只可能是两个数一起前移或者后移，所以该排序是稳定的</td>
+</tr>
+<tr>
+<td style="text-align:center">选择</td>
+<td style="text-align:center">不稳定</td>
+<td style="text-align:center">选择原理和冒泡差不多，但是它省去了相邻交换的这个步骤，直接找到最小的位置，直接换过来，这个的交换移动位置就是跳跃式的，也可能出现两个数，前一个被换到后面去  例子 5 9 5 2   第一个5会与2进行交换，然后就出现了两个相同值出现顺序改变的情况，因为第一个5在移动，而第二个5没有移动，所以就可能出现这种情况，冒泡是整体的移动</td>
+</tr>
+<tr>
+<td style="text-align:center">插入</td>
+<td style="text-align:center">稳定</td>
+<td style="text-align:center">插入就是从后往前一个一个的找，然后找到适合位置就放在这，也是整体往后移，很明显，稳不稳定取决于当前判断是&lt;=还是&lt;，这种人为可以操控的都是稳定的</td>
+</tr>
+<tr>
+<td style="text-align:center">快速排序</td>
+<td style="text-align:center">不稳定</td>
+<td style="text-align:center">快排的话很明显的一个不稳定的地方就是一个指针从前往后，一个指针从后往前，然后后一个指针换到前一个位置，但是这个指针又是往另一方向走的，这就和我们顺序相悖了 例子 2 3 3 3 1 1 1 这样相同的数肯定是以相反的顺序换过去</td>
+</tr>
+<tr>
+<td style="text-align:center">归并</td>
+<td style="text-align:center">稳定</td>
+<td style="text-align:center">归并的核心地方就在于有序归并这块儿，归并的时候是判断两个数的大小然后再放，那么我们只要控制两个相同数都是前一个序列先放那么就能保证稳定性了</td>
+</tr>
+<tr>
+<td style="text-align:center">堆排</td>
+<td style="text-align:center">不稳定</td>
+<td style="text-align:center">这个就比较那个了，一棵树，然后下沉的时候可能是左子树可能是右子树，如果相同值在左子树，然后自己降到右子树那么就不稳定了 例子  3 3 2 ;3(1)  3 (2)     2;-&gt;2 3(2)  3(1)</td>
+</tr>
+<tr>
+<td style="text-align:center">希尔排序</td>
+<td style="text-align:center">不稳定</td>
+<td style="text-align:center">希尔排序的是通过取增量然后划分成不同分组，最后增量不断减小，来将分组合并的，主要利用了插入排序的最好情况O(n)的思想，如果本身大量有序，那么需要比较次数就减小了很多，因为希尔排序是同各国不同分组的，也就是说如果两个相同值划分在了不同分组的话，那么就有可能出现顺序颠倒问题，从而不稳定  例子  3(1)  3(2)   1  4 第一轮  1  3(2)   3(1)   4 第二轮  同上</td>
+</tr>
+</tbody>
+</table>
+<p>稳定性时间空间</p>
+<h6 id="稳定性和时间空间对比">稳定性和时间空间对比</h6>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">时间</th>
+<th style="text-align:center">空间</th>
+<th style="text-align:center">稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">选择排序</td>
+<td style="text-align:center">O（N^2）</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">冒泡排序</td>
+<td style="text-align:center">O（N^2）</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">插入排序</td>
+<td style="text-align:center">O（N^2）</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">归并排序</td>
+<td style="text-align:center">O（N*logN）</td>
+<td style="text-align:center">O（N）</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">快速排序</td>
+<td style="text-align:center">O（N*logN）</td>
+<td style="text-align:center">O（logN）</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">堆排序</td>
+<td style="text-align:center">O（N*logN）</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">×</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>归并排序额外空间变成O(1),但算法困难（归并排序 内部缓存法）</li>
+<li>原地归并排序时间复杂度变为O（N^2），增加算法难度，虽然空间O(1)不如用冒泡插入</li>
+<li>01 stable sort 快排可以保证稳定性，但是算法复杂</li>
+<li>以上三种算法性能三选二，没有三个都好的（稳定、时间O（N*logN）、空间O(1)）</li>
+<li>奇偶分开，要求相对次序不变，说不会直接问怎么做</li>
+<li>实际排序数组长度小于60归并，大于60快排</li>
+<li>考虑稳定性</li>
+</ol>
+<h6 id="其他">其他</h6>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>是否原地排序</th>
+<th>是否稳定</th>
+<th>最好、最坏、平均时间复杂度</th>
+<th>空间复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>冒泡排序</td>
+<td>是</td>
+<td>是</td>
+<td>O(1)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td>是</td>
+<td>是</td>
+<td>O(1)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>选择排序</td>
+<td>是</td>
+<td>否</td>
+<td>O(1)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>希尔排序</td>
+<td>是</td>
+<td>否</td>
+<td>O(1)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>是</td>
+<td>否</td>
+<td>O(logn)~O(n)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>否</td>
+<td>是</td>
+<td>O(n)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>计数排序</td>
+<td>否</td>
+<td>是</td>
+<td>O(n+k)</td>
+<td>否</td>
+</tr>
+<tr>
+<td>桶排序</td>
+<td>否</td>
+<td>是</td>
+<td>O(N+M)，N表示待排数据个数，M表示桶个数</td>
+<td>否</td>
+</tr>
+<tr>
+<td>基数排序</td>
+<td>否</td>
+<td>是</td>
+<td>O(n+k)</td>
+<td>否</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>是</td>
+<td>否</td>
+<td>O(1)</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h5 id="插入排序">插入排序</h5>
+<p>升序，从左至右小则交换</p>
+<h5 id="选择排序">选择排序</h5>
+<p>循环选择无序部分最值放到队首，再取n-1最值放队首，直到结束(遍历，找最小值，与数组0位置交换，再找次小，再放1，直到最后)</p>
+<h5 id="计数排序">计数排序</h5>
+<p>如年龄列表，第一次遍历统计个数，第二次遍历还原数组（根据下标索引，分区还原），时间复杂度O（n）</p>
+<h5 id="奇数排序桶排序">奇数排序（桶排序）</h5>
+<p>先根据个位数字放10个桶，倒出还原（从右往左，词频&ndash;，保证先入桶先出，保证排序稳定），再根据十位，倒出还原，直到最高位</p>
+<h5 id="归并排序">归并排序</h5>
+<p>两个数组分别有序，再统一拷贝到一个数组（三个while模式）</p>
+<h4 id="题目">题目</h4>
+<h5 id="二分排序">二分排序</h5>
+<h6 id="二分查找">二分查找</h6>
+<h6 id="找大于等于某个数的最左侧index">找大于等于某个数的最左侧index</h6>
+<h6 id="局部最小">局部最小</h6>
+<p>极限的概念，二分一边单调增，一边单调减，中间存在极限</p>
+<h6 id="数值整数次方">数值整数次方</h6>
+<p>二分幂、快速幂，累乘</p>
+<h5 id="奇数排序">奇数排序</h5>
+<h6 id="奇偶分开">奇偶分开</h6>
+<p>计数排序思想，统计奇数，分片，遍历，奇数一片，偶数另一片。</p>
+<h5 id="归并排序-1">归并排序</h5>
+<h6 id="小和问题">小和问题</h6>
+<p>左边小的数的和，在归并过程中，求左边小的个数和，等价于右边大的个数和，故当合并时，先拷贝的（左边比右边小）的产生1个数，累加后为结果</p>
+<h6 id="逆序对问题">逆序对问题</h6>
+<p>左边的数比右边大，则两个数构成逆序对，在归并过程中当出现小于则打印</p>
+<h6 id="查找两个数组的相同字符">查找两个数组的相同字符</h6>
+<p><strong>方法</strong></p>
+<p>方法1：对A中的数组进行排序，采取同样的排序方法对B中的数组进行排序</p>
+<ol>
+<li>从A，B中各自取出a，b进行比较</li>
+<li>如果a&gt;b,那么从B中取出下一个数据b进行比较</li>
+<li>如果a&lt;b,那么从A中取出下一个数据a进行比较</li>
+<li>如果a=b,那么找到一个，继续</li>
+</ol>
+<p>方法2：hash</p>
+<ol>
+<li>对A中的m个数据装入到hash表</li>
+<li>对B中的n个数据一次去hash表中查询，如果找到那么就是相同元素</li>
+</ol>
+<p><strong>海量数据</strong></p>
+<p>升级：如果数据特别大，内存无法装下。  两个大文件，查找相同字符串</p>
+<p>一、hash，分治法：</p>
+<ol>
+<li>采用hash算法对A文件进行hash成a个小文件</li>
+<li>采取同样的hash算法对B文件进行hash成b个小文件</li>
+<li>比较小文件对&lt;a1,b1&gt;&hellip;&hellip;&hellip;因为hash的问题，所以相同的字符串肯定在同个文件对里面。</li>
+<li>统计小文件对，可以继续采用hash，对a1的每一字符串建立hash表，遍历b1的字符串看是否在之前构建的hash表里面（和上面一样）</li>
+</ol>
+<blockquote>
+<p>一般来说，如果内存可以存放，可以构造hash表，进行查找。如果内存无法加载，那么可以通过hash把大文件分成多个小文件，从而进行比较。</p>
+</blockquote>
+<p>二、位图+布隆过滤器</p>
+<p><strong>注</strong></p>
+<p>hash算法在海量数据中的运用：</p>
+<p>​    单机处理大数据的问题也和mapreduce一样，分而治之，把海量数据切分成若干个小份进行处理。</p>
+<ol>
+<li>
+<p>分而治之</p>
+<p>采用hash进行取模进行等价映射，将巨大的文件进行等价分割（符合一定规律的数据会被划分到同一个文件），划分成若干个小文件再进行处理。</p>
+</li>
+<li>
+<p>利用hashmap进行内存统计</p>
+<p>利用hashMap对小文件里面的数据进行统计</p>
+</li>
+<li>
+<p>排序</p>
+</li>
+</ol>
+<h5 id="快速排序">快速排序</h5>
+<h6 id="荷兰国旗问题">荷兰国旗问题</h6>
+<p>数组分区，小于等于一个数左边，大于则右边（快排1.0）</p>
+<p>小于左边，数字中间，大于右边（快排2.0）</p>
+<p>（快排3.0从数组中找随机数进行分区迭代）</p>
+<h3 id="二维数组排序">二维数组排序</h3>
+<h4 id="知识-1">知识</h4>
+<h2 id="二维数组按行和按列遍历的效率">二维数组按行和按列遍历的效率</h2>
 <p>按行遍历的效率大概是是按列遍历的0.5倍
    在c语言中，数组在内存中是按行存储的，按行遍历时可以由指向数组第一个数的指针一直向后遍历，由于二维数组的内存地址是连续的，当前行的尾与下一行的头相邻，所以可以直接到下一行</p>
 <p>我们眼中的二维数组：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="./1.png"
-        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-src="C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY%27s-Case-Archives/content/posts/Algorithm-Note/1.png"
+        data-srcset="C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY%27s-Case-Archives/content/posts/Algorithm-Note/1.png, C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY%27s-Case-Archives/content/posts/Algorithm-Note/1.png 1.5x, C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY%27s-Case-Archives/content/posts/Algorithm-Note/1.png 2x"
         data-sizes="auto"
-        alt="./1.png"
+        alt="C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY&#39;s-Case-Archives/content/posts/Algorithm-Note/1.png"
         title="1" /></p>
 <p>内存中的二维数组：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="./2.png"
-        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-src="C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY%27s-Case-Archives/content/posts/Algorithm-Note/2.png"
+        data-srcset="C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY%27s-Case-Archives/content/posts/Algorithm-Note/2.png, C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY%27s-Case-Archives/content/posts/Algorithm-Note/2.png 1.5x, C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY%27s-Case-Archives/content/posts/Algorithm-Note/2.png 2x"
         data-sizes="auto"
-        alt="./2.png"
+        alt="C:/Program_Green/hugo_extended_Windows-64bit/sites/KKKPJSKEY&#39;s-Case-Archives/content/posts/Algorithm-Note/2.png"
         title="2" /></p>
-<p>按行遍历比按列遍历的效率高体现在这些方面：
-   1. CPU高速缓存：在计算机系统中，CPU高速缓存（英语：CPU Cache，在本文中简称缓存）是用于减少处理器访问内存所需平均时间的部件。在金字塔式存储体系中它位于自顶向下的第二层，仅次于CPU寄存器。其容量远小于内存，但速度却可以接近处理器的频率。当处理器发出内存访问请求时，会先查看缓存内是否有请求数据。如果存在（命中），则不经访问内存直接返回该数据；如果不存在（失效），则要先把内存中的相应数据载入缓存，再将其返回处理器。缓存之所以有效，主要是因为程序运行时对内存的访问呈现局部性（Locality）特征。这种局部性既包括空间局部性（Spatial Locality），也包括时间局部性（Temporal Locality）。有效利用这种局部性，缓存可以达到极高的命中率。（百度百科解释）。
-    2. 缓存从内存中抓取一般都是整个数据块，所以它的物理内存是连续的，几乎都是同行不同列的，而如果内循环以列的方式进行遍历的话，将会使整个缓存块无法被利用，而不得不从内存中读取数据，而从内存读取速度是远远小于从缓存中读取数据的。随着数组元素越来越多，按列读取速度也会越来越慢。</p>
+<p>按行遍历比按列遍历的效率高体现在这些方面：</p>
+<p>   1. CPU高速缓存：在计算机系统中，CPU高速缓存（英语：CPU Cache，在本文中简称缓存）是用于减少处理器访问内存所需平均时间的部件。在金字塔式存储体系中它位于自顶向下的第二层，仅次于CPU寄存器。其容量远小于内存，但速度却可以接近处理器的频率。当处理器发出内存访问请求时，会先查看缓存内是否有请求数据。如果存在（命中），则不经访问内存直接返回该数据；如果不存在（失效），则要先把内存中的相应数据载入缓存，再将其返回处理器。缓存之所以有效，主要是因为程序运行时对内存的访问呈现局部性（Locality）特征。这种局部性既包括空间局部性（Spatial Locality），也包括时间局部性（Temporal Locality）。有效利用这种局部性，缓存可以达到极高的命中率。（百度百科解释）。
+2. 缓存从内存中抓取一般都是整个数据块，所以它的物理内存是连续的，几乎都是同行不同列的，而如果内循环以列的方式进行遍历的话，将会使整个缓存块无法被利用，而不得不从内存中读取数据，而从内存读取速度是远远小于从缓存中读取数据的。随着数组元素越来越多，按列读取速度也会越来越慢。</p>
 <p>可以用以下代码自行测试：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -238,34 +806,115 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="查找两个数组的相同字符">查找两个数组的相同字符</h2>
-<h3 id="方法">方法</h3>
-<p>方法1：对A中的数组进行排序，采取同样的排序方法对B中的数组进行排序</p>
-<p>​	1）从A，B中各自取出a，b进行比较</p>
-<p>​	2）如果a&gt;b,那么从B中取出下一个数据b进行比较</p>
-<p>​	3）如果a&lt;b,那么从A中取出下一个数据a进行比较</p>
-<p>​	4）如果a=b,那么找到一个，继续</p>
-<p>方法2：hash</p>
-<p>​	1）对A中的m个数据装入到hash表</p>
-<p>​	2）对B中的n个数据一次去hash表中查询，如果找到那么就是相同元素</p>
-<h3 id="海量数据">海量数据</h3>
-<p>升级：如果数据特别大，内存无法装下。  两个大文件，查找相同字符串</p>
-<p>​	hash，分治法：</p>
-<p>​	1）采用hash算法对A文件进行hash成a个小文件</p>
-<p>​	2）采取同样的hash算法对B文件进行hash成b个小文件</p>
-<p>​	3）比较小文件对&lt;a1,b1&gt;&hellip;&hellip;&hellip;因为hash的问题，所以相同的字符串肯定在同个文件对里面。</p>
-<p>​	4）统计小文件对，可以继续采用hash，对a1的每一字符串建立hash表，遍历b1的字符串看是否在之前构建的hash表里面（和上面一样）</p>
-<blockquote>
-<p>一般来说，如果内存可以存放，可以构造hash表，进行查找。如果内存无法加载，那么可以通过hash把大文件分成多个小文件，从而进行比较。</p>
-</blockquote>
-<h3 id="注">注</h3>
-<p>hash算法在海量数据中的运用：</p>
-<p>​    单机处理大数据的问题也和mapreduce一样，分而治之，把海量数据切分成若干个小份进行处理。</p>
-<p>1）分而治之</p>
-<p>​     采用hash进行取模进行等价映射，将巨大的文件进行等价分割（符合一定规律的数据会被划分到同一个文件），划分成若干个小文件再进行处理。</p>
-<p>2）利用hashmap进行内存统计</p>
-<p>　　　　利用hashMap对小文件里面的数据进行统计</p>
-<p>3）排序</p>
+</div><h4 id="题目-1">题目</h4>
+<h5 id="有序二维数组查找">有序二维数组查找</h5>
+<p>增序，从左下角起，目标大则右移，目标小则上移</p>
+<h3 id="异或">异或</h3>
+<h4 id="题目-2">题目</h4>
+<h5 id="数组中有一个数不一样">数组中有一个数不一样</h5>
+<p>循环异或，最后的结果即为这个数</p>
+<h5 id="数组中有两个数不一样">数组中有两个数不一样</h5>
+<p>循环异或，最后的结果即为这两个数异或，获取两个数二进制最低位，异或结果取反+1再与源结果相与，提起最小为1，两个数二进制某一位不同，则用此位为1其他位为0的数区分源数组，获取其中一个数，再将异或和与其异或得到另一个数。</p>
+<h2 id="字符串">字符串</h2>
+<h3 id="搜索">搜索</h3>
+<h4 id="知识-2">知识</h4>
+<h5 id="kmp-算法">KMP 算法</h5>
+<p>空间换时间，匹配字符串切分，寻找最大公共子字符串，用匹配长度减去最大公共，为位数。主要就是优化匹配串中存在局部相同的部分的移动，时间： O(m+n)</p>
+<h5 id="bm算法">BM算法</h5>
+<p>从右侧对比，不相等为坏，相等为好，字符串长度-好为位移，移动不相等部分最大值，即为求出的位移</p>
+<h5 id="sunday算法">Sunday算法</h5>
+<p>左侧对比，不匹配，看源串下一位是否在匹配串，在则移动匹配串从右向左位数+1.不存在则移动长度+1</p>
+<h3 id="回文">回文</h3>
+<h4 id="题目-3">题目</h4>
+<h5 id="最长回文串">最长回文串</h5>
+<p>输入无序材料串，用HashSet，第一次入，第二次出，统计个数，注意中间可以有最小</p>
+<h5 id="最长回文串2">最长回文串2</h5>
+<p>输入有序材料串，中心扩展法：循环中心，两边扩展，记录最大,也要记录。动态规划：类似中心扩展，扩展相等 <code>dp[i][j] = dp[i+1][j-1] + 2</code>，不等为前后+一位的最大值，结果位<code>dp[0][n-1]</code></p>
+<h5 id="验证回文串">验证回文串</h5>
+<p>双指针，非为字母则++，否则对比，前后。</p>
+<h3 id="其他-1">其他</h3>
+<h4 id="题目-4">题目</h4>
+<h5 id="替换空格">替换空格</h5>
+<p>使用StringBuilder，如果是空格则append其他，如果不是空格，则append自己，str.replace()先搜索，再创建新数组速度收敛为3n，所有查找替换则为5n</p>
+<h5 id="字符串数组最长公共前缀序列">字符串数组最长公共前缀序列</h5>
+<p>调用Arrays.sort()方法，将第一个字符串和最后一个字符串对比获取最长公共前缀序列</p>
+<h5 id="括号深度">括号深度</h5>
+<p>左括号++即可</p>
+<h5 id="字符串转int">字符串转int</h5>
+<p>判断符号，按位取char-’0‘的int结果为位，结果*10+位，加上符号即可</p>
+<h2 id="链表">链表</h2>
+<h3 id="其他-2">其他</h3>
+<h4 id="题目-5">题目</h4>
+<h5 id="翻转链表">翻转链表</h5>
+<p>遍历，存next，next赋值位pre（初始null），now 赋值给pre，存的next复制给now</p>
+<h5 id="链表中倒数第k个节点">链表中倒数第k个节点</h5>
+<p>首先两个节点/指针，一个节点 node1 先开始跑，指针 node1 跑到 k-1 个节点后，另一个节点 node2 开始跑，当 node1 跑到最后时，node2 所指的节点就是倒数第k个节点也就是正数第(L-K+1)个节点</p>
+<h5 id="删除链表的倒数第n个节点">删除链表的倒数第N个节点</h5>
+<p>首先两个节点/指针，一个节点 node1 先开始跑，指针 node1 跑到 k-1 个节点后，另一个节点 node2 开始跑，当 node1 跑到最后时，node2 所指的节点就是倒数第k个节点也就是正数第(L-K+1)个节点，k-1==k-1.next.next</p>
+<h5 id="合并两个排序的链表">合并两个排序的链表</h5>
+<p>递归，next非空，a小，merge（a.next,b）,b小，merge（a,b.next）,while+if else也可以，类似归并排序三个while，由于链表，其中一个为空，判断赋值一次即可</p>
+<h2 id="栈">栈</h2>
+<h3 id="其他-3">其他</h3>
+<h4 id="题目-6">题目</h4>
+<h5 id="两个栈实现队列">两个栈实现队列</h5>
+<p>入正常入一个栈，出时先全部压入另一个，弹出，再压回来，类似汉诺塔思想</p>
+<h5 id="判断栈的弹出序列">判断栈的弹出序列</h5>
+<p>按照入栈压入，当和出栈顶相等时，出栈（入了再出），不相等则继续压栈直到个数，根据栈是否为空或出数组是否走到最后</p>
+<h2 id="堆">堆</h2>
+<h3 id="排序-1">排序</h3>
+<h4 id="知识-3">知识</h4>
+<h5 id="大分堆加入">大分堆加入</h5>
+<p>队尾放元素，若小于父节点则交换（i-1）/2</p>
+<h5 id="大分堆堆弹出堆顶">大分堆堆弹出（堆顶）</h5>
+<p>尾部放到首部（size&ndash;；拷贝）；和子孩子比，换小的，递归直到叶子节点（2xi+1，2xi-1）</p>
+<h5 id="特点">特点</h5>
+<p>完全二叉树，插入和计算（上浮下沉）</p>
+<p>优先队列使用的堆</p>
+<h4 id="题目-7">题目</h4>
+<h5 id="队列前k部分有序怎么排序最好">队列前k部分有序，怎么排序最好</h5>
+<p>将有序部分放入堆，取堆首放入数组，将无序数放堆首，直到无序耗尽，在取堆首放入数组，直到堆空，时间复杂度O（nlogk）</p>
+<h5 id="给二叉树堆排序">给二叉树堆排序</h5>
+<p>从最下边三个数（1棵树）排序，再排倒数第二层，直到到堆顶（略快于尾部或首部添加）-</p>
+<h2 id="其他数据结构">其他数据结构</h2>
+<h1 id="算法">算法</h1>
+<h2 id="递归">递归</h2>
+<h3 id="时间复杂度-1">时间复杂度</h3>
+<h4 id="知识-4">知识</h4>
+<h5 id="master公式">Master公式</h5>
+<p>T(N) = a*T(N/b) + O(N^d)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">条件</th>
+<th style="text-align:center">复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">log(b,a) &gt; d</td>
+<td style="text-align:center">O(N^log(b,a))</td>
+</tr>
+<tr>
+<td style="text-align:center">log(b,a) = d</td>
+<td style="text-align:center">O(N^d * logN)</td>
+</tr>
+<tr>
+<td style="text-align:center">log(b,a) &lt; d</td>
+<td style="text-align:center">O(N^d)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="动态规划">动态规划</h2>
+<h4 id="题目-8">题目</h4>
+<h5 id="青蛙跳1或2n阶方法个数">青蛙跳1或2，n阶方法个数</h5>
+<p>斐波那契数列，找规律</p>
+<h5 id="青蛙1-nn阶方法个数">青蛙1-n，n阶方法个数</h5>
+<p>动态规划，错位相减。1 &laquo; &ndash;number;//2^(number-1)</p>
+<h1 id="小知识">小知识</h1>
+<h2 id="取中点">取中点</h2>
+<p>l+r-l&raquo;1</p>
+<h2 id="取一个数二进制最低位为1的数">取一个数二进制最低位为1的数</h2>
+<p>x&amp;（~x+1）</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -291,8 +940,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/cron-express-note/" class="prev" rel="prev" title="Cron表达式笔记"><i class="fas fa-angle-left fa-fw"></i>Cron表达式笔记</a>
-            <a href="/es-transportclient-note/" class="next" rel="next" title="TransportClient访问ES笔记">TransportClient访问ES笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/java-audition-note/" class="prev" rel="prev" title="Java后端面试题整理"><i class="fas fa-angle-left fa-fw"></i>Java后端面试题整理</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

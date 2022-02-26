@@ -7,6 +7,16 @@
             <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Feb 2022 10:06:06 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>算法笔记</title>
+    <link>https://kkkpjskey.github.io/algorithm-note/</link>
+    <pubDate>Thu, 14 Oct 2021 12:08:18 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/algorithm-note/</guid>
+    <description><![CDATA[结构 数组 排序 知识 总结 时间复杂度 最好 最好情况 最坏 最坏情况 平均时间复杂度 冒泡排序 O(n) 原序列顺序 O(n^2) 原序列顺序倒序 O(n^2) 插入排序 O(n) 原序列顺序 O(n^2) 原序列顺序倒]]></description>
+</item><item>
+    <title>Java后端面试题整理</title>
+    <link>https://kkkpjskey.github.io/java-audition-note/</link>
+    <pubDate>Tue, 08 Jun 2021 14:37:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-audition-note/</guid>
+    <description><![CDATA[1、面向对象 什么是面向对象? 对比面向过程，是两种不同的处理问题的角度 面向过程更注重事情的每一个步骤及顺序，面向对象更注重事情有哪些参与者(对]]></description>
+</item><item>
     <title>面经</title>
     <link>https://kkkpjskey.github.io/face-exp-note/</link>
     <pubDate>Sat, 26 Feb 2022 10:06:06 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/face-exp-note/</guid>
@@ -46,15 +56,5 @@
     <link>https://kkkpjskey.github.io/docker-vi-not-find-error/</link>
     <pubDate>Sun, 30 Jan 2022 10:55:30 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/docker-vi-not-find-error/</guid>
     <description><![CDATA[问题 我们在创建基础容器之后，进入容器，进行编辑配置文件的时候，需要使用vim或者vi命令，但是会出现： 1 2 root@700af56070dl:/# vi bash: vi: command not found 解决 使用如下命令安装]]></description>
-</item><item>
-    <title>Visual Studio 笔记</title>
-    <link>https://kkkpjskey.github.io/vs-note/</link>
-    <pubDate>Sun, 30 Jan 2022 10:43:34 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/vs-note/</guid>
-    <description><![CDATA[Visual Studio安装时共享组件、工具和 SDK安装位置不能更改 解决办法 更改注册表 HKEY_LOCAL_MACHINE\SOFTWARE\Micr]]></description>
-</item><item>
-    <title>Chocolatey : 无法将“choco”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。</title>
-    <link>https://kkkpjskey.github.io/chocolatey-install-others-error/</link>
-    <pubDate>Sun, 30 Jan 2022 10:35:04 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/chocolatey-install-others-error/</guid>
-    <description><![CDATA[报错 1 2 3 4 5 6 7 8 PS C:\WINDOWS\system32&gt; choco install mkcert choco : 无法将“choco”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径]]></description>
 </item></channel>
 </rss>
