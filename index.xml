@@ -7,6 +7,11 @@
             <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Feb 2022 10:06:06 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>设计模式笔记</title>
+    <link>https://kkkpjskey.github.io/design-mode/</link>
+    <pubDate>Fri, 10 Dec 2021 17:04:59 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/design-mode/</guid>
+    <description><![CDATA[UML类图是描述类之间的关系 概念 类（Class）：使用三层矩形框表示。 第一层显示类的名称，如果是抽象类，则就用斜体显示。 第二层是字段和属性。]]></description>
+</item><item>
     <title>算法笔记</title>
     <link>https://kkkpjskey.github.io/algorithm-note/</link>
     <pubDate>Thu, 14 Oct 2021 12:08:18 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/algorithm-note/</guid>
@@ -20,7 +25,7 @@
     <title>面经</title>
     <link>https://kkkpjskey.github.io/face-exp-note/</link>
     <pubDate>Sat, 26 Feb 2022 10:06:06 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/face-exp-note/</guid>
-    <description><![CDATA[XLXS汽车一面 ArrayLsit循环删除重复元素 方法 结果 for正序 部分元素删不掉 for倒叙 正确、单线程多线程ok foreach ConcurrentModificationException ArrayList Remove ConcurrentModificationException Iterator Remove 正确、单线程]]></description>
+    <description><![CDATA[XLXS汽车一面 ArrayLsit循环删除重复元素 方法 结果 for正序 部分元素删不掉 for倒序 正确、单线程多线程ok foreach ConcurrentModificationException ArrayList Remove ConcurrentModificationException Iterator Remove 正确、单线程]]></description>
 </item><item>
     <title>Java反射笔记</title>
     <link>https://kkkpjskey.github.io/java-reflect-note/</link>
@@ -51,10 +56,5 @@
     <link>https://kkkpjskey.github.io/win-powshell-note/</link>
     <pubDate>Sun, 30 Jan 2022 11:05:28 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win-powshell-note/</guid>
     <description><![CDATA[PowerShell创建 Profile profile主要用于个性化常用的函数、别名等等。每次加载powershell的时候，都会执行profile中的内]]></description>
-</item><item>
-    <title>Docker容器中bash: vi: command not found</title>
-    <link>https://kkkpjskey.github.io/docker-vi-not-find-error/</link>
-    <pubDate>Sun, 30 Jan 2022 10:55:30 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/docker-vi-not-find-error/</guid>
-    <description><![CDATA[问题 我们在创建基础容器之后，进入容器，进行编辑配置文件的时候，需要使用vim或者vi命令，但是会出现： 1 2 root@700af56070dl:/# vi bash: vi: command not found 解决 使用如下命令安装]]></description>
 </item></channel>
 </rss>
