@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mybatis-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mybatis-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-27T18:58:15+08:00" />
-<meta property="article:modified_time" content="2021-12-01T16:34:25+08:00" />
+<meta property="article:modified_time" content="2022-05-28T20:41:25+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mybatis-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/featured-image.jpg",
                             "width":  1570 ,
                             "height":  471 
-                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  2593 ,
-        "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/","datePublished": "2021-07-27T18:58:15+08:00","dateModified": "2021-12-01T16:34:25+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  3108 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/","datePublished": "2021-07-27T18:58:15+08:00","dateModified": "2022-05-28T20:41:25+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Mybatis笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2593 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/mybatis-note/" class="leancloud_visitors" data-flag-title="Mybatis笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3108 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/mybatis-note/" class="leancloud_visitors" data-flag-title="Mybatis笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -150,6 +150,7 @@
     </li>
     <li><a href="#mybatis动态传入表名">MyBatis动态传入表名</a></li>
     <li><a href="#-transient注解">@ Transient注解</a></li>
+    <li><a href="#mybatis传递多个参数的4种方式">Mybatis传递多个参数的4种方式</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="mapperscan注解包含多个包">MapperScan注解包含多个包</h2>
@@ -621,11 +622,114 @@
 </div>
 </div><h2 id="-transient注解">@ Transient注解</h2>
 <p>ORM框架中是否和数据库的列做映射，帮助理解XmlTransient</p>
+<h2 id="mybatis传递多个参数的4种方式">Mybatis传递多个参数的4种方式</h2>
+<p>现在大多项目都是使用Mybatis了，但也有些公司使用Hibernate。使用Mybatis最大的特性就是sql需要自己写，而写sql就需要传递多个参数。面对各种复杂的业务场景，传递参数也是一种学问。</p>
+<p>下面给大家总结了以下几种多参数传递的方法。</p>
+<p>方法1：顺序传参法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">User</span> <span class="nf">selectUser</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">deptId</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectUser&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;UserResultMap&#34;</span><span class="nt">&gt;</span>
+    select * from user
+    where user_name = #{0} and dept_id = #{1}
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>#{}</code>里面的数字代表你传入参数的顺序。</p>
+<p>这种方法不建议使用，sql层表达不直观，且一旦顺序调整容易出错。</p>
+<p>方法2：<code>@Param</code>注解传参法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">User</span> <span class="nf">selectUser</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">&#34;userName&#34;</span><span class="o">)</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="nd">@Param</span><span class="o">(</span><span class="s">&#34;deptId&#34;</span><span class="o">)</span> <span class="n">deptId</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectUser&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;UserResultMap&#34;</span><span class="nt">&gt;</span>
+    select * from user
+    where user_name = #{userName} and dept_id = #{deptId}
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>#{}</code>里面的名称对应的是注解 <code>@Param</code>括号里面修饰的名称。
+这种方法在参数不多的情况还是比较直观的，推荐使用。</p>
+<p>方法3：Map传参法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">User</span> <span class="nf">selectUser</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">params</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectUser&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;java.util.Map&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;UserResultMap&#34;</span><span class="nt">&gt;</span>
+    select * from user
+    where user_name = #{userName} and dept_id = #{deptId}
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>#{}</code>里面的名称对应的是 Map里面的key名称。</p>
+<p>这种方法适合传递多个参数，且参数易变能灵活传递的情况。</p>
+<p>方法4：Java Bean传参法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">User</span> <span class="nf">selectUser</span><span class="o">(</span><span class="n">User</span> <span class="n">params</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectUser&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;com.test.User&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;UserResultMap&#34;</span><span class="nt">&gt;</span>
+    select * from user
+    where user_name = #{userName} and dept_id = #{deptId}
+<span class="nt">&lt;/select&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>#{}</code>里面的名称对应的是 User类里面的成员属性。</p>
+<p>这种方法很直观，但需要建一个实体类，扩展不容易，需要加属性，看情况使用。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-12-01</span>
+                <span>更新于 2022-05-28</span>
             </div>
             <div class="post-info-license"></div>
         </div>

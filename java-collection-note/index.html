@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-collection-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-collection-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-10-15T15:04:57+08:00" />
-<meta property="article:modified_time" content="2021-11-22T11:14:03+08:00" />
+<meta property="article:modified_time" content="2022-05-29T02:06:38+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-collection-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/featured-image.jpg",
                             "width":  721 ,
                             "height":  330 
-                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  29512 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/","datePublished": "2021-10-15T15:04:57+08:00","dateModified": "2021-11-22T11:14:03+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  29803 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/","datePublished": "2021-10-15T15:04:57+08:00","dateModified": "2022-05-29T02:06:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java-Collection笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 29512 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 59 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 29803 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 60 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -168,6 +168,7 @@
       </ul>
     </li>
     <li><a href="#list根据下标修改">List根据下标修改</a></li>
+    <li><a href="#list转map的三种方法">List转Map的三种方法</a></li>
     <li><a href="#map">Map</a>
       <ul>
         <li><a href="#特点">特点</a></li>
@@ -1058,6 +1059,53 @@ abc--&gt;22
         <span class="n">list4</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;12&#34;</span><span class="o">);</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;list3:&#34;</span> <span class="o">+</span> <span class="n">list3</span><span class="o">);</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;list4:&#34;</span> <span class="o">+</span> <span class="n">list4</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="list转map的三种方法">List转Map的三种方法</h2>
+<p>一、
+<code>List</code>转<code>Map</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">,</span> <span class="n">User</span><span class="o">&gt;</span> <span class="n">maps</span> <span class="o">=</span> <span class="n">userList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getId</span><span class="o">,</span><span class="n">Function</span><span class="o">.</span><span class="na">identity</span><span class="o">()));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>看来还是使用JDK 1.8方便一些。</p>
+<p>二、
+<strong>另外，转换成<code>Map</code>的时候，可能出现key一样的情况，如果不指定一个覆盖规则，上面的代码是会报错的。转成<code>Map</code>的时候，最好使用下面的方式：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">,</span> <span class="n">User</span><span class="o">&gt;</span> <span class="n">maps</span> <span class="o">=</span>  <span class="n">userList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getId</span><span class="o">,</span>  <span class="n">Function</span><span class="o">.</span><span class="na">identity</span><span class="o">(),</span> <span class="o">(</span><span class="n">key1</span><span class="o">,</span> <span class="n">key2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">key2</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>三、
+有时候，希望得到的<code>Map</code>的值不是对象，而是对象的某个属性，那么可以用下面的方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">maps</span> <span class="o">=</span> <span class="n">userList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">User</span><span class="o">::</span><span class="n">getId</span><span class="o">,</span> <span class="n">User</span><span class="o">::</span><span class="n">getAge</span><span class="o">,</span> <span class="o">(</span><span class="n">key1</span><span class="o">,</span> <span class="n">key2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">key2</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>四、 <code>List</code> 以<code>ID</code><strong>分组</strong> <code>Map&lt;Integer,List&gt;</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">List</span><span class="o">&gt;</span> <span class="n">groupBy</span> <span class="o">=</span> <span class="n">appleList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">groupingBy</span><span class="o">(</span><span class="n">Apple</span><span class="o">::</span><span class="n">getId</span><span class="o">));</span>
+
+<span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="err">“</span><span class="n">groupBy</span><span class="o">:</span><span class="err">”</span><span class="o">+</span><span class="n">groupBy</span><span class="o">);</span>
+ <span class="o">{</span><span class="n">1</span><span class="o">=[</span><span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">1</span><span class="o">,</span>  <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">苹果1</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">3</span><span class="o">.</span><span class="na">25</span><span class="o">,</span> <span class="n">num</span><span class="o">=</span><span class="n">10</span><span class="o">},</span> <span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">1</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">苹果2</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">1</span><span class="o">.</span><span class="na">35</span><span class="o">,</span>  <span class="n">num</span><span class="o">=</span><span class="n">20</span><span class="o">}],</span> <span class="n">2</span><span class="o">=[</span><span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">2</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">香蕉</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">2</span><span class="o">.</span><span class="na">89</span><span class="o">,</span> <span class="n">num</span><span class="o">=</span><span class="n">30</span><span class="o">}],</span> <span class="n">3</span><span class="o">=[</span><span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">3</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">荔枝</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">9</span><span class="o">.</span><span class="na">99</span><span class="o">,</span> <span class="n">num</span><span class="o">=</span><span class="n">40</span><span class="o">}]}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="map">Map</h2>
@@ -5198,7 +5246,7 @@ Deque deque = new LinkedList()</li>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-11-22</span>
+                <span>更新于 2022-05-29</span>
             </div>
             <div class="post-info-license"></div>
         </div>
