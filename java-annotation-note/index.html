@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Java注解笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Java注解笔记"><meta property="og:title" content="Java注解笔记" />
+<meta property="og:description" content="记录Java注解笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/java-annotation-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-annotation-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-30T10:36:37+08:00" />
+<meta property="article:modified_time" content="2022-05-30T12:47:11+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/java-annotation-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Java注解笔记"/>
+<meta name="twitter:description" content="记录Java注解笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/java-annotation-note/" /><link rel="prev" href="https://kkkpjskey.github.io/java-thread-note/" /><link rel="next" href="https://kkkpjskey.github.io/microservices-ali-zk-or-other-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Java注解笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/java-annotation-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/java-annotation-note\/featured-image.jpg",
+                            "width":  2670 ,
+                            "height":  801 
+                        }],"genre": "posts","keywords": "Java, Annotation","wordcount":  3730 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-annotation-note\/","datePublished": "2022-05-30T10:36:37+08:00","dateModified": "2022-05-30T12:47:11+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Java注解笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/java-annotation-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/java-annotation-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java注解笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-30">2022-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3730 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/java-annotation-note/" class="leancloud_visitors" data-flag-title="Java注解笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/java-annotation-note/featured-image.jpg"
+        data-srcset="/java-annotation-note/featured-image.jpg, /java-annotation-note/featured-image.jpg 1.5x, /java-annotation-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/java-annotation-note/featured-image.jpg"
+        title="记录Java注解笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#java注解使用java获取注解的属性获取注解的字段值">Java注解使用、Java获取注解的属性、获取注解的字段值</a>
+      <ul>
+        <li><a href="#一前言">一、前言</a></li>
+        <li><a href="#二示例代码">二、示例代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#java的自定义注解及通过反射获取注解">Java的自定义注解及通过反射获取注解</a>
+      <ul>
+        <li><a href="#一注解基本知识">一、注解基本知识</a></li>
+        <li><a href="#二在java中的使用">二、在java中的使用</a></li>
+      </ul>
+    </li>
+    <li><a href="#java获取类方法属性上的注解">Java获取类、方法、属性上的注解</a>
+      <ul>
+        <li><a href="#一获取类上的注解">一、获取类上的注解</a></li>
+        <li><a href="#二获取方法上的注解">二、获取方法上的注解</a></li>
+        <li><a href="#三获取属性上的注解">三、获取属性上的注解</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="java注解使用java获取注解的属性获取注解的字段值">Java注解使用、Java获取注解的属性、获取注解的字段值</h2>
+<h3 id="一前言">一、前言</h3>
+<p>1、前面一直讲注解的基础知识，注解的定义，对于注解的使用几乎是一笔略过，本篇将着重讲讲注解的使用。 获取注解的属性，通过反射获取注解的属性值。</p>
+<h3 id="二示例代码">二、示例代码</h3>
+<p>1、定义一个注解，用于给 全局变量 field 字段 赋值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.haha.study.annotation.value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.Documented</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.ElementType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.Retention</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.RetentionPolicy</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.Target</span><span class="o">;</span>
+<span class="cm">/**
+</span><span class="cm">\* description: 定义一个注解，用于给 全局变量 field 字段 赋值,并使用反射取值。 &lt;br&gt;
+</span><span class="cm">\* 特别提醒： @Rentention(RetentionPolicy.RUNTIME) 时，注解才会被jvm加载，才能使用反射获取。
+</span><span class="cm">\* @version v1.0
+</span><span class="cm">\* @author w
+</span><span class="cm">\* @date 2018年8月1日下午2:37:40
+</span><span class="cm">*/</span>
+<span class="nd">@Documented</span>
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+<span class="nd">@Target</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">Fields</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="nf">sort</span><span class="o">()</span> <span class="k">default</span> <span class="n">0</span> <span class="o">;</span>
+    <span class="n">String</span> <span class="nf">value</span><span class="o">()</span> <span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>2、定义一个注解 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.haha.study.annotation.value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.Documented</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.ElementType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.Retention</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.RetentionPolicy</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.Target</span><span class="o">;</span>
+<span class="cm">/**
+</span><span class="cm">\* description: 定义一个注解。
+</span><span class="cm">\* @version v1.0
+</span><span class="cm">\* @author w
+</span><span class="cm">\* @date 2018年8月1日下午2:41:45
+</span><span class="cm">*/</span>
+<span class="nd">@Documented</span>
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+<span class="nd">@Target</span><span class="o">(</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">ConsAnnotation</span> <span class="o">{</span>
+    <span class="n">String</span><span class="o">[]</span> <span class="nf">request</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>3、创建一个普通的类，使用 @ConsAnnotation、@Fields 注解</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.haha.study.annotation.value</span><span class="o">;</span>
+<span class="cm">/**
+</span><span class="cm">\* description: 创建一个普通的类，使用 @ConsAnnotation、@Fields 注解。
+</span><span class="cm">\* @version v1.0
+</span><span class="cm">\* @author w
+</span><span class="cm">\* @date 2018年8月1日下午2:50:23
+</span><span class="cm">*/</span>
+<span class="nd">@ConsAnnotation</span><span class="o">(</span><span class="n">request</span> <span class="o">=</span> <span class="o">{</span> <span class="s">&#34;hello&#34;</span><span class="o">,</span><span class="s">&#34;world&#34;</span><span class="o">,</span><span class="s">&#34;annotation!&#34;</span> <span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+ 
+    <span class="nd">@Fields</span><span class="o">(</span><span class="s">&#34;中华人民共和国&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">userName</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getUserName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">userName</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserName</span><span class="o">(</span><span class="n">String</span> <span class="n">userName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">userName</span> <span class="o">=</span> <span class="n">userName</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>4、针对 com.haha.study.annotation.value.User 类使用注解的测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.haha.study.annotation.value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Field</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="cm">/**
+</span><span class="cm">\* description: 针对 com.haha.study.annotation.value.User 类使用注解的测试
+</span><span class="cm">\* @version v1.0
+</span><span class="cm">\* @author w
+</span><span class="cm">\* @date 2018年8月1日下午2:37:13
+</span><span class="cm">*/</span>
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValueTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+        <span class="c1">// 1、 获取 User类上的注解 @ConsAnnotation
+</span><span class="c1"></span>        <span class="n">ConsAnnotation</span> <span class="n">anno</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">ConsAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">anno</span><span class="o">.</span><span class="na">request</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr</span><span class="o">));</span> <span class="c1">// [hello, world, annotation!]
+</span><span class="c1"></span> 
+        <span class="c1">// 2、 获取User类中 private String userName; 变量上的注解 @Field
+</span><span class="c1"></span>        <span class="n">Field</span> <span class="n">f</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getDeclaredField</span><span class="o">(</span><span class="s">&#34;userName&#34;</span><span class="o">);</span>
+        <span class="n">Fields</span> <span class="n">anno2</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">Fields</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">user</span><span class="o">.</span><span class="na">setUserName</span><span class="o">(</span><span class="n">anno2</span><span class="o">.</span><span class="na">value</span><span class="o">());</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getUserName</span><span class="o">());</span> <span class="c1">// 中华人民共和国
+</span><span class="c1"></span>    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="java的自定义注解及通过反射获取注解">Java的自定义注解及通过反射获取注解</h2>
+<h3 id="一注解基本知识">一、注解基本知识</h3>
+<p>　　1、元注解：<strong>@Retention</strong> <strong>@Target</strong> <strong>@Document</strong> <strong>@Inherited</strong></p>
+<p>　　2、Annotation型定义为**@interface**, 所有的Annotation会自动继承java.lang.Annotation这一接口,并且不能再去继承别的类或是接口。</p>
+<p>　　3、参数成员只能用<strong>public</strong>或默认(<strong>default</strong>)这两个访问权修饰</p>
+<p>　　4、参数成员只能用基本类型<strong>byte</strong>，<strong>short</strong>，<strong>char</strong>，<strong>int</strong>，<strong>long</strong>，<strong>float</strong>，<strong>double</strong>，<strong>boolean</strong>八种基本数据类型和<strong>String</strong>、<strong>Enum</strong>、<strong>Class</strong>、<strong>annotations</strong>等数据类型，以及这一些类型的<strong>数组</strong>。</p>
+<p>　　5、要获取类、方法和字段的注解信息，必须通过Java的反射技术来获取 Annotation对象,除此之外没有别的获取注解对象的方法</p>
+<p>　　6、注解也可以没有定义成员, 不过这样注解就没啥用了，只起到标识作用</p>
+<p>自定义注解类时, 可以指定目标 (类、方法、字段, 构造函数等) , 注解的生命周期(运行时,class文件或者源码中有效), 是否将注解包含在javadoc中及是否允许子类继承父类中的注解, 具体如下：</p>
+<p>　　1、@Target 表示该注解目标,可能的 ElemenetType 参数包括：</p>
+<p>　　　　<strong>ElemenetType.CONSTRUCTOR</strong> 构造器声明
+　　　　<strong>ElemenetType.FIELD</strong> 域声明(包括 enum 实例) 
+　　　　<strong>ElemenetType.LOCAL_VARIABLE</strong> 局部变量声明 
+　　　　<strong>ElemenetType.METHOD</strong> 方法声明 
+　　　　<strong>ElemenetType.PACKAGE</strong> 包声明 
+　　　　<strong>ElemenetType.PARAMETER</strong> 参数声明 
+　　　　<strong>ElemenetType.TYPE</strong> 类，接口(包括注解类型)或enum声明</p>
+<p>　　2、@Retention 表示该注解的生命周期,可选的 RetentionPolicy 参数包括</p>
+<p>　　　　<strong>RetentionPolicy.SOURCE</strong> 注解将被编译器丢弃
+　　　　<strong>RetentionPolicy.CLASS</strong> 注解在class文件中可用，但会被JVM丢弃
+　　　　<strong>RetentionPolicy.RUNTIME</strong> JVM将在运行期也保留注释，因此可以通过反射机制读取注解的信息</p>
+<p>　　3、@Documented 指示将此注解包含在 javadoc 中</p>
+<p>　　4、@Inherited 指示允许子类继承父类中的注解</p>
+<h3 id="二在java中的使用">二、在java中的使用</h3>
+<p>　　2.1、定义注解</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">annotation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.lang.annotation.ElementType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.Retention</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.RetentionPolicy</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.annotation.Target</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyAnnotation</span> <span class="o">{</span>
+    <span class="cm">/**
+</span><span class="cm">     * 注解类
+</span><span class="cm">     * 
+</span><span class="cm">     * @author suguoliang
+</span><span class="cm">     *
+</span><span class="cm">     */</span>
+    <span class="nd">@Target</span><span class="o">(</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">)</span>
+    <span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">MyClassAnnotation</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="nf">uri</span><span class="o">();</span>
+        <span class="n">String</span> <span class="nf">desc</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 构造方法注解
+</span><span class="cm">     * 
+</span><span class="cm">     * @author suguoliang
+</span><span class="cm">     *
+</span><span class="cm">     */</span>
+    <span class="nd">@Target</span><span class="o">(</span><span class="n">ElementType</span><span class="o">.</span><span class="na">CONSTRUCTOR</span><span class="o">)</span>
+    <span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">MyConstructorAnnotation</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="nf">uri</span><span class="o">();</span>
+        <span class="n">String</span> <span class="nf">desc</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 方法注解
+</span><span class="cm">     * 
+</span><span class="cm">     * @author suguoliang
+</span><span class="cm">     *
+</span><span class="cm">     */</span>
+    <span class="nd">@Target</span><span class="o">(</span><span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span><span class="o">)</span>
+    <span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">MyMethodAnnotation</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="nf">uri</span><span class="o">();</span>
+        <span class="n">String</span> <span class="nf">desc</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 字段注解
+</span><span class="cm">     * 
+</span><span class="cm">     * @author suguoliang
+</span><span class="cm">     *
+</span><span class="cm">     */</span>
+    <span class="nd">@Target</span><span class="o">(</span><span class="n">ElementType</span><span class="o">.</span><span class="na">FIELD</span><span class="o">)</span>
+    <span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">MyFieldAnnotation</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="nf">uri</span><span class="o">();</span>
+        <span class="n">String</span> <span class="nf">desc</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 可以同时应用到类和方法上
+</span><span class="cm">     * 
+</span><span class="cm">     * @author 尐蘇
+</span><span class="cm">     *
+</span><span class="cm">     */</span>
+    <span class="nd">@Target</span><span class="o">({</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="n">ElementType</span><span class="o">.</span><span class="na">METHOD</span> <span class="o">})</span>
+    <span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nd">@interface</span> <span class="n">MyClassAndMethodAnnotation</span> <span class="o">{</span>
+        <span class="c1">// 定义枚举
+</span><span class="c1"></span>        <span class="kd">public</span> <span class="kd">enum</span> <span class="n">EnumType</span> <span class="o">{</span>
+            <span class="n">util</span><span class="o">,</span> <span class="n">entity</span><span class="o">,</span> <span class="n">service</span><span class="o">,</span> <span class="n">model</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 设置默认值
+</span><span class="c1"></span>        <span class="kd">public</span> <span class="n">EnumType</span> <span class="nf">classType</span><span class="o">()</span> <span class="k">default</span> <span class="n">EnumType</span><span class="o">.</span><span class="na">util</span><span class="o">;</span>
+
+        <span class="c1">// 数组
+</span><span class="c1"></span>        <span class="kt">int</span><span class="o">[]</span> <span class="nf">arr</span><span class="o">()</span> <span class="k">default</span> <span class="o">{</span> <span class="n">3</span><span class="o">,</span> <span class="n">7</span><span class="o">,</span> <span class="n">5</span> <span class="o">};</span>
+        <span class="n">String</span> <span class="nf">color</span><span class="o">()</span> <span class="k">default</span> <span class="s">&#34;blue&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>　　2.2基本测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">annotation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Constructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Field</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Method</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyClassAndMethodAnnotation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyClassAndMethodAnnotation.EnumType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyClassAnnotation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyConstructorAnnotation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyFieldAnnotation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyMethodAnnotation</span><span class="o">;</span>
+
+<span class="nd">@MyClassAnnotation</span><span class="o">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s">&#34;The Class&#34;</span><span class="o">,</span> <span class="n">uri</span> <span class="o">=</span> <span class="s">&#34;com.sgl.annotation&#34;</span><span class="o">)</span>
+<span class="nd">@MyClassAndMethodAnnotation</span><span class="o">(</span><span class="n">classType</span> <span class="o">=</span> <span class="n">EnumType</span><span class="o">.</span><span class="na">util</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestAnnotation</span> <span class="o">{</span>
+    <span class="nd">@MyFieldAnnotation</span><span class="o">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s">&#34;The Class Field&#34;</span><span class="o">,</span> <span class="n">uri</span> <span class="o">=</span> <span class="s">&#34;com.sgl.annotation#id&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@MyConstructorAnnotation</span><span class="o">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s">&#34;The Class Constructor&#34;</span><span class="o">,</span> <span class="n">uri</span> <span class="o">=</span> <span class="s">&#34;com.sgl.annotation#constructor&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nf">TestAnnotation</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@MyMethodAnnotation</span><span class="o">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s">&#34;The Class Method&#34;</span><span class="o">,</span> <span class="n">uri</span> <span class="o">=</span> <span class="s">&#34;com.sgl.annotation#setId&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@MyMethodAnnotation</span><span class="o">(</span><span class="n">desc</span> <span class="o">=</span> <span class="s">&#34;The Class Method sayHello&#34;</span><span class="o">,</span> <span class="n">uri</span> <span class="o">=</span> <span class="s">&#34;com.sgl.annotation#sayHello&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sayHello</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;&#34;</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hello world!&#34;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#34;\t:say hello world&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">Class</span><span class="o">&lt;</span><span class="n">TestAnnotation</span><span class="o">&gt;</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">TestAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+        <span class="c1">// 获取类注解
+</span><span class="c1"></span>        <span class="n">MyClassAnnotation</span> <span class="n">myClassAnnotation</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">MyClassAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myClassAnnotation</span><span class="o">.</span><span class="na">desc</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;+&#34;</span> <span class="o">+</span> <span class="n">myClassAnnotation</span><span class="o">.</span><span class="na">uri</span><span class="o">());</span>
+
+        <span class="c1">// 获得构造方法注解
+</span><span class="c1"></span>        <span class="n">Constructor</span><span class="o">&lt;</span><span class="n">TestAnnotation</span><span class="o">&gt;</span> <span class="n">constructors</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getConstructor</span><span class="o">(</span><span class="k">new</span> <span class="n">Class</span><span class="o">[]</span> <span class="o">{});</span><span class="c1">// 先获得构造方法对象
+</span><span class="c1"></span>        <span class="n">MyConstructorAnnotation</span> <span class="n">myConstructorAnnotation</span> <span class="o">=</span> <span class="n">constructors</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">MyConstructorAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span><span class="c1">// 拿到构造方法上面的注解实例
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myConstructorAnnotation</span><span class="o">.</span><span class="na">desc</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;+&#34;</span> <span class="o">+</span> <span class="n">myConstructorAnnotation</span><span class="o">.</span><span class="na">uri</span><span class="o">());</span>
+
+        <span class="c1">// 获得方法注解
+</span><span class="c1"></span>        <span class="n">Method</span> <span class="n">method</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getMethod</span><span class="o">(</span><span class="s">&#34;setId&#34;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Class</span><span class="o">[]</span> <span class="o">{</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span> <span class="o">});</span><span class="c1">// 获得方法对象
+</span><span class="c1"></span>        <span class="n">MyMethodAnnotation</span> <span class="n">myMethodAnnotation</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">MyMethodAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myMethodAnnotation</span><span class="o">.</span><span class="na">desc</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;+&#34;</span> <span class="o">+</span> <span class="n">myMethodAnnotation</span><span class="o">.</span><span class="na">uri</span><span class="o">());</span>
+
+        <span class="c1">// 获得字段注解
+</span><span class="c1"></span>        <span class="n">Field</span> <span class="n">field</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getDeclaredField</span><span class="o">(</span><span class="s">&#34;id&#34;</span><span class="o">);</span><span class="c1">// 暴力获取private修饰的成员变量
+</span><span class="c1"></span>        <span class="n">MyFieldAnnotation</span> <span class="n">myFieldAnnotation</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">MyFieldAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myFieldAnnotation</span><span class="o">.</span><span class="na">desc</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;+&#34;</span> <span class="o">+</span> <span class="n">myFieldAnnotation</span><span class="o">.</span><span class="na">uri</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>　　2.3通过反射解析</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">annotation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Method</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyClassAndMethodAnnotation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyClassAndMethodAnnotation.EnumType</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyClassAnnotation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">annotation.MyAnnotation.MyMethodAnnotation</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ParseAnnotation</span> <span class="o">{</span>
+    <span class="cm">/**
+</span><span class="cm">     * 解析方法注解
+</span><span class="cm">     * 
+</span><span class="cm">     * @param clazz
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">parseMethod</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">clazz</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">T</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">Method</span> <span class="n">method</span> <span class="o">:</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getDeclaredMethods</span><span class="o">())</span> <span class="o">{</span>
+                <span class="n">MyMethodAnnotation</span> <span class="n">methodAnnotation</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">MyMethodAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">methodAnnotation</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">// 通过反射调用带有此注解的方法
+</span><span class="c1"></span>                    <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">obj</span><span class="o">,</span> <span class="n">methodAnnotation</span><span class="o">.</span><span class="na">uri</span><span class="o">());</span>
+                <span class="o">}</span>
+                <span class="n">MyClassAndMethodAnnotation</span> <span class="n">myClassAndMethodAnnotation</span> <span class="o">=</span> <span class="n">method</span>
+                        <span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">MyClassAndMethodAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">myClassAndMethodAnnotation</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">EnumType</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">myClassAndMethodAnnotation</span><span class="o">.</span><span class="na">classType</span><span class="o">()))</span> <span class="o">{</span>
+                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;this is a util method&#34;</span><span class="o">);</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;this is a other method&#34;</span><span class="o">);</span>
+                    <span class="o">}</span>
+                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">myClassAndMethodAnnotation</span><span class="o">.</span><span class="na">arr</span><span class="o">()));</span><span class="c1">// 打印数组
+</span><span class="c1"></span>                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myClassAndMethodAnnotation</span><span class="o">.</span><span class="na">color</span><span class="o">());</span><span class="c1">// 输出颜色
+</span><span class="c1"></span>                <span class="o">}</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;\t\t-----------------------&#34;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">parseType</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">clazz</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">MyClassAndMethodAnnotation</span> <span class="n">myClassAndMethodAnnotation</span> <span class="o">=</span> <span class="n">clazz</span>
+                    <span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">MyClassAndMethodAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">myClassAndMethodAnnotation</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">EnumType</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">myClassAndMethodAnnotation</span><span class="o">.</span><span class="na">classType</span><span class="o">()))</span> <span class="o">{</span>
+                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;this is a util class&#34;</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;this is a other class&#34;</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">MyClassAnnotation</span> <span class="n">myClassAnnotation</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">MyClassAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">myClassAnnotation</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34; class info: &#34;</span> <span class="o">+</span> <span class="n">myClassAnnotation</span><span class="o">.</span><span class="na">uri</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">parseMethod</span><span class="o">(</span><span class="n">TestAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">parseType</span><span class="o">(</span><span class="n">TestAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="java获取类方法属性上的注解">Java获取类、方法、属性上的注解</h2>
+<h3 id="一获取类上的注解">一、获取类上的注解</h3>
+<p>Java获取类上的注解有下面3个方法：</p>
+<ul>
+<li>Class.getAnnotations() 获取所有的注解，包括自己声明的以及继承的</li>
+<li>Class.getAnnotation(Class&lt; A &gt; annotationClass) 获取指定的注解，该注解可以是自己声明的，也可以是继承的</li>
+<li>Class.getDeclaredAnnotations() 获取自己声明的注解</li>
+</ul>
+<p>下面，我们来演示一下3个方法的使用。 
+首先，我们定义两个注解ParentAnnotation、SubAnnotation</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+<span class="nd">@Target</span><span class="o">(</span><span class="n">value</span><span class="o">={</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">})</span>
+<span class="nd">@Documented</span>
+<span class="nd">@Inherited</span>  <span class="c1">//可以继承
+</span><span class="c1"></span><span class="kd">public</span> <span class="nd">@interface</span> <span class="n">ParentAnnotation</span> <span class="o">{</span>
+
+<span class="o">}</span>
+
+<span class="nd">@Target</span><span class="o">(</span><span class="n">value</span><span class="o">={</span><span class="n">ElementType</span><span class="o">.</span><span class="na">TYPE</span><span class="o">})</span>
+<span class="nd">@Retention</span><span class="o">(</span><span class="n">RetentionPolicy</span><span class="o">.</span><span class="na">RUNTIME</span><span class="o">)</span>
+<span class="nd">@Documented</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">SubAnnotation</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来，我们定义两个类，Parent、Sub，分别标注ParentAnnotation 注解和SubAnnotation注解</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ParentAnnotation</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Parent</span> <span class="o">{</span>
+
+<span class="o">}</span>
+
+<span class="nd">@SubAnnotation</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sub</span> <span class="kd">extends</span> <span class="n">Parent</span><span class="o">{</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一切准备OK后，就开始测试了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnnotationTest</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Annotation</span><span class="o">[]</span> <span class="n">allAnnos</span> <span class="o">=</span> <span class="n">Sub</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getAnnotations</span><span class="o">();</span>
+        <span class="n">Annotation</span><span class="o">[]</span> <span class="n">deAnnos</span> <span class="o">=</span> <span class="n">Sub</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getDeclaredAnnotations</span><span class="o">();</span>
+        <span class="n">Annotation</span> <span class="n">subAnnotation</span> <span class="o">=</span> <span class="n">Sub</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">SubAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">Annotation</span> <span class="n">parentAnnotation</span> <span class="o">=</span> <span class="n">Sub</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">ParentAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;all&#34;</span><span class="o">,</span><span class="n">allAnnos</span><span class="o">);</span>
+        <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;declare&#34;</span><span class="o">,</span><span class="n">deAnnos</span><span class="o">);</span>
+        <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;sub&#34;</span><span class="o">,</span><span class="n">subAnnotation</span><span class="o">);</span>
+        <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;parent&#34;</span><span class="o">,</span><span class="n">parentAnnotation</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">printAnnotation</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">,</span><span class="n">Annotation</span><span class="o">...</span> <span class="n">annotations</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;==============&#34;</span><span class="o">+</span><span class="n">msg</span><span class="o">+</span><span class="s">&#34;======================&#34;</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">annotations</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Annotation is null&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Annotation</span> <span class="n">annotation</span> <span class="o">:</span> <span class="n">annotations</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">annotation</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>执行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">==============</span><span class="nv">all</span><span class="o">======================</span>
+@com.ghs.test.annotation.ParentAnnotation<span class="o">()</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">declare</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">sub</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">parent</span><span class="o">======================</span>
+@com.ghs.test.annotation.ParentAnnotation<span class="o">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>尝试着将ParentAnnotation中的@Inherited去掉，结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">==============</span><span class="nv">all</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">declare</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">sub</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">parent</span><span class="o">======================</span>
+null
+</code></pre></td></tr></table>
+</div>
+</div><p>再试着将Sub类中的SubAnnotation去掉，结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">==============</span><span class="nv">all</span><span class="o">======================</span>
+
+<span class="o">==============</span><span class="nv">declare</span><span class="o">======================</span>
+
+<span class="o">==============</span><span class="nv">sub</span><span class="o">======================</span>
+<span class="nv">null</span>
+
+<span class="o">==============</span><span class="nv">parent</span><span class="o">======================</span>
+null
+</code></pre></td></tr></table>
+</div>
+</div><p>经过几番小小的测试，我们基本上可以得出下面几条结论：</p>
+<ol>
+<li>注解只有标注了@Inherited才能被子类继承</li>
+<li>当某个类没有标注任何注解时，getAnnotations()和getDeclaredAnnotations()返回空数组</li>
+<li>当某个注解查询不到时，getAnnotation(Class&lt; A &gt; annotationType)方法返回null</li>
+</ol>
+<h3 id="二获取方法上的注解">二、获取方法上的注解</h3>
+<p>修改上面的ParentAnnotation与SubAnnotation，使其可以标注在方法上 
+@Target(value={ElementType.TYPE, ElementType.METHOD})</p>
+<p>在Sub、Parent中分别添加一个test()方法，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ParentAnnotation</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Parent</span> <span class="o">{</span>
+
+    <span class="nd">@ParentAnnotation</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@SubAnnotation</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sub</span> <span class="kd">extends</span> <span class="n">Parent</span><span class="o">{</span>
+
+    <span class="nd">@SubAnnotation</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一切准备就绪，就可以进行测试了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testMethodAnnotation</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Method</span><span class="o">[]</span> <span class="n">methods</span> <span class="o">=</span> <span class="n">Sub</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getMethods</span><span class="o">();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">Method</span> <span class="n">method</span> <span class="o">:</span> <span class="n">methods</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">&#34;test&#34;</span><span class="o">)){</span>
+            <span class="n">Annotation</span><span class="o">[]</span> <span class="n">allMAnnos</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getAnnotations</span><span class="o">();</span>
+            <span class="n">Annotation</span><span class="o">[]</span> <span class="n">deMAnnos</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getDeclaredAnnotations</span><span class="o">();</span>
+            <span class="n">Annotation</span> <span class="n">subMAnno</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">SubAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+            <span class="n">Annotation</span> <span class="n">parentMAnno</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">ParentAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+            <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;allMAnnos&#34;</span><span class="o">,</span><span class="n">allMAnnos</span><span class="o">);</span>
+            <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;deMAnnos&#34;</span><span class="o">,</span><span class="n">deMAnnos</span><span class="o">);</span>
+            <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;subMAnno&#34;</span><span class="o">,</span><span class="n">subMAnno</span><span class="o">);</span>
+            <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;parentMAnno&#34;</span><span class="o">,</span><span class="n">parentMAnno</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>执行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">==============</span><span class="nv">allMAnnos</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">deMAnnos</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">subMAnno</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">parentMAnno</span><span class="o">======================</span>
+null
+</code></pre></td></tr></table>
+</div>
+</div><p>尝试着删除Sub中的test方法，再次进行测试，结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">==============</span><span class="nv">allMAnnos</span><span class="o">======================</span>
+@com.ghs.test.annotation.ParentAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">deMAnnos</span><span class="o">======================</span>
+@com.ghs.test.annotation.ParentAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">subMAnno</span><span class="o">======================</span>
+<span class="nv">null</span>
+
+<span class="o">==============</span><span class="nv">parentMAnno</span><span class="o">======================</span>
+@com.ghs.test.annotation.ParentAnnotation<span class="o">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>经过两轮测试，可以得出以下结论：</p>
+<ol>
+<li>子类重写的方法，注解无法被继承</li>
+<li>针对方法而言，getAnnotations()与getDeclaredAnnotations()返回的结果似乎永远都是一样的。 
+附：针对此结论，如有不同的想法，还望不吝赐教</li>
+</ol>
+<h3 id="三获取属性上的注解">三、获取属性上的注解</h3>
+<p>修改上面的ParentAnnotation与SubAnnotation，使其可以标注在属性上 
+@Target(value={ElementType.TYPE, ElementType.METHOD,ElementTypeFIELD})</p>
+<p>在Sub、Parent中分别添加一个name属性，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@ParentAnnotation</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Parent</span> <span class="o">{</span>
+
+    <span class="nd">@ParentAnnotation</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@ParentAnnotation</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@SubAnnotation</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sub</span> <span class="kd">extends</span> <span class="n">Parent</span><span class="o">{</span>
+
+    <span class="nd">@SubAnnotation</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@SubAnnotation</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>下面开始测试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testFieldAnnotation</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Field</span><span class="o">[]</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">Sub</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getFields</span><span class="o">();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">Field</span> <span class="n">field</span> <span class="o">:</span> <span class="n">fields</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Annotation</span><span class="o">[]</span> <span class="n">allFAnnos</span><span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="na">getAnnotations</span><span class="o">();</span>
+        <span class="n">Annotation</span><span class="o">[]</span> <span class="n">deFAnnos</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="na">getDeclaredAnnotations</span><span class="o">();</span>
+        <span class="n">Annotation</span> <span class="n">subFAnno</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">SubAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">Annotation</span> <span class="n">parentFAnno</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="na">getAnnotation</span><span class="o">(</span><span class="n">ParentAnnotation</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;allFAnnos&#34;</span><span class="o">,</span><span class="n">allFAnnos</span><span class="o">);</span>
+        <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;deFAnnos&#34;</span><span class="o">,</span><span class="n">deFAnnos</span><span class="o">);</span>
+        <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;subFAnno&#34;</span><span class="o">,</span><span class="n">subFAnno</span><span class="o">);</span>
+        <span class="n">printAnnotation</span><span class="o">(</span><span class="s">&#34;parentFAnno&#34;</span><span class="o">,</span><span class="n">parentFAnno</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;**************************************************\n&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>执行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">==============</span><span class="nv">allFAnnos</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">deFAnnos</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">subFAnno</span><span class="o">======================</span>
+@com.ghs.test.annotation.SubAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">parentFAnno</span><span class="o">======================</span>
+null
+
+**************************************************
+
+<span class="o">==============</span><span class="nv">allFAnnos</span><span class="o">======================</span>
+@com.ghs.test.annotation.ParentAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">deFAnnos</span><span class="o">======================</span>
+@com.ghs.test.annotation.ParentAnnotation<span class="o">()</span>
+
+<span class="o">==============</span><span class="nv">subFAnno</span><span class="o">======================</span>
+<span class="nv">null</span>
+
+<span class="o">==============</span><span class="nv">parentFAnno</span><span class="o">======================</span>
+@com.ghs.test.annotation.ParentAnnotation<span class="o">()</span>
+
+**************************************************
+</code></pre></td></tr></table>
+</div>
+</div><p>经过测试，我们可以得出下面的几个结论：</p>
+<ol>
+<li>父类的属性和子类的属性互补干涉</li>
+<li>针对属性而言，getAnnotations()与getDeclaredAnnotations()方法返回的结果似乎都是一样的 
+附：针对此结论，如有不同的想法，还望不吝赐教</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-05-30</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/java-annotation-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/java-annotation-note/" data-title="Java注解笔记" data-hashtags="Java,Annotation"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/java-annotation-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/java-annotation-note/" data-title="Java注解笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/java-annotation-note/" data-title="Java注解笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/annotation/">Annotation</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/java-thread-note/" class="prev" rel="prev" title="Java线程Thread笔记"><i class="fas fa-angle-left fa-fw"></i>Java线程Thread笔记</a>
+            <a href="/microservices-ali-zk-or-other-note/" class="next" rel="next" title="阿里巴巴为什么不用 ZooKeeper 做服务发现？">阿里巴巴为什么不用 ZooKeeper 做服务发现？<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

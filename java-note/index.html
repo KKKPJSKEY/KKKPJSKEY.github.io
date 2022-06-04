@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-25T12:33:19+08:00" />
-<meta property="article:modified_time" content="2022-02-07T14:59:00+08:00" />
+<meta property="article:modified_time" content="2022-06-04T17:13:33+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System, Double, Pencentage","wordcount":  15243 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2022-02-07T14:59:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System","wordcount":  9761 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2022-06-04T17:13:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 15243 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 31 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 9761 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 20 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -145,9 +145,6 @@
         <li><a href="#整理三">整理三</a></li>
       </ul>
     </li>
-    <li><a href="#java代码实现double类型数字格式化为百分数">Java代码实现double类型数字格式化为百分数</a></li>
-    <li><a href="#数组操作">数组操作</a></li>
-    <li><a href="#字符串操作">字符串操作</a></li>
     <li><a href="#java中的-和--和--详细分析">Java中的<code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 和 <code>&gt;&gt;&gt;</code> 详细分析</a>
       <ul>
         <li><a href="#表示左移移不分正负数低位补0"><strong><code>&lt;&lt;</code>表示左移移，不分正负数，低位补0；</strong>　</a></li>
@@ -167,12 +164,6 @@
       </ul>
     </li>
     <li><a href="#java-this与super使用详解">Java this()与super()使用详解</a></li>
-    <li><a href="#bigdecimal">BigDecimal</a>
-      <ul>
-        <li><a href="#几种舍弃精度的算法">几种舍弃精度的算法</a></li>
-        <li><a href="#特殊的情况">特殊的情况</a></li>
-      </ul>
-    </li>
     <li><a href="#java中native关键字的详解">Java中native关键字的详解</a>
       <ul>
         <li><a href="#no1"><em>NO.1</em></a></li>
@@ -182,7 +173,6 @@
         <li><a href="#no5">NO.5</a></li>
       </ul>
     </li>
-    <li><a href="#java中如何将int-类型转换为-long类型">Java中如何将int 类型转换为 Long类型</a></li>
     <li><a href="#trycatch多个异常-多个异常采取同样的解决措施">try&hellip;catch(多个异常) 多个异常采取同样的解决措施</a>
       <ul>
         <li><a href="#示例">示例</a></li>
@@ -214,17 +204,17 @@
       </ul>
     </li>
     <li><a href="#java8函数作为参数">Java8函数作为参数</a></li>
+    <li><a href="#functionalinterface的使用">@FunctionalInterface的使用</a>
+      <ul>
+        <li><a href="#一使用规则">一.使用规则</a></li>
+        <li><a href="#二使用方法">二.使用方法</a></li>
+        <li><a href="#三使用场景">三.使用场景</a></li>
+      </ul>
+    </li>
     <li><a href="#java中反斜杠转义问题">Java中反斜杠转义问题</a>
       <ul>
         <li><a href="#1符串中反斜杠">1.符串中反斜杠</a></li>
         <li><a href="#2-正则表达式中反斜杠">2. 正则表达式中反斜杠</a></li>
-      </ul>
-    </li>
-    <li><a href="#java的三种随机数生成方式">java的三种随机数生成方式</a>
-      <ul>
-        <li><a href="#第一种">第一种</a></li>
-        <li><a href="#第二种">第二种</a></li>
-        <li><a href="#第三种">第三种</a></li>
       </ul>
     </li>
     <li><a href="#时间格式统一">时间格式统一</a>
@@ -448,481 +438,7 @@
 </div></li>
 </ol>
 <p>ps： java.util.Date类中的getYear()要加上1900才可得到实际值，getMonth()则要加上1</p>
-<h2 id="java代码实现double类型数字格式化为百分数">Java代码实现double类型数字格式化为百分数</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PercentTest</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="kt">double</span> <span class="n">rate</span> <span class="o">=</span> <span class="n">0</span><span class="o">.</span><span class="na">26535</span><span class="o">;</span>
-		<span class="n">NumberFormat</span> <span class="n">nf</span> <span class="o">=</span> <span class="n">NumberFormat</span><span class="o">.</span><span class="na">getPercentInstance</span><span class="o">();</span>
-		<span class="n">nf</span><span class="o">.</span><span class="na">setMinimumFractionDigits</span><span class="o">(</span><span class="n">2</span><span class="o">);</span><span class="c1">//设置保留小数位,小数点后保留位数
-</span><span class="c1"></span>         <span class="n">nf</span><span class="o">.</span><span class="na">setMaximumFractionDigits</span><span class="o">(</span><span class="n">2</span><span class="o">);</span><span class="c1">//小数点前保留位数
-</span><span class="c1"></span>		<span class="n">nf</span><span class="o">.</span><span class="na">setRoundingMode</span><span class="o">(</span><span class="n">RoundingMode</span><span class="o">.</span><span class="na">HALF_UP</span><span class="o">);</span> <span class="c1">//设置舍入模式
-</span><span class="c1"></span>		<span class="n">String</span> <span class="n">percent</span> <span class="o">=</span> <span class="n">nf</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">rate</span><span class="o">);</span>
-		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">percent</span><span class="o">);</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>舍入模式
-UP：远离零方向舍入的舍入模式。始终对非零舍弃部分前面的数字加 1。注意，此舍入模式始终不会减少计算值的绝对值。</p>
-<p>示例：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">输入数字</th>
-<th style="text-align:center">使用 UP 舍入模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">5.5</td>
-<td style="text-align:center">6</td>
-</tr>
-<tr>
-<td style="text-align:center">2.5</td>
-<td style="text-align:center">3</td>
-</tr>
-<tr>
-<td style="text-align:center">1.6</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.1</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.0</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.0</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.1</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.6</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-2.5</td>
-<td style="text-align:center">-3</td>
-</tr>
-<tr>
-<td style="text-align:center">-5.5</td>
-<td style="text-align:center">-6</td>
-</tr>
-</tbody>
-</table>
-<p>DOWN：向零方向舍入的舍入模式。从不对舍弃部分前面的数字加 1（即截尾）。注意，此舍入模式始终不会增加计算值的绝对值。</p>
-<p>示例：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">输入数字</th>
-<th style="text-align:center">使用 DOWN 舍入模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">5.5</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:center">2.5</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.6</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">1.1</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">1.0</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.0</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.1</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.6</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-2.5</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-5.5</td>
-<td style="text-align:center">-5</td>
-</tr>
-</tbody>
-</table>
-<p>CEILING：向正无限大方向舍入的舍入模式。如果结果为正，则舍入行为类似于 RoundingMode.UP；如果结果为负，则舍入行为类似于 RoundingMode.DOWN。注意，此舍入模式始终不会减少计算值。</p>
-<p>示例：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">输入数字</th>
-<th style="text-align:center">使用 CEILING 舍入模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">5.5</td>
-<td style="text-align:center">6</td>
-</tr>
-<tr>
-<td style="text-align:center">2.5</td>
-<td style="text-align:center">3</td>
-</tr>
-<tr>
-<td style="text-align:center">1.6</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.1</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.0</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.0</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.1</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.6</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-2.5</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-5.5</td>
-<td style="text-align:center">-5</td>
-</tr>
-</tbody>
-</table>
-<p>FLOOR：向负无限大方向舍入的舍入模式。如果结果为正，则舍入行为类似于 RoundingMode.DOWN；如果结果为负，则舍入行为类似于RoundingMode.UP。注意，此舍入模式始终不会增加计算值。</p>
-<p>示例：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">输入数字</th>
-<th style="text-align:center">使用 FLOOR 舍入模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">5.5</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:center">2.5</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.6</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">1.1</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">1.0</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.0</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.1</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.6</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-2.5</td>
-<td style="text-align:center">-3</td>
-</tr>
-<tr>
-<td style="text-align:center">-5.5</td>
-<td style="text-align:center">-6</td>
-</tr>
-</tbody>
-</table>
-<p>HALF_UP：</p>
-<p>向最接近数字方向舍入的舍入模式，如果与两个相邻数字的距离相等，则向上舍入。如果被舍弃部分 &gt;= 0.5，则舍入行为同 RoundingMode.UP；否则舍入行为同RoundingMode.DOWN。注意，此舍入模式就是通常学校里讲的四舍五入。</p>
-<p>示例：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">输入数字</th>
-<th style="text-align:center">使用 HALF_UP 舍入模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">5.5</td>
-<td style="text-align:center">6</td>
-</tr>
-<tr>
-<td style="text-align:center">2.5</td>
-<td style="text-align:center">3</td>
-</tr>
-<tr>
-<td style="text-align:center">1.6</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.1</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">1.0</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.0</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.1</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.6</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-2.5</td>
-<td style="text-align:center">-3</td>
-</tr>
-<tr>
-<td style="text-align:center">-5.5</td>
-<td style="text-align:center">-6</td>
-</tr>
-</tbody>
-</table>
-<p>HALF_DOWN：向最接近数字方向舍入的舍入模式，如果与两个相邻数字的距离相等，则向下舍入。如果被舍弃部分 &gt; 0.5，则舍入行为同 RoundingMode.UP；否则舍入行为同RoundingMode.DOWN。</p>
-<p>示例：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">输入数字</th>
-<th style="text-align:center">使用 HALF_DOWN 舍入模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">5.5</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:center">2.5</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.6</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.1</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">1.0</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.0</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.1</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.6</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-2.5</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-5.5</td>
-<td style="text-align:center">-5</td>
-</tr>
-</tbody>
-</table>
-<p>HALF_EVEN：</p>
-<p>向最接近数字方向舍入的舍入模式，如果与两个相邻数字的距离相等，则向相邻的偶数舍入。如果舍弃部分左边的数字为奇数，则舍入行为同 RoundingMode.HALF_UP；如果为偶数，则舍入行为同RoundingMode.HALF_DOWN。注意，在重复进行一系列计算时，此舍入模式可以在统计上将累加错误减到最小。此舍入模式也称为“银行家舍入法”，主要在美国使用。此舍入模式类似于 Java 中对float 和double 算法使用的舍入策略。</p>
-<p>示例：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">输入数字</th>
-<th style="text-align:center">使用 HALF_EVEN 舍入模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">5.5</td>
-<td style="text-align:center">6</td>
-</tr>
-<tr>
-<td style="text-align:center">2.5</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.6</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1.1</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">1.0</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.0</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.1</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.6</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-2.5</td>
-<td style="text-align:center">-2</td>
-</tr>
-<tr>
-<td style="text-align:center">-5.5</td>
-<td style="text-align:center">-6</td>
-</tr>
-</tbody>
-</table>
-<p>UNNECESSARY：用于断言请求的操作具有精确结果的舍入模式，因此不需要舍入。如果对生成精确结果的操作指定此舍入模式，则抛出 ArithmeticException。</p>
-<p>示例：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">输入数字</th>
-<th style="text-align:center">使用 UNNECESSARY 舍入模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">5.5</td>
-<td style="text-align:center">抛出 ArithmeticException</td>
-</tr>
-<tr>
-<td style="text-align:center">2.5</td>
-<td style="text-align:center">抛出 ArithmeticException</td>
-</tr>
-<tr>
-<td style="text-align:center">1.6</td>
-<td style="text-align:center">抛出 ArithmeticException</td>
-</tr>
-<tr>
-<td style="text-align:center">1.1</td>
-<td style="text-align:center">抛出 ArithmeticException</td>
-</tr>
-<tr>
-<td style="text-align:center">1.0</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.0</td>
-<td style="text-align:center">-1</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.1</td>
-<td style="text-align:center">抛出 ArithmeticException</td>
-</tr>
-<tr>
-<td style="text-align:center">-1.6</td>
-<td style="text-align:center">抛出 ArithmeticException</td>
-</tr>
-<tr>
-<td style="text-align:center">-2.5</td>
-<td style="text-align:center">抛出 ArithmeticException</td>
-</tr>
-<tr>
-<td style="text-align:center">-5.5</td>
-<td style="text-align:center">抛出 ArithmeticException</td>
-</tr>
-</tbody>
-</table>
-<h2 id="数组操作">数组操作</h2>
-<p>数组的初始化填充</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span><span class="o">[]</span> <span class="n">iL</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">100</span><span class="o">];</span>
-<span class="c1">//将数组填充为100个-1
-</span><span class="c1"></span><span class="n">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">iL</span><span class="o">,-</span><span class="n">1</span><span class="o">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="字符串操作">字符串操作</h2>
-<p>String根据下标访问</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;abcd&#34;</span>
-<span class="n">Char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">0</span><span class="o">)</span><span class="c1">//c结果为a
-</span></code></pre></td></tr></table>
-</div>
-</div><h2 id="java中的-和--和--详细分析">Java中的<code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 和 <code>&gt;&gt;&gt;</code> 详细分析</h2>
+<h2 id="java中的-和--和--详细分析">Java中的<code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 和 <code>&gt;&gt;&gt;</code> 详细分析</h2>
 <h3 id="表示左移移不分正负数低位补0"><strong><code>&lt;&lt;</code>表示左移移，不分正负数，低位补0；</strong>　</h3>
 <p>注：以下数据类型默认为byte-8位</p>
 <p>左移时不管正负，低位补0</p>
@@ -1212,236 +728,6 @@ jps -l（显示java进程的Id和软件路径及名称）
 <li>this()和super()都指的是对象，所以，均不可以在static环境中使用。包括：static变量,static方法，static语句块。</li>
 <li>从本质上讲，this是一个指向本对象的指针, 然而super是一个Java关键字。</li>
 </ul>
-<h2 id="bigdecimal">BigDecimal</h2>
-<h3 id="几种舍弃精度的算法">几种舍弃精度的算法</h3>
-<p>测试代码</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">
-        <span class="kt">double</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">4</span><span class="o">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">5</span><span class="o">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">6</span><span class="o">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">9</span><span class="o">;</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2.4=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">j</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">k</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">l</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(</span><span class="n">m</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2.4)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2.5)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2.6)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">l</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(2.9)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2.4=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">j</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">k</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">l</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整:Math.rint(-2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">rint</span><span class="o">(-</span><span class="n">m</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2.4)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2.5)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2.6)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">l</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;五舍六入取整: new DecimalFormat(-2.9)=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="o">(</span><span class="s">&#34;0&#34;</span><span class="o">).</span><span class="na">format</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2.4)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">j</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">k</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">l</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(</span><span class="n">m</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2.4).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2.1&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2.5).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2.5&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2.6).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2.6&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(2.9).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;2.9&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2.4)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">j</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">k</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">l</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(</span><span class="n">m</span><span class="o">));</span>
-
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2.4)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">j</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">k</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">l</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;舍掉小数取整:Math.floor(-2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">floor</span><span class="o">(-</span><span class="n">m</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2.4).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2.1&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2.5).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2.5&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2.6).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2.6&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;四舍五入取整:new BigDecimal(-2.9).setScale=&#34;</span> <span class="o">+</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;-2.9&#34;</span><span class="o">).</span><span class="na">setScale</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">BigDecimal</span><span class="o">.</span><span class="na">ROUND_HALF_UP</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">i</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2.4)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">j</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2.5)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">k</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2.6)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">l</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;凑整:Math.ceil(-2.9)=&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">(-</span><span class="n">m</span><span class="o">));</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>运行结果</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">五舍六入取整:Math.rint<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
-五舍六入取整:Math.rint<span class="o">(</span>2.4<span class="o">=</span><span class="m">2</span>
-五舍六入取整:Math.rint<span class="o">(</span>2.5<span class="o">)=</span><span class="m">2</span>
-五舍六入取整:Math.rint<span class="o">(</span>2.6<span class="o">)=</span><span class="m">3</span>
-五舍六入取整:Math.rint<span class="o">(</span>2.9<span class="o">)=</span><span class="m">3</span>
-五舍六入取整: new DecimalFormat<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
-五舍六入取整: new DecimalFormat<span class="o">(</span>2.4<span class="o">)=</span><span class="m">2</span>
-五舍六入取整: new DecimalFormat<span class="o">(</span>2.5<span class="o">)=</span><span class="m">2</span>
-五舍六入取整: new DecimalFormat<span class="o">(</span>2.6<span class="o">)=</span><span class="m">3</span>
-五舍六入取整: new DecimalFormat<span class="o">(</span>2.9<span class="o">)=</span><span class="m">2</span>
-五舍六入取整:Math.rint<span class="o">(</span>-2<span class="o">)=</span>-2
-五舍六入取整:Math.rint<span class="o">(</span>-2.4<span class="o">=</span>-2
-五舍六入取整:Math.rint<span class="o">(</span>-2.5<span class="o">)=</span>-2
-五舍六入取整:Math.rint<span class="o">(</span>-2.6<span class="o">)=</span>-3
-五舍六入取整:Math.rint<span class="o">(</span>-2.9<span class="o">)=</span>-3
-五舍六入取整: new DecimalFormat<span class="o">(</span>-2<span class="o">)=</span>-2
-五舍六入取整: new DecimalFormat<span class="o">(</span>-2.4<span class="o">)=</span>-2
-五舍六入取整: new DecimalFormat<span class="o">(</span>-2.5<span class="o">)=</span>-2
-五舍六入取整: new DecimalFormat<span class="o">(</span>-2.6<span class="o">)=</span>-3
-五舍六入取整: new DecimalFormat<span class="o">(</span>-2.9<span class="o">)=</span>-2
-舍掉小数取整:Math.floor<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
-舍掉小数取整:Math.floor<span class="o">(</span>2.4<span class="o">)=</span><span class="m">2</span>
-舍掉小数取整:Math.floor<span class="o">(</span>2.5<span class="o">)=</span><span class="m">2</span>
-舍掉小数取整:Math.floor<span class="o">(</span>2.6<span class="o">)=</span><span class="m">2</span>
-舍掉小数取整:Math.floor<span class="o">(</span>2.9<span class="o">)=</span><span class="m">2</span>
-四舍五入取整:new BigDecimal<span class="o">(</span>2<span class="o">)</span>.setScale<span class="o">=</span><span class="m">2</span>
-四舍五入取整:new BigDecimal<span class="o">(</span>2.4<span class="o">)</span>.setScale<span class="o">=</span><span class="m">2</span>
-四舍五入取整:new BigDecimal<span class="o">(</span>2.5<span class="o">)</span>.setScale<span class="o">=</span><span class="m">3</span>
-四舍五入取整:new BigDecimal<span class="o">(</span>2.6<span class="o">)</span>.setScale<span class="o">=</span><span class="m">3</span>
-四舍五入取整:new BigDecimal<span class="o">(</span>2.9<span class="o">)</span>.setScale<span class="o">=</span><span class="m">3</span>
-凑整:Math.ceil<span class="o">(</span>2<span class="o">)=</span><span class="m">2</span>
-凑整:Math.ceil<span class="o">(</span>2.4<span class="o">)=</span><span class="m">3</span>
-凑整:Math.ceil<span class="o">(</span>2.5<span class="o">)=</span><span class="m">3</span>
-凑整:Math.ceil<span class="o">(</span>2.6<span class="o">)=</span><span class="m">3</span>
-凑整:Math.ceil<span class="o">(</span>2.9<span class="o">)=</span><span class="m">3</span>
-舍掉小数取整:Math.floor<span class="o">(</span>-2<span class="o">)=</span>-2
-舍掉小数取整:Math.floor<span class="o">(</span>-2.4<span class="o">)=</span>-3
-舍掉小数取整:Math.floor<span class="o">(</span>-2.5<span class="o">)=</span>-3
-舍掉小数取整:Math.floor<span class="o">(</span>-2.6<span class="o">)=</span>-3
-舍掉小数取整:Math.floor<span class="o">(</span>-2.9<span class="o">)=</span>-3
-四舍五入取整:new BigDecimal<span class="o">(</span>-2<span class="o">)</span>.setScale<span class="o">=</span>-2
-四舍五入取整:new BigDecimal<span class="o">(</span>-2.4<span class="o">)</span>.setScale<span class="o">=</span>-2
-四舍五入取整:new BigDecimal<span class="o">(</span>-2.5<span class="o">)</span>.setScale<span class="o">=</span>-3
-四舍五入取整:new BigDecimal<span class="o">(</span>-2.6<span class="o">)</span>.setScale<span class="o">=</span>-3
-四舍五入取整:new BigDecimal<span class="o">(</span>-2.9<span class="o">)</span>.setScale<span class="o">=</span>-3
-凑整:Math.ceil<span class="o">(</span>-2<span class="o">)=</span>-2
-凑整:Math.ceil<span class="o">(</span>-2.4<span class="o">)=</span>-2
-凑整:Math.ceil<span class="o">(</span>-2.5<span class="o">)=</span>-2
-凑整:Math.ceil<span class="o">(</span>-2.6<span class="o">)=</span>-2
-凑整:Math.ceil<span class="o">(</span>-2.9<span class="o">)=</span>-2
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="特殊的情况">特殊的情况</h3>
-<p>将 <code>double</code> 转换为 <code>BigDecimal</code>，后者是 <code>double</code> 的二进制浮点值准确的十进制表示形式。返回的 <code>BigDecimal</code> 的标度是使 $ (10^{scale} × val) $为整数的最小值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1511,44 +797,7 @@ XXX使这个函数的打包路径，和import中的XXX.XXX差不多！</p>
 java只能调用。</p>
 <h3 id="no5">NO.5</h3>
 <p>java是跨平台的语言，既然是跨了平台，所付出的代价就是牺牲一些对底层的控制，而java要实现对底层的控制，就需要一些其他语言的帮助，这个就是native的作用了</p>
-<h2 id="java中如何将int-类型转换为-long类型">Java中如何将int 类型转换为 Long类型</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Long</span> <span class="n">l</span> <span class="o">=</span> <span class="o">(</span><span class="n">Long</span><span class="o">)</span><span class="n">3</span><span class="o">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>很多同学可能会用上面的方法将int类型转换为Long类型，但事实上这样是不可行的。因为Long是包装类，而int是值类型数据，两者是不能这样强转的。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span><span class="n">3</span><span class="o">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>int和long都是基本类型的数据，是可以强转的，那么我就可以以此作为桥梁，强转成long后，再生成Long类型的数据。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Long</span> <span class="n">l</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Long</span><span class="o">((</span><span class="kt">long</span><span class="o">)</span><span class="n">3</span><span class="o">);</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>这样就可以将int类型顺利转换为Long类型。</p>
-<p>还有这种</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Long</span> <span class="n">waitTime</span> <span class="o">=</span> <span class="n">Long</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">((</span><span class="n">10</span> <span class="o">*</span> <span class="n">60</span> <span class="o">*</span> <span class="n">1000</span><span class="o">)</span> <span class="o">/</span> <span class="n">5</span><span class="o">));</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="trycatch多个异常-多个异常采取同样的解决措施">try&hellip;catch(多个异常) 多个异常采取同样的解决措施</h2>
+<h2 id="trycatch多个异常-多个异常采取同样的解决措施">try&hellip;catch(多个异常) 多个异常采取同样的解决措施</h2>
 <h3 id="示例">示例</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1875,7 +1124,41 @@ java -Djava.ext.dirs<span class="o">=</span>%lib% -classpath classes com.xxxclas
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="java中反斜杠转义问题">Java中反斜杠转义问题</h2>
+</div><h2 id="functionalinterface的使用">@FunctionalInterface的使用</h2>
+<h3 id="一使用规则">一.使用规则</h3>
+<p>1.必须注解在接口上</p>
+<p>2.被注解的接口有且只有一个抽象方法</p>
+<p>3.被注解的接口可以有默认方法/静态方法，或者重写Object的方法</p>
+<h3 id="二使用方法">二.使用方法</h3>
+<p>除了可以和普通接口一样写Impl之外，还可通过Lambda表达式进行构造，而不用写Impl class。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.jpg"
+        data-srcset="./15.jpg, ./15.jpg 1.5x, ./15.jpg 2x"
+        data-sizes="auto"
+        alt="./15.jpg"
+        title="15" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.jpg"
+        data-srcset="./16.jpg, ./16.jpg 1.5x, ./16.jpg 2x"
+        data-sizes="auto"
+        alt="./16.jpg"
+        title="16" /></p>
+<p>输出结果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./17.jpg"
+        data-srcset="./17.jpg, ./17.jpg 1.5x, ./17.jpg 2x"
+        data-sizes="auto"
+        alt="./17.jpg"
+        title="17" /></p>
+<h3 id="三使用场景">三.使用场景</h3>
+<p>用于某一特定的场景，但是有不同的处理逻辑的时候，比如导入数据，导入是共性，但是处理逻辑都不同。然鹅感觉用处不是很大。</p>
+<h2 id="java中反斜杠转义问题">Java中反斜杠转义问题</h2>
 <h3 id="1符串中反斜杠">1.符串中反斜杠</h3>
 <p>反斜杠（\）在JAVA中有特别的意义；它和紧跟着它的那个字符构成转义字符，如&quot;\n&quot;（表示换行）&quot; \’ &ldquo;（表示字符[ ’ ]）等，所以在字符串中要表示反斜杠 \ 要用&rdquo; \ &ldquo;来表示。例如这样定义一个字符串String s = &ldquo;name\sex&quot;是错误的，要这样定义String s = “name\sex”</p>
 <p>如下定义一个非法的字符串，会报错</p>
@@ -1984,77 +1267,6 @@ A<span class="se">\
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">0563-4667722
 0555-7777777
 Process finished with <span class="nb">exit</span> code <span class="m">0</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="java的三种随机数生成方式">java的三种随机数生成方式</h2>
-<p>随机数的产生在一些代码中很常用，也是我们必须要掌握的。而java中产生随机数的方法主要有三种：</p>
-<ul>
-<li>第一种：new Random()</li>
-<li>第二种：Math.random()</li>
-<li>第三种：currentTimeMillis()</li>
-</ul>
-<h3 id="第一种">第一种</h3>
-<p>第一种需要借助java.util.Random类来产生一个随机数发生器，也是最常用的一种，构造函数有两个，Random()和Random(long seed)。第一个就是以当前时间为默认种子，第二个是以指定的种子值进行。产生之后，借助不同的语句产生不同类型的数。</p>
-<p>种子就是产生随机数的第一次使用值,机制是通过一个函数,将这个种子的值转化为随机数空间中的某一个点上,并且产生的随机数均匀的散布在空间中。以后产生的随机数都与前一个随机数有关。以代码为例。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
-    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">ran1</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">100</span><span class="o">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ran1</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>在我的编译器下产生的五个数均为85,88,47,13,54，如果采用Random r = new Random()，产生的随机数就不同，这就是确定种子导致的结果。</p>
-<h3 id="第二种">第二种</h3>
-<p>而第二种方法返回的数值是[0.0,1.0）的double型数值，由于double类数的精度很高，可以在一定程度下看做随机数，借助（int）来进行类型转换就可以得到整数随机数了，代码如下。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>    
-    <span class="kt">int</span> <span class="n">max</span><span class="o">=</span><span class="n">100</span><span class="o">,</span><span class="n">min</span><span class="o">=</span><span class="n">1</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">ran2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()*(</span><span class="n">max</span><span class="o">-</span><span class="n">min</span><span class="o">)+</span><span class="n">min</span><span class="o">);</span> 
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ran2</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="第三种">第三种</h3>
-<p>至于第三种方法虽然不常用，但是也是一种思路。方法返回从1970年1月1日0时0分0秒（这与UNIX系统有关）到现在的一个long型的毫秒数，取模之后即可得到所需范围内的随机数。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>    
-    <span class="kt">int</span> <span class="n">max</span><span class="o">=</span><span class="n">100</span><span class="o">,</span><span class="n">min</span><span class="o">=</span><span class="n">1</span><span class="o">;</span>
-    <span class="kt">long</span> <span class="n">randomNum</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>  
-    <span class="kt">int</span> <span class="n">ran3</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="n">randomNum</span><span class="o">%(</span><span class="n">max</span><span class="o">-</span><span class="n">min</span><span class="o">)+</span><span class="n">min</span><span class="o">);</span>  
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ran3</span><span class="o">);</span>
-    
-<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="时间格式统一">时间格式统一</h2>
@@ -2287,19 +1499,19 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c9.png"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c9.png, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c9.png 1.5x, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c9.png 2x"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Java-Note\9.png"
+        alt="./9.png"
         title="9" /></p>
 <p>JDK 路径下必须能够看到如下的文件。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c10.png"
-        data-srcset="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c10.png, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c10.png 1.5x, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cJava-Note%5c10.png 2x"
+        data-src="./10.png"
+        data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
         data-sizes="auto"
-        alt="C:\Program_Green\hugo_extended_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Java-Note\10.png"
+        alt="./10.png"
         title="10" /></p>
 <h4 id="3-新建修改-classpath-变量">3. 新建/修改 CLASSPATH 变量</h4>
 <p>如果存在 CLASSPATH 变量，选中点击 <strong>Edit(编辑)</strong>。</p>
@@ -2367,7 +1579,7 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-02-07</span>
+                <span>更新于 2022-06-04</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -2376,13 +1588,13 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
                             <a class="link-to-markdown" href="/java-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/java-note/" data-title="Java开发笔记" data-hashtags="Java,SimpleDate,Date,System,Double,Pencentage"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/java-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/java-note/" data-title="Java开发笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/java-note/" data-title="Java开发笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/java-note/" data-title="Java开发笔记" data-hashtags="Java,SimpleDate,Date,System"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/java-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/java-note/" data-title="Java开发笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/java-note/" data-title="Java开发笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/simpledate/">SimpleDate</a>,&nbsp;<a href="/tags/date/">Date</a>,&nbsp;<a href="/tags/system/">System</a>,&nbsp;<a href="/tags/double/">Double</a>,&nbsp;<a href="/tags/pencentage/">Pencentage</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/simpledate/">SimpleDate</a>,&nbsp;<a href="/tags/date/">Date</a>,&nbsp;<a href="/tags/system/">System</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>

@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/idea-count-lines-note\/featured-image.jpg",
                             "width":  1200 ,
                             "height":  360 
-                        }],"genre": "posts","keywords": "Idea, Plugin","wordcount":  319 ,
+                        }],"genre": "posts","keywords": "Idea, Plugin","wordcount":  608 ,
         "url": "https:\/\/kkkpjskey.github.io\/idea-count-lines-note\/","datePublished": "2021-08-25T10:52:53+08:00","dateModified": "2021-08-25T10:52:53+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">IntelliJ IDEA统计代码行数插件教程</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 319 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/idea-count-lines-note/" class="leancloud_visitors" data-flag-title="IntelliJ IDEA统计代码行数插件教程">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 608 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/idea-count-lines-note/" class="leancloud_visitors" data-flag-title="IntelliJ IDEA统计代码行数插件教程">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -137,10 +137,11 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#步骤">步骤</a></li>
+    <li><a href="#安装步骤">安装步骤</a></li>
+    <li><a href="#详解">详解</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="步骤">步骤</h2>
+            </div><div class="content" id="content"><h2 id="安装步骤">安装步骤</h2>
 <ol>
 <li>
 <p>第一步首先需要知道idea统计项目代码行数，主要是使用Statistic插件来统计，点击File-&gt;Settings，如下图所示：</p>
@@ -209,6 +210,58 @@
         data-sizes="auto"
         alt="./6.jpg"
         title="6" /></p>
+<h2 id="详解">详解</h2>
+<p>​     1）名称解释：</p>
+<p>​         Refresh 对当前项目代码统计</p>
+<p>​         Refresh on selection 对当前打开文件的代码统计</p>
+<p>​         Setting 配置项</p>
+<p>​    2）Overview 全局统计</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>​        Extension 按扩展名分类</p>
+<p>​        Count 文件数</p>
+<p>​        Size SUM 文件大小，单位KB</p>
+<p>​        Size MIN 最小文件大小</p>
+<p>​        Size MAX 最大文件大小</p>
+<p>​        Size AVG 平均文件大小</p>
+<p>​        Lines 代码行数（包含注释和空行）</p>
+<p>​        Lines MIN 最小行数</p>
+<p>​        Lines MAX 最大行数</p>
+<p>​        Lines AVG 平均行数</p>
+<p>​        Lines CODE 代码行数（不包含注释和空行）</p>
+<p>​    3）指定的文件，比如java/xml等</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+<p>​        Source File 文件名称</p>
+<p>​        Total Lines 总行数（包含注释和空行）</p>
+<p>​        Source Code Lines 源代码行数（不包含注释和空行）</p>
+<p>​        Source Code Lines[%] 源代码占比</p>
+<p>​        Comment Lines 注释行数</p>
+<p>​        Comment Lines[%] 空行占比</p>
+<p>​        Blank Lines 空行数</p>
+<p>​        Blank Lines[%] 空行占比</p>
+<p>​    4）Settings</p>
+<p>​        纳入统计范围的文件，按后缀区分。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
+        data-sizes="auto"
+        alt="./9.png"
+        title="9" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

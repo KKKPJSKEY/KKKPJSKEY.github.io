@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>事务注解 @Transactional 失效的场景及6种解决办法 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录事务注解 @Transactional 失效的场景及6种解决办法"><meta property="og:title" content="事务注解 @Transactional 失效的场景及6种解决办法" />
+<meta property="og:description" content="记录事务注解 @Transactional 失效的场景及6种解决办法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/spring-transactional-invalid-error/" /><meta property="og:image" content="https://kkkpjskey.github.io/spring-transactional-invalid-error/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-31T10:28:31+08:00" />
+<meta property="article:modified_time" content="2022-05-31T10:28:31+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/spring-transactional-invalid-error/featured-image.jpg"/>
+<meta name="twitter:title" content="事务注解 @Transactional 失效的场景及6种解决办法"/>
+<meta name="twitter:description" content="记录事务注解 @Transactional 失效的场景及6种解决办法"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/spring-transactional-invalid-error/" /><link rel="prev" href="https://kkkpjskey.github.io/jvm-compiler-in-time-note/" /><link rel="next" href="https://kkkpjskey.github.io/rpc-feign-no-fallbackfactory-error/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "事务注解 @Transactional 失效的场景及6种解决办法",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/spring-transactional-invalid-error\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/spring-transactional-invalid-error\/featured-image.jpg",
+                            "width":  1820 ,
+                            "height":  545 
+                        }],"genre": "posts","keywords": "Java, Srping, Transactional, Error","wordcount":  6971 ,
+        "url": "https:\/\/kkkpjskey.github.io\/spring-transactional-invalid-error\/","datePublished": "2022-05-31T10:28:31+08:00","dateModified": "2022-05-31T10:28:31+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录事务注解 @Transactional 失效的场景及6种解决办法"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/spring-transactional-invalid-error/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/spring-transactional-invalid-error/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">事务注解 @Transactional 失效的场景及6种解决办法</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-31">2022-05-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6971 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/spring-transactional-invalid-error/" class="leancloud_visitors" data-flag-title="事务注解 @Transactional 失效的场景及6种解决办法">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/spring-transactional-invalid-error/featured-image.jpg"
+        data-srcset="/spring-transactional-invalid-error/featured-image.jpg, /spring-transactional-invalid-error/featured-image.jpg 1.5x, /spring-transactional-invalid-error/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/spring-transactional-invalid-error/featured-image.jpg"
+        title="记录事务注解 @Transactional 失效的场景及6种解决办法" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#transactional失效场景介绍">Transactional失效场景介绍</a>
+      <ul>
+        <li><a href="#第一种">第一种</a></li>
+        <li><a href="#第二种">第二种</a></li>
+        <li><a href="#第三种">第三种</a>
+          <ul>
+            <li><a href="#问题来了">问题来了</a></li>
+          </ul>
+        </li>
+        <li><a href="#第四种">第四种</a></li>
+        <li><a href="#第五种">第五种</a></li>
+        <li><a href="#第六种">第六种</a></li>
+      </ul>
+    </li>
+    <li><a href="#transactional注解不起作用原理分析">@Transactional注解不起作用原理分析</a>
+      <ul>
+        <li><a href="#第一种-1">第一种</a>
+          <ul>
+            <li><a href="#不创建代理对象">不创建代理对象</a></li>
+            <li><a href="#不进行代理调用">不进行代理调用</a></li>
+          </ul>
+        </li>
+        <li><a href="#第二种-1">第二种</a></li>
+        <li><a href="#第三种-1">第三种</a>
+          <ul>
+            <li><a href="#解释三种情况异常会回滚">解释三种情况异常会回滚</a>
+              <ul>
+                <li><a href="#为什么没回滚">为什么没回滚</a></li>
+                <li><a href="#为什么写了catch还会回滚">为什么写了catch，还会回滚</a></li>
+                <li><a href="#源码解析">源码解析</a></li>
+                <li><a href="#小结">小结</a></li>
+                <li><a href="#返场-动手尝试一下">返场 动手尝试一下</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#第四种-1">第四种</a></li>
+        <li><a href="#第五种-1">第五种</a></li>
+        <li><a href="#第六种-1">第六种</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="transactional失效场景介绍">Transactional失效场景介绍</h2>
+<h3 id="第一种">第一种</h3>
+<p>Transactional注解标注方法修饰符为非public时，@Transactional注解将会不起作用。例如以下代码。</p>
+<p>定义一个错误的@Transactional标注实现，修饰一个默认访问符的方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * @author zhoujy
+</span><span class="cm"> **/</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestServiceImpl</span> <span class="o">{</span>
+    <span class="nd">@Resource</span>
+    <span class="n">TestMapper</span> <span class="n">testMapper</span><span class="o">;</span>
+    
+    <span class="nd">@Transactional</span>
+    <span class="kt">void</span> <span class="nf">insertTestWrongModifier</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">re</span> <span class="o">=</span> <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">10</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">re</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">NeedToInterceptException</span><span class="o">(</span><span class="s">&#34;need intercept&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">210</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在同一个包内，新建调用对象，进行访问。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">InvokcationService</span> <span class="o">{</span>
+    <span class="nd">@Resource</span>
+    <span class="kd">private</span> <span class="n">TestServiceImpl</span> <span class="n">testService</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invokeInsertTestWrongModifier</span><span class="o">(){</span>
+        <span class="c1">//调用@Transactional标注的默认访问符方法
+</span><span class="c1"></span>        <span class="n">testService</span><span class="o">.</span><span class="na">insertTestWrongModifier</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>测试用例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@SpringBootTest</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoApplicationTests</span> <span class="o">{</span>
+   <span class="nd">@Resource</span>
+   <span class="n">InvokcationService</span> <span class="n">invokcationService</span><span class="o">;</span>
+
+   <span class="nd">@Test</span>
+   <span class="kd">public</span> <span class="kt">void</span>  <span class="nf">testInvoke</span><span class="o">(){</span>
+      <span class="n">invokcationService</span><span class="o">.</span><span class="na">invokeInsertTestWrongModifier</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上的访问方式，导致事务没开启，因此在方法抛出异常时，testMapper.insert(new Test(10,20,30));操作不会进行回滚。如果<code>TestServiceImpl#insertTestWrongModifier</code>方法改为public的话将会正常开启事务，testMapper.insert(new Test(10,20,30));将会进行回滚。</p>
+<h3 id="第二种">第二种</h3>
+<p>在类内部调用调用类内部@Transactional标注的方法。这种情况下也会导致事务不开启。示例代码如下。</p>
+<p>设置一个内部调用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * @author zhoujy
+</span><span class="cm"> **/</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestServiceImpl</span> <span class="kd">implements</span> <span class="n">TestService</span> <span class="o">{</span>
+    <span class="nd">@Resource</span>
+    <span class="n">TestMapper</span> <span class="n">testMapper</span><span class="o">;</span>
+
+    <span class="nd">@Transactional</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertTestInnerInvoke</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//正常public修饰符的事务方法
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">re</span> <span class="o">=</span> <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">10</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">re</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">NeedToInterceptException</span><span class="o">(</span><span class="s">&#34;need intercept&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">210</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+    <span class="o">}</span>
+
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testInnerInvoke</span><span class="o">(){</span>
+        <span class="c1">//类内部调用@Transactional标注的方法。
+</span><span class="c1"></span>        <span class="n">insertTestInnerInvoke</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>测试用例。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@SpringBootTest</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoApplicationTests</span> <span class="o">{</span>
+
+   <span class="nd">@Resource</span>
+   <span class="n">TestServiceImpl</span> <span class="n">testService</span><span class="o">;</span>
+
+   <span class="cm">/**
+</span><span class="cm">    * 测试内部调用@Transactional标注方法
+</span><span class="cm">    */</span>
+   <span class="nd">@Test</span>
+   <span class="kd">public</span> <span class="kt">void</span>  <span class="nf">testInnerInvoke</span><span class="o">(){</span>
+       <span class="c1">//测试外部调用事务方法是否正常
+</span><span class="c1"></span>      <span class="c1">//testService.insertTestInnerInvoke();
+</span><span class="c1"></span>       <span class="c1">//测试内部调用事务方法是否正常
+</span><span class="c1"></span>      <span class="n">testService</span><span class="o">.</span><span class="na">testInnerInvoke</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面就是使用的测试代码，运行测试知道，外部调用事务方法能够征程开启事务，testMapper.insert(new Test(10,20,30))操作将会被回滚；</p>
+<p>然后运行另外一个测试用例，调用一个方法在类内部调用内部被@Transactional标注的事务方法，运行结果是事务不会正常开启，testMapper.insert(new Test(10,20,30))操作将会保存到数据库不会进行回滚。</p>
+<h3 id="第三种">第三种</h3>
+<p>事务方法内部捕捉了异常，没有抛出新的异常，导致事务操作不会进行回滚。示例代码如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * @author zhoujy
+</span><span class="cm"> **/</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestServiceImpl</span> <span class="kd">implements</span> <span class="n">TestService</span> <span class="o">{</span>
+    <span class="nd">@Resource</span>
+    <span class="n">TestMapper</span> <span class="n">testMapper</span><span class="o">;</span>
+
+    <span class="nd">@Transactional</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertTestCatchException</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">re</span> <span class="o">=</span> <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">10</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">re</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">//运行期间抛异常
+</span><span class="c1"></span>                <span class="k">throw</span> <span class="k">new</span> <span class="n">NeedToInterceptException</span><span class="o">(</span><span class="s">&#34;need intercept&#34;</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">210</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;i catch exception&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>测试用例代码如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@SpringBootTest</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoApplicationTests</span> <span class="o">{</span>
+
+   <span class="nd">@Resource</span>
+   <span class="n">TestServiceImpl</span> <span class="n">testService</span><span class="o">;</span>
+
+   <span class="nd">@Test</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testCatchException</span><span class="o">(){</span>
+      <span class="n">testService</span><span class="o">.</span><span class="na">insertTestCatchException</span><span class="o">();</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>运行测试用例发现，虽然抛出异常，但是异常被捕捉了，没有抛出到方法 外， testMapper.insert(new Test(210,20,30))操作并没有回滚。</p>
+<p>以上三种就是@Transactional注解不起作用，@Transactional注解失效的主要原因。下面结合spring中对于@Transactional的注解实现源码分析为何导致@Transactional注解不起作用。</p>
+<p>在这个工程中，定义一个名为<code>User</code>的实体：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@Entity
+@Data
+@NoArgsConstructor
+public class User {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Size(max = 5)
+    private String name;
+    @Max(50)
+    private Integer age;
+
+    public User(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>这里<code>name</code>设置了长度为5，这样可以通过insert语句中的name超长，让其抛出异常，从而可以测试事务的触发。</p>
+<p>另外工程中还包含了Spring Data Jpa的数据访问对象<code>UserRepository</code>，用来实现对User实体的数据操作，这里就不放具体代码了。</p>
+<h4 id="问题来了">问题来了</h4>
+<p>这里数据库采用MySQL 5.7，存储引擎为InnoDB，使用默认事务级别。</p>
+<p>下面来调整下这三个问题吧：</p>
+<p><strong>问题一：test1会不会回滚？</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@Transactional
+public void test1() {
+    userRepository.save(new User(&#34;AAA&#34;, 10));
+    throw new RuntimeException();
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>问题二：test2会不会回滚？（第二句插入name超长）</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@Transactional
+public void test3() {
+    userRepository.save(new User(&#34;BBB&#34;, 10));
+    userRepository.save(new User(&#34;123456&#34;, 20));
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>问题三：test3会不会回滚？（第二句插入name超长）</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@Transactional
+public void test4() {
+    userRepository.save(new User(&#34;BBB&#34;, 10));
+    try {
+        userRepository.save(new User(&#34;123456&#34;, 20));
+    } catch (Exception e) {
+        log.error(&#34;异常捕获：&#34;, e);
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>答案是这三种都会回滚。</p>
+<h3 id="第四种">第四种</h3>
+<p><strong>旧版本</strong>MyISAM引擎导致不支持事务，故无法正确回滚</p>
+<p>所以，如果你的事务没有生效，那么可以看看创建的表，是不是使用了MyISAM存储引擎，如果是的话，那就是这个原因了！</p>
+<h3 id="第五种">第五种</h3>
+<p>数据源没有配置事务管理器</p>
+<h3 id="第六种">第六种</h3>
+<p>异常类型错误，如果有通过rollbackFor指定回滚的异常类型，那么抛出的异常与指定的是否一致。</p>
+<h2 id="transactional注解不起作用原理分析">@Transactional注解不起作用原理分析</h2>
+<h3 id="第一种-1">第一种</h3>
+<p><code>@Transactional</code>注解标注方法修饰符为非public时，<code>@Transactional</code>注解将会不起作用。这里分析 的原因是，<code>@Transactional</code>是基于动态代理实现的，<code>@Transactional</code>注解实现原理中分析了实现方法，在bean初始化过程中，对含有<code>@Transactional</code>标注的bean实例创建代理对象，这里就存在一个spring扫描<code>@Transactional</code>注解信息的过程，不幸的是源码中体现，标注@Transactional的方法如果修饰符不是public，那么就默认方法的<code>@Transactional</code>信息为空，那么将不会对bean进行代理对象创建或者不会对方法进行代理调用</p>
+<p><code>@Transactional</code>注解实现原理中，介绍了如何判定一个bean是否创建代理对象，大概逻辑是。根据spring创建好一个aop切点<code>BeanFactoryTransactionAttributeSourceAdvisor</code>实例，遍历当前bean的class的方法对象，判断方法上面的注解信息是否包含<code>@Transactional</code>，如果bean任何一个方法包含<code>@Transactional</code>注解信息，那么就是适配这个BeanFactoryTransactionAttributeSourceAdvisor切点。则需要创建代理对象，然后代理逻辑为我们管理事务开闭逻辑。</p>
+<p>spring源码中，在拦截bean的创建过程，寻找bean适配的切点时，运用到下面的方法，目的就是寻找方法上面的@Transactional信息，如果有，就表示切点BeanFactoryTransactionAttributeSourceAdvisor能够应用（canApply）到bean中，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">AopUtils</span><span class="err">#</span><span class="n">canApply</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">aop</span><span class="o">.</span><span class="na">Pointcut</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">Class</span><span class="o">&lt;?&gt;,</span> <span class="kt">boolean</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">canApply</span><span class="o">(</span><span class="n">Pointcut</span> <span class="n">pc</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">targetClass</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">hasIntroductions</span><span class="o">)</span> <span class="o">{</span>
+   <span class="n">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">pc</span><span class="o">,</span> <span class="s">&#34;Pointcut must not be null&#34;</span><span class="o">);</span>
+   <span class="k">if</span> <span class="o">(!</span><span class="n">pc</span><span class="o">.</span><span class="na">getClassFilter</span><span class="o">().</span><span class="na">matches</span><span class="o">(</span><span class="n">targetClass</span><span class="o">))</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="n">MethodMatcher</span> <span class="n">methodMatcher</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="na">getMethodMatcher</span><span class="o">();</span>
+   <span class="k">if</span> <span class="o">(</span><span class="n">methodMatcher</span> <span class="o">==</span> <span class="n">MethodMatcher</span><span class="o">.</span><span class="na">TRUE</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// No need to iterate the methods if we&#39;re matching any method anyway...
+</span><span class="c1"></span>      <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="n">IntroductionAwareMethodMatcher</span> <span class="n">introductionAwareMethodMatcher</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+   <span class="k">if</span> <span class="o">(</span><span class="n">methodMatcher</span> <span class="k">instanceof</span> <span class="n">IntroductionAwareMethodMatcher</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">introductionAwareMethodMatcher</span> <span class="o">=</span> <span class="o">(</span><span class="n">IntroductionAwareMethodMatcher</span><span class="o">)</span> <span class="n">methodMatcher</span><span class="o">;</span>
+   <span class="o">}</span>
+
+    <span class="c1">//遍历class的方法对象
+</span><span class="c1"></span>   <span class="n">Set</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;</span> <span class="n">classes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashSet</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;&gt;(</span><span class="n">ClassUtils</span><span class="o">.</span><span class="na">getAllInterfacesForClassAsSet</span><span class="o">(</span><span class="n">targetClass</span><span class="o">));</span>
+   <span class="n">classes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">targetClass</span><span class="o">);</span>
+   <span class="k">for</span> <span class="o">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">clazz</span> <span class="o">:</span> <span class="n">classes</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">Method</span><span class="o">[]</span> <span class="n">methods</span> <span class="o">=</span> <span class="n">ReflectionUtils</span><span class="o">.</span><span class="na">getAllDeclaredMethods</span><span class="o">(</span><span class="n">clazz</span><span class="o">);</span>
+      <span class="k">for</span> <span class="o">(</span><span class="n">Method</span> <span class="n">method</span> <span class="o">:</span> <span class="n">methods</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">if</span> <span class="o">((</span><span class="n">introductionAwareMethodMatcher</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span>
+               <span class="n">introductionAwareMethodMatcher</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="n">method</span><span class="o">,</span> <span class="n">targetClass</span><span class="o">,</span> <span class="n">hasIntroductions</span><span class="o">))</span> <span class="o">||</span>
+             <span class="c1">//适配查询方法上的@Transactional注解信息  
+</span><span class="c1"></span>             <span class="n">methodMatcher</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="n">method</span><span class="o">,</span> <span class="n">targetClass</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+         <span class="o">}</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+   <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们可以在上面的方法打断点，一步一步调试跟踪代码，最终上面的代码还会调用如下方法来判断。在下面的方法上断点，回头看看方法调用堆栈也是不错的方式跟踪。推荐：<strong><a href="https://mp.weixin.qq.com/s?__biz=MzIyNDU2ODA4OQ==&amp;mid=2247486846&amp;idx=1&amp;sn=75bd4dcdbaad73191a1e4dbf691c118a&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">Java面试练题宝典</a></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">AbstractFallbackTransactionAttributeSource</span><span class="err">#</span><span class="n">getTransactionAttribute</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>AbstractFallbackTransactionAttributeSource#computeTransactionAttribute</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">protected</span> <span class="n">TransactionAttribute</span> <span class="nf">computeTransactionAttribute</span><span class="o">(</span><span class="n">Method</span> <span class="n">method</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">targetClass</span><span class="o">)</span> <span class="o">{</span>
+   <span class="c1">// Don&#39;t allow no-public methods as required.
+</span><span class="c1"></span>   <span class="c1">//非public 方法，返回@Transactional信息一律是null
+</span><span class="c1"></span>   <span class="k">if</span> <span class="o">(</span><span class="n">allowPublicMethodsOnly</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">Modifier</span><span class="o">.</span><span class="na">isPublic</span><span class="o">(</span><span class="n">method</span><span class="o">.</span><span class="na">getModifiers</span><span class="o">()))</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="c1">//后面省略.......
+</span><span class="c1"></span> <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="不创建代理对象">不创建代理对象</h4>
+<p>所以，如果所有方法上的修饰符都是非public的时候，那么将不会创建代理对象。以一开始的测试代码为例，如果正常的修饰符的testService是下面图片中的，经过cglib创建的代理对象。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>如果class中的方法都是非public的那么将不是代理对象。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<h4 id="不进行代理调用">不进行代理调用</h4>
+<p>考虑一种情况，如下面代码所示。两个方法都被@Transactional注解标注，但是一个有public修饰符一个没有，那么这种情况我们可以预见的话，一定会创建代理对象，因为至少有一个public修饰符的@Transactional注解标注方法。</p>
+<p>创建了代理对象，insertTestWrongModifier就会开启事务吗？答案是不会。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * @author zhoujy
+</span><span class="cm"> **/</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestServiceImpl</span> <span class="kd">implements</span> <span class="n">TestService</span> <span class="o">{</span>
+    <span class="nd">@Resource</span>
+    <span class="n">TestMapper</span> <span class="n">testMapper</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="nd">@Transactional</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">re</span> <span class="o">=</span> <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">10</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">re</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">NeedToInterceptException</span><span class="o">(</span><span class="s">&#34;need intercept&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">210</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Transactional</span>
+    <span class="kt">void</span> <span class="nf">insertTestWrongModifier</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">re</span> <span class="o">=</span> <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">10</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">re</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">NeedToInterceptException</span><span class="o">(</span><span class="s">&#34;need intercept&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">210</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>原因是在动态代理对象进行代理逻辑调用时，在cglib创建的代理对象的拦截函数中<code>CglibAopProxy.DynamicAdvisedInterceptor#intercept</code>，有一个逻辑如下，目的是获取当前被代理对象的当前需要执行的method适配的aop逻辑。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">chain</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">advised</span><span class="o">.</span><span class="na">getInterceptorsAndDynamicInterceptionAdvice</span><span class="o">(</span><span class="n">method</span><span class="o">,</span> <span class="n">targetClass</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而针对@Transactional注解查找aop逻辑过程，相似地，也是执行一次</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">AbstractFallbackTransactionAttributeSource</span><span class="err">#</span><span class="n">getTransactionAttribute</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>AbstractFallbackTransactionAttributeSource#computeTransactionAttribute</code></li>
+</ul>
+<p>也就是说还需要找一个方法上的@Transactional注解信息，没有的话就不执行代理@Transactional对应的代理逻辑，直接执行方法。没有了@Transactional注解代理逻辑，就无法开启事务，这也是上一篇已经讲到的。</p>
+<h3 id="第二种-1">第二种</h3>
+<p>在类内部调用调用类内部@Transactional标注的方法。这种情况下也会导致事务不开启。</p>
+<p>经过对第一种的详细分析，对这种情况为何不开启事务管理，原因应该也能猜到；</p>
+<blockquote>
+<p>既然事务管理是基于动态代理对象的代理逻辑实现的，那么如果在类内部调用类内部的事务方法，这个调用事务方法的过程并不是通过代理对象来调用的，而是直接通过this对象来调用方法，绕过的代理对象，肯定就是没有代理逻辑了。</p>
+</blockquote>
+<p>其实我们可以这样玩，内部调用也能实现开启事务，代码如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * @author zhoujy
+</span><span class="cm"> **/</span>
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestServiceImpl</span> <span class="kd">implements</span> <span class="n">TestService</span> <span class="o">{</span>
+    <span class="nd">@Resource</span>
+    <span class="n">TestMapper</span> <span class="n">testMapper</span><span class="o">;</span>
+
+    <span class="nd">@Resource</span>
+    <span class="n">TestServiceImpl</span> <span class="n">testServiceImpl</span><span class="o">;</span>
+
+
+    <span class="nd">@Transactional</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertTestInnerInvoke</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">re</span> <span class="o">=</span> <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">10</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">re</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">NeedToInterceptException</span><span class="o">(</span><span class="s">&#34;need intercept&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">testMapper</span><span class="o">.</span><span class="na">insert</span><span class="o">(</span><span class="k">new</span> <span class="n">Test</span><span class="o">(</span><span class="n">210</span><span class="o">,</span><span class="n">20</span><span class="o">,</span><span class="n">30</span><span class="o">));</span>
+    <span class="o">}</span>
+
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testInnerInvoke</span><span class="o">(){</span>
+        <span class="c1">//内部调用事务方法
+</span><span class="c1"></span>        <span class="n">testServiceImpl</span><span class="o">.</span><span class="na">insertTestInnerInvoke</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面就是使用了代理对象进行事务调用，所以能够开启事务管理，但是实际操作中，没人会闲的蛋疼这样子玩~</p>
+<p>实在碰到业务需要，建议分开写，互相调用。</p>
+<h3 id="第三种-1">第三种</h3>
+<p>事务方法内部捕捉了异常，没有抛出新的异常，导致事务操作不会进行回滚。</p>
+<p>这种的话，可能我们比较常见，问题就出在代理逻辑中，我们先看看源码里卖弄动态代理逻辑是如何为我们管理事务的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">TransactionAspectSupport</span><span class="err">#</span><span class="n">invokeWithinTransaction</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>代码如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">protected</span> <span class="n">Object</span> <span class="nf">invokeWithinTransaction</span><span class="o">(</span><span class="n">Method</span> <span class="n">method</span><span class="o">,</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">targetClass</span><span class="o">,</span> <span class="kd">final</span> <span class="n">InvocationCallback</span> <span class="n">invocation</span><span class="o">)</span>
+      <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+
+   <span class="c1">// If the transaction attribute is null, the method is non-transactional.
+</span><span class="c1"></span>   <span class="kd">final</span> <span class="n">TransactionAttribute</span> <span class="n">txAttr</span> <span class="o">=</span> <span class="n">getTransactionAttributeSource</span><span class="o">().</span><span class="na">getTransactionAttribute</span><span class="o">(</span><span class="n">method</span><span class="o">,</span> <span class="n">targetClass</span><span class="o">);</span>
+   <span class="kd">final</span> <span class="n">PlatformTransactionManager</span> <span class="n">tm</span> <span class="o">=</span> <span class="n">determineTransactionManager</span><span class="o">(</span><span class="n">txAttr</span><span class="o">);</span>
+   <span class="kd">final</span> <span class="n">String</span> <span class="n">joinpointIdentification</span> <span class="o">=</span> <span class="n">methodIdentification</span><span class="o">(</span><span class="n">method</span><span class="o">,</span> <span class="n">targetClass</span><span class="o">);</span>
+
+   <span class="k">if</span> <span class="o">(</span><span class="n">txAttr</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="o">!(</span><span class="n">tm</span> <span class="k">instanceof</span> <span class="n">CallbackPreferringPlatformTransactionManager</span><span class="o">))</span> <span class="o">{</span>
+      <span class="c1">// Standard transaction demarcation with getTransaction and commit/rollback calls.
+</span><span class="c1"></span>       <span class="c1">//开启事务
+</span><span class="c1"></span>      <span class="n">TransactionInfo</span> <span class="n">txInfo</span> <span class="o">=</span> <span class="n">createTransactionIfNecessary</span><span class="o">(</span><span class="n">tm</span><span class="o">,</span> <span class="n">txAttr</span><span class="o">,</span> <span class="n">joinpointIdentification</span><span class="o">);</span>
+      <span class="n">Object</span> <span class="n">retVal</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="c1">// This is an around advice: Invoke the next interceptor in the chain.
+</span><span class="c1"></span>         <span class="c1">// This will normally result in a target object being invoked.
+</span><span class="c1"></span>          <span class="c1">//反射调用业务方法
+</span><span class="c1"></span>         <span class="n">retVal</span> <span class="o">=</span> <span class="n">invocation</span><span class="o">.</span><span class="na">proceedWithInvocation</span><span class="o">();</span>
+      <span class="o">}</span>
+      <span class="k">catch</span> <span class="o">(</span><span class="n">Throwable</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+         <span class="c1">// target invocation exception
+</span><span class="c1"></span>          <span class="c1">//异常时，在catch逻辑中回滚事务
+</span><span class="c1"></span>         <span class="n">completeTransactionAfterThrowing</span><span class="o">(</span><span class="n">txInfo</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+         <span class="k">throw</span> <span class="n">ex</span><span class="o">;</span>
+      <span class="o">}</span>
+      <span class="k">finally</span> <span class="o">{</span>
+         <span class="n">cleanupTransactionInfo</span><span class="o">(</span><span class="n">txInfo</span><span class="o">);</span>
+      <span class="o">}</span>
+       <span class="c1">//提交事务
+</span><span class="c1"></span>      <span class="n">commitTransactionAfterReturning</span><span class="o">(</span><span class="n">txInfo</span><span class="o">);</span>
+      <span class="k">return</span> <span class="n">retVal</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="k">else</span> <span class="o">{</span>
+     <span class="c1">//....................
+</span><span class="c1"></span>   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所以看了上面的代码就一目了然了，事务想要回滚，必须能够在这里捕捉到异常才行，如果异常中途被捕捉掉，那么事务将不会回滚。</p>
+<h4 id="解释三种情况异常会回滚">解释三种情况异常会回滚</h4>
+<p>一二不难理解，由于没有被Catch，故捕捉不到，<strong>案例三有些特殊</strong></p>
+<h5 id="为什么没回滚">为什么没回滚</h5>
+<p>先来说说，那些写了代码验证&quot;<strong>不会回滚</strong>&ldquo;的情况，把这些错误答案的原因先说清楚，然后再细说test4会回滚的情况。</p>
+<p>根据这两天读者给我的案例或者描述清楚的一些情况，归结了一下，大家写的验证代码之所以<strong>不会回滚</strong>，主要有以下三个原因：</p>
+<ol>
+<li>没有按照我题目开头说的，采用InnoDB存储引擎，用了MyISAM，不支持事务，自然不会复现。</li>
+<li>没用按照我题目开头说的，采用JPA和JSR 303校验注解，比如：用了MyBaits，所以自然也不会复现。</li>
+<li>定义事务的函数不是public类型，这个基础用法就不对了，事务本身就没生效</li>
+</ol>
+<p>归家一下出现这些疑问的原因：<strong>没审题</strong>和<strong>事务基础</strong>掌握不牢导致。关于事务基础使用的一些常见注意点，之前写过一篇文章，如果觉得这方面知识还不扎实的，建议读一读：《为什么加了@Transactional注解，事务没有回滚？》(<a href="https://blog.didispace.com/transactional-not-rollback/" target="_blank" rel="noopener noreferrer">https://blog.didispace.com/transactional-not-rollback/</a>)</p>
+<h5 id="为什么写了catch还会回滚">为什么写了catch，还会回滚</h5>
+<p>先来看看执行时候报的异常：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">javax.validation.ConstraintViolationException: Validation failed <span class="k">for</span> classes <span class="o">[</span>com.didispace.chapter310.User<span class="o">]</span> during persist <span class="nb">time</span> <span class="k">for</span> groups <span class="o">[</span>javax.validation.groups.Default, <span class="o">]</span>
+List of constraint violations:<span class="o">[</span>
+ ConstraintViolationImpl<span class="o">{</span><span class="nv">interpolatedMessage</span><span class="o">=</span><span class="s1">&#39;个数必须在0和5之间&#39;</span>, <span class="nv">propertyPath</span><span class="o">=</span>name, <span class="nv">rootBeanClass</span><span class="o">=</span>class com.didispace.chapter310.User, <span class="nv">messageTemplate</span><span class="o">=</span><span class="s1">&#39;{javax.validation.constraints.Size.message}&#39;</span><span class="o">}</span>
+<span class="o">]</span>
+ at org.hibernate.cfg.beanvalidation.BeanValidationEventListener.validate<span class="o">(</span>BeanValidationEventListener.java:140<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.cfg.beanvalidation.BeanValidationEventListener.onPreInsert<span class="o">(</span>BeanValidationEventListener.java:80<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.action.internal.EntityInsertAction.preInsert<span class="o">(</span>EntityInsertAction.java:209<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.action.internal.EntityInsertAction.execute<span class="o">(</span>EntityInsertAction.java:83<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.engine.spi.ActionQueue.executeActions<span class="o">(</span>ActionQueue.java:604<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.engine.spi.ActionQueue.executeActions<span class="o">(</span>ActionQueue.java:478<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions<span class="o">(</span>AbstractFlushingEventListener.java:356<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.event.internal.DefaultFlushEventListener.onFlush<span class="o">(</span>DefaultFlushEventListener.java:39<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.internal.SessionImpl.doFlush<span class="o">(</span>SessionImpl.java:1454<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.internal.SessionImpl.managedFlush<span class="o">(</span>SessionImpl.java:511<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion<span class="o">(</span>SessionImpl.java:3283<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.internal.SessionImpl.beforeTransactionCompletion<span class="o">(</span>SessionImpl.java:2479<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion<span class="o">(</span>JdbcCoordinatorImpl.java:473<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback<span class="o">(</span>JdbcResourceLocalTransactionCoordinatorImpl.java:178<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access<span class="nv">$300</span><span class="o">(</span>JdbcResourceLocalTransactionCoordinatorImpl.java:39<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl<span class="nv">$TransactionDriverControlImpl</span>.commit<span class="o">(</span>JdbcResourceLocalTransactionCoordinatorImpl.java:271<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+ at org.hibernate.engine.transaction.internal.TransactionImpl.commit<span class="o">(</span>TransactionImpl.java:98<span class="o">)</span> ~<span class="o">[</span>hibernate-core-5.3.7.Final.jar:5.3.7.Final<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这个异常是这个回滚的关键。这个异常<code>javax.validation.ConstraintViolationException</code>是哪里的呢？还记得以前说的JSR 303不？对的，是Bean Validation中的异常。</p>
+<p>有的读者说这个不是<code>RuntimeException</code>，所以不会回滚。很显然，这类判断的都没有实际尝试一下，只要点开源码可以马上发现，这个异常就是属于<code>RunTimeException</code>的。</p>
+<p>实际上，之所以会回滚，与这里使用Spring Data JPA以及Hibernate Validator有直接关系。从JPA 2.0开始，就默认支持了这些Bean Validation的实现，它提供了实体生命周期中<code>pre-persist</code>, <code>pre-update</code>,<code>pre-remove</code>三个事件发生时来执行校验的功能。而在校验的时候，当校验失败，抛出<code>javax.validation.ConstraintViolationException</code>时，当前事务就会被标记为<code>rollback</code>。</p>
+<h5 id="源码解析">源码解析</h5>
+<p>要想了解，这其中到底发生了什么，跟踪源码是最好的方式。那么源码从哪里开始看呢？从异常日志中找线索吧。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p>从异常栈中找到最近的一个错误，点开看看。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p>错误行数在532行<code>tx.commit()</code>，习惯性的加上断点，这样下一次进来的时候可以看看当前情况下的各种参数情况。</p>
+<p>同时看到下面还有个catch，既然532行出错了，那这里肯定会进，所以也加个端点，到时候可以进去看看。</p>
+<p>执行程序，调用一下test4，执行到532行，然后进入下一步，看看会到哪里？</p>
+<p>这个时候，会进入到<code>org.hibernate.engine.transaction.internal.TransactionImpl</code>，具体位置如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p>还是习惯性的，在下面两行重要位置加上断点，以便下次可以快速到这里。</p>
+<p>继续按上看的步骤尝试下去，可以来到下图的位置：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<p>可以看到校验异常是从271行出来的，结合278行和280行，是不是清楚这里回滚的原因了呢？</p>
+<h5 id="小结">小结</h5>
+<p>当我把上一篇问题推到很多地方之后，其实还是收到了不少负面的反馈，甚至还有说我误导读者，顺便问候了下我的祖宗。这些我就不跟爱喷的读者互杠了，我是一直都推崇碰到问题，尽量多深挖一些的学习方式。虽然有的时候出现问题，确实是由于不恰当的写法导致，但如果你没有理解这个错误的原因，本质还是对其底层逻辑不够了解。如果你能从问题中找到线索，并顺藤摸瓜地探究和思考，你能够收获到的东西，远比喷我来的强。</p>
+<p>实践出真知，当你觉得困惑的时候，不如动手写一写，调一调，很多答案就能自然浮现！如果对于test3会回滚还不够理解的读者，那就跟着我上面的步骤，一步步尝试一下，可以观察的更深入一些，你对这部分逻辑的理解就更全面了。</p>
+<h5 id="返场-动手尝试一下">返场 动手尝试一下</h5>
+<p>由于<code>@Transactional</code>注解的事务是通过切面来实现的，所以要通过源码去了解整个过程，可能还是会比较晕。</p>
+<p>所以，这里教大家一个简单方法来理解这次test4的catch为什么没有捕获异常。</p>
+<p>我们通过类似下面的方式，给test4多加一些日志信息和断点：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>同时，记得也在上一篇说到的事务提交入口，也加上断点。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /> org.springframework.orm.jpa.JpaTransactionManager</p>
+<p>然后尝试触发test4的执行，通过DEBUG，我们都可以观察到：</p>
+<p>test4中我们加的断点，除了47行没进入，其他的一次性都执行完了。然后才进入了<code>org.springframework.orm.jpa.JpaTransactionManager</code>的<code>doCommit</code>方法。</p>
+<p>所以，前文中我们跟踪的事务回滚所抛出的异常，其实是在test4中的try-catch块执行完之后才抛出的，所以内部的这个catch是无法捕获异常的，这里完全就是catch了个寂寞。</p>
+<p>通过日志，我们也能观察到这样的执行顺序：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
+        data-sizes="auto"
+        alt="./9.png"
+        title="9" /></p>
+<p>好了，通过这样来看，是不是要比之前有进一步的理解了呢？如果您还想更深入的了解事务的底层运行机制，一定要debug下源码，自己过一遍，理解会深刻哦！如果你没有得到跟我一样的结果，那更要找找原因，除了审题之外，再仔细跟踪下执行过程，这么做远比下面这样要得到更多收获哦~</p>
+<h3 id="第四种-1">第四种</h3>
+<p>在前文的描述中，我漏了一个细节，其实在示例代码中，与之前拿的基础例子在配置中有一个关键属性没有提到，就是下面这个配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
+</code></pre></td></tr></table>
+</div>
+</div><p>这里的<code>spring.jpa.database-platform</code>配置主要用来设置hibernate使用的方言。这里特地采用了<code>MySQL5InnoDBDialect</code>，主要为了保障在使用Spring Data JPA时候，Hibernate自动创建表的时候使用InnoDB存储引擎，不然就会以默认存储引擎MyISAM来建表，而MyISAM存储引擎是没有事务的。</p>
+<p>修改数据库引擎即可</p>
+<h3 id="第五种-1">第五种</h3>
+<p>正确配置事务管理器</p>
+<h3 id="第六种-1">第六种</h3>
+<p>修改异常类型一致即可</p>
+<p>总结了以上几种情况。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-05-31</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/spring-transactional-invalid-error/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/spring-transactional-invalid-error/" data-title="事务注解 @Transactional 失效的场景及6种解决办法" data-hashtags="Java,Srping,Transactional,Error"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/spring-transactional-invalid-error/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/spring-transactional-invalid-error/" data-title="事务注解 @Transactional 失效的场景及6种解决办法" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/spring-transactional-invalid-error/" data-title="事务注解 @Transactional 失效的场景及6种解决办法"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/srping/">Srping</a>,&nbsp;<a href="/tags/transactional/">Transactional</a>,&nbsp;<a href="/tags/error/">Error</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/jvm-compiler-in-time-note/" class="prev" rel="prev" title="Java即时编译器原理解析及实践"><i class="fas fa-angle-left fa-fw"></i>Java即时编译器原理解析及实践</a>
+            <a href="/rpc-feign-no-fallbackfactory-error/" class="next" rel="next" title="Feign：No fallbackFactory instance of type报错">Feign：No fallbackFactory instance of type报错<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

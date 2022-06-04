@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>RestTemplate 用法详解 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录RestTemplate 用法的笔记"><meta property="og:title" content="RestTemplate 用法详解" />
+<meta property="og:description" content="记录RestTemplate 用法的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/spring-resttemplate-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/spring-resttemplate-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-31T15:24:04+08:00" />
+<meta property="article:modified_time" content="2022-05-31T15:24:04+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/spring-resttemplate-note/featured-image.jpg"/>
+<meta name="twitter:title" content="RestTemplate 用法详解"/>
+<meta name="twitter:description" content="记录RestTemplate 用法的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/spring-resttemplate-note/" /><link rel="prev" href="https://kkkpjskey.github.io/rpc-feign-no-fallbackfactory-error/" /><link rel="next" href="https://kkkpjskey.github.io/springboot-resttemplate-ribbon-no-instances-error/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "RestTemplate 用法详解",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/spring-resttemplate-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/spring-resttemplate-note\/featured-image.jpg",
+                            "width":  2440 ,
+                            "height":  732 
+                        }],"genre": "posts","keywords": "Java, Spring, RestTemplate","wordcount":  5072 ,
+        "url": "https:\/\/kkkpjskey.github.io\/spring-resttemplate-note\/","datePublished": "2022-05-31T15:24:04+08:00","dateModified": "2022-05-31T15:24:04+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录RestTemplate 用法的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/spring-resttemplate-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/spring-resttemplate-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">RestTemplate 用法详解</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-31">2022-05-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5072 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/spring-resttemplate-note/" class="leancloud_visitors" data-flag-title="RestTemplate 用法详解">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/spring-resttemplate-note/featured-image.jpg"
+        data-srcset="/spring-resttemplate-note/featured-image.jpg, /spring-resttemplate-note/featured-image.jpg 1.5x, /spring-resttemplate-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/spring-resttemplate-note/featured-image.jpg"
+        title="记录RestTemplate 用法的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#引言">引言</a></li>
+    <li><a href="#resttemplate-简介">RestTemplate 简介</a></li>
+    <li><a href="#用法实战">用法实战</a>
+      <ul>
+        <li><a href="#get-请求">GET 请求</a>
+          <ul>
+            <li><a href="#getforentity">getForEntity</a></li>
+            <li><a href="#getforobject">getForObject</a></li>
+          </ul>
+        </li>
+        <li><a href="#post-请求">POST 请求</a>
+          <ul>
+            <li><a href="#postforentity">postForEntity</a></li>
+            <li><a href="#postforobject">postForObject</a></li>
+            <li><a href="#postforlocation">postForLocation</a></li>
+          </ul>
+        </li>
+        <li><a href="#put-请求">PUT 请求</a></li>
+        <li><a href="#delete-请求">DELETE 请求</a></li>
+        <li><a href="#其他">其他</a>
+          <ul>
+            <li><a href="#设置请求头">设置请求头</a></li>
+            <li><a href="#通用方法-exchange">通用方法 exchange</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#小结">小结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="引言">引言</h2>
+<p>上篇文章带大家学习了一下基本的微服务环境搭建，由 provider 提供服务， consumer 通过 DiscoveryClient 先去 eureka 上获取 provider 的服务的地址，获取到地址之后再去调用相关的服务。在服务的调用过程中，使用到了一个工具，叫做  RestTemplate，RestTemplate 是由 Spring 提供的一个 HTTP 请求工具。在上文的案例中，开发者也可以不使用  RestTemplate ，使用 Java 自带的 HttpUrlConnection 或者经典的网络访问框架 HttpClient  也可以完成上文的案例，只是在 Spring 项目中，使用 RestTemplate  显然更方便一些。在传统的项目架构中，因为不涉及到服务之间的调用，大家对 RestTemplate  的使用可能比较少，因此，本文我们就先来带领大家来学习下 RestTemplate  的各种不同用法，只有掌握了这些用法，才能在微服务调用中随心所欲地发送请求。</p>
+<h2 id="resttemplate-简介">RestTemplate 简介</h2>
+<p>RestTemplate 是从 Spring3.0 开始支持的一个 HTTP 请求工具，它提供了常见的REST请求方案的模版，例如  GET 请求、POST 请求、PUT 请求、DELETE 请求以及一些通用的请求执行方法 exchange 以及  execute。RestTemplate 继承自 InterceptingHttpAccessor 并且实现了 RestOperations  接口，其中 RestOperations 接口定义了基本的 RESTful 操作，这些操作在 RestTemplate  中都得到了实现。接下来我们就来看看这些操作方法的使用。</p>
+<h2 id="用法实战">用法实战</h2>
+<p>在开始下面的案例之前，我们需要先创建一个工程，命名为 RestTemplate 。和上篇文章的项目结构一样，在  RestTemplate 中，我们也分别创建子项目 eureka 、provider 以及 consumer ，将 provider 和  consumer 分别注册到 eureka 上面去。这个具体的步骤大家可以参考上篇文章，本文我就不赘述了，这是我们的准备工作。</p>
+<h3 id="get-请求">GET 请求</h3>
+<p>做好了准备工作，先来看使用 RestTemplate 发送 GET 请求。在 RestTemplate 中，和 GET 请求相关的方法有如下几个：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>这里的方法一共有两类，getForEntity 和 getForObject，每一类有三个重载方法，下面我们分别予以介绍。</p>
+<h4 id="getforentity">getForEntity</h4>
+<p>既然 RestTemplate 发送的是 HTTP  请求，那么在响应的数据中必然也有响应头，如果开发者需要获取响应头的话，那么就需要使用 getForEntity 来发送 HTTP  请求，此时返回的对象是一个 ResponseEntity 的实例。这个实例中包含了响应数据以及响应头。例如，在 provider 中提供一个  HelloController 接口，HelloController 接口中定义一个 sayHello 的方法，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">sayHello</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;hello &#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#34; !&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在 consumer 中定义一个 UseHelloController 的类，再定义一个 <code>/hello</code> 接口，在接口中调用 provider 提供的服务，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UseHelloController</span> <span class="o">{</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">DiscoveryClient</span> <span class="n">discoveryClient</span><span class="o">;</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">RestTemplate</span> <span class="n">restTemplate</span><span class="o">;</span>
+
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">hello</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">ServiceInstance</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">discoveryClient</span><span class="o">.</span><span class="na">getInstances</span><span class="o">(</span><span class="s">&#34;provider&#34;</span><span class="o">);</span>
+        <span class="n">ServiceInstance</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/hello?name={1}&#34;</span><span class="o">;</span>
+        <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">responseEntity</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForEntity</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+        <span class="n">StringBuffer</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>
+        <span class="n">HttpStatus</span> <span class="n">statusCode</span> <span class="o">=</span> <span class="n">responseEntity</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">body</span> <span class="o">=</span> <span class="n">responseEntity</span><span class="o">.</span><span class="na">getBody</span><span class="o">();</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;statusCode：&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">statusCode</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;&lt;/br&gt;&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;body：&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;&lt;/br&gt;&#34;</span><span class="o">);</span>
+        <span class="n">HttpHeaders</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">responseEntity</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">();</span>
+        <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">keySet</span> <span class="o">=</span> <span class="n">headers</span><span class="o">.</span><span class="na">keySet</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">keySet</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">s</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;:&#34;</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">headers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">s</span><span class="o">))</span>
+                    <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;&lt;/br&gt;&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>关于 DiscoveryClient 那一段本文先不做讨论，主要来看 getForEntity 方法。第一个参数是 url ，url  中有一个占位符 {1} ,如果有多个占位符分别用 {2} 、 {3} …  去表示，第二个参数是接口返回的数据类型，最后是一个可变长度的参数，用来给占位符填值。在返回的 ResponseEntity  中，可以获取响应头中的信息，其中 getStatusCode 方法用来获取响应状态码， getBody 方法用来获取响应数据，  getHeaders 方法用来获取响应头，在浏览器中访问该接口，结果如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>当然，这里参数的传递除了这一种方式之外，还有另外两种方式，也就是 getForEntity 方法的另外两个重载方法。</p>
+<p>第一个是占位符不使用数字，而是使用参数的 key，同时将参数放入到一个 map 中。map 中的 key 和占位符的 key 相对应，map 中的 value 就是参数的具体值，例如还是上面的请求，利用 map 来传递参数，请求方式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/hello?name={name}&#34;</span><span class="o">;</span>
+<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+<span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">responseEntity</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForEntity</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">map</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这种方式传参可能看起来更直观一些。</p>
+<p>第二个是使用 Uri 对象，使用 Uri 对象时，参数可以直接拼接在地址中，例如下面这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/hello?name=&#34;</span><span class="o">+</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">name</span><span class="o">,</span><span class="s">&#34;UTF-8&#34;</span><span class="o">);</span>
+<span class="n">URI</span> <span class="n">uri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+<span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">responseEntity</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForEntity</span><span class="o">(</span><span class="n">uri</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>但需要注意的是，这种传参方式，参数如果是中文的话，需要对参数进行编码，使用 <code>URLEncoder.encode</code> 方法来实现。</p>
+<h4 id="getforobject">getForObject</h4>
+<p>getForObject 方法和 getForEntity 方法类似，getForObject 方法也有三个重载的方法，参数和  getForEntity 一样，因此这里我就不重复介绍参数了，这里主要说下 getForObject 和 getForEntity  的差异，这两个的差异主要体现在返回值的差异上， getForObject 的返回值就是服务提供者返回的数据，使用 getForObject  无法获取到响应头。例如，还是上面的请求，利用 getForObject 来发送 HTTP 请求，结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/hello?name=&#34;</span> <span class="o">+</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="s">&#34;UTF-8&#34;</span><span class="o">);</span>
+<span class="n">URI</span> <span class="n">uri</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForObject</span><span class="o">(</span><span class="n">uri</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意，这里返回的 s 就是 provider 的返回值，如果开发者只关心 provider 的返回值，并不关系 HTTP 请求的响应头，那么可以使用该方法。</p>
+<h3 id="post-请求">POST 请求</h3>
+<p>和 GET 请求相比，RestTemplate 中的 POST 请求多了一个类型的方法，如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3..png"
+        data-srcset="./3..png, ./3..png 1.5x, ./3..png 2x"
+        data-sizes="auto"
+        alt="./3..png"
+        title="3." /></p>
+<p>可以看到，post 请求的方法类型除了 postForEntity 和 postForObject 之外，还有一个  postForLocation。这里的方法类型虽然有三种，但是这三种方法重载的参数基本是一样的，因此这里我还是以 postForEntity  方法为例，来剖析三个重载方法的用法，最后再重点说下 postForLocation 方法。</p>
+<h4 id="postforentity">postForEntity</h4>
+<p>在 POST 请求中，参数的传递可以是 key/value 的形式，也可以是 JSON 数据，分别来看：</p>
+<ol>
+<li>传递 key/value 形式的参数</li>
+</ol>
+<p>首先在 provider 的 HelloController 类中再添加一个 POST 请求的接口，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PostMapping</span><span class="o">(</span><span class="s">&#34;/hello2&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">sayHello2</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">&#34;Hello &#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#34; !&#34;</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后在 consumer 中添加相应的方法去访问，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello5&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">hello5</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ServiceInstance</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">discoveryClient</span><span class="o">.</span><span class="na">getInstances</span><span class="o">(</span><span class="s">&#34;provider&#34;</span><span class="o">);</span>
+    <span class="n">ServiceInstance</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/hello2&#34;</span><span class="o">;</span>
+    <span class="n">MultiValueMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedMultiValueMap</span><span class="o">();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;name&#34;</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+    <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">responseEntity</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">postForEntity</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">map</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">responseEntity</span><span class="o">.</span><span class="na">getBody</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在这里， postForEntity 方法第一个参数是请求地址，第二个参数 map 对象中存放着请求参数  key/value，第三个参数则是返回的数据类型。当然这里的第一个参数 url 地址也可以换成一个 Uri  对象，效果是一样的。这种方式传递的参数是以 key/value 形式传递的，在 post 请求中，也可以按照 get 请求的方式去传递  key/value 形式的参数，传递方式和 get 请求的传参方式基本一致，例如下面这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello6&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">hello6</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ServiceInstance</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">discoveryClient</span><span class="o">.</span><span class="na">getInstances</span><span class="o">(</span><span class="s">&#34;provider&#34;</span><span class="o">);</span>
+    <span class="n">ServiceInstance</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/hello2?name={1}&#34;</span><span class="o">;</span>
+    <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">responseEntity</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">postForEntity</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">,</span><span class="n">name</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">responseEntity</span><span class="o">.</span><span class="na">getBody</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>此时第二个参数可以直接传一个 null。</p>
+<ol>
+<li>传递 JSON 数据</li>
+</ol>
+<p>上面介绍的是 post 请求传递 key/value 形式的参数，post 请求也可以直接传递 json 数据，在 post 请求中，可以自动将一个对象转换成 json 进行传输，数据到达 provider 之后，再被转换为一个对象。具体操作步骤如下：</p>
+<p>首先在 RestTemplate 项目中创建一个新的maven项目，叫做 commons ，然后在 commons 中创建一个 User 对象，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
+    <span class="c1">//省略getter/setter
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后分别在 provider 和 consumer 的 pom.xml 文件中添加对 commons 模块的依赖，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.justdojava<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>commons<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样，在 provider 和 consumer 中就都能使用 User 对象了。首先在 provider 中创建一个添加用户的接口，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Controller</span>
+<span class="nd">@ResponseBody</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserController</span> <span class="o">{</span>
+    <span class="nd">@PostMapping</span><span class="o">(</span><span class="s">&#34;/user&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">User</span> <span class="nf">hello</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">user</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里的接口很简单，只需要将用户传来的 User 对象再原封不动地返回去就行了，然后在 consumer 中添加一个接口来测试这个接口，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello7&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">User</span> <span class="nf">hello7</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ServiceInstance</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">discoveryClient</span><span class="o">.</span><span class="na">getInstances</span><span class="o">(</span><span class="s">&#34;provider&#34;</span><span class="o">);</span>
+    <span class="n">ServiceInstance</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/user&#34;</span><span class="o">;</span>
+    <span class="n">User</span> <span class="n">u1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+    <span class="n">u1</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="s">&#34;牧码小子&#34;</span><span class="o">);</span>
+    <span class="n">u1</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="s">&#34;深圳&#34;</span><span class="o">);</span>
+    <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">responseEntity</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">postForEntity</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">u1</span><span class="o">,</span> <span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">responseEntity</span><span class="o">.</span><span class="na">getBody</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>看到这段代码有人要问了，这不和前面的一样吗？是的，唯一的区别就是第二个参数的类型不同，这个参数如果是一个 MultiValueMap 的实例，则以 key/value 的形式发送，如果是一个普通对象，则会被转成 json 发送。</p>
+<h4 id="postforobject">postForObject</h4>
+<p>postForObject 和 postForEntity 基本一致，就是返回类型不同而已，这里不再赘述。</p>
+<h4 id="postforlocation">postForLocation</h4>
+<p>postForLocation 方法的返回值是一个 Uri 对象，因为 POST  请求一般用来添加数据，有的时候需要将刚刚添加成功的数据的 URL  返回来，此时就可以使用这个方法，一个常见的使用场景如用户注册功能，用户注册成功之后，可能就自动跳转到登录页面了，此时就可以使用该方法。例如在  provider 中提供一个用户注册接口，再提供一个用户登录接口，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">&#34;/register&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">register</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">&#34;redirect:/loginPage?username=&#34;</span> <span class="o">+</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getUsername</span><span class="o">(),</span><span class="s">&#34;UTF-8&#34;</span><span class="o">)</span> <span class="o">+</span> <span class="s">&#34;&amp;address=&#34;</span> <span class="o">+</span> <span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">getAddress</span><span class="o">(),</span><span class="s">&#34;UTF-8&#34;</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/loginPage&#34;</span><span class="o">)</span>
+<span class="nd">@ResponseBody</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">loginPage</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">&#34;loginPage:&#34;</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="na">getUsername</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="na">getAddress</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里一个注册接口，一个是登录页面，不过这里的登录页面我就简单用一个字符串代替了。然后在 consumer 中来调用注册接口，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello8&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">hello8</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ServiceInstance</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">discoveryClient</span><span class="o">.</span><span class="na">getInstances</span><span class="o">(</span><span class="s">&#34;provider&#34;</span><span class="o">);</span>
+    <span class="n">ServiceInstance</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/register&#34;</span><span class="o">;</span>
+    <span class="n">MultiValueMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedMultiValueMap</span><span class="o">();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;username&#34;</span><span class="o">,</span> <span class="s">&#34;牧码小子&#34;</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;address&#34;</span><span class="o">,</span> <span class="s">&#34;深圳&#34;</span><span class="o">);</span>
+    <span class="n">URI</span> <span class="n">uri</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">postForLocation</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">map</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForObject</span><span class="o">(</span><span class="n">uri</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里首先调用 postForLocation 获取 Uri 地址，然后再利用 getForObject 请求 Uri，结果如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p><strong>注意：postForLocation 方法返回的 Uri 实际上是指响应头的 Location  字段，所以，provider 中 register 接口的响应头必须要有 Location 字段（即请求的接口实际上是一个重定向的接口），否则  postForLocation 方法的返回值为null，初学者很容易犯这个错误，如果这里出错，大家可以参考下我的源代码。</strong></p>
+<h3 id="put-请求">PUT 请求</h3>
+<p>只要将 GET 请求和 POST 请求搞定了，接下来 PUT 请求就会容易很多了，PUT 请求本身方法也比较少，只有三个，如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p>这三个重载的方法其参数其实和 POST 是一样的，可以用 key/value 的形式传参，也可以用 JSON 的形式传参，无论哪种方式，都是没有返回值的，我这里就举两个例子给大家参考下：</p>
+<p>首先在 provider 的 UserController 中添加如下两个数据更新接口：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@PutMapping</span><span class="o">(</span><span class="s">&#34;/user/name&#34;</span><span class="o">)</span>
+<span class="nd">@ResponseBody</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateUserByUsername</span><span class="o">(</span><span class="n">User</span> <span class="n">User</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">User</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="nd">@PutMapping</span><span class="o">(</span><span class="s">&#34;/user/address&#34;</span><span class="o">)</span>
+<span class="nd">@ResponseBody</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateUserByAddress</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="n">User</span> <span class="n">User</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">User</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里两个接口，一个接收 key/value 形式的参数，另一个接收 JSON 参数。因为这里没有返回值，我直接把数据打印出来就行了。接下来在 consumer 中添加接口调用这里的服务，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello9&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello9</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ServiceInstance</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">discoveryClient</span><span class="o">.</span><span class="na">getInstances</span><span class="o">(</span><span class="s">&#34;provider&#34;</span><span class="o">);</span>
+    <span class="n">ServiceInstance</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">url1</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/user/name&#34;</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">url2</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/user/address&#34;</span><span class="o">;</span>
+    <span class="n">MultiValueMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedMultiValueMap</span><span class="o">();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;username&#34;</span><span class="o">,</span> <span class="s">&#34;牧码小子&#34;</span><span class="o">);</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;address&#34;</span><span class="o">,</span> <span class="s">&#34;深圳&#34;</span><span class="o">);</span>
+    <span class="n">restTemplate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">url1</span><span class="o">,</span> <span class="n">map</span><span class="o">);</span>
+    <span class="n">User</span> <span class="n">u1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">();</span>
+    <span class="n">u1</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="s">&#34;广州&#34;</span><span class="o">);</span>
+    <span class="n">u1</span><span class="o">.</span><span class="na">setUsername</span><span class="o">(</span><span class="s">&#34;江南一点雨&#34;</span><span class="o">);</span>
+    <span class="n">restTemplate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">url2</span><span class="o">,</span> <span class="n">u1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>访问 <code>/hello9</code> 接口，即可看到 provider 上有日志打印出来，这里比较简单，我就不再演示。</p>
+<h3 id="delete-请求">DELETE 请求</h3>
+<p>和 PUT 请求一样，DELETE 请求也是比较简单的，只有三个方法，如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<p>不同于 POST 和 PUT ，DELETE 请求的参数只能在地址栏传送，可以是直接放在路径中，也可以用 key/value 的形式传递，当然，这里也是没有返回值的。我也举两个例子：</p>
+<p>首先在 provider 的 UserController 中添加两个接口，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@DeleteMapping</span><span class="o">(</span><span class="s">&#34;/user/{id}&#34;</span><span class="o">)</span>
+<span class="nd">@ResponseBody</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteUserById</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="nd">@DeleteMapping</span><span class="o">(</span><span class="s">&#34;/user/&#34;</span><span class="o">)</span>
+<span class="nd">@ResponseBody</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteUserByUsername</span><span class="o">(</span><span class="n">String</span> <span class="n">username</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">username</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>两个接口，一个的参数在路径中，另一个的参数以 key/value 的形式传递，然后在 consumer 中，添加一个方法调用这两个接口，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello10&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello10</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ServiceInstance</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">discoveryClient</span><span class="o">.</span><span class="na">getInstances</span><span class="o">(</span><span class="s">&#34;provider&#34;</span><span class="o">);</span>
+    <span class="n">ServiceInstance</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">url1</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/user/{1}&#34;</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">url2</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/user/?username={username}&#34;</span><span class="o">;</span>
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;username&#34;</span><span class="o">,</span> <span class="s">&#34;牧码小子&#34;</span><span class="o">);</span>
+    <span class="n">restTemplate</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">url1</span><span class="o">,</span> <span class="n">99</span><span class="o">);</span>
+    <span class="n">restTemplate</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">url2</span><span class="o">,</span> <span class="n">map</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里参数的传递和 GET 请求基本一致，我就不再赘述了。</p>
+<h3 id="其他">其他</h3>
+<h4 id="设置请求头">设置请求头</h4>
+<p>有的时候我们会有一些特殊的需求，例如模拟 cookie  ，此时就需要我们自定义请求头了。自定义请求头可以通过拦截器的方式来实现（下篇文章我们会详细的说这个拦截器）。定义拦截器、自动修改请求数据、一些身份认证信息等，都可以在拦截器中来统一处理。具体操作步骤如下：</p>
+<p>首先在 provider 中定义一个接口，在接口中获取客户端传来的 cookie 数据，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/customheader&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">customHeader</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">req</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">req</span><span class="o">.</span><span class="na">getHeader</span><span class="o">(</span><span class="s">&#34;cookie&#34;</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里简单处理，将客户端传来的 cookie 拿出来后再返回给客户端，然后在 consumer 中添加如下接口来测试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello11&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello11</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ServiceInstance</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">discoveryClient</span><span class="o">.</span><span class="na">getInstances</span><span class="o">(</span><span class="s">&#34;provider&#34;</span><span class="o">);</span>
+    <span class="n">ServiceInstance</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/customheader&#34;</span><span class="o">;</span>
+    <span class="n">restTemplate</span><span class="o">.</span><span class="na">setInterceptors</span><span class="o">(</span><span class="n">Collections</span><span class="o">.</span><span class="na">singletonList</span><span class="o">(</span><span class="k">new</span> <span class="n">ClientHttpRequestInterceptor</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="n">ClientHttpResponse</span> <span class="nf">intercept</span><span class="o">(</span><span class="n">HttpRequest</span> <span class="n">request</span><span class="o">,</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">body</span><span class="o">,</span> <span class="n">ClientHttpRequestExecution</span> <span class="n">execution</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+            <span class="n">HttpHeaders</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">();</span>
+            <span class="n">headers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;cookie&#34;</span><span class="o">,</span><span class="s">&#34;justdojava&#34;</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">execution</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">request</span><span class="o">,</span><span class="n">body</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}));</span>
+    <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">getForObject</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里通过调用 RestTemplate 的 setInterceptors 方法来给它设置拦截器，拦截器也可以有多个，我这里只有一个。在拦截器中，将请求拿出来，给它设置 cookie ，然后调用 execute 方法让请求继续执行。此时，在 <code>/customheader</code> 接口中，就能获取到 cookie了。</p>
+<h4 id="通用方法-exchange">通用方法 exchange</h4>
+<p>在 RestTemplate 中还有一个通用的方法  exchange。为什么说它通用呢？因为这个方法需要你在调用的时候去指定请求类型，即它既能做 GET 请求，也能做 POST  请求，也能做其它各种类型的请求。如果开发者需要对请求进行封装，使用它再合适不过了，举个简单例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello12&#34;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello12</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">ServiceInstance</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">discoveryClient</span><span class="o">.</span><span class="na">getInstances</span><span class="o">(</span><span class="s">&#34;provider&#34;</span><span class="o">);</span>
+    <span class="n">ServiceInstance</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+    <span class="n">String</span> <span class="n">host</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getHost</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">getPort</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">&#34;http://&#34;</span> <span class="o">+</span> <span class="n">host</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">port</span> <span class="o">+</span> <span class="s">&#34;/customheader&#34;</span><span class="o">;</span>
+    <span class="n">HttpHeaders</span> <span class="n">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HttpHeaders</span><span class="o">();</span>
+    <span class="n">headers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;cookie&#34;</span><span class="o">,</span><span class="s">&#34;justdojava&#34;</span><span class="o">);</span>
+    <span class="n">HttpEntity</span><span class="o">&lt;</span><span class="n">MultiValueMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">request</span> <span class="o">=</span>  <span class="k">new</span> <span class="n">HttpEntity</span><span class="o">&lt;&gt;(</span><span class="kc">null</span><span class="o">,</span><span class="n">headers</span><span class="o">);</span>
+    <span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">responseEntity</span> <span class="o">=</span> <span class="n">restTemplate</span><span class="o">.</span><span class="na">exchange</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">HttpMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">,</span> <span class="n">request</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">responseEntity</span><span class="o">.</span><span class="na">getBody</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里的参数和前面的也都差不多，注意就是多了一个请求类型的参数，然后创建一个 HttpEntity 作为参数来传递。 HttpEntity 在创建时候需要传递两个参数，第一个上文给了一个 null ，这个参数实际上就相当于 POST/PUT  请求中的第二个参数，有需要可以自行定义。HttpEntity 创建时的第二个参数就是请求头了，也就是说，如果使用 exchange  来发送请求，可以直接定义请求头，而不需要使用拦截器。</p>
+<h2 id="小结">小结</h2>
+<p>本文主要向大家介绍了 RestTemplate 这样一个 HTTP  请求工具类的常见用法，一些比较冷门的用法本文并未涉及，读者有兴趣可以自行查找资料学习。由于 Spring、SpringMVC、Spring  Boot、Spring Cloud 这些家族成员一脉相承，因此在 SpringMVC 中支持良好的 RESTful  风格的接口在后续的各个组件中都继续支持，在微服务接口设计时，大部分接口也都满足 RESTful 风格，使用 RestTemplate  则可以非常方便地发送 RESTful 风格的请求，因此这个工具的使用是我们后面学习的基础，常见的用法一定要熟练掌握。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-05-31</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/spring-resttemplate-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/spring-resttemplate-note/" data-title="RestTemplate 用法详解" data-hashtags="Java,Spring,RestTemplate"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/spring-resttemplate-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/spring-resttemplate-note/" data-title="RestTemplate 用法详解" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/spring-resttemplate-note/" data-title="RestTemplate 用法详解"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/spring/">Spring</a>,&nbsp;<a href="/tags/resttemplate/">RestTemplate</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/rpc-feign-no-fallbackfactory-error/" class="prev" rel="prev" title="Feign：No fallbackFactory instance of type报错"><i class="fas fa-angle-left fa-fw"></i>Feign：No fallbackFactory instance of type报错</a>
+            <a href="/springboot-resttemplate-ribbon-no-instances-error/" class="next" rel="next" title="Springboot集成Ribbon使用RestTemplate时：java.lang.IllegalStateException: No instances available for localhost">Springboot集成Ribbon使用RestTemplate时：java.lang.IllegalStateException: No instances available for localhost<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

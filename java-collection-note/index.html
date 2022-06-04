@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-collection-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-collection-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-10-15T15:04:57+08:00" />
-<meta property="article:modified_time" content="2022-05-29T02:06:38+08:00" />
+<meta property="article:modified_time" content="2022-06-04T23:31:05+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-collection-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/featured-image.jpg",
                             "width":  721 ,
                             "height":  330 
-                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  29803 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/","datePublished": "2021-10-15T15:04:57+08:00","dateModified": "2022-05-29T02:06:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  38940 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/","datePublished": "2021-10-15T15:04:57+08:00","dateModified": "2022-06-04T23:31:05+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java-Collection笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 29803 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 60 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 38940 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 78 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -169,6 +169,7 @@
     </li>
     <li><a href="#list根据下标修改">List根据下标修改</a></li>
     <li><a href="#list转map的三种方法">List转Map的三种方法</a></li>
+    <li><a href="#java两个list的交集并集">Java两个List的交集，并集</a></li>
     <li><a href="#map">Map</a>
       <ul>
         <li><a href="#特点">特点</a></li>
@@ -190,6 +191,39 @@
             </li>
           </ul>
         </li>
+        <li><a href="#hashmap-的-7-种遍历方式与性能分析">HashMap 的 7 种遍历方式与性能分析</a>
+          <ul>
+            <li><a href="#hashmap-遍历">HashMap 遍历</a>
+              <ul>
+                <li><a href="#1迭代器-entryset">1.迭代器 EntrySet</a></li>
+                <li><a href="#2迭代器-keyset">2.迭代器 KeySet</a></li>
+                <li><a href="#3foreach-entryset">3.ForEach EntrySet</a></li>
+                <li><a href="#4foreach-keyset">4.ForEach KeySet</a></li>
+                <li><a href="#5lambda">5.Lambda</a></li>
+                <li><a href="#6streams-api-单线程">6.Streams API 单线程</a></li>
+                <li><a href="#7streams-api-多线程">7.Streams API 多线程</a></li>
+              </ul>
+            </li>
+            <li><a href="#性能测试">性能测试</a>
+              <ul>
+                <li><a href="#结论">结论</a></li>
+              </ul>
+            </li>
+            <li><a href="#字节码分析">字节码分析</a></li>
+            <li><a href="#性能分析">性能分析</a></li>
+            <li><a href="#安全性测试">安全性测试</a>
+              <ul>
+                <li><a href="#1迭代器方式">1.迭代器方式</a></li>
+                <li><a href="#2for-循环方式">2.For 循环方式</a></li>
+                <li><a href="#3lambda-方式">3.Lambda 方式</a></li>
+                <li><a href="#4stream-方式">4.Stream 方式</a></li>
+                <li><a href="#小结-1">小结</a></li>
+              </ul>
+            </li>
+            <li><a href="#总结-1">总结</a></li>
+          </ul>
+        </li>
+        <li><a href="#java-集合---tablesizefor">Java 集合 &ndash;tableSizeFor</a></li>
       </ul>
     </li>
     <li><a href="#java-collectors常用的20个方法">Java-Collectors常用的20个方法</a></li>
@@ -232,6 +266,16 @@
         <li><a href="#一-问题起因"><strong>(一) 问题起因：</strong></a></li>
         <li><a href="#二-过程"><strong>(二) 过程</strong></a></li>
         <li><a href="#三-总结"><strong>(三) 总结</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#数组操作">数组操作</a></li>
+    <li><a href="#字符串操作">字符串操作</a></li>
+    <li><a href="#stringformat的详细用法">String.format()的详细用法</a>
+      <ul>
+        <li><a href="#问题">问题</a></li>
+        <li><a href="#stringformat字符串常规类型格式化的两种重载方式">String.format()字符串常规类型格式化的两种重载方式</a></li>
+        <li><a href="#上个栗子有用到了字符类型和整数类型的格式化-下面我把常用的类型例举出来">上个栗子有用到了字符类型和整数类型的格式化 下面我把常用的类型例举出来</a></li>
+        <li><a href="#为了方便理解还是举个例子">为了方便理解还是举个例子</a></li>
       </ul>
     </li>
   </ul>
@@ -1108,6 +1152,372 @@ abc--&gt;22
  <span class="o">{</span><span class="n">1</span><span class="o">=[</span><span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">1</span><span class="o">,</span>  <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">苹果1</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">3</span><span class="o">.</span><span class="na">25</span><span class="o">,</span> <span class="n">num</span><span class="o">=</span><span class="n">10</span><span class="o">},</span> <span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">1</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">苹果2</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">1</span><span class="o">.</span><span class="na">35</span><span class="o">,</span>  <span class="n">num</span><span class="o">=</span><span class="n">20</span><span class="o">}],</span> <span class="n">2</span><span class="o">=[</span><span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">2</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">香蕉</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">2</span><span class="o">.</span><span class="na">89</span><span class="o">,</span> <span class="n">num</span><span class="o">=</span><span class="n">30</span><span class="o">}],</span> <span class="n">3</span><span class="o">=[</span><span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">3</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">荔枝</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">9</span><span class="o">.</span><span class="na">99</span><span class="o">,</span> <span class="n">num</span><span class="o">=</span><span class="n">40</span><span class="o">}]}</span>
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="java两个list的交集并集">Java两个List的交集，并集</h2>
+<p>⽅法⼀:使⽤apache的CollectionUtils⼯具类(推荐)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">publicstaticvoidmain</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="n">String</span><span class="o">[]</span> <span class="n">arrayA</span> <span class="o">=</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">&#34;1&#34;</span><span class="o">,</span><span class="s">&#34;2&#34;</span><span class="o">,</span><span class="s">&#34;3&#34;</span><span class="o">,</span><span class="s">&#34;4&#34;</span><span class="o">};</span>
+    <span class="n">String</span><span class="o">[]</span> <span class="n">arrayB</span> <span class="o">=</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">&#34;3&#34;</span><span class="o">,</span><span class="s">&#34;4&#34;</span><span class="o">,</span><span class="s">&#34;5&#34;</span><span class="o">,</span><span class="s">&#34;6&#34;</span><span class="o">};</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listA</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">arrayA</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listB</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">arrayB</span><span class="o">);</span>
+    
+<span class="c1">//1、并集 union
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">CollectionUtils</span><span class="o">.</span><span class="na">union</span><span class="o">(</span><span class="n">listA</span><span class="o">,</span> <span class="n">listB</span><span class="o">));</span>
+<span class="c1">//输出: [1, 2, 3, 4, 5, 6]
+</span><span class="c1"></span>    
+<span class="c1">//2、交集 intersection
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">CollectionUtils</span><span class="o">.</span><span class="na">intersection</span><span class="o">(</span><span class="n">listA</span><span class="o">,</span> <span class="n">listB</span><span class="o">));</span>
+<span class="c1">//输出:[3, 4]
+</span><span class="c1"></span>
+<span class="c1">//3、交集的补集（析取）disjunction
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">CollectionUtils</span><span class="o">.</span><span class="na">disjunction</span><span class="o">(</span><span class="n">listA</span><span class="o">,</span> <span class="n">listB</span><span class="o">));</span>
+<span class="c1">//输出:[1, 2, 5, 6]
+</span><span class="c1"></span>
+<span class="c1">//4、差集（扣除）
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">CollectionUtils</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="n">listA</span><span class="o">,</span> <span class="n">listB</span><span class="o">));</span>
+<span class="c1">//输出:[1, 2]
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>⽅法⼆:List⾃带⽅法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">publicstaticvoidmain</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="n">String</span><span class="o">[]</span> <span class="n">arrayA</span> <span class="o">=</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">&#34;1&#34;</span><span class="o">,</span><span class="s">&#34;2&#34;</span><span class="o">,</span><span class="s">&#34;3&#34;</span><span class="o">,</span><span class="s">&#34;4&#34;</span><span class="o">};</span>
+    <span class="n">String</span><span class="o">[]</span> <span class="n">arrayB</span> <span class="o">=</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">&#34;3&#34;</span><span class="o">,</span><span class="s">&#34;4&#34;</span><span class="o">,</span><span class="s">&#34;5&#34;</span><span class="o">,</span><span class="s">&#34;6&#34;</span><span class="o">};</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listA</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">arrayA</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listB</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">arrayB</span><span class="o">);</span>
+
+<span class="c1">//1、交集
+</span><span class="c1"></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>  <span class="n">jiaoList</span> <span class="o">=</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">listA</span><span class="o">);</span>
+    <span class="n">jiaoList</span><span class="o">.</span><span class="na">retainAll</span><span class="o">(</span><span class="n">listB</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">jiaoList</span><span class="o">);</span>
+<span class="c1">//输出:[3, 4]
+</span><span class="c1"></span>    
+
+<span class="c1">//2、差集
+</span><span class="c1"></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>  <span class="n">chaList</span> <span class="o">=</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">listA</span><span class="o">);</span>
+    <span class="n">chaList</span><span class="o">.</span><span class="na">removeAll</span><span class="o">(</span><span class="n">listB</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">chaList</span><span class="o">);</span>
+<span class="c1">//输出:[1, 2]
+</span><span class="c1"></span>
+<span class="c1">//3、并集先做差集再做添加所有）
+</span><span class="c1"></span> <span class="o">(</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span>  <span class="n">bingList</span> <span class="o">=</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">listA</span><span class="o">);</span>
+    <span class="n">bingList</span><span class="o">.</span><span class="na">removeAll</span><span class="o">(</span><span class="n">listB</span><span class="o">);</span><span class="c1">// bingList为[1, 2]
+</span><span class="c1"></span>
+    <span class="n">bingList</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">listB</span><span class="o">);</span><span class="c1">//添加[3,4,5,6]
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bingList</span><span class="o">);</span>
+<span class="c1">//输出:[1, 2, 3, 4, 5, 6]
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意 : intersection和retainAll的差别</p>
+<p>要注意的是它们的返回类型是不⼀样的,intersection返回的是⼀个新的List集合，⽽retainAll返回是Bollean类型那就说明retainAll⽅法是
+对原有集合进⾏处理再返回原有集合,会改变原有集合中的内容。</p>
+<p>个⼈观点：1、从性能⾓度来考虑的话,List⾃带会⾼点,因为它不⽤再创建新的集合。2、需要注意的是：因为retainAll因为会改变原有集合,所以该集合需要多次使⽤就不适合⽤retainAll。</p>
+<p>注意: Arrays.asList将数组转集合不能进⾏add和remove操作。</p>
+<p>原因：调⽤Arrays.asList()⽣产的List的add、remove⽅法时报异常，这是由Arrays.asList() 返回的市Arrays的内部类ArrayList， ⽽
+不是java.util.ArrayList。Arrays的内部类ArrayList和java.util.ArrayList都是继承AbstractList，remove、add等⽅法AbstractList中
+是默认throw UnsupportedOperationException⽽且不作任何操作。java.util.ArrayList重新了这些⽅法⽽Arrays的内部类ArrayList没
+有重新，所以会抛出异常。</p>
+<p>所以正确做法如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span><span class="o">[]</span> <span class="n">array</span> <span class="o">={</span><span class="s">&#34;1&#34;</span><span class="o">,</span><span class="s">&#34;2&#34;</span><span class="o">,</span><span class="s">&#34;3&#34;</span><span class="o">,</span><span class="s">&#34;4&#34;</span><span class="o">,</span><span class="s">&#34;5&#34;</span><span class="o">};</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">array</span><span class="o">);</span>
+<span class="n">List</span> <span class="n">arrList</span> <span class="o">=</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+<span class="n">arrList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;6&#34;</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>⽅法三:JDK1.8 stream 新特性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="n">String</span><span class="o">[]</span> <span class="n">arrayA</span> <span class="o">=</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">&#34;1&#34;</span><span class="o">,</span><span class="s">&#34;2&#34;</span><span class="o">,</span><span class="s">&#34;3&#34;</span><span class="o">,</span><span class="s">&#34;4&#34;</span><span class="o">};</span>
+    <span class="n">String</span><span class="o">[]</span> <span class="n">arrayB</span> <span class="o">=</span><span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">&#34;3&#34;</span><span class="o">,</span><span class="s">&#34;4&#34;</span><span class="o">,</span><span class="s">&#34;5&#34;</span><span class="o">,</span><span class="s">&#34;6&#34;</span><span class="o">};</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listA</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">arrayA</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listB</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">arrayB</span><span class="o">);</span>
+
+	<span class="c1">// 交集
+</span><span class="c1"></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">intersection</span> <span class="o">=</span> <span class="n">listA</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">item</span> <span class="o">-&gt;</span> <span class="n">listB</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">item</span><span class="o">)).</span><span class="na">collect</span><span class="o">(</span><span class="n">toList</span><span class="o">());</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intersection</span><span class="o">);</span>
+	<span class="c1">//输出:[3, 4]
+</span><span class="c1"></span>
+	<span class="c1">// 差集(list1 - list2)
+</span><span class="c1"></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">reduceList</span> <span class="o">=</span> <span class="n">listA</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">item</span> <span class="o">-&gt;!</span><span class="n">listB</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">item</span><span class="o">)).</span><span class="na">collect</span><span class="o">(</span><span class="n">toList</span><span class="o">());</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">reduceList</span><span class="o">);</span>
+	<span class="c1">//输出:[1, 2]
+</span><span class="c1"></span>
+	<span class="c1">// 并集（新建集合:1、是因为不影响原始集合。2、Arrays.asList不能add和remove操作。
+</span><span class="c1"></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listAll</span> <span class="o">=</span> <span class="n">listA</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">toList</span><span class="o">());</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listAll2</span> <span class="o">=</span> <span class="n">listB</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">toList</span><span class="o">());</span>
+    <span class="n">listAll</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">listAll2</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">listAll</span><span class="o">);</span>
+	<span class="c1">//输出:[1, 2, 3, 4, 3, 4, 5, 6]
+</span><span class="c1"></span>
+
+	<span class="c1">// 去重并集
+</span><span class="c1"></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">listA</span><span class="o">);</span>
+    <span class="n">list</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">listB</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listAllDistinct</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">distinct</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">toList</span><span class="o">());</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">listAllDistinct</span><span class="o">);</span>
+	<span class="c1">//输出:[1, 2, 3, 4, 5, 6]
+</span></code></pre></td></tr></table>
+</div>
+</div><p>总结 ： 这三种推荐第⼀种⽅式，因为第⼆种还需要确定该集合是否被多次调⽤。第三种可读性不⾼。</p>
+<p>对象集合交、并、差处理
+因为对象的equels⽐较是⽐较两个对象的内存地址，所以除⾮是同⼀对象，否则equel返回永远是false。</p>
+<p>但我们实际开发中 在我们的业务系统中判断对象时有时候需要的不是⼀种严格意义上的相等，⽽是⼀种业务上的对象相等。在这种情况
+下，原⽣的equals⽅法就不能满⾜我们的需求了，所以这个时候我们需要重写equals⽅法。</p>
+<p>说明 :String为什么可以使⽤equels⽅法为什么只要字符串相等就为true,那是因为String类重写了equal和hashCode⽅法，⽐较的是值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 为什么重写equals ⽅法⼀定要重写hashCode⽅法下⾯也会讲
+</span><span class="cm">     */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 重写equals⽅法根据name和age都相同那么对象就默认相同
+</span><span class="cm">     */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Person</span> <span class="n">u</span> <span class="o">=</span> <span class="o">(</span><span class="n">Person</span><span class="o">)</span> <span class="n">obj</span><span class="o">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">u</span><span class="o">.</span><span class="na">getName</span><span class="o">())</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">age</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">u</span><span class="o">.</span><span class="na">getAge</span><span class="o">()));</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 重写
+</span><span class="cm">     * ⽅法
+</span><span class="cm">     * toString
+</span><span class="cm">     */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Person{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;name=&#39;&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="s">&#34;, age=&#34;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+    <span class="c1">//        这⾥根据name和age都相同那么就默认相同对象。
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">personList</span> <span class="o">=</span> <span class="n">Lists</span><span class="o">.</span><span class="na">newArrayList</span><span class="o">();</span>
+        <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&#34;⼩⼩&#34;</span><span class="o">,</span> <span class="n">3</span><span class="o">);</span>
+        <span class="n">Person</span> <span class="n">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&#34;中中&#34;</span><span class="o">,</span> <span class="n">4</span><span class="o">);</span>
+        <span class="n">personList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">person1</span><span class="o">);</span>
+        <span class="n">personList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">person2</span><span class="o">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">person1List</span> <span class="o">=</span> <span class="n">Lists</span><span class="o">.</span><span class="na">newArrayList</span><span class="o">();</span>
+        <span class="n">Person</span> <span class="n">person3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&#34;中中&#34;</span><span class="o">,</span> <span class="n">4</span><span class="o">);</span>
+        <span class="n">Person</span> <span class="n">person4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&#34;⼤⼤&#34;</span><span class="o">,</span> <span class="n">5</span><span class="o">);</span>
+        <span class="n">person1List</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">person3</span><span class="o">);</span>
+        <span class="n">person1List</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">person4</span><span class="o">);</span>
+        <span class="cm">/**
+</span><span class="cm">         1、差集
+</span><span class="cm">         */</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">CollectionUtils</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="n">personList</span><span class="o">,</span> <span class="n">person1List</span><span class="o">));</span>
+        <span class="c1">//输出:[Person { name = &#39;⼩⼩&#39;, age=3}]
+</span><span class="c1"></span>        <span class="cm">/**
+</span><span class="cm">         1、并集
+</span><span class="cm">         */</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">CollectionUtils</span><span class="o">.</span><span class="na">union</span><span class="o">(</span><span class="n">personList</span><span class="o">,</span> <span class="n">person1List</span><span class="o">));</span>
+        <span class="c1">//输出:[Person {name = &#39;⼩⼩&#39;, age=3}, Person{name=&#39;中中&#39;, age=4}, Person{name=&#39;⼤⼤&#39;, age=5}]
+</span><span class="c1"></span>        <span class="cm">/**
+</span><span class="cm">         3、交集
+</span><span class="cm">         */</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">CollectionUtils</span><span class="o">.</span><span class="na">intersection</span><span class="o">(</span><span class="n">personList</span><span class="o">,</span> <span class="n">person1List</span><span class="o">));</span>
+        <span class="c1">//输出:[Person {name = &#39;中中&#39;, age=4}]
+</span><span class="c1"></span>        <span class="cm">/**
+</span><span class="cm">         4、交集的补集（析取）
+</span><span class="cm">         */</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">CollectionUtils</span><span class="o">.</span><span class="na">disjunction</span><span class="o">(</span><span class="n">personList</span><span class="o">,</span> <span class="n">person1List</span><span class="o">));</span>
+        <span class="c1">// 输出:[Person {name = &#39;⼩⼩&#39;, age=3}, Person{name=&#39;⼤⼤&#39;, age=5}]
+</span><span class="c1"></span>    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
 </div><h2 id="map">Map</h2>
 <h3 id="特点">特点</h3>
 <p>map 没有无序，不能下标访问，只能通过keyvalue进行访问，能增加随机访问的速度</p>
@@ -1876,6 +2286,1242 @@ resize前的HashMap如下图所示:</p>
 </code></pre></td></tr></table>
 </div>
 </div><p><a href="https://blog.csdn.net/weixin_42340670/article/details/80503517" target="_blank" rel="noopener noreferrer">原文</a></p>
+<h3 id="hashmap-的-7-种遍历方式与性能分析">HashMap 的 7 种遍历方式与性能分析</h3>
+<p>首先，给大家说声抱歉~</p>
+<p>事情经过是这样子的，五一节前我发布了一篇文章<a href="http://mp.weixin.qq.com/s?__biz=MzU1NTkwODE4Mw==&amp;mid=2247485176&amp;idx=1&amp;sn=961fcc0e4dd05a505ef0fc1eb5b10ac4&amp;chksm=fbcc6bc0ccbbe2d67850eb654fb8d72f3f2df3fa0ff1133700a0972728679863a9c5fad559e5&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">《HashMap 的 7 种遍历方式与性能分析！》</a>，但是好心的网友却发现了一个问题，他说 <strong>“<strong><strong>测试时使用了 sout 打印信息会导致测试的结果不准确，因为这样测试的话，大部分的性能消耗其实来源于信息打印</strong></strong>”</strong>，我细想了一下，<strong>说的确实有道理，于是我就重写了测试部分的代码</strong>。</p>
+<p>但是不写不知道，一写吓一跳，删除了打印信息的代码之后，惊奇的发现，之前得出的“EntrySet 和 KeySet 性能相近”的结论是错误的，并且我也把 JMH  测试吞吐量的代码换成了平均执行时间，因为这样看起来更直观。而测试的结果是，EntrySet 和 KeySet 的性能相差在一倍以上，详见下文。</p>
+<p>本文改动了两处内容：</p>
+<ul>
+<li>去掉了测试代码中的打印信息，把测试类型从吞吐量测试改成了平均执行时间测试（这样看起来更直观）；</li>
+<li>新增了 EntrySet 和 KeySet 性能差别的原因分析。</li>
+</ul>
+<blockquote>
+<p>备注：以上内容为更正后的完整文章。</p>
+</blockquote>
+<p>随着 JDK 1.8 Streams API 的发布，使得 HashMap 拥有了更多的遍历的方式，但应该选择那种遍历方式？反而成了一个问题。</p>
+<p>本文<strong>先从 HashMap 的遍历方法讲起，然后再从性能、原理以及安全性等方面，来分析 HashMap 各种遍历方式的优势与不足</strong>，本文主要内容如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./20.png"
+        data-srcset="./20.png, ./20.png 1.5x, ./20.png 2x"
+        data-sizes="auto"
+        alt="./20.png"
+        title="20" /></p>
+<h4 id="hashmap-遍历">HashMap 遍历</h4>
+<p>HashMap <strong>遍历从大的方向来说，可分为以下 4 类</strong>：</p>
+<ol>
+<li>迭代器（Iterator）方式遍历；</li>
+<li>For Each 方式遍历；</li>
+<li>Lambda 表达式遍历（JDK 1.8+）;</li>
+<li>Streams API 遍历（JDK 1.8+）。</li>
+</ol>
+<p>但每种类型下又有不同的实现方式，因此具体的遍历方式又可以分为以下 7 种：</p>
+<ol>
+<li>使用迭代器（Iterator）EntrySet 的方式进行遍历；</li>
+<li>使用迭代器（Iterator）KeySet 的方式进行遍历；</li>
+<li>使用 For Each EntrySet 的方式进行遍历；</li>
+<li>使用 For Each KeySet 的方式进行遍历；</li>
+<li>使用 Lambda 表达式的方式进行遍历；</li>
+<li>使用 Streams API 单线程的方式进行遍历；</li>
+<li>使用 Streams API 多线程的方式进行遍历。</li>
+</ol>
+<p>接下来我们来看每种遍历方式的具体实现代码。</p>
+<h5 id="1迭代器-entryset">1.迭代器 EntrySet</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 创建并赋值 HashMap
+</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;Java&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;JDK&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">3</span><span class="o">,</span> <span class="s">&#34;Spring Framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">4</span><span class="o">,</span> <span class="s">&#34;MyBatis framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="s">&#34;Java中文社群&#34;</span><span class="o">);</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果为：</p>
+<blockquote>
+<p>1</p>
+<p>Java</p>
+<p>2</p>
+<p>JDK</p>
+<p>3</p>
+<p>Spring Framework</p>
+<p>4</p>
+<p>MyBatis framework</p>
+<p>5</p>
+<p>Java中文社群</p>
+</blockquote>
+<h5 id="2迭代器-keyset">2.迭代器 KeySet</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 创建并赋值 HashMap
+</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;Java&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;JDK&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">3</span><span class="o">,</span> <span class="s">&#34;Spring Framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">4</span><span class="o">,</span> <span class="s">&#34;MyBatis framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="s">&#34;Java中文社群&#34;</span><span class="o">);</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Integer</span> <span class="n">key</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果为：</p>
+<blockquote>
+<p>1</p>
+<p>Java</p>
+<p>2</p>
+<p>JDK</p>
+<p>3</p>
+<p>Spring Framework</p>
+<p>4</p>
+<p>MyBatis framework</p>
+<p>5</p>
+<p>Java中文社群</p>
+</blockquote>
+<h5 id="3foreach-entryset">3.ForEach EntrySet</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 创建并赋值 HashMap
+</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;Java&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;JDK&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">3</span><span class="o">,</span> <span class="s">&#34;Spring Framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">4</span><span class="o">,</span> <span class="s">&#34;MyBatis framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="s">&#34;Java中文社群&#34;</span><span class="o">);</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果为：</p>
+<blockquote>
+<p>1</p>
+<p>Java</p>
+<p>2</p>
+<p>JDK</p>
+<p>3</p>
+<p>Spring Framework</p>
+<p>4</p>
+<p>MyBatis framework</p>
+<p>5</p>
+<p>Java中文社群</p>
+</blockquote>
+<h5 id="4foreach-keyset">4.ForEach KeySet</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 创建并赋值 HashMap
+</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;Java&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;JDK&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">3</span><span class="o">,</span> <span class="s">&#34;Spring Framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">4</span><span class="o">,</span> <span class="s">&#34;MyBatis framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="s">&#34;Java中文社群&#34;</span><span class="o">);</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">Integer</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果为：</p>
+<blockquote>
+<p>1</p>
+<p>Java</p>
+<p>2</p>
+<p>JDK</p>
+<p>3</p>
+<p>Spring Framework</p>
+<p>4</p>
+<p>MyBatis framework</p>
+<p>5</p>
+<p>Java中文社群</p>
+</blockquote>
+<h5 id="5lambda">5.Lambda</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 创建并赋值 HashMap
+</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;Java&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;JDK&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">3</span><span class="o">,</span> <span class="s">&#34;Spring Framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">4</span><span class="o">,</span> <span class="s">&#34;MyBatis framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="s">&#34;Java中文社群&#34;</span><span class="o">);</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果为：</p>
+<blockquote>
+<p>1</p>
+<p>Java</p>
+<p>2</p>
+<p>JDK</p>
+<p>3</p>
+<p>Spring Framework</p>
+<p>4</p>
+<p>MyBatis framework</p>
+<p>5</p>
+<p>Java中文社群</p>
+</blockquote>
+<h5 id="6streams-api-单线程">6.Streams API 单线程</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 创建并赋值 HashMap
+</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;Java&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;JDK&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">3</span><span class="o">,</span> <span class="s">&#34;Spring Framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">4</span><span class="o">,</span> <span class="s">&#34;MyBatis framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="s">&#34;Java中文社群&#34;</span><span class="o">);</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">forEach</span><span class="o">((</span><span class="n">entry</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果为：</p>
+<blockquote>
+<p>1</p>
+<p>Java</p>
+<p>2</p>
+<p>JDK</p>
+<p>3</p>
+<p>Spring Framework</p>
+<p>4</p>
+<p>MyBatis framework</p>
+<p>5</p>
+<p>Java中文社群</p>
+</blockquote>
+<h5 id="7streams-api-多线程">7.Streams API 多线程</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 创建并赋值 HashMap
+</span><span class="c1"></span>        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;Java&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;JDK&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">3</span><span class="o">,</span> <span class="s">&#34;Spring Framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">4</span><span class="o">,</span> <span class="s">&#34;MyBatis framework&#34;</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">5</span><span class="o">,</span> <span class="s">&#34;Java中文社群&#34;</span><span class="o">);</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">parallelStream</span><span class="o">().</span><span class="na">forEach</span><span class="o">((</span><span class="n">entry</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果为：</p>
+<blockquote>
+<p>4</p>
+<p>MyBatis framework</p>
+<p>5</p>
+<p>Java中文社群</p>
+<p>1</p>
+<p>Java</p>
+<p>2</p>
+<p>JDK</p>
+<p>3</p>
+<p>Spring Framework</p>
+</blockquote>
+<h4 id="性能测试">性能测试</h4>
+<p>接下来我们使用 Oracle 官方提供的性能测试工具 JMH（Java Microbenchmark Harness，JAVA 微基准测试套件）来测试一下这 7 种循环的性能。</p>
+<p>首先，我们先要引入 JMH 框架，在 <code>pom.xml</code> 文件中添加如下配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.openjdk.jmh<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jmh-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.23<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="c">&lt;!-- https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.openjdk.jmh<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>jmh-generator-annprocess<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.23<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后编写测试代码，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@BenchmarkMode</span><span class="o">(</span><span class="n">Mode</span><span class="o">.</span><span class="na">AverageTime</span><span class="o">)</span> <span class="c1">// 测试完成时间
+</span><span class="c1"></span><span class="nd">@OutputTimeUnit</span><span class="o">(</span><span class="n">TimeUnit</span><span class="o">.</span><span class="na">NANOSECONDS</span><span class="o">)</span>
+<span class="nd">@Warmup</span><span class="o">(</span><span class="n">iterations</span> <span class="o">=</span> <span class="n">2</span><span class="o">,</span> <span class="n">time</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">timeUnit</span> <span class="o">=</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">)</span> <span class="c1">// 预热 2 轮，每次 1s
+</span><span class="c1"></span><span class="nd">@Measurement</span><span class="o">(</span><span class="n">iterations</span> <span class="o">=</span> <span class="n">5</span><span class="o">,</span> <span class="n">time</span> <span class="o">=</span> <span class="n">1</span><span class="o">,</span> <span class="n">timeUnit</span> <span class="o">=</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">)</span> <span class="c1">// 测试 5 轮，每次 1s
+</span><span class="c1"></span><span class="nd">@Fork</span><span class="o">(</span><span class="n">1</span><span class="o">)</span> <span class="c1">// fork 1 个线程
+</span><span class="c1"></span><span class="nd">@State</span><span class="o">(</span><span class="n">Scope</span><span class="o">.</span><span class="na">Thread</span><span class="o">)</span> <span class="c1">// 每个测试线程一个实例
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapCycleTest</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">()</span> <span class="o">{{</span>
+        <span class="c1">// 添加数据
+</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">put</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="s">&#34;val:&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}};</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">RunnerException</span> <span class="o">{</span>
+        <span class="c1">// 启动基准测试
+</span><span class="c1"></span>        <span class="n">Options</span> <span class="n">opt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OptionsBuilder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">include</span><span class="o">(</span><span class="n">HashMapCycle</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">())</span> <span class="c1">// 要导入的测试类
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">output</span><span class="o">(</span><span class="s">&#34;/Users/admin/Desktop/jmh-map.log&#34;</span><span class="o">)</span> <span class="c1">// 输出测试结果的文件
+</span><span class="c1"></span>                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+        <span class="k">new</span> <span class="n">Runner</span><span class="o">(</span><span class="n">opt</span><span class="o">).</span><span class="na">run</span><span class="o">();</span> <span class="c1">// 执行测试
+</span><span class="c1"></span>    <span class="o">}</span>
+
+    <span class="nd">@Benchmark</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">entrySet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">Integer</span> <span class="n">k</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+            <span class="n">String</span> <span class="n">v</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Benchmark</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">forEachEntrySet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Integer</span> <span class="n">k</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+            <span class="n">String</span> <span class="n">v</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Benchmark</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">keySet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Integer</span> <span class="n">k</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">String</span> <span class="n">v</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">k</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Benchmark</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">forEachKeySet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="k">for</span> <span class="o">(</span><span class="n">Integer</span> <span class="n">key</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Integer</span> <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
+            <span class="n">String</span> <span class="n">v</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">k</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Benchmark</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lambda</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 遍历
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">Integer</span> <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
+            <span class="n">String</span> <span class="n">v</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Benchmark</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">streamApi</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 单线程遍历
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">forEach</span><span class="o">((</span><span class="n">entry</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">Integer</span> <span class="n">k</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+            <span class="n">String</span> <span class="n">v</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">parallelStreamApi</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 多线程遍历
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">parallelStream</span><span class="o">().</span><span class="na">forEach</span><span class="o">((</span><span class="n">entry</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">Integer</span> <span class="n">k</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+            <span class="n">String</span> <span class="n">v</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所有被添加了 <code>@Benchmark</code> 注解的方法都会被测试，因为 parallelStream 为多线程版本性能一定是最好的，所以就不参与测试了，其他 6 个方法的测试结果如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./21.png"
+        data-srcset="./21.png, ./21.png 1.5x, ./21.png 2x"
+        data-sizes="auto"
+        alt="./21.png"
+        title="21" /></p>
+<p>其中 Units 为 ns/op 意思是执行完成时间（单位为纳秒），而 Score 列为平均执行时间， <code>±</code> 符号表示误差。从以上结果可以看出，两个 <code>entrySet</code> 的性能相近，并且执行速度最快，接下来是 <code>stream</code> ，然后是两个 <code>keySet</code>，性能最差的是 <code>KeySet</code> 。</p>
+<blockquote>
+<p>注：以上结果基于测试环境：JDK 1.8 / Mac mini (2018) / Idea 2020.1</p>
+</blockquote>
+<h5 id="结论">结论</h5>
+<p><strong>从以上结果可以看出 <code>entrySet</code> 的性能比 <code>keySet</code> 的性能高出了一倍之多，因此我们应该尽量使用 <code>entrySet</code>  来实现 Map 集合的遍历</strong>。</p>
+<h4 id="字节码分析">字节码分析</h4>
+<p>要理解以上的测试结果，我们需要把所有遍历代码通过 <code>javac</code> 编译成字节码来看具体的原因。</p>
+<p>编译后，我们使用 Idea 打开字节码，内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//
+</span><span class="c1">// Source code recreated from a .class file by IntelliJ IDEA
+</span><span class="c1">// (powered by Fernflower decompiler)
+</span><span class="c1">//
+</span><span class="c1"></span>
+<span class="kn">package</span> <span class="nn">com.example</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map.Entry</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMapTest</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">()</span> <span class="o">{</span>
+        <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">var1</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">var1</span> <span class="o">&lt;</span> <span class="n">2</span><span class="o">;</span> <span class="o">++</span><span class="n">var1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">var1</span><span class="o">,</span> <span class="s">&#34;val:&#34;</span> <span class="o">+</span> <span class="n">var1</span><span class="o">);</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span>
+    <span class="o">};</span>
+
+    <span class="kd">public</span> <span class="nf">HashMapTest</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">var0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">entrySet</span><span class="o">();</span>
+        <span class="n">keySet</span><span class="o">();</span>
+        <span class="n">forEachEntrySet</span><span class="o">();</span>
+        <span class="n">forEachKeySet</span><span class="o">();</span>
+        <span class="n">lambda</span><span class="o">();</span>
+        <span class="n">streamApi</span><span class="o">();</span>
+        <span class="n">parallelStreamApi</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">entrySet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Iterator</span> <span class="n">var0</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+
+        <span class="k">while</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Entry</span> <span class="n">var1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Entry</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var1</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">var1</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">keySet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Iterator</span> <span class="n">var0</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+
+        <span class="k">while</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Integer</span> <span class="n">var1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Integer</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var1</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">var1</span><span class="o">));</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">forEachEntrySet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Iterator</span> <span class="n">var0</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+
+        <span class="k">while</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Entry</span> <span class="n">var1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Entry</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var1</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">var1</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">forEachKeySet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Iterator</span> <span class="n">var0</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+
+        <span class="k">while</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Integer</span> <span class="n">var1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Integer</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var1</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">var1</span><span class="o">));</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">lambda</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">var0</span><span class="o">,</span> <span class="n">var1</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var0</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var1</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">streamApi</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">forEach</span><span class="o">((</span><span class="n">var0</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">parallelStreamApi</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">parallelStream</span><span class="o">().</span><span class="na">forEach</span><span class="o">((</span><span class="n">var0</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>从结果可以看出，除了 Lambda 和 Streams API 之外，通过迭代器循环和 <code>for</code> 循环的遍历的 <code>EntrySet</code> 最终生成的代码是一样的，他们都是在循环中创建了一个遍历对象 <code>Entry</code> ，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">entrySet</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Iterator</span> <span class="n">var0</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+    <span class="k">while</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">Entry</span> <span class="n">var1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Entry</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var1</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">var1</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">forEachEntrySet</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Iterator</span> <span class="n">var0</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+    <span class="k">while</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">Entry</span> <span class="n">var1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Entry</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var1</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">var1</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而 <code>KeySet</code> 的代码也是类似的，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">keySet</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Iterator</span> <span class="n">var0</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+    <span class="k">while</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">Integer</span> <span class="n">var1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Integer</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var1</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">var1</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">forEachKeySet</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Iterator</span> <span class="n">var0</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+    <span class="k">while</span><span class="o">(</span><span class="n">var0</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">Integer</span> <span class="n">var1</span> <span class="o">=</span> <span class="o">(</span><span class="n">Integer</span><span class="o">)</span><span class="n">var0</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">var1</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">var1</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>所以我们在使用迭代器或是 <code>for</code> 循环 <code>EntrySet</code> 时，他们的性能都是相同的，因为他们最终生成的字节码基本都是一样的；同理 <code>KeySet</code> 的两种遍历方式也是类似的。</p>
+<h4 id="性能分析">性能分析</h4>
+<p><code>EntrySet</code> 之所以比 <code>KeySet</code> 的性能高是因为，<code>KeySet</code> 在循环时使用了 <code>map.get(key)</code>，而 <code>map.get(key)</code> 相当于又遍历了一遍 Map 集合去查询 <code>key</code> 所对应的值。为什么要用“又”这个词？那是因为<strong>在使用迭代器或者 for 循环时，其实已经遍历了一遍 Map 集合了，因此再使用 <code>map.get(key)</code> 查询时，相当于遍历了两遍</strong>。</p>
+<p>而 <code>EntrySet</code> 只遍历了一遍 Map 集合，之后通过代码“Entry&lt;Integer, String&gt; entry = iterator.next()”把对象的 <code>key</code> 和 <code>value</code> 值都放入到了 <code>Entry</code> 对象中，因此再获取 <code>key</code> 和 <code>value</code> 值时就无需再遍历 Map 集合，只需要从 <code>Entry</code> 对象中取值就可以了。</p>
+<p>所以，<strong><code>EntrySet</code> 的性能比 <code>KeySet</code> 的性能高出了一倍，因为 <code>KeySet</code> 相当于循环了两遍 Map 集合，而 <code>EntrySet</code> 只循环了一遍</strong>。</p>
+<h4 id="安全性测试">安全性测试</h4>
+<p>从上面的性能测试结果和原理分析，我想大家应该选用那种遍历方式，已经心中有数的，而接下来我们就从「安全」的角度入手，来分析那种遍历方式更安全。</p>
+<p>我们把以上遍历划分为四类进行测试：迭代器方式、For 循环方式、Lambda 方式和 Stream 方式，测试代码如下。</p>
+<h5 id="1迭代器方式">1.迭代器方式</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">iterator</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">=</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 删除
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;del:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+        <span class="n">iterator</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;show:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果：</p>
+<blockquote>
+<p>show:0</p>
+<p>del:1</p>
+<p>show:2</p>
+</blockquote>
+<p>测试结果：<strong>迭代器中循环删除数据安全</strong>。</p>
+<h5 id="2for-循环方式">2.For 循环方式</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 删除
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;del:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;show:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./22.png"
+        data-srcset="./22.png, ./22.png 1.5x, ./22.png 2x"
+        data-sizes="auto"
+        alt="./22.png"
+        title="22" />image.png</p>
+<p>测试结果：<strong>For 循环中删除数据非安全</strong>。</p>
+<h5 id="3lambda-方式">3.Lambda 方式</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">map</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">key</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;del:&#34;</span> <span class="o">+</span> <span class="n">key</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;show:&#34;</span> <span class="o">+</span> <span class="n">key</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./23.png"
+        data-srcset="./23.png, ./23.png 1.5x, ./23.png 2x"
+        data-sizes="auto"
+        alt="./23.png"
+        title="23" />测试结果：<strong>Lambda 循环中删除数据非安全</strong>。</p>
+<p><strong>Lambda 删除的正确方式</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 根据 map 中的 key 去判断删除
+</span><span class="c1"></span><span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">().</span><span class="na">removeIf</span><span class="o">(</span><span class="n">key</span> <span class="o">-&gt;</span> <span class="n">key</span> <span class="o">==</span> <span class="n">1</span><span class="o">);</span>
+<span class="n">map</span><span class="o">.</span><span class="na">forEach</span><span class="o">((</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;show:&#34;</span> <span class="o">+</span> <span class="n">key</span><span class="o">);</span>
+<span class="o">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果：</p>
+<blockquote>
+<p>show:0</p>
+<p>show:2</p>
+</blockquote>
+<p>从上面的代码可以看出，可以先使用 <code>Lambda</code> 的 <code>removeIf</code> 删除多余的数据，再进行循环是一种正确操作集合的方式。</p>
+<h5 id="4stream-方式">4.Stream 方式</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">forEach</span><span class="o">((</span><span class="n">entry</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;del:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;show:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./24.png"
+        data-srcset="./24.png, ./24.png 1.5x, ./24.png 2x"
+        data-sizes="auto"
+        alt="./24.png"
+        title="24" /></p>
+<p>测试结果：<strong>Stream 循环中删除数据非安全</strong>。</p>
+<p><strong>Stream 循环的正确方式</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">m</span> <span class="o">-&gt;</span> <span class="n">1</span> <span class="o">!=</span> <span class="n">m</span><span class="o">.</span><span class="na">getKey</span><span class="o">()).</span><span class="na">forEach</span><span class="o">((</span><span class="n">entry</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;del:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;show:&#34;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序的执行结果：</p>
+<blockquote>
+<p>show:0</p>
+<p>show:2</p>
+</blockquote>
+<p>从上面的代码可以看出，可以使用 <code>Stream</code> 中的 <code>filter</code> 过滤掉无用的数据，再进行遍历也是一种安全的操作集合的方式。</p>
+<h5 id="小结-1">小结</h5>
+<p>我们不能在遍历中使用集合 <code>map.remove()</code> 来删除数据，这是非安全的操作方式，但我们可以使用迭代器的 <code>iterator.remove()</code> 的方法来删除数据，这是安全的删除集合的方式。同样的我们也可以使用 Lambda 中的 <code>removeIf</code> 来提前删除数据，或者是使用 Stream 中的 <code>filter</code> 过滤掉要删除的数据进行循环，这样都是安全的，当然我们也可以在 <code>for</code> 循环前删除数据在遍历也是线程安全的。</p>
+<h4 id="总结-1">总结</h4>
+<p>本文我们讲了 HashMap 4 种遍历方式：迭代器、for、lambda、stream，以及具体的 7 种遍历方法，综合性能和安全性来看，<strong>我们应该尽量使用迭代器（Iterator）来遍历 <code>EntrySet</code> 的遍历方式来操作 Map 集合</strong>，这样就会既安全又高效了。</p>
+<h3 id="java-集合---tablesizefor">Java 集合 &ndash;tableSizeFor</h3>
+<p>在看 HashMap 源码的时候有这么一段代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MAXIMUM_CAPACITY</span> <span class="o">=</span> <span class="n">1</span> <span class="o">&lt;&lt;</span> <span class="n">30</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="nf">tableSizeFor</span><span class="o">(</span><span class="kt">int</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">1</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">2</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">4</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">8</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">16</span><span class="o">;</span>
+    <span class="k">return</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">?</span> <span class="n">1</span> <span class="o">:</span> <span class="o">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="n">MAXIMUM_CAPACITY</span><span class="o">)</span> <span class="o">?</span> <span class="n">MAXIMUM_CAPACITY</span> <span class="o">:</span> <span class="n">n</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>第一眼看上去完全看不懂，这几个右移按位或是什么意思</p>
+<p>运行一个例子看看</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MAXIMUM_CAPACITY</span> <span class="o">=</span> <span class="n">1</span> <span class="o">&lt;&lt;</span> <span class="n">30</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">tableSizeFor</span><span class="o">(</span><span class="kt">int</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">1</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">2</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">4</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">8</span><span class="o">;</span>
+    <span class="n">n</span> <span class="o">|=</span> <span class="n">n</span> <span class="o">&gt;&gt;&gt;</span> <span class="n">16</span><span class="o">;</span>
+    <span class="k">return</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">?</span> <span class="n">1</span> <span class="o">:</span> <span class="o">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="n">MAXIMUM_CAPACITY</span><span class="o">)</span> <span class="o">?</span> <span class="n">MAXIMUM_CAPACITY</span> <span class="o">:</span> <span class="n">n</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tableSizeFor</span><span class="o">(</span><span class="n">6</span><span class="o">));</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tableSizeFor</span><span class="o">(</span><span class="n">7</span><span class="o">));</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tableSizeFor</span><span class="o">(</span><span class="n">10</span><span class="o">));</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tableSizeFor</span><span class="o">(</span><span class="n">15</span><span class="o">));</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">tableSizeFor</span><span class="o">(</span><span class="n">18</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="c1">// 输出
+</span><span class="c1"></span><span class="n">8</span>
+<span class="n">8</span>
+<span class="n">16</span>
+<span class="n">16</span>
+<span class="n">32</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输入 6，7 都是输出 8</p>
+<p>输入 10， 15 输出 16</p>
+<p>输入 18 输出 32</p>
+<p>输出的都是 2 的指数幂，其实这个方法是用于找到大于等于输入参数的的最小的 2 的指数幂。为什么需要这样的方法，因为 hashmap 的容量大小都是 2 的指数幂。</p>
+<p>以输入 22 为例子， n = c - 1, n 为 21</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./25.webp"
+        data-srcset="./25.webp, ./25.webp 1.5x, ./25.webp 2x"
+        data-sizes="auto"
+        alt="./25.webp"
+        title="25" /></p>
+<p>每一次右移之后与上一次的结果做按位或操作（只要有一个位是 1，结果就是 1），通过几次操作之后将原本二进制最高位为 1 的后面几位全部至 1，最后再加 1，得到一个 2 的指数幂。</p>
+<p>至于为什么一开始要执行 n = c - 1; 这是为了防止 c 已经是 2 的幂，如果 c 已经是 2 的幂， 又没有执行这个减 1 操作，则执行完后面的几条无符号右移操作之后，返回的结果将是这个 c 的 2 倍。</p>
 <h2 id="java-collectors常用的20个方法">Java-Collectors常用的20个方法</h2>
 <div style="background-color: #f9f2f4;border-radius: 2px; display:inline-block;*display:inline;*zoom:1;">
     <font color=#c7254e size=5>返回List集合: toList()</font>
@@ -5242,11 +6888,390 @@ Deque deque = new LinkedList()</li>
 <p>集合所说的序，是指元素存入集合的顺序，当元素存储顺序和取出顺序一致时就是有序，否则就是无序。</p>
 <p>并不是说存储数据的时候无序，没有规则，当我们不论使用for循环随机数添加元素的时候，还是for循环有序添加元素的时候，最后遍历输出的结果均为按照值的大小排序输出，随机添加元素，但结果仍有序输出，这就对照着上面那句，存储顺序和取出顺序是不一致的，所以我们说HashSet是无序的，虽然我们按照123的顺序添加元素，结果虽然仍为123，但这只是一种巧合而已。</p>
 <p>所以HashSet只是<strong>不保证有序</strong>，并<strong>不是保证无序</strong></p>
+<h2 id="数组操作">数组操作</h2>
+<p>数组的初始化填充</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span><span class="o">[]</span> <span class="n">iL</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">100</span><span class="o">];</span>
+<span class="c1">//将数组填充为100个-1
+</span><span class="c1"></span><span class="n">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">iL</span><span class="o">,-</span><span class="n">1</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="字符串操作">字符串操作</h2>
+<p>String根据下标访问</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;abcd&#34;</span>
+<span class="n">Char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">0</span><span class="o">)</span><span class="c1">//c结果为a
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="stringformat的详细用法">String.format()的详细用法</h2>
+<h3 id="问题">问题</h3>
+<p>在开发的时候一段<a href="https://so.csdn.net/so/search?q=%e5%ad%97%e7%ac%a6%e4%b8%b2&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">字符串</a>的中间某一部分是需要可变的 比如一个Textview需要显示”XXX用户来自 上海 年龄 21 性别 男” 
+其中的 XXX 是用户名 每个用户也是不一样的 
+地区 上海 为可变的string数据 
+年龄 21 为可变的int数据 
+性别 男 为可变的string数据 
+遇到这种情况你们是怎么样解决的呢?把这段字符串保存在常量类里吗?不!我们应该遵循Google的开发模式</p>
+<p>XML</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&#34;user_info&#39;&gt; %1$s&lt;/span&gt; 用户来自 &lt;span class=&#34;</span><span class="err">hljs-variable&#34;</span><span class="nt">&gt;</span>%2<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&#34;hljs-variable&#34;</span><span class="nt">&gt;</span>$s  年龄 %3$d<span class="nt">&lt;/span&gt;</span>  性别 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&#34;hljs-variable&#34;</span><span class="nt">&gt;</span>%4<span class="nt">&lt;/span&gt;&lt;span</span> <span class="na">class=</span><span class="s">&#34;hljs-variable&#34;</span><span class="nt">&gt;</span>$s<span class="nt">&lt;/string&gt;</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>JAVA</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">userName</span><span class="o">=</span><span class="s">&#34;XXX&#34;</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">userProvince</span><span class="o">=</span><span class="s">&#34;上海&#34;</span><span class="o">;</span> 
+<span class="kt">int</span> <span class="n">userAge</span><span class="o">=</span><span class="n">21</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">userSex</span><span class="o">=</span><span class="s">&#34;男&#34;</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">string</span><span class="o">=</span><span class="n">getResources</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">user_info</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">userInfo</span><span class="o">=</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">string</span><span class="o">,</span><span class="n">userName</span><span class="o">,</span><span class="n">userProvince</span><span class="o">,</span><span class="n">userAge</span><span class="o">,</span><span class="n">userSex</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>是不是觉得很方便 
+本来是打算当笔记记录下来备忘的,但是有朋友有朋友问到的一些相关的东西,我就完善一下吧</p>
+<h3 id="stringformat字符串常规类型格式化的两种重载方式">String.format()字符串常规类型格式化的两种重载方式</h3>
+<ul>
+<li>format(String format, Object… args) 新字符串使用本地语言环境，制定字符串格式和参数生成格式化的新字符串。</li>
+<li>format(Locale locale, String format, Object… args) 使用指定的语言环境，制定字符串格式和参数生成格式化的字符串。</li>
+</ul>
+<h3 id="上个栗子有用到了字符类型和整数类型的格式化-下面我把常用的类型例举出来">上个栗子有用到了字符类型和整数类型的格式化 下面我把常用的类型例举出来</h3>
+<table>
+<thead>
+<tr>
+<th>转换符</th>
+<th>详细说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%s</td>
+<td>字符串类型</td>
+<td>“喜欢请收藏”</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>字符类型</td>
+<td>‘m’</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>布尔类型</td>
+<td>true</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>整数类型（十进制）</td>
+<td>88</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>整数类型（十六进制）</td>
+<td>FF</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>整数类型（八进制）</td>
+<td>77</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>浮点类型</td>
+<td>8.888</td>
+</tr>
+<tr>
+<td>%a</td>
+<td>十六进制浮点类型</td>
+<td>FF.35AE</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>指数类型</td>
+<td>9.38e+5</td>
+</tr>
+<tr>
+<td>%g</td>
+<td>通用浮点类型（f和e类型中较短的）</td>
+<td>不举例(基本用不到)</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>散列码</td>
+<td>不举例(基本用不到)</td>
+</tr>
+<tr>
+<td>%%</td>
+<td>百分比类型</td>
+<td>％(%特殊字符%%才能显示%)</td>
+</tr>
+<tr>
+<td>%n</td>
+<td>换行符</td>
+<td>不举例(基本用不到)</td>
+</tr>
+<tr>
+<td>%tx</td>
+<td>日期与时间类型（x代表不同的日期与时间转换符)</td>
+<td>不举例(基本用不到)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="为了方便理解还是举个例子">为了方便理解还是举个例子</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="n">String</span> <span class="n">str</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>  
+    <span class="n">str</span><span class="o">=</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;Hi,%s&#34;</span><span class="o">,</span> <span class="s">&#34;小超&#34;</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>  
+    <span class="n">str</span><span class="o">=</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;Hi,%s %s %s&#34;</span><span class="o">,</span> <span class="s">&#34;小超&#34;</span><span class="o">,</span><span class="s">&#34;是个&#34;</span><span class="o">,</span><span class="s">&#34;大帅哥&#34;</span><span class="o">);</span>            
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>                           
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;字母c的大写是：%c %n&#34;</span><span class="o">,</span> <span class="sc">&#39;C&#39;</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;布尔结果是：%b %n&#34;</span><span class="o">,</span> <span class="s">&#34;小超&#34;</span><span class="o">.</span><span class="na">equal</span><span class="o">(</span><span class="s">&#34;帅哥&#34;</span><span class="o">));</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;100的一半是：%d %n&#34;</span><span class="o">,</span> <span class="n">100</span><span class="o">/</span><span class="n">2</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;100的16进制数是：%x %n&#34;</span><span class="o">,</span> <span class="n">100</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;100的8进制数是：%o %n&#34;</span><span class="o">,</span> <span class="n">100</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;50元的书打8.5折扣是：%f 元%n&#34;</span><span class="o">,</span> <span class="n">50</span><span class="o">*</span><span class="n">0</span><span class="o">.</span><span class="na">85</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;上面价格的16进制数是：%a %n&#34;</span><span class="o">,</span> <span class="n">50</span><span class="o">*</span><span class="n">0</span><span class="o">.</span><span class="na">85</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;上面价格的指数表示：%e %n&#34;</span><span class="o">,</span> <span class="n">50</span><span class="o">*</span><span class="n">0</span><span class="o">.</span><span class="na">85</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;上面价格的指数和浮点数结果的长度较短的是：%g %n&#34;</span><span class="o">,</span> <span class="n">50</span><span class="o">*</span><span class="n">0</span><span class="o">.</span><span class="na">85</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;上面的折扣是%d%% %n&#34;</span><span class="o">,</span> <span class="n">85</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;字母A的散列码是：%h %n&#34;</span><span class="o">,</span> <span class="sc">&#39;A&#39;</span><span class="o">);</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Hi,小超 
+Hi,小超 是个 大帅哥  
+字母c的大写是：C   
+布尔的结果是：false   
+100的一半是：50   
+100的16进制数是：64   
+100的8进制数是：144   
+50元的书打8.5折扣是：42.500000 元  
+上面价格的16进制数是：0x1.54p5   
+上面价格的指数表示：4.250000e+01   
+上面价格的指数和浮点数结果的长度较短的是：42.5000   
+上面的折扣是85%   
+字母A的散列码是：41   
+</code></pre></td></tr></table>
+</div>
+</div><p>###搭配转换符还有实现高级功能 第一个例子中有用到 $</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>说明</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>为正数或者负数添加符号</td>
+<td>(“%+d”,15)</td>
+<td>+15</td>
+</tr>
+<tr>
+<td>0</td>
+<td>数字前面补0(加密常用)</td>
+<td>(“%04d”, 99)</td>
+<td>0099</td>
+</tr>
+<tr>
+<td>空格</td>
+<td>在整数之前添加指定数量的空格</td>
+<td>(“% 4d”, 99)</td>
+<td>99</td>
+</tr>
+<tr>
+<td>,</td>
+<td>以“,”对数字分组(常用显示金额)</td>
+<td>(“%,f”, 9999.99)</td>
+<td>9,999.990000</td>
+</tr>
+<tr>
+<td>(</td>
+<td>使用括号包含负数</td>
+<td>(“%(f”, -99.99)</td>
+<td>(99.990000)</td>
+</tr>
+<tr>
+<td>#</td>
+<td>如果是浮点数则包含小数点，如果是16进制或8进制则添加0x或0</td>
+<td>(“%#x”, 99)(“%#o”, 99)</td>
+<td>0x63 0143</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>格式化前一个转换符所描述的参数</td>
+<td>(“%f和%&lt;3.2f”, 99.45)</td>
+<td>99.450000和99.45</td>
+</tr>
+<tr>
+<td>d,%2$s”, 99,”abc”)</td>
+<td>99,abc</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>第一个例子中有说到 %tx x代表日期转换符 我也顺便列举下日期转换符</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c</td>
+<td>包括全部日期和时间信息</td>
+<td>星期六 十月 27 14:21:20 CST 2007</td>
+</tr>
+<tr>
+<td>F</td>
+<td>“年-月-日”格式</td>
+<td>2007-10-27</td>
+</tr>
+<tr>
+<td>D</td>
+<td>“月/日/年”格式</td>
+<td>10/27/07</td>
+</tr>
+<tr>
+<td>r</td>
+<td>“HH:MM:SS PM”格式（12时制）</td>
+<td>02:25:51 下午</td>
+</tr>
+<tr>
+<td>T</td>
+<td>“HH:MM:SS”格式（24时制）</td>
+<td>14:28:16</td>
+</tr>
+<tr>
+<td>R</td>
+<td>“HH:MM”格式（24时制）</td>
+<td>14:28</td>
+</tr>
+</tbody>
+</table>
+<p>来个例子方便理解</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">	<span class="n">Date</span> <span class="n">date</span><span class="o">=</span><span class="k">new</span> <span class="n">Date</span><span class="o">();</span>                                  
+    <span class="c1">//c的使用  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;全部日期和时间信息：%tc%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>          
+    <span class="c1">//f的使用  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;年-月-日格式：%tF%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//d的使用  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;月/日/年格式：%tD%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//r的使用  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;HH:MM:SS PM格式（12时制）：%tr%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//t的使用  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;HH:MM:SS格式（24时制）：%tT%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//R的使用  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;HH:MM格式（24时制）：%tR&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">全部日期和时间信息：星期三 九月 <span class="m">21</span> 22:43:36 CST <span class="m">2016</span>  
+年-月-日格式：2016-09-21
+月/日/年格式：16/10/21  
+HH:MM:SS PM格式（12时制）：10:43:36 下午  
+HH:MM:SS格式（24时制）：22:43:36  
+HH:MM格式（24时制）：22:43  
+</code></pre></td></tr></table>
+</div>
+</div><p>其实还有很多其他有趣的玩法 我这边只列举一些常用的 有兴趣的朋友可以自己再去多了解了解</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-29</span>
+                <span>更新于 2022-06-04</span>
             </div>
             <div class="post-info-license"></div>
         </div>

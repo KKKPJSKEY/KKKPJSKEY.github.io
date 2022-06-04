@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mybatis-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mybatis-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-27T18:58:15+08:00" />
-<meta property="article:modified_time" content="2022-05-28T20:41:25+08:00" />
+<meta property="article:modified_time" content="2022-05-31T15:12:56+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mybatis-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/featured-image.jpg",
                             "width":  1570 ,
                             "height":  471 
-                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  3108 ,
-        "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/","datePublished": "2021-07-27T18:58:15+08:00","dateModified": "2022-05-28T20:41:25+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  3358 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/","datePublished": "2021-07-27T18:58:15+08:00","dateModified": "2022-05-31T15:12:56+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Mybatis笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3108 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3358 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/mybatis-note/" class="leancloud_visitors" data-flag-title="Mybatis笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -151,6 +151,7 @@
     <li><a href="#mybatis动态传入表名">MyBatis动态传入表名</a></li>
     <li><a href="#-transient注解">@ Transient注解</a></li>
     <li><a href="#mybatis传递多个参数的4种方式">Mybatis传递多个参数的4种方式</a></li>
+    <li><a href="#mybatis使用in传入list的三种方法">Mybatis使用in传入List的三种方法</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="mapperscan注解包含多个包">MapperScan注解包含多个包</h2>
@@ -725,11 +726,114 @@
 </div>
 </div><p><code>#{}</code>里面的名称对应的是 User类里面的成员属性。</p>
 <p>这种方法很直观，但需要建一个实体类，扩展不容易，需要加属性，看情况使用。</p>
-</div><div class="post-footer" id="post-footer">
+<h2 id="mybatis使用in传入list的三种方法">Mybatis使用in传入List的三种方法</h2>
+<p>1.非<a href="https://so.csdn.net/so/search?q=xml&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">xml</a>方式，使用注解传in，要使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Select</span><span class="o">(</span><span class="s">&#34;&lt;script&gt;&#34;</span> <span class="o">+</span>
+            <span class="s">&#34;SELECT count(DISTINCT member_id) as memberCount\n&#34;</span> <span class="o">+</span>
+            <span class="s">&#34;from member_analysis\n&#34;</span> <span class="o">+</span>
+            <span class="s">&#34;WHERE agent_id in &lt;foreach item=&#39;item&#39; index=&#39;index&#39; collection=&#39;memberIds&#39; open=&#39;(&#39; separator=&#39;,&#39; close=&#39;)&#39;&gt;&#34;</span> <span class="o">+</span>
+            <span class="s">&#34;#{item}&#34;</span> <span class="o">+</span>
+            <span class="s">&#34;&lt;/foreach&gt;&#34;</span> <span class="o">+</span>
+            <span class="s">&#34;&lt;/script&gt;&#34;</span><span class="o">)</span>
+<span class="n">Integer</span> <span class="nf">getCountWithAgentId</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">&#34;memberIds&#34;</span><span class="o">)</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">memberIds</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中的<a href="https://so.csdn.net/so/search?q=foreach&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">foreach</a>的collection直接写成@param中的值即可。</p>
+<p>2.在入参前进行字符串封装,拼成(<strong>,</strong>,<strong>,</strong>,)传值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Select</span><span class="o">(</span><span class="s">&#34;SELECT count(DISTINCT member_id) as memberCount from member_analysis where access_pat_id in (#{memberIds})&#34;</span><span class="o">)</span>
+    <span class="n">Integer</span> <span class="nf">getCountWithAgentId</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">&#34;memberIds&#34;</span><span class="o">)</span><span class="n">String</span> <span class="n">memberIds</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用方法返回</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">indexForm</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">s</span><span class="o">){</span>
+        <span class="n">String</span> <span class="n">content</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">ss</span><span class="o">:</span><span class="n">s</span><span class="o">){</span>
+            <span class="n">i</span><span class="o">++;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="n">s</span><span class="o">.</span><span class="na">size</span><span class="o">()){</span>
+                <span class="n">content</span><span class="o">+=</span><span class="n">ss</span><span class="o">;</span>
+            <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+                <span class="n">content</span><span class="o">+=</span><span class="n">ss</span><span class="o">+</span><span class="s">&#34;,&#34;</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">content</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或者使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">StringUtils</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="n">memberIds</span><span class="o">.</span><span class="na">toArray</span><span class="o">(),</span><span class="s">&#34;,&#34;</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>3.正常流程的xml方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;findByIds&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;BaseResultMap&#34;</span><span class="nt">&gt;</span>
+        select * from dictionaries
+        <span class="nt">&lt;where&gt;</span>
+            dictionaries.key  in 
+            <span class="nt">&lt;foreach</span>  <span class="na">item=</span><span class="s">&#34;item&#34;</span> <span class="na">index=</span><span class="s">&#34;index&#34;</span> <span class="na">collection=</span><span class="s">&#34;memberTypes&#34;</span> <span class="na">open=</span><span class="s">&#34;(&#34;</span> <span class="na">separator=</span><span class="s">&#34;,&#34;</span> <span class="na">close=</span><span class="s">&#34; )&#34;</span><span class="nt">&gt;</span>
+                 #{item}
+        	<span class="nt">&lt;/foreach&gt;</span>
+        <span class="nt">&lt;/where&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-28</span>
+                <span>更新于 2022-05-31</span>
             </div>
             <div class="post-info-license"></div>
         </div>

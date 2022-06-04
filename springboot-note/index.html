@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/springboot-note\/featured-image.jpg",
                             "width":  1016 ,
                             "height":  367 
-                        }],"genre": "posts","keywords": "Java, SpringBoot","wordcount":  1928 ,
+                        }],"genre": "posts","keywords": "Java, SpringBoot","wordcount":  5510 ,
         "url": "https:\/\/kkkpjskey.github.io\/springboot-note\/","datePublished": "2021-08-26T16:20:48+08:00","dateModified": "2021-10-14T10:47:07+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">SpringBoot笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-26">2021-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1928 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/springboot-note/" class="leancloud_visitors" data-flag-title="SpringBoot笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-26">2021-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5510 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/springboot-note/" class="leancloud_visitors" data-flag-title="SpringBoot笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -182,6 +182,25 @@
     </li>
     <li><a href="#scheduled">@Scheduled</a></li>
     <li><a href="#logging-level级别">logging level级别</a></li>
+    <li><a href="#springboot如何注入多个类型相同的bean">SpringBoot如何注入多个类型相同的Bean</a>
+      <ul>
+        <li><a href="#声明">声明</a></li>
+        <li><a href="#调用">调用</a></li>
+      </ul>
+    </li>
+    <li><a href="#bean中的autowire-candidate又是干什么的">Bean中的Autowire-Candidate又是干什么的？</a>
+      <ul>
+        <li><a href="#autowire-candidate做什么事情的">autowire-candidate做什么事情的？</a>
+          <ul>
+            <li><a href="#场景1">场景1</a></li>
+            <li><a href="#场景2">场景2</a></li>
+          </ul>
+        </li>
+        <li><a href="#autowire-candidates属性解析源码">autowire-candidates属性解析源码</a></li>
+        <li><a href="#问题">问题</a></li>
+        <li><a href="#案例源码">案例源码</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="springboot-controller接收参数的几种常用方式">SpringBoot Controller接收参数的几种常用方式</h2>
@@ -228,12 +247,12 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img-blog.csdn.net/20180525001103380?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"
-        data-srcset="https://img-blog.csdn.net/20180525001103380?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70, https://img-blog.csdn.net/20180525001103380?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70 1.5x, https://img-blog.csdn.net/20180525001103380?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70 2x"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
         data-sizes="auto"
-        alt="https://img-blog.csdn.net/20180525001103380?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"
-        title="https://img-blog.csdn.net/20180525001103380?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" />
-对应的java代码：</p>
+        alt="./1.png"
+        title="1" /></p>
+<p>对应的java代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -286,12 +305,12 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img-blog.csdn.net/20180525001626615?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"
-        data-srcset="https://img-blog.csdn.net/20180525001626615?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70, https://img-blog.csdn.net/20180525001626615?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70 1.5x, https://img-blog.csdn.net/20180525001626615?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70 2x"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
         data-sizes="auto"
-        alt="https://img-blog.csdn.net/20180525001626615?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"
-        title="https://img-blog.csdn.net/20180525001626615?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1a2lfcm9uZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" />
-对应的java代码：</p>
+        alt="./2.png"
+        title="2" /></p>
+<p>对应的java代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -552,12 +571,440 @@ FATAL level指出每个严重的错误事件将会导致应用程序的退出。
    ALL Level是最低等级的，用于打开所有日志记录。</li>
 <li>static Level OFF
    OFF Level是最高等级的，用于关闭所有日志记录。
-      日志记录器（Logger）的行为是分等级的：
-      分为OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL或者您定义的级别。Log4j建议只使用四个级别，优先级 从高到低分别是 ERROR、WARN、INFO、DEBUG。
-      通过在这里定义的级别，您可以控制到应用程序中相应级别的日志信息的开关。比如在这里定义了INFO级别， 则应用程序中所有DEBUG级别的日志信息将不被打印出来。
-      优先级高的将被打印出来。项目上生产环境时候建议把debug的日志级别重新调为warn或者更高，避免产生大量日志。</li>
+         日志记录器（Logger）的行为是分等级的：
+         分为OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL或者您定义的级别。Log4j建议只使用四个级别，优先级 从高到低分别是 ERROR、WARN、INFO、DEBUG。
+         通过在这里定义的级别，您可以控制到应用程序中相应级别的日志信息的开关。比如在这里定义了INFO级别， 则应用程序中所有DEBUG级别的日志信息将不被打印出来。
+         优先级高的将被打印出来。项目上生产环境时候建议把debug的日志级别重新调为warn或者更高，避免产生大量日志。</li>
 </ol>
-</div><div class="post-footer" id="post-footer">
+<h2 id="springboot如何注入多个类型相同的bean">SpringBoot如何注入多个类型相同的Bean</h2>
+<h3 id="声明">声明</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@Bean</span><span class="o">(</span><span class="n">autowire</span> <span class="o">=</span> <span class="n">Autowire</span><span class="o">.</span><span class="na">BY_NAME</span><span class="o">,</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;kaptchaProducer&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Producer</span> <span class="nf">kaptchaProducer</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Properties</span> <span class="n">kaptchaProperties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.border&#34;</span><span class="o">,</span> <span class="s">&#34;no&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.textproducer.char.length&#34;</span><span class="o">,</span><span class="s">&#34;4&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.image.height&#34;</span><span class="o">,</span><span class="s">&#34;50&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.image.width&#34;</span><span class="o">,</span><span class="s">&#34;150&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.obscurificator.impl&#34;</span><span class="o">,</span><span class="s">&#34;com.google.code.kaptcha.impl.ShadowGimpy&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.textproducer.font.color&#34;</span><span class="o">,</span><span class="s">&#34;black&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.textproducer.font.size&#34;</span><span class="o">,</span><span class="s">&#34;40&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.noise.impl&#34;</span><span class="o">,</span><span class="s">&#34;com.google.code.kaptcha.impl.NoNoise&#34;</span><span class="o">);</span>
+        <span class="c1">//kaptchaProperties.put(&#34;kaptcha.noise.impl&#34;,&#34;com.google.code.kaptcha.impl.DefaultNoise&#34;);
+</span><span class="c1"></span>        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.textproducer.char.string&#34;</span><span class="o">,</span><span class="s">&#34;acdefhkmnprtwxy2345678&#34;</span><span class="o">);</span>
+ 
+        <span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">(</span><span class="n">kaptchaProperties</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="na">getProducerImpl</span><span class="o">();</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@Bean</span><span class="o">(</span><span class="n">autowire</span> <span class="o">=</span> <span class="n">Autowire</span><span class="o">.</span><span class="na">BY_NAME</span><span class="o">,</span><span class="n">value</span> <span class="o">=</span> <span class="s">&#34;kaptchaProducerH5&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">Producer</span> <span class="nf">kaptchaProducerH5</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Properties</span> <span class="n">kaptchaProperties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.border&#34;</span><span class="o">,</span> <span class="s">&#34;no&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.textproducer.char.length&#34;</span><span class="o">,</span><span class="s">&#34;4&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.image.height&#34;</span><span class="o">,</span><span class="s">&#34;50&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.image.width&#34;</span><span class="o">,</span><span class="s">&#34;150&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.obscurificator.impl&#34;</span><span class="o">,</span><span class="s">&#34;com.google.code.kaptcha.impl.ShadowGimpy&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.textproducer.font.color&#34;</span><span class="o">,</span><span class="s">&#34;black&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.textproducer.font.size&#34;</span><span class="o">,</span><span class="s">&#34;40&#34;</span><span class="o">);</span>
+        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.noise.impl&#34;</span><span class="o">,</span><span class="s">&#34;com.google.code.kaptcha.impl.NoNoise&#34;</span><span class="o">);</span>
+        <span class="c1">//kaptchaProperties.put(&#34;kaptcha.noise.impl&#34;,&#34;com.google.code.kaptcha.impl.DefaultNoise&#34;);
+</span><span class="c1"></span>        <span class="n">kaptchaProperties</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;kaptcha.textproducer.char.string&#34;</span><span class="o">,</span><span class="s">&#34;0123456789&#34;</span><span class="o">);</span>
+ 
+        <span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">(</span><span class="n">kaptchaProperties</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="na">getProducerImpl</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="调用">调用</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="nd">@Resource</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;kaptchaProducer&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">Producer</span> <span class="n">kaptchaProducer</span><span class="o">;</span>
+ 
+    <span class="nd">@Resource</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;kaptchaProducerH5&#34;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">Producer</span> <span class="n">kaptchaProducerH5</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="bean中的autowire-candidate又是干什么的">Bean中的Autowire-Candidate又是干什么的？</h2>
+<h3 id="autowire-candidate做什么事情的">autowire-candidate做什么事情的？</h3>
+<p>上一篇文章<a href="https://blog.csdn.net/likun557/article/details/104404333" target="_blank" rel="noopener noreferrer">Spring系列第10篇：primary可以解决什么问题？</a>中遇到的问题我们再来回顾一下，当容器中某种类型的bean存在多个的时候，此时如果我们从容器中查找这种类型的bean的时候，会报下面这个异常：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">org.springframework.beans.factory.NoUniqueBeanDefinitionException
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>原因：当从容器中按照类型查找一个bean对象的时候，容器中却找到了多个匹配的bean，此时spring不知道如何选择了，处于懵逼状态，就会报这个异常。</strong></p>
+<p>这种异常主要出现在2种场景中：</p>
+<h4 id="场景1">场景1</h4>
+<p>从容器容器中查找符合指定类型的bean，对应BeanFactory下面的方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">getBean</span><span class="o">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">requiredType</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">BeansException</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="场景2">场景2</h4>
+<p>自动注入方式设置为byType的时候，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
+       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://www.springframework.org/schema/beans
+</span><span class="s">    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd&#34;</span><span class="nt">&gt;</span>
+ 
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;serviceA&#34;</span> <span class="na">class=</span><span class="s">&#34;com.javacode2018.lesson001.demo8.SetterBean$ServiceA&#34;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;serviceB&#34;</span> <span class="na">class=</span><span class="s">&#34;com.javacode2018.lesson001.demo8.SetterBean$ServiceB&#34;</span><span class="nt">/&gt;</span>
+ 
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;setterBean&#34;</span> <span class="na">class=</span><span class="s">&#34;com.javacode2018.lesson001.demo8.SetterBean&#34;</span> <span class="na">autowire=</span><span class="s">&#34;byType&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>setterBean的autowire设置的是byType，即按setter方法的参数类型自动注入，SetterBean的setService的类型是IService，而IService类有2个实现类：ServiceA和ServiceB，而容器容器中刚好有这2个实现类的bean：serviceA和serviceB，所以上面代码会报错，不知道注入的时候选择那个对象注入。</p>
+<p><strong>我们可以通过primary属性来指定一个主要的bean，当从容器中查找的时候，如果有多个候选的bean符合查找的类型，此时容器将返回primary=&ldquo;true&quot;的bean对象。</strong></p>
+<p>spring还有一种方法也可以解决这个问题，可以设置某个bean是否在自动注入的时候是否为作为候选bean，通过bean元素的autowire-candidate属性类配置，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;serviceA&#34;</span> <span class="na">class=</span><span class="s">&#34;com.javacode2018.lesson001.demo8.SetterBean$ServiceA&#34;</span> <span class="na">autowire-candidate=</span><span class="s">&#34;false&#34;</span><span class="nt">/&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>autowire-candidate：设置当前bean在被其他对象作为自动注入对象的时候，是否作为候选bean，默认值是true。</p>
+<p>来举例说明一下，以上面的setter注入的案例先来说一下注入的过程：</p>
+<p><strong>容器在创建setterBean的时候，发现其autowire为byType，即按类型自动注入，此时会在SetterBean类中查找所有setter方法列表，其中就包含了setService方法，setService方法参数类型是IService，然后就会去容器中按照IService类型查找所有符合条件的bean列表，此时容器中会返回满足IService这种类型并且autowire-candidate=&ldquo;true&quot;的bean，刚才有说过bean元素的autowire-candidate的默认值是true，所以容器中符合条件的候选bean有2个：serviceA和serviceB，setService方法只需要一个满足条件的bean，此时会再去看这个列表中是否只有一个主要的bean（即bean元素的primary=“ture”的bean），而bean元素的primary默认值都是false，所以没有primary为true的bean，此时spring容器懵了，不知道选哪个了，此时就报错了，抛出NoUniqueBeanDefinitionException异常</strong></p>
+<p>从上面过程中可以看出将某个候选bean的primary置为true就可以解决问题了。</p>
+<p>或者只保留一个bean的autowire-candidate为true，将其余的满足条件的bean的autowire-candidate置为false，此时也可以解决这个问题，下面我们使用autowire-candidate来解决上面问题看一下效果：</p>
+<p><strong>SetterBean.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.javacode2018.lesson001.demo9</span><span class="o">;</span>
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SetterBean</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IService</span> <span class="o">{}</span> <span class="c1">//@1
+</span><span class="c1"></span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ServiceA</span> <span class="kd">implements</span> <span class="n">IService</span> <span class="o">{}</span> <span class="c1">//@2
+</span><span class="c1"></span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ServiceB</span> <span class="kd">implements</span> <span class="n">IService</span> <span class="o">{}</span> <span class="c1">//@3
+</span><span class="c1"></span> 
+    <span class="kd">private</span> <span class="n">IService</span> <span class="n">service</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setService</span><span class="o">(</span><span class="n">IService</span> <span class="n">service</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">service</span> <span class="o">=</span> <span class="n">service</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;SetterBean{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;service=&#34;</span> <span class="o">+</span> <span class="n">service</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>autowireCandidateBean.xml</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
+       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://www.springframework.org/schema/beans
+</span><span class="s">    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd&#34;</span><span class="nt">&gt;</span>
+ 
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;serviceA&#34;</span> <span class="na">class=</span><span class="s">&#34;com.javacode2018.lesson001.demo9.SetterBean$ServiceA&#34;</span> <span class="na">autowire-candidate=</span><span class="s">&#34;false&#34;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;serviceB&#34;</span> <span class="na">class=</span><span class="s">&#34;com.javacode2018.lesson001.demo9.SetterBean$ServiceB&#34;</span><span class="nt">/&gt;</span>
+ 
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;setterBean&#34;</span> <span class="na">class=</span><span class="s">&#34;com.javacode2018.lesson001.demo9.SetterBean&#34;</span> <span class="na">autowire=</span><span class="s">&#34;byType&#34;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>上面我们将serviceA的autowire-candidate置为false了，serviceA在被其他bean自动按照类型注入的时候，将不再放入候选名单中</p>
+</blockquote>
+<p><strong>测试用例</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.javacode2018.lesson001.demo9</span><span class="o">;</span>
+ 
+<span class="kn">import</span> <span class="nn">com.javacode2018.lesson001.demo5.IocUtils</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.javacode2018.lesson001.demo8.NormalBean</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.javacode2018.lesson001.demo8.PrimaryBean</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.support.ClassPathXmlApplicationContext</span><span class="o">;</span>
+ 
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+ 
+<span class="cm">/**
+</span><span class="cm"> * 公众号：路人甲Java，工作10年的前阿里P7分享Java、算法、数据库方面的技术干货！坚信用技术改变命运，让家人过上更体面的生活!
+</span><span class="cm"> * bean元素的autowire-candidate可以设置当前bean是否作为其他bean自动注入的候选bean
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AutowireCandidateTest</span> <span class="o">{</span>
+ 
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setterBean</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">beanXml</span> <span class="o">=</span> <span class="s">&#34;classpath:/com/javacode2018/lesson001/demo9/autowireCandidateBean.xml&#34;</span><span class="o">;</span>
+        <span class="n">ClassPathXmlApplicationContext</span> <span class="n">context</span> <span class="o">=</span> <span class="n">IocUtils</span><span class="o">.</span><span class="na">context</span><span class="o">(</span><span class="n">beanXml</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">SetterBean</span><span class="o">.</span><span class="na">class</span><span class="o">));</span> <span class="c1">//@1
+</span><span class="c1"></span> 
+        <span class="n">SetterBean</span><span class="o">.</span><span class="na">IService</span> <span class="n">service</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">SetterBean</span><span class="o">.</span><span class="na">IService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">//@2
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">service</span><span class="o">);</span>
+    <span class="o">}</span>
+ 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>@1：查找容器中SetterBean类型的bean对象</p>
+<p>@2：查找容器中SetterBean.IService接口类型的bean，实际上面容器中serviceA和serviceB都是这种类型的</p>
+<p>下面我们运行一下，看看输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">SetterBean<span class="o">{</span><span class="nv">service</span><span class="o">=</span>com.javacode2018.lesson001.demo9.SetterBean<span class="nv">$ServiceB</span>@29176cc1<span class="o">}</span>
+com.javacode2018.lesson001.demo9.SetterBean<span class="nv">$ServiceB</span>@29176cc1
+</code></pre></td></tr></table>
+</div>
+</div><p>注意一下输出，2行输出中都是ServiceB，因为serviceB的autowire-candidate是默认值true，自动注入的时候作为候选bean，而serviceA的autowire-candidate是false，自动注入的时候不作为候选bean，所以上面输出的都是serviceB。</p>
+<h3 id="autowire-candidates属性解析源码">autowire-candidates属性解析源码</h3>
+<p>beans元素是xml中定义bean的根元素，beans元素有个default-autowire-candidates属性，用于定义哪些bean可以作为候选者，default-autowire-candidates的值是个通配符如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">default</span><span class="o">-</span><span class="n">autowire</span><span class="o">-</span><span class="n">candidates</span><span class="o">=</span><span class="s">&#34;*Service&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>再来说一下bean元素的autowire-candidate属性，这个属性有3个可选值：</p>
+<ul>
+<li>default：这个是默认值，autowire-candidate如果不设置，其值就是default</li>
+<li>true：作为候选者</li>
+<li>false：不作为候选者</li>
+</ul>
+<p>spring中由beans元素的default-autowire-candidates和bean元素的autowire-candidate来决定最终bean元素autowire-candidate的值，我们来看一下bean元素autowire-candidates的解析源码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">源码位置：org.springframework.beans.factory.xml.BeanDefinitionParserDelegate#parseBeanDefinitionAttributes
+</code></pre></td></tr></table>
+</div>
+</div><p>主要代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//获取bean元素的autowire-candidate元素，autowire-candidate如果不设置，其值就是default
+</span><span class="c1"></span><span class="n">String</span> <span class="n">autowireCandidate</span> <span class="o">=</span> <span class="n">ele</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="n">AUTOWIRE_CANDIDATE_ATTRIBUTE</span><span class="o">);</span>
+<span class="c1">//判断bean元素的autowire-candidate元素是否等于&#34;default&#34;或者是否等于&#34;&#34;
+</span><span class="c1"></span><span class="k">if</span> <span class="o">(</span><span class="n">isDefaultValue</span><span class="o">(</span><span class="n">autowireCandidate</span><span class="o">))</span> <span class="o">{</span> 
+    <span class="c1">//获取beans元素default-autowire-candidates属性值
+</span><span class="c1"></span>    <span class="n">String</span> <span class="n">candidatePattern</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">defaults</span><span class="o">.</span><span class="na">getAutowireCandidates</span><span class="o">();</span>
+    <span class="c1">//判断获取beans元素default-autowire-candidates属性值是否为空，default-autowire-candidates默认值就是null
+</span><span class="c1"></span>    <span class="k">if</span> <span class="o">(</span><span class="n">candidatePattern</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//判断bean的名称是否和default-autowire-candidates的值匹配，如果匹配就将bean的autowireCandidate置为true，否则置为false
+</span><span class="c1"></span>        <span class="n">String</span><span class="o">[]</span> <span class="n">patterns</span> <span class="o">=</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">commaDelimitedListToStringArray</span><span class="o">(</span><span class="n">candidatePattern</span><span class="o">);</span>
+        <span class="n">bd</span><span class="o">.</span><span class="na">setAutowireCandidate</span><span class="o">(</span><span class="n">PatternMatchUtils</span><span class="o">.</span><span class="na">simpleMatch</span><span class="o">(</span><span class="n">patterns</span><span class="o">,</span> <span class="n">beanName</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+    <span class="c1">//判断bean的autowire-candidate的值是否等于&#34;true&#34;
+</span><span class="c1"></span>    <span class="n">bd</span><span class="o">.</span><span class="na">setAutowireCandidate</span><span class="o">(</span><span class="n">TRUE_VALUE</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">autowireCandidate</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果上面判断都没有进去，autowireCandidate属性默认值就是true，这个在下面定义的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">beans</span><span class="o">.</span><span class="na">factory</span><span class="o">.</span><span class="na">support</span><span class="o">.</span><span class="na">AbstractBeanDefinition</span><span class="err">#</span><span class="n">autowireCandidate</span>
+ 
+<span class="kd">private</span> <span class="kt">boolean</span> <span class="n">autowireCandidate</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>所有的bean元素最后都会被解析为spring中的org.springframework.beans.factory.config.BeanDefinition对象，关于BeanDefinition以后我们会细说</strong>。</p>
+<h3 id="问题">问题</h3>
+<p><strong>对上面的案例做个扩展，SetterBean类中加个方法：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setService1</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">IService</span><span class="o">&gt;</span> <span class="n">service</span><span class="o">)</span> <span class="o">{</span><span class="c1">//@0
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">service</span><span class="o">);</span> <span class="c1">//@1
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>@0：需要注入一个IService的集合，判断一下</strong>**@1输出的是容器中的serviceA，还是serviceB，还是2个都有呢？为什么？**</p>
+<h3 id="案例源码">案例源码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">链接：https://pan.baidu.com/s/1p6rcfKOeWQIVkuhVybzZmQ 
+提取码：zr99
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/js-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/js-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-19T12:13:45+08:00" />
-<meta property="article:modified_time" content="2021-05-19T12:13:45+08:00" />
+<meta property="article:modified_time" content="2022-05-31T15:21:55+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/js-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/js-note\/featured-image.jpg",
                             "width":  900 ,
                             "height":  236 
-                        }],"genre": "posts","keywords": "JavaScript","wordcount":  716 ,
-        "url": "https:\/\/kkkpjskey.github.io\/js-note\/","datePublished": "2021-05-19T12:13:45+08:00","dateModified": "2021-05-19T12:13:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "JavaScript","wordcount":  1747 ,
+        "url": "https:\/\/kkkpjskey.github.io\/js-note\/","datePublished": "2021-05-19T12:13:45+08:00","dateModified": "2022-05-31T15:21:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">JS笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/front/"><i class="far fa-folder fa-fw"></i>Front</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-19">2021-05-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 716 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/js-note/" class="leancloud_visitors" data-flag-title="JS笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-19">2021-05-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1747 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/js-note/" class="leancloud_visitors" data-flag-title="JS笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -144,6 +144,16 @@
       <ul>
         <li><a href="#四舍五入">四舍五入</a></li>
         <li><a href="#不四舍五入">不四舍五入</a></li>
+      </ul>
+    </li>
+    <li><a href="#objectassign详解">Object.assign详解</a>
+      <ul>
+        <li><a href="#一objectassign是什么">一、Object.assign是什么？</a></li>
+        <li><a href="#二用法">二、用法</a></li>
+        <li><a href="#三使用示例">三、使用示例</a></li>
+        <li><a href="#四注意事项">四、注意事项</a></li>
+        <li><a href="#五兼容性">五、兼容性</a></li>
+        <li><a href="#六与extend的比较">六、与<code>$.extend()</code>的比较</a></li>
       </ul>
     </li>
   </ul>
@@ -286,11 +296,162 @@ num = num.toFixed(2);  // 输出结果为 2.45
 </code></pre></td></tr></table>
 </div>
 </div><p>**注意：**如果是负数，请先转换为正数再计算，最后转回负数</p>
+<h2 id="objectassign详解">Object.assign详解</h2>
+<h3 id="一objectassign是什么">一、Object.assign是什么？</h3>
+<p>首先了解下Object.assign()是什么。我们先看看<a href="https://so.csdn.net/so/search?q=ES6&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">ES6</a>官方文档是怎么介绍的？</p>
+<p><strong><code>Object.assign()</code> 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。</strong></p>
+<p>简单来说，就是Object.assign()是对象的静态方法，可以用来复制对象的可<a href="https://so.csdn.net/so/search?q=%e6%9e%9a%e4%b8%be&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">枚举</a>属性到目标对象，利用这个特性可以实现对象属性的合并。</p>
+<h3 id="二用法">二、用法</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Object.assign(target, ...sources)
+</code></pre></td></tr></table>
+</div>
+</div><p>参数：target&mdash;&gt;目标对象
+source&mdash;&gt;源对象
+返回值：target，即目标对象</p>
+<h3 id="三使用示例">三、使用示例</h3>
+<p>1、目标对象和源对象无重名属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">target</span><span class="o">=</span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;guxin&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">18</span><span class="p">};</span>
+<span class="kd">var</span> <span class="nx">source</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="o">:</span><span class="s1">&#39;single&#39;</span><span class="p">}</span>
+<span class="kd">var</span> <span class="nx">result</span><span class="o">=</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="nx">source</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="nx">target</span><span class="o">==</span><span class="nx">result</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果如图：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>我们可以看到source上的state属性合并到了target对象上。如果只是想将两个或多个对象的属性合并到一起，不改变原有对象的属性，可以用一个空的对象作为target对象。像下面这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">result</span><span class="o">=</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span><span class="nx">target</span><span class="p">,</span><span class="nx">source</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>2、目标对象和源对象有重名属性</p>
+<p>上面的示例目标对象和源对象是没有重名属性的，那么如果他们有重名属性又会怎样呢？是后面的属性覆盖前面的还是前面的属性覆盖后面的呢？我们接下来看下一个例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">target</span><span class="o">=</span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;guxin&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">18</span><span class="p">}</span>
+<span class="kd">var</span> <span class="nx">source</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="o">:</span><span class="s1">&#39;signle&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">22</span><span class="p">}</span>
+<span class="kd">var</span> <span class="nx">result</span><span class="o">=</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="nx">source</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们来看下运行结果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>可以看到如果有同名属性的话，后面的属性值会覆盖前面的属性值。</p>
+<p>3、有多个源对象</p>
+<p>前面的示例都是只有一个源对象，那么如果有多个源对象情况会不会不同呢？我们继续看下面的例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">        <span class="kd">var</span> <span class="nx">target</span><span class="o">=</span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;guxin&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">18</span><span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">source1</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="o">:</span><span class="s1">&#39;signle&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">22</span><span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">source2</span><span class="o">=</span><span class="p">{</span><span class="nx">mood</span><span class="o">:</span><span class="s1">&#39;happy&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">25</span><span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">result</span><span class="o">=</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="nx">source1</span><span class="p">,</span><span class="nx">source2</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们来看下运行结果：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p>可以看到有多个源对象情况也是和一个源对象一样的。没有同名的属性会直接复制到目标对象上，同名的属性后面的属性值会覆盖前面的同名属性值。</p>
+<h3 id="四注意事项">四、注意事项</h3>
+<p>1、<code>Object.assign</code> 方法只会拷贝源对象自身的并且可枚举的属性到目标对象，继承属性和不可枚举属性是不能拷贝的。</p>
+<p>2、针对深拷贝，需要使用其他办法，因为 <code>Object.assign()</code>拷贝的是属性值。假如源对象的属性值是一个对象的引用，那么它也只指向那个引用。</p>
+<p>3、目标对象自身也会改变</p>
+<p>4、异常会打断后续拷贝任务</p>
+<h3 id="五兼容性">五、兼容性</h3>
+<p>目前IE浏览器不兼容Object.assign()，如果需要兼容IE的话最好不要直接使用这个方法。</p>
+<h3 id="六与extend的比较">六、与<code>$.extend()</code>的比较</h3>
+<p>我们通过一个简单的示例来比较两者有什么不同，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">        <span class="kd">var</span> <span class="nx">target</span><span class="o">=</span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;guxin&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">18</span><span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">source1</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="o">:</span><span class="s1">&#39;signle&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">22</span><span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">source2</span><span class="o">=</span><span class="p">{</span><span class="nx">mood</span><span class="o">:</span><span class="s1">&#39;happy&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">25</span><span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">result</span><span class="o">=</span><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="nx">source1</span><span class="p">,</span><span class="nx">source2</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="s1">&#39;assign&#39;</span><span class="p">)</span>
+        <span class="kd">var</span> <span class="nx">targetObj</span><span class="o">=</span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;guxin&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">18</span><span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">sourceObj1</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="o">:</span><span class="s1">&#39;signle&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">22</span><span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">sourceObj2</span><span class="o">=</span><span class="p">{</span><span class="nx">mood</span><span class="o">:</span><span class="s1">&#39;happy&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">25</span><span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">result</span><span class="o">=</span><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">targetObj</span><span class="p">,</span><span class="nx">sourceObj1</span><span class="p">,</span><span class="nx">sourceObj2</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">targetObj</span><span class="p">,</span><span class="s1">&#39;extend&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>最终运行结果如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p>可以看到两者得到的结果是一样的。所以，我认为这两个方法，除了兼容性应该是一样的。</p>
+<p><strong>以上内容纯属个人理解，如有小伙伴发现错误之处欢迎指正！</strong></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-05-19</span>
+                <span>更新于 2022-05-31</span>
             </div>
             <div class="post-info-license"></div>
         </div>
