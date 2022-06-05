@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/sql-note\/featured-image.jpg",
                             "width":  1800 ,
                             "height":  540 
-                        }],"genre": "posts","keywords": "Database, Sql","wordcount":  756 ,
+                        }],"genre": "posts","keywords": "Database, Sql","wordcount":  2322 ,
         "url": "https:\/\/kkkpjskey.github.io\/sql-note\/","datePublished": "2021-10-14T10:29:44+08:00","dateModified": "2021-10-14T10:29:44+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Sql笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-14">2021-10-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 756 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/sql-note/" class="leancloud_visitors" data-flag-title="Sql笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-14">2021-10-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2322 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/sql-note/" class="leancloud_visitors" data-flag-title="Sql笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -144,6 +144,39 @@
       </ul>
     </li>
     <li><a href="#将a列赋值给b列">将A列赋值给B列</a></li>
+    <li><a href="#left-join的用法">left join的用法</a>
+      <ul>
+        <li><a href="#一基本语句">一、基本语句</a></li>
+        <li><a href="#二如何解决一对多的问题">二、如何解决一对多的问题</a>
+          <ul>
+            <li>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#把一对多的问题转化成聚合查询">把一对多的问题转化成聚合查询</a></li>
+                    <li><a href="#把一对多的问题转化成多对一的问题">把一对多的问题转化成多对一的问题</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#三条件联接查询">三、条件联接查询</a>
+          <ul>
+            <li>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#全量查询后where子句">全量查询后+where子句。</a></li>
+                    <li><a href="#联接前就先做限定">联接前就先做限定。</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="mysql行列转置">Mysql行列转置</h2>
@@ -237,7 +270,169 @@
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">UPDATE</span><span class="w"> </span><span class="n">tableName</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="s2">&#34;b&#34;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;a&#34;</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="left-join的用法">left join的用法</h2>
+<p>在讲left join（左关联）之前，要说下right join（右关联）的用法其实类似left join,把right join想象成是left join的一种转化方式即可。</p>
+<p>我们工作中经常会用到left join来进行联表取数分析，今天就专门来讲讲left join的用法。
+很多基础的数据库应用的书籍都有讲到left join的用法，但是都没有深入在运用过程中应该注意哪些地方。如果你仅是单纯地套用你会发现在实际工作中会遇到各种各样的问题。</p>
+<h3 id="一基本语句">一、基本语句</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w">  </span><span class="k">select</span><span class="w">
+</span><span class="w">     </span><span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w">
+</span><span class="w">     </span><span class="n">a</span><span class="p">.</span><span class="k">column</span><span class="p">,</span><span class="w">
+</span><span class="w">     </span><span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w">
+</span><span class="w">     </span><span class="n">b</span><span class="p">.</span><span class="k">column</span><span class="w">
+</span><span class="w">   </span><span class="k">from</span><span class="w"> </span><span class="n">a</span><span class="w">
+</span><span class="w">   </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>在这里a表与b表以主键id进行联接。查询的结果保留a表中全部的id数据和选到的某列的数据，而b.id和其他列只保留与a表相匹配的数据。而不匹配的b表的id和其他列以null填充。这个用法类似excel中的vlookup的用法。掌握了vlookup的用法，基本上对left join的用法也掌握了。</p>
+<h3 id="二如何解决一对多的问题">二、如何解决一对多的问题</h3>
+<p>当a表有100行数据，而b表有1000行数据，并且b表中的b.id是有重复值的，而且在实际应用过程中，这确实属于正常现象。
+我们可以想象a表是用户表，b表是订单表。自然也就想到了一个用户可能多次下单。我们假设b表中的用户id在a表中匹配到50个用户id，但是这50个用户id总订单数是500个。
+那么当我们在执行以上sql语句时，就会出现查询的结果550条，为什么呢？
+因为当left join 一对多的时候，就会出现将b表中相同匹配的数据填充到查询结果去。
+如何解决这种问题呢，我们可以根据实际情况来做调整。</p>
+<h6 id="把一对多的问题转化成聚合查询">把一对多的问题转化成聚合查询</h6>
+<p>如果业务需求是要查询用户的下单量，可以将sql语句编程如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="k">select</span><span class="w"> 
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">用户</span><span class="n">id</span><span class="p">,</span><span class="w"> 
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">用户姓名</span><span class="p">,</span><span class="w"> 
+</span><span class="w">      </span><span class="k">count</span><span class="p">(</span><span class="err">订单</span><span class="n">id</span><span class="p">)</span><span class="w"> 
+</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="err">用户表</span><span class="w"> </span><span class="n">a</span><span class="w"> 
+</span><span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="err">订单表</span><span class="n">b</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="err">用户</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="err">用户</span><span class="n">id</span><span class="w">
+</span><span class="w">  </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="err">用户</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="err">用户姓名</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h6 id="把一对多的问题转化成多对一的问题">把一对多的问题转化成多对一的问题</h6>
+<p>如果业务需求是要查询用户的下单明细，可以将sql语句编程如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="k">select</span><span class="w"> 
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">订单</span><span class="n">id</span><span class="p">,</span><span class="w"> 
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">业务类型</span><span class="w">
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">单价</span><span class="w">
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">消费数量</span><span class="w">
+</span><span class="w">      </span><span class="n">b</span><span class="p">.</span><span class="err">用户姓名</span><span class="p">,</span><span class="w"> 
+</span><span class="w">      </span><span class="n">b</span><span class="p">.</span><span class="err">用户联系方式</span><span class="w">
+</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="err">订单表</span><span class="w"> </span><span class="n">a</span><span class="w"> 
+</span><span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="err">用户表</span><span class="n">b</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="err">用户</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="err">用户</span><span class="n">id</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="三条件联接查询">三、条件联接查询</h3>
+<p>以上的sql语句都是全量查询，在面对表数据较大的情况，全量查询是非常耗时的。
+所以查询过程中，我们一定要运用where子句来限定条件，提高查询效率。
+在这里有两种方式：一种是全量查询后+where子句，一种是联接前就先做限定。</p>
+<h6 id="全量查询后where子句">全量查询后+where子句。</h6>
+<p>如查询用户为男，消费总价大于1w元的用户明细</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="k">select</span><span class="w"> 
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">订单</span><span class="n">id</span><span class="p">,</span><span class="w"> 
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">业务类型</span><span class="w">
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">单价</span><span class="w">
+</span><span class="w">      </span><span class="n">a</span><span class="p">.</span><span class="err">消费数量</span><span class="w">
+</span><span class="w">      </span><span class="n">b</span><span class="p">.</span><span class="err">用户姓名</span><span class="p">,</span><span class="w"> 
+</span><span class="w">      </span><span class="n">b</span><span class="p">.</span><span class="err">用户联系方式</span><span class="w">
+</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="err">订单表</span><span class="w"> </span><span class="n">a</span><span class="w"> 
+</span><span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="err">用户表</span><span class="n">b</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="err">用户</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="err">用户</span><span class="n">id</span><span class="w">
+</span><span class="w">  </span><span class="k">where</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="err">用户性别</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="w">
+</span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="err">单价</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="err">消费数量</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+</span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="err">用户</span><span class="n">id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h6 id="联接前就先做限定">联接前就先做限定。</h6>
+<p>如我们需要查询用户在某时间段，访问A页面再访问B页面的留存用户量。查询的表只有用户行为表。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> 
+</span><span class="w">   </span><span class="k">count</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">user_id</span><span class="p">),</span><span class="w">
+</span><span class="w">   </span><span class="k">count</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">user_id</span><span class="p">)</span><span class="w">
+</span><span class="w"> </span><span class="k">from</span><span class="w">
+</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> 
+</span><span class="w">      </span><span class="k">distinct</span><span class="w">
+</span><span class="w">      </span><span class="n">user_id</span><span class="w">
+</span><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="err">用户行为表</span><span class="w">
+</span><span class="w">  </span><span class="k">where</span><span class="w"> </span><span class="n">date_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2016-11-01&#39;</span><span class="w">
+</span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">A页面路径</span><span class="err">’</span><span class="p">)</span><span class="n">a</span><span class="w">
+</span><span class="w"></span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w">
+</span><span class="w">  </span><span class="p">(</span><span class="k">select</span><span class="w"> 
+</span><span class="w">      </span><span class="k">distinct</span><span class="w">
+</span><span class="w">      </span><span class="n">user_id</span><span class="w">
+</span><span class="w">   </span><span class="k">from</span><span class="w"> </span><span class="err">用户行为表</span><span class="w">
+</span><span class="w">   </span><span class="k">where</span><span class="w"> </span><span class="n">date_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2016-11-01&#39;</span><span class="w">
+</span><span class="w">   </span><span class="k">and</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="n">B页面路径</span><span class="err">’</span><span class="p">)</span><span class="n">b</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">user_id</span><span class="w">
+</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>OK!
+先讲到这里，希望对大家有用！</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

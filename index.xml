@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 04 Jun 2022 23:40:30 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 05 Jun 2022 20:21:29 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>面经</title>
@@ -27,34 +27,34 @@
     <pubDate>Tue, 08 Jun 2021 14:37:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-audition-note/</guid>
     <description><![CDATA[1、面向对象 什么是面向对象? 对比面向过程，是两种不同的处理问题的角度 面向过程更注重事情的每一个步骤及顺序，面向对象更注重事情有哪些参与者(对]]></description>
 </item><item>
-    <title>Spring 框架用到的 9 个设计模式汇总</title>
-    <link>https://kkkpjskey.github.io/spring-design-mode-note/</link>
-    <pubDate>Sat, 04 Jun 2022 23:40:30 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/spring-design-mode-note/</guid>
-    <description><![CDATA[1. 简单工厂 又叫做静态工厂方法（StaticFactory Method）模式，但不属于23种GOF设计模式之一。 简单工厂模式的实质是由一个工厂]]></description>
+    <title>Idea 报错Error:java: Compilation failed: internal java compiler error</title>
+    <link>https://kkkpjskey.github.io/idea-internal-java-compiler-error/</link>
+    <pubDate>Sun, 05 Jun 2022 20:21:29 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-internal-java-compiler-error/</guid>
+    <description><![CDATA[报错 今天在用idea创建maven项目时候报了一个错误（如上图） 1 2 Error:java: Compilation failed: internal java compiler error 错误：Java：编译失败：内部Java编译器错误 解决办法 F]]></description>
 </item><item>
-    <title>使用Winsw将Jar或Bat文件注册到Windows服务</title>
-    <link>https://kkkpjskey.github.io/python-note/</link>
-    <pubDate>Sat, 04 Jun 2022 23:31:05 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/python-note/</guid>
-    <description><![CDATA[与阿里巴巴的java开发手册类似的Python开发手册 动态语言确实需要规范来约束，防止项目大了以后难以维护。下边这个链接总结了之前维护项目遇]]></description>
+    <title>Tomcat网站上的core和deployer的区别</title>
+    <link>https://kkkpjskey.github.io/tomcat-version-diff/</link>
+    <pubDate>Sun, 05 Jun 2022 20:00:50 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/tomcat-version-diff/</guid>
+    <description><![CDATA[8.5.13 Please see the README file for packaging information. It explains what every distribution(分布) contains. Binary Distributions Core: zip (pgp, md5, sha1) tar.gz (pgp, md5, sha1) 32-bit Windows zip (pgp, md5, sha1) 64-bit Windows zip (pgp, md5, sha1) 32-bit/64-bit Windows Service Installer (pgp, md5, sha1) Full documentation (文件材料) : tar.gz]]></description>
 </item><item>
-    <title>新一代垃圾回收器ZGC的探索与实践</title>
-    <link>https://kkkpjskey.github.io/jvm-z-garbage-collector-note/</link>
-    <pubDate>Sat, 04 Jun 2022 17:13:33 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/jvm-z-garbage-collector-note/</guid>
-    <description><![CDATA[ZGC（The Z Garbage Collector）是JDK 11中推出的一款低延迟垃圾回收器，它的设计目标包括： 停顿时间不超过10ms； 停顿时间不会随着堆]]></description>
+    <title>【npm】core-js@2.6.12: core-js@&lt;3.3 is no longer maintained and not recommended 。。。。。</title>
+    <link>https://kkkpjskey.github.io/npm-core-js-no-longer-maintained-recommended-error/</link>
+    <pubDate>Sun, 05 Jun 2022 19:54:11 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/npm-core-js-no-longer-maintained-recommended-error/</guid>
+    <description><![CDATA[错误代码 core-js@2.6.12: core-js@❤️.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Please, upgrade your dependencies to the actual version of core-js. 由于问题]]></description>
 </item><item>
-    <title>C# 委托（Delegate）笔记</title>
-    <link>https://kkkpjskey.github.io/csharp-delegate-note/</link>
-    <pubDate>Tue, 31 May 2022 23:10:26 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/csharp-delegate-note/</guid>
-    <description><![CDATA[C# 委托（Delegate） C# 中的委托（Delegate）类似于 C 或 C++ 中函数的指针。委托（Delegate） 是存有对某个方法的引用的一种引用类]]></description>
+    <title>在Window系统上安装redis服务-Invalid argument during startup: Failed to open the .conf</title>
+    <link>https://kkkpjskey.github.io/redis-fail-open-conf-error/</link>
+    <pubDate>Sun, 05 Jun 2022 19:33:01 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/redis-fail-open-conf-error/</guid>
+    <description><![CDATA[版本 当前redis版本 1 2 redis-cli -v redis-cli 3.0.503 网上给的命令（在redis所在文件夹下执行）： 1 redis-server –service-install redis.windows.conf –loglevel verbose 问]]></description>
 </item><item>
-    <title>Spring Cloud nested exception is java.lang.IllegalStateException: RequestParam.value() was empty on 报错</title>
-    <link>https://kkkpjskey.github.io/springcloud-requestparam-value-was-empty-error/</link>
-    <pubDate>Tue, 31 May 2022 22:20:57 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/springcloud-requestparam-value-was-empty-error/</guid>
-    <description><![CDATA[记录本次出现nested exception is java.lang.IllegalStateException: RequestParam.value() was empty on 的原因，以后遇到其他原因导致的也要记录下 出现此问题原因： @RequestParam一定要有value属]]></description>
+    <title>Windows 各种中间件安装为服务</title>
+    <link>https://kkkpjskey.github.io/win-middleware-install-service-note/</link>
+    <pubDate>Sun, 05 Jun 2022 18:36:08 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win-middleware-install-service-note/</guid>
+    <description><![CDATA[通用步骤（以Nacos为例） 1、插件下载 ​ 地址：Releases · winsw/winsw · GitHub ​ 选择下面这个插件： 2、配置文件和插件安装 ​ 1、在nacos解压包的]]></description>
 </item><item>
-    <title>SpringCloud使用Feign笔记</title>
-    <link>https://kkkpjskey.github.io/rpc-feign-note/</link>
-    <pubDate>Tue, 31 May 2022 16:25:28 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/rpc-feign-note/</guid>
-    <description><![CDATA[SpringCloud使用Feign调用第三方接口 最近工作中需要用到第三方接口，常规解决方案有三种：1.使用HttpClient。2.使用r]]></description>
+    <title>Swagger配置OAuth2登陆失败</title>
+    <link>https://kkkpjskey.github.io/swagger-no-token-error/</link>
+    <pubDate>Sun, 05 Jun 2022 17:33:29 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/swagger-no-token-error/</guid>
+    <description><![CDATA[前言 用别人的脚手架发现Swagger登录oauth2失败，一开始未发现问题，后通过尝试更改启动顺序解决，但也顺便学习了下Swagger如何配]]></description>
 </item></channel>
 </rss>

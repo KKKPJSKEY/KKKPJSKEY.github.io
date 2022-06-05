@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/redis-note\/featured-image.jpg",
                             "width":  2000 ,
                             "height":  600 
-                        }],"genre": "posts","keywords": "Database, Redis, Cash","wordcount":  4228 ,
+                        }],"genre": "posts","keywords": "Database, Redis, Cash","wordcount":  5098 ,
         "url": "https:\/\/kkkpjskey.github.io\/redis-note\/","datePublished": "2021-10-18T11:55:34+08:00","dateModified": "2021-10-18T11:55:34+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Redis缓存机制与应用</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-18">2021-10-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4228 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/redis-note/" class="leancloud_visitors" data-flag-title="Redis缓存机制与应用">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-18">2021-10-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5098 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/redis-note/" class="leancloud_visitors" data-flag-title="Redis缓存机制与应用">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -140,6 +140,12 @@
     <li><a href="#基础知识介绍">基础知识介绍</a></li>
     <li><a href="#常用技术讲解与缓存机制">常用技术讲解与缓存机制</a></li>
     <li><a href="#使用场景缓存问题">使用场景、缓存问题</a></li>
+    <li><a href="#redis中的hash扩容渐进式rehash过程">redis中的hash扩容渐进式rehash过程</a>
+      <ul>
+        <li><a href="#redis中的hash表采用的是渐进式hash的方式"><strong>redis中的hash表采用的是渐进式hash的方式：</strong></a></li>
+        <li><a href="#总结"><strong>总结：</strong></a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><blockquote>
@@ -535,6 +541,56 @@
         data-sizes="auto"
         alt="./12.png"
         title="12" /></p>
+<h2 id="redis中的hash扩容渐进式rehash过程">redis中的hash扩容渐进式rehash过程</h2>
+<p><strong>背景： redis字典（hash表）当数据越来越多的时候，就会发生扩容，也就是rehash</strong></p>
+<p><strong>对比：java中的hashmap，当数据数量达到阈值的时候(0.75)，就会发生rehash，hash表长度变为原来的二倍，将原hash表数据全部重新计算hash地址，重新分配位置，达到rehash目的</strong></p>
+<h3 id="redis中的hash表采用的是渐进式hash的方式"><strong>redis中的hash表采用的是渐进式hash的方式：</strong></h3>
+<p><strong>1、redis字典（hash表）底层有两个数组，还有一个rehashidx用来控制rehash</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+<p><strong>2、初始默认hash长度为4，当元素个数与hash表长度一致时，就发生扩容，hash长度变为原来的二倍</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+<p><strong>3、redis中的hash则是执行的单步rehash的过程：</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.png"
+        data-srcset="./16.png, ./16.png 1.5x, ./16.png 2x"
+        data-sizes="auto"
+        alt="./16.png"
+        title="16" /></p>
+<p><strong>每次的增删改查，rehashidx+1，然后执行对应原hash表rehashidx索引位置的rehash</strong></p>
+<h3 id="总结"><strong>总结：</strong></h3>
+<p><strong>在扩容和收缩的时候，如果哈希字典中有很多元素，一次性将这些键全部rehash到<code>ht[1]</code>的话，可能会导致服务器在一段时间内停止服务。所以，采用渐进式rehash的方式，详细步骤如下：</strong></p>
+<ol>
+<li><strong>为<code>ht[1]</code>分配空间，让字典同时持有<code>ht[0]</code>和<code>ht[1]</code>两个哈希表</strong></li>
+<li><strong>将<code>rehashindex</code>的值设置为<code>0</code>，表示rehash工作正式开始</strong></li>
+<li><strong>在rehash期间，每次对字典执行增删改查操作是，程序除了执行指定的操作以外，还会顺带将<code>ht[0]</code>哈希表在<code>rehashindex</code>索引上的所有键值对rehash到<code>ht[1]</code>，当rehash工作完成以后，<code>rehashindex</code>的值<code>+1</code></strong></li>
+<li><strong>随着字典操作的不断执行，最终会在某一时间段上<code>ht[0]</code>的所有键值对都会被rehash到<code>ht[1]</code>，这时将<code>rehashindex</code>的值设置为<code>-1</code>，表示rehash操作结束</strong></li>
+</ol>
+<p><strong>渐进式rehash采用的是一种分而治之的方式，将rehash的操作分摊在每一个的访问中，避免集中式rehash而带来的庞大计算量。</strong></p>
+<p><strong>需要注意的是在渐进式rehash的过程，如果有增删改查操作时，如果<code>index</code>大于<code>rehashindex</code>，访问<code>ht[0]</code>，否则访问<code>ht[1]。</code></strong></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

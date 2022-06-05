@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/es-mysql-sync-logstash-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/es-mysql-sync-logstash-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-29T11:29:21+08:00" />
-<meta property="article:modified_time" content="2022-05-29T11:29:21+08:00" />
+<meta property="article:modified_time" content="2022-06-05T12:02:34+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/es-mysql-sync-logstash-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/es-mysql-sync-logstash-note\/featured-image.jpg",
                             "width":  2300 ,
                             "height":  690 
-                        }],"genre": "posts","keywords": "ElasticSearch, Mysql , Sync, Logstash","wordcount":  1535 ,
-        "url": "https:\/\/kkkpjskey.github.io\/es-mysql-sync-logstash-note\/","datePublished": "2022-05-29T11:29:21+08:00","dateModified": "2022-05-29T11:29:21+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "ElasticSearch, Mysql , Sync, Logstash","wordcount":  2584 ,
+        "url": "https:\/\/kkkpjskey.github.io\/es-mysql-sync-logstash-note\/","datePublished": "2022-05-29T11:29:21+08:00","dateModified": "2022-06-05T12:02:34+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Logstash 配置 Mysql 数据准实时同步到 ES 中</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-29">2022-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1535 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/es-mysql-sync-logstash-note/" class="leancloud_visitors" data-flag-title="Logstash 配置 Mysql 数据准实时同步到 ES 中">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-29">2022-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2584 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/es-mysql-sync-logstash-note/" class="leancloud_visitors" data-flag-title="Logstash 配置 Mysql 数据准实时同步到 ES 中">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -154,6 +154,7 @@
       </ul>
     </li>
     <li><a href="#扩展">扩展</a></li>
+    <li><a href="#logstash-配置多个conf和配置增量更新">Logstash 配置多个conf和配置增量更新</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="题记">题记</h2>
@@ -547,11 +548,211 @@ The stdin plugin is now waiting for input:
 </code></pre></td></tr></table>
 </div>
 </div><p>2）input里的type和output if判定的type<strong>保持一致</strong>，该type对应ES中的type。</p>
-</div><div class="post-footer" id="post-footer">
+<h2 id="logstash-配置多个conf和配置增量更新">Logstash 配置多个conf和配置增量更新</h2>
+<p>参考：https://www.elastic.co/guide/en/logstash/current/plugins-inputs-jdbc.html</p>
+<p>Logstash可以配置多个pipeline，每一个pipeline设置不同的参数，包括读取的conf；</p>
+<p>也可以配置一个pipeline,读取多个conf，其读取多个conf，实际上是把它们合并一起，所以，conf里面需要写上type，通过type来判断写入那个索引。</p>
+<p>logstash.yml的配置修改如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="l">logstash.yml的设置：</span><span class="w">
+</span><span class="w"></span><span class="c"># pipeline.id: main</span><span class="w">
+</span><span class="w"></span><span class="nt">pipeline.id</span><span class="p">:</span><span class="w"> </span><span class="l">d_bzdz</span><span class="w">
+</span><span class="w"> 
+</span><span class="w"></span><span class="c">#</span><span class="w">
+</span><span class="w"></span><span class="c"># path.config:</span><span class="w">
+</span><span class="w"></span><span class="nt">path.config</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/map/es/soft/logstash-7.6.2/config/myconfig/*.conf&#34;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>运行的时候就不需要 -f conf参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">运行 ./bin/logstash
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Sample Logstash configuration for creating a simple</span>
+<span class="c1"># Beats -&gt; Logstash -&gt; Elasticsearch pipeline.</span>
+ 
+input<span class="o">{</span>
+	<span class="c1"># stdin{}</span>
+	jdbc<span class="o">{</span>
+		<span class="nv">jdbc_connection_string</span> <span class="o">=</span>&gt; <span class="s2">&#34;jdbc:oracle:thin:@//:1521/GIS&#34;</span>
+		<span class="nv">jdbc_user</span> <span class="o">=</span>&gt; <span class="s2">&#34;&#34;</span>
+		<span class="nv">jdbc_password</span> <span class="o">=</span>&gt; <span class="s2">&#34;&#34;</span>
+		<span class="nv">jdbc_driver_library</span> <span class="o">=</span>&gt; <span class="s2">&#34;/es/soft/logstash-7.6.2/lib/ojdbc7.jar&#34;</span>
+		<span class="nv">jdbc_driver_class</span> <span class="o">=</span>&gt; <span class="s2">&#34;Java::oracle.jdbc.driver.OracleDriver&#34;</span>
+		<span class="c1"># jdbc_default_timezone =&gt; &#34;Asia/Shanghai&#34;  </span>
+        <span class="c1"># 统一用一个时间标准即可，不需要设置。oracle本来的时区也是+00。</span>
+		<span class="c1"># plugin_timezone =&gt; &#34;local&#34;</span>
+		<span class="c1"># 228万条记录 12分钟完成同步</span>
+		<span class="nv">jdbc_paging_enabled</span> <span class="o">=</span>&gt; <span class="s2">&#34;true&#34;</span>
+		<span class="c1"># 每批传输数量</span>
+		<span class="nv">jdbc_page_size</span> <span class="o">=</span>&gt; <span class="s2">&#34;100000&#34;</span>
+		<span class="c1"># sql_last_value 是最后查询的值（时间或者id）,未执行查询之前，它的值是1970.1.1，应该是时间戳的值；</span>
+		<span class="c1"># 如果设置 use_column_value =&gt; &#34;true&#34;  </span>
+<span class="c1">#和tracking_column ，sql_last_value 的默认值是0，之后是这个字段的最新值。</span>
+		<span class="c1"># 如果use_column_value =&gt; &#34;false&#34;,</span>
+<span class="c1">#后续每次查询，都会记录执行查询的logstash时间 作为sql_last_value</span>
+		<span class="nv">statement</span> <span class="o">=</span>&gt; <span class="s2">&#34;select t.systemid .... and t.lastupdatedtime &gt; :sql_last_value order by t.lastupdatedtime asc&#34;</span>		
+		<span class="c1"># 设置为true时，sql_last_value的值是tracking_column的值；</span>
+<span class="c1">#设置为false是，sql_last_value的值是上次执行的值。</span>
+		<span class="nv">use_column_value</span> <span class="o">=</span>&gt; <span class="s2">&#34;true&#34;</span>
+		<span class="c1"># 是否保存状态</span>
+		<span class="nv">record_last_run</span> <span class="o">=</span>&gt; <span class="s2">&#34;true&#34;</span>
+		<span class="c1"># 记录最后一条数据的时间戳，所以，sql语句里面需要 有</span>
+<span class="c1">#order by t.lastupdatedtime asc</span>
+		<span class="nv">tracking_column</span> <span class="o">=</span>&gt; <span class="s2">&#34;lastupdatedtime&#34;</span>
+		<span class="c1"># 只有两种类型numberic 和timestamp</span>
+		<span class="nv">tracking_column_type</span> <span class="o">=</span>&gt; <span class="s2">&#34;timestamp&#34;</span>		
+		<span class="c1"># 记录 sql_last_value的文件</span>
+		<span class="nv">last_run_metadata_path</span> <span class="o">=</span>&gt; <span class="s2">&#34;/es/soft/logstash-7.6.2/config/myconfig/mlp_parameter.txt&#34;</span>
+		<span class="c1">#设置监听间隔，各字段（分、时、天、月、年），全部*代表每分钟都更新</span>
+		<span class="c1"># &#34;0 * * * *&#34; 在每小时每天的第0分钟运行</span>
+		<span class="c1"># 设置每天12点0分运行  corn表达式</span>
+		<span class="nv">schedule</span> <span class="o">=</span>&gt; <span class="s2">&#34;47 12 * * *&#34;</span>
+		<span class="c1"># 这个类型可以判断输入到哪个索引，因为我设置了一个pipeline读取多个conf，</span>
+<span class="c1">#它实际是把多个conf合并成一个。</span>
+		<span class="nb">type</span> <span class="o">=</span>&gt; <span class="s2">&#34;mlp_jdbc&#34;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+ 
+filter <span class="o">{</span>
+	<span class="k">if</span><span class="o">[</span>type<span class="o">]</span> <span class="o">==</span> <span class="s2">&#34;mlp_jdbc&#34;</span> <span class="o">{</span>
+		mutate <span class="o">{</span>
+			<span class="nv">add_field</span> <span class="o">=</span>&gt; <span class="o">[</span><span class="s2">&#34;[location][lat]&#34;</span>,<span class="s2">&#34;%{zxwd}&#34;</span><span class="o">]</span>
+			<span class="nv">add_field</span> <span class="o">=</span>&gt; <span class="o">[</span><span class="s2">&#34;[location][lon]&#34;</span>,<span class="s2">&#34;%{zxjd}&#34;</span><span class="o">]</span>
+		<span class="o">}</span>
+ 
+		ruby <span class="o">{</span>
+			<span class="nv">code</span> <span class="o">=</span>&gt; <span class="s2">&#34;event.set(&#39;timestamp&#39;,event.get(&#39;@timestamp&#39;).time.localtime )&#34;</span>
+		<span class="o">}</span>
+ 
+		ruby <span class="o">{</span>
+			<span class="nv">code</span> <span class="o">=</span>&gt; <span class="s2">&#34;event.set(&#39;@timestamp&#39;,event.get(&#39;timestamp&#39;))&#34;</span>
+		<span class="o">}</span>
+ 
+		mutate <span class="o">{</span>
+			<span class="nv">remove_field</span> <span class="o">=</span>&gt; <span class="o">[</span><span class="s2">&#34;timestamp&#34;</span><span class="o">]</span>
+		<span class="o">}</span>
+	<span class="o">}</span>	
+<span class="o">}</span>
+ 
+output<span class="o">{</span>
+	<span class="k">if</span><span class="o">[</span>type<span class="o">]</span> <span class="o">==</span> <span class="s2">&#34;mlp_jdbc&#34;</span> <span class="o">{</span>
+		elasticsearch<span class="o">{</span>
+			<span class="nv">hosts</span> <span class="o">=</span>&gt; <span class="s2">&#34;localhost:9200&#34;</span>
+			<span class="nv">index</span> <span class="o">=</span>&gt; <span class="s2">&#34;d_bzdz_mlp&#34;</span>
+			<span class="nv">document_id</span> <span class="o">=</span>&gt; <span class="s2">&#34;%{systemid}&#34;</span>	
+		<span class="o">}</span>
+		stdout<span class="o">{</span>
+			<span class="nv">codec</span> <span class="o">=</span>&gt; <span class="s2">&#34;json_lines&#34;</span>
+			<span class="c1"># codec =&gt; &#34;rubydebug&#34;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>	
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-29</span>
+                <span>更新于 2022-06-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>

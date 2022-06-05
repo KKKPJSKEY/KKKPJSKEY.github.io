@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Windows 各种中间件安装为服务 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Python笔记"><meta property="og:title" content="Windows 各种中间件安装为服务" />
+<meta property="og:description" content="记录Python笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/win-middleware-install-service-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/win-middleware-install-service-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-05T18:36:08+08:00" />
+<meta property="article:modified_time" content="2022-06-05T18:36:08+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/win-middleware-install-service-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Windows 各种中间件安装为服务"/>
+<meta name="twitter:description" content="记录Python笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/win-middleware-install-service-note/" /><link rel="prev" href="https://kkkpjskey.github.io/swagger-no-token-error/" /><link rel="next" href="https://kkkpjskey.github.io/redis-fail-open-conf-error/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Windows 各种中间件安装为服务",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/win-middleware-install-service-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/win-middleware-install-service-note\/featured-image.jpg",
+                            "width":  1810 ,
+                            "height":  543 
+                        }],"genre": "posts","keywords": "Python","wordcount":  1177 ,
+        "url": "https:\/\/kkkpjskey.github.io\/win-middleware-install-service-note\/","datePublished": "2022-06-05T18:36:08+08:00","dateModified": "2022-06-05T18:36:08+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Python笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/win-middleware-install-service-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/win-middleware-install-service-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Windows 各种中间件安装为服务</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-05">2022-06-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1177 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/win-middleware-install-service-note/" class="leancloud_visitors" data-flag-title="Windows 各种中间件安装为服务">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/win-middleware-install-service-note/featured-image.jpg"
+        data-srcset="/win-middleware-install-service-note/featured-image.jpg, /win-middleware-install-service-note/featured-image.jpg 1.5x, /win-middleware-install-service-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/win-middleware-install-service-note/featured-image.jpg"
+        title="记录Python笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#通用步骤以nacos为例">通用步骤（以Nacos为例）</a>
+      <ul>
+        <li><a href="#1插件下载">1、插件下载</a></li>
+        <li><a href="#2配置文件和插件安装">2、配置文件和插件安装</a></li>
+        <li><a href="#3服务的查看与开启关闭">3、服务的查看与开启关闭</a></li>
+      </ul>
+    </li>
+    <li><a href="#mysql">Mysql</a></li>
+    <li><a href="#rabbitmq">RabbitMq</a></li>
+    <li><a href="#redis">Redis</a></li>
+    <li><a href="#elasticsearch">ElasticSearch</a></li>
+    <li><a href="#logstash">Logstash</a>
+      <ul>
+        <li><a href="#ry-cloud-aa-comp_startcmd">ry-cloud-aa-comp_start.cmd</a></li>
+        <li><a href="#logstash_stopbat">logstash_stop.bat</a></li>
+      </ul>
+    </li>
+    <li><a href="#elastichd">ElasticHD</a></li>
+    <li><a href="#nginx">Nginx</a></li>
+    <li><a href="#我的脚本">我的脚本</a>
+      <ul>
+        <li><a href="#启动">启动</a></li>
+        <li><a href="#关闭">关闭</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="通用步骤以nacos为例">通用步骤（以Nacos为例）</h2>
+<h3 id="1插件下载">1、插件下载</h3>
+<p>​    地址：<a href="https://github.com/winsw/winsw/releases" target="_blank" rel="noopener noreferrer">Releases · winsw/winsw · GitHub</a></p>
+<p>​    选择下面这个插件：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<h3 id="2配置文件和插件安装">2、配置文件和插件安装</h3>
+<p>​	<strong>1、在nacos解压包的bin目录下创建nacos-service.xml文件</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>​	<strong>2、在nacos-service.xml输入以下内容：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+<span class="nt">&lt;service&gt;</span>
+    <span class="nt">&lt;id&gt;</span>nacos<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Nacos Service<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;description&gt;</span>Nacos-service<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;logpath&gt;</span>D:\tool\nacos\nacos\bin\logs\<span class="nt">&lt;/logpath&gt;</span>
+    <span class="nt">&lt;logmode&gt;</span>roll<span class="nt">&lt;/logmode&gt;</span>
+    <span class="nt">&lt;executable&gt;</span>D:\tool\nacos\nacos\bin\startup.cmd<span class="nt">&lt;/executable&gt;</span>
+    <span class="nt">&lt;stopexecutable&gt;</span>D:\tool\nacos\nacos\bin\shutdown.cmd<span class="nt">&lt;/stopexecutable&gt;</span>
+<span class="nt">&lt;/service&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>先说注意的点：不要有中文！！不要有中文！！不要有中文！！</strong></p>
+<p><strong>博主就是在中文这块折腾很久，保险起见哪怕注释都不要有中文</strong></p>
+<p><strong>另外，要将三个地址改为你自己的：</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p>解释下相关配置：</p>
+<p>id：服务id，需在windows系统上唯一，不能与其他服务有冲突</p>
+<p>name：注册完服务后显示的服务名称</p>
+<p>description：随便写，但尽量不要有中文</p>
+<p>​	<strong>3、将刚刚下载的 WinSW-x64.exe插件移动到nacos解压目录的bin目录下，改名为：nacos-service.exe，exe是后缀</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p>​	<strong>4、在bin目录下输入cmd，打开命令行，输入：nacos-service.exe install</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p>​	<strong>5、在cmd命令行输入：net start nacos，启动服务</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<h3 id="3服务的查看与开启关闭">3、服务的查看与开启关闭</h3>
+<p>​	<strong>1、查看</strong></p>
+<p>​            win + R</p>
+<p>​            输入：services.msc</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>​	<strong>2、开启关闭服务</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat">net start nacos
+net stop nacos
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>其他中间间仅需修改xml即可</strong></p>
+<h2 id="mysql">Mysql</h2>
+<p><a href="https://kkkpjskey.github.io/mysql-install-note/#windows" target="_blank" rel="noopener noreferrer">自带脚本运行即可</a></p>
+<h2 id="rabbitmq">RabbitMq</h2>
+<p><a href="https://kkkpjskey.github.io/rabbitmq-note/#2%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85" target="_blank" rel="noopener noreferrer">自带脚本运行即可</a></p>
+<h2 id="redis">Redis</h2>
+<p><a href="https://kkkpjskey.github.io/redis-green-install-note/#font-color2e75b5%E5%AE%89%E8%A3%85redis%E6%9C%8D%E5%8A%A1font" target="_blank" rel="noopener noreferrer">自带脚本运行即可</a></p>
+<h2 id="elasticsearch">ElasticSearch</h2>
+<p><a href="https://kkkpjskey.github.io/es-operation-note/#%E5%9B%9Belasticsearch%E5%AE%89%E8%A3%85%E4%B8%BAwindows%E6%9C%8D%E5%8A%A1" target="_blank" rel="noopener noreferrer">自带脚本运行即可</a></p>
+<h2 id="logstash">Logstash</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;service&gt;</span>
+  <span class="c">&lt;!-- 唯一服务ID--&gt;</span>
+  <span class="nt">&lt;id&gt;</span>logstash<span class="nt">&lt;/id&gt;</span>
+  <span class="c">&lt;!-- 显示服务的名称 --&gt;</span>
+  <span class="nt">&lt;name&gt;</span>Logstash Service<span class="nt">&lt;/name&gt;</span>
+  <span class="c">&lt;!-- 服务描述 --&gt;</span>
+  <span class="nt">&lt;description&gt;</span>Logstash服务<span class="nt">&lt;/description&gt;</span>
+  <span class="c">&lt;!-- 日志路径 --&gt;</span>
+  <span class="nt">&lt;logpath&gt;</span>C:\Program_Green\Java_env\logstash-8.2.0\logs\<span class="nt">&lt;/logpath&gt;</span>
+  <span class="c">&lt;!-- 日志模式 --&gt;</span>
+  <span class="nt">&lt;logmode&gt;</span>roll<span class="nt">&lt;/logmode&gt;</span>
+  <span class="c">&lt;!-- 可执行文件的命令 --&gt;</span>
+  <span class="nt">&lt;executable&gt;</span>C:\Program_Green\Java_env\logstash-8.2.0\bin\ry-cloud-aa-comp_start.cmd<span class="nt">&lt;/executable&gt;</span>
+  <span class="c">&lt;!-- &lt;executable&gt;C:\Program_Green\Java_env\logstash-8.2.0\bin\logstash.bat&lt;/executable&gt; --&gt;</span>
+  <span class="c">&lt;!-- &lt;arguments&gt;-f C:\Program_Green\Java_env\logstash-8.2.0\ry-cloud-aa-comp\config\config.conf - -path.data=C:\Program_Green\Java_env\logstash-8.2.0\ry-cloud-aa-comp\data\&lt;/arguments&gt; --&gt;</span>
+  <span class="c">&lt;!-- 停止可执行文件的命令 --&gt;</span>
+  <span class="nt">&lt;stopexecutable&gt;</span>C:\Program_Green\Java_env\logstash-8.2.0\bin\logstash_stop.bat<span class="nt">&lt;/stopexecutable&gt;</span>
+<span class="nt">&lt;/service&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="ry-cloud-aa-comp_startcmd">ry-cloud-aa-comp_start.cmd</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="k">cd</span> C:\Program_Green\Java_env\logstash-8.2.0\bin
+logstash.bat -f C:\Program_Green\Java_env\logstash-8.2.0\ry-cloud-aa-comp\config\config.conf --path.data=C:\Program_Green\Java_env\logstash-8.2.0\ry-cloud-aa-comp\data\
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="logstash_stopbat">logstash_stop.bat</h3>
+<blockquote>
+<p>根据jps找java进程，拿到进程号startkill掉</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">@</span><span class="k">echo</span> off
+<span class="k">set</span> <span class="nv">program</span><span class="p">=</span>org.logstash.Logstash
+<span class="k">echo</span> program: <span class="nv">%program%</span>
+<span class="k">for</span> <span class="k">/f</span> <span class="s2">&#34;usebackq tokens=1-2&#34;</span> <span class="se">%%</span>a <span class="k">in</span> <span class="p">(</span><span class="sb">`jps -l ^| findstr </span><span class="nv">%program%</span><span class="sb">`</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
+	<span class="k">set</span> <span class="nv">pid</span><span class="p">=</span><span class="se">%%</span>a
+	<span class="k">set</span> <span class="nv">image_name</span><span class="p">=</span><span class="se">%%</span>b
+<span class="p">)</span>
+<span class="k">if</span> <span class="k">not</span> <span class="k">defined</span> <span class="nv">pid</span> <span class="p">(</span>echoprocess<span class="nv">%program%</span> does not exists<span class="p">)</span> <span class="k">else</span> <span class="p">(</span>
+	<span class="k">echo</span> prepare to kill <span class="nv">%image_name%</span>
+	<span class="k">echo</span> startkill <span class="nv">%pid%</span> ...
+	<span class="c1">rem 根据进程ID，kill进程</span>
+	taskkill /f /pid <span class="nv">%pid%</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="elastichd">ElasticHD</h2>
+<blockquote>
+<p>直接startkill掉进行关闭</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;service&gt;</span>
+  <span class="c">&lt;!-- 唯一服务ID--&gt;</span>
+  <span class="nt">&lt;id&gt;</span>elastic_hd<span class="nt">&lt;/id&gt;</span>
+  <span class="c">&lt;!-- 显示服务的名称 --&gt;</span>
+  <span class="nt">&lt;name&gt;</span>ElasticHD Service<span class="nt">&lt;/name&gt;</span>
+  <span class="c">&lt;!-- 服务描述 --&gt;</span>
+  <span class="nt">&lt;description&gt;</span>ElasticHD服务<span class="nt">&lt;/description&gt;</span>
+  <span class="c">&lt;!-- 日志路径 --&gt;</span>
+  <span class="nt">&lt;logpath&gt;</span>C:\Program_Green\Java_env\ElasticHD\logs\<span class="nt">&lt;/logpath&gt;</span>
+  <span class="c">&lt;!-- 日志模式 --&gt;</span>
+  <span class="nt">&lt;logmode&gt;</span>roll<span class="nt">&lt;/logmode&gt;</span>
+  <span class="c">&lt;!-- 可执行文件的命令 --&gt;</span>
+  <span class="nt">&lt;executable&gt;</span>C:\Program_Green\Java_env\ElasticHD\ElasticHD.exe<span class="nt">&lt;/executable&gt;</span>
+  <span class="c">&lt;!-- 停止可执行文件的命令 --&gt;</span>
+  <span class="nt">&lt;stopexecutable&gt;</span>taskkill -f -PID ElasticHD.exe<span class="nt">&lt;/stopexecutable&gt;</span>
+<span class="nt">&lt;/service&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="nginx">Nginx</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;service&gt;</span>
+  <span class="c">&lt;!-- 唯一服务ID--&gt;</span>
+  <span class="nt">&lt;id&gt;</span>nginx<span class="nt">&lt;/id&gt;</span>
+  <span class="c">&lt;!-- 显示服务的名称 --&gt;</span>
+  <span class="nt">&lt;name&gt;</span>Nginx Service<span class="nt">&lt;/name&gt;</span>
+  <span class="c">&lt;!-- 服务描述 --&gt;</span>
+  <span class="nt">&lt;description&gt;</span>Nginx服务<span class="nt">&lt;/description&gt;</span>
+  <span class="c">&lt;!-- 日志路径 --&gt;</span>
+  <span class="nt">&lt;logpath&gt;</span>C:\Program_Green\Java_env\nginx-1.20.2\logs\<span class="nt">&lt;/logpath&gt;</span>
+  <span class="c">&lt;!-- 日志模式 --&gt;</span>
+  <span class="nt">&lt;logmode&gt;</span>roll<span class="nt">&lt;/logmode&gt;</span>
+  <span class="c">&lt;!-- 可执行文件的命令 --&gt;</span>
+  <span class="nt">&lt;executable&gt;</span>C:\Program_Green\Java_env\nginx-1.20.2\nginx.exe<span class="nt">&lt;/executable&gt;</span>
+  <span class="c">&lt;!-- 停止可执行文件的命令 --&gt;</span>
+  <span class="nt">&lt;stopexecutable&gt;</span>C:\Program_Green\Java_env\nginx-1.20.2\nginx.exe -s stop<span class="nt">&lt;/stopexecutable&gt;</span>
+<span class="nt">&lt;/service&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="我的脚本">我的脚本</h2>
+<h3 id="启动">启动</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">net</span> <span class="nb">start </span><span class="n">mysql</span>
+<span class="n">net</span> <span class="nb">start </span><span class="n">redis</span>
+<span class="n">net</span> <span class="nb">start </span><span class="n">nacos</span>
+<span class="n">net</span> <span class="nb">start </span><span class="n">RabbitMQ</span>
+<span class="n">net</span> <span class="nb">start elasticsearch-service</span><span class="n">-x64</span>
+<span class="n">net</span> <span class="nb">start </span><span class="n">elastic_hd</span>
+<span class="n">net</span> <span class="nb">start </span><span class="n">logstash</span>
+<span class="n">net</span> <span class="nb">start </span><span class="n">nginx</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="关闭">关闭</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">net</span> <span class="n">stop</span> <span class="n">nacos</span>
+<span class="n">net</span> <span class="n">stop</span> <span class="n">redis</span>
+<span class="n">net</span> <span class="n">stop</span> <span class="n">mysql</span>
+<span class="n">net</span> <span class="n">stop</span> <span class="n">RabbitMQ</span>
+<span class="n">net</span> <span class="n">stop</span> <span class="nb">elasticsearch-service</span><span class="n">-x64</span>
+<span class="n">net</span> <span class="n">stop</span> <span class="n">elastic_hd</span>
+<span class="n">net</span> <span class="n">stop</span> <span class="n">logstash</span>
+<span class="n">net</span> <span class="n">stop</span> <span class="n">nginx</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-05</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/win-middleware-install-service-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/win-middleware-install-service-note/" data-title="Windows 各种中间件安装为服务" data-hashtags="Python"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/win-middleware-install-service-note/" data-hashtag="Python"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/win-middleware-install-service-note/" data-title="Windows 各种中间件安装为服务" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/win-middleware-install-service-note/" data-title="Windows 各种中间件安装为服务"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/python/">Python</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/swagger-no-token-error/" class="prev" rel="prev" title="Swagger配置OAuth2登陆失败"><i class="fas fa-angle-left fa-fw"></i>Swagger配置OAuth2登陆失败</a>
+            <a href="/redis-fail-open-conf-error/" class="next" rel="next" title="在Window系统上安装redis服务-Invalid argument during startup: Failed to open the .conf">在Window系统上安装redis服务-Invalid argument during startup: Failed to open the .conf<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

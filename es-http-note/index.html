@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/es-http-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/es-http-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-29T15:18:43+08:00" />
-<meta property="article:modified_time" content="2022-05-29T15:18:43+08:00" />
+<meta property="article:modified_time" content="2022-06-05T12:04:28+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/es-http-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/es-http-note\/featured-image.jpg",
                             "width":  1850 ,
                             "height":  555 
-                        }],"genre": "posts","keywords": "ElasticSearch, Http, Curl","wordcount":  419 ,
-        "url": "https:\/\/kkkpjskey.github.io\/es-http-note\/","datePublished": "2022-05-29T15:18:43+08:00","dateModified": "2022-05-29T15:18:43+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "ElasticSearch, Http, Curl","wordcount":  510 ,
+        "url": "https:\/\/kkkpjskey.github.io\/es-http-note\/","datePublished": "2022-05-29T15:18:43+08:00","dateModified": "2022-06-05T12:04:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">ElasticSearch使用Http方式访问数据</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-29">2022-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 419 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/es-http-note/" class="leancloud_visitors" data-flag-title="ElasticSearch使用Http方式访问数据">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-29">2022-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 510 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/es-http-note/" class="leancloud_visitors" data-flag-title="ElasticSearch使用Http方式访问数据">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -144,6 +144,7 @@
         <li><a href="#windows环境中curl方式删除">Windows环境中Curl方式删除</a></li>
       </ul>
     </li>
+    <li><a href="#es-使用_cat命令查看帮助命令信息">ES 使用_cat命令查看帮助命令信息</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="es删除索引中的所有数据不删除索引结构含curl删除方式">ES删除索引中的所有数据（不删除索引结构）含Curl删除方式</h2>
@@ -238,11 +239,84 @@
 curl: <span class="o">(</span>1<span class="o">)</span> Protocol <span class="s2">&#34;&#39;http&#34;</span> not supported or disabled in libcurl
 </code></pre></td></tr></table>
 </div>
+</div><h2 id="es-使用_cat命令查看帮助命令信息">ES 使用_cat命令查看帮助命令信息</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="err">#使用_cat 查看帮助命令：
+</span><span class="err">get _cat
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="err">=^.^=
+</span><span class="err">/_cat/allocation
+</span><span class="err">/_cat/shards
+</span><span class="err">/_cat/shards/{index}
+</span><span class="err">/_cat/master
+</span><span class="err">/_cat/nodes
+</span><span class="err">/_cat/tasks
+</span><span class="err">/_cat/indices
+</span><span class="err">/_cat/indices/{index}
+</span><span class="err">/_cat/segments
+</span><span class="err">/_cat/segments/{index}
+</span><span class="err">/_cat/count
+</span><span class="err">/_cat/count/{index}
+</span><span class="err">/_cat/recovery
+</span><span class="err">/_cat/recovery/{index}
+</span><span class="err">/_cat/health
+</span><span class="err">/_cat/pending_tasks
+</span><span class="err">/_cat/aliases
+</span><span class="err">/_cat/aliases/{alias}
+</span><span class="err">/_cat/thread_pool
+</span><span class="err">/_cat/thread_pool/{thread_pools}
+</span><span class="err">/_cat/plugins
+</span><span class="err">/_cat/fielddata
+</span><span class="err">/_cat/fielddata/{fields}
+</span><span class="err">/_cat/nodeattrs
+</span><span class="err">/_cat/repositories
+</span><span class="err">/_cat/snapshots/{repository}
+</span><span class="err">/_cat/templates
+</span></code></pre></td></tr></table>
+</div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-29</span>
+                <span>更新于 2022-06-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>

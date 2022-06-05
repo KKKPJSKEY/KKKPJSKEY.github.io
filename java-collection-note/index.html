@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-collection-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-collection-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-10-15T15:04:57+08:00" />
-<meta property="article:modified_time" content="2022-06-04T23:31:05+08:00" />
+<meta property="article:modified_time" content="2022-06-05T15:27:49+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-collection-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/featured-image.jpg",
                             "width":  721 ,
                             "height":  330 
-                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  38940 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/","datePublished": "2021-10-15T15:04:57+08:00","dateModified": "2022-06-04T23:31:05+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  45997 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/","datePublished": "2021-10-15T15:04:57+08:00","dateModified": "2022-06-05T15:27:49+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java-Collection笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 38940 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 78 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 45997 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 92 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -138,38 +138,45 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#前言">前言</a></li>
-    <li><a href="#arraylist初始化的4种方法">ArrayList初始化的4种方法</a></li>
-    <li><a href="#list的交集差集并集">list的交集,差集,并集</a></li>
-    <li><a href="#list数据去重的五种方法">List数据去重的五种方法</a>
+    <li><a href="#list">List</a>
       <ul>
-        <li><a href="#方案一借助set的特性进行去重">方案一:借助Set的特性进行去重</a></li>
-        <li><a href="#方案二--利用set集合特性保持顺序一致去重">方案二 : 利用set集合特性保持顺序一致去重</a></li>
-        <li><a href="#方案三--使用list自身方法remove不推荐">方案三 : 使用list自身方法remove()–&gt;不推荐</a></li>
-        <li><a href="#方案四--遍历list集合将元素添加到另一个list集合中">方案四 : 遍历List集合,将元素添加到另一个List集合中</a></li>
-        <li><a href="#方案5--使用java8特性去重-推荐">方案5 : 使用Java8特性去重-&gt;推荐</a></li>
-      </ul>
-    </li>
-    <li><a href="#list的复制-浅拷贝与深拷贝">List的复制 （浅拷贝与深拷贝）</a>
-      <ul>
-        <li><a href="#浅拷贝">浅拷贝</a>
+        <li><a href="#arraylist初始化的4种方法">ArrayList初始化的4种方法</a></li>
+        <li><a href="#list数据去重的五种方法">List数据去重的五种方法</a>
           <ul>
-            <li><a href="#1遍历循环复制">1、遍历循环复制</a></li>
-            <li><a href="#2使用list实现类的构造方法">2、使用List实现类的构造方法</a></li>
-            <li><a href="#3使用listaddall方法">3、使用list.addAll()方法</a></li>
-            <li><a href="#4使用systemarraycopy方法">4、使用System.arraycopy()方法</a></li>
-            <li><a href="#测试及结果">测试及结果</a></li>
+            <li><a href="#方案一借助set的特性进行去重">方案一:借助Set的特性进行去重</a></li>
+            <li><a href="#方案二--利用set集合特性保持顺序一致去重">方案二 : 利用set集合特性保持顺序一致去重</a></li>
+            <li><a href="#方案三--使用list自身方法remove不推荐">方案三 : 使用list自身方法remove()–&gt;不推荐</a></li>
+            <li><a href="#方案四--遍历list集合将元素添加到另一个list集合中">方案四 : 遍历List集合,将元素添加到另一个List集合中</a></li>
+            <li><a href="#方案5--使用java8特性去重-推荐">方案5 : 使用Java8特性去重-&gt;推荐</a></li>
           </ul>
         </li>
-        <li><a href="#list-深拷贝">List 深拷贝</a></li>
-        <li><a href="#测试结果">测试结果</a></li>
-        <li><a href="#小结">小结</a></li>
-        <li><a href="#对象列表的深度复制">对象列表的深度复制</a></li>
-        <li><a href="#结果">　　结果</a></li>
+        <li><a href="#list的复制-浅拷贝与深拷贝">List的复制 （浅拷贝与深拷贝）</a>
+          <ul>
+            <li><a href="#浅拷贝">浅拷贝</a>
+              <ul>
+                <li><a href="#1遍历循环复制">1、遍历循环复制</a></li>
+                <li><a href="#2使用list实现类的构造方法">2、使用List实现类的构造方法</a></li>
+                <li><a href="#3使用listaddall方法">3、使用list.addAll()方法</a></li>
+                <li><a href="#4使用systemarraycopy方法">4、使用System.arraycopy()方法</a></li>
+                <li><a href="#测试及结果">测试及结果</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#list-深拷贝">List 深拷贝</a>
+          <ul>
+            <li><a href="#测试结果">测试结果</a></li>
+            <li><a href="#小结">小结</a></li>
+            <li><a href="#对象列表的深度复制">对象列表的深度复制</a></li>
+            <li><a href="#结果">　　结果</a></li>
+          </ul>
+        </li>
+        <li><a href="#list根据下标修改">List根据下标修改</a></li>
+        <li><a href="#list转map的三种方法">List转Map的三种方法</a></li>
+        <li><a href="#java两个list的交集并集">Java两个List的交集，并集</a></li>
+        <li><a href="#在arraylist的循环中删除元素会不会出现问题">在ArrayList的循环中删除元素，会不会出现问题？</a></li>
       </ul>
     </li>
-    <li><a href="#list根据下标修改">List根据下标修改</a></li>
-    <li><a href="#list转map的三种方法">List转Map的三种方法</a></li>
-    <li><a href="#java两个list的交集并集">Java两个List的交集，并集</a></li>
     <li><a href="#map">Map</a>
       <ul>
         <li><a href="#特点">特点</a></li>
@@ -223,6 +230,18 @@
             <li><a href="#总结-1">总结</a></li>
           </ul>
         </li>
+        <li><a href="#java-hashmap的死循环">Java HashMap的死循环</a>
+          <ul>
+            <li><a href="#问题的症状">问题的症状</a></li>
+            <li><a href="#hash表数据结构">Hash表数据结构</a></li>
+            <li><a href="#hashmap的rehash源代码">HashMap的rehash源代码</a></li>
+            <li><a href="#正常的rehash的过程">正常的ReHash的过程</a></li>
+            <li><a href="#并发下的rehash">并发下的Rehash</a></li>
+            <li><a href="#问题答疑">问题答疑</a></li>
+            <li><a href="#其它">其它</a></li>
+            <li><a href="#修复">修复</a></li>
+          </ul>
+        </li>
         <li><a href="#java-集合---tablesizefor">Java 集合 &ndash;tableSizeFor</a></li>
       </ul>
     </li>
@@ -268,6 +287,7 @@
         <li><a href="#三-总结"><strong>(三) 总结</strong></a></li>
       </ul>
     </li>
+    <li><a href="#java中list-integer-int的相互转换">Java中List, Integer[], int[]的相互转换</a></li>
     <li><a href="#数组操作">数组操作</a></li>
     <li><a href="#字符串操作">字符串操作</a></li>
     <li><a href="#stringformat的详细用法">String.format()的详细用法</a>
@@ -287,6 +307,7 @@
 <li>List（列表）</li>
 <li>Map（映射）</li>
 </ul>
+<h2 id="list">List</h2>
 <p><strong>数组</strong>：几乎所有集合实现的底层都有数据的身影存在，因此我们首先需要了解一下数组。以下这段话摘自《Thinking In Algorithm》，感觉很不错现在拿出来跟大家分享。</p>
 <p><img
         class="lazyload"
@@ -310,7 +331,7 @@
 <p><strong>总结一下上面两段话：</strong></p>
 <p>数组的大小是固定不变的，并且同一个数组只能存储相同类型的数据，该数据类型可以是基本类型也可以是引用类型。Java中集合可以存储操作不同类型和大小不固定的数据，但是Java中集合只能存储引用类型，不能存储基本类型。</p>
 <hr>
-<h2 id="arraylist初始化的4种方法">ArrayList初始化的4种方法</h2>
+<h3 id="arraylist初始化的4种方法">ArrayList初始化的4种方法</h3>
 <p><a href="https://beginnersbook.com/2013/12/how-to-initialize-an-arraylist/" target="_blank" rel="noopener noreferrer">参考</a></p>
 <p>1、Arrays.asList</p>
 <div class="highlight"><div class="chroma">
@@ -381,40 +402,7 @@
 <span class="c1">//把element复制count次填入ArrayList中
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="list的交集差集并集">list的交集,差集,并集</h2>
-<p>工作中用到了list的取差集，发现还是挺好用的。
-所以记录下。</p>
-<table>
-<thead>
-<tr>
-<th>需求</th>
-<th>list的方法</th>
-<th>说明</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>交集</td>
-<td>listA.retainAll(listB)</td>
-<td>listA内容变为listA和listB都存在的对象</td>
-<td>listB不变</td>
-</tr>
-<tr>
-<td>差集</td>
-<td>listA.removeAll(listB)</td>
-<td>listA中存在的listB的内容去重</td>
-<td>listB不变</td>
-</tr>
-<tr>
-<td>并集</td>
-<td>listA.removeAll(listB) listA.addAll(listB)</td>
-<td>为了去重，listA先取差集，然后追加全部的listB</td>
-<td>listB不变</td>
-</tr>
-</tbody>
-</table>
-<p>测试代码：</p>
+</div><p>测试代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -499,8 +487,8 @@
 </span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">listB_03</span><span class="o">);</span> <span class="c1">// 结果:[B, C]
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="list数据去重的五种方法">List数据去重的五种方法</h2>
-<h3 id="方案一借助set的特性进行去重">方案一:借助Set的特性进行去重</h3>
+</div><h3 id="list数据去重的五种方法">List数据去重的五种方法</h3>
+<h4 id="方案一借助set的特性进行去重">方案一:借助Set的特性进行去重</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -537,7 +525,7 @@
     <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="方案二--利用set集合特性保持顺序一致去重">方案二 : 利用set集合特性保持顺序一致去重</h3>
+</div><h4 id="方案二--利用set集合特性保持顺序一致去重">方案二 : 利用set集合特性保持顺序一致去重</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -558,7 +546,7 @@
    <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="方案三--使用list自身方法remove不推荐">方案三 : 使用list自身方法remove()–&gt;不推荐</h3>
+</div><h4 id="方案三--使用list自身方法remove不推荐">方案三 : 使用list自身方法remove()–&gt;不推荐</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -605,7 +593,7 @@
     <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="方案四--遍历list集合将元素添加到另一个list集合中">方案四 : 遍历List集合,将元素添加到另一个List集合中</h3>
+</div><h4 id="方案四--遍历list集合将元素添加到另一个list集合中">方案四 : 遍历List集合,将元素添加到另一个List集合中</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -632,7 +620,7 @@
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="方案5--使用java8特性去重-推荐">方案5 : 使用Java8特性去重-&gt;推荐</h3>
+</div><h4 id="方案5--使用java8特性去重-推荐">方案5 : 使用Java8特性去重-&gt;推荐</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -647,7 +635,7 @@
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="list的复制-浅拷贝与深拷贝">List的复制 （浅拷贝与深拷贝）</h2>
+</div><h3 id="list的复制-浅拷贝与深拷贝">List的复制 （浅拷贝与深拷贝）</h3>
 <p>开门见山的说，List的复制其实是很常见的，List其本质就是数组，而其存储的形式是地址</p>
 <p><img
         class="lazyload"
@@ -660,8 +648,8 @@
 <p>如图所示，将List A列表复制时，其实相当于A的内容复制给了B，java中相同内容的数组指向同一地址，即进行浅拷贝后A与B指向同一地址。</p>
 <p>造成的后果就是，改变B的同时也会改变A，因为改变B就是改变B所指向地址的内容，由于A也指向同一地址，所以A与B一起改变。</p>
 <p>这也就是List的浅拷贝，其常见的实现方式有如下几种：</p>
-<h3 id="浅拷贝">浅拷贝</h3>
-<h4 id="1遍历循环复制">1、遍历循环复制</h4>
+<h4 id="浅拷贝">浅拷贝</h4>
+<h5 id="1遍历循环复制">1、遍历循环复制</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -676,7 +664,7 @@
 <span class="o">}</span>  
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="2使用list实现类的构造方法">2、使用List实现类的构造方法</h4>
+</div><h5 id="2使用list实现类的构造方法">2、使用List实现类的构造方法</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -685,7 +673,7 @@
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">destList</span><span class="o">=</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;(</span><span class="n">srcList</span><span class="o">);</span>  
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="3使用listaddall方法">3、使用list.addAll()方法</h4>
+</div><h5 id="3使用listaddall方法">3、使用list.addAll()方法</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -696,7 +684,7 @@
 <span class="n">destList</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">srcList</span><span class="o">);</span>  
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="4使用systemarraycopy方法">4、使用System.arraycopy()方法</h4>
+</div><h5 id="4使用systemarraycopy方法">4、使用System.arraycopy()方法</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -709,7 +697,7 @@
 <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">srcPersons</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">destPersons</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">srcPersons</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>  
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="测试及结果">测试及结果</h4>
+</div><h5 id="测试及结果">测试及结果</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -796,7 +784,7 @@ abc--&gt;22
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="测试结果">测试结果</h3>
+</div><h4 id="测试结果">测试结果</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -807,10 +795,10 @@ abc--&gt;22
 新list值：<span class="o">[</span>10, 1, 2, 3, 4, 5, 6, 7, 8, 9<span class="o">]</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="小结">小结</h3>
+</div><h4 id="小结">小结</h4>
 <p>Java对对象和基本的数据类型的处理是不一样的。在Java中用对象的作为入口参数的传递则缺省为”引用传递”，也就是说仅仅传递了对象的一个”引用”，这个”引用”的概念同C语言中的指针引用是一样的。当函数体内部对输入变量改变时，实质上就是在对这个对象的直接操作。 除了在函数传值的时候是”引用传递”，在任何用”＝”向对象变量赋值的时候都是”引用传递”。</p>
 <p>在浅复制的情况下，源数据被修改破坏之后，使用相同引用指向该数据的目标集合中的对应元素也就发生了相同的变化。因此，在需求要求必须深复制的情况下，要是使用上面提到的方法，请确保List中的T类对象是不易被外部修改和破坏的。</p>
-<h3 id="对象列表的深度复制">对象列表的深度复制</h3>
+<h4 id="对象列表的深度复制">对象列表的深度复制</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1015,7 +1003,7 @@ abc--&gt;22
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="结果">　　结果</h3>
+</div><h4 id="结果">　　结果</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1030,15 +1018,7 @@ abc--&gt;22
 新list<span class="o">[</span>UserTest<span class="o">{</span><span class="nv">id</span><span class="o">=</span><span class="s1">&#39;小明&#39;</span>, <span class="nv">age</span><span class="o">=</span>99<span class="o">}</span>, UserTest<span class="o">{</span><span class="nv">id</span><span class="o">=</span><span class="s1">&#39;小红&#39;</span>, <span class="nv">age</span><span class="o">=</span>99<span class="o">}]</span>
 </code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="list根据下标修改">List根据下标修改</h2>
+</div><h3 id="list根据下标修改">List根据下标修改</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1105,7 +1085,7 @@ abc--&gt;22
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;list4:&#34;</span> <span class="o">+</span> <span class="n">list4</span><span class="o">);</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="list转map的三种方法">List转Map的三种方法</h2>
+</div><h3 id="list转map的三种方法">List转Map的三种方法</h3>
 <p>一、
 <code>List</code>转<code>Map</code></p>
 <div class="highlight"><div class="chroma">
@@ -1152,7 +1132,7 @@ abc--&gt;22
  <span class="o">{</span><span class="n">1</span><span class="o">=[</span><span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">1</span><span class="o">,</span>  <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">苹果1</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">3</span><span class="o">.</span><span class="na">25</span><span class="o">,</span> <span class="n">num</span><span class="o">=</span><span class="n">10</span><span class="o">},</span> <span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">1</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">苹果2</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">1</span><span class="o">.</span><span class="na">35</span><span class="o">,</span>  <span class="n">num</span><span class="o">=</span><span class="n">20</span><span class="o">}],</span> <span class="n">2</span><span class="o">=[</span><span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">2</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">香蕉</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">2</span><span class="o">.</span><span class="na">89</span><span class="o">,</span> <span class="n">num</span><span class="o">=</span><span class="n">30</span><span class="o">}],</span> <span class="n">3</span><span class="o">=[</span><span class="n">Apple</span><span class="o">{</span><span class="n">id</span><span class="o">=</span><span class="n">3</span><span class="o">,</span> <span class="n">name</span><span class="o">=</span><span class="err">‘</span><span class="n">荔枝</span><span class="err">’</span><span class="o">,</span> <span class="n">money</span><span class="o">=</span><span class="n">9</span><span class="o">.</span><span class="na">99</span><span class="o">,</span> <span class="n">num</span><span class="o">=</span><span class="n">40</span><span class="o">}]}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="java两个list的交集并集">Java两个List的交集，并集</h2>
+</div><h3 id="java两个list的交集并集">Java两个List的交集，并集</h3>
 <p>⽅法⼀:使⽤apache的CollectionUtils⼯具类(推荐)</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1205,6 +1185,36 @@ abc--&gt;22
 </code></pre></td></tr></table>
 </div>
 </div><p>⽅法⼆:List⾃带⽅法</p>
+<table>
+<thead>
+<tr>
+<th>需求</th>
+<th>list的方法</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交集</td>
+<td>listA.retainAll(listB)</td>
+<td>listA内容变为listA和listB都存在的对象</td>
+<td>listB不变</td>
+</tr>
+<tr>
+<td>差集</td>
+<td>listA.removeAll(listB)</td>
+<td>listA中存在的listB的内容去重</td>
+<td>listB不变</td>
+</tr>
+<tr>
+<td>并集</td>
+<td>listA.removeAll(listB) listA.addAll(listB)</td>
+<td>为了去重，listA先取差集，然后追加全部的listB</td>
+<td>listB不变</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1518,7 +1528,510 @@ abc--&gt;22
 
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="map">Map</h2>
+</div><h3 id="在arraylist的循环中删除元素会不会出现问题">在ArrayList的循环中删除元素，会不会出现问题？</h3>
+<p>在 ArrayList 的循环中删除元素，会不会出现问题？我开始觉得应该会有什么问题吧，但是不知道问题会在哪里。在经历了一番测试和查阅之后，发现这个“小”问题并不简单！</p>
+<p>不在循环中的删除，是没有问题的，否则这个方法也没有存在的必要了嘛，我们这里讨论的是在循环中的删除，而对 ArrayList 的循环方法也是有多种的，这里定义一个类方法 remove()，先来看段代码吧。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">public</span> <span class="kr">class</span> <span class="nx">ArrayListTest</span> <span class="p">{</span>
+    <span class="kr">public</span> <span class="kr">static</span> <span class="k">void</span> <span class="nx">main</span><span class="p">(</span><span class="nb">String</span><span class="p">[]</span> <span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="nx">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;aa&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;bb&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;aa&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;bb&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;cc&#34;</span><span class="p">);</span>
+        <span class="c1">// 删除元素 aa
+</span><span class="c1"></span>        <span class="nx">remove</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span> <span class="s2">&#34;aa&#34;</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nb">String</span> <span class="nx">str</span> <span class="o">:</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nx">println</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kr">public</span> <span class="kr">static</span> <span class="k">void</span> <span class="nx">remove</span><span class="p">(</span><span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="nx">list</span><span class="p">,</span> <span class="nb">String</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 不同的循环及删除方法
+</span><span class="c1"></span>        <span class="c1">// 方法一：普通for循环正序删除，删除过程中元素向左移动，不能删除重复的元素
+</span><span class="c1">//        for (int i = 0; i &lt; list.size(); i++) {
+</span><span class="c1">//            if (list.get(i).equals(&#34;bb&#34;)) {
+</span><span class="c1">//                list.remove(list.get(i));
+</span><span class="c1">//            }
+</span><span class="c1">//        }
+</span><span class="c1"></span>        <span class="c1">// 方法二：普通for循环倒序删除，删除过程中元素向左移动，可以删除重复的元素
+</span><span class="c1">//        for (int i = list.size() - 1; i &gt;= 0; i--) {
+</span><span class="c1">//            if (list.get(i).equals(&#34;bb&#34;)) {
+</span><span class="c1">//                list.remove(list.get(i));
+</span><span class="c1">//            }
+</span><span class="c1">//        }
+</span><span class="c1"></span>        <span class="c1">// 方法三：增强for循环删除，使用ArrayList的remove()方法删除，产生并发修改异常 ConcurrentModificationException
+</span><span class="c1">//        for (String str : list) {
+</span><span class="c1">//            if (str.equals(&#34;aa&#34;)) {
+</span><span class="c1">//                list.remove(str);
+</span><span class="c1">//            }
+</span><span class="c1">//        }
+</span><span class="c1"></span>
+        <span class="c1">// 方法四：迭代器，使用ArrayList的remove()方法删除，产生并发修改异常 ConcurrentModificationException
+</span><span class="c1">//        Iterator iterator = list.iterator();
+</span><span class="c1">//        while (iterator.hasNext()) {
+</span><span class="c1">//            if(iterator.next().equals(elem)) {
+</span><span class="c1">//                list.remove(iterator.next());
+</span><span class="c1">//            }
+</span><span class="c1">//        }
+</span><span class="c1"></span>
+        <span class="c1">// 方法五：迭代器，使用迭代器的remove()方法删除，可以删除重复的元素，但不推荐
+</span><span class="c1">//        Iterator iterator = list.iterator();
+</span><span class="c1">//        while (iterator.hasNext()) {
+</span><span class="c1">//            if(iterator.next().equals(elem)) {
+</span><span class="c1">//                iterator.remove();
+</span><span class="c1">//            }
+</span><span class="c1">//        }
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里我测试了五种不同的删除方法，一种是普通的 for 循环，一种是增强的 foreach 循环，还有一种是使用迭代器循环，一共这三种循环方式。也欢迎你点击文末的 “阅读全文”，留言和我们讨论哦！</p>
+<p>上面这几种删除方式呢，在删除 list 中单个的元素，也即是没有重复的元素，如 “cc”。在方法三和方法四中都会产生并发修改异常 ConcurrentModificationException，这两个删除方式中都用到了 ArrayList 中的 remove() 方法（快去上面看看代码吧）。而在删除 list 中重复的元素时，会有这么两种情况，一种是这两个重复元素是紧挨着的，如 “bb”，另一种是这两个重复元素没有紧挨着，如 “aa”。删除这种元素时，方法一在删除重复但不连续的元素时是正常的，但在删除重复且连续的元素时，会出现删除不完全的问题，这种删除方式也是用到了 ArrayList 中的 remove() 方法。而另外两种方法都是可以正常删除的，但是不推荐第五种方式，这个后面再说。</p>
+<p>经过对运行结果的分析，发现问题都指向了 ArrayList 中的 remove() 方法，（感觉有种侦探办案的味道，可能是代码写多了的错觉吧，txtx&hellip;）那么看 ArrayList 源码是最好的选择了，下面是我截取的关键代码（Java1.8）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">public</span> <span class="nx">E</span> <span class="nx">remove</span><span class="p">(</span><span class="kr">int</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">rangeCheck</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+
+    <span class="nx">modCount</span><span class="o">++</span><span class="p">;</span>
+    <span class="nx">E</span> <span class="nx">oldValue</span> <span class="o">=</span> <span class="nx">elementData</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+
+    <span class="kr">int</span> <span class="nx">numMoved</span> <span class="o">=</span> <span class="nx">size</span> <span class="o">-</span> <span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">numMoved</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nx">System</span><span class="p">.</span><span class="nx">arraycopy</span><span class="p">(</span><span class="nx">elementData</span><span class="p">,</span> <span class="nx">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">elementData</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span>
+                         <span class="nx">numMoved</span><span class="p">);</span>
+    <span class="nx">elementData</span><span class="p">[</span><span class="o">--</span><span class="nx">size</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// clear to let GC do its work
+</span><span class="c1"></span>
+    <span class="k">return</span> <span class="nx">oldValue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">public</span> <span class="kr">boolean</span> <span class="nx">remove</span><span class="p">(</span><span class="nb">Object</span> <span class="nx">o</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">o</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kr">int</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">size</span><span class="p">;</span> <span class="nx">index</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">elementData</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">fastRemove</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kr">int</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">size</span><span class="p">;</span> <span class="nx">index</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">o</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="nx">elementData</span><span class="p">[</span><span class="nx">index</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="nx">fastRemove</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">private</span> <span class="k">void</span> <span class="nx">fastRemove</span><span class="p">(</span><span class="kr">int</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">modCount</span><span class="o">++</span><span class="p">;</span>
+    <span class="kr">int</span> <span class="nx">numMoved</span> <span class="o">=</span> <span class="nx">size</span> <span class="o">-</span> <span class="nx">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">numMoved</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nx">System</span><span class="p">.</span><span class="nx">arraycopy</span><span class="p">(</span><span class="nx">elementData</span><span class="p">,</span> <span class="nx">index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">elementData</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span>
+                         <span class="nx">numMoved</span><span class="p">);</span>
+    <span class="nx">elementData</span><span class="p">[</span><span class="o">--</span><span class="nx">size</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// clear to let GC do its work
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到这个 remove() 方法被重载了，一种是根据下标删除，一种是根据元素删除，这也都很好理解。</p>
+<p>根据下标删除的 remove() 方法，大致的步骤如下：</p>
+<ul>
+<li>1、检查有没有下标越界，就是检查一下当前的下标有没有大于等于数组的长度</li>
+<li>2、列表被修改（add和remove操作）的次数加1</li>
+<li>3、保存要删除的值</li>
+<li>4、计算移动的元素数量</li>
+<li>5、删除位置后面的元素向左移动，这里是用数组拷贝实现的</li>
+<li>6、将最后一个位置引用设为 null，使垃圾回收器回收这块内存</li>
+<li>7、返回删除元素的值</li>
+</ul>
+<p>根据元素删除的 remove() 方法，大致的步骤如下：</p>
+<ul>
+<li>1、元素值分为null和非null值</li>
+<li>2、循环遍历判等</li>
+<li>3、调用 fastRemove(i) 函数
+<ul>
+<li>3.1、修改次数加1</li>
+<li>3.2、计算移动的元素数量</li>
+<li>3.3、数组拷贝实现元素向左移动</li>
+<li>3.4、将最后一个位置引用设为 null</li>
+<li>3.5、返回 fase</li>
+</ul>
+</li>
+<li>4、返回 true</li>
+</ul>
+<p>这里我有个疑问，第一个 remove() 方法中的代码和 fastRemove() 方法中的代码是完全一样的，第一个 remove() 方法完全可以向第二个 remove() 方法一样调用 fastRemove() 方法嘛，这里代码感觉有些冗余，个人理解有限，还请知道的大佬指教。</p>
+<p>我们重点关注的是删除过程，学过数据结构的小伙伴可能手写过这样的删除，下面我画个图来让大家更清楚的看到整个删除的过程。以删除 “bb” 为例，当指到下标为 1 的元素时，发现是 &ldquo;bb&rdquo;，此处元素应该被删除，根据上面的删除步骤可知，删除位置后面的元素要向前移动，移动之后 “bb” 后面的 “bb” 元素下标为1，后面的元素下标也依次减1，这是在 i = 1 时循环的操作。在下一次循环中 i = 2，第二个 “bb” 元素就被遗漏了，所以这种删除方法在删除连续重复元素时会有问题。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./31.jpeg"
+        data-srcset="./31.jpeg, ./31.jpeg 1.5x, ./31.jpeg 2x"
+        data-sizes="auto"
+        alt="./31.jpeg"
+        title="31" /></p>
+<center>循环中的正序删除.jpg</center>
+<p>但是如果我们使 i 递减循环，也即是方法二的倒序循环，这个问题就不存在了，如下图。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./32.jpeg"
+        data-srcset="./32.jpeg, ./32.jpeg 1.5x, ./32.jpeg 2x"
+        data-sizes="auto"
+        alt="./32.jpeg"
+        title="32" /></p>
+<center>循环中的倒序删除.jpg</center>
+<p>既然我们已经搞清不能正常删除的原因，那么再来看看方法五中可以正常删除的原因。方法五中使用的是迭代器中的 remove() 方法，通过阅读 ArrayList 的源码可以发现，有两个私有内部类，Itr 和 ListItr，Itr 实现自 Iterator 接口，ListItr 继承 Itr 类和实现自 ListIterator 接口。Itr 类中也有一个 remove() 方法，迭代器实际调用的也正是这个 remove() 方法，我也截取这个方法的源码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">private</span> <span class="kr">class</span> <span class="nx">Itr</span> <span class="kr">implements</span> <span class="nx">Iterator</span><span class="o">&lt;</span><span class="nx">E</span><span class="o">&gt;</span>
+<span class="kr">private</span> <span class="kr">class</span> <span class="nx">ListItr</span> <span class="kr">extends</span> <span class="nx">Itr</span> <span class="kr">implements</span> <span class="nx">ListIterator</span><span class="o">&lt;</span><span class="nx">E</span><span class="o">&gt;</span> 
+<span class="kr">public</span> <span class="k">void</span> <span class="nx">remove</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">lastRet</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">IllegalStateException</span><span class="p">();</span>
+    <span class="nx">checkForComodification</span><span class="p">();</span> <span class="c1">// 检查修改次数
+</span><span class="c1"></span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">ArrayList</span><span class="p">.</span><span class="k">this</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">lastRet</span><span class="p">);</span>
+        <span class="nx">cursor</span> <span class="o">=</span> <span class="nx">lastRet</span><span class="p">;</span>
+        <span class="nx">lastRet</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="nx">expectedModCount</span> <span class="o">=</span> <span class="nx">modCount</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">IndexOutOfBoundsException</span> <span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">ConcurrentModificationException</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kr">final</span> <span class="k">void</span> <span class="nx">checkForComodification</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">modCount</span> <span class="o">!=</span> <span class="nx">expectedModCount</span><span class="p">)</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">ConcurrentModificationException</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到这个 remove() 方法中调用了 ArrayList 中的 remove() 方法，那为什么方法四会抛出并发修改异常而这里就没有问题呢？这里注意 expectedModCount 变量和 modCount 变量，modCount 在前面的代码中也见到了，它记录了 list 修改的次数，而前面还有一个 expectedModCount，这个变量的初值和 modCount 相等。在 <code>ArrayList.this.remove(lastRet);</code> 代码前面，还调用了检查修改次数的方法 checkForComodification()，这个方法里面做的事情很简单，如果 modCount 和 expectedModCount 不相等，那么就抛出 ConcurrentModificationException，而在这个 remove() 方法中存在 ``expectedModCount = modCount`，两个变量值在 ArrayList 的 remove() 方法后，进行了同步，所以不会有异常抛出，并且在循环过程中，也不会遗漏连续重复的元素，所以可以正常删除。上面这些代码都是在单线程中执行的，如果换到多线程中，方法五不能保证两个变量修改的一致性，结果具有不确定性，所以不推荐这种方法。而方法一在单线程和多线程中都是可以正常删除的，多线程中测试代码如下，这里我只模拟了三个线程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">import</span> <span class="nx">java</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">ArrayList</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">java</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">Iterator</span><span class="p">;</span>
+
+<span class="kr">public</span> <span class="kr">class</span> <span class="nx">MultiThreadArrayList</span> <span class="p">{</span>
+    <span class="kr">public</span> <span class="kr">static</span> <span class="k">void</span> <span class="nx">main</span><span class="p">(</span><span class="nb">String</span><span class="p">[]</span> <span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="nx">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;aa&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;bb&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;bb&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;aa&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;cc&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;dd&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;dd&#34;</span><span class="p">);</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;cc&#34;</span><span class="p">);</span>
+        <span class="nx">Thread</span> <span class="nx">thread1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Thread</span><span class="p">()</span> <span class="p">{</span>
+            <span class="err">@</span><span class="nx">Override</span>
+            <span class="kr">public</span> <span class="k">void</span> <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">remove</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span><span class="s2">&#34;aa&#34;</span><span class="p">);</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="nx">Thread</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">InterruptedException</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">e</span><span class="p">.</span><span class="nx">printStackTrace</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="nx">Thread</span> <span class="nx">thread2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Thread</span><span class="p">()</span> <span class="p">{</span>
+            <span class="err">@</span><span class="nx">Override</span>
+            <span class="kr">public</span> <span class="k">void</span> <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">remove</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span> <span class="s2">&#34;bb&#34;</span><span class="p">);</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="nx">Thread</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">InterruptedException</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">e</span><span class="p">.</span><span class="nx">printStackTrace</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="nx">Thread</span> <span class="nx">thread3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Thread</span><span class="p">()</span> <span class="p">{</span>
+            <span class="err">@</span><span class="nx">Override</span>
+            <span class="kr">public</span> <span class="k">void</span> <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">remove</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span> <span class="s2">&#34;dd&#34;</span><span class="p">);</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="nx">Thread</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">InterruptedException</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">e</span><span class="p">.</span><span class="nx">printStackTrace</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="c1">// 使各个线程处于就绪状态
+</span><span class="c1"></span>        <span class="nx">thread1</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+        <span class="nx">thread2</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+        <span class="nx">thread3</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+        <span class="c1">// 等待前面几个线程完成
+</span><span class="c1"></span>        <span class="k">try</span> <span class="p">{</span>
+            <span class="nx">thread1</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span>
+            <span class="nx">thread2</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">InterruptedException</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">e</span><span class="p">.</span><span class="nx">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nb">String</span> <span class="nx">str</span> <span class="o">:</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nx">println</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kr">public</span> <span class="kr">static</span> <span class="k">void</span> <span class="nx">remove</span><span class="p">(</span><span class="nx">ArrayList</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span> <span class="nx">list</span><span class="p">,</span> <span class="nb">String</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 普通for循环倒序删除，删除过程中元素向左移动，不影响连续删除
+</span><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="kr">int</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">list</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">equals</span><span class="p">(</span><span class="nx">elem</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nx">list</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">list</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">i</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 迭代器删除，多线程环境下无法使用
+</span><span class="c1">//        Iterator iterator = list.iterator();
+</span><span class="c1">//        while (iterator.hasNext()) {
+</span><span class="c1">//            if(iterator.next().equals(elem)) {
+</span><span class="c1">//                iterator.remove();
+</span><span class="c1">//            }
+</span><span class="c1">//        }
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>既然 Java 的循环删除有问题，发散一下思维，Python 中的列表删除会不会也有这样的问题呢，我抱着好奇试了试，发现下面的方法一也同样存在不能删除连续重复元素的问题，方法二则是报列表下标越界的异常，测试代码如下，这里我只测试了单线程环境：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;aa&#34;</span><span class="p">)</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;bb&#34;</span><span class="p">)</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;bb&#34;</span><span class="p">)</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;aa&#34;</span><span class="p">)</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">&#34;cc&#34;</span><span class="p">)</span>
+<span class="err">#</span> <span class="nx">方法一</span>
+<span class="err">#</span> <span class="k">for</span> <span class="nx">str</span> <span class="k">in</span> <span class="nx">list</span><span class="o">:</span>
+<span class="err">#</span>     <span class="k">if</span> <span class="nx">str</span> <span class="o">==</span> <span class="s2">&#34;bb&#34;</span><span class="o">:</span>
+<span class="err">#</span>         <span class="nx">list</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+<span class="err">#</span> <span class="nx">方法二</span>
+<span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">range</span><span class="p">(</span><span class="nx">len</span><span class="p">(</span><span class="nx">list</span><span class="p">))</span><span class="o">:</span>
+    <span class="k">if</span> <span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&#34;bb&#34;</span><span class="o">:</span>
+        <span class="nx">list</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+<span class="k">for</span> <span class="nx">str</span> <span class="k">in</span> <span class="nx">list</span><span class="o">:</span>
+    <span class="nx">print</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>总结：一道看似很简单的问题，没想到背后却有这么多的知识，真是感觉自己要学的还很多，遇到方法细节的问题，我觉得直接看源码是最好的解决方法，另外我觉得在后面的版本的 JDK 中，可以增加一个在循环中删除连续元素的方法嘛，不然这里对于没有发现这个问题的人真是个坑。</p>
+<h2 id="map">Map</h2>
 <h3 id="特点">特点</h3>
 <p>map 没有无序，不能下标访问，只能通过keyvalue进行访问，能增加随机访问的速度</p>
 <h3 id="修改">修改</h3>
@@ -3417,6 +3930,276 @@ resize前的HashMap如下图所示:</p>
 <p>我们不能在遍历中使用集合 <code>map.remove()</code> 来删除数据，这是非安全的操作方式，但我们可以使用迭代器的 <code>iterator.remove()</code> 的方法来删除数据，这是安全的删除集合的方式。同样的我们也可以使用 Lambda 中的 <code>removeIf</code> 来提前删除数据，或者是使用 Stream 中的 <code>filter</code> 过滤掉要删除的数据进行循环，这样都是安全的，当然我们也可以在 <code>for</code> 循环前删除数据在遍历也是线程安全的。</p>
 <h4 id="总结-1">总结</h4>
 <p>本文我们讲了 HashMap 4 种遍历方式：迭代器、for、lambda、stream，以及具体的 7 种遍历方法，综合性能和安全性来看，<strong>我们应该尽量使用迭代器（Iterator）来遍历 <code>EntrySet</code> 的遍历方式来操作 Map 集合</strong>，这样就会既安全又高效了。</p>
+<h3 id="java-hashmap的死循环">Java HashMap的死循环</h3>
+<p>在淘宝内网里看到同事发了贴说了一个CPU被100%的线上故障，并且这个事发生了很多次，原因是在Java语言在并发情况下使用HashMap造成Race  Condition，从而导致死循环。这个事情我4、5年前也经历过，本来觉得没什么好写的，因为Java的HashMap是非线程安全的，所以在并发下必然出现问题。但是，我发现近几年，很多人都经历过这个事（在网上查“HashMap Infinite  Loop”可以看到很多人都在说这个事）所以，觉得这个是个普遍问题，需要写篇疫苗文章说一下这个事，并且给大家看看一个完美的“Race  Condition”是怎么形成的。</p>
+<h4 id="问题的症状">问题的症状</h4>
+<p>从前我们的Java代码因为一些原因使用了HashMap这个东西，但是当时的程序是单线程的，一切都没有问题。后来，我们的程序性能有问题，所以需要变成多线程的，于是，变成多线程后到了线上，发现程序经常占了100%的CPU，查看堆栈，你会发现程序都Hang在了HashMap.get()这个方法上了，重启程序后问题消失。但是过段时间又会来。而且，这个问题在测试环境里可能很难重现。</p>
+<p>我们简单的看一下我们自己的代码，我们就知道HashMap被多个线程操作。而Java的文档说HashMap是非线程安全的，应该用ConcurrentHashMap。</p>
+<p>但是在这里我们可以来研究一下原因。</p>
+<h4 id="hash表数据结构">Hash表数据结构</h4>
+<p>我需要简单地说一下HashMap这个经典的数据结构。</p>
+<p>HashMap通常会用一个指针数组（假设为table[]）来做分散所有的key，当一个key被加入时，会通过Hash算法通过key算出这个数组的下标i，然后就把这个&lt;key,  value&gt;插到table[i]中，如果有两个不同的key被算在了同一个i，那么就叫冲突，又叫碰撞，这样会在table[i]上形成一个链表。</p>
+<p>我们知道，如果table[]的尺寸很小，比如只有2个，如果要放进10个keys的话，那么碰撞非常频繁，于是一个O(1)的查找算法，就变成了链表遍历，性能变成了O(n)，这是Hash表的缺陷（可参看《<a href="https://coolshell.cn/articles/6424.html" target="_blank" rel="noopener noreferrer">Hash Collision DoS 问题</a>》）。</p>
+<p>所以，Hash表的尺寸和容量非常的重要。一般来说，Hash表这个容器当有数据要插入时，都会检查容量有没有超过设定的thredhold，如果超过，需要增大Hash表的尺寸，但是这样一来，整个Hash表里的无素都需要被重算一遍。这叫rehash，这个成本相当的大。</p>
+<p>相信大家对这个基础知识已经很熟悉了。</p>
+<h4 id="hashmap的rehash源代码">HashMap的rehash源代码</h4>
+<p>下面，我们来看一下Java的HashMap的源代码。</p>
+<p>Put一个Key,Value对到Hash表中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">V</span> <span class="nf">put</span><span class="o">(</span><span class="n">K</span> <span class="n">key</span><span class="o">,</span> <span class="n">V</span> <span class="n">value</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="o">......</span>
+    <span class="c1">//算Hash值
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">hash</span> <span class="o">=</span> <span class="n">hash</span><span class="o">(</span><span class="n">key</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">indexFor</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">table</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+    <span class="c1">//如果该key已被插入，则替换掉旧的value （链接操作）
+</span><span class="c1"></span>    <span class="k">for</span> <span class="o">(</span><span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">table</span><span class="o">[</span><span class="n">i</span><span class="o">];</span> <span class="n">e</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">next</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Object</span> <span class="n">k</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">hash</span> <span class="o">==</span> <span class="n">hash</span> <span class="o">&amp;&amp;</span> <span class="o">((</span><span class="n">k</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">key</span><span class="o">)</span> <span class="o">==</span> <span class="n">key</span> <span class="o">||</span> <span class="n">key</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">k</span><span class="o">)))</span> <span class="o">{</span>
+            <span class="n">V</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">recordAccess</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">oldValue</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">modCount</span><span class="o">++;</span>
+    <span class="c1">//该key不存在，需要增加一个结点
+</span><span class="c1"></span>    <span class="n">addEntry</span><span class="o">(</span><span class="n">hash</span><span class="o">,</span> <span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>检查容量是否超标</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">addEntry</span><span class="o">(</span><span class="kt">int</span> <span class="n">hash</span><span class="o">,</span> <span class="n">K</span> <span class="n">key</span><span class="o">,</span> <span class="n">V</span> <span class="n">value</span><span class="o">,</span> <span class="kt">int</span> <span class="n">bucketIndex</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">table</span><span class="o">[</span><span class="n">bucketIndex</span><span class="o">];</span>
+    <span class="n">table</span><span class="o">[</span><span class="n">bucketIndex</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;(</span><span class="n">hash</span><span class="o">,</span> <span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+    <span class="c1">//查看当前的size是否超过了我们设定的阈值threshold，如果超过，需要resize
+</span><span class="c1"></span>    <span class="k">if</span> <span class="o">(</span><span class="n">size</span><span class="o">++</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="o">)</span>
+        <span class="n">resize</span><span class="o">(</span><span class="n">2</span> <span class="o">*</span> <span class="n">table</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>新建一个更大尺寸的hash表，然后把数据从老的Hash表中迁移到新的Hash表中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">resize</span><span class="o">(</span><span class="kt">int</span> <span class="n">newCapacity</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="n">Entry</span><span class="o">[]</span> <span class="n">oldTable</span> <span class="o">=</span> <span class="n">table</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">oldCapacity</span> <span class="o">=</span> <span class="n">oldTable</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="o">......</span>
+    <span class="c1">//创建一个新的Hash Table
+</span><span class="c1"></span>    <span class="n">Entry</span><span class="o">[]</span> <span class="n">newTable</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Entry</span><span class="o">[</span><span class="n">newCapacity</span><span class="o">];</span>
+    <span class="c1">//将Old Hash Table上的数据迁移到New Hash Table上
+</span><span class="c1"></span>    <span class="n">transfer</span><span class="o">(</span><span class="n">newTable</span><span class="o">);</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">newTable</span><span class="o">;</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)(</span><span class="n">newCapacity</span> <span class="o">*</span> <span class="n">loadFactor</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>迁移的源代码，注意高亮处：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">transfer</span><span class="o">(</span><span class="n">Entry</span><span class="o">[]</span> <span class="n">newTable</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="n">Entry</span><span class="o">[]</span> <span class="n">src</span> <span class="o">=</span> <span class="n">table</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">newCapacity</span> <span class="o">=</span> <span class="n">newTable</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="c1">//下面这段代码的意思是：
+</span><span class="c1"></span>    <span class="c1">//  从OldTable里摘一个元素出来，然后放到NewTable中
+</span><span class="c1"></span>    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">src</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">src</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">e</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">src</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="k">do</span> <span class="o">{</span>
+                <span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">indexFor</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">hash</span><span class="o">,</span> <span class="n">newCapacity</span><span class="o">);</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">newTable</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="n">newTable</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">e</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>好了，这个代码算是比较正常的。而且没有什么问题。</p>
+<h4 id="正常的rehash的过程">正常的ReHash的过程</h4>
+<p>画了个图做了个演示。</p>
+<ul>
+<li>
+<p>我假设了我们的hash算法就是简单的用key mod 一下表的大小（也就是数组的长度）。</p>
+</li>
+<li>
+<p>最上面的是old hash 表，其中的Hash表的size=2, 所以key = 3, 7, 5，在mod 2以后都冲突在table[1]这里了。</p>
+</li>
+<li>
+<p>接下来的三个步骤是Hash表 resize成4，然后所有的&lt;key,value&gt; 重新rehash的过程</p>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./26.jpg"
+        data-srcset="./26.jpg, ./26.jpg 1.5x, ./26.jpg 2x"
+        data-sizes="auto"
+        alt="./26.jpg"
+        title="26" /></p>
+<h4 id="并发下的rehash">并发下的Rehash</h4>
+<p>**1）假设我们有两个线程。**我用红色和浅蓝色标注了一下。</p>
+<p>我们再回头看一下我们的 transfer代码中的这个细节：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">do</span> <span class="o">{</span>
+    <span class="n">Entry</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span><span class="n">V</span><span class="o">&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">// &lt;--假设线程一执行到这里就被调度挂起了
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">indexFor</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">hash</span><span class="o">,</span> <span class="n">newCapacity</span><span class="o">);</span>
+    <span class="n">e</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">newTable</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="n">newTable</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">e</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而我们的线程二执行完成了。于是我们有下面的这个样子。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./27.jpg"
+        data-srcset="./27.jpg, ./27.jpg 1.5x, ./27.jpg 2x"
+        data-sizes="auto"
+        alt="./27.jpg"
+        title="27" /></p>
+<p>注意，<strong>因为Thread1的 e 指向了key(3)，而next指向了key(7)，其在线程二rehash后，指向了线程二重组后的链表</strong>。我们可以看到链表的顺序被反转后。</p>
+<p><strong>2）线程一被调度回来执行。</strong></p>
+<ul>
+<li><strong>先是执行 newTalbe[i] = e;</strong></li>
+<li><strong>然后是e = next，导致了e指向了key(7)，</strong></li>
+<li><strong>而下一次循环的next = e.next导致了next指向了key(3)</strong></li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./28.jpg"
+        data-srcset="./28.jpg, ./28.jpg 1.5x, ./28.jpg 2x"
+        data-sizes="auto"
+        alt="./28.jpg"
+        title="28" /></p>
+<p><strong>3）一切安好。</strong></p>
+<p>线程一接着工作。<strong>把key(7)摘下来，放到newTable[i]的第一个，然后把e和next往下移</strong>。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./29.jpg"
+        data-srcset="./29.jpg, ./29.jpg 1.5x, ./29.jpg 2x"
+        data-sizes="auto"
+        alt="./29.jpg"
+        title="29" /></p>
+<p><strong>4）环形链接出现。</strong></p>
+<p><strong>e.next = newTable[i] 导致 key(3).next 指向了 key(7)</strong></p>
+<p><strong>注意：此时的key(7).next 已经指向了key(3)， 环形链表就这样出现了。</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./30.jpg"
+        data-srcset="./30.jpg, ./30.jpg 1.5x, ./30.jpg 2x"
+        data-sizes="auto"
+        alt="./30.jpg"
+        title="30" /></p>
+<p><strong>于是，当我们的线程一调用到，HashTable.get(11)时，悲剧就出现了——Infinite Loop。</strong></p>
+<p><strong>设计思想</strong></p>
+<p>局部性原理，当时设计HashMap的大叔采用头插法而没有采用尾插法有一点考虑是性能优化，认为最近put进去的元素，被get的概率相对较其他元素大，采用头插法能够更快得获取到最近插入的元素。</p>
+<p>但头插法的设计有一个特点，就是扩容之后，链表上的元素顺序会反过来，这也是死循环的一个重要原因。</p>
+<h4 id="问题答疑">问题答疑</h4>
+<blockquote>
+<p>1、有同学认为线程B对链表的操作，线程A怎么会看到呢？不是有线程可见性问题吗？</p>
+</blockquote>
+<p>首先得理解线程可见性的原因是因为有cpu缓存，在线程执行之前，读取了操作数，在操作过程中操作数都在CPU缓存中，在线程没有将操作数写入主存之前，线程中对操作数的修改则对于其他线程是不可见的。</p>
+<p>而在hashMap扩容的过程中，线程操作的是堆中的对象，线程持有的是对对象的引用。引用就是一个地址，对引用的修改就是对堆中对象的修改。线程B的操作对于线程A的操作是透明的，所以线程A能看到线程B对链表的修改。</p>
+<h4 id="其它">其它</h4>
+<p>有人把这个问题报给了Sun，不过Sun不认为这个是一个问题。因为HashMap本来就不支持并发。要并发就用ConcurrentHashmap</p>
+<p><a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6423457" target="_blank" rel="noopener noreferrer">http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6423457</a></p>
+<p>我在这里把这个事情记录下来，只是为了让大家了解并体会一下并发环境下的危险。</p>
+<h4 id="修复">修复</h4>
+<p>Java1.8版本将头插法修复为尾插法，解决了问题，但HashMap本身是线程不安全的(不管哪个jdk版本)，所以请不要在并发访问的场景下直接使用HashMap。如果在并发访问的场景下，建议采用concurrentHashMap。</p>
 <h3 id="java-集合---tablesizefor">Java 集合 &ndash;tableSizeFor</h3>
 <p>在看 HashMap 源码的时候有这么一段代码</p>
 <div class="highlight"><div class="chroma">
@@ -6888,6 +7671,117 @@ Deque deque = new LinkedList()</li>
 <p>集合所说的序，是指元素存入集合的顺序，当元素存储顺序和取出顺序一致时就是有序，否则就是无序。</p>
 <p>并不是说存储数据的时候无序，没有规则，当我们不论使用for循环随机数添加元素的时候，还是for循环有序添加元素的时候，最后遍历输出的结果均为按照值的大小排序输出，随机添加元素，但结果仍有序输出，这就对照着上面那句，存储顺序和取出顺序是不一致的，所以我们说HashSet是无序的，虽然我们按照123的顺序添加元素，结果虽然仍为123，但这只是一种巧合而已。</p>
 <p>所以HashSet只是<strong>不保证有序</strong>，并<strong>不是保证无序</strong></p>
+<h2 id="java中list-integer-int的相互转换">Java中List, Integer[], int[]的相互转换</h2>
+<p>相信新手们在学习Java的过程中都会遇到和我一样的问题：想要把List和int[]相互转换太麻烦了。</p>
+<p>List和String[]也同理。难道每次非得写一个循环<a href="https://so.csdn.net/so/search?q=%e9%81%8d%e5%8e%86&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">遍历</a>吗？其实一步就可以搞定。</p>
+<p>本文涉及到一些Java8的特性。如果没有接触过就先学会怎么用，然后再细细研究。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Collectors</span><span class="o">;</span>
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="o">{</span><span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">6</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">1</span><span class="o">};</span>
+ 
+        <span class="c1">// int[] 转 List&lt;Integer&gt;
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="na">boxed</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+        <span class="c1">// Arrays.stream(arr) 可以替换成IntStream.of(arr)。
+</span><span class="c1"></span>        <span class="c1">// 1.使用Arrays.stream将int[]转换成IntStream。
+</span><span class="c1"></span>        <span class="c1">// 2.使用IntStream中的boxed()装箱。将IntStream转换成Stream&lt;Integer&gt;。
+</span><span class="c1"></span>        <span class="c1">// 3.使用Stream的collect()，将Stream&lt;T&gt;转换成List&lt;T&gt;，因此正是List&lt;Integer&gt;。
+</span><span class="c1"></span> 
+        <span class="c1">// int[] 转 Integer[]
+</span><span class="c1"></span>        <span class="n">Integer</span><span class="o">[]</span> <span class="n">integers1</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="na">boxed</span><span class="o">().</span><span class="na">toArray</span><span class="o">(</span><span class="n">Integer</span><span class="o">[]::</span><span class="k">new</span><span class="o">);</span>
+        <span class="c1">// 前两步同上，此时是Stream&lt;Integer&gt;。
+</span><span class="c1"></span>        <span class="c1">// 然后使用Stream的toArray，传入IntFunction&lt;A[]&gt; generator。
+</span><span class="c1"></span>        <span class="c1">// 这样就可以返回Integer数组。
+</span><span class="c1"></span>        <span class="c1">// 不然默认是Object[]。
+</span><span class="c1"></span> 
+        <span class="c1">// List&lt;Integer&gt; 转 Integer[]
+</span><span class="c1"></span>        <span class="n">Integer</span><span class="o">[]</span> <span class="n">integers2</span> <span class="o">=</span> <span class="n">list1</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[</span><span class="n">0</span><span class="o">]);</span>
+        <span class="c1">//  调用toArray。传入参数T[] a。这种用法是目前推荐的。
+</span><span class="c1"></span>        <span class="c1">// List&lt;String&gt;转String[]也同理。
+</span><span class="c1"></span> 
+        <span class="c1">// List&lt;Integer&gt; 转 int[]
+</span><span class="c1"></span>        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr1</span> <span class="o">=</span> <span class="n">list1</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">Integer</span><span class="o">::</span><span class="n">valueOf</span><span class="o">).</span><span class="na">toArray</span><span class="o">();</span>
+        <span class="c1">// 想要转换成int[]类型，就得先转成IntStream。
+</span><span class="c1"></span>        <span class="c1">// 这里就通过mapToInt()把Stream&lt;Integer&gt;调用Integer::valueOf来转成IntStream
+</span><span class="c1"></span>        <span class="c1">// 而IntStream中默认toArray()转成int[]。
+</span><span class="c1"></span> 
+        <span class="c1">// Integer[] 转 int[]
+</span><span class="c1"></span>        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr2</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">integers1</span><span class="o">).</span><span class="na">mapToInt</span><span class="o">(</span><span class="n">Integer</span><span class="o">::</span><span class="n">valueOf</span><span class="o">).</span><span class="na">toArray</span><span class="o">();</span>
+        <span class="c1">// 思路同上。先将Integer[]转成Stream&lt;Integer&gt;，再转成IntStream。
+</span><span class="c1"></span> 
+        <span class="c1">// Integer[] 转 List&lt;Integer&gt;
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">integers1</span><span class="o">);</span>
+        <span class="c1">// 最简单的方式。String[]转List&lt;String&gt;也同理。
+</span><span class="c1"></span> 
+        <span class="c1">// 同理
+</span><span class="c1"></span>        <span class="n">String</span><span class="o">[]</span> <span class="n">strings1</span> <span class="o">=</span> <span class="o">{</span><span class="s">&#34;a&#34;</span><span class="o">,</span> <span class="s">&#34;b&#34;</span><span class="o">,</span> <span class="s">&#34;c&#34;</span><span class="o">};</span>
+        <span class="c1">// String[] 转 List&lt;String&gt;
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list3</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">strings1</span><span class="o">);</span>
+        <span class="c1">// List&lt;String&gt; 转 String[]
+</span><span class="c1"></span>        <span class="n">String</span><span class="o">[]</span> <span class="n">strings2</span> <span class="o">=</span> <span class="n">list3</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">0</span><span class="o">]);</span>
+ 
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>由此可见，流操作还是很方便的。我对这些知识的掌握也不深，就不误人子弟了，只是给刚接触的人提供一个思考的方向。</p>
 <h2 id="数组操作">数组操作</h2>
 <p>数组的初始化填充</p>
 <div class="highlight"><div class="chroma">
@@ -7271,7 +8165,7 @@ HH:MM格式（24时制）：22:43
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-06-04</span>
+                <span>更新于 2022-06-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>

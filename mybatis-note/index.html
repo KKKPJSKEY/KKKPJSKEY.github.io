@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mybatis-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mybatis-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-27T18:58:15+08:00" />
-<meta property="article:modified_time" content="2022-05-31T15:12:56+08:00" />
+<meta property="article:modified_time" content="2021-07-27T18:58:15+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mybatis-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/featured-image.jpg",
                             "width":  1570 ,
                             "height":  471 
-                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  3358 ,
-        "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/","datePublished": "2021-07-27T18:58:15+08:00","dateModified": "2022-05-31T15:12:56+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, ORM, Mybatis","wordcount":  3657 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mybatis-note\/","datePublished": "2021-07-27T18:58:15+08:00","dateModified": "2021-07-27T18:58:15+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Mybatis笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3358 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/mybatis-note/" class="leancloud_visitors" data-flag-title="Mybatis笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-27">2021-07-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3657 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/mybatis-note/" class="leancloud_visitors" data-flag-title="Mybatis笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -152,6 +152,12 @@
     <li><a href="#-transient注解">@ Transient注解</a></li>
     <li><a href="#mybatis传递多个参数的4种方式">Mybatis传递多个参数的4种方式</a></li>
     <li><a href="#mybatis使用in传入list的三种方法">Mybatis使用in传入List的三种方法</a></li>
+    <li><a href="#type-aliases-package配置多个">type-aliases-package配置多个</a>
+      <ul>
+        <li><a href="#问题">问题</a></li>
+        <li><a href="#解决">解决</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="mapperscan注解包含多个包">MapperScan注解包含多个包</h2>
@@ -182,6 +188,8 @@
         alt="./1.png"
         title="1" /></p>
 <h2 id="实体类忽略映射字段">实体类忽略映射字段</h2>
+<p><strong>非数据库字段，如果不做处理，mybatis执行sql过程中会报错，Cause: java.sql.SQLSyntaxErrorException: Unknown column ‘…’ in ‘field list’
+对非数据库字段使用注解@TableField(exist = false)</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -829,11 +837,27 @@
     <span class="nt">&lt;/select&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="type-aliases-package配置多个">type-aliases-package配置多个</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMybatis-Note%5c2.webp"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMybatis-Note%5c2.webp, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMybatis-Note%5c2.webp 1.5x, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cMybatis-Note%5c2.webp 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\Mybatis-Note\2.webp"
+        title="2" /></p>
+<h3 id="问题">问题</h3>
+<p>现在扫描的是<code>com.ruoyi.project.domain</code>这个路径，我想扫描多个路径，如：<code>com.test.project.domain</code>这个路径，该如何配置？</p>
+<p>我试了加逗号及空格都不行</p>
+<p><code>typeAliasesPackage: com.ruoyi.project..domain,com.test.project..domain</code></p>
+<h3 id="解决">解决</h3>
+<p><code>typeAliasesPackage: com.ruoyi.project..domain,;com.test.project..domain</code>,使用<code>,;</code></p>
+<p>详细讲解可以参考：<a href="https://links.jianshu.com/go?to=http%3A%2F%2Ferrornoerror.com%2Fquestion%2F10355911174010031901%2F" target="_blank" rel="noopener noreferrer">type-aliases-package配置多个</a></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-31</span>
+                <span>更新于 2021-07-27</span>
             </div>
             <div class="post-info-license"></div>
         </div>

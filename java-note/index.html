@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-05-25T12:33:19+08:00" />
-<meta property="article:modified_time" content="2022-06-04T17:13:33+08:00" />
+<meta property="article:modified_time" content="2022-06-05T15:52:58+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-note\/featured-image.jpg",
                             "width":  2400 ,
                             "height":  720 
-                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System","wordcount":  9761 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2022-06-04T17:13:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, SimpleDate, Date, System","wordcount":  10053 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-note\/","datePublished": "2021-05-25T12:33:19+08:00","dateModified": "2022-06-05T15:52:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java开发笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 9761 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 20 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-25">2021-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10053 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 21 分钟&nbsp;<span id="/java-note/" class="leancloud_visitors" data-flag-title="Java开发笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -143,6 +143,16 @@
         <li><a href="#整理一">整理一</a></li>
         <li><a href="#整理二">整理二</a></li>
         <li><a href="#整理三">整理三</a></li>
+      </ul>
+    </li>
+    <li><a href="#java获取当前时间戳的方法">java获取当前时间戳的方法</a>
+      <ul>
+        <li><a href="#获取当前时间戳">获取当前时间戳</a></li>
+        <li><a href="#获取当前时间">获取当前时间</a>
+          <ul>
+            <li><a href="#获取时间戳三种方法执行效率比较">获取时间戳三种方法执行效率比较：</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#java中的-和--和--详细分析">Java中的<code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 和 <code>&gt;&gt;&gt;</code> 详细分析</a>
@@ -438,6 +448,139 @@
 </div></li>
 </ol>
 <p>ps： java.util.Date类中的getYear()要加上1900才可得到实际值，getMonth()则要加上1</p>
+<h2 id="java获取当前时间戳的方法">java获取当前时间戳的方法</h2>
+<h3 id="获取当前时间戳">获取当前时间戳</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//方法 一
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+<span class="c1">//方法 二
+</span><span class="c1"></span><span class="n">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getTimeInMillis</span><span class="o">();</span>
+<span class="c1">//方法 三
+</span><span class="c1"></span><span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="获取当前时间">获取当前时间</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">SimpleDateFormat</span> <span class="n">df</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span class="o">);</span><span class="c1">//设置日期格式
+</span><span class="c1"></span><span class="n">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span><span class="c1">// new Date()为获取当前系统时间，也可使用当前时间戳
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="获取时间戳三种方法执行效率比较">获取时间戳三种方法执行效率比较：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Calendar</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TimeTest</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">_TEN_THOUSAND</span><span class="o">=</span><span class="n">10000</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">times</span><span class="o">=</span><span class="n">1000</span><span class="o">*</span><span class="n">_TEN_THOUSAND</span><span class="o">;</span>
+        <span class="kt">long</span> <span class="n">t1</span><span class="o">=</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">testSystem</span><span class="o">(</span><span class="n">times</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">t2</span><span class="o">=</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="o">);</span>
+ 
+        <span class="n">testCalander</span><span class="o">(</span><span class="n">times</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">t3</span><span class="o">=</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">t3</span><span class="o">-</span><span class="n">t2</span><span class="o">);</span>
+ 
+        <span class="n">testDate</span><span class="o">(</span><span class="n">times</span><span class="o">);</span>
+        <span class="kt">long</span> <span class="n">t4</span><span class="o">=</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">t4</span><span class="o">-</span><span class="n">t3</span><span class="o">);</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testSystem</span><span class="o">(</span><span class="kt">long</span> <span class="n">times</span><span class="o">){</span><span class="c1">//use 188
+</span><span class="c1"></span>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">times</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="kt">long</span> <span class="n">currentTime</span><span class="o">=</span><span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testCalander</span><span class="o">(</span><span class="kt">long</span> <span class="n">times</span><span class="o">){</span><span class="c1">//use 6299
+</span><span class="c1"></span>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">times</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="kt">long</span> <span class="n">currentTime</span><span class="o">=</span><span class="n">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getTimeInMillis</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testDate</span><span class="o">(</span><span class="kt">long</span> <span class="n">times</span><span class="o">){</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">times</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="kt">long</span> <span class="n">currentTime</span><span class="o">=</span><span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+ 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">执行结果：
+<span class="m">133</span>
+<span class="m">2372</span>
+<span class="m">137</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Calendar.getInstance().getTimeInMillis() 这种方式速度最慢，这是因为Canlendar要处理时区问题会耗费较多的时间。</p>
 <h2 id="java中的-和--和--详细分析">Java中的<code>&lt;&lt;</code> 和 <code>&gt;&gt;</code> 和 <code>&gt;&gt;&gt;</code> 详细分析</h2>
 <h3 id="表示左移移不分正负数低位补0"><strong><code>&lt;&lt;</code>表示左移移，不分正负数，低位补0；</strong>　</h3>
 <p>注：以下数据类型默认为byte-8位</p>
@@ -1579,7 +1722,7 @@ Process finished with <span class="nb">exit</span> code <span class="m">0</span>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-06-04</span>
+                <span>更新于 2022-06-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>

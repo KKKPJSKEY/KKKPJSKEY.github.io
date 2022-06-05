@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/springboot-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/springboot-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-26T16:20:48+08:00" />
-<meta property="article:modified_time" content="2021-10-14T10:47:07+08:00" />
+<meta property="article:modified_time" content="2022-06-05T14:01:49+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/springboot-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/springboot-note\/featured-image.jpg",
                             "width":  1016 ,
                             "height":  367 
-                        }],"genre": "posts","keywords": "Java, SpringBoot","wordcount":  5510 ,
-        "url": "https:\/\/kkkpjskey.github.io\/springboot-note\/","datePublished": "2021-08-26T16:20:48+08:00","dateModified": "2021-10-14T10:47:07+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, SpringBoot","wordcount":  5858 ,
+        "url": "https:\/\/kkkpjskey.github.io\/springboot-note\/","datePublished": "2021-08-26T16:20:48+08:00","dateModified": "2022-06-05T14:01:49+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">SpringBoot笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-26">2021-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5510 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/springboot-note/" class="leancloud_visitors" data-flag-title="SpringBoot笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-26">2021-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5858 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/springboot-note/" class="leancloud_visitors" data-flag-title="SpringBoot笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -199,6 +199,19 @@
         <li><a href="#autowire-candidates属性解析源码">autowire-candidates属性解析源码</a></li>
         <li><a href="#问题">问题</a></li>
         <li><a href="#案例源码">案例源码</a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-boot-的-banner-换成了美女老板说工作不饱和建议安排加班">Spring Boot 的 banner 换成了美女，老板说工作不饱和，建议安排加班</a>
+      <ul>
+        <li><a href="#一bannertxt">一：banner.txt</a></li>
+        <li><a href="#二在线制作banner">二：在线制作banner</a>
+          <ul>
+            <li><a href="#1-httppatorjkcomsoftwaretaaghttppatorjkcomsoftwaretaag">1. <a href="http://patorjk.com/software/taag/">http://patorjk.com/software/taag/</a></a></li>
+            <li><a href="#2-httpswwwbootschoolnetasciihttpswwwbootschoolnetascii">2. <a href="https://www.bootschool.net/ascii">https://www.bootschool.net/ascii</a></a></li>
+            <li><a href="#3-httpwwwnetwork-sciencedeasciihttpwwwnetwork-sciencedeascii">3. <a href="http://www.network-science.de/ascii/">http://www.network-science.de/ascii/</a></a></li>
+            <li><a href="#4-httpswwwdegraevecomimg2txtphphttpswwwdegraevecomimg2txtphp">4. <a href="https://www.degraeve.com/img2txt.php">https://www.degraeve.com/img2txt.php</a></a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -571,10 +584,10 @@ FATAL level指出每个严重的错误事件将会导致应用程序的退出。
    ALL Level是最低等级的，用于打开所有日志记录。</li>
 <li>static Level OFF
    OFF Level是最高等级的，用于关闭所有日志记录。
-         日志记录器（Logger）的行为是分等级的：
-         分为OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL或者您定义的级别。Log4j建议只使用四个级别，优先级 从高到低分别是 ERROR、WARN、INFO、DEBUG。
-         通过在这里定义的级别，您可以控制到应用程序中相应级别的日志信息的开关。比如在这里定义了INFO级别， 则应用程序中所有DEBUG级别的日志信息将不被打印出来。
-         优先级高的将被打印出来。项目上生产环境时候建议把debug的日志级别重新调为warn或者更高，避免产生大量日志。</li>
+            日志记录器（Logger）的行为是分等级的：
+            分为OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL或者您定义的级别。Log4j建议只使用四个级别，优先级 从高到低分别是 ERROR、WARN、INFO、DEBUG。
+            通过在这里定义的级别，您可以控制到应用程序中相应级别的日志信息的开关。比如在这里定义了INFO级别， 则应用程序中所有DEBUG级别的日志信息将不被打印出来。
+            优先级高的将被打印出来。项目上生产环境时候建议把debug的日志级别重新调为warn或者更高，避免产生大量日志。</li>
 </ol>
 <h2 id="springboot如何注入多个类型相同的bean">SpringBoot如何注入多个类型相同的Bean</h2>
 <h3 id="声明">声明</h3>
@@ -1004,11 +1017,126 @@ com.javacode2018.lesson001.demo9.SetterBean<span class="nv">$ServiceB</span>@291
 提取码：zr99
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="spring-boot-的-banner-换成了美女老板说工作不饱和建议安排加班">Spring Boot 的 banner 换成了美女，老板说工作不饱和，建议安排加班</h2>
+<blockquote>
+<p>SpringBoot的banner竟然可以用美女图片在线制作，难以相信</p>
+</blockquote>
+<h3 id="一bannertxt">一：banner.txt</h3>
+<p>在SpringBoot项目的resources目录下新建一个banner.txt文本文件，然后将启动Banner粘贴到此文本文件中，启动项目即可。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.jpg"
+        data-srcset="./3.jpg, ./3.jpg 1.5x, ./3.jpg 2x"
+        data-sizes="auto"
+        alt="./3.jpg"
+        title="3" /></p>
+<p>SpringBoot的banner竟然可以用美女图片在线制作，难以相信</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.jpg"
+        data-srcset="./4.jpg, ./4.jpg 1.5x, ./4.jpg 2x"
+        data-sizes="auto"
+        alt="./4.jpg"
+        title="4" /></p>
+<h3 id="二在线制作banner">二：在线制作banner</h3>
+<p>很多公司的banner为自己公司的名称或者产品名称，所以通过文本获取banner是必要的，这里介绍几个在线制作banner的网站：</p>
+<h4 id="1-httppatorjkcomsoftwaretaaghttppatorjkcomsoftwaretaag">1. <a href="http://patorjk.com/software/taag/" target="_blank" rel="noopener noreferrer">http://patorjk.com/software/taag/</a></h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.jpg"
+        data-srcset="./5.jpg, ./5.jpg 1.5x, ./5.jpg 2x"
+        data-sizes="auto"
+        alt="./5.jpg"
+        title="5" /></p>
+<p>Big字体</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.jpg"
+        data-srcset="./6.jpg, ./6.jpg 1.5x, ./6.jpg 2x"
+        data-sizes="auto"
+        alt="./6.jpg"
+        title="6" /></p>
+<p>Doom字体</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.jpg"
+        data-srcset="./7.jpg, ./7.jpg 1.5x, ./7.jpg 2x"
+        data-sizes="auto"
+        alt="./7.jpg"
+        title="7" /></p>
+<h4 id="2-httpswwwbootschoolnetasciihttpswwwbootschoolnetascii">2. <a href="https://www.bootschool.net/ascii" target="_blank" rel="noopener noreferrer">https://www.bootschool.net/ascii</a></h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.jpg"
+        data-srcset="./8.jpg, ./8.jpg 1.5x, ./8.jpg 2x"
+        data-sizes="auto"
+        alt="./8.jpg"
+        title="8" /></p>
+<h4 id="3-httpwwwnetwork-sciencedeasciihttpwwwnetwork-sciencedeascii">3. <a href="http://www.network-science.de/ascii/" target="_blank" rel="noopener noreferrer">http://www.network-science.de/ascii/</a></h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.jpg"
+        data-srcset="./9.jpg, ./9.jpg 1.5x, ./9.jpg 2x"
+        data-sizes="auto"
+        alt="./9.jpg"
+        title="9" /></p>
+<h4 id="4-httpswwwdegraevecomimg2txtphphttpswwwdegraevecomimg2txtphp">4. <a href="https://www.degraeve.com/img2txt.php" target="_blank" rel="noopener noreferrer">https://www.degraeve.com/img2txt.php</a></h4>
+<p>这个网站就非常牛逼了，可以根据图片转为为文本。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.jpg"
+        data-srcset="./10.jpg, ./10.jpg 1.5x, ./10.jpg 2x"
+        data-sizes="auto"
+        alt="./10.jpg"
+        title="10" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.jpg"
+        data-srcset="./11.jpg, ./11.jpg 1.5x, ./11.jpg 2x"
+        data-sizes="auto"
+        alt="./11.jpg"
+        title="11" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.jpg"
+        data-srcset="./12.jpg, ./12.jpg 1.5x, ./12.jpg 2x"
+        data-sizes="auto"
+        alt="./12.jpg"
+        title="12" /></p>
+<p>既然图片能转文本，那我就随便找一张图来玩玩。</p>
+<p><a href="https://uploadfile.huiyi8.com/2014/0719/20140719100527496.jpg" target="_blank" rel="noopener noreferrer">https://uploadfile.huiyi8.com/2014/0719/20140719100527496.jpg</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.jpg"
+        data-srcset="./13.jpg, ./13.jpg 1.5x, ./13.jpg 2x"
+        data-sizes="auto"
+        alt="./13.jpg"
+        title="13" /></p>
+<p>大家来看一下结果，我和我的小伙伴都惊呆了，还是彩色。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.jpg"
+        data-srcset="./14.jpg, ./14.jpg 1.5x, ./14.jpg 2x"
+        data-sizes="auto"
+        alt="./14.jpg"
+        title="14" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-10-14</span>
+                <span>更新于 2022-06-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>

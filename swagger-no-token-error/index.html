@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Swagger配置OAuth2登陆失败 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Swagger配置OAuth2登陆失败解决办法"><meta property="og:title" content="Swagger配置OAuth2登陆失败" />
+<meta property="og:description" content="记录Swagger配置OAuth2登陆失败解决办法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/swagger-no-token-error/" /><meta property="og:image" content="https://kkkpjskey.github.io/swagger-no-token-error/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-05T17:33:29+08:00" />
+<meta property="article:modified_time" content="2022-06-05T17:33:29+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/swagger-no-token-error/featured-image.jpg"/>
+<meta name="twitter:title" content="Swagger配置OAuth2登陆失败"/>
+<meta name="twitter:description" content="记录Swagger配置OAuth2登陆失败解决办法"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/swagger-no-token-error/" /><link rel="prev" href="https://kkkpjskey.github.io/github-clone-protocol-port-9418-no-longer-supported-error/" /><link rel="next" href="https://kkkpjskey.github.io/win-middleware-install-service-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Swagger配置OAuth2登陆失败",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/swagger-no-token-error\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/swagger-no-token-error\/featured-image.jpg",
+                            "width":  1440 ,
+                            "height":  432 
+                        }],"genre": "posts","keywords": "Swagger, Oauth2, Error","wordcount":  4335 ,
+        "url": "https:\/\/kkkpjskey.github.io\/swagger-no-token-error\/","datePublished": "2022-06-05T17:33:29+08:00","dateModified": "2022-06-05T17:33:29+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Swagger配置OAuth2登陆失败解决办法"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/swagger-no-token-error/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/swagger-no-token-error/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Swagger配置OAuth2登陆失败</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-05">2022-06-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4335 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/swagger-no-token-error/" class="leancloud_visitors" data-flag-title="Swagger配置OAuth2登陆失败">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/swagger-no-token-error/featured-image.jpg"
+        data-srcset="/swagger-no-token-error/featured-image.jpg, /swagger-no-token-error/featured-image.jpg 1.5x, /swagger-no-token-error/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/swagger-no-token-error/featured-image.jpg"
+        title="记录Swagger配置OAuth2登陆失败解决办法" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#解决">解决</a>
+      <ul>
+        <li><a href="#方法一白名单">方法一：白名单</a></li>
+        <li><a href="#方法二配置">方法二：配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#1项目规划">1.项目规划</a></li>
+    <li><a href="#2环境搭建">2.环境搭建</a>
+      <ul>
+        <li><a href="#21-授权服务器搭建">2.1 授权服务器搭建</a></li>
+        <li><a href="#22-资源服务器搭建">2.2 资源服务器搭建</a></li>
+        <li><a href="#23-测试">2.3 测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#3整合-swagger">3.整合 Swagger</a>
+      <ul>
+        <li><a href="#31-认证方式一">3.1 认证方式一</a></li>
+        <li><a href="#32-认证方式二">3.2 认证方式二</a></li>
+      </ul>
+    </li>
+    <li><a href="#4小结">4.小结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="前言">前言</h2>
+<p>用别人的脚手架发现Swagger登录oauth2失败，一开始未发现问题，后通过尝试更改启动顺序解决，但也顺便学习了下Swagger如何配置OAuth2登录</p>
+<blockquote>
+<p>SpringCloud搭建OAuth2时应先启动授权鉴权服务器，后启动网关，否则导致Swagger无法被授权**//TODO**</p>
+</blockquote>
+<h2 id="解决">解决</h2>
+<h3 id="方法一白名单">方法一：白名单</h3>
+<p>不推荐但最方便，紧急情况下使用</p>
+<p>首先先放行拦截器</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>然后不用配置什么参数,直接去拦截器里面</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>你的项目访问swagger就是这个路径,加进去就可以无token使用了</p>
+<p>是不是很简单粗暴,仅限测试环境使用哦~</p>
+<h3 id="方法二配置">方法二：配置</h3>
+<p>大佬写过 Spring Boot+Swagger 的用法：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/7cgHqmtynaxctPakq7RLcg" target="_blank" rel="noopener noreferrer">​SpringBoot 整合 Swagger2​</a>​</li>
+</ul>
+<p>也写过 OAuth2 + Jwt 的用法：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/xEIWTduDqQuGL7lfiP735w" target="_blank" rel="noopener noreferrer">​想让 OAuth2 和 JWT 在一起愉快玩耍？请看松哥的表演​</a>​</li>
+</ul>
+<p>没写过Spring Securty和Swagger组合，因为现在使用令牌登录的场景越来越多，在这种情况下，如果使用 Swagger 来测试接口，要怎么在请求头中携带 Token 呢？</p>
+<h2 id="1项目规划">1.项目规划</h2>
+<p>如果小伙伴们没有看过松哥之前发的 OAuth2 系列文章，建议一定先看下（公众号江南一点雨后台回复 OAuth2 获取），再来看本文内容，否则接下来的内容可能会犯迷糊。</p>
+<p>这里松哥搭建一个 OAuth2+JWT 的环境来做演示。一共搭建两个服务：</p>
+<table>
+<thead>
+<tr>
+<th>服务名</th>
+<th>端口</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auth-server</td>
+<td>8080</td>
+<td>授权服务器</td>
+</tr>
+<tr>
+<td>user-server</td>
+<td>8081</td>
+<td>资源服务器</td>
+</tr>
+</tbody>
+</table>
+<p>我稍微解释一下：</p>
+<ul>
+<li>auth-server 就是我的资源服务器，用来颁发 JWT 令牌。</li>
+<li>user-server 则是资源服务器，访问 user-server 上的资源，都需要携带令牌才能访问。</li>
+<li>swagger 则用来给 user-server 上的接口生成文档。</li>
+</ul>
+<p>OK，这是我们项目的一个大致规划。</p>
+<h2 id="2环境搭建">2.环境搭建</h2>
+<p>接下来我们来搭建 OAuth2 测试环境。</p>
+<h3 id="21-授权服务器搭建">2.1 授权服务器搭建</h3>
+<p>首先我们搭建一个名为 auth-server 的授权服务，搭建的时候，选择如下三个依赖：</p>
+<ul>
+<li>Web</li>
+<li>Spring Cloud Security</li>
+<li>Spirng Cloud OAuth2</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p>项目创建完成后，首先提供一个 Spring Security 的基本配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecurityConfig</span> <span class="kd">extends</span> <span class="n">WebSecurityConfigurerAdapter</span> <span class="o">{</span>
+    <span class="nd">@Bean</span>
+    <span class="n">PasswordEncoder</span> <span class="nf">passwordEncoder</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">BCryptPasswordEncoder</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">AuthenticationManager</span> <span class="nf">authenticationManagerBean</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">authenticationManagerBean</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">AuthenticationManagerBuilder</span> <span class="n">auth</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">auth</span><span class="o">.</span><span class="na">inMemoryAuthentication</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withUser</span><span class="o">(</span><span class="s">&#34;sang&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">password</span><span class="o">(</span><span class="n">passwordEncoder</span><span class="o">().</span><span class="na">encode</span><span class="o">(</span><span class="s">&#34;123&#34;</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">roles</span><span class="o">(</span><span class="s">&#34;admin&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withUser</span><span class="o">(</span><span class="s">&#34;javaboy&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">password</span><span class="o">(</span><span class="n">passwordEncoder</span><span class="o">().</span><span class="na">encode</span><span class="o">(</span><span class="s">&#34;123&#34;</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">roles</span><span class="o">(</span><span class="s">&#34;user&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">HttpSecurity</span> <span class="n">http</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">http</span><span class="o">.</span><span class="na">csrf</span><span class="o">().</span><span class="na">disable</span><span class="o">().</span><span class="na">formLogin</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在这段代码中，为了代码简洁，我就不把 Spring Security 用户存到数据库中去了，直接存在内存中。</p>
+<p>这里我创建了一个名为 sang 的用户，密码是 123，角色是 admin。同时我还配置了一个表单登录。</p>
+<p>这段配置的目的，实际上就是配置用户。例如你想用微信登录第三方网站，在这个过程中，你得先登录微信，登录微信就要你的用户名/密码信息，那么我们在这里配置的，其实就是用户的用户名/密码/角色信息。</p>
+<p><strong>需要注意的是，在当前案例中，我将采用 OAuth2 中的 password 模式进行登录，因此这里还需要明确的提供一个 AuthenticationManager 的 Bean。</strong></p>
+<p>基本的用户信息配置完成后，接下来我们来配置授权服务器。</p>
+<p>首先来配置 TokenStore：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AccessTokenConfig</span> <span class="o">{</span>
+    <span class="nd">@Bean</span>
+    <span class="n">TokenStore</span> <span class="nf">tokenStore</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">JwtTokenStore</span><span class="o">(</span><span class="n">jwtAccessTokenConverter</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Bean</span>
+    <span class="n">JwtAccessTokenConverter</span> <span class="nf">jwtAccessTokenConverter</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">JwtAccessTokenConverter</span> <span class="n">converter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JwtAccessTokenConverter</span><span class="o">();</span>
+        <span class="n">converter</span><span class="o">.</span><span class="na">setSigningKey</span><span class="o">(</span><span class="s">&#34;javaboy&#34;</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">converter</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>TokenStore 我们使用 JwtTokenStore 这个实例。使用了 JWT，access_token 实际上就不用存储了（无状态登录，服务端不需要保存信息），因为用户的所有信息都在 jwt 里边，所以这里配置的 JwtTokenStore 本质上并不是做存储。</li>
+<li>另外我们还提供了一个 JwtAccessTokenConverter，这个 JwtAccessTokenConverter 可以实现将用户信息和 JWT 进行转换（将用户信息转为 jwt 字符串，或者从 jwt 字符串提取出用户信息）。</li>
+<li>另外，在 JWT 字符串生成的时候，我们需要一个签名，这个签名需要自己保存好。</li>
+</ol>
+<p>接下来对授权服务器进行详细配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@EnableAuthorizationServer</span>
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AuthorizationServer</span> <span class="kd">extends</span> <span class="n">AuthorizationServerConfigurerAdapter</span> <span class="o">{</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">TokenStore</span> <span class="n">tokenStore</span><span class="o">;</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">ClientDetailsService</span> <span class="n">clientDetailsService</span><span class="o">;</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">AuthenticationManager</span> <span class="n">authenticationManager</span><span class="o">;</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">PasswordEncoder</span> <span class="n">passwordEncoder</span><span class="o">;</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">JwtAccessTokenConverter</span> <span class="n">jwtAccessTokenConverter</span><span class="o">;</span>
+
+    <span class="nd">@Bean</span>
+    <span class="n">AuthorizationServerTokenServices</span> <span class="nf">tokenServices</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">DefaultTokenServices</span> <span class="n">services</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultTokenServices</span><span class="o">();</span>
+        <span class="n">services</span><span class="o">.</span><span class="na">setClientDetailsService</span><span class="o">(</span><span class="n">clientDetailsService</span><span class="o">);</span>
+        <span class="n">services</span><span class="o">.</span><span class="na">setSupportRefreshToken</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">services</span><span class="o">.</span><span class="na">setTokenStore</span><span class="o">(</span><span class="n">tokenStore</span><span class="o">);</span>
+        <span class="n">services</span><span class="o">.</span><span class="na">setAccessTokenValiditySeconds</span><span class="o">(</span><span class="n">60</span> <span class="o">*</span> <span class="n">60</span> <span class="o">*</span> <span class="n">24</span> <span class="o">*</span> <span class="n">2</span><span class="o">);</span>
+        <span class="n">services</span><span class="o">.</span><span class="na">setRefreshTokenValiditySeconds</span><span class="o">(</span><span class="n">60</span> <span class="o">*</span> <span class="n">60</span> <span class="o">*</span> <span class="n">24</span> <span class="o">*</span> <span class="n">7</span><span class="o">);</span>
+        <span class="n">TokenEnhancerChain</span> <span class="n">tokenEnhancerChain</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TokenEnhancerChain</span><span class="o">();</span>
+        <span class="n">tokenEnhancerChain</span><span class="o">.</span><span class="na">setTokenEnhancers</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">jwtAccessTokenConverter</span><span class="o">));</span>
+        <span class="n">services</span><span class="o">.</span><span class="na">setTokenEnhancer</span><span class="o">(</span><span class="n">tokenEnhancerChain</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">services</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">AuthorizationServerSecurityConfigurer</span> <span class="n">security</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">security</span><span class="o">.</span><span class="na">allowFormAuthenticationForClients</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">ClientDetailsServiceConfigurer</span> <span class="n">clients</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">clients</span><span class="o">.</span><span class="na">inMemory</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withClient</span><span class="o">(</span><span class="s">&#34;javaboy&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">secret</span><span class="o">(</span><span class="n">passwordEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="s">&#34;123&#34;</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">resourceIds</span><span class="o">(</span><span class="s">&#34;res1&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">authorizedGrantTypes</span><span class="o">(</span><span class="s">&#34;password&#34;</span><span class="o">,</span> <span class="s">&#34;refresh_token&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">scopes</span><span class="o">(</span><span class="s">&#34;all&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">redirectUris</span><span class="o">(</span><span class="s">&#34;http://localhost:8082/index.html&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">AuthorizationServerEndpointsConfigurer</span> <span class="n">endpoints</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">endpoints</span>
+                <span class="o">.</span><span class="na">authenticationManager</span><span class="o">(</span><span class="n">authenticationManager</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">tokenServices</span><span class="o">(</span><span class="n">tokenServices</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这段代码有点长，我来给大家挨个解释：</p>
+<ol>
+<li>创建 AuthorizationServer 类继承自 AuthorizationServerConfigurerAdapter，来对授权服务器做进一步的详细配置，AuthorizationServer 类记得加上 @EnableAuthorizationServer 注解，表示开启授权服务器的自动化配置。</li>
+<li>在 AuthorizationServer 类中，我们其实主要重写三个 configure 方法。</li>
+<li>AuthorizationServerSecurityConfigurer 用来配置令牌端点的安全约束，也就是这个端点谁能访问，谁不能访问。</li>
+<li>ClientDetailsServiceConfigurer 用来配置客户端的详细信息，在​<a href="https://mp.weixin.qq.com/s/AELXf1nmpWbYE3NINpLDRg" target="_blank" rel="noopener noreferrer">​之前文章​</a>​​中，松哥和大家讲过，授权服务器要做两方面的检验，一方面是校验客户端，另一方面则是校验用户，校验用户，我们前面已经配置了，这里就是配置校验客户端。客户端的信息我们可以存在数据库中，这其实也是比较容易的，和用户信息存到数据库中类似，但是这里为了简化代码，我还是将客户端信息存在内存中，这里我们分别配置了客户端的 id，secret、资源 id、授权类型、授权范围以及重定向 uri。授权类型我在​<a href="https://mp.weixin.qq.com/s/AELXf1nmpWbYE3NINpLDRg" target="_blank" rel="noopener noreferrer">​之前文章​</a>​中和大家一共讲了四种，四种之中不包含 refresh_token 这种类型，但是在实际操作中，refresh_token 也被算作一种。</li>
+<li>AuthorizationServerEndpointsConfigurer 这里用来配置令牌的访问端点和令牌服务。</li>
+<li>tokenServices 这个 Bean 主要用来配置 Token 的一些基本信息，例如 Token 是否支持刷新、Token 的存储位置、Token 的有效期以及刷新 Token 的有效期等等。Token 有效期这个好理解，刷新 Token 的有效期我说一下，当 Token 快要过期的时候，我们需要获取一个新的 Token，在获取新的 Token 时候，需要有一个凭证信息，这个凭证信息不是旧的 Token，而是另外一个 refresh_token，这个 refresh_token 也是有有效期的。</li>
+</ol>
+<p>好了，如此之后，我们的授权服务器就算是配置完成了，接下来我们启动授权服务器。</p>
+<p><strong>如果小伙伴们对于上面的配置感到迷糊，可以在公众号后台回复 OAuth2，先系统的学习一下松哥的 OAuth2 教程。</strong></p>
+<h3 id="22-资源服务器搭建">2.2 资源服务器搭建</h3>
+<p>接下来我们搭建一个资源服务器。大家网上看到的例子，资源服务器大多都是和授权服务器放在一起的，如果项目比较小的话，这样做是没问题的，但是如果是一个大项目，这种做法就不合适了。</p>
+<p>资源服务器就是用来存放用户的资源，例如你在微信上的图像、openid 等信息，用户从授权服务器上拿到 access_token 之后，接下来就可以通过 access_token 来资源服务器请求数据。</p>
+<p>我们创建一个新的 Spring Boot 项目，叫做 user-server ，作为我们的资源服务器，创建时，添加如下依赖：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p>项目创建成功之后，先把前面的 AccessTokenConfig 拷贝到资源服务器上，然后添加如下配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@EnableResourceServer</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ResourceServerConfig</span> <span class="kd">extends</span> <span class="n">ResourceServerConfigurerAdapter</span> <span class="o">{</span>
+    <span class="nd">@Autowired</span>
+    <span class="n">TokenStore</span> <span class="n">tokenStore</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">ResourceServerSecurityConfigurer</span> <span class="n">resources</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">resources</span><span class="o">.</span><span class="na">resourceId</span><span class="o">(</span><span class="s">&#34;res1&#34;</span><span class="o">).</span><span class="na">tokenStore</span><span class="o">(</span><span class="n">tokenStore</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">HttpSecurity</span> <span class="n">http</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">http</span><span class="o">.</span><span class="na">authorizeRequests</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">antMatchers</span><span class="o">(</span><span class="s">&#34;/admin/**&#34;</span><span class="o">).</span><span class="na">hasRole</span><span class="o">(</span><span class="s">&#34;admin&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">anyRequest</span><span class="o">().</span><span class="na">authenticated</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这段配置代码很简单，我简单的说一下：</p>
+<ol>
+<li>首先在 configure 方法中配置资源 ID 和 TokenStore，这里配置好之后，会自动调用 JwtAccessTokenConverter 将 jwt 解析出来，jwt 里边就包含了用户的基本信息，所以就不用远程校验 access_token 了。</li>
+<li>最后配置一下资源的拦截规则，这就是 Spring Security 中的基本写法，我就不再赘述。</li>
+</ol>
+<p>接下来我们再来配置两个测试接口：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/hello&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">hello</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;hello&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">&#34;/admin/hello&#34;</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">admin</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;admin&#34;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如此之后，我们的资源服务器就算配置成功了。</p>
+<h3 id="23-测试">2.3 测试</h3>
+<p>分别启动授权服务器和资源服务器，先访问授权服务器获取 access_token：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p>再利用拿到的 access_token 去访问资源服务器：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<p>OK，测试没问题。</p>
+<h2 id="3整合-swagger">3.整合 Swagger</h2>
+<p>接下来，我们在 user-server 中加入 swagger 功能，首先我们加入 swagger 依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+     <span class="nt">&lt;groupId&gt;</span>io.springfox<span class="nt">&lt;/groupId&gt;</span>
+     <span class="nt">&lt;artifactId&gt;</span>springfox-swagger2<span class="nt">&lt;/artifactId&gt;</span>
+     <span class="nt">&lt;version&gt;</span>2.9.2<span class="nt">&lt;/version&gt;</span>
+ <span class="nt">&lt;/dependency&gt;</span>
+ <span class="nt">&lt;dependency&gt;</span>
+     <span class="nt">&lt;groupId&gt;</span>io.springfox<span class="nt">&lt;/groupId&gt;</span>
+     <span class="nt">&lt;artifactId&gt;</span>springfox-swagger-ui<span class="nt">&lt;/artifactId&gt;</span>
+     <span class="nt">&lt;version&gt;</span>2.9.2<span class="nt">&lt;/version&gt;</span>
+ <span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里加入的依赖有两个，一个用来生成接口数据，另一个 swagger-ui 用来做数据展示。</p>
+<h3 id="31-认证方式一">3.1 认证方式一</h3>
+<p>请求头加参数，这里给大家介绍两种，先来看第一种。</p>
+<p>先配置一个 Docket 实例，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@EnableSwagger2</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Swagger2Config</span> <span class="o">{</span>
+    <span class="nd">@Bean</span>
+    <span class="n">Docket</span> <span class="nf">docket</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Docket</span><span class="o">(</span><span class="n">DocumentationType</span><span class="o">.</span><span class="na">SWAGGER_2</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">select</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">apis</span><span class="o">(</span><span class="n">RequestHandlerSelectors</span><span class="o">.</span><span class="na">basePackage</span><span class="o">(</span><span class="s">&#34;org.javaboy.oauth2.res.controller&#34;</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">paths</span><span class="o">(</span><span class="n">PathSelectors</span><span class="o">.</span><span class="na">any</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">securityContexts</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">securityContexts</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">securitySchemes</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">securitySchemes</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">apiInfo</span><span class="o">(</span><span class="k">new</span> <span class="n">ApiInfoBuilder</span><span class="o">()</span>
+                        <span class="o">.</span><span class="na">description</span><span class="o">(</span><span class="s">&#34;接口文档的描述信息&#34;</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">title</span><span class="o">(</span><span class="s">&#34;微人事项目接口文档&#34;</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">contact</span><span class="o">(</span><span class="k">new</span> <span class="n">Contact</span><span class="o">(</span><span class="s">&#34;javaboy&#34;</span><span class="o">,</span><span class="s">&#34;http://www.javaboy.org&#34;</span><span class="o">,</span><span class="s">&#34;wangsong0210@gmail.com&#34;</span><span class="o">))</span>
+                        <span class="o">.</span><span class="na">version</span><span class="o">(</span><span class="s">&#34;v1.0&#34;</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">license</span><span class="o">(</span><span class="s">&#34;Apache2.0&#34;</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">build</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="n">SecurityScheme</span> <span class="nf">securitySchemes</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">ApiKey</span><span class="o">(</span><span class="s">&#34;Authorization&#34;</span><span class="o">,</span> <span class="s">&#34;Authorization&#34;</span><span class="o">,</span> <span class="s">&#34;header&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">SecurityContext</span> <span class="nf">securityContexts</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">SecurityContext</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+                        <span class="o">.</span><span class="na">securityReferences</span><span class="o">(</span><span class="n">defaultAuth</span><span class="o">())</span>
+                        <span class="o">.</span><span class="na">forPaths</span><span class="o">(</span><span class="n">PathSelectors</span><span class="o">.</span><span class="na">any</span><span class="o">())</span>
+                        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">SecurityReference</span><span class="o">&gt;</span> <span class="nf">defaultAuth</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">AuthorizationScope</span> <span class="n">authorizationScope</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizationScope</span><span class="o">(</span><span class="s">&#34;xxx&#34;</span><span class="o">,</span> <span class="s">&#34;描述信息&#34;</span><span class="o">);</span>
+        <span class="n">AuthorizationScope</span><span class="o">[]</span> <span class="n">authorizationScopes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizationScope</span><span class="o">[</span><span class="n">1</span><span class="o">];</span>
+        <span class="n">authorizationScopes</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">authorizationScope</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="n">SecurityReference</span><span class="o">(</span><span class="s">&#34;Authorization&#34;</span><span class="o">,</span> <span class="n">authorizationScopes</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里的配置稍微有点长，我来给大家解释下：</p>
+<ul>
+<li>首先通过 @EnableSwagger2 注解启用 Swagger2。</li>
+<li>配置一个 Docket Bean，这个 Bean 中，配置映射路径和要扫描的接口的位置。</li>
+<li>在 apiInfo 中，主要配置一下 Swagger2 文档网站的信息，例如网站的 title，网站的描述，联系人的信息，使用的协议等等。</li>
+<li>通过 securitySchemes 来配置全局参数，这里的配置是一个名为 Authorization 的请求头（OAuth2 中需要携带的请求头）。</li>
+<li>securityContexts 则用来配置有哪些请求需要携带 Token，这里我们配置了所有请求。</li>
+</ul>
+<p>配置完成后，我们还需要给 swagger-ui 放行，否则 swagger-ui 相关的静态资源会被 Spring Security 拦截下来：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecurityConfig</span> <span class="kd">extends</span> <span class="n">WebSecurityConfigurerAdapter</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">WebSecurity</span> <span class="n">web</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">web</span><span class="o">.</span><span class="na">ignoring</span><span class="o">().</span><span class="na">antMatchers</span><span class="o">(</span><span class="s">&#34;/swagger-ui.html&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">antMatchers</span><span class="o">(</span><span class="s">&#34;/webjars/**&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">antMatchers</span><span class="o">(</span><span class="s">&#34;/v2/**&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">antMatchers</span><span class="o">(</span><span class="s">&#34;/swagger-resources/**&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>配置完成后，重启 user-server，浏览器输入 http://localhost:8081/swagger-ui.html，结果如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>大家可以看到，页面中多了一个 Authorize 按钮，点击该按钮，输入 ​ <code>&amp;#x200B;Bearer ${token}&amp;#x200B;</code>​，如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+<p>输入完成后，点击 Authorize 按钮，完成认证，接下来，user-server 中的各种接口就可以直接调用测试了。</p>
+<p>上面这种方式比较通用，不仅仅适用于 OAuth2，也适用于其他一些自定义的 token 登录方式。</p>
+<p>但是这种方式需要开发者先通过其他途径获取到 access_token，有的人会觉得这样有点麻烦，那么有没有更好的办法呢？请看方式二。</p>
+<h3 id="32-认证方式二">3.2 认证方式二</h3>
+<p>认证方式二就是直接在 Swagger 中填入认证信息，这样就不用从外部去获取 access_token 了，效果如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
+        data-sizes="auto"
+        alt="./9.png"
+        title="9" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.png"
+        data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
+        data-sizes="auto"
+        alt="./10.png"
+        title="10" /></p>
+<p>我们来看下这个怎么配置。</p>
+<p>由于 swagger 去请求 ​ <code>&amp;#x200B;/oauth/token&amp;#x200B;</code>​ 接口会跨域，所以我们首先要修改 auth-server ，使之支持跨域：</p>
+<p>主要是两方面的修改，首先是配置 CorsFilter，允许跨域，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GlobalCorsConfiguration</span> <span class="o">{</span>
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="n">CorsFilter</span> <span class="nf">corsFilter</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">CorsConfiguration</span> <span class="n">corsConfiguration</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CorsConfiguration</span><span class="o">();</span>
+        <span class="n">corsConfiguration</span><span class="o">.</span><span class="na">setAllowCredentials</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">corsConfiguration</span><span class="o">.</span><span class="na">addAllowedOrigin</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">);</span>
+        <span class="n">corsConfiguration</span><span class="o">.</span><span class="na">addAllowedHeader</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">);</span>
+        <span class="n">corsConfiguration</span><span class="o">.</span><span class="na">addAllowedMethod</span><span class="o">(</span><span class="s">&#34;*&#34;</span><span class="o">);</span>
+        <span class="n">UrlBasedCorsConfigurationSource</span> <span class="n">urlBasedCorsConfigurationSource</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UrlBasedCorsConfigurationSource</span><span class="o">();</span>
+        <span class="n">urlBasedCorsConfigurationSource</span><span class="o">.</span><span class="na">registerCorsConfiguration</span><span class="o">(</span><span class="s">&#34;/**&#34;</span><span class="o">,</span> <span class="n">corsConfiguration</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">CorsFilter</span><span class="o">(</span><span class="n">urlBasedCorsConfigurationSource</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后在 SecurityConfig 中开启跨域支持：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@Order</span><span class="o">(</span><span class="n">Ordered</span><span class="o">.</span><span class="na">HIGHEST_PRECEDENCE</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecurityConfig</span> <span class="kd">extends</span> <span class="n">WebSecurityConfigurerAdapter</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="o">...</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">HttpSecurity</span> <span class="n">http</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">http</span>
+                <span class="o">.</span><span class="na">requestMatchers</span><span class="o">().</span><span class="na">antMatchers</span><span class="o">(</span><span class="n">HttpMethod</span><span class="o">.</span><span class="na">OPTIONS</span><span class="o">,</span> <span class="s">&#34;/oauth/**&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">csrf</span><span class="o">().</span><span class="na">disable</span><span class="o">().</span><span class="na">formLogin</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">and</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">cors</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>经过这两步的配置，服务端的跨域支持就开启了。</p>
+<p>接下来我们在 user-server 中修改关于 Docket bean 的定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Configuration</span>
+<span class="nd">@EnableSwagger2</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Swagger2Config</span> <span class="o">{</span>
+    <span class="nd">@Bean</span>
+    <span class="n">Docket</span> <span class="nf">docket</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Docket</span><span class="o">(</span><span class="n">DocumentationType</span><span class="o">.</span><span class="na">SWAGGER_2</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">select</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">apis</span><span class="o">(</span><span class="n">RequestHandlerSelectors</span><span class="o">.</span><span class="na">basePackage</span><span class="o">(</span><span class="s">&#34;org.javaboy.oauth2.res.controller&#34;</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">paths</span><span class="o">(</span><span class="n">PathSelectors</span><span class="o">.</span><span class="na">any</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">securityContexts</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">securityContext</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">securitySchemes</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">securityScheme</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">apiInfo</span><span class="o">(</span><span class="k">new</span> <span class="n">ApiInfoBuilder</span><span class="o">()</span>
+                        <span class="o">.</span><span class="na">description</span><span class="o">(</span><span class="s">&#34;接口文档的描述信息&#34;</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">title</span><span class="o">(</span><span class="s">&#34;微人事项目接口文档&#34;</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">contact</span><span class="o">(</span><span class="k">new</span> <span class="n">Contact</span><span class="o">(</span><span class="s">&#34;javaboy&#34;</span><span class="o">,</span><span class="s">&#34;http://www.javaboy.org&#34;</span><span class="o">,</span><span class="s">&#34;wangsong0210@gmail.com&#34;</span><span class="o">))</span>
+                        <span class="o">.</span><span class="na">version</span><span class="o">(</span><span class="s">&#34;v1.0&#34;</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">license</span><span class="o">(</span><span class="s">&#34;Apache2.0&#34;</span><span class="o">)</span>
+                        <span class="o">.</span><span class="na">build</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">AuthorizationScope</span><span class="o">[]</span> <span class="nf">scopes</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">AuthorizationScope</span><span class="o">[]{</span>
+                <span class="k">new</span> <span class="n">AuthorizationScope</span><span class="o">(</span><span class="s">&#34;all&#34;</span><span class="o">,</span> <span class="s">&#34;all scope&#34;</span><span class="o">)</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">SecurityScheme</span> <span class="nf">securityScheme</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">GrantType</span> <span class="n">grant</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ResourceOwnerPasswordCredentialsGrant</span><span class="o">(</span><span class="s">&#34;http://localhost:8080/oauth/token&#34;</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">OAuthBuilder</span><span class="o">().</span><span class="na">name</span><span class="o">(</span><span class="s">&#34;OAuth2&#34;</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">grantTypes</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">grant</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">scopes</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">scopes</span><span class="o">()))</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">SecurityContext</span> <span class="nf">securityContext</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">SecurityContext</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">securityReferences</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="n">SecurityReference</span><span class="o">(</span><span class="s">&#34;OAuth2&#34;</span><span class="o">,</span> <span class="n">scopes</span><span class="o">())))</span>
+                <span class="o">.</span><span class="na">forPaths</span><span class="o">(</span><span class="n">PathSelectors</span><span class="o">.</span><span class="na">any</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这段配置跟前面的类似，主要是 SecurityScheme 不同。这里采用了 OAuthBuilder 来构建，构建时即得配置 token 的获取地址。</p>
+<p>好了，配置完成，重启 auth-server 和 user-server 进行测试。测试效果就是松哥前面给出的图片，不再赘述。</p>
+<p>这种方式最大的好处就是不用通过其他途径获取 access_token，直接在 swagger-ui 页面输入 password 模式的认证参数即可。非常方便，仅限于 OAuth2 模式。</p>
+<h2 id="4小结">4.小结</h2>
+<p>好了，今天就和小伙伴们介绍了在 Swagger 请求中，如何修改请求头的问题，感兴趣的小伙伴可以下来试试哦～</p>
+<p>本文案例下载地址：​<a href="https://github.com/lenve/spring-security-samples" target="_blank" rel="noopener noreferrer">​https://github.com/lenve/spring-security-samples​</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-05</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/swagger-no-token-error/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/swagger-no-token-error/" data-title="Swagger配置OAuth2登陆失败" data-hashtags="Swagger,Oauth2,Error"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/swagger-no-token-error/" data-hashtag="Swagger"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/swagger-no-token-error/" data-title="Swagger配置OAuth2登陆失败" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/swagger-no-token-error/" data-title="Swagger配置OAuth2登陆失败"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/swagger/">Swagger</a>,&nbsp;<a href="/tags/oauth2/">Oauth2</a>,&nbsp;<a href="/tags/error/">Error</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/github-clone-protocol-port-9418-no-longer-supported-error/" class="prev" rel="prev" title="The unauthenticated git protocol on port 9418 is no longer supported.的解决方法"><i class="fas fa-angle-left fa-fw"></i>The unauthenticated git protocol on port 9418 is no longer supported.的解决方法</a>
+            <a href="/win-middleware-install-service-note/" class="next" rel="next" title="Windows 各种中间件安装为服务">Windows 各种中间件安装为服务<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

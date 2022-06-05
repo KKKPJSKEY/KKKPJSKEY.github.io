@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/win-cmd-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/win-cmd-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-29T15:42:59+08:00" />
-<meta property="article:modified_time" content="2022-05-29T15:42:59+08:00" />
+<meta property="article:modified_time" content="2022-06-05T15:32:40+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/win-cmd-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/win-cmd-note\/featured-image.jpg",
                             "width":  2000 ,
                             "height":  600 
-                        }],"genre": "posts","keywords": "Windows, Command","wordcount":  159 ,
-        "url": "https:\/\/kkkpjskey.github.io\/win-cmd-note\/","datePublished": "2022-05-29T15:42:59+08:00","dateModified": "2022-05-29T15:42:59+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Windows, Command","wordcount":  839 ,
+        "url": "https:\/\/kkkpjskey.github.io\/win-cmd-note\/","datePublished": "2022-05-29T15:42:59+08:00","dateModified": "2022-06-05T15:32:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Windows Cmd指令笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-29">2022-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 159 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/win-cmd-note/" class="leancloud_visitors" data-flag-title="Windows Cmd指令笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-29">2022-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 839 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/win-cmd-note/" class="leancloud_visitors" data-flag-title="Windows Cmd指令笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -141,8 +141,28 @@
       <ul>
         <li><a href="#方法一">方法一</a></li>
         <li><a href="#方法二">方法二</a></li>
+        <li><a href="#方法三">方法三</a></li>
       </ul>
     </li>
+    <li><a href="#windows-cmd命令行findstr-类似linux中的grep">Windows cmd命令行findstr 类似linux中的grep</a></li>
+    <li><a href="#通过命令行启动uwp应用">通过命令行启动uwp应用</a>
+      <ul>
+        <li><a href="#1-命令行格式">1. 命令行格式</a></li>
+        <li><a href="#2-获取packagefamilyname">2. 获取PackageFamilyName</a></li>
+        <li><a href="#3-获取packageid">3. 获取PackageId</a></li>
+        <li><a href="#4-通过命令行打开windbg">4. 通过命令行打开windbg</a></li>
+      </ul>
+    </li>
+    <li><a href="#cmdbat-命令行中的-sleep-方法">CMD/BAT 命令行中的 sleep 方法</a>
+      <ul>
+        <li><a href="#timout命令">timout命令</a></li>
+        <li><a href="#cmdhttpssocsdnnetsosearchqcmdspm1001210130017020中延时10秒"><a href="https://so.csdn.net/so/search?q=CMD&amp;spm=1001.2101.3001.7020">CMD</a>中延时10秒</a></li>
+        <li><a href="#cmd中延时10秒且不被打断">CMD中延时10秒，且不被打断</a></li>
+        <li><a href="#cmd中一直等待">CMD中一直等待</a></li>
+        <li><a href="#cmd中一直等待且不被打断">CMD中一直等待，且不被打断</a></li>
+      </ul>
+    </li>
+    <li><a href="#batch-echo换行">batch echo换行</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="cmd怎么杀死进程">Cmd怎么杀死进程</h2>
@@ -219,11 +239,254 @@
         title="6" /></p>
 </li>
 </ol>
-</div><div class="post-footer" id="post-footer">
+<h3 id="方法三">方法三</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">taskkill /F /im chrome.exe
+</code></pre></td></tr></table>
+</div>
+</div><p>或者用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">taskkill -f -PID chrome.exe
+</code></pre></td></tr></table>
+</div>
+</div><p>参数说明：</p>
+<ol>
+<li>/F 强制终止</li>
+<li>/IM 进程映像名</li>
+<li>frontpg.exe 进程名</li>
+</ol>
+<h2 id="windows-cmd命令行findstr-类似linux中的grep">Windows cmd命令行findstr 类似linux中的grep</h2>
+<p>使用截图
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" />
+简介
+findstr是Window系统自带的命令，用途是查找指定的一个或多个文件文件中包含（或通过参数 /V来控制不包含)某些特定字符串的行，并将该行完整的信息打印出来，或者打印查询字符串所在的文件名。</p>
+<h2 id="通过命令行启动uwp应用">通过命令行启动uwp应用</h2>
+<h3 id="1-命令行格式">1. 命令行格式</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">explorer.exe shell:AppsFolder<span class="o">{</span>PackageFamilyName<span class="o">}</span><span class="se">\!</span><span class="o">{</span>PackageId<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>以uwp版的windbg为例</p>
+</blockquote>
+<h3 id="2-获取packagefamilyname">2. 获取PackageFamilyName</h3>
+<p>在powershell中运行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">get-appxpackage <span class="p">|</span> <span class="k">select</span> PackageFamilyName,InstallLocation
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">PackageFamilyName                                       InstallLocation
+-----------------                                       ---------------
+Microsoft.NET.Native.Framework.1.3_8wekyb3d8bbwe        C:<span class="se">\P</span>rogram Files<span class="se">\W</span>indowsApps<span class="se">\M</span>icrosoft.NET.Native.Framework.1.3_1.3.24201.0_x64__8wekyb3...
+Microsoft.NET.Native.Framework.1.6_8wekyb3d8bbwe        C:<span class="se">\P</span>rogram Files<span class="se">\W</span>indowsApps<span class="se">\M</span>icrosoft.NET.Native.Framework.1.6_1.6.24903.0_x64__8wekyb3...
+Microsoft.WinDbg_8wekyb3d8bbwe                          C:<span class="se">\P</span>rogram Files<span class="se">\W</span>indowsApps<span class="se">\M</span>icrosoft.WinDbg_1.2103.1004.0_neutral__8wekyb3d8bbwe
+</code></pre></td></tr></table>
+</div>
+</div><p>得到windbg的PackageFamilyName</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Microsoft.WinDbg_8wekyb3d8bbwe   
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-获取packageid">3. 获取PackageId</h3>
+<p>打开appxmanifest.xml文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">notepad <span class="s2">&#34;C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2103.1004.0_neutral__8wekyb3d8bbwe\appxmanifest.xml&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img-blog.csdnimg.cn/6a9cbe04305d4db398b4ced1078d4154.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZnJvemxlYWY=,size_20,color_FFFFFF,t_70,g_se,x_16"
+        data-srcset="https://img-blog.csdnimg.cn/6a9cbe04305d4db398b4ced1078d4154.png?x-oss-process=image/watermark%2ctype_d3F5LXplbmhlaQ%2cshadow_50%2ctext_Q1NETiBAZnJvemxlYWY=%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16, https://img-blog.csdnimg.cn/6a9cbe04305d4db398b4ced1078d4154.png?x-oss-process=image/watermark%2ctype_d3F5LXplbmhlaQ%2cshadow_50%2ctext_Q1NETiBAZnJvemxlYWY=%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16 1.5x, https://img-blog.csdnimg.cn/6a9cbe04305d4db398b4ced1078d4154.png?x-oss-process=image/watermark%2ctype_d3F5LXplbmhlaQ%2cshadow_50%2ctext_Q1NETiBAZnJvemxlYWY=%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16 2x"
+        data-sizes="auto"
+        alt="https://img-blog.csdnimg.cn/6a9cbe04305d4db398b4ced1078d4154.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZnJvemxlYWY=,size_20,color_FFFFFF,t_70,g_se,x_16"
+        title="在这里插入图片描述" />
+得到PackageId</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Microsoft.WinDbg
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4-通过命令行打开windbg">4. 通过命令行打开windbg</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">explorer.exe shell:AppsFolder<span class="se">\M</span>icrosoft.WinDbg_8wekyb3d8bbwe!Microsoft.WinDbg
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="cmdbat-命令行中的-sleep-方法">CMD/BAT 命令行中的 sleep 方法</h2>
+<h3 id="timout命令">timout命令</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cmd&gt; timeout /?
+
+TIMEOUT <span class="o">[</span>/T<span class="o">]</span> timeout <span class="o">[</span>/NOBREAK<span class="o">]</span>
+
+描述:
+    这个工具接受超时参数，等候一段指定的时间<span class="o">(</span>秒<span class="o">)</span>或等按任意键。它还接受
+    一个参数，忽视按键。
+
+参数列表:
+    /T        timeout       指定等候的秒数。有效范围从 -1 到 <span class="m">99999</span> 秒。
+
+    /NOBREAK                忽略按键并等待指定的时间。
+
+    /?                      显示此帮助消息。
+
+注意: 超时值 -1 表示无限期地等待按键。
+
+示例:
+    TIMEOUT /?
+    TIMEOUT /T <span class="m">10</span>
+    TIMEOUT /T <span class="m">300</span> /NOBREAK
+    TIMEOUT /T -1
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="cmdhttpssocsdnnetsosearchqcmdspm1001210130017020中延时10秒"><a href="https://so.csdn.net/so/search?q=CMD&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">CMD</a>中延时10秒</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cmd&gt; TIMEOUT /T <span class="m">10</span>
+
+等待  <span class="m">10</span> 秒，按一个键继续 ...
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>按任意键打断上面的代码</li>
+</ul>
+<h3 id="cmd中延时10秒且不被打断">CMD中延时10秒，且不被打断</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cmd&gt; TIMEOUT /T <span class="m">10</span> /NOBREAK
+
+等待  <span class="m">10</span> 秒，按 CTRL+C 退出 ...
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>只有 <code>CTRL+C</code> 可以打断上面的代码</li>
+</ul>
+<h3 id="cmd中一直等待">CMD中一直等待</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cmd&gt; TIMEOUT /T -1
+
+请按任意键继续 ...
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>相当于 <code>pause</code></li>
+</ul>
+<h3 id="cmd中一直等待且不被打断">CMD中一直等待，且不被打断</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cmd&gt; TIMEOUT /T -1 /NOBREAK
+
+请按 CTRL+C 退出 ...
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="batch-echo换行">batch echo换行</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span><span class="p">.</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-29</span>
+                <span>更新于 2022-06-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>

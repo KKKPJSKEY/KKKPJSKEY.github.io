@@ -170,7 +170,7 @@
 <strong>Erlang</strong>：24.1.7
 <strong>RabbitMQ</strong>：3.9.11</p>
 <h3 id="一rabbitmq是什么">一、RabbitMQ是什么？</h3>
-<p>  RabbitMQ 是一个由 <a href="https://so.csdn.net/so/search?q=Erlang&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">Erlang</a> 语言开发的 AMQP 的开源实现。  AMQP ：Advanced Message  Queue，高级消息队列协议。它是应用层协议的一个开放标准，为面向消息的中间件设计，基于此协议的客户端与消息中间件可传递消息，并不受产品、开发语言等条件的限制。  RabbitMQ 最初起源于金融系统，用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</p>
+<p>RabbitMQ 是一个由 <a href="https://so.csdn.net/so/search?q=Erlang&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">Erlang</a> 语言开发的 AMQP 的开源实现。  AMQP ：Advanced Message  Queue，高级消息队列协议。它是应用层协议的一个开放标准，为面向消息的中间件设计，基于此协议的客户端与消息中间件可传递消息，并不受产品、开发语言等条件的限制。  RabbitMQ 最初起源于金融系统，用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</p>
 <p>具体特点包括：</p>
 <p><strong>1.可靠性（Reliability）</strong>  RabbitMQ 使用一些机制来保证可靠性，如持久化、传输确认、发布确认。</p>
 <p>**2.灵活的路由（Flexible Routing） ** 在消息进入队列之前，通过 Exchange 来路由消息的。对于典型的路由功能，RabbitMQ已经提供了一些内置的 Exchange 来实现。针对更复杂的路由功能，可以将多个Exchange 绑定在一起，也通过插件机制实现自己的 Exchange 。</p>
@@ -183,17 +183,17 @@
 <p><strong>9.插件机制（Plugin System）</strong>  RabbitMQ 提供了许多插件，来从多方面进行扩展，也可以编写自己的插件。</p>
 <h3 id="二安装步骤">二、安装步骤</h3>
 <h4 id="1安装准备工作">1.安装准备工作</h4>
-<p>这里通过官网下载需要的版本：<a href="https://www.rabbitmq.com/" target="_blank" rel="noopener noreferrer">RabbitMQ官方网址</a>
-鉴于官网访问下载比较慢，贴一个云盘地址：<a href="https://pan.baidu.com/s/1I9MMJBTdeXUBcG0qJpRTIw?pwd=k051" target="_blank" rel="noopener noreferrer">百度云盘地址</a>
-<img
+<p>这里通过官网下载需要的版本：<a href="https://www.rabbitmq.com/" target="_blank" rel="noopener noreferrer">RabbitMQ官方网址</a></p>
+<p>鉴于官网访问下载比较慢，贴一个云盘地址：<a href="https://pan.baidu.com/s/1I9MMJBTdeXUBcG0qJpRTIw?pwd=k051" target="_blank" rel="noopener noreferrer">百度云盘地址</a></p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./1.png"
         data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
         data-sizes="auto"
         alt="./1.png"
-        title="1" />
-进入官网向下拉，找到 Download + Installation 下载+安装，点击进入。</p>
+        title="1" /></p>
+<p>进入官网向下拉，找到 Download + Installation 下载+安装，点击进入。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -201,45 +201,45 @@
         data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
         data-sizes="auto"
         alt="./2.png"
-        title="2" />
-在新页面找到右侧，Install Windows 安装windows版本
-<img
+        title="2" /></p>
+<p>在新页面找到右侧，Install Windows 安装windows版本</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./3.png"
         data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
         data-sizes="auto"
         alt="./3.png"
-        title="3" />
-然后页面下拉，找到 Dependencies 依赖关系
-<img
+        title="3" /></p>
+<p>然后页面下拉，找到 Dependencies 依赖关系</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./4.png"
         data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
         data-sizes="auto"
         alt="./4.png"
-        title="4" />
-选择otp_win64_24.1.7.exe 我的系统是64位的，所以下载win64
-<img
+        title="4" /></p>
+<p>选择otp_win64_24.1.7.exe 我的系统是64位的，所以下载win64</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./5.png"
         data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
         data-sizes="auto"
         alt="./5.png"
-        title="5" />
-这里笔者强调一下。我安装的是最新版本。如果你们觉得最新版可能存在未知bug或不兼容问题，可以选择自己想要下载的对应版本即可。
-<img
+        title="5" /></p>
+<p>这里笔者强调一下。我安装的是最新版本。如果你们觉得最新版可能存在未知bug或不兼容问题，可以选择自己想要下载的对应版本即可。</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./6.png"
         data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
         data-sizes="auto"
         alt="./6.png"
-        title="6" />
-这里我截图一部分版本参照表，其他的可以自行查看
-<img
+        title="6" /></p>
+<p>这里我截图一部分版本参照表，其他的可以自行查看</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./7.png"
@@ -248,85 +248,85 @@
         alt="./7.png"
         title="7" /></p>
 <h4 id="2开始安装">2.开始安装</h4>
-<p><strong>第一步：找到我们下载的软件位置。</strong>
-<strong>第二步：先安装otp_win64_24.1.7.exe</strong>
-<img
+<p><strong>第一步：找到我们下载的软件位置。</strong></p>
+<p><strong>第二步：先安装otp_win64_24.1.7.exe</strong></p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./8.png"
         data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
         data-sizes="auto"
         alt="./8.png"
-        title="8" />
-<strong>第三步：鼠标右键以管理员方式运行</strong>
-<img
+        title="8" /></p>
+<p><strong>第三步：鼠标右键以管理员方式运行</strong></p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./9.png"
         data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
         data-sizes="auto"
         alt="./9.png"
-        title="9" />
-<strong>第四步：接着选取要安装的路径，然后一路傻瓜式安装 next 下一步，安装即可。</strong></p>
+        title="9" /></p>
+<p><strong>第四步：接着选取要安装的路径，然后一路傻瓜式安装 next 下一步，安装即可。</strong></p>
 <p><strong>【注意】不要安装在中文或带空格的文件路径下</strong></p>
 <p><strong>第五步：配置系统环境变量</strong></p>
-<p>右键此电脑 - 属性 - 高级系统设置 - 环境变量
-<img
+<p>右键此电脑 - 属性 - 高级系统设置 - 环境变量</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./10.png"
         data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
         data-sizes="auto"
         alt="./10.png"
-        title="10" />
-接着打开 - 此电脑（文件资源管理器） 找到刚刚我们安装的 erl - 24.1.7 文件 bin 目录下，复制路径 ctrl+c
-<img
+        title="10" /></p>
+<p>接着打开 - 此电脑（文件资源管理器） 找到刚刚我们安装的 erl - 24.1.7 文件 bin 目录下，复制路径 ctrl+c</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./11.png"
         data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
         data-sizes="auto"
         alt="./11.png"
-        title="11" />
-切换窗口到环境变量，找到系统变量 path - 编辑
-<img
+        title="11" /></p>
+<p>切换窗口到环境变量，找到系统变量 path - 编辑</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./12.png"
         data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
         data-sizes="auto"
         alt="./12.png"
-        title="12" />
-新建 - ctrl + v 粘贴刚才我们复制的路径，然后三次确定，关闭环境变量窗口
-<img
+        title="12" /></p>
+<p>新建 - ctrl + v 粘贴刚才我们复制的路径，然后三次确定，关闭环境变量窗口</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./13.png"
         data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
         data-sizes="auto"
         alt="./13.png"
-        title="13" />
-<strong>第六步：安装 RabbitMQ</strong>
-<img
+        title="13" /></p>
+<p><strong>第六步：安装 RabbitMQ</strong></p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./14.png"
         data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
         data-sizes="auto"
         alt="./14.png"
-        title="14" />
-右键管理员运行，然后选择安装路径，接着一路 next 下一步，遇到弹窗点允许，没有弹窗则无视。
-<strong>【注意】不要安装在中文或带空格的文件路径下</strong></p>
-<p><strong>第七步：安装完成后找到安装文件路径，找到 sbin 目录下，全选路径 输入 cmd</strong>
-<img
+        title="14" /></p>
+<p>右键管理员运行，然后选择安装路径，接着一路 next 下一步，遇到弹窗点允许，没有弹窗则无视。</p>
+<p><strong>【注意】不要安装在中文或带空格的文件路径下</strong></p>
+<p><strong>第七步：安装完成后找到安装文件路径，找到 sbin 目录下，全选路径 输入 cmd</strong></p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./15.png"
         data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
         data-sizes="auto"
         alt="./15.png"
-        title="15" />
-打开cmd命令窗口。</p>
+        title="15" /></p>
+<p>打开cmd命令窗口。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -351,18 +351,18 @@
         data-srcset="./17.png, ./17.png 1.5x, ./17.png 2x"
         data-sizes="auto"
         alt="./17.png"
-        title="17" />
-由于我已经安装过了，所以贴一张。运行成功的图片
-<img
+        title="17" /></p>
+<p>由于我已经安装过了，所以贴一张。运行成功的图片</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./18.png"
         data-srcset="./18.png, ./18.png 1.5x, ./18.png 2x"
         data-sizes="auto"
         alt="./18.png"
-        title="18" />
-<strong>第八步：打开任务资源管理器。win11 快捷键 Ctrl+Shift+Esc，找到rabbitmq服务右键重新启动。</strong>
-<img
+        title="18" /></p>
+<p><strong>第八步：打开任务资源管理器。win11 快捷键 Ctrl+Shift+Esc，找到rabbitmq服务右键重新启动。</strong></p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./19.png"
@@ -371,51 +371,51 @@
         alt="./19.png"
         title="19" /></p>
 <h4 id="3结束安装">3.结束安装</h4>
-<p>打开浏览器。访问 http://127.0.0.1:15672
-<img
+<p>打开浏览器。访问 http://127.0.0.1:15672</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./20.png"
         data-srcset="./20.png, ./20.png 1.5x, ./20.png 2x"
         data-sizes="auto"
         alt="./20.png"
-        title="20" />
-出现管理页面：
-账号：guest
-密码：guest
-登录成功后。进入下面页面即代表安装成功。至此大功告成。是不是很简单！
-<img
+        title="20" /></p>
+<p>出现管理页面：</p>
+<p>账号：guest</p>
+<p>密码：guest</p>
+<p>登录成功后。进入下面页面即代表安装成功。至此大功告成。是不是很简单！</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./21.png"
         data-srcset="./21.png, ./21.png 1.5x, ./21.png 2x"
         data-sizes="auto"
         alt="./21.png"
-        title="21" />
-如果不小心安装到中文或带空格路径文件路径下，这个链接可以解决：
-<a href="https://blog.csdn.net/leoma2012/article/details/97636859" target="_blank" rel="noopener noreferrer">https://blog.csdn.net/leoma2012/article/details/97636859</a></p>
-<p>如果想要彻底卸载RabbitMQ，则访问这个链接：
-<a href="https://blog.csdn.net/qq_41463655/article/details/86747917" target="_blank" rel="noopener noreferrer">https://blog.csdn.net/qq_41463655/article/details/86747917</a></p>
+        title="21" /></p>
+<p>如果不小心安装到中文或带空格路径文件路径下，这个链接可以解决：</p>
+<p><a href="https://blog.csdn.net/leoma2012/article/details/97636859" target="_blank" rel="noopener noreferrer">https://blog.csdn.net/leoma2012/article/details/97636859</a></p>
+<p>如果想要彻底卸载RabbitMQ，则访问这个链接：</p>
+<p><a href="https://blog.csdn.net/qq_41463655/article/details/86747917" target="_blank" rel="noopener noreferrer">https://blog.csdn.net/qq_41463655/article/details/86747917</a></p>
 <h1 id="总结">总结</h1>
 <p>以上就是今天要讲的内容，本文详细的介绍了RabbitMQ的安装步骤。有需要的请收藏，转发让更多的朋友知道。</p>
 <h2 id="rabbitmq-清除全部队列及消息">RabbitMQ 清除全部队列及消息</h2>
-<p>安装RabbitMQ后可访问：<code>http://{rabbitmq安装IP}:15672</code>使用(默认的是帐号guest，密码guest。此账号只能在安装RabbitMQ的机器上登录，无法远程访问登录。）
-远程访问登录，可以使用自己创建的帐号，给与对应的管理员权限即可。</p>
+<p>安装RabbitMQ后可访问：<code>http://{rabbitmq安装IP}:15672</code>使用(默认的是帐号guest，密码guest。此账号只能在安装RabbitMQ的机器上登录，无法远程访问登录。）</p>
+<p>远程访问登录，可以使用自己创建的帐号，给与对应的管理员权限即可。</p>
 <h3 id="直接在管理页面删除">直接在管理页面删除</h3>
-<p>访问<code>http://{rabbitmq安装IP}:15672</code>，登录。
-点击queues，这里可以看到你创建的所有的Queue，
-选中某一个Queue，下方有个Delete Queue删除<a href="https://so.csdn.net/so/search?q=%e9%98%9f%e5%88%97&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">队列</a>/Purge Message清除消息。
-但是这样只能一个队列一个队列的删除，如果队列中的消息过多就会特别慢。</p>
+<p>访问<code>http://{rabbitmq安装IP}:15672</code>，登录。</p>
+<p>点击queues，这里可以看到你创建的所有的Queue，</p>
+<p>选中某一个Queue，下方有个Delete Queue删除<a href="https://so.csdn.net/so/search?q=%e9%98%9f%e5%88%97&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">队列</a>/Purge Message清除消息。</p>
+<p>但是这样只能一个队列一个队列的删除，如果队列中的消息过多就会特别慢。</p>
 <h3 id="命令行批量删除">命令行批量删除</h3>
-<p>首先定位到 rabbitMQ 安装目录的sbin 目录下。打开cmd窗口。
-关闭应用的命令为： rabbitmqctl stop_app
-清除的命令为： rabbitmqctl reset
-重新启动命令为： rabbitmqctl start_app
-ps
-查看所有队列命令： rabbitmqctl list_queues</p>
+<p>首先定位到 rabbitMQ 安装目录的sbin 目录下。打开cmd窗口。</p>
+<p>关闭应用的命令为： rabbitmqctl stop_app</p>
+<p>清除的命令为： rabbitmqctl reset</p>
+<p>重新启动命令为： rabbitmqctl start_app</p>
+<p>ps</p>
+<p>查看所有队列命令： rabbitmqctl list_queues</p>
 <h3 id="注意">注意</h3>
-<p><strong>命令行批量删除相当于重置RabbitMQ，请谨慎操作，配置和队列都会被清除。</strong>
-操作完成，记得添加远程访问账号。</p>
+<p><strong>命令行批量删除相当于重置RabbitMQ，请谨慎操作，配置和队列都会被清除。</strong></p>
+<p>操作完成，记得添加远程访问账号。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

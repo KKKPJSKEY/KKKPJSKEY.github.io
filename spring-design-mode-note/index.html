@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/spring-design-mode-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/spring-design-mode-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-04T23:40:30+08:00" />
-<meta property="article:modified_time" content="2022-06-04T23:40:30+08:00" />
+<meta property="article:modified_time" content="2022-06-05T11:14:16+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/spring-design-mode-note/featured-image.jpg"/>
@@ -19,7 +19,7 @@
 <meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
 <meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/spring-design-mode-note/" /><link rel="prev" href="https://kkkpjskey.github.io/python-note/" /><link rel="next" href="https://kkkpjskey.github.io/java-audition-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/spring-design-mode-note/" /><link rel="prev" href="https://kkkpjskey.github.io/python-note/" /><link rel="next" href="https://kkkpjskey.github.io/java-thread-order-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/spring-design-mode-note\/featured-image.jpg",
                             "width":  1800 ,
                             "height":  540 
-                        }],"genre": "posts","keywords": "Java, Spring, DesignMode","wordcount":  1740 ,
-        "url": "https:\/\/kkkpjskey.github.io\/spring-design-mode-note\/","datePublished": "2022-06-04T23:40:30+08:00","dateModified": "2022-06-04T23:40:30+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, Spring, DesignMode","wordcount":  12489 ,
+        "url": "https:\/\/kkkpjskey.github.io\/spring-design-mode-note\/","datePublished": "2022-06-04T23:40:30+08:00","dateModified": "2022-06-05T11:14:16+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Spring 框架用到的 9 个设计模式汇总</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-04">2022-06-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1740 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/spring-design-mode-note/" class="leancloud_visitors" data-flag-title="Spring 框架用到的 9 个设计模式汇总">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-04">2022-06-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 12489 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 25 分钟&nbsp;<span id="/spring-design-mode-note/" class="leancloud_visitors" data-flag-title="Spring 框架用到的 9 个设计模式汇总">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -137,29 +137,166 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#0-控制反转ioc和依赖注入di">0. 控制反转(IoC)和依赖注入(DI)</a></li>
+    <li><a href="#1-简单工厂staticfactory-method">1. 简单工厂（StaticFactory Method）</a>
       <ul>
-        <li><a href="#1-简单工厂">1. 简单工厂</a></li>
-        <li><a href="#2-工厂方法factory-method">2. 工厂方法（Factory Method）</a></li>
-        <li><a href="#3-单例singleton">3. 单例（Singleton）</a></li>
-        <li><a href="#4-适配器adapter">4. 适配器（Adapter）</a></li>
-        <li><a href="#5包装器decorator">5.包装器（Decorator）</a></li>
-        <li><a href="#6-代理proxy">6. 代理（Proxy）</a></li>
-        <li><a href="#7观察者observer">7.观察者（Observer）</a></li>
-        <li><a href="#8-策略strategy">8. 策略（Strategy）</a></li>
-        <li><a href="#9模板方法template-method">9.模板方法（Template Method）</a></li>
+        <li><a href="#实质">实质</a></li>
+        <li><a href="#实现原理">实现原理</a></li>
+        <li><a href="#设计意义">设计意义</a></li>
       </ul>
     </li>
+    <li><a href="#2-工厂方法factory-method">2. 工厂方法（Factory Method）</a>
+      <ul>
+        <li><a href="#实现方式">实现方式</a></li>
+        <li><a href="#例子">例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-单例singleton">3. 单例（Singleton）</a></li>
+    <li><a href="#4-适配器adapter">4. 适配器（Adapter）</a>
+      <ul>
+        <li><a href="#spring-aop中的适配器模式">spring AOP中的适配器模式</a></li>
+        <li><a href="#spring-mvchttpssocsdnnetsosearchqmvcspm1001210130017020中的适配器模式">spring <a href="https://so.csdn.net/so/search?q=MVC&amp;spm=1001.2101.3001.7020">MVC</a>中的适配器模式</a>
+          <ul>
+            <li><a href="#实现方式-1">实现方式</a></li>
+            <li><a href="#实现过程">实现过程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#5-包装器装饰者decorator">5. 包装器装饰者（Decorator）</a>
+      <ul>
+        <li><a href="#实质-1">实质</a></li>
+        <li><a href="#实现方式-2">实现方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-代理proxy">6. 代理（Proxy）</a>
+      <ul>
+        <li><a href="#代理模式在-aophttpssocsdnnetsosearchqaopspm1001210130017020-中的应用实现方式">代理模式在 <a href="https://so.csdn.net/so/search?q=AOP&amp;spm=1001.2101.3001.7020">AOP</a> 中的应用（实现方式）</a></li>
+        <li><a href="#实现原理-1">实现原理</a></li>
+        <li><a href="#动静态代理对比">动静态代理对比</a>
+          <ul>
+            <li><a href="#动态代理">动态代理</a></li>
+            <li><a href="#静态代理">静态代理</a></li>
+          </ul>
+        </li>
+        <li><a href="#spring-aop-和-aspectj-aop-有什么区别">Spring AOP 和 AspectJ AOP 有什么区别?</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-观察者observer">7. 观察者（Observer）</a>
+      <ul>
+        <li><a href="#实现方式-3">实现方式</a></li>
+        <li><a href="#spring-事件驱动模型中的三种角色">Spring 事件驱动模型中的三种角色</a></li>
+        <li><a href="#spring-的事件流程总结">Spring 的事件流程总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-策略strategy">8. 策略（Strategy）</a>
+      <ul>
+        <li><a href="#实现方式-4">实现方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-模板方法template-method">9. 模板方法（Template Method）</a>
+      <ul>
+        <li><a href="#spring模板方法模式实质">Spring模板方法模式实质</a></li>
+        <li><a href="#具体实现">具体实现</a>
+          <ul>
+            <li><a href="#引入回调原因">引入回调原因</a></li>
+            <li><a href="#为什么jdbctemplate没有使用继承">为什么JdbcTemplate没有使用继承</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#参考">参考</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="1-简单工厂">1. 简单工厂</h3>
+            </div><div class="content" id="content"><p>JDK 中用到了那些设计模式?Spring 中用到了那些设计模式?这两个问题，在面试中比较常见。我在网上搜索了一下关于 Spring  中设计模式的讲解几乎都是千篇一律，而且大部分都年代久远。所以，花了几天时间自己总结了一下，由于我的个人能力有限，文中如有任何错误各位都可以指出。另外，文章篇幅有限，对于设计模式以及一些源码的解读我只是一笔带过，这篇文章的主要目的是回顾一下 Spring 中的设计模式。</p>
+<p>Design Patterns(设计模式) 表示面向对象软件开发中最好的计算机编程实践。 Spring 框架中广泛使用了不同类型的设计模式，下面我们来看看到底有哪些设计模式?</p>
+<h2 id="0-控制反转ioc和依赖注入di">0. 控制反转(IoC)和依赖注入(DI)</h2>
+<p><strong>IoC(Inversion of Control,控制翻转)</strong> 是Spring 中一个非常非常重要的概念，它不是什么技术，而是一种解耦的设计思想。它的主要目的是借助于“第三方”(Spring 中的 <a href="https://so.csdn.net/so/search?q=IOC&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">IOC</a> 容器) 实现具有依赖关系的对象之间的解耦(IOC容易管理对象，你只管使用即可)，从而降低代码之间的耦合度。<strong>IOC 是一个原则，而不是一个模式，以下模式（但不限于）实现了IoC原则。</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.png"
+        data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
+        data-sizes="auto"
+        alt="./10.png"
+        title="10" /></p>
+<p><strong>Spring IOC 容器就像是一个工厂一样，当我们需要创建一个对象的时候，只需要配置好配置文件/注解即可，完全不用考虑对象是如何被创建出来的。</strong> IOC 容器负责创建对象，将对象连接在一起，配置这些对象，并从创建中处理这些对象的整个生命周期，直到它们被完全销毁。</p>
+<p>在实际项目中一个 Service 类如果有几百甚至上千个类作为它的底层，我们需要实例化这个 Service，你可能要每次都要搞清这个  Service 所有底层类的构造函数，这可能会把人逼疯。如果利用 IOC  的话，你只需要配置好，然后在需要的地方引用就行了，这大大增加了项目的可维护性且降低了开发难度。关于Spring IOC  的理解，推荐看这一下<a href="https://www.zhihu.com/question/23277575/answer/169698662" target="_blank" rel="noopener noreferrer">知乎的一个回答</a> ，非常不错。</p>
+<p><strong>控制翻转怎么理解呢?</strong> 举个例子：&ldquo;对象a 依赖了对象 b，当对象 a 需要使用 对象  b的时候必须自己去创建。但是当系统引入了 IOC 容器后， 对象a 和对象 b 之前就失去了直接的联系。这个时候，当对象 a 需要使用 对象  b的时候， 我们可以指定 IOC 容器去创建一个对象b注入到对象 a 中&rdquo;。 对象 a 获得依赖对象 b  的过程,由主动行为变为了被动行为，控制权翻转，这就是控制反转名字的由来。</p>
+<p><strong>DI(Dependecy Inject,依赖注入)是实现控制反转的一种设计模式，依赖注入就是将实例变量传入到一个对象中去。</strong></p>
+<h2 id="1-简单工厂staticfactory-method">1. 简单工厂（StaticFactory Method）</h2>
 <hr>
 <p>又叫做静态工厂方法（StaticFactory Method）模式，但不属于23种GOF设计模式之一。</p>
 <p>简单工厂模式的实质是由一个工厂类根据传入的参数，动态决定应该创建哪一个产品类。</p>
 <p>Spring中的BeanFactory就是简单工厂模式的体现，根据传入一个唯一的标识来获得Bean对象，但是否是在传入参数后创建还是传入参数前创建这个要根据具体情况来定。</p>
-<h3 id="2-工厂方法factory-method">2. 工厂方法（Factory Method）</h3>
+<h3 id="实质">实质</h3>
+<p>由一个工厂类根据传入的参数，动态决定应该创建哪一个产品类。</p>
+<h3 id="实现原理">实现原理</h3>
+<p><strong>bean容器的启动阶段：</strong></p>
+<ul>
+<li>读取bean的xml配置文件,将bean元素分别转换成一个BeanDefinition对象。</li>
+<li>然后通过BeanDefinitionRegistry将这些bean注册到beanFactory中，保存在它的一个ConcurrentHashMap中。</li>
+<li>将BeanDefinition注册到了beanFactory之后，在这里Spring为我们提供了一个扩展的切口，允许我们通过实现接口BeanFactoryPostProcessor  在此处来插入我们定义的代码。典型的例子就是：PropertyPlaceholderConfigurer，我们一般在配置数据库的dataSource时使用到的占位符的值，就是它注入进去的。</li>
+</ul>
+<p><strong>容器中bean的实例化阶段：</strong></p>
+<p>实例化阶段主要是通过反射或者CGLIB对bean进行实例化，在这个阶段Spring又给我们暴露了很多的扩展点：</p>
+<ul>
+<li><strong>各种的Aware接口</strong> ，比如 BeanFactoryAware，对于实现了这些Aware接口的bean，在实例化bean时Spring会帮我们注入对应的BeanFactory的实例。</li>
+<li><strong>BeanPostProcessor接口</strong> ，实现了BeanPostProcessor接口的bean，在实例化bean时Spring会帮我们调用接口中的方法。</li>
+<li><strong>InitializingBean接口</strong> ，实现了InitializingBean接口的bean，在实例化bean时Spring会帮我们调用接口中的方法。</li>
+<li><strong>DisposableBean接口</strong> ，实现了BeanPostProcessor接口的bean，在该bean死亡时Spring会帮我们调用接口中的方法。</li>
+</ul>
+<h3 id="设计意义">设计意义</h3>
+<p><strong>松耦合。</strong> 可以将原来硬编码的依赖，通过Spring这个beanFactory这个工厂来注入依赖，也就是说原来只有依赖方和被依赖方，现在我们引入了第三方——spring这个beanFactory，由它来解决bean之间的依赖问题，达到了松耦合的效果.</p>
+<p><strong>bean的额外处理。</strong> 通过Spring接口的暴露，在实例化bean的阶段我们可以进行一些额外的处理，这些额外的处理只需要让bean实现对应的接口即可，那么spring就会在bean的生命周期调用我们实现的接口来处理该bean。[非常重要]</p>
+<p>Spring使用工厂模式可以通过 <code>BeanFactory</code> 或 <code>ApplicationContext</code> 创建 bean 对象。</p>
+<p><strong>两者对比：</strong></p>
+<ul>
+<li><code>BeanFactory</code> ：延迟注入(使用到某个 bean 的时候才会注入),相比于<code>BeanFactory</code> 来说会占用更少的内存，程序启动速度更快。</li>
+<li><code>ApplicationContext</code> ：容器启动的时候，不管你用没用到，一次性创建所有 bean 。<code>BeanFactory</code> 仅提供了最基本的依赖注入支持，<code>ApplicationContext</code> 扩展了 <code>BeanFactory</code> ,除了有<code>BeanFactory</code>的功能还有额外更多功能，所以一般开发人员使用<code>ApplicationContext</code>会更多。</li>
+</ul>
+<p>ApplicationContext的三个实现类：</p>
+<ol>
+<li><code>ClassPathXmlApplication</code>：把上下文文件当成类路径资源。</li>
+<li><code>FileSystemXmlApplication</code>：从文件系统中的 XML 文件载入上下文定义信息。</li>
+<li><code>XmlWebApplicationContext</code>：从Web系统中的XML文件载入上下文定义信息。</li>
+</ol>
+<p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.springframework.context.ApplicationContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.support.FileSystemXmlApplicationContext</span><span class="o">;</span>
+ 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ApplicationContext</span> <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileSystemXmlApplicationContext</span><span class="o">(</span>
+                <span class="s">&#34;C:/work/IOC Containers/springframework.applicationcontext/src/main/resources/bean-factory-config.xml&#34;</span><span class="o">);</span>
+ 
+        <span class="n">HelloApplicationContext</span> <span class="n">obj</span> <span class="o">=</span> <span class="o">(</span><span class="n">HelloApplicationContext</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;helloApplicationContext&#34;</span><span class="o">);</span>
+        <span class="n">obj</span><span class="o">.</span><span class="na">getMsg</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2-工厂方法factory-method">2. 工厂方法（Factory Method）</h2>
 <hr>
 <p>定义一个用于创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。</p>
+<h3 id="实现方式">实现方式</h3>
 <p>Spring中的FactoryBean就是典型的工厂方法模式。如下图：</p>
 <p><img
         class="lazyload"
@@ -169,13 +306,182 @@
         data-sizes="auto"
         alt="./1.jpg"
         title="1" /></p>
-<h3 id="3-单例singleton">3. 单例（Singleton）</h3>
+<h3 id="例子">例子</h3>
+<p>典型的例子有spring与mybatis的结合。</p>
+<p><strong>代码示例：</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.jpg"
+        data-srcset="./16.jpg, ./16.jpg 1.5x, ./16.jpg 2x"
+        data-sizes="auto"
+        alt="./16.jpg"
+        title="16" /></p>
+<p><strong>说明：</strong></p>
+<p>我们看上面该bean，因为实现了FactoryBean接口，所以返回的不是 SqlSessionFactoryBean 的实例，而是它的 SqlSessionFactoryBean.getObject() 的返回值。</p>
+<h2 id="3-单例singleton">3. 单例（Singleton）</h2>
 <hr>
-<p>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
-<p>Spring中的单例模式完成了后半句话，即提供了全局的访问点BeanFactory。但没有从构造器级别去控制单例，这是因为Spring管理的是是任意的Java对象。详解Java中的单例模式大家可以点击<a href="http://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247483742&amp;idx=1&amp;sn=9429b26871f19e4dafd1bf0c7ec0520e&amp;chksm=eb538468dc240d7e968486dbdb7fa440b365ac81a3d9920013781776b601754b1a0659b92b70&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">这里</a>看这篇文章。</p>
-<h3 id="4-适配器adapter">4. 适配器（Adapter）</h3>
+<p>在我们的系统中，有一些对象其实我们只需要一个，比如说：线程池、缓存、对话框、注册表、日志对象、充当打印机、显卡等设备驱动程序的对象。事实上，这一类对象只能有一个实例，如果制造出多个实例就可能会导致一些问题的产生，比如：程序的行为异常、资源使用过量、或者不一致性的结果。</p>
+<p><strong>使用单例模式的好处:</strong></p>
+<ul>
+<li>对于频繁使用的对象，可以省略创建对象所花费的时间，这对于那些重量级对象而言，是非常可观的一笔系统开销；</li>
+<li>由于 new 操作的次数减少，因而对系统内存的使用频率也会降低，这将减轻 GC 压力，缩短 GC 停顿时间。</li>
+</ul>
+<p><strong>Spring 中 bean 的默认作用域就是 singleton(单例)的。</strong> 除了 singleton 作用域，Spring 中 bean 还有下面几种作用域：</p>
+<ul>
+<li>prototype : 每次请求都会创建一个新的 bean 实例。</li>
+<li>request : 每一次HTTP请求都会产生一个新的bean，该bean仅在当前HTTP request内有效。</li>
+<li>session : 每一次HTTP请求都会产生一个新的 bean，该bean仅在当前 HTTP session 内有效。</li>
+<li>global-session：  全局session作用域，仅仅在基于portlet的web应用中才有意义，Spring5已经没有了。Portlet是能够生成语义代码(例如：HTML)片段的小型Java Web插件。它们基于portlet容器，可以像servlet一样处理HTTP请求。但是，与 servlet 不同，每个 portlet  都有不同的会话</li>
+</ul>
+<p>Spring的依赖注入（包括lazy-init方式）都是发生在AbstractBeanFactory的getBean里。getBean的doGetBean方法调用getSingleton进行bean的创建。</p>
+<p><strong>Spring 实现单例的方式：</strong></p>
+<ul>
+<li>xml : <code>&lt;bean id=&quot;userService&quot; class=&quot;top.snailclimb.UserService&quot; scope=&quot;singleton&quot;/&gt;</code></li>
+<li>注解：<code>@Scope(value = &quot;singleton&quot;)</code></li>
+</ul>
+<p><strong>Spring 通过 <code>ConcurrentHashMap</code> 实现单例注册表的特殊方式实现单例模式。Spring 实现单例的核心代码如下</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 通过 ConcurrentHashMap（线程安全） 实现单例注册表
+</span><span class="c1"></span><span class="kd">private</span> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">singletonObjects</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcurrentHashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;(</span><span class="n">64</span><span class="o">);</span>
+ 
+<span class="kd">public</span> <span class="n">Object</span> <span class="nf">getSingleton</span><span class="o">(</span><span class="n">String</span> <span class="n">beanName</span><span class="o">,</span> <span class="n">ObjectFactory</span><span class="o">&lt;?&gt;</span> <span class="n">singletonFactory</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">beanName</span><span class="o">,</span> <span class="s">&#34;&#39;beanName&#39; must not be null&#34;</span><span class="o">);</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">singletonObjects</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 检查缓存中是否存在实例  
+</span><span class="c1"></span>            <span class="n">Object</span> <span class="n">singletonObject</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">singletonObjects</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">beanName</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">singletonObject</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">//...省略了很多代码
+</span><span class="c1"></span>                <span class="k">try</span> <span class="o">{</span>
+                    <span class="n">singletonObject</span> <span class="o">=</span> <span class="n">singletonFactory</span><span class="o">.</span><span class="na">getObject</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="c1">//...省略了很多代码
+</span><span class="c1"></span>                <span class="c1">// 如果实例对象在不存在，我们注册到单例注册表中。
+</span><span class="c1"></span>                <span class="n">addSingleton</span><span class="o">(</span><span class="n">beanName</span><span class="o">,</span> <span class="n">singletonObject</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="o">(</span><span class="n">singletonObject</span> <span class="o">!=</span> <span class="n">NULL_OBJECT</span> <span class="o">?</span> <span class="n">singletonObject</span> <span class="o">:</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="c1">//将对象添加到单例注册表
+</span><span class="c1"></span>    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">addSingleton</span><span class="o">(</span><span class="n">String</span> <span class="n">beanName</span><span class="o">,</span> <span class="n">Object</span> <span class="n">singletonObject</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">synchronized</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">singletonObjects</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">singletonObjects</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">beanName</span><span class="o">,</span> <span class="o">(</span><span class="n">singletonObject</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">singletonObject</span> <span class="o">:</span> <span class="n">NULL_OBJECT</span><span class="o">));</span>
+ 
+            <span class="o">}</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>分析getSingleton()方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Object</span> <span class="nf">getSingleton</span><span class="o">(</span><span class="n">String</span> <span class="n">beanName</span><span class="o">){</span>
+    <span class="c1">//参数true设置标识允许早期依赖
+</span><span class="c1"></span>    <span class="k">return</span> <span class="n">getSingleton</span><span class="o">(</span><span class="n">beanName</span><span class="o">,</span><span class="kc">true</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kd">protected</span> <span class="n">Object</span> <span class="nf">getSingleton</span><span class="o">(</span><span class="n">String</span> <span class="n">beanName</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">allowEarlyReference</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//检查缓存中是否存在实例
+</span><span class="c1"></span>    <span class="n">Object</span> <span class="n">singletonObject</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">singletonObjects</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">beanName</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">singletonObject</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">isSingletonCurrentlyInCreation</span><span class="o">(</span><span class="n">beanName</span><span class="o">))</span> <span class="o">{</span>
+        <span class="c1">//如果为空，则锁定全局变量并进行处理。
+</span><span class="c1"></span>        <span class="kd">synchronized</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">singletonObjects</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">//如果此bean正在加载，则不处理
+</span><span class="c1"></span>            <span class="n">singletonObject</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">earlySingletonObjects</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">beanName</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">singletonObject</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">allowEarlyReference</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">//当某些方法需要提前初始化的时候则会调用addSingleFactory 方法将对应的ObjectFactory初始化策略存储在singletonFactories
+</span><span class="c1"></span>                <span class="n">ObjectFactory</span><span class="o">&lt;?&gt;</span> <span class="n">singletonFactory</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">singletonFactories</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">beanName</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">singletonFactory</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">//调用预先设定的getObject方法
+</span><span class="c1"></span>                    <span class="n">singletonObject</span> <span class="o">=</span> <span class="n">singletonFactory</span><span class="o">.</span><span class="na">getObject</span><span class="o">();</span>
+                    <span class="c1">//记录在缓存中，earlysingletonObjects和singletonFactories互斥
+</span><span class="c1"></span>                    <span class="k">this</span><span class="o">.</span><span class="na">earlySingletonObjects</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">beanName</span><span class="o">,</span> <span class="n">singletonObject</span><span class="o">);</span>
+                    <span class="k">this</span><span class="o">.</span><span class="na">singletonFactories</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">beanName</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="o">(</span><span class="n">singletonObject</span> <span class="o">!=</span> <span class="n">NULL_OBJECT</span> <span class="o">?</span> <span class="n">singletonObject</span> <span class="o">:</span> <span class="kc">null</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>getSingleton()过程图</strong></p>
+<p>ps：spring依赖注入时，使用了 双重判断加锁 的单例模式</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./17.jpg"
+        data-srcset="./17.jpg, ./17.jpg 1.5x, ./17.jpg 2x"
+        data-sizes="auto"
+        alt="./17.jpg"
+        title="17" /></p>
+<p><strong>总结</strong></p>
+<p><strong>单例模式定义：</strong> 保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+<p><strong>spring对单例的实现：</strong> spring中的单例模式完成了后半句话，即提供了全局的访问点BeanFactory。但没有从构造器级别去控制单例，这是因为spring管理的是任意的java对象。详解Java中的单例模式大家可以点击<a href="http://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247483742&amp;idx=1&amp;sn=9429b26871f19e4dafd1bf0c7ec0520e&amp;chksm=eb538468dc240d7e968486dbdb7fa440b365ac81a3d9920013781776b601754b1a0659b92b70&amp;scene=21#wechat_redirect" target="_blank" rel="noopener noreferrer">这里</a>看这篇文章。</p>
+<h2 id="4-适配器adapter">4. 适配器（Adapter）</h2>
 <hr>
-<p>将一个类的接口转换成客户希望的另外一个接口。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</p>
+<p>适配器模式(Adapter Pattern) 将一个接口转换成客户希望的另一个接口，适配器模式使原本由于接口不兼容的那些类可以一起工作，其别名为包装器(Wrapper)。</p>
+<h3 id="spring-aop中的适配器模式">spring AOP中的适配器模式</h3>
+<p>我们知道 Spring AOP 的实现是基于代理模式，但是 Spring AOP 的增强或通知(Advice)使用到了适配器模式，与之相关的接口是<code>AdvisorAdapter</code> 。Advice 常用的类型有：<code>BeforeAdvice</code>（目标方法调用前,前置通知）、<code>AfterAdvice</code>（目标方法调用后,后置通知）、<code>AfterReturningAdvice</code>(目标方法执行结束后，return之前)等等。每个类型Advice（通知）都有对应的拦截器:<code>MethodBeforeAdviceInterceptor</code>、<code>AfterReturningAdviceAdapter</code>、<code>AfterReturningAdviceInterceptor</code>。Spring预定义的通知要通过对应的适配器，适配成 <code>MethodInterceptor</code>接口(方法拦截器)类型的对象（如：<code>MethodBeforeAdviceInterceptor</code> 负责适配 <code>MethodBeforeAdvice</code>）。</p>
 <p>Spring中在对于AOP的处理中有Adapter模式的例子，见如下图：</p>
 <p><img
         class="lazyload"
@@ -186,9 +492,50 @@
         alt="./2.jpg"
         title="2" /></p>
 <p>由于Advisor链需要的是MethodInterceptor（拦截器）对象，所以每一个Advisor中的Advice都要适配成对应的MethodInterceptor对象。</p>
-<h3 id="5包装器decorator">5.包装器（Decorator）</h3>
+<h3 id="spring-mvchttpssocsdnnetsosearchqmvcspm1001210130017020中的适配器模式">spring <a href="https://so.csdn.net/so/search?q=MVC&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">MVC</a>中的适配器模式</h3>
+<h4 id="实现方式-1">实现方式</h4>
+<p>在Spring MVC中，<code>DispatcherServlet</code> 根据请求信息调用 <code>HandlerMapping</code>，解析请求对应的 <code>Handler</code>。解析到对应的 <code>Handler</code>（也就是我们平常说的 <code>Controller</code> 控制器）后，开始由<code>HandlerAdapter</code> 适配器处理。<code>HandlerAdapter</code> 作为期望接口，具体的适配器实现类用于对目标类进行适配，<code>Controller</code> 作为需要适配的类。</p>
+<h4 id="实现过程">实现过程</h4>
+<p>DispatcherServlet根据HandlerMapping返回的handler，向HandlerAdatper发起请求，处理Handler。</p>
+<p>HandlerAdapter根据规则找到对应的Handler并让其执行，执行完毕后Handler会向HandlerAdapter返回一个ModelAndView，最后由HandlerAdapter向DispatchServelet返回一个ModelAndView。</p>
+<p><strong>为什么要在 Spring MVC 中使用适配器模式？（实现意义）</strong></p>
+<p>Spring MVC 中的 <code>Controller</code> 种类众多，不同类型的 <code>Controller</code> 通过不同的方法来对请求进行处理。如果不利用适配器模式的话，<code>DispatcherServlet</code> 直接获取对应类型的 <code>Controller</code>，需要的自行来判断，像下面这段代码一样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">mappedHandler</span><span class="o">.</span><span class="na">getHandler</span><span class="o">()</span> <span class="k">instanceof</span> <span class="n">MultiActionController</span><span class="o">){</span>  
+   <span class="o">((</span><span class="n">MultiActionController</span><span class="o">)</span><span class="n">mappedHandler</span><span class="o">.</span><span class="na">getHandler</span><span class="o">()).</span><span class="na">xxx</span>  
+<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">mappedHandler</span><span class="o">.</span><span class="na">getHandler</span><span class="o">()</span> <span class="k">instanceof</span> <span class="n">XXX</span><span class="o">){</span>  
+    <span class="o">...</span>  
+<span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(...){</span>  
+   <span class="o">...</span>  
+<span class="o">}</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>假如我们再增加一个 <code>Controller</code>类型就要在上面代码中再加入一行 判断语句，这种形式就使得程序难以维护，也违反了设计模式中的开闭原则 – 对扩展开放，对修改关闭。</p>
+<p>HandlerAdatper使得Handler的扩展变得容易，只需要增加一个新的Handler和一个对应的HandlerAdapter即可。</p>
+<p>因此Spring定义了一个适配接口，使得每一种Controller有一种对应的适配器实现类，让适配器代替controller执行相应的方法。这样在扩展Controller时，只需要增加一个适配器类就完成了SpringMVC的扩展了。</p>
+<h2 id="5-包装器装饰者decorator">5. 包装器装饰者（Decorator）</h2>
 <hr>
-<p>动态地给一个对象添加一些额外的职责。就增加功能来说，Decorator模式相比生成子类更为灵活。</p>
+<h3 id="实质-1">实质</h3>
+<p>可以动态地给一个对象添加一些额外的职责（属性或行为）。就增加功能来说，Decorator模式相比生成子类（使用继承）更为灵活。</p>
+<p>简单点儿说就是当我们需要修改原有的功能，但我们又不愿直接去修改原有的代码时，设计一个Decorator套在原有代码外面。其实在 JDK 中就有很多地方用到了装饰者模式，比如 <code>InputStream</code>家族，<code>InputStream</code> 类下有 <code>FileInputStream</code> (读取文件)、<code>BufferedInputStream</code> (增加缓存,使读取文件速度大大提升)等子类都在不修改<code>InputStream</code> 代码的情况下扩展了它的功能。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -197,8 +544,10 @@
         data-sizes="auto"
         alt="./3.jpg"
         title="3" /></p>
+<h3 id="实现方式-2">实现方式</h3>
 <p>Spring中用到的包装器模式在类名上有两种表现：一种是类名中含有Wrapper，另一种是类名中含有Decorator。基本上都是动态地给一个对象添加一些额外的职责。</p>
-<h3 id="6-代理proxy">6. 代理（Proxy）</h3>
+<p>Spring 中配置 DataSource 的时候，DataSource  可能是不同的数据库和数据源。我们能否根据客户的需求在少修改原有类的代码下动态切换不同的数据源？这个时候就要用到装饰者模式(这一点我自己还没太理解具体原理)。Spring 中用到的包装器模式在类名上含有 <code>Wrapper</code>或者 <code>Decorator</code>。这些类基本上都是动态地给一个对象添加一些额外的职责</p>
+<h2 id="6-代理proxy">6. 代理（Proxy）</h2>
 <hr>
 <p>为其他对象提供一种代理以控制对这个对象的访问。</p>
 <p>从结构上来看和Decorator模式类似，但Proxy是控制，更像是一种对功能的限制，而Decorator是增加职责。详解Java中的3种代理模式大家可以点击<a href="https://blog.csdn.net/zl1zl2zl3/article/details/83663094" target="_blank" rel="noopener noreferrer">这里</a>看这篇文章。</p>
@@ -211,9 +560,34 @@
         alt="./4.png"
         title="4" /></p>
 <p>Spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopProxy。</p>
-<h3 id="7观察者observer">7.观察者（Observer）</h3>
+<h3 id="代理模式在-aophttpssocsdnnetsosearchqaopspm1001210130017020-中的应用实现方式">代理模式在 <a href="https://so.csdn.net/so/search?q=AOP&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">AOP</a> 中的应用（实现方式）</h3>
+<p>AOP(Aspect-Oriented Programming:面向切面编程)能够将那些与业务无关，<strong>却为业务模块所共同调用的逻辑或责任（例如事务处理、日志管理、权限控制等）封装起来</strong>，便于<strong>减少系统的重复代码</strong>，<strong>降低模块间的耦合度</strong>，并<strong>有利于未来的可拓展性和可维护性</strong>。</p>
+<p><strong>Spring AOP 就是基于动态代理的</strong>，如果要代理的对象，实现了某个接口，那么Spring AOP会使用<strong>JDK Proxy</strong>，去创建代理对象，而对于没有实现接口的对象，就无法使用 JDK Proxy 去进行代理了，这时候Spring AOP会使用<strong>Cglib</strong> ，这时候Spring AOP会使用 <strong>Cglib</strong> 生成一个被代理对象的子类来作为代理，如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<p>当然你也可以使用 AspectJ ,Spring AOP 已经集成了AspectJ ，AspectJ 应该算的上是 Java 生态系统中最完整的 AOP 框架了。</p>
+<h3 id="实现原理-1">实现原理</h3>
+<p>切面在应用运行的时刻被织入。一般情况下，在织入切面时，AOP容器会为目标对象创建动态的创建一个代理对象。SpringAOP就是以这种方式织入切面的。</p>
+<p>织入：把切面应用到目标对象并创建新的代理对象的过程。</p>
+<h3 id="动静态代理对比">动静态代理对比</h3>
+<h4 id="动态代理">动态代理</h4>
+<p>在内存中构建的，不需要手动编写代理类</p>
+<h4 id="静态代理">静态代理</h4>
+<p>需要手工编写代理类，代理类引用被代理对象。</p>
+<p>使用 AOP 之后我们可以把一些通用功能抽象出来，在需要用到的地方直接使用即可，这样大大简化了代码量。我们需要增加新功能时也方便，这样也提高了系统扩展性。日志功能、事务管理等等场景都用到了 AOP 。</p>
+<h3 id="spring-aop-和-aspectj-aop-有什么区别">Spring AOP 和 AspectJ AOP 有什么区别?</h3>
+<p><strong>Spring AOP 属于运行时增强，而 AspectJ 是编译时增强。</strong> Spring AOP 基于代理(Proxying)，而 AspectJ 基于字节码操作(Bytecode Manipulation)。</p>
+<p>Spring AOP 已经集成了 AspectJ ，AspectJ 应该算的上是 Java 生态系统中最完整的 AOP 框架了。AspectJ 相比于 Spring AOP 功能更加强大，但是 Spring AOP 相对来说更简单，</p>
+<p>如果我们的切面比较少，那么两者性能差异不大。但是，当切面太多的话，最好选择 AspectJ ，它比Spring AOP 快很多。</p>
+<h2 id="7-观察者observer">7. 观察者（Observer）</h2>
 <hr>
-<p>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
+<p>定义对象与对象之间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新或做出反应。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -222,10 +596,281 @@
         data-sizes="auto"
         alt="./5.jpg"
         title="5" /></p>
+<h3 id="实现方式-3">实现方式</h3>
 <p>Spring中Observer模式常用的地方是listener的实现。如ApplicationListener。</p>
-<h3 id="8-策略strategy">8. 策略（Strategy）</h3>
+<p>Spring 事件驱动模型就是观察者模式很经典的一个应用。Spring  事件驱动模型非常有用，在很多场景都可以解耦我们的代码。比如我们每次添加商品的时候都需要重新更新商品索引，这个时候就可以利用观察者模式来解决这个问题。</p>
+<h3 id="spring-事件驱动模型中的三种角色">Spring 事件驱动模型中的三种角色</h3>
+<p>事件角色</p>
+<p><code>ApplicationEvent</code>抽象类[事件] (<code>org.springframework.context</code>包下)充当事件的角色,这是一个抽象类，它继承了jdk的<code>java.util.EventObject</code>并实现了 <code>java.io.Serializable</code>接口。所有的事件都需要继承ApplicationEvent,并且通过构造器参数source得到事件源.</p>
+<p>Spring 中默认存在以下事件，他们都是对 <code>ApplicationContextEvent</code> 的实现(继承自<code>ApplicationContextEvent</code>)，表示ApplicaitonContext的容器事件：</p>
+<ul>
+<li><code>ContextStartedEvent</code>：<code>ApplicationContext</code> 启动后触发的事件;</li>
+<li><code>ContextStoppedEvent</code>：<code>ApplicationContext</code> 停止后触发的事件;</li>
+<li><code>ContextRefreshedEvent</code>：<code>ApplicationContext</code> 初始化或刷新完成后触发的事件;</li>
+<li><code>ContextClosedEvent</code>：<code>ApplicationContext</code> 关闭后触发的事件。</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<p>代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">publicabstractclass</span> <span class="n">ApplicationEvent</span> <span class="kd">extends</span> <span class="n">EventObject</span> <span class="o">{</span>
+    <span class="n">privatestaticfinallong</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">7099057708183571937L</span><span class="o">;</span>
+    <span class="n">privatefinallong</span> <span class="n">timestamp</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">ApplicationEvent</span><span class="o">(</span><span class="n">Object</span> <span class="n">source</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">timestamp</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">long</span> <span class="nf">getTimestamp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">returnthis</span><span class="o">.</span><span class="na">timestamp</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ApplicationListener接口[事件监听器/事件监听者角色]</p>
+<p>继承自jdk的EventListener,所有的监听器都要实现这个接口。</p>
+<p><code>ApplicationListener</code> 充当了事件监听者角色，它是一个接口，里面只定义了一个 <code>onApplicationEvent（）</code>方法来处理<code>ApplicationEvent</code>或其子类对象作为参数。,可以通过不同对Event类的判断来进行相应的处理。<code>ApplicationListener</code>接口类源码如下，可以看出接口定义看出接口中的事件只要实现了 <code>ApplicationEvent</code>就可以了。所以，在 Spring中我们只要实现 <code>ApplicationListener</code> 接口实现 <code>onApplicationEvent()</code> 方法即可完成监听事件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">org.springframework.context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.EventListener</span><span class="o">;</span>
+<span class="nd">@FunctionalInterface</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ApplicationListener</span><span class="o">&lt;</span><span class="n">E</span> <span class="kd">extends</span> <span class="n">ApplicationEvent</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">EventListener</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">onApplicationEvent</span><span class="o">(</span><span class="n">E</span> <span class="n">event</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ApplicationContext接口[事件源/事件发布者角色]</p>
+<p><code>ApplicationEventPublisher</code> 充当了事件的发布者，它也是一个接口。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@FunctionalInterface</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ApplicationEventPublisher</span> <span class="o">{</span>
+    <span class="k">default</span> <span class="kt">void</span> <span class="nf">publishEvent</span><span class="o">(</span><span class="n">ApplicationEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">publishEvent</span><span class="o">((</span><span class="n">Object</span><span class="o">)</span><span class="n">event</span><span class="o">);</span>
+    <span class="o">}</span>
+ 
+    <span class="kt">void</span> <span class="nf">publishEvent</span><span class="o">(</span><span class="n">Object</span> <span class="n">var1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>ApplicationContext是spring中的全局容器，翻译过来是”应用上下文”。</p>
+<p>实现了ApplicationEventPublisher接口。</p>
+<p><strong>职责</strong></p>
+<p>负责读取bean的配置文档,管理bean的加载,维护bean之间的依赖关系,可以说是负责bean的整个生命周期,再通俗一点就是我们平时所说的IOC容器。</p>
+<p><strong>代码</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">publicinterface</span> <span class="n">ApplicationEventPublisher</span> <span class="o">{</span>
+        <span class="kt">void</span> <span class="nf">publishEvent</span><span class="o">(</span><span class="n">ApplicationEvent</span> <span class="n">event</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">publishEvent</span><span class="o">(</span><span class="n">ApplicationEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">event</span><span class="o">,</span> <span class="s">&#34;Event must not be null&#34;</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">logger</span><span class="o">.</span><span class="na">isTraceEnabled</span><span class="o">())</span> <span class="o">{</span>
+         <span class="n">logger</span><span class="o">.</span><span class="na">trace</span><span class="o">(</span><span class="s">&#34;Publishing event in &#34;</span> <span class="o">+</span> <span class="n">getDisplayName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;: &#34;</span> <span class="o">+</span> <span class="n">event</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="n">getApplicationEventMulticaster</span><span class="o">().</span><span class="na">multicastEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">parent</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">parent</span><span class="o">.</span><span class="na">publishEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>ApplicationEventPublisher</code> 接口的<code>publishEvent（）</code>这个方法在<code>AbstractApplicationContext</code>类中被实现，阅读这个方法的实现，你会发现实际上事件真正是通过<code>ApplicationEventMulticaster</code>来广播出去的。</p>
+<p>ApplicationEventMulticaster抽象类[事件源中publishEvent方法需要调用其方法getApplicationEventMulticaster]</p>
+<p>属于事件广播器,它的作用是把Applicationcontext发布的Event广播给所有的监听器.</p>
+<p><strong>代码</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">publicabstractclass</span> <span class="n">AbstractApplicationContext</span> <span class="kd">extends</span> <span class="n">DefaultResourceLoader</span>
+    <span class="kd">implements</span> <span class="n">ConfigurableApplicationContext</span><span class="o">,</span> <span class="n">DisposableBean</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">ApplicationEventMulticaster</span> <span class="n">applicationEventMulticaster</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">registerListeners</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// Register statically specified listeners first.
+</span><span class="c1"></span>    <span class="k">for</span> <span class="o">(</span><span class="n">ApplicationListener</span><span class="o">&lt;?&gt;</span> <span class="n">listener</span> <span class="o">:</span> <span class="n">getApplicationListeners</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">getApplicationEventMulticaster</span><span class="o">().</span><span class="na">addApplicationListener</span><span class="o">(</span><span class="n">listener</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="c1">// Do not initialize FactoryBeans here: We need to leave all regular beans
+</span><span class="c1"></span>    <span class="c1">// uninitialized to let post-processors apply to them!
+</span><span class="c1"></span>    <span class="n">String</span><span class="o">[]</span> <span class="n">listenerBeanNames</span> <span class="o">=</span> <span class="n">getBeanNamesForType</span><span class="o">(</span><span class="n">ApplicationListener</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">lisName</span> <span class="o">:</span> <span class="n">listenerBeanNames</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">getApplicationEventMulticaster</span><span class="o">().</span><span class="na">addApplicationListenerBean</span><span class="o">(</span><span class="n">lisName</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>具体内容过多，就不在这里分析了，后面可能会单独写一篇文章提到。</p>
+<h3 id="spring-的事件流程总结">Spring 的事件流程总结</h3>
+<ol>
+<li>定义一个事件: 实现一个继承自 <code>ApplicationEvent</code>，并且写相应的构造函数；</li>
+<li>定义一个事件监听者：实现 <code>ApplicationListener</code> 接口，重写 <code>onApplicationEvent()</code> 方法；</li>
+<li>使用事件发布者发布消息: 可以通过 <code>ApplicationEventPublisher</code> 的 <code>publishEvent()</code> 方法发布消息。</li>
+</ol>
+<p>Example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 定义一个事件,继承自ApplicationEvent并且写相应的构造函数
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoEvent</span> <span class="kd">extends</span> <span class="n">ApplicationEvent</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">1L</span><span class="o">;</span>
+ 
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">message</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="nf">DemoEvent</span><span class="o">(</span><span class="n">Object</span> <span class="n">source</span><span class="o">,</span><span class="n">String</span> <span class="n">message</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
+         <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
+          <span class="o">}</span>
+ 
+    
+<span class="c1">// 定义一个事件监听者,实现ApplicationListener接口，重写 onApplicationEvent() 方法；
+</span><span class="c1"></span><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoListener</span> <span class="kd">implements</span> <span class="n">ApplicationListener</span><span class="o">&lt;</span><span class="n">DemoEvent</span><span class="o">&gt;{</span>
+ 
+    <span class="c1">//使用onApplicationEvent接收消息
+</span><span class="c1"></span>    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onApplicationEvent</span><span class="o">(</span><span class="n">DemoEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;接收到的信息是：&#34;</span><span class="o">+</span><span class="n">msg</span><span class="o">);</span>
+    <span class="o">}</span>
+ 
+<span class="o">}</span>
+<span class="c1">// 发布事件，可以通过ApplicationEventPublisher  的 publishEvent() 方法发布消息。
+</span><span class="c1"></span><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoPublisher</span> <span class="o">{</span>
+ 
+    <span class="nd">@Autowired</span>
+    <span class="n">ApplicationContext</span> <span class="n">applicationContext</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">publish</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">){</span>
+        <span class="c1">//发布事件
+</span><span class="c1"></span>        <span class="n">applicationContext</span><span class="o">.</span><span class="na">publishEvent</span><span class="o">(</span><span class="k">new</span> <span class="n">DemoEvent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">message</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当调用 <code>DemoPublisher</code> 的 <code>publish()</code> 方法的时候，比如 <code>demoPublisher.publish(&quot;你好&quot;)</code> ，控制台就会打印出:<code>接收到的信息是：你好</code> 。</p>
+<h2 id="8-策略strategy">8. 策略（Strategy）</h2>
 <hr>
 <p>定义一系列的算法，把它们一个个封装起来，并且使它们可相互替换。本模式使得算法可独立于使用它的客户而变化。</p>
+<h3 id="实现方式-4">实现方式</h3>
 <p>Spring中在实例化对象的时候用到Strategy模式，见如下图：</p>
 <p><img
         class="lazyload"
@@ -244,10 +889,248 @@
         data-sizes="auto"
         alt="./7.jpg"
         title="7" /></p>
-<h3 id="9模板方法template-method">9.模板方法（Template Method）</h3>
 <hr>
-<p>定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。Template Method使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
-<p>Template Method模式一般是需要继承的。这里想要探讨另一种对Template  Method的理解。Spring中的JdbcTemplate，在用这个类时并不想去继承这个类，因为这个类的方法太多，但是我们还是想用到JdbcTemplate已有的稳定的、公用的数据库连接，那么我们怎么办呢？</p>
+<p>Spring框架的资源访问Resource接口。该接口提供了更强的资源访问能力，Spring 框架本身大量使用了 Resource 接口来访问底层资源。</p>
+<p><strong>Resource 接口介绍</strong></p>
+<p>source 接口是具体资源访问策略的抽象，也是所有资源访问类所实现的接口。</p>
+<p>Resource 接口主要提供了如下几个方法:</p>
+<ul>
+<li><strong>getInputStream()：</strong> 定位并打开资源，返回资源对应的输入流。每次调用都返回新的输入流。调用者必须负责关闭输入流。</li>
+<li><strong>exists()：</strong> 返回 Resource 所指向的资源是否存在。</li>
+<li><strong>isOpen()：</strong> 返回资源文件是否打开，如果资源文件不能多次读取，每次读取结束应该显式关闭，以防止资源泄漏。</li>
+<li><strong>getDescription()：</strong> 返回资源的描述信息，通常用于资源处理出错时输出该信息，通常是全限定文件名或实际 URL。</li>
+<li><strong>getFile：</strong> 返回资源对应的 File 对象。</li>
+<li><strong>getURL：</strong> 返回资源对应的 URL 对象。</li>
+</ul>
+<p>最后两个方法通常无须使用，仅在通过简单方式访问无法实现时，Resource 提供传统的资源访问的功能。</p>
+<p>Resource 接口本身没有提供访问任何底层资源的实现逻辑，<strong>针对不同的底层资源，Spring 将会提供不同的 Resource 实现类，不同的实现类负责不同的资源访问逻辑。</strong></p>
+<p>Spring 为 Resource 接口提供了如下实现类：</p>
+<ul>
+<li><strong>UrlResource：</strong> 访问网络资源的实现类。</li>
+<li><strong>ClassPathResource：</strong> 访问类加载路径里资源的实现类。</li>
+<li><strong>FileSystemResource：</strong> 访问文件系统里资源的实现类。</li>
+<li><strong>ServletContextResource：</strong> 访问相对于 ServletContext 路径里的资源的实现类.</li>
+<li><strong>InputStreamResource：</strong> 访问输入流资源的实现类。</li>
+<li><strong>ByteArrayResource：</strong> 访问字节数组资源的实现类。</li>
+</ul>
+<p>这些 Resource 实现类，针对不同的的底层资源，提供了相应的资源访问逻辑，并提供便捷的包装，以利于客户端程序的资源访问。</p>
+<h2 id="9-模板方法template-method">9. 模板方法（Template Method）</h2>
+<hr>
+<p>模板方法模式是一种行为设计模式，它定义一个操作中的算法的骨架（调用哪些方法及顺序），而将一些步骤延迟到子类中，某些特定方法由子类实现。模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤的实现方式。</p>
+<p><strong>最大的好处</strong></p>
+<p>代码复用，减少重复代码。除了子类要实现的特定方法，其他方法及方法调用顺序都在父类中预先写好了。</p>
+<p><strong>所以父类模板方法中有两类方法：</strong></p>
+<p><strong>共同的方法：</strong> 所有子类都会用到的代码</p>
+<p><strong>不同的方法：</strong> 子类要覆盖的方法，分为两种：</p>
+<ul>
+<li>抽象方法：父类中的是抽象方法，子类必须覆盖</li>
+<li>钩子方法：父类中是一个空方法，子类继承了默认也是空的</li>
+</ul>
+<p>注：为什么叫钩子，子类可以通过这个钩子（方法），控制父类，因为这个钩子实际是父类的方法（空方法）！</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Template</span> <span class="o">{</span>
+    <span class="c1">//这是我们的模板方法
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">TemplateMethod</span><span class="o">(){</span>
+        <span class="n">PrimitiveOperation1</span><span class="o">();</span>  
+        <span class="n">PrimitiveOperation2</span><span class="o">();</span>
+        <span class="n">PrimitiveOperation3</span><span class="o">();</span>
+    <span class="o">}</span>
+ 
+    <span class="kd">protected</span> <span class="kt">void</span>  <span class="nf">PrimitiveOperation1</span><span class="o">(){</span>
+        <span class="c1">//当前类实现
+</span><span class="c1"></span>    <span class="o">}</span>
+    
+    <span class="c1">//被子类实现的方法
+</span><span class="c1"></span>    <span class="kd">protected</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">PrimitiveOperation2</span><span class="o">();</span>
+    <span class="kd">protected</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">PrimitiveOperation3</span><span class="o">();</span>
+ 
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TemplateImpl</span> <span class="kd">extends</span> <span class="n">Template</span> <span class="o">{</span>
+ 
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">PrimitiveOperation2</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//当前类实现
+</span><span class="c1"></span>    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">PrimitiveOperation3</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//当前类实现
+</span><span class="c1"></span>    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="spring模板方法模式实质">Spring模板方法模式实质</h3>
+<p>是模板方法模式和回调模式的结合，是模板方法模式不需要继承的另一种实现方式。Spring几乎所有的外接扩展都采用这种模式。</p>
+<h3 id="具体实现">具体实现</h3>
+<p>Spring 中 <code>jdbcTemplate</code>、<code>hibernateTemplate</code> 等以 Template 结尾的对数据库操作的类，它们就使用到了模板模式。一般情况下，我们都是使用继承的方式来实现模板模式，但是 Spring 并没有使用这种方式，而是采用了一种理念或者处理方式，使用Callback 模式与模板方法模式配合，既达到了代码复用的效果，同时增加了灵活性。</p>
+<p>采用模板方法模式是为了以一种统一而集中的方式来处理资源的获取和释放</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">publicabstractclass</span> <span class="n">JdbcTemplate</span> <span class="o">{</span>
+     <span class="n">publicfinal</span> <span class="n">Object</span> <span class="n">execute</span><span class="err">（</span><span class="n">String</span> <span class="n">sql</span><span class="err">）</span><span class="o">{</span>
+        <span class="n">Connection</span> <span class="n">con</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        <span class="n">Statement</span> <span class="n">stmt</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="n">con</span><span class="o">=</span><span class="n">getConnection</span><span class="err">（）</span><span class="o">;</span>
+            <span class="n">stmt</span><span class="o">=</span><span class="n">con</span><span class="o">.</span><span class="na">createStatement</span><span class="err">（）</span><span class="o">;</span>
+            <span class="n">Object</span> <span class="n">retValue</span><span class="o">=</span><span class="n">executeWithStatement</span><span class="err">（</span><span class="n">stmt</span><span class="o">,</span><span class="n">sql</span><span class="err">）</span><span class="o">;</span>
+            <span class="k">return</span> <span class="n">retValue</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">catch</span><span class="err">（</span><span class="n">SQLException</span> <span class="n">e</span><span class="err">）</span><span class="o">{</span>
+             <span class="o">...</span>
+        <span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+            <span class="n">closeStatement</span><span class="err">（</span><span class="n">stmt</span><span class="err">）</span><span class="o">;</span>
+            <span class="n">releaseConnection</span><span class="err">（</span><span class="n">con</span><span class="err">）</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">protectedabstract</span> <span class="n">Object</span> <span class="n">executeWithStatement</span><span class="err">（</span><span class="n">Statement</span>   <span class="n">stmt</span><span class="o">,</span> <span class="n">String</span> <span class="n">sql</span><span class="err">）</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="引入回调原因">引入回调原因</h4>
+<p>JdbcTemplate是抽象类，不能够独立使用，我们每次进行数据访问的时候都要给出一个相应的子类实现,这样肯定不方便，所以就引入了回调。</p>
+<p>回调代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">publicinterface</span> <span class="n">StatementCallback</span><span class="o">{</span>
+    <span class="n">Object</span> <span class="n">doWithStatement</span><span class="err">（</span><span class="n">Statement</span> <span class="n">stmt</span><span class="err">）</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>利用回调方法重写JdbcTemplate方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">publicclass</span> <span class="n">JdbcTemplate</span> <span class="o">{</span>
+    <span class="n">publicfinal</span> <span class="n">Object</span> <span class="n">execute</span><span class="err">（</span><span class="n">StatementCallback</span> <span class="n">callback</span><span class="err">）</span><span class="o">{</span>
+        <span class="n">Connection</span> <span class="n">con</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        <span class="n">Statement</span> <span class="n">stmt</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="n">con</span><span class="o">=</span><span class="n">getConnection</span><span class="err">（）</span><span class="o">;</span>
+            <span class="n">stmt</span><span class="o">=</span><span class="n">con</span><span class="o">.</span><span class="na">createStatement</span><span class="err">（）</span><span class="o">;</span>
+            <span class="n">Object</span> <span class="n">retValue</span><span class="o">=</span><span class="n">callback</span><span class="o">.</span><span class="na">doWithStatement</span><span class="err">（</span><span class="n">stmt</span><span class="err">）</span><span class="o">;</span>
+            <span class="k">return</span> <span class="n">retValue</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">catch</span><span class="err">（</span><span class="n">SQLException</span> <span class="n">e</span><span class="err">）</span><span class="o">{</span>
+            <span class="o">...</span>
+        <span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+            <span class="n">closeStatement</span><span class="err">（</span><span class="n">stmt</span><span class="err">）</span><span class="o">;</span>
+            <span class="n">releaseConnection</span><span class="err">（</span><span class="n">con</span><span class="err">）</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="o">...</span><span class="c1">//其它方法定义
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Jdbc使用方法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">JdbcTemplate</span> <span class="n">jdbcTemplate</span><span class="o">=...;</span>
+    <span class="kd">final</span> <span class="n">String</span> <span class="n">sql</span><span class="o">=...;</span>
+    <span class="n">StatementCallback</span> <span class="n">callback</span><span class="o">=</span><span class="k">new</span> <span class="n">StatementCallback</span><span class="o">(){</span>
+    <span class="kd">public</span> <span class="n">Object</span><span class="o">=</span><span class="n">doWithStatement</span><span class="o">(</span><span class="n">Statement</span> <span class="n">stmt</span><span class="o">){</span>
+        <span class="k">return</span> <span class="o">...;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">jdbcTemplate</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">callback</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="为什么jdbctemplate没有使用继承">为什么JdbcTemplate没有使用继承</h4>
+<p>模板方法模式一般是需要继承的。这里想要探讨另一种对Template  Method的理解。Spring中的JdbcTemplate，在用这个类时并不想去继承这个类，因为这个类的方法太多，但是我们还是想用到JdbcTemplate已有的稳定的、公用的数据库连接，那么我们怎么办呢？</p>
 <p>我们可以把变化的东西抽出来作为一个参数传入JdbcTemplate的方法中。但是变化的东西是一段代码，而且这段代码会用到JdbcTemplate中的变量。怎么办？</p>
 <p>那我们就用回调对象吧。在这个回调对象中定义一个操纵JdbcTemplate中变量的方法，我们去实现这个方法，就把变化的东西集中到这里了。然后我们再传入这个回调对象到JdbcTemplate，从而完成了调用。这可能是Template Method不需要继承的另一种实现方式吧。</p>
 <p>以下是一个具体的例子：</p>
@@ -269,11 +1152,35 @@
         data-sizes="auto"
         alt="./9.jpg"
         title="9" /></p>
+<h2 id="总结">总结</h2>
+<p>Spring 框架中用到了哪些设计模式？</p>
+<ul>
+<li><strong>控制反转和依赖注入</strong> 类管理</li>
+<li>**简单工厂设计模式: **Spring使用工厂模式通过 <code>BeanFactory</code>、<code>ApplicationContext</code> 创建 bean 对象。</li>
+<li>**工厂方法模式: **</li>
+<li>**代理设计模式: **Spring AOP 功能的实现。</li>
+<li>**单例设计模式: **Spring 中的 Bean 默认都是单例的。</li>
+<li>**模板方法模式: **Spring 中 <code>jdbcTemplate</code>、<code>hibernateTemplate</code> 等以 Template 结尾的对数据库操作的类，它们就使用到了模板模式。</li>
+<li>**包装器设计模式: **我们的项目需要连接多个数据库（Spring 中配置 DataSource），而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</li>
+<li>**观察者模式: ** Spring 事件驱动模型就是观察者模式很经典的一个应用。</li>
+<li>**适配器模式: **Spring AOP 的增强或通知(Advice)使用到了适配器模式、spring MVC 中也是用到了适配器模式适配<code>Controller</code>。</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li>《Spring技术内幕》</li>
+<li><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fblog.eduonix.com%2Fjava-programming-2%2Flearn-design-patterns-used-spring-framework%2F" target="_blank" rel="noopener noreferrer">https://blog.eduonix.com/java-programming-2/learn-design-patterns-used-spring-framework/</a></li>
+<li><a href="https://links.jianshu.com/go?to=http%3A%2F%2Fblog.yeamin.top%2F2018%2F03%2F27%2F%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-Spring%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%2F" target="_blank" rel="noopener noreferrer">http://blog.yeamin.top/2018/03/27/单例模式-Spring单例实现原理分析/</a></li>
+<li><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.tutorialsteacher.com%2Fioc%2Finversion-of-control" target="_blank" rel="noopener noreferrer">https://www.tutorialsteacher.com/ioc/inversion-of-control</a></li>
+<li><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdesign-patterns.readthedocs.io%2Fzh_CN%2Flatest%2Fbehavioral_patterns%2Fobserver.html" target="_blank" rel="noopener noreferrer">https://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/observer.html</a></li>
+<li><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fjuejin.im%2Fpost%2F5a8eb261f265da4e9e307230" target="_blank" rel="noopener noreferrer">https://juejin.im/post/5a8eb261f265da4e9e307230</a></li>
+<li><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fjuejin.im%2Fpost%2F5ba28986f265da0abc2b6084" target="_blank" rel="noopener noreferrer">https://juejin.im/post/5ba28986f265da0abc2b6084</a></li>
+<li><a href="http://blog.csdn.net/caoxiaohong1005" target="_blank" rel="noopener noreferrer">blog.csdn.net/caoxiaohong1005</a></li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-06-04</span>
+                <span>更新于 2022-06-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -295,7 +1202,7 @@
     </div>
 
     <div class="post-nav"><a href="/python-note/" class="prev" rel="prev" title="使用Winsw将Jar或Bat文件注册到Windows服务"><i class="fas fa-angle-left fa-fw"></i>使用Winsw将Jar或Bat文件注册到Windows服务</a>
-            <a href="/java-audition-note/" class="next" rel="next" title="Java后端面试题整理">Java后端面试题整理<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/java-thread-order-note/" class="next" rel="next" title="多线程执行顺序问题-号称腾讯（理想汽车面试题）">多线程执行顺序问题-号称腾讯（理想汽车面试题）<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

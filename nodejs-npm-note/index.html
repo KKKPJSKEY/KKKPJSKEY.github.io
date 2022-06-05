@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/nodejs-npm-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/nodejs-npm-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-06-29T18:20:32+08:00" />
-<meta property="article:modified_time" content="2022-05-28T20:30:48+08:00" />
+<meta property="article:modified_time" content="2022-06-05T20:31:44+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/nodejs-npm-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/nodejs-npm-note\/featured-image.jpg",
                             "width":  1200 ,
                             "height":  498 
-                        }],"genre": "posts","keywords": "Npm, Vue","wordcount":  1581 ,
-        "url": "https:\/\/kkkpjskey.github.io\/nodejs-npm-note\/","datePublished": "2021-06-29T18:20:32+08:00","dateModified": "2022-05-28T20:30:48+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Npm, Vue","wordcount":  1899 ,
+        "url": "https:\/\/kkkpjskey.github.io\/nodejs-npm-note\/","datePublished": "2021-06-29T18:20:32+08:00","dateModified": "2022-06-05T20:31:44+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Npm笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/front/"><i class="far fa-folder fa-fw"></i>Front</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-29">2021-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1581 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-29">2021-06-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1899 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/nodejs-npm-note/" class="leancloud_visitors" data-flag-title="Npm笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -157,6 +157,12 @@
       </ul>
     </li>
     <li><a href="#安装和卸载全局包">安装和卸载全局包</a></li>
+    <li><a href="#nodenpm如何查看安装过的模块或包">node/npm如何查看安装过的模块或包</a>
+      <ul>
+        <li><a href="#quickstart">QuickStart</a></li>
+        <li><a href="#详细介绍">详细介绍</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="nodejs和npm的关系">Nodejs和Npm的关系</h2>
@@ -206,11 +212,115 @@
 <li>注意：一般，只有一些工具，才有全局安装的必要性</li>
 <li>如果要全局卸载某个包，比如要卸载<code>i5ting toc</code>了，直接运行&rsquo;npm uniinstall i5ting_toc -g`就可以全局卸载包了!</li>
 </ol>
+<h2 id="nodenpm如何查看安装过的模块或包">node/npm如何查看安装过的模块或包</h2>
+<h3 id="quickstart">QuickStart</h3>
+<p><code>npm ls</code>命令可以查看安装过的模块，这个命令使用的时候要注意是否为全局和注意层数。</p>
+<p>查看当前项目的依赖模块如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm ls --depth <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>查看全局依赖模块命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm ls -g --depth <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.webp"
+        data-srcset="./1.webp, ./1.webp 1.5x, ./1.webp 2x"
+        data-sizes="auto"
+        alt="./1.webp"
+        title="1" /></p>
+<h3 id="详细介绍">详细介绍</h3>
+<p>在命令行输入<code>npm ls</code>，可以查看当前文件夹下安装的模块</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.webp"
+        data-srcset="./2.webp, ./2.webp 1.5x, ./2.webp 2x"
+        data-sizes="auto"
+        alt="./2.webp"
+        title="2" /></p>
+<p>这个结果和文件夹下面的node_modules目录是对应的</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.webp"
+        data-srcset="./3.webp, ./3.webp 1.5x, ./3.webp 2x"
+        data-sizes="auto"
+        alt="./3.webp"
+        title="3" /></p>
+<p>可以看见，这个文件夹下面的2个子文件夹名字和刚才的输出结果一模一样</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.webp"
+        data-srcset="./4.webp, ./4.webp 1.5x, ./4.webp 2x"
+        data-sizes="auto"
+        alt="./4.webp"
+        title="4" /></p>
+<p>但是这个命令会将模块依赖的模块也一并输出出来，最后在一个复杂项目里面的结果会十分庞大</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.webp"
+        data-srcset="./5.webp, ./5.webp 1.5x, ./5.webp 2x"
+        data-sizes="auto"
+        alt="./5.webp"
+        title="5" /></p>
+<p>现在我们可以加上 &ndash;depth 0，来限制结果的层数</p>
+<p>执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm ls --depth <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以发现复制项目的输出结果也不会太长</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.webp"
+        data-srcset="./6.webp, ./6.webp 1.5x, ./6.webp 2x"
+        data-sizes="auto"
+        alt="./6.webp"
+        title="6" /></p>
+<p>加上 -g 可以输出全局模块，也可以和&ndash;depth 0并用</p>
+<p>执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm ls -g --depth <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>试试</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.webp"
+        data-srcset="./7.webp, ./7.webp 1.5x, ./7.webp 2x"
+        data-sizes="auto"
+        alt="./7.webp"
+        title="7" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-28</span>
+                <span>更新于 2022-06-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>
