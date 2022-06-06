@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>从头到尾彻底理解KMP - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录从头到尾彻底理解KMP的笔记"><meta property="og:title" content="从头到尾彻底理解KMP" />
+<meta property="og:description" content="记录从头到尾彻底理解KMP的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/algorithm-kmp-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/algorithm-kmp-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-06T21:54:21+08:00" />
+<meta property="article:modified_time" content="2022-06-06T21:54:21+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/algorithm-kmp-note/featured-image.jpg"/>
+<meta name="twitter:title" content="从头到尾彻底理解KMP"/>
+<meta name="twitter:description" content="记录从头到尾彻底理解KMP的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/algorithm-kmp-note/" /><link rel="prev" href="https://kkkpjskey.github.io/gooreplacer-recaptcha-note/" /><link rel="next" href="https://kkkpjskey.github.io/jvm-tlab-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "从头到尾彻底理解KMP",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/algorithm-kmp-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/algorithm-kmp-note\/featured-image.jpg",
+                            "width":  1640 ,
+                            "height":  490 
+                        }],"genre": "posts","keywords": "Algorithm, KMP","wordcount":  15336 ,
+        "url": "https:\/\/kkkpjskey.github.io\/algorithm-kmp-note\/","datePublished": "2022-06-06T21:54:21+08:00","dateModified": "2022-06-06T21:54:21+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录从头到尾彻底理解KMP的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/algorithm-kmp-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/algorithm-kmp-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">从头到尾彻底理解KMP</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/learning/"><i class="far fa-folder fa-fw"></i>Learning</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-06">2022-06-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 15336 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 31 分钟&nbsp;<span id="/algorithm-kmp-note/" class="leancloud_visitors" data-flag-title="从头到尾彻底理解KMP">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/algorithm-kmp-note/featured-image.jpg"
+        data-srcset="/algorithm-kmp-note/featured-image.jpg, /algorithm-kmp-note/featured-image.jpg 1.5x, /algorithm-kmp-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/algorithm-kmp-note/featured-image.jpg"
+        title="记录从头到尾彻底理解KMP的笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-引言">1. 引言</a></li>
+    <li><a href="#2-暴力匹配算法">2. 暴力匹配算法</a></li>
+    <li><a href="#3-kmp算法">3. KMP算法</a>
+      <ul>
+        <li><a href="#31-定义">3.1 定义</a></li>
+        <li><a href="#32-步骤">3.2 步骤</a></li>
+        <li><a href="#33-解释">3.3 解释</a></li>
+        <li><a href="#34-kmp的时间复杂度分析">3.4 KMP的时间复杂度分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-扩展1bm算法">4. 扩展1：BM算法</a></li>
+    <li><a href="#5-扩展2sunday算法">5. 扩展2：Sunday算法</a></li>
+    <li><a href="#6-参考文献">6. 参考文献</a></li>
+    <li><a href="#7-后记">7. 后记</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-引言">1. 引言</h2>
+<p>本KMP原文最初写于2年多前的2011年12月，因当时初次接触KMP，思路混乱导致写也写得混乱。所以一直想找机会重新写下KMP，但苦于一直以来对KMP的理解始终不够，故才迟迟没有修改本文。</p>
+<p>然近期因开了个<a href="http://www.julyedu.com/category/index/1" target="_blank" rel="noopener noreferrer">算法班</a>，班上专门讲解数据结构、面试、算法，才再次仔细回顾了这个KMP，在综合了一些网友的理解、以及算法班的两位讲师朋友曹博、邹博的理解之后，写了9张PPT，发在微博上。随后，一不做二不休，索性将PPT上的内容整理到了本文之中（后来文章越写越完整，所含内容早已不再是九张PPT 那样简单了）。</p>
+<p>KMP本身不复杂，但网上绝大部分的文章（包括本文的2011年版本）把它讲混乱了。下面，咱们从暴力匹配算法讲起，随后阐述KMP的流程 步骤、next 数组的简单求解 递推原理 代码求解，接着基于next 数组匹配，谈到有限状态自动机，next  数组的优化，KMP的时间复杂度分析，最后简要介绍两个KMP的扩展算法。</p>
+<p>全文力图给你一个最为完整最为清晰的KMP，希望更多的人不再被KMP折磨或纠缠，不再被一些混乱的文章所混乱。有何疑问，欢迎随时留言评论，thanks。</p>
+<h2 id="2-暴力匹配算法">2. 暴力匹配算法</h2>
+<p>假设现在我们面临这样一个问题：有一个文本串S，和一个模式串P，现在要查找P在S中的位置，怎么查找呢？</p>
+<p>如果用暴力匹配的思路，并假设现在文本串S匹配到 i 位置，模式串P匹配到 j 位置，则有：</p>
+<ul>
+<li>
+<p>如果当前字符匹配成功（即S[i] == P[j]），则i++，j++，继续匹配下一个字符；</p>
+</li>
+<li>
+<p>如果失配（即S[i]! = P[j]），令i = i - (j - 1)，j = 0。相当于每次匹配失败时，i 回溯，j 被置为0。</p>
+<p>理清楚了暴力匹配算法的流程及内在的逻辑，咱们可以写出暴力匹配的代码，如下：</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">ViolentMatch</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">sLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">pLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+ 
+	<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">sLen</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">pLen</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+		<span class="p">{</span>
+			<span class="c1">//①如果当前字符匹配成功（即S[i] == P[j]），则i++，j++    
+</span><span class="c1"></span>			<span class="n">i</span><span class="o">++</span><span class="p">;</span>
+			<span class="n">j</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">else</span>
+		<span class="p">{</span>
+			<span class="c1">//②如果失配（即S[i]! = P[j]），令i = i - (j - 1)，j = 0    
+</span><span class="c1"></span>			<span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+			<span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="c1">//匹配成功，返回模式串p在文本串s中的位置，否则返回-1
+</span><span class="c1"></span>	<span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">pLen</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span><span class="p">;</span>
+	<span class="k">else</span>
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>举个例子，如果给定文本串S“BBC ABCDAB ABCDABCDABDE”，和模式串P“ABCDABD”，现在要拿模式串P去跟文本串S匹配，整个过程如下所示：</p>
+<p><em>1.</em> S[0]为B，P[0]为A，不匹配，执行第②条指令：“如果失配（即S[i]! = P[j]），令i = i - (j - 1)，j = 0”，S[1]跟P[0]匹配，相当于模式串要往右移动一位（i=1，j=0）</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+</blockquote>
+<p><em>2</em>. S[1]跟P[0]还是不匹配，继续执行第②条指令：“如果失配（即S[i]! = P[j]），令i = i - (j - 1)，j = 0”，S[2]跟P[0]匹配（i=2，j=0），从而模式串不断的向右移动一位（不断的执行“令i = i - (j -  1)，j = 0”，i从2变到4，j一直为0）</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+</blockquote>
+<p><em>3</em>.  直到S[4]跟P[0]匹配成功（i=4，j=0），此时按照上面的暴力匹配算法的思路，转而执行第①条指令：“如果当前字符匹配成功（即S[i] == P[j]），则i++，j++”，可得S[i]为S[5]，P[j]为P[1]，即接下来S[5]跟P[1]匹配（i=5，j=1）</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+</blockquote>
+<p><em>4</em>. S[5]跟P[1]匹配成功，继续执行第①条指令：“如果当前字符匹配成功（即S[i] == P[j]），则i++，j++”，得到S[6]跟P[2]匹配（i=6，j=2），如此进行下去</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+</blockquote>
+<p><em>5</em>. 直到S[10]为空格字符，P[6]为字符D（i=10，j=6），因为不匹配，重新执行第②条指令：“如果失配（即S[i]! = P[j]），令i = i - (j - 1)，j = 0”，相当于S[5]跟P[0]匹配（i=5，j=0）</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+</blockquote>
+<p><em>6</em>. 至此，我们可以看到，如果按照暴力匹配算法的思路，尽管之前文本串和模式串已经分别匹配到了S[9]、P[5]，但因为S[10]跟P[6]不匹配，所以文本串回溯到S[5]，模式串回溯到P[0]，从而让S[5]跟P[0]匹配。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+</blockquote>
+<p>而S[5]肯定跟P[0]失配。为什么呢？因为在之前第4步匹配中，我们已经得知S[5] = P[1] = B，而P[0] =  A，即P[1] != P[0]，故S[5]必定不等于P[0]，所以回溯过去必然会导致失配。那有没有一种算法，让i 不往回退，只需要移动j  即可呢？</p>
+<p>答案是肯定的。这种算法就是本文的主旨KMP算法，它利用之前已经部分匹配这个有效信息，保持i 不回溯，通过修改j 的位置，让模式串尽量地移动到有效的位置。</p>
+<h2 id="3-kmp算法">3. KMP算法</h2>
+<h3 id="31-定义">3.1 定义</h3>
+<p>Knuth-Morris-Pratt 字符串查找算法，简称为 “KMP算法”，常用于在一个文本串S内查找一个模式串P  的出现位置，这个算法由Donald Knuth、Vaughan Pratt、James H.  Morris三人于1977年联合发表，故取这3人的姓氏命名此算法。</p>
+<p>下面先直接给出KMP的算法流程（如果感到一点点不适，没关系，坚持下，稍后会有具体步骤及解释，越往后看越会柳暗花明☺）：</p>
+<ul>
+<li>
+<p>假设现在文本串S匹配到 i 位置，模式串P匹配到 j 位置</p>
+<ul>
+<li>如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++，继续匹配下一个字符；</li>
+<li>如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]。此举意味着失配时，模式串P相对于文本串S向右移动了j - next [j] 位。
+<ul>
+<li>换言之，当匹配失败时，模式串向右移动的位数为：失配字符所在位置 - 失配字符对应的next 值（next 数组的求解会在下文的<a href="http://blog.csdn.net/v_july_v/article/details/7041827#t9" target="_blank" rel="noopener noreferrer">3.3.3节</a>中详细阐述），即<strong>移动的实际位数为：j - next[j]</strong>，且此值大于等于1。</li>
+</ul>
+</li>
+</ul>
+<p>很快，你也会意识到next 数组各值的含义：代表当前字符之前的字符串中，有多大长度的相同前缀后缀。例如如果next [j] = k，代表j 之前的字符串中有最大长度为<em>k</em> 的相同前缀后缀。</p>
+<p>此也意味着在某个字符失配时，该字符对应的next 值会告诉你下一步匹配中，模式串应该跳到哪个位置（跳到next [j]  的位置）。如果next [j] 等于0或-1，则跳到模式串的开头字符，若next [j] = k 且 k &gt; 0，代表下次匹配跳到j  之前的某个字符，而不是跳到开头，且具体跳过了k 个字符。</p>
+<p>转换成代码表示，则是：</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">KmpSearch</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">sLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">pLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">sLen</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">pLen</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">//①如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++    
+</span><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+		<span class="p">{</span>
+			<span class="n">i</span><span class="o">++</span><span class="p">;</span>
+			<span class="n">j</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">else</span>
+		<span class="p">{</span>
+			<span class="c1">//②如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]    
+</span><span class="c1"></span>			<span class="c1">//next[j]即为j所对应的next值      
+</span><span class="c1"></span>			<span class="n">j</span> <span class="o">=</span> <span class="n">next</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">pLen</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span><span class="p">;</span>
+	<span class="k">else</span>
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>继续拿之前的例子来说，当S[10]跟P[6]匹配失败时，KMP不是跟暴力匹配那样简单的把模式串右移一位，而是执行第②条指令：“如果j !=  -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]”，即j  从6变到2（后面我们将求得P[6]，即字符D对应的next 值为2），所以相当于模式串向右移动的位数为j - next[j]（j -  next[j] = 6-2 = 4）。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+</blockquote>
+<p>向右移动4位后，S[10]跟P[2]继续匹配。为什么要向右移动4位呢，因为移动4位后，模式串中又有个“AB”可以继续跟S[8]S[9]对应着，从而不用让i 回溯。相当于在除去字符D的模式串子串中寻找相同的前缀和后缀，然后根据前缀后缀求出next 数组，最后基于next 数组进行匹配（不关心next 数组是怎么求来的，只想看匹配过程是咋样的，可直接跳到下文<a href="http://blog.csdn.net/v_july_v/article/details/7041827#t10" target="_blank" rel="noopener noreferrer">3.3.4节</a>）。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+</blockquote>
+<h3 id="32-步骤">3.2 步骤</h3>
+<ul>
+<li>①寻找前缀后缀最长公共元素长度
+<ul>
+<li>对于P = p0 p1 &hellip;pj-1 pj，寻找模式串P中长度最大且相等的前缀和后缀。如果存在p0 p1 &hellip;pk-1 pk = pj- k pj-k+1&hellip;pj-1 pj，那么在包含pj的模式串中有最大长度为k+1的相同前缀后缀。举个例子，如果给定的模式串为“abab”，那么它的各个子串的前缀后缀的公共元素的最大长度如下表格所示：</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.jpg"
+        data-srcset="./9.jpg, ./9.jpg 1.5x, ./9.jpg 2x"
+        data-sizes="auto"
+        alt="./9.jpg"
+        title="9" /></p>
+<p>比如对于字符串aba来说，它有长度为1的相同前缀后缀a；而对于字符串abab来说，它有长度为2的相同前缀后缀ab（相同前缀后缀的长度为k + 1，k + 1 = 2）。</p>
+</blockquote>
+<ul>
+<li>②求next数组
+<ul>
+<li>next 数组考虑的是除当前字符外的最长相同前缀后缀，所以通过第①步骤求得各个前缀后缀的公共元素的最大长度后，只要稍作变形即可：将第①步骤中求得的值整体右移一位，然后初值赋为-1，如下表格所示：</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.jpg"
+        data-srcset="./10.jpg, ./10.jpg 1.5x, ./10.jpg 2x"
+        data-sizes="auto"
+        alt="./10.jpg"
+        title="10" /></p>
+<p>比如对于aba来说，第3个字符a之前的字符串ab中有长度为0的相同前缀后缀，所以第3个字符a对应的next值为0；而对于abab来说，第4个字符b之前的字符串aba中有长度为1的相同前缀后缀a，所以第4个字符b对应的next值为1（相同前缀后缀的长度为k，k = 1）。</p>
+</blockquote>
+<ul>
+<li>③根据next数组进行匹配
+<ul>
+<li>匹配失配，j = next [j]，模式串向右移动的位数为：j - next[j]。换言之，当模式串的后缀pj-k  pj-k+1, &hellip;, pj-1 跟文本串si-k si-k+1, &hellip;, si-1匹配成功，但pj 跟si匹配失败时，因为next[j] = k，相当于在不包含pj的模式串中有最大长度为k 的相同前缀后缀，即p0 p1 &hellip;pk-1 = pj-k pj-k+1&hellip;pj-1，故令j = next[j]，从而让模式串右移j - next[j]  位，使得模式串的前缀p0 p1, &hellip;, pk-1对应着文本串 si-k si-k+1, &hellip;, si-1，而后让pk 跟si  继续匹配。如下图所示：</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.jpg"
+        data-srcset="./11.jpg, ./11.jpg 1.5x, ./11.jpg 2x"
+        data-sizes="auto"
+        alt="./11.jpg"
+        title="11" /></p>
+</blockquote>
+<p>综上，KMP的next  数组相当于告诉我们：当模式串中的某个字符跟文本串中的某个字符匹配失配时，模式串下一步应该跳到哪个位置。如模式串中在j 处的字符跟文本串在i  处的字符匹配失配时，下一步用next [j] 处的字符继续跟文本串i 处的字符匹配，相当于模式串向右移动 j - next[j] 位。</p>
+<p>接下来，分别具体解释上述3个步骤。</p>
+<h3 id="33-解释">3.3 解释</h3>
+<p>3.3.1 寻找最长前缀后缀</p>
+<p>如果给定的模式串是：“ABCDABD”，从左至右遍历整个模式串，其各个子串的前缀后缀分别如下表格所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.jpg"
+        data-srcset="./12.jpg, ./12.jpg 1.5x, ./12.jpg 2x"
+        data-sizes="auto"
+        alt="./12.jpg"
+        title="12" /></p>
+<p>也就是说，原模式串子串对应的各个前缀后缀的公共元素的最大长度表为（<strong>下简称《最大长度表》</strong>）：</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.jpg"
+        data-srcset="./13.jpg, ./13.jpg 1.5x, ./13.jpg 2x"
+        data-sizes="auto"
+        alt="./13.jpg"
+        title="13" /></p>
+</blockquote>
+<p>3.3.2 基于《最大长度表》匹配</p>
+<p>因为模式串中首尾可能会有重复的字符，故可得出下述结论：</p>
+<blockquote>
+<p>失配时，模式串向右移动的位数为：已匹配字符数 - 失配字符的上一位字符所对应的最大长度值</p>
+</blockquote>
+<p>下面，咱们就结合之前的《最大长度表》和上述结论，进行字符串的匹配。如果给定文本串“BBC ABCDAB ABCDABCDABDE”，和模式串“ABCDABD”，现在要拿模式串去跟文本串匹配，如下图所示：</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+</blockquote>
+<ul>
+<li><em>1</em>. 因为模式串中的字符A跟文本串中的字符B、B、C、空格一开始就不匹配，所以不必考虑结论，直接将模式串不断的右移一位即可，直到模式串中的字符A跟文本串的第5个字符A匹配成功：</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+</blockquote>
+<ul>
+<li><em>2</em>.  继续往后匹配，当模式串最后一个字符D跟文本串匹配时失配，显而易见，模式串需要向右移动。但向右移动多少位呢？因为此时已经匹配的字符数为6个（ABCDAB），然后根据《最大长度表》可得失配字符D的上一位字符B对应的长度值为2，所以根据之前的结论，可知需要向右移动6 - 2 = 4 位。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.png"
+        data-srcset="./16.png, ./16.png 1.5x, ./16.png 2x"
+        data-sizes="auto"
+        alt="./16.png"
+        title="16" /></p>
+</blockquote>
+<ul>
+<li><em>3</em>. 模式串向右移动4位后，发现C处再度失配，因为此时已经匹配了2个字符（AB），且上一位字符B对应的最大长度值为0，所以向右移动：2 - 0 =2 位。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./17.png"
+        data-srcset="./17.png, ./17.png 1.5x, ./17.png 2x"
+        data-sizes="auto"
+        alt="./17.png"
+        title="17" /></p>
+</blockquote>
+<ul>
+<li><em>4</em>. A与空格失配，向右移动1 位。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./18.png"
+        data-srcset="./18.png, ./18.png 1.5x, ./18.png 2x"
+        data-sizes="auto"
+        alt="./18.png"
+        title="18" /></p>
+</blockquote>
+<ul>
+<li><em>5</em>. 继续比较，发现D与C 失配，故向右移动的位数为：已匹配的字符数6减去上一位字符B对应的最大长度2，即向右移动6 - 2 = 4 位。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./19.png"
+        data-srcset="./19.png, ./19.png 1.5x, ./19.png 2x"
+        data-sizes="auto"
+        alt="./19.png"
+        title="19" /></p>
+</blockquote>
+<ul>
+<li><em>6</em>. 经历第5步后，发现匹配成功，过程结束。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./20.png"
+        data-srcset="./20.png, ./20.png 1.5x, ./20.png 2x"
+        data-sizes="auto"
+        alt="./20.png"
+        title="20" /></p>
+</blockquote>
+<p>通过上述匹配过程可以看出，问题的关键就是寻找模式串中最大长度的相同前缀和后缀，找到了模式串中每个字符之前的前缀和后缀公共部分的最大长度后，便可基于此匹配。而这个最大长度便正是next 数组要表达的含义。</p>
+<p>3.3.3 根据《最大长度表》求next 数组</p>
+<p>由上文，我们已经知道，字符串“ABCDABD”各个前缀后缀的最大公共元素长度分别为：</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./21.jpg"
+        data-srcset="./21.jpg, ./21.jpg 1.5x, ./21.jpg 2x"
+        data-sizes="auto"
+        alt="./21.jpg"
+        title="21" /></p>
+</blockquote>
+<p>而且，根据这个表可以得出下述结论</p>
+<ul>
+<li>
+<p>失配时，模式串向右移动的位数为：已匹配字符数 - 失配字符的上一位字符所对应的最大长度值</p>
+<p>上文利用这个表和结论进行匹配时，我们发现，当匹配到一个字符失配时，其实没必要考虑当前失配的字符，更何况我们每次失配时，都是看的失配字符的上一位字符对应的最大长度值。如此，便引出了next 数组。</p>
+<p>给定字符串“ABCDABD”，可求得它的next 数组如下：</p>
+</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./22.jpg"
+        data-srcset="./22.jpg, ./22.jpg 1.5x, ./22.jpg 2x"
+        data-sizes="auto"
+        alt="./22.jpg"
+        title="22" /></p>
+</blockquote>
+<p>把next 数组跟之前求得的最大长度表对比后，不难发现，<strong>next 数组相当于“最大长度值” 整体向右移动一位，然后初始值赋为-1</strong>。意识到了这一点，你会惊呼原来next 数组的求解竟然如此简单：就是找最大对称长度的前缀后缀，然后整体右移一位，初值赋为-1（当然，你也可以直接计算某个字符对应的next值，就是看这个字符之前的字符串中有多大长度的相同前缀后缀）。</p>
+<p>换言之，对于给定的模式串：ABCDABD，它的最大长度表及next 数组分别如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./23.jpg"
+        data-srcset="./23.jpg, ./23.jpg 1.5x, ./23.jpg 2x"
+        data-sizes="auto"
+        alt="./23.jpg"
+        title="23" /></p>
+<p>根据最大长度表求出了next 数组后，从而有</p>
+<blockquote>
+<p>失配时，模式串向右移动的位数为：失配字符所在位置 - 失配字符对应的next 值</p>
+</blockquote>
+<p>而后，你会发现，无论是基于《最大长度表》的匹配，还是基于next 数组的匹配，两者得出来的向右移动的位数是一样的。为什么呢？因为：</p>
+<ul>
+<li>
+<p>根据《最大长度表》，失配时，模式串向右移动的位数 = 已经匹配的字符数 - 失配字符的上一位字符的最大长度值</p>
+</li>
+<li>
+<p>而根据《next 数组》，失配时，模式串向右移动的位数 = 失配字符的位置 - 失配字符对应的next 值</p>
+<ul>
+<li>其中，从0开始计数时，失配字符的位置 = 已经匹配的字符数（失配字符不计数），而失配字符对应的next 值 = 失配字符的上一位字符的最大长度值，两相比较，结果必然完全一致。</li>
+</ul>
+<p>所以，你可以把《最大长度表》看做是next 数组的雏形，甚至就把它当做next 数组也是可以的，区别不过是怎么用的问题。</p>
+</li>
+</ul>
+<p>3.3.4 通过代码递推计算next 数组</p>
+<p>接下来，咱们来写代码求下next 数组。</p>
+<p>基于之前的理解，可知计算next 数组的方法可以采用递推：</p>
+<ul>
+<li>
+<p>1</p>
+<p>. 如果</p>
+<p>对于值k，已有p0 p1, &hellip;, pk-1 = pj-k pj-k+1, &hellip;, pj-1，相当于next[j] = k</p>
+<p>。</p>
+<ul>
+<li>此意味着什么呢？究其本质，<strong>next[j] = k 代表p[j] 之前的模式串子串中，有长度为k 的相同前缀和后缀</strong>。有了这个next 数组，在KMP匹配中，当模式串中j 处的字符失配时，下一步用next[j]处的字符继续跟文本串匹配，相当于模式串向右移动j - next[j] 位。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>举个例子，如下图，根据模式串“ABCDABD”的next 数组可知失配位置的字符D对应的next 值为2，代表字符D前有长度为2的相同前缀和后缀（这个相同的前缀后缀即为“AB”），失配后，模式串需要向右移动j - next [j] = 6 - 2 =4位。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./24.png"
+        data-srcset="./24.png, ./24.png 1.5x, ./24.png 2x"
+        data-sizes="auto"
+        alt="./24.png"
+        title="24" /></p>
+<p>向右移动4位后，模式串中的字符C继续跟文本串匹配。</p>
+</blockquote>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./25.png"
+        data-srcset="./25.png, ./25.png 1.5x, ./25.png 2x"
+        data-sizes="auto"
+        alt="./25.png"
+        title="25" /></p>
+</blockquote>
+<ul>
+<li>
+<p><strong>2</strong>. 下面的问题是：已知next [0, &hellip;, j]，如何求出next [j + 1]呢？</p>
+<p>对于P的前j+1个序列字符：</p>
+</li>
+<li>
+<p>若p[k] == p[j]，则next[j + 1 ] = next [j] + 1 = k + 1；</p>
+</li>
+<li>
+<p>若p[k ] ≠ p[j]，如果此时p[ next[k] ] == p[j ]，则next[ j + 1 ] =  next[k] +  1，否则继续递归前缀索引k = next[k]，而后重复此过程。 相当于在字符p[j+1]之前不存在长度为k+1的前缀&quot;p0 p1, …,  pk-1 pk&quot;跟后缀“pj-k pj-k+1, …, pj-1 pj&quot;相等，那么是否可能存在另一个值t+1 &lt;  k+1，使得长度更小的前缀 “p0 p1, …, pt-1 pt” 等于长度更小的后缀 “pj-t pj-t+1, …, pj-1 pj”  呢？如果存在，那么这个t+1 便是next[ j+1]的值，此相当于利用已经求得的next 数组（next [0, &hellip;, k, &hellip;,  j]）进行P串前缀跟P串后缀的匹配。</p>
+<p>一般的文章或教材可能就此一笔带过，但大部分的初学者可能还是不能很好的理解上述求解next 数组的原理，故接下来，我再来着重说明下。</p>
+<p>如下图所示，假定给定模式串ABCDABCE，且已知next [j] = k（相当于“p0 pk-1” = “pj-k pj-1” = AB，可以看出k为2），现要求next [j + 1]等于多少？因为pk = pj = C，所以next[j + 1] = next[j] + 1 = k + 1（可以看出next[j + 1] = 3）。代表字符E前的模式串中，有长度k+1 的相同前缀后缀。</p>
+</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./26.jpg"
+        data-srcset="./26.jpg, ./26.jpg 1.5x, ./26.jpg 2x"
+        data-sizes="auto"
+        alt="./26.jpg"
+        title="26" /></p>
+</blockquote>
+<p>但<strong>如果pk != pj 呢</strong>？说明“p0 pk-1 pk”  ≠ “pj-k pj-1  pj”。换言之，当pk != pj后，字符E前有多大长度的相同前缀后缀呢？很明显，因为C不同于D，所以ABC 跟  ABD不相同，即字符E前的模式串没有长度为k+1的相同前缀后缀，也就不能再简单的令：next[j + 1] = next[j] + 1  。所以，咱们只能去寻找长度更短一点的相同前缀后缀。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./27.jpg"
+        data-srcset="./27.jpg, ./27.jpg 1.5x, ./27.jpg 2x"
+        data-sizes="auto"
+        alt="./27.jpg"
+        title="27" /></p>
+</blockquote>
+<p>结合上图来讲，若能<strong>在前缀****“ p0 pk-1 pk ” 中不断的递归前缀索引k = next [k]，找到一个字符pk’ 也为D，代表pk’ = pj，且满足p0 pk'-1 pk' = pj-k' pj-1 pj，则最大相同的前缀后缀长度为k' + 1</strong>，从而next [j + 1] = k’ + 1 = next [k' ] + 1。否则前缀中没有D，则代表没有相同的前缀后缀，next [j + 1] = 0。</p>
+<p>那为何递归前缀索引k = next[k]，就能找到长度更短的相同前缀后缀呢？这又归根到next数组的含义。<strong>我们拿前缀 p0 pk-1 pk 去跟后缀pj-k pj-1 pj匹配，如果pk 跟pj 失配，下一步就是用p[next[k]] 去跟pj 继续匹配，如果p[ next[k] ]跟pj还是不匹配，则需要*<em>寻找长度更短的相同前缀后缀*</em>，即下一步用p[ next[ next[k] ] ]去跟pj匹配</strong>。此过程相当于模式串的自我匹配，所以不断的递归k = next[k]，直到要么找到长度更短的相同前缀后缀，要么没有长度更短的相同前缀后缀。如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./28.png"
+        data-srcset="./28.png, ./28.png 1.5x, ./28.png 2x"
+        data-sizes="auto"
+        alt="./28.png"
+        title="28" /></p>
+<p>关于k = next [k]这个问题，再补充下本文两个读者给的意见/补充：</p>
+<blockquote>
+<ol>
+<li>
+<p>读者wudehua55555于本文评论下留言，以辅助大家从另一个角度理解：“ 一直以为博主在用递归求next数组时没讲清楚，为何要用k =  next[k],仔细看了这个红黄蓝分区图才突然恍然大悟，就是找到p[k]对应的next[k]，根据对称性，只需再判断p[next[k]]与p[j]是否相等即可，于是令k = next[k],这里恰好就使用了递归的思路。其实我觉得不要一开始就陷入递归的方法中，换一种思路，直接从考虑对称性入手，可直接得出k =  next[k]，而这正好是递归罢了。以上是一些个人看法，非常感谢博主提供的解析，非计算机的学生也能看懂，虽然从昨晚9点看到了现在。高兴。”</p>
+</li>
+<li>
+<p>另一个读者OnlyotDN特意在上面图的基础上又做了一些注解，供大家参考：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./29.png"
+        data-srcset="./29.png, ./29.png 1.5x, ./29.png 2x"
+        data-sizes="auto"
+        alt="./29.png"
+        title="29" /></p>
+</li>
+</ol>
+</blockquote>
+<p>所以，因最终在前缀ABC中没有找到D，故E的next 值为0：</p>
+<blockquote>
+<p>模式串的后缀：AB  DE</p>
+</blockquote>
+<blockquote>
+<p>模式串的前缀：AB  C</p>
+</blockquote>
+<blockquote>
+<p>前缀右移两位：     ABC</p>
+</blockquote>
+<p>读到此，有的读者可能又有疑问了，那能否举一个能在前缀中找到字符D的例子呢？OK，咱们便来看一个能在前缀中找到字符D的例子，如下图所示：</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./30.jpg"
+        data-srcset="./30.jpg, ./30.jpg 1.5x, ./30.jpg 2x"
+        data-sizes="auto"
+        alt="./30.jpg"
+        title="30" /></p>
+</blockquote>
+<p>给定模式串DABCDABDE，我们很顺利的求得字符D之前的“DABCDAB”的各个子串的最长相同前缀后缀的长度分别为0 0 0 0 1 2  3，但当遍历到字符D，要求包括D在内的“DABCDABD”最长相同前缀后缀时，我们发现pj处的字符D跟pk处的字符C不一样，换言之，前缀DABC的最后一个字符C 跟后缀DABD的最后一个字符D不相同，所以不存在长度为4的相同前缀后缀。</p>
+<p>怎么办呢？既然没有长度为4的相同前缀后缀，咱们可以寻找长度短点的相同前缀后缀，最终，因在p0处发现也有个字符D，p0 =  pj，所以p[j]对应的长度值为1，相当于E对应的next 值为1（即字符E之前的字符串“DABCDABD”中有长度为1的相同前缀和后缀）。</p>
+<p>综上，可以通过递推求得next 数组，代码如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">GetNext</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">,</span><span class="kt">int</span> <span class="n">next</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">pLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+	<span class="n">next</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">pLen</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">//p[k]表示前缀，p[j]表示后缀
+</span><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> 
+		<span class="p">{</span>
+			<span class="o">++</span><span class="n">k</span><span class="p">;</span>
+			<span class="o">++</span><span class="n">j</span><span class="p">;</span>
+			<span class="n">next</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">else</span> 
+		<span class="p">{</span>
+			<span class="n">k</span> <span class="o">=</span> <span class="n">next</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>用代码重新计算下“ABCDABD”的next 数组，以验证之前通过“最长相同前缀后缀长度值右移一位，然后初值赋为-1”得到的next 数组是否正确，计算结果如下表格所示：</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./31.jpg"
+        data-srcset="./31.jpg, ./31.jpg 1.5x, ./31.jpg 2x"
+        data-sizes="auto"
+        alt="./31.jpg"
+        title="31" /></p>
+</blockquote>
+<p>从上述表格可以看出，无论是之前通过“最长相同前缀后缀长度值右移一位，然后初值赋为-1”得到的next 数组，还是之后通过代码递推计算求得的next 数组，结果是完全一致的。</p>
+<p>3.3.5 基于《next 数组》匹配</p>
+<p>下面，我们来基于next 数组进行匹配。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./32.jpg"
+        data-srcset="./32.jpg, ./32.jpg 1.5x, ./32.jpg 2x"
+        data-sizes="auto"
+        alt="./32.jpg"
+        title="32" /></p>
+</blockquote>
+<p>还是给定文本串“BBC ABCDAB ABCDABCDABDE”，和模式串“ABCDABD”，现在要拿模式串去跟文本串匹配，如下图所示：</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./33.png"
+        data-srcset="./33.png, ./33.png 1.5x, ./33.png 2x"
+        data-sizes="auto"
+        alt="./33.png"
+        title="33" /></p>
+</blockquote>
+<p>在正式匹配之前，让我们来再次回顾下上文2.1节所述的KMP算法的匹配流程：</p>
+<ul>
+<li>
+<p>“</p>
+<p>假设现在文本串S匹配到 i 位置，模式串P匹配到 j 位置</p>
+<ul>
+<li>如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++，继续匹配下一个字符；</li>
+<li>如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]。此举意味着失配时，模式串P相对于文本串S向右移动了j - next [j] 位。
+<ul>
+<li>换言之，当匹配失败时，模式串向右移动的位数为：失配字符所在位置 - 失配字符对应的next 值，即<strong>移动的实际位数为：j - next[j]</strong>，且此值大于等于1。<strong>”</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>1</p>
+<p>. 最开始匹配时</p>
+<ul>
+<li>P[0]跟S[0]匹配失败
+<ul>
+<li>所以执行“如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j =  next[j]”，所以j = -1，故转而执行“如果j = -1，或者当前字符匹配成功（即S[i] ==  P[j]），都令i++，j++”，得到i = 1，j = 0，即P[0]继续跟S[1]匹配。</li>
+</ul>
+</li>
+<li>P[0]跟S[1]又失配，j再次等于-1，i、j继续自增，从而P[0]跟S[2]匹配。</li>
+<li>P[0]跟S[2]失配后，P[0]又跟S[3]匹配。</li>
+<li>P[0]跟S[3]再失配，直到P[0]跟S[4]匹配成功，开始执行此条指令的后半段：“如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++”。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./34.png"
+        data-srcset="./34.png, ./34.png 1.5x, ./34.png 2x"
+        data-sizes="auto"
+        alt="./34.png"
+        title="34" /></p>
+</blockquote>
+<ul>
+<li><em>2</em>. P[1]跟S[5]匹配成功，P[2]跟S[6]也匹配成功, &hellip;，直到当匹配到P[6]处的字符D时失配（即S[10] != P[6]），由于P[6]处的D对应的next 值为<strong>2</strong>，所以下一步用**P[2]**处的字符C继续跟S[10]匹配，相当于向右移动：j - next[j] = 6 - 2 =4 位。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./35.png"
+        data-srcset="./35.png, ./35.png 1.5x, ./35.png 2x"
+        data-sizes="auto"
+        alt="./35.png"
+        title="35" /></p>
+</blockquote>
+<ul>
+<li><em>3</em>. 向右移动4位后，P[2]处的C再次失配，由于C对应的next值为<strong>0</strong>，所以下一步用**P[0]**处的字符继续跟S[10]匹配，相当于向右移动：j - next[j] = 2 - 0 = 2 位。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./36.png"
+        data-srcset="./36.png, ./36.png 1.5x, ./36.png 2x"
+        data-sizes="auto"
+        alt="./36.png"
+        title="36" /></p>
+</blockquote>
+<ul>
+<li><em>4</em>. 移动两位之后，A 跟空格不匹配，模式串后移1 位。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./37.png"
+        data-srcset="./37.png, ./37.png 1.5x, ./37.png 2x"
+        data-sizes="auto"
+        alt="./37.png"
+        title="37" /></p>
+</blockquote>
+<ul>
+<li><em>5</em>. P[6]处的D再次失配，因为P[6]对应的next值为<strong>2</strong>，故下一步用**P[2]**继续跟文本串匹配，相当于模式串向右移动 j - next[j] = 6 - 2 = 4 位。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./38.png"
+        data-srcset="./38.png, ./38.png 1.5x, ./38.png 2x"
+        data-sizes="auto"
+        alt="./38.png"
+        title="38" /></p>
+</blockquote>
+<ul>
+<li><em>6</em>. 匹配成功，过程结束。</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./39.png"
+        data-srcset="./39.png, ./39.png 1.5x, ./39.png 2x"
+        data-sizes="auto"
+        alt="./39.png"
+        title="39" /></p>
+</blockquote>
+<p>匹配过程一模一样。也从侧面佐证了，next 数组确实是只要将各个最大前缀后缀的公共元素的长度值右移一位，且把初值赋为-1 即可。</p>
+<p>3.3.6 基于《最大长度表》与基于《next 数组》等价</p>
+<p>我们已经知道，利用next 数组进行匹配失配时，模式串向右移动 j - next [ j ] 位，等价于已匹配字符数 - 失配字符的上一位字符所对应的最大长度值。原因是：</p>
+<ol>
+<li>j 从0开始计数，那么当数到失配字符时，j 的数值就是已匹配的字符数；</li>
+<li>由于next 数组是由最大长度值表整体向右移动一位（且初值赋为-1）得到的，那么失配字符的上一位字符所对应的最大长度值，即为当前失配字符的next 值。</li>
+</ol>
+<p>但为何本文不直接利用next 数组进行匹配呢？因为next  数组不好求，而一个字符串的前缀后缀的公共元素的最大长度值很容易求。例如若给定模式串“ababa”，要你快速口算出其next  数组，乍一看，每次求对应字符的next值时，还得把该字符排除之外，然后看该字符之前的字符串中有最大长度为多大的相同前缀后缀，此过程不够直接。而如果让你求其前缀后缀公共元素的最大长度，则很容易直接得出结果：0 0 1 2 3，如下表格所示：</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./40.jpg"
+        data-srcset="./40.jpg, ./40.jpg 1.5x, ./40.jpg 2x"
+        data-sizes="auto"
+        alt="./40.jpg"
+        title="40" /></p>
+</blockquote>
+<p>然后这5个数字 全部整体右移一位，且初值赋为-1，即得到其next 数组：-1 0 0 1 2。</p>
+<p>3.3.7 Next 数组与有限状态自动机</p>
+<p>next 负责把模式串向前移动，且当第j位不匹配的时候，用第next[j]位和主串匹配，就像打了张“表”。此外，next 也可以看作有限状态自动机的状态，在已经读了多少字符的情况下，失配后，前面读的若干个字符是有用的。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./41.png"
+        data-srcset="./41.png, ./41.png 1.5x, ./41.png 2x"
+        data-sizes="auto"
+        alt="./41.png"
+        title="41" /></p>
+<p>3.3.8 Next 数组的优化</p>
+<p>行文至此，咱们全面了解了暴力匹配的思路、KMP算法的原理、流程、流程之间的内在逻辑联系，以及next  数组的简单求解（《最大长度表》整体右移一位，然后初值赋为-1）和代码求解，最后基于《next  数组》的匹配，看似洋洋洒洒，清晰透彻，但以上忽略了一个小问题。</p>
+<p>比如，如果用之前的next 数组方法求模式串“abab”的next 数组，可得其next 数组为-1 0 0 1（0 0 1  2整体右移一位，初值赋为-1），当它跟下图中的文本串去匹配的时候，发现b跟c失配，于是模式串右移j - next[j] = 3 - 1 =2位。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./42.png"
+        data-srcset="./42.png, ./42.png 1.5x, ./42.png 2x"
+        data-sizes="auto"
+        alt="./42.png"
+        title="42" /></p>
+</blockquote>
+<p>右移2位后，b又跟c失配。事实上，因为在上一步的匹配中，已经得知p[3] = b，与s[3] = c失配，而右移两位之后，让p[ next[3] ] = p[1] = b 再跟s[3]匹配时，必然失配。问题出在哪呢？</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./43.png"
+        data-srcset="./43.png, ./43.png 1.5x, ./43.png 2x"
+        data-sizes="auto"
+        alt="./43.png"
+        title="43" /></p>
+</blockquote>
+<p>问题出在不该出现p[j] = p[ next[j] ]。为什么呢？理由是：当p[j] != s[i] 时，下次匹配必然是p[  next [j]] 跟s[i]匹配，如果p[j] = p[ next[j]  ]，必然导致后一步匹配失败（因为p[j]已经跟s[i]失配，然后你还用跟p[j]等同的值p[next[j]]去跟s[i]匹配，很显然，必然失配），所以<strong>不能允许p[j] = p[ next[j ]]</strong>。如果出现了p[j] = p[ next[j] ]咋办呢？如果出现了，则需要再次递归，即令next[j] = next[ next[j] ]。</p>
+<p>所以，咱们得修改下求next 数组的代码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//优化过后的next 数组求法
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">GetNextval</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="kt">int</span> <span class="n">next</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">pLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+	<span class="n">next</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">pLen</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">//p[k]表示前缀，p[j]表示后缀  
+</span><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+		<span class="p">{</span>
+			<span class="o">++</span><span class="n">j</span><span class="p">;</span>
+			<span class="o">++</span><span class="n">k</span><span class="p">;</span>
+			<span class="c1">//较之前next数组求法，改动在下面4行
+</span><span class="c1"></span>			<span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+				<span class="n">next</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>   <span class="c1">//之前只有这一行
+</span><span class="c1"></span>			<span class="k">else</span>
+				<span class="c1">//因为不能出现p[j] = p[ next[j ]]，所以当出现时需要继续递归，k = next[k] = next[next[k]]
+</span><span class="c1"></span>				<span class="n">next</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">next</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+		<span class="p">}</span>
+		<span class="k">else</span>
+		<span class="p">{</span>
+			<span class="n">k</span> <span class="o">=</span> <span class="n">next</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>利用优化过后的next 数组求法，可知模式串“abab”的新next数组为：-1 0 -1 0。可能有些读者会问：原始next  数组是前缀后缀最长公共元素长度值右移一位， 然后初值赋为-1而得，那么优化后的next 数组如何快速心算出呢？实际上，只要求出了原始next  数组，便可以根据原始next 数组快速求出优化后的next 数组。还是以abab为例，如下表格所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./44.jpg"
+        data-srcset="./44.jpg, ./44.jpg 1.5x, ./44.jpg 2x"
+        data-sizes="auto"
+        alt="./44.jpg"
+        title="44" /></p>
+<p>只要出现了p[next[j]] = p[j]的情况，则把next[j]的值再次递归。例如在求模式串“abab”的第2个a的next值时，如果是未优化的next值的话，第2个a对应的next值为<strong>0</strong>，相当于第2个a失配时，下一步匹配模式串会用**p[0]**处的a再次跟文本串匹配，必然失配。所以求第2个a的next值时，需要再次递归：next[2] = next[ next[2] ] = next[0] = -1（此后，根据优化后的新next值可知，第2个a失配时，执行“如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++，继续匹配下一个字符”），同理，第2个b对应的next值为0。</p>
+<p>对于优化后的next数组可以发现一点：如果模式串的后缀跟前缀相同，那么它们的next值也是相同的，例如模式串abcabc，它的前缀后缀都是abc，其优化后的next数组为：-1 0 0 -1 0 0，前缀后缀abc的next值都为-1 0 0。</p>
+<p>然后引用下之前3.1节的KMP代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">KmpSearch</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">sLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">pLen</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+	<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">sLen</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">pLen</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">//①如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++    
+</span><span class="c1"></span>		<span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+		<span class="p">{</span>
+			<span class="n">i</span><span class="o">++</span><span class="p">;</span>
+			<span class="n">j</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">else</span>
+		<span class="p">{</span>
+			<span class="c1">//②如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]    
+</span><span class="c1"></span>			<span class="c1">//next[j]即为j所对应的next值      
+</span><span class="c1"></span>			<span class="n">j</span> <span class="o">=</span> <span class="n">next</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">pLen</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">i</span> <span class="o">-</span> <span class="n">j</span><span class="p">;</span>
+	<span class="k">else</span>
+		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来，咱们继续拿之前的例子说明，整个匹配过程如下：</p>
+<p><em>1</em>. S[3]与P[3]匹配失败。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./45.png"
+        data-srcset="./45.png, ./45.png 1.5x, ./45.png 2x"
+        data-sizes="auto"
+        alt="./45.png"
+        title="45" /></p>
+</blockquote>
+<p><em>2</em>. S[3]保持不变，P的下一个匹配位置是P[next[3]]，而next[3]=0，所以P[next[3]]=P[0]与S[3]匹配。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./46.png"
+        data-srcset="./46.png, ./46.png 1.5x, ./46.png 2x"
+        data-sizes="auto"
+        alt="./46.png"
+        title="46" /></p>
+</blockquote>
+<p><em>3</em>. 由于上一步骤中P[0]与S[3]还是不匹配。此时i=3，j=next  [0]=-1，由于满足条件j==-1，所以执行“++i,  ++j”，即主串指针下移一个位置，P[0]与S[4]开始匹配。最后j==pLen，跳出循环，输出结果i - j =  4（即模式串第一次在文本串中出现的位置），匹配成功，算法结束。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./47.png"
+        data-srcset="./47.png, ./47.png 1.5x, ./47.png 2x"
+        data-sizes="auto"
+        alt="./47.png"
+        title="47" /></p>
+</blockquote>
+<h3 id="34-kmp的时间复杂度分析">3.4 KMP的时间复杂度分析</h3>
+<p>相信大部分读者读完上文之后，已经发觉其实理解KMP非常容易，无非是循序渐进把握好下面几点：</p>
+<ol>
+<li>如果模式串中存在相同前缀和后缀，即pj-k pj-k+1, &hellip;, pj-1 = p0 p1, &hellip;, pk-1，那么在pj跟si失配后，让模式串的前缀p0 p1&hellip;pk-1对应着文本串si-k si-k+1&hellip;si-1，而后让pk跟si继续匹配。</li>
+<li>之前本应是pj跟si匹配，结果失配了，失配后，令pk跟si匹配，相当于j 变成了k，模式串向右移动j - k位。</li>
+<li>因为k 的值是可变的，所以我们用next[j]表示j处字符失配后，下一次匹配模式串应该跳到的位置。换言之，失配前是j，pj跟si失配时，用p[  next[j] ]继续跟si匹配，相当于j变成了next[j]，所以，j = next[j]，等价于把模式串向右移动j - next [j]  位。</li>
+<li>而next[j]应该等于多少呢？next[j]的值由j 之前的模式串子串中有多大长度的相同前缀后缀所决定，如果j 之前的模式串子串中（不含j）有最大长度为k的相同前缀后缀，那么next [j] = k。</li>
+</ol>
+<p>如之前的图所示：</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./48.jpg"
+        data-srcset="./48.jpg, ./48.jpg 1.5x, ./48.jpg 2x"
+        data-sizes="auto"
+        alt="./48.jpg"
+        title="48" /></p>
+</blockquote>
+<p>接下来，咱们来分析下KMP的时间复杂度。分析之前，先来回顾下KMP匹配算法的流程：</p>
+<p>**“**KMP的算法流程：</p>
+<ul>
+<li>
+<p>假设现在文本串S匹配到 i 位置，模式串P匹配到 j 位置</p>
+<ul>
+<li>如果j = -1，或者当前字符匹配成功（即S[i] == P[j]），都令i++，j++，继续匹配下一个字符；</li>
+<li>如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]。此举意味着失配时，模式串P相对于文本串S向右移动了j - next [j] 位。”</li>
+</ul>
+<p>我们发现如果某个字符匹配成功，模式串首字符的位置保持不动，仅仅是i++、j++；如果匹配失配，i 不变（即 i 不回溯），模式串会跳过匹配过的next [j]个字符。整个算法最坏的情况是，当模式串首字符位于i - j的位置时才匹配成功，算法结束。
+所以，如果文本串的长度为n，模式串的长度为m，那么匹配过程的时间复杂度为O(n)，算上计算next的O(m)时间，KMP的整体时间复杂度为O(m + n)。</p>
+</li>
+</ul>
+<h2 id="4-扩展1bm算法">4. 扩展1：BM算法</h2>
+<p>KMP的匹配是从模式串的开头开始匹配的，而1977年，德克萨斯大学的Robert S. Boyer教授和J Strother  Moore教授发明了一种新的字符串匹配算法：Boyer-Moore算法，简称BM算法。该算法从模式串的尾部开始匹配，且拥有在最坏情况下O(N)的时间复杂度。在实践中，比KMP算法的实际效能高。</p>
+<p>BM算法定义了两个规则：</p>
+<ul>
+<li>
+<p>坏字符规则：当文本串中的某个字符跟模式串的某个字符不匹配时，我们称文本串中的这个失配字符为坏字符，此时模式串需要向右移动，移动的位数 = 坏字符在模式串中的位置 - 坏字符在模式串中最右出现的位置。此外，如果&quot;坏字符&quot;不包含在模式串之中，则最右出现位置为-1。</p>
+</li>
+<li>
+<p>好后缀规则：当字符失配时，后移位数 = 好后缀在模式串中的位置 - 好后缀在模式串上一次出现的位置，且如果好后缀在模式串中没有再次出现，则为-1。</p>
+<p>下面举例说明BM算法。例如，给定文本串“HERE IS A SIMPLE EXAMPLE”，和模式串“EXAMPLE”，现要查找模式串是否在文本串中，如果存在，返回模式串在文本串中的位置。</p>
+<p><em>1</em>. 首先，&ldquo;文本串&quot;与&quot;模式串&quot;头部对齐，从尾部开始比较。&ldquo;S&quot;与&quot;E&quot;不匹配。这时，&ldquo;S&quot;就被称为&quot;坏字符&rdquo;（bad  character），即不匹配的字符，它对应着模式串的第6位。且&quot;S&quot;不包含在模式串&quot;EXAMPLE&quot;之中（相当于最右出现位置是-1），这意味着可以把模式串后移6-(-1)=7位，从而直接移到&quot;S&quot;的后一位。</p>
+</li>
+</ul>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./49.png"
+        data-srcset="./49.png, ./49.png 1.5x, ./49.png 2x"
+        data-sizes="auto"
+        alt="./49.png"
+        title="49" /></p>
+</blockquote>
+<p><em>2</em>. 依然从尾部开始比较，发现&quot;P&quot;与&quot;E&quot;不匹配，所以&quot;P&quot;是&quot;坏字符&rdquo;。但是，&ldquo;P&quot;包含在模式串&quot;EXAMPLE&quot;之中。因为“P”这个“坏字符”对应着模式串的第6位（从0开始编号），且在模式串中的最右出现位置为4，所以，将模式串后移6-4=2位，两个&quot;P&quot;对齐。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./50.png"
+        data-srcset="./50.png, ./50.png 1.5x, ./50.png 2x"
+        data-sizes="auto"
+        alt="./50.png"
+        title="50" /></p>
+</blockquote>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./51.png"
+        data-srcset="./51.png, ./51.png 1.5x, ./51.png 2x"
+        data-sizes="auto"
+        alt="./51.png"
+        title="51" /></p>
+</blockquote>
+<p><em>3</em>. 依次比较，得到 “MPLE”匹配，称为&quot;好后缀&rdquo;（good suffix），即所有尾部匹配的字符串。注意，&ldquo;MPLE&rdquo;、&ldquo;PLE&rdquo;、&ldquo;LE&rdquo;、&ldquo;E&quot;都是好后缀。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./52.png"
+        data-srcset="./52.png, ./52.png 1.5x, ./52.png 2x"
+        data-sizes="auto"
+        alt="./52.png"
+        title="52" /></p>
+</blockquote>
+<p><em>4</em>. 发现“I”与“A”不匹配：“I”是坏字符。如果是根据坏字符规则，此时模式串应该后移2-(-1)=3位。问题是，有没有更优的移法？</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./53.png"
+        data-srcset="./53.png, ./53.png 1.5x, ./53.png 2x"
+        data-sizes="auto"
+        alt="./53.png"
+        title="53" /></p>
+</blockquote>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./54.png"
+        data-srcset="./54.png, ./54.png 1.5x, ./54.png 2x"
+        data-sizes="auto"
+        alt="./54.png"
+        title="54" /></p>
+</blockquote>
+<p><em>5</em>. 更优的移法是利用好后缀规则：当字符失配时，后移位数 = 好后缀在模式串中的位置 - 好后缀在模式串中上一次出现的位置，且如果好后缀在模式串中没有再次出现，则为-1。
+所有的“好后缀”（MPLE、PLE、LE、E）之中，只有“E”在“EXAMPLE”的头部出现，所以后移6-0=6位。
+可以看出，“坏字符规则”只能移3位，“好后缀规则”可以移6位。每次后移这两个规则之中的较大值。这两个规则的移动位数，只与模式串有关，与原文本串无关。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./55.png"
+        data-srcset="./55.png, ./55.png 1.5x, ./55.png 2x"
+        data-sizes="auto"
+        alt="./55.png"
+        title="55" /></p>
+</blockquote>
+<p><em>6</em>. 继续从尾部开始比较，“P”与“E”不匹配，因此“P”是“坏字符”，根据“坏字符规则”，后移 6 - 4 = 2位。因为是最后一位就失配，尚未获得好后缀。</p>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./56.png"
+        data-srcset="./56.png, ./56.png 1.5x, ./56.png 2x"
+        data-sizes="auto"
+        alt="./56.png"
+        title="56" /></p>
+</blockquote>
+<p>由上可知，BM算法不仅效率高，而且构思巧妙，容易理解。</p>
+<h2 id="5-扩展2sunday算法">5. 扩展2：Sunday算法</h2>
+<p>上文中，我们已经介绍了KMP算法和BM算法，这两个算法在最坏情况下均具有线性的查找时间。但实际上，KMP算法并不比最简单的c库函数strstr()快多少，而BM算法虽然通常比KMP算法快，但BM算法也还不是现有字符串查找算法中最快的算法，本文最后再介绍一种比BM算法更快的查找算法即Sunday算法。</p>
+<p>Sunday算法由Daniel M.Sunday在1990年提出，它的思想跟BM算法很相似：</p>
+<ul>
+<li>
+<p>只不过Sunday算法是从前往后匹配，在匹配失败时关注的是文本串中参加匹配的最末位字符的下一位字符。</p>
+<ul>
+<li>如果该字符没有在模式串中出现则直接跳过，即移动位数 = 匹配串长度 + 1；</li>
+<li>否则，其移动位数 = 模式串中最右端的该字符到末尾的距离+1。</li>
+</ul>
+<p>下面举个例子说明下Sunday算法。假定现在要在文本串&quot;substring searching algorithm&quot;中查找模式串&quot;search&rdquo;。</p>
+<p><em>1</em>. 刚开始时，把模式串与文本串左边对齐：
+substr<strong>i</strong>ng searching algorithm
+search
+^
+<em>2</em>. 结果发现在第2个字符处发现不匹配，不匹配时关注文本串中参加匹配的最末位字符的下一位字符，即标粗的字符  i，因为模式串search中并不存在i，所以模式串直接跳过一大片，向右移动位数 = 匹配串长度 + 1 = 6 + 1 = 7，从 i  之后的那个字符（即字符n）开始下一步的匹配，如下图：</p>
+</li>
+</ul>
+<p>substring sea<strong>r</strong>ching algorithm
+　　　 search
+　　　　^
+<em>3</em>. 结果第一个字符就不匹配，再看文本串中参加匹配的最末位字符的下一位字符，是&rsquo;r'，它出现在模式串中的倒数第3位，于是把模式串向右移动3位（r 到模式串末尾的距离 + 1 = 2 + 1 =3），使两个&rsquo;r&rsquo;对齐，如下：
+substring searching algorithm
+　　　　 search
+　　　　　　　^</p>
+<p><em>4</em>. 匹配成功。</p>
+<p>回顾整个过程，我们只移动了两次模式串就找到了匹配位置，缘于Sunday算法每一步的移动量都比较大，效率很高。完。</p>
+<h2 id="6-参考文献">6. 参考文献</h2>
+<ol>
+<li>《<a href="http://item.jd.com/11786791.html" target="_blank" rel="noopener noreferrer">编程之法：面试和算法心得</a>》</li>
+<li>《算法导论》的第十二章：字符串匹配；</li>
+<li>本文中模式串“ABCDABD”的部分图来自于此文：<a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%e2%80%93Morris%e2%80%93Pratt_algorithm.html" target="_blank" rel="noopener noreferrer">字符串匹配的KMP算法 - 阮一峰的网络日志</a>；</li>
+<li>本文3.3.7节中有限状态自动机的图由微博网友@龚陆安 绘制：http://d.pr/i/NEiz；</li>
+<li>北京7月暑假班邹博半小时KMP视频：http://www.julyedu.com/video/play/id/5；</li>
+<li>北京7月暑假班邹博第二次课的PPT：<a href="http://yun.baidu.com/s/1mgFmw7u" target="_blank" rel="noopener noreferrer">北京7月暑假班第2次课：回文子串-KMP等若干问题的讨论_邹博.ppt_免费高速下载|百度网盘-分享无限制</a>；</li>
+<li>理解KMP 的9张PPT：<a href="http://weibo.com/1580904460/BeCCYrKz3#_rnd1405957424876" target="_blank" rel="noopener noreferrer">Sina Visitor System</a>；</li>
+<li>详解KMP算法（多图）：<a href="http://www.cnblogs.com/yjiyjige/p/3263858.html" target="_blank" rel="noopener noreferrer">（原创）详解KMP算法 - 孤~影 - 博客园</a>；</li>
+<li>本文第4部分的BM算法参考自此文：<a href="http://www.ruanyifeng.com/blog/2013/05/boyer-moore_string_search_algorithm.html" target="_blank" rel="noopener noreferrer">字符串匹配的Boyer-Moore算法 - 阮一峰的网络日志</a>；</li>
+<li><a href="http://youlvconglin.blog.163.com/blog/static/5232042010530101020857/" target="_blank" rel="noopener noreferrer">http://youlvconglin.blog.163.com/blog/static/5232042010530101020857</a>；</li>
+<li>《数据结构 第二版》，严蔚敏 &amp; 吴伟民编著；</li>
+<li><a href="http://blog.csdn.net/v_JULY_v/article/details/6545192" target="_blank" rel="noopener noreferrer">六之续、由KMP算法谈到BM算法_结构之法 算法之道-CSDN博客</a>；</li>
+<li><a href="http://blog.csdn.net/v_JULY_v/article/details/6111565" target="_blank" rel="noopener noreferrer">经典算法研究系列：六、教你初步了解KMP算法、updated_结构之法 算法之道-CSDN博客</a>；</li>
+<li>Sunday算法的原理与实现：<a href="http://blog.chinaunix.net/uid-22237530-id-1781825.html" target="_blank" rel="noopener noreferrer">Sunday算法原理与实现（模式匹配）-red_eyed_hare-ChinaUnix博客</a>；</li>
+<li>模式匹配之Sunday算法：<a href="http://blog.csdn.net/sunnianzhong/article/details/8820123" target="_blank" rel="noopener noreferrer">【模式匹配】之 —— Sunday算法_超然于物外 烟火于一瞬-CSDN博客_sunday算法</a>；</li>
+<li>一篇KMP的英文介绍：<a href="http://www.inf.fh-flensburg.de/lang/algorithmen/pattern/kmpen.htm" target="_blank" rel="noopener noreferrer">Knuth-Morris-Pratt algorithm</a>；</li>
+<li>我2014年9月3日在西安电子科大的面试&amp;算法讲座视频（第36分钟~第94分钟讲KMP）：http://www.julyedu.com/video/play/21；</li>
+<li>一幅图理解KMP next数组的求法：http://v.atob.site/kmp-next.html</li>
+</ol>
+<h2 id="7-后记">7. 后记</h2>
+<p>对之前混乱的文章给广大读者带来的困扰表示致歉，对重新写就后的本文即将给读者带来的清晰表示欣慰。希望大部分的初学者，甚至少部分的非计算机专业读者也能看懂此文。有任何问题，欢迎随时批评指正</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/algorithm-kmp-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/algorithm-kmp-note/" data-title="从头到尾彻底理解KMP" data-hashtags="Algorithm,KMP"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/algorithm-kmp-note/" data-hashtag="Algorithm"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/algorithm-kmp-note/" data-title="从头到尾彻底理解KMP" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/algorithm-kmp-note/" data-title="从头到尾彻底理解KMP"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/algorithm/">Algorithm</a>,&nbsp;<a href="/tags/kmp/">KMP</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/gooreplacer-recaptcha-note/" class="prev" rel="prev" title="如何使用Gooreplacer解决reCAPTCHA不显示问题？ "><i class="fas fa-angle-left fa-fw"></i>如何使用Gooreplacer解决reCAPTCHA不显示问题？ </a>
+            <a href="/jvm-tlab-note/" class="next" rel="next" title="浅析java中的TLAB">浅析java中的TLAB<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

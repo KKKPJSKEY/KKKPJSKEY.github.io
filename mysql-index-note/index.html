@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/mysql-index-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/mysql-index-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-10-19T13:27:58+08:00" />
-<meta property="article:modified_time" content="2021-10-19T13:27:58+08:00" />
+<meta property="article:modified_time" content="2022-06-06T21:06:09+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/mysql-index-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/mysql-index-note\/featured-image.jpg",
                             "width":  636 ,
                             "height":  380 
-                        }],"genre": "posts","keywords": "DataBase, Mysql, Index, MysqlNote","wordcount":  4845 ,
-        "url": "https:\/\/kkkpjskey.github.io\/mysql-index-note\/","datePublished": "2021-10-19T13:27:58+08:00","dateModified": "2021-10-19T13:27:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "DataBase, Mysql, Index, MysqlNote","wordcount":  6591 ,
+        "url": "https:\/\/kkkpjskey.github.io\/mysql-index-note\/","datePublished": "2021-10-19T13:27:58+08:00","dateModified": "2022-06-06T21:06:09+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Mysql索引笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-19">2021-10-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4845 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/mysql-index-note/" class="leancloud_visitors" data-flag-title="Mysql索引笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-19">2021-10-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6591 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/mysql-index-note/" class="leancloud_visitors" data-flag-title="Mysql索引笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -148,6 +148,26 @@
         <li><a href="#什么是索引"><strong>什么是索引</strong></a></li>
         <li><a href="#mysql索引原理"><strong>Mysql索引原理</strong></a></li>
         <li><a href="#mysql引擎"><strong>Mysql引擎</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#mysql索引最左匹配原则的理解">Mysql索引最左匹配原则的理解</a>
+      <ul>
+        <li><a href="#执行1">执行1</a></li>
+        <li><a href="#执行2">执行2</a></li>
+        <li><a href="#为什么还能匹配索引">为什么还能匹配索引？</a>
+          <ul>
+            <li><a href="#解释">解释</a></li>
+            <li><a href="#所以">所以</a></li>
+            <li><a href="#ref">ref</a></li>
+            <li><a href="#所以-1">所以</a></li>
+          </ul>
+        </li>
+        <li><a href="#那么什么时候才能用到呢">那么什么时候才能用到呢?</a>
+          <ul>
+            <li><a href="#你可能会问">你可能会问</a></li>
+            <li><a href="#所以-2">所以　　</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -335,11 +355,154 @@
 <blockquote>
 <p><strong>InnoDB其它特点：</strong> 在InnoDB 中存在表锁和行锁，不过行锁是在命中索引的情况下才会起作用，当索引失效时行锁也会失效。InnoDB 支持事务，且支持四种隔离级别（读未提交、读已提交、可重复读、串行化），默认的为可重复读；而在 Oracle 数据库中，只支持串行化级别和读已提交这两种级别，其中默认的为读已提交级别。</p>
 </blockquote>
+<h2 id="mysql索引最左匹配原则的理解">Mysql索引最左匹配原则的理解</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">student</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span><span class="w">  </span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span><span class="w">  </span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">  </span><span class="o">`</span><span class="n">cid</span><span class="o">`</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">
+</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">),</span><span class="w">
+</span><span class="w">  </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">name_cid_INX</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">,</span><span class="o">`</span><span class="n">cid</span><span class="o">`</span><span class="p">),</span><span class="w">
+</span><span class="w">  </span><span class="k">KEY</span><span class="w"> </span><span class="o">`</span><span class="n">name_INX</span><span class="o">`</span><span class="w"> </span><span class="p">(</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">8</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="执行1">执行1</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w">    </span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;小红&#39;</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+<h3 id="执行2">执行2</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w">   </span><span class="n">cid</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w">   </span><span class="n">cid</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;小红&#39;</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+<h3 id="为什么还能匹配索引">为什么还能匹配索引？</h3>
+<p><strong>你的疑问是：sql查询用到索引的条件是必须要遵守最左前缀原则，为什么上面两个查询还能用到索引？</strong></p>
+<hr>
+<p>讲上面问题之前，我先补充一些知识，因为我觉得你对索引理解是狭隘的：</p>
+<p><strong>上述你的两个查询的explain结果中显示用到索引的情况类型是不一样的。,可观察explain结果中的type字段。你的查询中分别是：</strong></p>
+<ol>
+<li>type: index</li>
+<li>type: ref</li>
+</ol>
+<h4 id="解释">解释</h4>
+<p>​		<strong>index：这种类型表示是mysql会对整个该索引进行扫描。</strong></p>
+<p>​		<strong>要想用到这种类型的索引，对这个索引并无特别要求，只要是索引，或者某个复合索引的一部分，mysql都可能会采用index类型的方式扫描。</strong></p>
+<p>​		<strong>但是呢，缺点是效率不高，mysql会从索引中的第一个数据一个个的查找到最后一个数据，直到找到符合判断条件的某个索引。</strong></p>
+<h4 id="所以">所以</h4>
+<p>对于你的第一条语句：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w">   </span><span class="n">cid</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>判断条件是cid=1,而cid是(name,cid)复合索引的一部分，没有问题，可以进行index类型的索引扫描方式。explain显示结果使用到了索引，是index类型的方式。</p>
+<hr>
+<h4 id="ref">ref</h4>
+<p>​		<strong>这种类型表示mysql会根据特定的算法快速查找到某个符合条件的索引，而不是会对索引中每一个数据都进行一 一的扫描判断，也就是所谓你平常理解的使用索引查询会更快的取出数据。</strong></p>
+<p>​		<strong>而要想实现这种查找，索引却是有要求的，要实现这种能快速查找的算法，索引就要满足特定的数据结构。</strong></p>
+<p>​		简单说，也就是索引字段的数据必须是有序的，才能实现这种类型的查找，才能利用到索引。</p>
+<p>有些了解的人可能会问，索引不都是一个有序排列的数据结构么。不过答案说的还不够完善，那只是针对单个索引，而复合索引的情况有些同学可能就不太了解了。</p>
+<p><strong>下面就说下复合索引：</strong>
+以该表的(name,cid)复合索引为例,它内部结构简单说就是下面这样排列的：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+<p>mysql创建复合索引的规则是首先会对复合索引的最左边的，也就是第一个name字段的数据进行排序，在第一个字段的排序基础上，然后再对后面第二个的cid字段进行排序。</p>
+<p>其实就相当于实现了类似 order by name cid这样一种排序规则。</p>
+<h4 id="所以-1">所以</h4>
+<p>​		<strong>第一个name字段是绝对有序的，而第二字段就是无序的了。</strong></p>
+<p>​		<strong>所以通常情况下，直接使用第二个cid字段进行条件判断是用不到索引的，当然，可能会出现上面的使用index类型的索引。</strong></p>
+<p>​		<strong>这就是所谓的mysql为什么要强调最左前缀原则的原因。</strong></p>
+<h3 id="那么什么时候才能用到呢">那么什么时候才能用到呢?</h3>
+<p>​		当然是cid字段的索引数据也是有序的情况下才能使用咯，什么时候才是有序的呢？</p>
+<p>​		观察可知，当然是在name字段是等值匹配的情况下，cid才是有序的。</p>
+<p>​	发现没有，观察两个name名字为 c 的cid字段是不是有序的呢。从上往下分别是4 5。</p>
+<p>​		这也就是<strong>Mysql索引规则中要求复合索引要想使用第二个索引，必须先使用第一个索引的原因。（而且第一个索引必须是等值匹配）。</strong></p>
+<hr>
+<p>所以对于你的这条sql查询：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w">   </span><span class="n">cid</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;小红&#39;</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>没有错，而且复合索引中的两个索引字段都能很好的利用到了！因为语句中最左面的name字段进行了等值匹配，所以cid是有序的，也可以利用到索引了。</p>
+<h4 id="你可能会问">你可能会问</h4>
+<p>​		我建的索引是(name,cid)。</p>
+<p>​		而我查询的语句是cid=1 AND name=&lsquo;小红&rsquo;; 我是先查询cid，再查询name的，不是先从最左面查的呀？</p>
+<p>​		好吧，我再解释一下这个问题：首先可以肯定的是把条件判断反过来变成这样 name=&lsquo;小红&rsquo; and cid=1; 最后所查询的结果是一样的。</p>
+<p>​		那么问题产生了？既然结果是一样的，到底以何种顺序的查询方式最好呢？</p>
+<h4 id="所以-2">所以　　</h4>
+<p>​		而此时那就是我们的<strong>Mysql查询优化器</strong>该登场了，<strong>Mysql查询优化器会判断纠正这条Sql语句该以什么样的顺序执行效率最高</strong>，最后才生成真正的执行计划。</p>
+<p>​		所以，当然是我们能尽量的利用到索引时的查询顺序效率最高咯，所以mysql查询优化器会最终以这种顺序进行查询执行。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2021-10-19</span>
+                <span>更新于 2022-06-06</span>
             </div>
             <div class="post-info-license"></div>
         </div>

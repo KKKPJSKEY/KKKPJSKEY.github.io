@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 06 Jun 2022 20:00:08 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 06 Jun 2022 22:28:33 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>面经</title>
     <link>https://kkkpjskey.github.io/face-exp-note/</link>
     <pubDate>Sat, 26 Feb 2022 10:06:06 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/face-exp-note/</guid>
@@ -25,6 +25,21 @@
     <pubDate>Tue, 08 Jun 2021 14:37:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-audition-note/</guid>
     <description><![CDATA[1、面向对象 什么是面向对象? 对比面向过程，是两种不同的处理问题的角度 面向过程更注重事情的每一个步骤及顺序，面向对象更注重事情有哪些参与者(对]]></description>
 </item><item>
+    <title>Jvm结构笔记</title>
+    <link>https://kkkpjskey.github.io/jvm-memory-structure-note/</link>
+    <pubDate>Mon, 06 Jun 2022 22:28:33 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/jvm-memory-structure-note/</guid>
+    <description><![CDATA[对象实例数据和对象类型数据 对象实例数据（堆）:对象中各个实例字段的数据 对象类型数据（方法区）：对象的类型、父类、实现的接口、方法等 静态区（也]]></description>
+</item><item>
+    <title>浅析java中的TLAB</title>
+    <link>https://kkkpjskey.github.io/jvm-tlab-note/</link>
+    <pubDate>Mon, 06 Jun 2022 22:20:19 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/jvm-tlab-note/</guid>
+    <description><![CDATA[前言 好久，好久&hellip;.没有更博客了。这一次利用闲暇时间，来扯一下关于JVM中的TLAB。 什么是TLAB？它是干什么的？咋们先抛开这]]></description>
+</item><item>
+    <title>从头到尾彻底理解KMP</title>
+    <link>https://kkkpjskey.github.io/algorithm-kmp-note/</link>
+    <pubDate>Mon, 06 Jun 2022 21:54:21 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/algorithm-kmp-note/</guid>
+    <description><![CDATA[1. 引言 本KMP原文最初写于2年多前的2011年12月，因当时初次接触KMP，思路混乱导致写也写得混乱。所以一直想找机会重新写下KMP，但苦于]]></description>
+</item><item>
     <title>如何使用Gooreplacer解决reCAPTCHA不显示问题？ </title>
     <link>https://kkkpjskey.github.io/gooreplacer-recaptcha-note/</link>
     <pubDate>Mon, 06 Jun 2022 20:00:08 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/gooreplacer-recaptcha-note/</guid>
@@ -39,20 +54,5 @@
     <link>https://kkkpjskey.github.io/android-adb-adv-locate-note/</link>
     <pubDate>Mon, 06 Jun 2022 18:43:26 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-adb-adv-locate-note/</guid>
     <description><![CDATA[背景 相信不少安卓用户中过影子弹窗广告的困扰，这种推广APP本体在后台运行，而且可以在其他APP上弹出覆盖广告，一不小心就会误操作，点击广告或]]></description>
-</item><item>
-    <title>SpringMVC 请求无法到达Controller，出现404</title>
-    <link>https://kkkpjskey.github.io/spring-mvc-view-404-error/</link>
-    <pubDate>Mon, 06 Jun 2022 17:24:00 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/spring-mvc-view-404-error/</guid>
-    <description><![CDATA[背景 今天在配置SpringMVC时，访问项目一直出现404，无法访问。 报错 The origin server did not find a current representation for the target resource or is not willing to disclose that one exists. 调试了一下，发现没有到]]></description>
-</item><item>
-    <title>There is no getter for property named解决方案</title>
-    <link>https://kkkpjskey.github.io/mybatis-no-getter-property-named-error/</link>
-    <pubDate>Mon, 06 Jun 2022 17:14:34 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mybatis-no-getter-property-named-error/</guid>
-    <description><![CDATA[问题 这个问题也是我昨天遇到的。 看问题描述我还以为是我VO对象（实体类）里面的没有对应的getter方法。一直检查将getter方法。检查半天]]></description>
-</item><item>
-    <title>Mybatis/Mybatis Plus报错：Invalid bound statement (not found) 解决方法汇总</title>
-    <link>https://kkkpjskey.github.io/mybatis-invalid-bound-error/</link>
-    <pubDate>Mon, 06 Jun 2022 17:06:14 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/mybatis-invalid-bound-error/</guid>
-    <description><![CDATA[一、问题描述 mybatis/mybatis plus报：Invalid bound statement (not found) 错误，基本上都是mapper文件引起的，我将它总结三类： mapper.xml文件不存在 map]]></description>
 </item></channel>
 </rss>
