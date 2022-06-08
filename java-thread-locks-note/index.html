@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Java线程锁笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Java线程锁笔记"><meta property="og:title" content="Java线程锁笔记" />
+<meta property="og:description" content="记录Java线程锁笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/java-thread-locks-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-thread-locks-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-07T08:35:20+08:00" />
+<meta property="article:modified_time" content="2022-06-07T08:35:20+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/java-thread-locks-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Java线程锁笔记"/>
+<meta name="twitter:description" content="记录Java线程锁笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/java-thread-locks-note/" /><link rel="prev" href="https://kkkpjskey.github.io/alipay-java-note/" /><link rel="next" href="https://kkkpjskey.github.io/hackintosh-vm-16-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Java线程锁笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/java-thread-locks-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/java-thread-locks-note\/featured-image.jpg",
+                            "width":  1740 ,
+                            "height":  522 
+                        }],"genre": "posts","keywords": "Java, Thread, Lock","wordcount":  8259 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-thread-locks-note\/","datePublished": "2022-06-07T08:35:20+08:00","dateModified": "2022-06-07T08:35:20+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Java线程锁笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/java-thread-locks-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/java-thread-locks-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java线程锁笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-07">2022-06-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8259 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 17 分钟&nbsp;<span id="/java-thread-locks-note/" class="leancloud_visitors" data-flag-title="Java线程锁笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/java-thread-locks-note/featured-image.jpg"
+        data-srcset="/java-thread-locks-note/featured-image.jpg, /java-thread-locks-note/featured-image.jpg 1.5x, /java-thread-locks-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/java-thread-locks-note/featured-image.jpg"
+        title="记录Java线程锁笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#java中的偏向锁轻量级锁-重量级锁解析">Java中的偏向锁，轻量级锁， 重量级锁解析</a>
+      <ul>
+        <li><a href="#参考文章">参考文章</a></li>
+        <li><a href="#java-中的锁">Java 中的锁</a></li>
+        <li><a href="#一些先修知识">一些先修知识</a>
+          <ul>
+            <li><a href="#1偏向锁">1.偏向锁</a></li>
+            <li><a href="#2轻量级锁">2.轻量级锁</a></li>
+            <li><a href="#3重量级锁">3.重量级锁</a></li>
+            <li><a href="#4自旋锁">4.自旋锁</a></li>
+          </ul>
+        </li>
+        <li><a href="#synchronized-关键字之锁的升级偏向锁-轻量级锁-重量级锁">synchronized 关键字之锁的升级（偏向锁-&gt;轻量级锁-&gt;重量级锁）</a></li>
+        <li><a href="#无锁---偏向锁">无锁 -&gt; 偏向锁</a></li>
+        <li><a href="#偏向锁的撤销revoke">偏向锁的撤销（Revoke）</a></li>
+        <li><a href="#偏向锁的批量再偏向bulk-rebias机制">偏向锁的批量再偏向（Bulk Rebias）机制</a></li>
+        <li><a href="#偏向锁---轻量级锁">偏向锁 -&gt; 轻量级锁</a></li>
+        <li><a href="#重量级锁">重量级锁</a></li>
+        <li><a href="#存疑的问题">存疑的问题</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="java中的偏向锁轻量级锁-重量级锁解析">Java中的偏向锁，轻量级锁， 重量级锁解析</h2>
+<h3 id="参考文章">参考文章</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/paddix/p/5405678.html" target="_blank" rel="noopener noreferrer">Java并发编程：Synchronized底层优化（偏向锁、轻量级锁）</a></li>
+<li><a href="http://www.infoq.com/cn/articles/java-se-16-synchronized" target="_blank" rel="noopener noreferrer">聊聊并发（二）Java SE1.6中的Synchronized</a></li>
+<li><a href="http://jpbempel.blogspot.com/2013/03/lock-lock-lock-enter.html" target="_blank" rel="noopener noreferrer">Lock Lock Lock: Enter!</a></li>
+<li><a href="https://blog.takipi.com/5-things-you-didnt-know-about-synchronization-in-java-and-scala/" target="_blank" rel="noopener noreferrer">5 Things You Didn’t Know About Synchronization in Java and Scala</a></li>
+<li><a href="https://wiki.openjdk.java.net/display/HotSpot/Synchronization" target="_blank" rel="noopener noreferrer">Synchronization and Object Locking</a></li>
+<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.8487&amp;rep=rep1&amp;type=pdf" target="_blank" rel="noopener noreferrer">Eliminating Synchronization-Related Atomic Operations with Biased Locking and Bulk Rebiasing</a></li>
+</ul>
+<h3 id="java-中的锁">Java 中的锁</h3>
+<p>在 Java 中主要2种加<a href="https://so.csdn.net/so/search?q=%e9%94%81%e6%9c%ba%e5%88%b6&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">锁机制</a>:</p>
+<ul>
+<li><code>synchronized</code> 关键字</li>
+<li><code>java.util.concurrent.Lock</code> （<code>Lock</code>是一个接口，<code>ReentrantLock</code>是该接口一个很常用的实现）</li>
+</ul>
+<p>这两种机制的底层原理存在一定的差别</p>
+<ul>
+<li><code>synchronized</code> 关键字通过一对字节码指令 <code>monitorenter/monitorexit</code> 实现， 这对指令被 JVM 规范所描述。</li>
+<li><code>java.util.concurrent.Lock</code> 通过 Java 代码搭配<code>sun.misc.Unsafe</code> 中的本地调用实现的</li>
+</ul>
+<h3 id="一些先修知识">一些先修知识</h3>
+<p>先修知识 1： <strong>Java 对象头</strong></p>
+<ul>
+<li>
+<p>字宽（Word）: 内存大小的单位概念， 对于 32 位处理器 1 Word = 4 Bytes， 64 位处理器 1 Word = 8 Bytes</p>
+</li>
+<li>
+<p>每一个 Java 对象都至少占用 2 个字宽的内存(数组类型占用3个字宽)。</p>
+<ul>
+<li>第一个字宽也被称为对象头<strong>Mark Word</strong>。 对象头包含了多种不同的信息， 其中就包含对象锁相关的信息。</li>
+<li>第二个字宽是指向定义该对象类信息（class metadata）的指针</li>
+</ul>
+</li>
+<li>
+<p>非数组类型的对象头的结构如下图</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+</li>
+<li>
+<p>说明：</p>
+<ul>
+<li>MarkWord 中包含对象 hashCode 的那种无锁状态是偏向机制被禁用时， 分配出来的无锁对象MarkWord 起始状态</li>
+<li>偏向机制被启用时，分配出来的对象状态是 ThreadId|Epoch|age|1|01, ThreadId 为空时标识对象尚未偏向于任何一个线程， ThreadId 不为空时，  对象既可能处于偏向特定线程的状态， 也有可能处于已经被特定线程占用完毕释放的状态， 需结合 Epoch  和其他信息判断对象是否允许再偏向（rebias）。</li>
+</ul>
+</li>
+</ul>
+<p>下面的图片来自参考论文 <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.94.8487&amp;rep=rep1&amp;type=pdf" target="_blank" rel="noopener noreferrer">Eliminating Synchronization-Related Atomic Operations with Biased Locking and Bulk Rebiasing</a> ， 可以与上面的表格进行比对参照， 更为清晰, 可以看出来， 标志位（tag bits）可以直接确定唯一的一种锁状态</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>先修知识 2： <strong>CAS</strong> 指令</p>
+<ul>
+<li>CAS （Compare And Swap） 指令是一个CPU层级的原子性操作指令。 在 Intel 处理器中， 其汇编指令为 cmpxchg。</li>
+<li>该指令概念上存在 3 个参数， 第一个参数【目标地址】， 第二个参数【值1】， 第三个参数【值2】， 指令会比较【目标地址存储的内容】和 【值1】 是否一致， 如果一致， 则将【值 2】 填写到【目标地址】， 其语义可以用如下的伪代码表示。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">function</span> <span class="nf">cas</span><span class="p">(</span><span class="n">p</span> <span class="p">,</span> <span class="n">old</span> <span class="p">,</span> <span class="k">new</span> <span class="p">)</span> <span class="n">returns</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="o">*</span><span class="n">p</span> <span class="err">≠</span> <span class="n">old</span> <span class="p">{</span> <span class="c1">// *p 表示指针p所指向的内存地址
+</span><span class="c1"></span>        <span class="k">return</span> <span class="nb">false</span>
+    <span class="p">}</span>
+    <span class="o">*</span><span class="n">p</span> <span class="err">←</span> <span class="k">new</span>
+    <span class="k">return</span> <span class="nb">true</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>注意： 该指令是是原子性的， 也就是说 CPU 执行该指令时， 是不会被中断执行其他指令的</li>
+</ul>
+<p>先修知识 3： “<strong>CAS</strong>”实现的&quot;<strong>无锁</strong>&ldquo;算法常见误区</p>
+<ul>
+<li>
+<p>误区一： 通过简单应用 “</p>
+<p>比较后再赋值</p>
+<p>” 的操作即可轻松实现很多无锁算法</p>
+<ul>
+<li>CAS 指令的一个不可忽略的特征是<strong>原子性</strong>。 在 CPU 层面， CAS 指令的执行是有原子性语义保证的， 如果 CAS 操作放在应用层面来实现， 则需要我们自行保证其原子性。 否则就会发生如下描述的问题：</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// 下列的函数如果不是线程互斥的, 是错误的 CAS 实现
+</span><span class="c1"></span><span class="n">function</span> <span class="nf">cas</span><span class="p">(</span> <span class="n">p</span> <span class="p">,</span> <span class="n">old</span> <span class="p">,</span> <span class="k">new</span><span class="p">)</span> <span class="n">returns</span> <span class="kt">bool</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="o">*</span><span class="n">p</span> <span class="err">≠</span> <span class="n">old</span> <span class="p">{</span> <span class="c1">// 此处的比较操作进行时， 可以同时有多个线程通过该判断
+</span><span class="c1"></span>        <span class="k">return</span> <span class="nb">false</span>
+    <span class="p">}</span>
+    <span class="o">*</span><span class="n">p</span> <span class="err">←</span> <span class="k">new</span> <span class="c1">// 多个线程的赋值操作会相互覆盖， 造成程序逻辑的错误
+</span><span class="c1"></span>    <span class="k">return</span> <span class="nb">true</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>误区二： CAS 操作的 ABA 问题
+<ul>
+<li>大部分网络博文对 ABA 问题的常见描述是： 应用 CAS 操作时， 目标地址的值刚开始为 A， 工作线程/进程 读取后， 进行了一系列运算， 计算得出了新值 C， 在此期间， 目标地址的值被其他线程已经进行了不止一次修改， <strong>其值已经从 A 被改为 B ， 又改回 A，</strong> 此时便会发生同步问题。</li>
+<li>上面的描述是其实是错误的， 思考一下就会发现， 如果工作线程的操作目的是将目标地址的值从 A 改为 C， 那么即便在这期间目标地址的值经过了其他线程或进程的多次修改， 其语义依旧是正确的。</li>
+<li>例如目前要将某银行账号的余额扣除 50， 通过 CAS 保证同步 ：
+<ul>
+<li>首先读取原有余额为 100 ，</li>
+<li>计算余额应该赋值为 100 - 50 = 50</li>
+<li>此时该线程被挂起， 该账户同时又发生了转入 150 和转出 150 的操作， 余额经历了 <strong>100 -》250 -》100</strong> 的变动</li>
+<li>线程被唤醒， 进行 CAS 赋值操作 cas（p， 100， 50） ， 正常得以执行。</li>
+<li>该账户的余额依旧是正确的</li>
+</ul>
+</li>
+<li>通过上述例子就可以发现， ABA 的问题并不在于多次修改。 查阅一下 CAS 的 wiki 解释， 就会发现， ABA 真正的问题是， 假如目标地址的内容被多次修改以后， 虽然<strong>从二进制上来看是依旧是 A， 但是其语义已经不是 A</strong> 。例如， 发生了整数溢出， 内存回收等等。</li>
+</ul>
+</li>
+</ul>
+<p>先修知识 4： <strong>栈帧（Stack Frame）</strong> 的概念</p>
+<ul>
+<li>这个概念涉及的内容较多， 不便于展开叙述。 从理解下文的角度上来讲， 需要知道， 每个线程都有自己独立的内存空间， 栈帧就是其中的一部分。里面可以存储仅属于该线程的一些信息。</li>
+<li>需要深入了解的同学， 需要自行查阅 <strong>栈帧</strong> 相关的概念</li>
+</ul>
+<p>先修知识 5： <strong>轻量级加锁</strong>的过程</p>
+<blockquote>
+<p>轻量级加锁的过程在<strong>参考文章一</strong>中有较为的描述以及配图， 这里直接将其摘抄过来， 做轻微整理和调整</p>
+</blockquote>
+<ul>
+<li>（1）在代码进入同步块的时候，如果同步对象锁状态为无锁状态（锁标志位为“01”状态”, 是否可偏向的标志位是 “1”）， 也就是如下状态</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></li>
+</ul>
+<p>，然后， 虚拟机会首先将在当前线程的栈帧中建立一个名为锁记录（Lock Record）的空间，用于存储锁对象目前的Mark Word的拷贝，官方称之为 Displaced Mark Word。</p>
+<ul>
+<li>
+<p>（2）拷贝对象头中的Mark Word复制到锁记录中。这时候线程堆栈与对象头的状态如图2.1所示</p>
+</li>
+<li>
+<p>图 2.1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+</li>
+<li>
+<p>（3）拷贝成功后，虚拟机将使用CAS操作尝试将对象的Mark Word更新为指向Lock Record的指针，并将Lock record里的owner指针指向object mark word。如果更新成功，则执行步骤（4），否则执行步骤（5）。</p>
+</li>
+<li>
+<p>（4）如果这个更新动作成功了，那么这个线程就拥有了该对象的锁，并且对象Mark Word的锁标志位设置为“00”，即表示此对象处于轻量级锁定状态，这时候线程堆栈与对象头的状态如图2.2所示。</p>
+</li>
+<li>
+<p>图2.2</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+</li>
+<li>
+<p>5）如果这个更新操作失败了，说明多个线程竞争锁，轻量级锁就要膨胀为重量级锁</p>
+</li>
+</ul>
+<p>先修知识 6： <strong>重量级加锁</strong>的过程</p>
+<ul>
+<li>轻量级锁在向重量级锁膨胀的过程中， 一个操作系统的互斥量（mutex）和条件变量( condition variable )会和这个被锁的对象关联起来。</li>
+<li>具体而言， 在锁膨胀时， 被锁对象的 markword 会被通过 CAS 操作尝试更新为一个数据结构的指针， 这个数据结构中进一步包含了指向操作系统互斥量(mutex) 和 条件变量（condition variable） 的指针</li>
+</ul>
+<p>先修知识7：<strong>理解各锁基本定义作用。</strong></p>
+<h4 id="1偏向锁">1.偏向锁</h4>
+<p>偏向锁是JDK1.6提出来的一种锁优化的机制。其核心的思想是，如果程序没有竞争，则取消之前已经取得锁的<a href="https://so.csdn.net/so/search?q=%e7%ba%bf%e7%a8%8b%e5%90%8c%e6%ad%a5&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">线程同步</a>操作。也就是说，若某一锁被线程获取后，便进入偏向模式，当线程再次请求这个锁时，就无需再进行相关的同步操作了，从而节约了操作时间，如果在此之间有其他的线程进行了锁请求，则锁退出偏向模式。在JVM中使用<code>-XX:+UseBiasedLocking</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">jvmProject</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Vector</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Biased</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">numberList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Vector</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">begin</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">startnum</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">10000000</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">numberList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">startnum</span><span class="o">);</span>
+            <span class="n">startnum</span> <span class="o">+=</span> <span class="n">2</span><span class="o">;</span>
+            <span class="n">count</span><span class="o">++;</span>
+        <span class="o">}</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">begin</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>初始化一个Vector，往里面添加10000000个Integer对象，然后输出时间差。以此来测试偏向锁的性能。至于为什么要使用Vector而不使用ArrayList呢？</p>
+<p>因为ArrayList是线程不安全的，Vector是线程安全的。这样说可能还不够具体，可以翻看一下源码吧。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.png"
+        data-srcset="./16.png, ./16.png 1.5x, ./16.png 2x"
+        data-sizes="auto"
+        alt="./16.png"
+        title="16" /></p>
+<p>Vector中的几乎所有操作是带有sychronized的，而ArrayList是没有的，所以Vector是线程安全的。</p>
+<p>接下来我们来测试一下，开启偏向锁和不开启偏向锁对程序性能的影响有多大。</p>
+<p>配置JVM启动(开启偏向锁)参数为：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./17.png"
+        data-srcset="./17.png, ./17.png 1.5x, ./17.png 2x"
+        data-sizes="auto"
+        alt="./17.png"
+        title="17" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./18.png"
+        data-srcset="./18.png, ./18.png 1.5x, ./18.png 2x"
+        data-sizes="auto"
+        alt="./18.png"
+        title="18" /></p>
+<p>配置JVM启动(关闭偏向锁)参数为：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./19.png"
+        data-srcset="./19.png, ./19.png 1.5x, ./19.png 2x"
+        data-sizes="auto"
+        alt="./19.png"
+        title="19" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./20.png"
+        data-srcset="./20.png, ./20.png 1.5x, ./20.png 2x"
+        data-sizes="auto"
+        alt="./20.png"
+        title="20" /></p>
+<p>Perfect！开启偏向锁的程序运行时间明显较短，开启偏向锁比不开启偏向锁，在单个线程中操作一个对象的同步方法，是有一定的优势的。其实也可以这样理解，当只有一个线程操作带有同步方法的Vector对象的时候，此时对Vector的操作就转变成了对ArrayList的操作。</p>
+<p>偏向锁在锁竞争激烈的场合没有太强的优化效果，因为大量的竞争会导致持有锁的线程不停地切换，锁也很难保持在偏向模式，此时，使用偏向锁不仅得不到性能的优化，反而有可能降低系统的性能，因此，在激烈竞争的场合，可以尝试使用</p>
+<p><code>-XX:-UseBiastedLocking</code>参数禁用偏向锁。</p>
+<h4 id="2轻量级锁">2.轻量级锁</h4>
+<p>如果偏向锁失败，Java虚拟机就会让线程申请轻量级锁，轻量级锁在虚拟机内部，使用一个成为BasicObjectLock的对象实现的，这个对象内部由一个BasicLock对象和一个持有该锁的Java对象指针组成。BasicObjectLock对象放置在Java栈帧中。在BasicLock对象内部还维护着displaced_header字段，用于备份对象头部的Mark Word.</p>
+<p>当一个线程持有一个对象的锁的时候，对象头部Mark Word信息如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>ptr            <span class="p">|</span>00<span class="o">]</span> locked
+</code></pre></td></tr></table>
+</div>
+</div><p>末尾的两位比特为00，整个Mark  Word为指向BasicLock对象的指针。由于BasicObjectLock对象在线程栈中，因此该指针必然指向持有该锁的线程栈空间。当需要判断一个线程是否持有该对象时，只需要简单地判断对象头的指针是否在当前线程的栈地址范围即可。同时，BasicLock对象的displaced_header，备份了原对象的Mark word内容，BasicObjectLock对象的obj字段则指向持有锁的对象头部。</p>
+<h4 id="3重量级锁">3.重量级锁</h4>
+<p>当轻量级锁失败，虚拟机就会使用重量级锁。在使用重量级锁的时，对象的Mark Word如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>ptr           <span class="p">|</span>10<span class="o">]</span>  monitor
+</code></pre></td></tr></table>
+</div>
+</div><p>重量级锁在操作过程中，线程可能会被操作系统层面挂起，如果是这样，线程间的切换和调用成本就会大大提高。</p>
+<h4 id="4自旋锁">4.自旋锁</h4>
+<p>自旋锁可以使线程在没有取得锁的时候，不被挂起，而转去执行一个空循环，(即所谓的自旋，就是自己执行空循环)，若在若干个空循环后，线程如果可以获得锁，则继续执行。若线程依然不能获得锁，才会被挂起。</p>
+<p>使用自旋锁后，线程被挂起的几率相对减少，线程执行的连贯性相对加强。因此，对于那些锁竞争不是很激烈，锁占用时间很短的并发线程，具有一定的积极意义，但对于锁竞争激烈，单线程锁占用很长时间的并发程序，自旋锁在自旋等待后，往往毅然无法获得对应的锁，不仅仅白白浪费了CPU时间，最终还是免不了被挂起的操作 ，反而浪费了系统的资源。</p>
+<p>在JDK1.6中，Java虚拟机提供<code>-XX:+UseSpinning</code>参数来开启自旋锁，使用<code>-XX:PreBlockSpin</code>参数来设置自旋锁等待的次数。</p>
+<p>在JDK1.7开始，自旋锁的参数被取消，虚拟机不再支持由用户配置自旋锁，自旋锁总是会执行，自旋锁次数也由虚拟机自动调整。</p>
+<h3 id="synchronized-关键字之锁的升级偏向锁-轻量级锁-重量级锁">synchronized 关键字之锁的升级（偏向锁-&gt;轻量级锁-&gt;重量级锁）</h3>
+<p>前面提到过， synchronized 代码块是由一对 <strong>monitorenter/moniterexit</strong> 字节码指令实现， monitor 是其同步实现的基础， Java SE1.6 为了改善性能， 使得 JVM 会根据竞争情况， 使用如下 3 种不同的锁机制</p>
+<ul>
+<li>偏向锁（Biased Lock ）</li>
+<li>轻量级锁（ Lightweight Lock）</li>
+<li>重量级锁（Heavyweight Lock）</li>
+</ul>
+<p>上述这三种机制的切换是根据竞争激烈程度进行的， 在几乎无竞争的条件下， 会使用偏向锁， 在轻度竞争的条件下， 会由偏向锁升级为轻量级锁， 在重度竞争的情况下， 会升级到重量级锁。</p>
+<p>注意 JVM 提供了关闭偏向锁的机制， JVM 启动命令指定如下参数即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">-XX:-UseBiasedLocking
+</code></pre></td></tr></table>
+</div>
+</div><p>下图展现了一个对象在创建（allocate） 后， 根据偏斜锁机制是否打开， 对象 MarkWord 状态以不同方式转换的过程</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.jpg"
+        data-srcset="./6.jpg, ./6.jpg 1.5x, ./6.jpg 2x"
+        data-sizes="auto"
+        alt="./6.jpg"
+        title="6" />
+上图在参考文章一中的中文翻译对照图如下</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<h3 id="无锁---偏向锁">无锁 -&gt; 偏向锁</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+<p>从上图可以看到 ， 偏向锁的获取方式是将对象头的 <strong>MarkWord</strong> 部分中， 标记上线程ID， 以表示哪一个线程获得了偏向锁。 具体的赋值逻辑如下：</p>
+<ul>
+<li>
+<p>首先读取目标对象的 MarkWord, 判断是否处于可偏向的状态（如下图）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.jpg"
+        data-srcset="./9.jpg, ./9.jpg 1.5x, ./9.jpg 2x"
+        data-sizes="auto"
+        alt="./9.jpg"
+        title="9" /></p>
+</li>
+<li>
+<p>下面是 <a href="http://hg.openjdk.java.net/" target="_blank" rel="noopener noreferrer">Open Jdk/ JDK 8 源码</a> 中检测一个对象是否处于可偏向状态的源码</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">  <span class="c1">// Indicates that the mark has the bias bit set but that it has not
+</span><span class="c1"></span>  <span class="c1">// yet been biased toward a particular thread
+</span><span class="c1"></span>  <span class="kt">bool</span> <span class="nf">is_biased_anonymously</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">has_bias_pattern</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">biased_locker</span><span class="p">()</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">));</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>应评论区一位朋友的提问， 进一步摘抄一下<a href="https://www.codesearch.cloud/openjdk/xref/jdk8u/hotspot/src/share/vm/oops/markOop.hpp?r=3694:22b8d3d181d9#biased_lock_mask_in_place" target="_blank" rel="noopener noreferrer">markOop.hpp</a>中的方法定义</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// Biased Locking accessors.
+</span><span class="c1"></span>  <span class="c1">// These must be checked by all code which calls into the
+</span><span class="c1"></span>  <span class="c1">// ObjectSynchronizer and other code. The biasing is not understood
+</span><span class="c1"></span>  <span class="c1">// by the lower-level CAS-based locking code, although the runtime
+</span><span class="c1"></span>  <span class="c1">// fixes up biased locks to be compatible with it when a bias is
+</span><span class="c1"></span>  <span class="c1">// revoked.
+</span><span class="c1"></span>  <span class="kt">bool</span> <span class="nf">has_bias_pattern</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">mask_bits</span><span class="p">(</span><span class="n">value</span><span class="p">(),</span> <span class="n">biased_lock_mask_in_place</span><span class="p">)</span> <span class="o">==</span> <span class="n">biased_lock_pattern</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">JavaThread</span><span class="o">*</span> <span class="nf">biased_locker</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="n">assert</span><span class="p">(</span><span class="n">has_bias_pattern</span><span class="p">(),</span> <span class="s">&#34;should not call this otherwise&#34;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">JavaThread</span><span class="o">*</span><span class="p">)</span> <span class="p">((</span><span class="n">intptr_t</span><span class="p">)</span> <span class="p">(</span><span class="n">mask_bits</span><span class="p">(</span><span class="n">value</span><span class="p">(),</span> <span class="o">~</span><span class="p">(</span><span class="n">biased_lock_mask_in_place</span> <span class="o">|</span> <span class="n">age_mask_in_place</span> <span class="o">|</span> <span class="n">epoch_mask_in_place</span><span class="p">))));</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><code>has_bias_pattern()</code> 返回 true 时代表 markword 的可偏向标志 bit 位为 1 ，且对象头末尾标志为 01。</p>
+</li>
+<li>
+<p><code>biased_locker() == NULL</code> 返回 true 时代表对象 Mark Word 中 bit field 域存储的 Thread Id 为空。</p>
+</li>
+<li>
+<p>如果为<strong>可偏向状态</strong>, 则尝试用 CAS 操作， 将自己的线程 ID 写入MarkWord</p>
+<ul>
+<li>
+<p>如果 CAS 操作成功（状态转变为下图）， 则认为已经获取到该对象的偏向锁， 执行同步块代码 。 注意， age 后面的标志位中的值并没有变化， 这点之后会用到</p>
+</li>
+<li>
+<p>补充： 一个线程在执行完同步代码块以后， 并不会尝试将 MarkWord 中的 thread ID 赋回原值 。这样做的好处是：  如果该线程需要再次对这个对象加锁，而这个对象之前一直没有被其他线程尝试获取过锁，依旧停留在可偏向的状态下， 即可在不修改对象头的情况下，  直接认为偏向成功。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.jpg"
+        data-srcset="./10.jpg, ./10.jpg 1.5x, ./10.jpg 2x"
+        data-sizes="auto"
+        alt="./10.jpg"
+        title="10" /></p>
+</li>
+<li>
+<p>如果 CAS 操作失败， 则说明， 有另外一个线程 Thread B 抢先获取了偏向锁。 这种状态说明该对象的竞争比较激烈， 此时需要<strong>撤销</strong> Thread B 获得的偏向锁，将 Thread B 持有的锁升级为轻量级锁。 该操作需要等待全局安全点 JVM safepoint ( 此时间点， 没有线程在执行字节码) 。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>如果是<strong>已偏向状态</strong>， 则检测 MarkWord 中存储的 thread ID 是否等于当前 thread ID 。</p>
+<ul>
+<li>如果相等， 则证明本线程已经获取到偏向锁， 可以直接继续执行同步代码块</li>
+<li>如果不等， 则证明该对象目前偏向于其他线程， 需要<strong>撤销</strong>偏向锁</li>
+</ul>
+</li>
+</ul>
+<p>从上面的偏向锁机制描述中，可以注意到</p>
+<ul>
+<li>偏向锁的 <strong>撤销（revoke）</strong> 是一个很特殊的操作， 为了执行撤销操作， 需要等待全局安全点（Safe Point）， 此时间点所有的工作线程都停止了<strong>字节码</strong>的执行。</li>
+</ul>
+<h3 id="偏向锁的撤销revoke">偏向锁的撤销（Revoke）</h3>
+<p>如上文提到的， 偏向锁的撤销（Revoke） 操作并不是将对象恢复到无锁可偏向的状态， 而是在偏向锁的获取过程中， 发现了竞争时， 直接将一个被偏向的对象“升级到” 被加了轻量级锁的状态。 这个操作的具体完成方式如下：</p>
+<ul>
+<li>在偏向锁 CAS 更新操作失败以后， 等待到达全局安全点。
+<ul>
+<li>通过 MarkWord 中已经存在的 Thread Id 找到成功获取了偏向锁的那个线程, 然后在该线程的栈帧中补充上轻量级加锁时， 会保存的锁记录（Lock Record）， 然后将被获取了偏向锁对象的 MarkWord 更新为指向这条锁记录的指针。</li>
+<li>至此， 锁撤销操作完成， 阻塞在安全点的线程可以继续执行。</li>
+</ul>
+</li>
+</ul>
+<h3 id="偏向锁的批量再偏向bulk-rebias机制">偏向锁的批量再偏向（Bulk Rebias）机制</h3>
+<p>偏向锁这个机制很特殊， 别的锁在执行完同步代码块后， 都会有释放锁的操作， 而偏向锁并没有直观意义上的“释放锁”操作。</p>
+<p>那么作为开发人员， 很自然会产生的一个问题就是， 如果一个对象先偏向于某个线程， 执行完同步代码后， 另一个线程就不能直接重新获得偏向锁吗？ 答案是可以， JVM 提供了批量再偏向机制（Bulk Rebias）机制</p>
+<p>该机制的主要工作原理如下：</p>
+<ul>
+<li>引入一个概念 epoch, 其本质是一个时间戳 ， 代表了偏向锁的有效性</li>
+<li>从前文描述的对象头结构中可以看到， epoch 存储在可偏向对象的 MarkWord 中。</li>
+<li>除了对象中的 epoch, 对象所属的类 class 信息中， 也会保存一个 epoch 值</li>
+<li>每当遇到一个全局安全点时， 如果要对 class C 进行批量再偏向， 则首先对 class C 中保存的 epoch 进行增加操作， 得到一个新的 epoch_new</li>
+<li>然后扫描所有持有 class C 实例的线程栈， 根据线程栈的信息判断出该线程是否锁定了该对象， 仅将 epoch_new 的值赋给被锁定的对象中。</li>
+<li>退出安全点后， 当有线程需要尝试获取偏向锁时， 直接检查 class C 中存储的 epoch 值是否与目标对象中存储的 epoch 值相等， 如果不相等， 则说明该对象的偏向锁已经无效了， 可以尝试对此对象重新进行偏向操作。</li>
+</ul>
+<p>上述的逻辑可以在 JDK 源码中得到验证。</p>
+<p><a href="http://hg.openjdk.java.net/jdk/jdk/file/6659a8f57d78/src/hotspot/share/runtime/sharedRuntime.cpp" target="_blank" rel="noopener noreferrer">sharedRuntime.cpp</a></p>
+<p>在 sharedRuntime.cpp 中， 下面代码是 synchronized 的主要逻辑</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Handle</span> <span class="nf">h_obj</span><span class="p">(</span><span class="n">THREAD</span><span class="p">,</span> <span class="n">obj</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">UseBiasedLocking</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Retry fast entry if bias is revoked to avoid unnecessary inflation
+</span><span class="c1"></span>    <span class="n">ObjectSynchronizer</span><span class="o">::</span><span class="n">fast_enter</span><span class="p">(</span><span class="n">h_obj</span><span class="p">,</span> <span class="n">lock</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="n">CHECK</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">ObjectSynchronizer</span><span class="o">::</span><span class="n">slow_enter</span><span class="p">(</span><span class="n">h_obj</span><span class="p">,</span> <span class="n">lock</span><span class="p">,</span> <span class="n">CHECK</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>UseBiasedLocking 是 JVM 启动时， 偏斜锁是否启用的标志。</li>
+<li>fast_enter 中包含了偏斜锁的相关逻辑</li>
+<li>slow_enter 中绕过偏斜锁， 直接进入轻量级锁获取</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="n">ObjectSynchronizer</span><span class="o">::</span><span class="n">fast_enter</span><span class="p">(</span><span class="n">Handle</span> <span class="n">obj</span><span class="p">,</span> <span class="n">BasicLock</span><span class="o">*</span> <span class="n">lock</span><span class="p">,</span>
+                                    <span class="kt">bool</span> <span class="n">attempt_rebias</span><span class="p">,</span> <span class="n">TRAPS</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">UseBiasedLocking</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">SafepointSynchronize</span><span class="o">::</span><span class="n">is_at_safepoint</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">BiasedLocking</span><span class="o">::</span><span class="n">Condition</span> <span class="n">cond</span> <span class="o">=</span> <span class="n">BiasedLocking</span><span class="o">::</span><span class="n">revoke_and_rebias</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attempt_rebias</span><span class="p">,</span> <span class="n">THREAD</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">cond</span> <span class="o">==</span> <span class="n">BiasedLocking</span><span class="o">::</span><span class="n">BIAS_REVOKED_AND_REBIASED</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">attempt_rebias</span><span class="p">,</span> <span class="s">&#34;can not rebias toward VM thread&#34;</span><span class="p">);</span>
+      <span class="n">BiasedLocking</span><span class="o">::</span><span class="n">revoke_at_safepoint</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">obj</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">mark</span><span class="p">()</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">has_bias_pattern</span><span class="p">(),</span> <span class="s">&#34;biases should be revoked by now&#34;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">slow_enter</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">lock</span><span class="p">,</span> <span class="n">THREAD</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>该函数中再次保险性地做了偏斜锁是否开启的检查（UseBiasedLocking）</p>
+</li>
+<li>
+<p>当系统不处于安全点时， 代码通过方法 <code>revoke_and_rebias</code> 这个函数尝试获取偏斜锁， 如果获取成功就可以直接返回了， 如果不成功则进入轻量级锁的获取过程</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">revoke_and_rebias</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这个函数名称就很有意思， 说明该函数中包含了 revoke 的操作也包含了 rebias 的操作</p>
+<ul>
+<li>revoke 不是只应该在安全点时刻才发生吗？ 答案： 有一些特殊情形， 不需要安全点也可以执行 revoke 操作</li>
+<li>此处为什么只有 rebias 操作， 没有初次的 bias 操作？答案： 首次的 bias 操作也被当成了 rebias 操作的一个特例</li>
+</ul>
+</li>
+</ul>
+<p>revoke_and_rebias 函数的定义在 <a href="http://hg.openjdk.java.net/jdk/jdk/file/6659a8f57d78/src/hotspot/share/runtime/biasedLocking.cpp" target="_blank" rel="noopener noreferrer">biasedLocking.cpp</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">BiasedLocking</span><span class="o">::</span><span class="n">Condition</span> <span class="n">BiasedLocking</span><span class="o">::</span><span class="n">revoke_and_rebias</span><span class="p">(</span><span class="n">Handle</span> <span class="n">obj</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">attempt_rebias</span><span class="p">,</span> <span class="n">TRAPS</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">SafepointSynchronize</span><span class="o">::</span><span class="n">is_at_safepoint</span><span class="p">(),</span> <span class="s">&#34;must not be called while at safepoint&#34;</span><span class="p">);</span>
+
+  <span class="c1">// We can revoke the biases of anonymously-biased objects
+</span><span class="c1"></span>  <span class="c1">// efficiently enough that we should not cause these revocations to
+</span><span class="c1"></span>  <span class="c1">// update the heuristics because doing so may cause unwanted bulk
+</span><span class="c1"></span>  <span class="c1">// revocations (which are expensive) to occur.
+</span><span class="c1"></span>  <span class="n">markOop</span> <span class="n">mark</span> <span class="o">=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">mark</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">mark</span><span class="o">-&gt;</span><span class="n">is_biased_anonymously</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">attempt_rebias</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/* 
+</span><span class="cm">		    进一步查看源码可得知， is_biased_anonymously() 为 true 的条件是对象处于可偏向状态， 
+</span><span class="cm">		    且 线程ID  为空， 表示尚未偏向于任意一个线程。 
+</span><span class="cm">		    此分支是进行对象的 hashCode 计算时会进入的， 根据 markWord 结构可以看到， 
+</span><span class="cm">		    当一个对象处于可偏向状态时， markWord 中 hashCode 的存储空间是被占用的
+</span><span class="cm">		    所以需要 revoke 可偏向状态， 以提供存储 hashCode 的空间
+</span><span class="cm">		 */</span>
+    
+    <span class="c1">// We are probably trying to revoke the bias of this object due to
+</span><span class="c1"></span>    <span class="c1">// an identity hash code computation. Try to revoke the bias
+</span><span class="c1"></span>    <span class="c1">// without a safepoint. This is possible if we can successfully
+</span><span class="c1"></span>    <span class="c1">// compare-and-exchange an unbiased header into the mark word of
+</span><span class="c1"></span>    <span class="c1">// the object, meaning that no other thread has raced to acquire
+</span><span class="c1"></span>    <span class="c1">// the bias of the object.
+</span><span class="c1"></span>    <span class="n">markOop</span> <span class="n">biased_value</span>       <span class="o">=</span> <span class="n">mark</span><span class="p">;</span>
+    <span class="n">markOop</span> <span class="n">unbiased_prototype</span> <span class="o">=</span> <span class="n">markOopDesc</span><span class="o">::</span><span class="n">prototype</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">set_age</span><span class="p">(</span><span class="n">mark</span><span class="o">-&gt;</span><span class="n">age</span><span class="p">());</span>
+    <span class="n">markOop</span> <span class="n">res_mark</span> <span class="o">=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">cas_set_mark</span><span class="p">(</span><span class="n">unbiased_prototype</span><span class="p">,</span> <span class="n">mark</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">res_mark</span> <span class="o">==</span> <span class="n">biased_value</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">BIAS_REVOKED</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">mark</span><span class="o">-&gt;</span><span class="n">has_bias_pattern</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">Klass</span><span class="o">*</span> <span class="n">k</span> <span class="o">=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">klass</span><span class="p">();</span>
+    <span class="n">markOop</span> <span class="n">prototype_header</span> <span class="o">=</span> <span class="n">k</span><span class="o">-&gt;</span><span class="n">prototype_header</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">prototype_header</span><span class="o">-&gt;</span><span class="n">has_bias_pattern</span><span class="p">())</span> <span class="p">{</span>
+      <span class="c1">// This object has a stale bias from before the bulk revocation
+</span><span class="c1"></span>      <span class="c1">// for this data type occurred. It&#39;s pointless to update the
+</span><span class="c1"></span>      <span class="c1">// heuristics at this point so simply update the header with a
+</span><span class="c1"></span>      <span class="c1">// CAS. If we fail this race, the object&#39;s bias has been revoked
+</span><span class="c1"></span>      <span class="c1">// by another thread so we simply return and let the caller deal
+</span><span class="c1"></span>      <span class="c1">// with it.
+</span><span class="c1"></span>      <span class="n">markOop</span> <span class="n">biased_value</span>       <span class="o">=</span> <span class="n">mark</span><span class="p">;</span>
+      <span class="n">markOop</span> <span class="n">res_mark</span> <span class="o">=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">cas_set_mark</span><span class="p">(</span><span class="n">prototype_header</span><span class="p">,</span> <span class="n">mark</span><span class="p">);</span>
+      <span class="n">assert</span><span class="p">(</span><span class="o">!</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">mark</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">has_bias_pattern</span><span class="p">(),</span> <span class="s">&#34;even if we raced, should still be revoked&#34;</span><span class="p">);</span>
+      <span class="k">return</span> <span class="n">BIAS_REVOKED</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">prototype_header</span><span class="o">-&gt;</span><span class="n">bias_epoch</span><span class="p">()</span> <span class="o">!=</span> <span class="n">mark</span><span class="o">-&gt;</span><span class="n">bias_epoch</span><span class="p">())</span> <span class="p">{</span> 
+      <span class="c1">// The epoch of this biasing has expired indicating that the
+</span><span class="c1"></span>      <span class="c1">// object is effectively unbiased. Depending on whether we need
+</span><span class="c1"></span>      <span class="c1">// to rebias or revoke the bias of this object we can do it
+</span><span class="c1"></span>      <span class="c1">// efficiently enough with a CAS that we shouldn&#39;t update the
+</span><span class="c1"></span>      <span class="c1">// heuristics. This is normally done in the assembly code but we
+</span><span class="c1"></span>      <span class="c1">// can reach this point due to various points in the runtime
+</span><span class="c1"></span>      <span class="c1">// needing to revoke biases.
+</span><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="n">attempt_rebias</span><span class="p">)</span> <span class="p">{</span>
+	    <span class="cm">/*
+</span><span class="cm">			下面的代码就是尝试通过 CAS 操作， 将本线程的 ThreadID 尝试写入对象头中
+</span><span class="cm">		*/</span>
+        <span class="n">assert</span><span class="p">(</span><span class="n">THREAD</span><span class="o">-&gt;</span><span class="n">is_Java_thread</span><span class="p">(),</span> <span class="s">&#34;&#34;</span><span class="p">);</span>
+        <span class="n">markOop</span> <span class="n">biased_value</span>       <span class="o">=</span> <span class="n">mark</span><span class="p">;</span>
+        <span class="n">markOop</span> <span class="n">rebiased_prototype</span> <span class="o">=</span> <span class="n">markOopDesc</span><span class="o">::</span><span class="n">encode</span><span class="p">((</span><span class="n">JavaThread</span><span class="o">*</span><span class="p">)</span> <span class="n">THREAD</span><span class="p">,</span> <span class="n">mark</span><span class="o">-&gt;</span><span class="n">age</span><span class="p">(),</span> <span class="n">prototype_header</span><span class="o">-&gt;</span><span class="n">bias_epoch</span><span class="p">());</span>
+        <span class="n">markOop</span> <span class="n">res_mark</span> <span class="o">=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">cas_set_mark</span><span class="p">(</span><span class="n">rebiased_prototype</span><span class="p">,</span> <span class="n">mark</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">res_mark</span> <span class="o">==</span> <span class="n">biased_value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="n">BIAS_REVOKED_AND_REBIASED</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">markOop</span> <span class="n">biased_value</span>       <span class="o">=</span> <span class="n">mark</span><span class="p">;</span>
+        <span class="n">markOop</span> <span class="n">unbiased_prototype</span> <span class="o">=</span> <span class="n">markOopDesc</span><span class="o">::</span><span class="n">prototype</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">set_age</span><span class="p">(</span><span class="n">mark</span><span class="o">-&gt;</span><span class="n">age</span><span class="p">());</span>
+        <span class="n">markOop</span> <span class="n">res_mark</span> <span class="o">=</span> <span class="n">obj</span><span class="o">-&gt;</span><span class="n">cas_set_mark</span><span class="p">(</span><span class="n">unbiased_prototype</span><span class="p">,</span> <span class="n">mark</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">res_mark</span> <span class="o">==</span> <span class="n">biased_value</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="n">BIAS_REVOKED</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="偏向锁---轻量级锁">偏向锁 -&gt; 轻量级锁</h3>
+<p>从之前的描述中可以看到， 存在超过一个线程竞争某一个对象时， 会发生偏向锁的撤销操作。 有趣的是， 偏向锁撤销后， 对象可能处于两种状态。</p>
+<ul>
+<li>
+<p>一种是<strong>不可偏向的无锁状态</strong>， 如下图（之所以不允许偏向， 是因为已经检测到了多于一个线程的竞争， 升级到了轻量级锁的机制）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.jpg"
+        data-srcset="./11.jpg, ./11.jpg 1.5x, ./11.jpg 2x"
+        data-sizes="auto"
+        alt="./11.jpg"
+        title="11" /></p>
+</li>
+<li>
+<p>另一种是<strong>不可偏向的已锁 ( 轻量级锁) 状态</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.jpg"
+        data-srcset="./12.jpg, ./12.jpg 1.5x, ./12.jpg 2x"
+        data-sizes="auto"
+        alt="./12.jpg"
+        title="12" /></p>
+</li>
+</ul>
+<p>之所以会出现上述两种状态， 是因为偏向锁<strong>不存在解锁的操作</strong>， 只有<strong>撤销</strong>操作。 触发<strong>撤销</strong>操作时：</p>
+<ul>
+<li>原来已经获取了偏向锁的线程可能已经执行完了同步代码块， 使得对象处于 “<strong>闲置状态”</strong>，相当于原有的偏向锁已经过期无效了。此时该对象就应该被直接转换为<strong>不可偏向的无锁状态</strong>。</li>
+<li>原来已经获取了偏向锁的线程也可能尚未执行完同步代码块， 偏向锁依旧有效， 此时<strong>对象就应该被转换为被轻量级加锁的状态</strong></li>
+</ul>
+<p>轻量级加锁过程：</p>
+<ul>
+<li>
+<p>首先根据标志位判断出对象状态处于不可偏向的无锁状态( 如下图）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.jpg"
+        data-srcset="./13.jpg, ./13.jpg 1.5x, ./13.jpg 2x"
+        data-sizes="auto"
+        alt="./13.jpg"
+        title="13" /></p>
+</li>
+<li>
+<p>在当前线程的<strong>栈桢</strong>（Stack Frame）中创建用于存储<strong>锁记录</strong>（lock record）的空间，并将对象头中的Mark Word复制到锁记录中，官方称为Displaced Mark Word。如果在此过程中发现，</p>
+</li>
+<li>
+<p>然后线程尝试使用 CAS 操作将对象头中的 Mark Word 替换为指向锁记录的指针。</p>
+<ul>
+<li>如果成功，当前线程获得锁</li>
+<li>如果失败，表示该对象已经被加锁了， 先进行自旋操作， 再次尝试 CAS 争抢， 如果仍未争抢到， 则进一步升级锁至重量级锁。</li>
+</ul>
+</li>
+</ul>
+<p>下图引用自博文 <a href="http://www.infoq.com/cn/articles/java-se-16-synchronized" target="_blank" rel="noopener noreferrer">聊聊并发（二）Java SE1.6中的Synchronized</a>展示了两个线程竞争锁， 最终导致锁膨胀为重量级锁的过程。</p>
+<p>**注意： <strong>下图中第一个标绿 MarkWord 的起始状态是<code>HashCode|age|0|01</code> 是偏向锁未被启用时， 分配对象后的状态， 所以在图中并没有偏向锁这一流程的体现， 是直接从无锁状态进入了轻量级锁的状态</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+<h3 id="重量级锁">重量级锁</h3>
+<p>重量级锁依赖于操作系统的互斥量（mutex） 实现， 其具体的详细机制此处暂不展开， 日后可能补充。 此处暂时只需要了解该操作会导致进程从用户态与内核态之间的切换， 是一个开销较大的操作。</p>
+<h3 id="存疑的问题">存疑的问题</h3>
+<ol>
+<li>在锁膨胀的图例中， 线程 2 在线程 1 尚未释放锁时， 即将对象头修改为指向重量级锁的状态， 这个操作具体如何完成， 是否需要等待全局安全点？笔者尚未细究</li>
+<li>轻量级锁的第一次获取时， 如果 CAS 操作失败， 按照 <a href="http://www.infoq.com/cn/articles/java-se-16-synchronized" target="_blank" rel="noopener noreferrer">聊聊并发（二）Java SE1.6中的Synchronized</a> 的描述， 会进行自旋的尝试。 但按照 <a href="https://wiki.openjdk.java.net/display/HotSpot/Synchronization" target="_blank" rel="noopener noreferrer">Synchronization and Object Locking</a> 的描述， 会去检测已加的锁是归属于自身线程， 没有提到自旋操作。 具体哪一种是正确的行为， 有待研究源码。</li>
+<li><a href="http://hg.openjdk.java.net/jdk/jdk/file/6659a8f57d78/src/hotspot/share/runtime/biasedLocking.cpp" target="_blank" rel="noopener noreferrer">biasedLocking.cpp</a>中的方法 <code>revoke_and_rebias</code> 存在 4 个条件分支， 其中笔者添加了注释的两个分支其主要逻辑已经清晰， 但未添加注释的两个分支具体逻辑笔者尚不清楚， 有待进一步研究</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/java-thread-locks-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/java-thread-locks-note/" data-title="Java线程锁笔记" data-hashtags="Java,Thread,Lock"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/java-thread-locks-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/java-thread-locks-note/" data-title="Java线程锁笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/java-thread-locks-note/" data-title="Java线程锁笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/thread/">Thread</a>,&nbsp;<a href="/tags/lock/">Lock</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/alipay-java-note/" class="prev" rel="prev" title="支付宝沙箱支付 Java"><i class="fas fa-angle-left fa-fw"></i>支付宝沙箱支付 Java</a>
+            <a href="/hackintosh-vm-16-note/" class="next" rel="next" title="VM安装Hackintosh笔记">VM安装Hackintosh笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

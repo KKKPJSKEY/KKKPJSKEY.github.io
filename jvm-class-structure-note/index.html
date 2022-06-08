@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Jvm 第5篇：类文件结构笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Jvm 第5篇：类文件结构笔记"><meta property="og:title" content="Jvm 第5篇：类文件结构笔记" />
+<meta property="og:description" content="记录Jvm 第5篇：类文件结构笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/jvm-class-structure-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/jvm-class-structure-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-08T10:16:17+08:00" />
+<meta property="article:modified_time" content="2022-06-08T10:16:17+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/jvm-class-structure-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Jvm 第5篇：类文件结构笔记"/>
+<meta name="twitter:description" content="记录Jvm 第5篇：类文件结构笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/jvm-class-structure-note/" /><link rel="prev" href="https://kkkpjskey.github.io/idea-no-compiler-automake-note/" /><link rel="next" href="https://kkkpjskey.github.io/java-polymorphism-prototype-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Jvm 第5篇：类文件结构笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/jvm-class-structure-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/jvm-class-structure-note\/featured-image.jpg",
+                            "width":  1530 ,
+                            "height":  459 
+                        }],"genre": "posts","keywords": "Java, Jvm, Class, ClassStructure","wordcount":  5962 ,
+        "url": "https:\/\/kkkpjskey.github.io\/jvm-class-structure-note\/","datePublished": "2022-06-08T10:16:17+08:00","dateModified": "2022-06-08T10:16:17+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Jvm 第5篇：类文件结构笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/jvm-class-structure-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/jvm-class-structure-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Jvm 第5篇：类文件结构笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-08">2022-06-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5962 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/jvm-class-structure-note/" class="leancloud_visitors" data-flag-title="Jvm 第5篇：类文件结构笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/jvm-class-structure-note/featured-image.jpg"
+        data-srcset="/jvm-class-structure-note/featured-image.jpg, /jvm-class-structure-note/featured-image.jpg 1.5x, /jvm-class-structure-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/jvm-class-structure-note/featured-image.jpg"
+        title="记录Jvm 第5篇：类文件结构笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#51-无关性的基石">5.1 无关性的基石</a></li>
+    <li><a href="#52-class文件的结构">5.2 Class文件的结构</a>
+      <ul>
+        <li><a href="#1魔数magic"><strong>1、魔数：magic</strong></a></li>
+        <li><a href="#2文件的版本minor_version和major_version">2、文件的版本：minor_version和major_version</a></li>
+        <li><a href="#3常量池constant_pool_count和constant_pool">3、常量池：constant_pool_count和constant_pool</a></li>
+        <li><a href="#4访问标志access_flags">4、访问标志：access_flags</a></li>
+        <li><a href="#5类索引父类索引与接口索引集合this_classsuper_class和interfaces">5、类索引、父类索引与接口索引集合：this_class、super_class和interfaces</a></li>
+        <li><a href="#6字段表集合field_infofields_count">6、字段表集合：field_info、fields_count</a></li>
+        <li><a href="#7方法表集合methodsmethods_count">7、方法表集合：methods、methods_count</a></li>
+        <li><a href="#8属性表集合attributesattributes_count">8、属性表集合：attributes、attributes_count</a></li>
+      </ul>
+    </li>
+    <li><a href="#53-字节码指令简介">5.3 字节码指令简介</a></li>
+    <li><a href="#54-总结">5.4 总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>开篇说明：本文的重点就是类文件结构，只需要清楚Class文件格式中的各名称的实际意义就行，不用对具体名称下的细节进行深究，否则需要花大量的时间【&mdash;-面试导向】。</p>
+</blockquote>
+<h2 id="51-无关性的基石">5.1 无关性的基石</h2>
+<blockquote>
+<p>1、统一的程序存储格式：不同平台的虚拟机在所有的平台都统一使用程序存储格式&mdash;-字节码（ByteCode）；</p>
+<p>2、Java编译器可以把Java程序代码编译成虚拟机所需要的Class文件；</p>
+<p>3、Java虚拟机不关心Class文件的来源，而只和“Class文件“这种二进制文件格式关联，也就是说Java虚拟机只认识”Class“文件。因此只要能够编译成规范的Class文件的语言都可以在运用Java虚拟机。</p>
+</blockquote>
+<hr>
+<h2 id="52-class文件的结构">5.2 Class文件的结构</h2>
+<p>下面放一张网上找到的class文件内容，先直观感受下Class文件：【可以使用Sublime Text编辑器打开Class文件】</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>字节码Class类文件是由一些列字节码命令组成，用于表示程序中各种常量、变量、关键字和运算符号的语义等等。</p>
+<p>Java的Class类文件是一组由8位字节为基础单位的二进制流，各个数据项目严格按照顺序紧凑地排列在Class文件之中，中间没有添加任何分隔符，这使得Class文件中存储的内容几乎全部都是程序运行的必要数据，没有空隙存在。当遇到需要占用8位字节以上空间的数据项时，则会按照高位在前的方式分割若干个8位字节进行存储。</p>
+<p>Java虚拟机规定，Class文件格式采用一种类似于C语言结构体系的伪结构来存储数据，这种伪结构中只有两种数据类型：<strong>无符号数</strong>和<strong>表</strong>。</p>
+<blockquote>
+<p><strong>1、无符号数</strong>：属于基本的数据类型，以u1、u2、u4、u8来分别代表1个字节、2个字节、4个字节和8个字节的无符号数，无符号数可以用来描述数字、索引引用、数量值或者按照UTF-8编码构成字符串值；</p>
+<p><strong>2、表</strong>：是由多个无符号数或者其他表作为数据项构成的复合数据类型，所有表都习惯地以”_info“结尾。表用于描述有层次关系的复合结构的数据，整个Class文件本质上就是一张表。</p>
+</blockquote>
+<p>Class文件结构如下标所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>u4</strong></td>
+<td style="text-align:center"><strong>magic</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>minor_version</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>major_version</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>constant_pool_count</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>cp_info</strong></td>
+<td style="text-align:center"><strong>constant_pool</strong></td>
+<td style="text-align:center"><strong>constant_pool_count - 1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>access_flags</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>this_class</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>super_class</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>interfaces_count</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>interfaces</strong></td>
+<td style="text-align:center"><strong>interfaces_count</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>fields_count</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>field_info</strong></td>
+<td style="text-align:center"><strong>fields</strong></td>
+<td style="text-align:center"><strong>fields_count</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>methods_count</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>method_info</strong></td>
+<td style="text-align:center"><strong>methods</strong></td>
+<td style="text-align:center"><strong>methods_count</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>u2</strong></td>
+<td style="text-align:center"><strong>attributes_count</strong></td>
+<td style="text-align:center"><strong>1</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>attribute_info</strong></td>
+<td style="text-align:center"><strong>attributes</strong></td>
+<td style="text-align:center"><strong>attributes_count</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Class文件没有任何分隔符，严格按照上面结构表中的顺序排列。无论是顺序还是数量，甚至于数据存储的字节序这样的细节，都是被严格限定的，哪个字节代表什么含义，长度是多少，先后顺序如何，都不允许改变。下面将对上表中的各个数据项的实际含义进行讲解。</p>
+<h3 id="1魔数magic"><strong>1、魔数：magic</strong></h3>
+<p>每个Class文件的头4个字节称为<strong>魔数（Magic Number）</strong>，它的唯一作用是<strong>确定这个文件是否为一个能被虚拟机接受的Class文件</strong>，即判断这个文件是否符合Class文件规范。使用魔数而不是扩展名来进行识别主要是基于安全方面的考虑，因为文件扩展名可以随意地改动，而魔数值可以唯一地确定文件的类型。</p>
+<h3 id="2文件的版本minor_version和major_version">2、文件的版本：minor_version和major_version</h3>
+<p>紧接着魔数的4个字节存储的是Class文件的版本号，第5和第6个字节是<strong>次版本号(Minor Version)</strong>，第7和第8个字节是<strong>主版本号(Major Version)</strong>。</p>
+<p>Class文件的主、次版本号是由JDK的版本决定的，JDK1.0 ~ JDK1.1使用了45.0 ~ 45.3的版本号（45是主版本号，”.“之和的3是次版本号），从JDK1.1开始，每个大版本的JDK主版本号加1。</p>
+<p>高版本的JDK能向下兼容以前版本的Class文件，但不能运行以后版本的Class文件，即使文件格式并未发生任何变化，虚拟机也必须拒绝执行超过其版本号的Class文件。</p>
+<h3 id="3常量池constant_pool_count和constant_pool">3、常量池：constant_pool_count和constant_pool</h3>
+<p>紧接着主次版本号之后的是常量次入口，常量池可以理解为Class文件之中的资源仓库，它是Class文件结构中与其他项目关联最多的数据类型，也是占用Class文件空间最大的数据项目之一，同时它还是Class文件中第一个出现的表类型数据项目。</p>
+<p><strong>constant_pool_count代表Class文件常量池容量计数值</strong>。由于常量池中常量的数量是不固定的，所以在常量池的入口需要放置一项u2类型的数据代表常量池容量计数值。</p>
+<p>常量池的计数从1开始，因此常量池的容量是constant_pool_count -  1。第0项常量空出来是有特殊考虑的，这样做的目的在于满足后面某些指向常量池的索引值的数据在特定情况下需要表达”不引用任何一个常量池项目“的含义，这种情况就可以把索引值置为0来表示。</p>
+<p>常量池中主要存放两大类常量：<strong>字面量（Literal）<strong>和</strong>符号引用（Symbolic References）</strong>。</p>
+<blockquote>
+<p>1、字面量：比较接近Java语言中的常量的概念，如：文本字符串、声明为final的常量值等；</p>
+<p>2、符号引用：属于编译原理方面的概念，包括三类常量：类和接口的全限定名、字段的名称和描述符、方法的名和描述符。</p>
+</blockquote>
+<p>常量池中每一项常量都是一个表，JDK1.7中有14种结构各不相同的表结构数据。这14种表都有一个共同的特点，就是表开始的第一位是一个u1类型的标志位(tag)，代表这个常量属于哪种常量类型。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<blockquote>
+<p>需要注意一点：</p>
+<ul>
+<li>length：</li>
+</ul>
+<p>1、定义：UTF-8编码的字符串长度是多少；</p>
+<p>2、65535限制：Class文件中方法、字段等都需要引用CONSTANT_Utf-8_info型常量来描述名称。所以CONSTANT_Utf-8_info型常量的最大长度也就是Java中方法、字段名的最大长度。而这里的最大长度就是length的最大值，即u2类型能表达的最大值65535(2^32)。所以Java程序中如果定义了超过64KB英文字符的变量或方法名，将会无法编译。</p>
+</blockquote>
+<p>使用：<strong>javap - verbose Class文件名</strong>，输出Class文件的字节码内容。如下所示：</p>
+<p>源文件：TestClass.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestClass</span><span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">m</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">inc</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">m</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出的字节码文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nl">C:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="n">pc941</span><span class="err">\</span><span class="n">Desktop</span><span class="o">&gt;</span><span class="n">javap</span> <span class="o">-</span><span class="n">verbose</span> <span class="n">TestClass</span>
+<span class="n">Classfile</span> <span class="o">/</span><span class="n">C</span><span class="o">:/</span><span class="n">Users</span><span class="o">/</span><span class="n">pc941</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">TestClass</span><span class="o">.</span><span class="na">class</span>
+  <span class="n">Last</span> <span class="n">modified</span> <span class="n">2018</span><span class="o">-</span><span class="n">11</span><span class="o">-</span><span class="n">18</span><span class="o">;</span> <span class="n">size</span> <span class="n">275</span> <span class="n">bytes</span>
+  <span class="n">MD5</span> <span class="n">checksum</span> <span class="n">f0aa61ed3167d2e74002b04941d5d7e2</span>
+  <span class="n">Compiled</span> <span class="n">from</span> <span class="s">&#34;TestClass.java&#34;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestClass</span>
+  <span class="n">SourceFile</span><span class="o">:</span> <span class="s">&#34;TestClass.java&#34;</span>
+  <span class="n">minor</span> <span class="n">version</span><span class="o">:</span> <span class="n">0</span>
+  <span class="n">major</span> <span class="n">version</span><span class="o">:</span> <span class="n">51</span>
+  <span class="n">flags</span><span class="o">:</span> <span class="n">ACC_PUBLIC</span><span class="o">,</span> <span class="n">ACC_SUPER</span>
+<span class="n">Constant</span> <span class="n">pool</span><span class="o">:</span>
+   <span class="err">#</span><span class="n">1</span> <span class="o">=</span> <span class="n">Methodref</span>          <span class="err">#</span><span class="n">4</span><span class="o">.</span><span class="err">#</span><span class="n">15</span>         <span class="c1">//  java/lang/Object.&#34;&lt;init&gt;&#34;:()V
+</span><span class="c1"></span>   <span class="err">#</span><span class="n">2</span> <span class="o">=</span> <span class="n">Fieldref</span>           <span class="err">#</span><span class="n">3</span><span class="o">.</span><span class="err">#</span><span class="n">16</span>         <span class="c1">//  TestClass.m:I
+</span><span class="c1"></span>   <span class="err">#</span><span class="n">3</span> <span class="o">=</span> <span class="n">Class</span>              <span class="err">#</span><span class="n">17</span>            <span class="c1">//  TestClass
+</span><span class="c1"></span>   <span class="err">#</span><span class="n">4</span> <span class="o">=</span> <span class="n">Class</span>              <span class="err">#</span><span class="n">18</span>            <span class="c1">//  java/lang/Object
+</span><span class="c1"></span>   <span class="err">#</span><span class="n">5</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="n">m</span>
+   <span class="err">#</span><span class="n">6</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="n">I</span>
+   <span class="err">#</span><span class="n">7</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span>
+   <span class="err">#</span><span class="n">8</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="o">()</span><span class="n">V</span>
+   <span class="err">#</span><span class="n">9</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="n">Code</span>
+  <span class="err">#</span><span class="n">10</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="n">LineNumberTable</span>
+  <span class="err">#</span><span class="n">11</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="n">inc</span>
+  <span class="err">#</span><span class="n">12</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="o">()</span><span class="n">I</span>
+  <span class="err">#</span><span class="n">13</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="n">SourceFile</span>
+  <span class="err">#</span><span class="n">14</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="n">TestClass</span><span class="o">.</span><span class="na">java</span>
+  <span class="err">#</span><span class="n">15</span> <span class="o">=</span> <span class="n">NameAndType</span>        <span class="err">#</span><span class="n">7</span><span class="o">:</span><span class="err">#</span><span class="n">8</span>          <span class="c1">//  &#34;&lt;init&gt;&#34;:()V
+</span><span class="c1"></span>  <span class="err">#</span><span class="n">16</span> <span class="o">=</span> <span class="n">NameAndType</span>        <span class="err">#</span><span class="n">5</span><span class="o">:</span><span class="err">#</span><span class="n">6</span>          <span class="c1">//  m:I
+</span><span class="c1"></span>  <span class="err">#</span><span class="n">17</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="n">TestClass</span>
+  <span class="err">#</span><span class="n">18</span> <span class="o">=</span> <span class="n">Utf8</span>               <span class="n">java</span><span class="o">/</span><span class="n">lang</span><span class="o">/</span><span class="n">Object</span>
+<span class="o">{</span>
+  <span class="kd">public</span> <span class="nf">TestClass</span><span class="o">();</span>
+    <span class="n">flags</span><span class="o">:</span> <span class="n">ACC_PUBLIC</span>
+    <span class="n">Code</span><span class="o">:</span>
+      <span class="n">stack</span><span class="o">=</span><span class="n">1</span><span class="o">,</span> <span class="n">locals</span><span class="o">=</span><span class="n">1</span><span class="o">,</span> <span class="n">args_size</span><span class="o">=</span><span class="n">1</span>
+         <span class="n">0</span><span class="o">:</span> <span class="n">aload_0</span>
+         <span class="n">1</span><span class="o">:</span> <span class="n">invokespecial</span> <span class="err">#</span><span class="n">1</span>                  <span class="c1">// Method java/lang/Object.&#34;&lt;init&gt;&#34;:()V
+</span><span class="c1"></span>         <span class="n">4</span><span class="o">:</span> <span class="k">return</span>
+      <span class="n">LineNumberTable</span><span class="o">:</span>
+        <span class="n">line</span> <span class="n">1</span><span class="o">:</span> <span class="n">0</span>
+ 
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">inc</span><span class="o">();</span>
+    <span class="n">flags</span><span class="o">:</span> <span class="n">ACC_PUBLIC</span>
+    <span class="n">Code</span><span class="o">:</span>
+      <span class="n">stack</span><span class="o">=</span><span class="n">2</span><span class="o">,</span> <span class="n">locals</span><span class="o">=</span><span class="n">1</span><span class="o">,</span> <span class="n">args_size</span><span class="o">=</span><span class="n">1</span>
+         <span class="n">0</span><span class="o">:</span> <span class="n">aload_0</span>
+         <span class="n">1</span><span class="o">:</span> <span class="n">getfield</span>      <span class="err">#</span><span class="n">2</span>                  <span class="c1">// Field m:I
+</span><span class="c1"></span>         <span class="n">4</span><span class="o">:</span> <span class="n">iconst_1</span>
+         <span class="n">5</span><span class="o">:</span> <span class="n">iadd</span>
+         <span class="n">6</span><span class="o">:</span> <span class="n">ireturn</span>
+      <span class="n">LineNumberTable</span><span class="o">:</span>
+        <span class="n">line</span> <span class="n">5</span><span class="o">:</span> <span class="n">0</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4访问标志access_flags">4、访问标志：access_flags</h3>
+<p>在常量池结束之后，紧接着的两个字节代表<strong>访问标志（access_flags）</strong>，这个标志用于识别一些类或者接口层次的访问信息。包括：这个Class是类还是接口、是否定义了public类型、是否定义为abstract类型、如果是类，是否被声明为了final等等。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<h3 id="5类索引父类索引与接口索引集合this_classsuper_class和interfaces">5、类索引、父类索引与接口索引集合：this_class、super_class和interfaces</h3>
+<ul>
+<li>类索引this_class：u2数据类型，用于确定类的全限定类名；</li>
+<li>父类索引super_class：u2数据类型，用于确定父类的全限定类名；</li>
+<li>接口索引集合interfaces：用于确定接口的全限定名，由于java中可以实现多个接口，因此使用interface_count来存储接口数量。</li>
+</ul>
+<p>java.lang.Object类的索引为0（没有父类），其他所有的Java类的父索引都不为0，因为所有的Java类都继承了Object类。实际上类的索引就是描述了Class的extends和implements的关系。</p>
+<h3 id="6字段表集合field_infofields_count">6、字段表集合：field_info、fields_count</h3>
+<p>**字段表（field_info）**用于描述接口或者类中声明的变量。字段（field）包括类级变量和实例级变量，但是不包括在方法内部声明的局部变量。</p>
+<ul>
+<li>描述的信息包括：</li>
+</ul>
+<blockquote>
+<ol>
+<li>作用域：public、private、protected</li>
+<li>实例还是类变量：static</li>
+<li>可变性：final</li>
+<li>并发可见性：volatile</li>
+<li>是否可序列化：transient</li>
+<li>字段数据类型：基本类型、对象、数组等</li>
+<li>字段名称</li>
+</ol>
+</blockquote>
+<p><strong>fields_count</strong>字段数目：表示Class文件的类和实例变量总数。</p>
+<ul>
+<li>字段表集合原则</li>
+</ul>
+<blockquote>
+<ol>
+<li>不会列出超类、父类或父类接口继承而来的字段；</li>
+<li>有可能列出原本Java代码中不存在的字段（内部类会自动添加外部类实例的字段，才能引用到外部类）；</li>
+<li>Java语言中的字段是无法重载的。</li>
+</ol>
+</blockquote>
+<h3 id="7方法表集合methodsmethods_count">7、方法表集合：methods、methods_count</h3>
+<p>和字段表集合差不多，方法表集合用来描述Class文件中的方法，但是访问标志和属性表集合和字段表集合有所区别。</p>
+<ul>
+<li><strong>访问标志</strong></li>
+</ul>
+<ol>
+<li>volatile、transient关键字不可以修饰方法，方法表中少了这两种标志；</li>
+<li>synchronized、native、strictfp和abstract可以修饰方法，故方法表增加了这些对应的标志。</li>
+</ol>
+<ul>
+<li><strong>Code属性</strong></li>
+</ul>
+<ol>
+<li>方法体中的代码都放在了”Code“属性里了。</li>
+</ol>
+<ul>
+<li><strong>方法集合原则</strong></li>
+</ul>
+<ol>
+<li>如果父类方法没有在子类中重写（Override），则方法表集合中就不会出现来自父类的方法信息；</li>
+<li>编译器有可能自动添加一些方法，如类构造器<clinit>方法和实例构造器<init>。</li>
+<li>重载（Override）一个方法，需要与原方法具有相同的方法名称但是不同的特征签名，特征签名就是一个方法中各参数在常量池中的字段符号引用集合。</li>
+</ol>
+<h3 id="8属性表集合attributesattributes_count">8、属性表集合：attributes、attributes_count</h3>
+<p>attribute_info属性表是Class文件格式中最具有扩展性的一种数据项目，用于存放field_info字段表、method_info方法表以及Class文件的专有信息，属性表不要求各个属性有严格的顺序，只要求不与已有的属性名字重复即可。属性表中存放的常用信息如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>属性名称</strong></th>
+<th style="text-align:center"><strong>使用位置</strong></th>
+<th style="text-align:center"><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Code</strong></td>
+<td style="text-align:center"><strong>方法表</strong></td>
+<td style="text-align:center"><strong>Java代码编译后的字节码指令存储在Code属性里</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Exception</strong></td>
+<td style="text-align:center"><strong>方法表</strong></td>
+<td style="text-align:center"><strong>方法描述时在throws后抛出的异常</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>LineNumberTable</strong></td>
+<td style="text-align:center"><strong>Code属性</strong></td>
+<td style="text-align:center"><strong>Java源码行号和字节码指令行号之间的对应关系</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>LocalVariableTable</strong></td>
+<td style="text-align:center"><strong>Code属性</strong></td>
+<td style="text-align:center"><strong>用于描述栈帧中局部变量表中的变量与Java源码中定义的变量之间的关系</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>SourceFile</strong></td>
+<td style="text-align:center"><strong>类文件</strong></td>
+<td style="text-align:center"><strong>记录Class文件的源码文件名称</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>ConstantValue</strong></td>
+<td style="text-align:center"><strong>字段表</strong></td>
+<td style="text-align:center"><strong>通知虚拟机自动为静态变量赋值，被static关键字修饰的类变量才可以使用</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>InnerClasses</strong></td>
+<td style="text-align:center"><strong>类文件</strong></td>
+<td style="text-align:center"><strong>记录内部类与宿主类之间的关系</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Deprecated</strong></td>
+<td style="text-align:center"><strong>类、方法、字段表</strong></td>
+<td style="text-align:center"><strong>被声明为Deprecated的类、方法或者字段表示被程序作者定为不再推荐使用</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Synthetic</strong></td>
+<td style="text-align:center"><strong>字段、方法</strong></td>
+<td style="text-align:center"><strong>代表此字段或者方法不是由Java源码直接产生的，而是由编译器自行添加的</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>StackMapTable</strong></td>
+<td style="text-align:center"><strong>Code属性</strong></td>
+<td style="text-align:center"><strong>在虚拟机类加载字节码验证被新类型检查验证器使用</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Signature</strong></td>
+<td style="text-align:center"><strong>类、接口、初始化方法或者成员的泛型签名</strong></td>
+<td style="text-align:center"><strong>Signature会为它们记录泛型签名信息</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>BootstrapMethods</strong></td>
+<td style="text-align:center"><strong>类文件</strong></td>
+<td style="text-align:center"><strong>用于保存invokedynamic指令引用的引导方法限定符</strong></td>
+</tr>
+</tbody>
+</table>
+<p>下面对上表中的Code属性进行进一步讲解：</p>
+<p><strong>Code（存储Java编译后的字节码文件）</strong></p>
+<ul>
+<li>max_stack：操作数栈深度的最大值，JVM运行时根据这个值来分配栈帧中的操作栈深度；</li>
+<li>max_locals：代表了局部变量表所需要的内存空间。</li>
+</ul>
+<p>（1）Slot：虚拟机为局部变量分配内存的最小单位；</p>
+<p>byte、char、float、int、short、boolean、returnAddress：长度少于32位，占1个slot；</p>
+<p>double、long：64位。占2个slot。</p>
+<p>（2）当代码超出一个局部变量的作用域时，这个局部变量所占用的slot可以被其他的局部变量所使用。</p>
+<ul>
+<li>code_length：字节码长度</li>
+<li>code：存储字节码指令</li>
+<li>65535限制：虚拟机规定了一个方法不允许超过65535条字节码，否则编译不通过</li>
+<li>执行：执行过程中的数据交换、方法调用等操作都基于栈的</li>
+<li>this关键字：在实例方法中通常可以有this关键字来引用当前对象的变量，这是因为Java编译时在局部变量表中自动增加了这个（this）局部变量。</li>
+</ul>
+<hr>
+<h2 id="53-字节码指令简介">5.3 字节码指令简介</h2>
+<p><strong>1、字节码的组成</strong></p>
+<ul>
+<li>操作码(Opcode)：i (助记符)，代表Int类型数据操作&hellip;&hellip;.等等；</li>
+<li>操作数(Operands)：永远都是一个数组类型的对象。</li>
+</ul>
+<p>Java虚拟机采用面向操作数栈而不是寄存器的架构，字节码指令集是一种指令集架构。放弃了操作数对齐，省略了填充的符号和间隔。</p>
+<p><strong>2、加载和存储指令</strong></p>
+<p>将数据在栈帧中的局部变量和操作数栈之间来回传输。</p>
+<ul>
+<li>将一个局部变量加载到操作栈；</li>
+<li>将一个数值从操作数栈存储到局部变量表；</li>
+<li>将一个常量加载到操作数栈；</li>
+<li>扩充局部变量表的访问索引的指令；</li>
+</ul>
+<p><strong>3、运算指令</strong></p>
+<ul>
+<li>将两个操作数栈上的值进行某种特定运算，并把结果重新存入操作数栈；</li>
+<li>Java虚拟机没有直接支持byte、short、char、boolean类型，都转为int类型进行运算，使用int的指令代替。</li>
+</ul>
+<p><strong>4、类型转换指令</strong></p>
+<ul>
+<li><strong>宽化转换</strong>  小范围 &ndash;&gt; 大范围</li>
+</ul>
+<blockquote>
+<ul>
+<li>int到long、float、double</li>
+<li>long到float、double</li>
+<li>float到double</li>
+</ul>
+</blockquote>
+<ul>
+<li><strong>窄化转换</strong>  大范围 &ndash;&gt; 小范围</li>
+</ul>
+<blockquote>
+<ul>
+<li>必须显示的声明转换；</li>
+<li>有益处或者精度丢失的情况，但是不会抛出异常。</li>
+</ul>
+</blockquote>
+<p><strong>5、同步指令</strong></p>
+<ul>
+<li>Java虚拟机支持方法级同步和方法内部一段指令序列的同步，这两种同步结构都使用**管程(Monitor)**来支持；</li>
+<li>如果设置了synchronized同步方法，那么执行线程就要求先成功持有“管程”，然后才能执行方法，最后方法执行完成后，再释放“管程”；</li>
+<li>Java虚拟机通过monitorenter和monitorexit两个指令配对使用，另外编译器会自动增加一个异常处理器。当出现异常时，这个异常处理器能够捕获到所有的异常，并且释放“管程”，mointorexit指令响应。因此，monitorenter和monitorexit这两个指令总是成对出现。</li>
+</ul>
+<hr>
+<h2 id="54-总结">5.4 总结</h2>
+<p>之所以说一些“非Java”语言也是可以在JVM上运行，这是因为JVM只认识Class文件，所以如果某种语言最终编译出来的文件是Class文件，那么对于JVM来说就是没有区别的，但前提是按照Class文件的结构来，不然也无法正常执行。Class定义了许多特定的基本数据类型和表结构，通过魔数让JVM认识该文件，版本号保证可以在要求的JDK版本上运行，在常量池中定义好常量，访问标志位确定访问权限，索引集合方便与外界Class保持联系，字段表保存我们定义好的变量，方法表存储方法的信息，属性表存储了上诉各种表中的属性。其中记住Slot是局部变量分配内存的最小单位，当程序超过作用域的时候，Slot可以被其他替换使用。</p>
+<p>到这里，代码还是静态的存储格式，程序要运行起来，还需要操作指令，也是右字节码存储，包括操作码和操作数。操作指令有加载和存储指令、运算指令、类型转换指令已经同步指令等等。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/jvm-class-structure-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/jvm-class-structure-note/" data-title="Jvm 第5篇：类文件结构笔记" data-hashtags="Java,Jvm,Class,ClassStructure"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/jvm-class-structure-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/jvm-class-structure-note/" data-title="Jvm 第5篇：类文件结构笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/jvm-class-structure-note/" data-title="Jvm 第5篇：类文件结构笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/jvm/">Jvm</a>,&nbsp;<a href="/tags/class/">Class</a>,&nbsp;<a href="/tags/classstructure/">ClassStructure</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/idea-no-compiler-automake-note/" class="prev" rel="prev" title="解决IDEA2021版compiler.automake.allow.when.app.running不存在的问题"><i class="fas fa-angle-left fa-fw"></i>解决IDEA2021版compiler.automake.allow.when.app.running不存在的问题</a>
+            <a href="/java-polymorphism-prototype-note/" class="next" rel="next" title="Java多态实现原理笔记">Java多态实现原理笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

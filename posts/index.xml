@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 06 Jun 2022 22:28:33 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 08 Jun 2022 19:21:36 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>面经</title>
     <link>https://kkkpjskey.github.io/face-exp-note/</link>
     <pubDate>Sat, 26 Feb 2022 10:06:06 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/face-exp-note/</guid>
@@ -25,34 +25,34 @@
     <pubDate>Tue, 08 Jun 2021 14:37:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-audition-note/</guid>
     <description><![CDATA[1、面向对象 什么是面向对象? 对比面向过程，是两种不同的处理问题的角度 面向过程更注重事情的每一个步骤及顺序，面向对象更注重事情有哪些参与者(对]]></description>
 </item><item>
-    <title>Jvm结构笔记</title>
-    <link>https://kkkpjskey.github.io/jvm-memory-structure-note/</link>
-    <pubDate>Mon, 06 Jun 2022 22:28:33 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/jvm-memory-structure-note/</guid>
-    <description><![CDATA[对象实例数据和对象类型数据 对象实例数据（堆）:对象中各个实例字段的数据 对象类型数据（方法区）：对象的类型、父类、实现的接口、方法等 静态区（也]]></description>
+    <title>Java多态实现原理笔记</title>
+    <link>https://kkkpjskey.github.io/java-polymorphism-prototype-note/</link>
+    <pubDate>Wed, 08 Jun 2022 19:21:36 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-polymorphism-prototype-note/</guid>
+    <description><![CDATA[一.什么是多态?对于多态的理解? 多态Polymorphism即多种形态，是面向对象编程语言的重要特性，允许具有继承关系的不同类的对象去调用同]]></description>
 </item><item>
-    <title>浅析java中的TLAB</title>
-    <link>https://kkkpjskey.github.io/jvm-tlab-note/</link>
-    <pubDate>Mon, 06 Jun 2022 22:20:19 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/jvm-tlab-note/</guid>
-    <description><![CDATA[前言 好久，好久&hellip;.没有更博客了。这一次利用闲暇时间，来扯一下关于JVM中的TLAB。 什么是TLAB？它是干什么的？咋们先抛开这]]></description>
+    <title>Jvm 第5篇：类文件结构笔记</title>
+    <link>https://kkkpjskey.github.io/jvm-class-structure-note/</link>
+    <pubDate>Wed, 08 Jun 2022 10:16:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/jvm-class-structure-note/</guid>
+    <description><![CDATA[开篇说明：本文的重点就是类文件结构，只需要清楚Class文件格式中的各名称的实际意义就行，不用对具体名称下的细节进行深究，否则需要花大量的时]]></description>
 </item><item>
-    <title>从头到尾彻底理解KMP</title>
-    <link>https://kkkpjskey.github.io/algorithm-kmp-note/</link>
-    <pubDate>Mon, 06 Jun 2022 21:54:21 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/algorithm-kmp-note/</guid>
-    <description><![CDATA[1. 引言 本KMP原文最初写于2年多前的2011年12月，因当时初次接触KMP，思路混乱导致写也写得混乱。所以一直想找机会重新写下KMP，但苦于]]></description>
+    <title>解决IDEA2021版compiler.automake.allow.when.app.running不存在的问题</title>
+    <link>https://kkkpjskey.github.io/idea-no-compiler-automake-note/</link>
+    <pubDate>Wed, 08 Jun 2022 09:45:09 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-no-compiler-automake-note/</guid>
+    <description><![CDATA[引言 很多文章介绍IntelliJ IDEA开启热部署功能都会写到在IntelliJ IDEA中的注册表中开启compiler.automake.]]></description>
 </item><item>
-    <title>如何使用Gooreplacer解决reCAPTCHA不显示问题？ </title>
-    <link>https://kkkpjskey.github.io/gooreplacer-recaptcha-note/</link>
-    <pubDate>Mon, 06 Jun 2022 20:00:08 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/gooreplacer-recaptcha-note/</guid>
-    <description><![CDATA[〇引言 我在购买Minecraft正版之前曾遇到一个问题：无法注册mojang帐号。其实许多国外网站都有这个问题，但Minecraft官网提示]]></description>
+    <title>Java ASM 字节码增强框架详解的笔记</title>
+    <link>https://kkkpjskey.github.io/java-asm-note/</link>
+    <pubDate>Wed, 08 Jun 2022 09:25:56 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-asm-note/</guid>
+    <description><![CDATA[1 概述 ASM是Java中比较流行的用来读写字节码的类库，用来基于字节码层面对代码进行分析和转换。 ASM是一个Java字节码操纵框架,它能被用]]></description>
 </item><item>
-    <title>海外Apple ID出现“这个人不在激活状态”解决方法！2022年3月亲测有效。</title>
-    <link>https://kkkpjskey.github.io/apple-id-not-active-error/</link>
-    <pubDate>Mon, 06 Jun 2022 18:57:42 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/apple-id-not-active-error/</guid>
-    <description><![CDATA[背景 近段时间，很多人问我说：「我的美国Apple ID出现了“不在激活状态”，该怎么办？」 原因 非大陆Apple ID出现“个人不在激活状态”是很]]></description>
+    <title>VM安装Hackintosh笔记</title>
+    <link>https://kkkpjskey.github.io/hackintosh-vm-16-note/</link>
+    <pubDate>Tue, 07 Jun 2022 12:18:35 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/hackintosh-vm-16-note/</guid>
+    <description><![CDATA[VMware16安装MacOS Big Sur系统 前提：已安装VMware® Workstation 16 Pro 参考：https://hexingxing.cn/windows-]]></description>
 </item><item>
-    <title>用Adb揪出安卓APP弹窗广告的原形</title>
-    <link>https://kkkpjskey.github.io/android-adb-adv-locate-note/</link>
-    <pubDate>Mon, 06 Jun 2022 18:43:26 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/android-adb-adv-locate-note/</guid>
-    <description><![CDATA[背景 相信不少安卓用户中过影子弹窗广告的困扰，这种推广APP本体在后台运行，而且可以在其他APP上弹出覆盖广告，一不小心就会误操作，点击广告或]]></description>
+    <title>Java线程锁笔记</title>
+    <link>https://kkkpjskey.github.io/java-thread-locks-note/</link>
+    <pubDate>Tue, 07 Jun 2022 08:35:20 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-thread-locks-note/</guid>
+    <description><![CDATA[Java中的偏向锁，轻量级锁， 重量级锁解析 参考文章 Java并发编程：Synchronized底层优化（偏向锁、轻量级锁） 聊聊并发（二）Jav]]></description>
 </item></channel>
 </rss>

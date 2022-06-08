@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>VM安装Hackintosh笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录VM安装Hackintosh笔记"><meta property="og:title" content="VM安装Hackintosh笔记" />
+<meta property="og:description" content="记录VM安装Hackintosh笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/hackintosh-vm-16-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/hackintosh-vm-16-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-07T12:18:35+08:00" />
+<meta property="article:modified_time" content="2022-06-07T12:18:35+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/hackintosh-vm-16-note/featured-image.jpg"/>
+<meta name="twitter:title" content="VM安装Hackintosh笔记"/>
+<meta name="twitter:description" content="记录VM安装Hackintosh笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/hackintosh-vm-16-note/" /><link rel="prev" href="https://kkkpjskey.github.io/java-thread-locks-note/" /><link rel="next" href="https://kkkpjskey.github.io/java-asm-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "VM安装Hackintosh笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/hackintosh-vm-16-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/hackintosh-vm-16-note\/featured-image.jpg",
+                            "width":  1440 ,
+                            "height":  432 
+                        }],"genre": "posts","keywords": "Macintosh, Hackintosh, VMware, VMware16, VirtualMachine","wordcount":  6982 ,
+        "url": "https:\/\/kkkpjskey.github.io\/hackintosh-vm-16-note\/","datePublished": "2022-06-07T12:18:35+08:00","dateModified": "2022-06-07T12:18:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录VM安装Hackintosh笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/hackintosh-vm-16-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/hackintosh-vm-16-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">VM安装Hackintosh笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-07">2022-06-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6982 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/hackintosh-vm-16-note/" class="leancloud_visitors" data-flag-title="VM安装Hackintosh笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/hackintosh-vm-16-note/featured-image.jpg"
+        data-srcset="/hackintosh-vm-16-note/featured-image.jpg, /hackintosh-vm-16-note/featured-image.jpg 1.5x, /hackintosh-vm-16-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/hackintosh-vm-16-note/featured-image.jpg"
+        title="记录VM安装Hackintosh笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#vmware16安装macos-big-sur系统">VMware16安装MacOS Big Sur系统</a>
+      <ul>
+        <li><a href="#macos-版本都有哪些">MacOS 版本都有哪些？</a></li>
+        <li><a href="#1-原料准备">1. 原料准备</a>
+          <ul>
+            <li><a href="#vmware-pro">VMware Pro</a></li>
+            <li><a href="#unlocker">unlocker</a></li>
+            <li><a href="#macos镜像">MacOS镜像</a>
+              <ul>
+                <li><a href="#方式2使用工具mac-downloader-进行下载app包放置到应用程序">方式2：使用工具<code>Mac Downloader</code> 进行下载app包，放置到应用程序</a></li>
+                <li><a href="#方式3下载其他人做好的dmg镜像然后把app安装包拷到应用程序">方式3：下载其他人做好的dmg镜像，然后把app安装包拷到应用程序。</a></li>
+              </ul>
+            </li>
+            <li><a href="#beamoff">beamoff</a></li>
+            <li><a href="#apple-id">Apple ID</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-安装">2. 安装</a>
+          <ul>
+            <li><a href="#第一步安装vmware-pro">第一步：安装VMware Pro</a></li>
+            <li><a href="#第二步安装unlocker">第二步：安装unlocker</a></li>
+            <li><a href="#第三步安装镜像创建虚拟机">第三步：安装镜像创建虚拟机</a>
+              <ul>
+                <li><a href="#选择处理器数量">选择处理器数量</a></li>
+                <li><a href="#设置虚拟机内存">设置虚拟机内存</a></li>
+                <li><a href="#选择网络类型">选择网络类型</a></li>
+                <li><a href="#选择io控制器类型">选择I/O控制器类型</a></li>
+                <li><a href="#选择磁盘类型">选择磁盘类型</a></li>
+                <li><a href="#指定磁盘容量">指定磁盘容量</a></li>
+                <li><a href="#1101需要配置虚拟机">11.0.1需要配置虚拟机</a></li>
+              </ul>
+            </li>
+            <li><a href="#第四步初始化流程">第四步：初始化流程</a>
+              <ul>
+                <li><a href="#选择磁盘工具">选择磁盘工具</a></li>
+                <li><a href="#磁盘初始化">磁盘初始化</a></li>
+                <li><a href="#开始安装">开始安装</a></li>
+              </ul>
+            </li>
+            <li><a href="#第五步配置macos">第五步：配置macOS</a>
+              <ul>
+                <li><a href="#选择国家和地区">选择国家和地区</a></li>
+                <li><a href="#选择网络连接方式">选择网络连接方式</a></li>
+                <li><a href="#迁移助理">迁移助理</a></li>
+                <li><a href="#设置apple-id">设置apple ID</a></li>
+                <li><a href="#创建账户">创建账户</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#3-优化">3. 优化</a>
+          <ul>
+            <li><a href="#0安装vmware-tools">0.安装VMware tools</a></li>
+            <li><a href="#1增加虚拟机的内存">1.增加虚拟机的内存</a></li>
+            <li><a href="#2减少透明度">2.减少透明度</a></li>
+            <li><a href="#3更改动画效果">3.更改动画效果</a></li>
+            <li><a href="#4安装beamoff-划重点">4.安装beamoff <em>划重点</em></a>
+              <ul>
+                <li><a href="#安装方法">安装方法</a></li>
+                <li><a href="#设置为开机启动">设置为开机启动</a></li>
+              </ul>
+            </li>
+            <li><a href="#5禁用通知中心中无用的组件和扩展">5.禁用通知中心中无用的组件和扩展</a></li>
+            <li><a href="#6-macos中dock栏的设置和使用">6. MacOS中Dock栏的设置和使用</a></li>
+          </ul>
+        </li>
+        <li><a href="#4参考教程">4.参考教程</a></li>
+      </ul>
+    </li>
+    <li><a href="#macos无法连接appstore无法登录appleid问题">MacOS无法连接appstore，无法登录AppleID问题</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-修改虚拟机httpssocsdnnetsosearchq虚拟机spm1001210130017020硬件信息">1 修改<a href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E6%9C%BA&amp;spm=1001.2101.3001.7020">虚拟机</a>硬件信息</a></li>
+            <li><a href="#2-启动登录账户">2 启动登录账户</a></li>
+            <li><a href="#3-联系售后激活apple-id账户权限">3 联系售后，激活Apple ID账户权限</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#macos安装任何来源的应用">MacOS安装任何来源的应用</a></li>
+    <li><a href="#无法打开因为apple无法检查其是否包含恶意软件">无法打开因为apple无法检查其是否包含恶意软件</a></li>
+    <li><a href="#vm15下mac-os1014分辨率设置亲测-可用">VM15下MAC os10.14分辨率设置，亲测 可用</a>
+      <ul>
+        <li><a href="#方法一">方法一</a>
+          <ul>
+            <li><a href="#步骤一">步骤一</a></li>
+            <li><a href="#步骤二">步骤二</a>
+              <ul>
+                <li><a href="#进recovery模式">进recovery模式</a></li>
+                <li><a href="#实用工具终端---输入-csrutil-disable-命令如果出现successful-则表示成功">实用工具–&gt;终端 &ndash;&gt;输入 csrutil disable 命令，如果出现successful 则表示成功</a></li>
+                <li><a href="#终端输入-reboot-重启苹果">终端输入 reboot 重启苹果</a></li>
+              </ul>
+            </li>
+            <li><a href="#步骤三">步骤三</a>
+              <ul>
+                <li><a href="#别急还没完右键虚拟机设置显示器指定监视器设置为你电脑的分辨率若没有你电脑的分辨率请自己输入">别急还没完，右键虚拟机–&gt;设置–&gt;显示器–&gt;指定监视器–&gt;设置为你电脑的分辨率（若没有你电脑的分辨率，请自己输入）</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#方法二">方法二</a>
+          <ul>
+            <li><a href="#终端输入命令">终端输入命令</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#开发">开发</a>
+      <ul>
+        <li><a href="#安装xcode">安装Xcode</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="vmware16安装macos-big-sur系统">VMware16安装MacOS Big Sur系统</h2>
+<p>前提：已安装<a href="https://so.csdn.net/so/search?q=VMware&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">VMware</a>® Workstation 16 Pro
+参考：https://hexingxing.cn/windows-vmware-workstation-pro-16-install-macos-big-sur-11-5/</p>
+<h3 id="macos-版本都有哪些">MacOS 版本都有哪些？</h3>
+<table>
+<thead>
+<tr>
+<th>MacOS</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS Big Sur</td>
+<td>11.6</td>
+</tr>
+<tr>
+<td>macOS Catalina</td>
+<td>10.15.7</td>
+</tr>
+<tr>
+<td>macOS Mojave</td>
+<td>10.14.6</td>
+</tr>
+<tr>
+<td>macOS High Sierra</td>
+<td>10.13.6</td>
+</tr>
+<tr>
+<td>macOS Sierra</td>
+<td>10.12.6</td>
+</tr>
+<tr>
+<td>OS X El Capitan</td>
+<td>10.11.6</td>
+</tr>
+<tr>
+<td>OS X Yosemite</td>
+<td>10.10.5</td>
+</tr>
+<tr>
+<td>OS X Mavericks</td>
+<td>10.9.5</td>
+</tr>
+<tr>
+<td>OS X Mountain Lion</td>
+<td>10.8.5</td>
+</tr>
+<tr>
+<td>OS X Lion</td>
+<td>10.7.5</td>
+</tr>
+<tr>
+<td>Mac OS X Snow Leopard</td>
+<td>10.6.8</td>
+</tr>
+<tr>
+<td>Mac OS X Leopard</td>
+<td>10.5.8</td>
+</tr>
+<tr>
+<td>Mac OS X Tiger</td>
+<td>10.4.11</td>
+</tr>
+<tr>
+<td>Mac OS X Panther</td>
+<td>10.3.9</td>
+</tr>
+<tr>
+<td>Mac OS X Jaguar</td>
+<td>10.2.8</td>
+</tr>
+<tr>
+<td>Mac OS X Puma</td>
+<td>10.1.5</td>
+</tr>
+<tr>
+<td>Mac OS X Cheetah</td>
+<td>10.0.4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-原料准备">1. 原料准备</h3>
+<h4 id="vmware-pro">VMware Pro</h4>
+<p>实测VMware Pro16.0.0最高只有MacOS11.1, VMware Pro16.2.2有MacOS12和MacOS13, 需要配合unlocker使用</p>
+<p>VMware Pro的安装和NAT网络配置请自行百度</p>
+<p>实测在VMware Pro16.0.0上选择MacOS11.1可以按照12.2</p>
+<p>序列号：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ZF3R0-FHED2-M80TY-8QYGC-NPKYF
+YF390-0HF8P-M81RQ-2DXQE-M2UT6
+ZF71R-DMX85-08DQY-8YMNC-PPHV8
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="unlocker">unlocker</h4>
+<p>用于给VMware Pro添加MacOS的选项</p>
+<p><a href="https://github.com/paolo-projects/auto-unlocker/releases" target="_blank" rel="noopener noreferrer">unlocker下载地址</a></p>
+<h4 id="macos镜像">MacOS镜像</h4>
+<p>推荐MacOS11.3及以上, 因为xcode只能在这些版本上运行, 下载请选择iso镜像</p>
+<p><a href="https://sysin.org/" target="_blank" rel="noopener noreferrer">MacOS ISO镜像下载地址</a></p>
+<blockquote>
+<p><strong>制作cdr镜像（mac环境）</strong></p>
+<p>制作教程参考博客：</p>
+<p><strong>黑苹果 制作虚拟机CDR镜像（最详细的教程！）</strong></p>
+<p><strong>第一步：下载苹果镜像，并且移动到应用程序</strong></p>
+<p><strong>方式1：从苹果商店直接下载app格式的镜像，然后将app包放置到应用程序。</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./100.png"
+        data-srcset="./100.png, ./100.png 1.5x, ./100.png 2x"
+        data-sizes="auto"
+        alt="./100.png"
+        title="100" /></p>
+<h5 id="方式2使用工具mac-downloader-进行下载app包放置到应用程序">方式2：使用工具<code>Mac Downloader</code> 进行下载app包，放置到应用程序</h5>
+<p>工具使用方法以及下载地址详见我的另外一篇博客
+<a href="https://blog.csdn.net/qq_41855420/article/details/102749678" target="_blank" rel="noopener noreferrer">苹果系统下载工具Mac Downloader</a></p>
+<h5 id="方式3下载其他人做好的dmg镜像然后把app安装包拷到应用程序">方式3：下载其他人做好的dmg镜像，然后把app安装包拷到应用程序。</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./101.png"
+        data-srcset="./101.png, ./101.png 1.5x, ./101.png 2x"
+        data-sizes="auto"
+        alt="./101.png"
+        title="101" /></p>
+<p>双击打开，跳过验证即可</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./102.png"
+        data-srcset="./102.png, ./102.png 1.5x, ./102.png 2x"
+        data-sizes="auto"
+        alt="./102.png"
+        title="102" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./103.png"
+        data-srcset="./103.png, ./103.png 1.5x, ./103.png 2x"
+        data-sizes="auto"
+        alt="./103.png"
+        title="103" /></p>
+<p>双击桌面里的图标</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./104.png"
+        data-srcset="./104.png, ./104.png 1.5x, ./104.png 2x"
+        data-sizes="auto"
+        alt="./104.png"
+        title="104" /></p>
+<p><strong>注意：需要检测一下app镜像是否完整</strong></p>
+<p><strong><a href="https://blog.csdn.net/qq_41855420/article/details/102749678" target="_blank" rel="noopener noreferrer">苹果系统下载工具Mac Downloader</a> 博客末尾有介绍方法</strong></p>
+<p><strong>第二步：制作cdr镜像</strong></p>
+<p><strong>下面将以Catalina.cdr制作为例，其他镜像自行修改名称！</strong></p>
+<p>首先打开终端。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./105.png"
+        data-srcset="./105.png, ./105.png 1.5x, ./105.png 2x"
+        data-sizes="auto"
+        alt="./105.png"
+        title="105" /></p>
+<p><strong>①：创建一个大小比app镜像大约大500M的dmg镜像</strong></p>
+<p><strong>最好大于500MB，太小cdr镜像</strong></p>
+<p><strong>容易安装失败！！！</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hdiutil create -o /tmp/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina -size 8500m -layout SPUD -fs HFS+J
+
+<span class="c1"># 参数介绍：</span>
+<span class="c1"># /tmp 是镜像放置位置</span>
+Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina 表示镜像名字<span class="s2">&#34;Install macOS Catalina&#34;</span>，其中<span class="s2">&#34;\ &#34;</span>表示的空格
+-size 8300m 镜像大小8300MB，大约比app镜像大500MB
+-layout SPUD 表示dmg镜像是单分区模式
+-fs HFS+J 表示的是Mac OS Extended分区格式
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./106.png"
+        data-srcset="./106.png, ./106.png 1.5x, ./106.png 2x"
+        data-sizes="auto"
+        alt="./106.png"
+        title="106" /></p>
+<p>等一两分钟即可创建完毕</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./107.png"
+        data-srcset="./107.png, ./107.png 1.5x, ./107.png 2x"
+        data-sizes="auto"
+        alt="./107.png"
+        title="107" /></p>
+<p><strong>②：挂载刚刚创建的dmg镜像</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hdiutil attach /tmp/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina.dmg -noverify -mountpoint /Volumes/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina
+
+<span class="c1"># 参数介绍：</span>
+/tmp/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina.dmg 镜像的路径
+-noverify 不进行验证
+-mountpoint /Volumes/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina 挂载的位置
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./108.png"
+        data-srcset="./108.png, ./108.png 1.5x, ./108.png 2x"
+        data-sizes="auto"
+        alt="./108.png"
+        title="108" /></p>
+<p><strong>③：把app镜像写入创建的dmg盘</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">echo</span> Y <span class="p">|</span> sudo /Applications/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina
+
+<span class="c1"># 参数介绍：</span>
+/Applications/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina.app       app镜像的路径
+/Applications/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina.app/Contents/Resources/createinstallmedia         使用镜像里的createinstallmedia程序，把镜像写入挂载的dmg盘中
+--volume /Volumes/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina    刚刚挂载的dmg镜像盘
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./109.png"
+        data-srcset="./109.png, ./109.png 1.5x, ./109.png 2x"
+        data-sizes="auto"
+        alt="./109.png"
+        title="109" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./110.png"
+        data-srcset="./110.png, ./110.png 1.5x, ./110.png 2x"
+        data-sizes="auto"
+        alt="./110.png"
+        title="110" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./111.png"
+        data-srcset="./111.png, ./111.png 1.5x, ./111.png 2x"
+        data-sizes="auto"
+        alt="./111.png"
+        title="111" /></p>
+<p><strong>④：卸载挂载的dmg盘</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hdiutil detach /Volumes/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina
+
+<span class="c1"># 参数介绍：</span>
+/Volumes/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina    之前挂载的盘的名字
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./112.png"
+        data-srcset="./112.png, ./112.png 1.5x, ./112.png 2x"
+        data-sizes="auto"
+        alt="./112.png"
+        title="112" /></p>
+<p><strong>⑤：将<code>dmg</code>镜像转换为<code>cdr</code>镜像（关键）</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hdiutil convert /tmp/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina.dmg -format UDTO -o ~/Desktop/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina
+
+<span class="c1"># 参数介绍：</span>
+/tmp/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina.dmg 之前写好的dmg镜像路径+名称
+-format UDTO   转换为cdr格式
+~/Desktop/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina   cdr镜像保存路径+名字，保存到桌面
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./113.png"
+        data-srcset="./113.png, ./113.png 1.5x, ./113.png 2x"
+        data-sizes="auto"
+        alt="./113.png"
+        title="113" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./114.png"
+        data-srcset="./114.png, ./114.png 1.5x, ./114.png 2x"
+        data-sizes="auto"
+        alt="./114.png"
+        title="114" /></p>
+<p>在桌面上出现刚刚转换的cdr镜像。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./115.png"
+        data-srcset="./115.png, ./115.png 1.5x, ./115.png 2x"
+        data-sizes="auto"
+        alt="./115.png"
+        title="115" /></p>
+<p><strong>⑥：删除tmp文件夹下的dmg镜像（释放空间！！！）</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">rm /tmp/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina.dmg
+
+<span class="c1"># 参数介绍：</span>
+/tmp/Install<span class="se">\ </span>macOS<span class="se">\ </span>Catalina.dmg 文件的路径+名称
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./116.png"
+        data-srcset="./116.png, ./116.png 1.5x, ./116.png 2x"
+        data-sizes="auto"
+        alt="./116.png"
+        title="116" /></p>
+<p><strong>百分百成功！！！</strong></p>
+<p>之后拿去VMware中安装即可！如果你创建的过程中出现问题，请检查步骤有没有漏掉，命令有没有敲错了。如果在安装的时候提示镜像有问题，一般都是你下载的app安装包有问题！！！</p>
+<p>已经更新<code>VMware</code>中直接安装<code>dmg</code>格式的镜像教程，请参考博客：</p>
+<p><strong>就是将dmg烧录U盘然后VM安装，反而认为麻烦，直接借鉴大佬cdr了，故不再整理</strong></p>
+<p>Windows下VMware Workstations Pro15.5.0安装dmg镜像（macOS Catalina 10.15虚拟机）</p>
+</blockquote>
+<h4 id="beamoff">beamoff</h4>
+<p>beamoff是一个用于加速MacOS的小软件</p>
+<p><a href="https://github.com/HammerSister/Beamoff/raw/master/beamoff.zip" target="_blank" rel="noopener noreferrer">beamoff下载链接</a></p>
+<h4 id="apple-id">Apple ID</h4>
+<p>对于新版的MacOS, 安装系统时可以选择跳过登陆ID, 但是在app store里安装xcode必须要登陆ID</p>
+<p>需要一个添加了支付方式的ID(信用卡可以不填, 但是必须要有地址), 因为在<a href="https://so.csdn.net/so/search?q=%e8%99%9a%e6%8b%9f%e6%9c%ba&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">虚拟机</a>里的MacOS登陆可能有一点点风险, 因此建议小号.</p>
+<p>如果有apple设备, 建议在app store上登陆小号添加付款信息以设置地址, 如果没有, 可以在apple官网&lt;www.apple.com&gt;登陆设置</p>
+<p>MacOS里选择的区域要和ID的区域一致</p>
+<h3 id="2-安装">2. 安装</h3>
+<h4 id="第一步安装vmware-pro">第一步：安装VMware Pro</h4>
+<blockquote>
+<p>请自行百度</p>
+</blockquote>
+<h4 id="第二步安装unlocker">第二步：安装unlocker</h4>
+<p><strong>下载完成后，解压Unlocker.zip文件，并选择以管理员身份运行打开Unlocker.exe文件</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<h4 id="第三步安装镜像创建虚拟机">第三步：安装镜像创建虚拟机</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.png"
+        data-srcset="./5.png, ./5.png 1.5x, ./5.png 2x"
+        data-sizes="auto"
+        alt="./5.png"
+        title="5" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.png"
+        data-srcset="./6.png, ./6.png 1.5x, ./6.png 2x"
+        data-sizes="auto"
+        alt="./6.png"
+        title="6" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>安装了unlocker之后，就会出现Apple Mac OS X(M)选项</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
+        data-sizes="auto"
+        alt="./9.png"
+        title="9" /></p>
+<h5 id="选择处理器数量">选择处理器数量</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.png"
+        data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
+        data-sizes="auto"
+        alt="./10.png"
+        title="10" /></p>
+<h5 id="设置虚拟机内存">设置虚拟机内存</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<h5 id="选择网络类型">选择网络类型</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+<h5 id="选择io控制器类型">选择I/O控制器类型</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<h5 id="选择磁盘类型">选择磁盘类型</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+<h5 id="指定磁盘容量">指定磁盘容量</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.png"
+        data-srcset="./16.png, ./16.png 1.5x, ./16.png 2x"
+        data-sizes="auto"
+        alt="./16.png"
+        title="16" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./17.png"
+        data-srcset="./17.png, ./17.png 1.5x, ./17.png 2x"
+        data-sizes="auto"
+        alt="./17.png"
+        title="17" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./18.png"
+        data-srcset="./18.png, ./18.png 1.5x, ./18.png 2x"
+        data-sizes="auto"
+        alt="./18.png"
+        title="18" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./19.png"
+        data-srcset="./19.png, ./19.png 1.5x, ./19.png 2x"
+        data-sizes="auto"
+        alt="./19.png"
+        title="19" /></p>
+<blockquote>
+<h5 id="1101需要配置虚拟机">11.0.1需要配置虚拟机</h5>
+<p>创建完虚拟机后，找到虚拟机文件位置，编辑<code>macOS 11.0.vmx</code>文件，在末尾添加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">    smbios.reflectHost = &#34;TRUE&#34;
+    hw.model = &#34;MacBookPro16,1&#34;
+    board-id = &#34;Mac-E1008331FDC96864&#34;
+</code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<h4 id="第四步初始化流程">第四步：初始化流程</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./20.png"
+        data-srcset="./20.png, ./20.png 1.5x, ./20.png 2x"
+        data-sizes="auto"
+        alt="./20.png"
+        title="20" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./21.png"
+        data-srcset="./21.png, ./21.png 1.5x, ./21.png 2x"
+        data-sizes="auto"
+        alt="./21.png"
+        title="21" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./22.png"
+        data-srcset="./22.png, ./22.png 1.5x, ./22.png 2x"
+        data-sizes="auto"
+        alt="./22.png"
+        title="22" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./23.png"
+        data-srcset="./23.png, ./23.png 1.5x, ./23.png 2x"
+        data-sizes="auto"
+        alt="./23.png"
+        title="23" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./24.png"
+        data-srcset="./24.png, ./24.png 1.5x, ./24.png 2x"
+        data-sizes="auto"
+        alt="./24.png"
+        title="24" /></p>
+<h5 id="选择磁盘工具">选择磁盘工具</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./25.png"
+        data-srcset="./25.png, ./25.png 1.5x, ./25.png 2x"
+        data-sizes="auto"
+        alt="./25.png"
+        title="25" /></p>
+<h5 id="磁盘初始化">磁盘初始化</h5>
+<p>找到名称为 <code>VMware Virtual SATA Hard Drive Media</code> 的磁盘，选中该磁盘，点击<code>抹掉</code>，格式选择 <code>APFS</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./26.png"
+        data-srcset="./26.png, ./26.png 1.5x, ./26.png 2x"
+        data-sizes="auto"
+        alt="./26.png"
+        title="26" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./27.png"
+        data-srcset="./27.png, ./27.png 1.5x, ./27.png 2x"
+        data-sizes="auto"
+        alt="./27.png"
+        title="27" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./28.png"
+        data-srcset="./28.png, ./28.png 1.5x, ./28.png 2x"
+        data-sizes="auto"
+        alt="./28.png"
+        title="28" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./29.png"
+        data-srcset="./29.png, ./29.png 1.5x, ./29.png 2x"
+        data-sizes="auto"
+        alt="./29.png"
+        title="29" /></p>
+<p>退出磁盘工具，选择 <code>安装 macOS</code> 并继续</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./30.png"
+        data-srcset="./30.png, ./30.png 1.5x, ./30.png 2x"
+        data-sizes="auto"
+        alt="./30.png"
+        title="30" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./31.png"
+        data-srcset="./31.png, ./31.png 1.5x, ./31.png 2x"
+        data-sizes="auto"
+        alt="./31.png"
+        title="31" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./32.png"
+        data-srcset="./32.png, ./32.png 1.5x, ./32.png 2x"
+        data-sizes="auto"
+        alt="./32.png"
+        title="32" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./33.png"
+        data-srcset="./33.png, ./33.png 1.5x, ./33.png 2x"
+        data-sizes="auto"
+        alt="./33.png"
+        title="33" /></p>
+<p>选择安装位置</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./34.png"
+        data-srcset="./34.png, ./34.png 1.5x, ./34.png 2x"
+        data-sizes="auto"
+        alt="./34.png"
+        title="34" /></p>
+<h5 id="开始安装">开始安装</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./35.png"
+        data-srcset="./35.png, ./35.png 1.5x, ./35.png 2x"
+        data-sizes="auto"
+        alt="./35.png"
+        title="35" /></p>
+<h4 id="第五步配置macos">第五步：配置macOS</h4>
+<h5 id="选择国家和地区">选择国家和地区</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./36.png"
+        data-srcset="./36.png, ./36.png 1.5x, ./36.png 2x"
+        data-sizes="auto"
+        alt="./36.png"
+        title="36" /></p>
+<h5 id="选择网络连接方式">选择网络连接方式</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./59.png"
+        data-srcset="./59.png, ./59.png 1.5x, ./59.png 2x"
+        data-sizes="auto"
+        alt="./59.png"
+        title="59" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./60.png"
+        data-srcset="./60.png, ./60.png 1.5x, ./60.png 2x"
+        data-sizes="auto"
+        alt="./60.png"
+        title="60" /></p>
+<p><strong>提示网络连接失败的解决办法：</strong>
+1、回到windows，控制面板-网络连接-右键属性-<code>VMware Network Adapter VMnet1</code>–<code>IPV4设置</code>–<code>自动获取ip地址</code>–<code>自动获得dns服务器</code>；
+2、打开windows服务，打开服务：<code>VMware DHCP Sevice</code>和<code>VMware NAT Service</code>;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./61.png"
+        data-srcset="./61.png, ./61.png 1.5x, ./61.png 2x"
+        data-sizes="auto"
+        alt="./61.png"
+        title="61" /></p>
+<h5 id="迁移助理">迁移助理</h5>
+<p>选择<code>以后</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./37.png"
+        data-srcset="./37.png, ./37.png 1.5x, ./37.png 2x"
+        data-sizes="auto"
+        alt="./37.png"
+        title="37" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./38.png"
+        data-srcset="./38.png, ./38.png 1.5x, ./38.png 2x"
+        data-sizes="auto"
+        alt="./38.png"
+        title="38" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./39.png"
+        data-srcset="./39.png, ./39.png 1.5x, ./39.png 2x"
+        data-sizes="auto"
+        alt="./39.png"
+        title="39" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./40.png"
+        data-srcset="./40.png, ./40.png 1.5x, ./40.png 2x"
+        data-sizes="auto"
+        alt="./40.png"
+        title="40" /></p>
+<h5 id="设置apple-id">设置apple ID</h5>
+<p>选择<code>稍后设置</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./41.png"
+        data-srcset="./41.png, ./41.png 1.5x, ./41.png 2x"
+        data-sizes="auto"
+        alt="./41.png"
+        title="41" /></p>
+<h5 id="创建账户">创建账户</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./62.png"
+        data-srcset="./62.png, ./62.png 1.5x, ./62.png 2x"
+        data-sizes="auto"
+        alt="./62.png"
+        title="62" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./42.png"
+        data-srcset="./42.png, ./42.png 1.5x, ./42.png 2x"
+        data-sizes="auto"
+        alt="./42.png"
+        title="42" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./43.png"
+        data-srcset="./43.png, ./43.png 1.5x, ./43.png 2x"
+        data-sizes="auto"
+        alt="./43.png"
+        title="43" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./44.png"
+        data-srcset="./44.png, ./44.png 1.5x, ./44.png 2x"
+        data-sizes="auto"
+        alt="./44.png"
+        title="44" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./45.png"
+        data-srcset="./45.png, ./45.png 1.5x, ./45.png 2x"
+        data-sizes="auto"
+        alt="./45.png"
+        title="45" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./46.png"
+        data-srcset="./46.png, ./46.png 1.5x, ./46.png 2x"
+        data-sizes="auto"
+        alt="./46.png"
+        title="46" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./47.png"
+        data-srcset="./47.png, ./47.png 1.5x, ./47.png 2x"
+        data-sizes="auto"
+        alt="./47.png"
+        title="47" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./48.png"
+        data-srcset="./48.png, ./48.png 1.5x, ./48.png 2x"
+        data-sizes="auto"
+        alt="./48.png"
+        title="48" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./49.png"
+        data-srcset="./49.png, ./49.png 1.5x, ./49.png 2x"
+        data-sizes="auto"
+        alt="./49.png"
+        title="49" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./50.png"
+        data-srcset="./50.png, ./50.png 1.5x, ./50.png 2x"
+        data-sizes="auto"
+        alt="./50.png"
+        title="50" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./51.png"
+        data-srcset="./51.png, ./51.png 1.5x, ./51.png 2x"
+        data-sizes="auto"
+        alt="./51.png"
+        title="51" /></p>
+<h3 id="3-优化">3. 优化</h3>
+<h4 id="0安装vmware-tools">0.安装VMware tools</h4>
+<blockquote>
+<p>安装VMware Tools后系统会更加流畅，实现自动全屏</p>
+</blockquote>
+<p>在 VMware 的 虚拟机(M) 菜单栏中选择 安装 VMware Tools(T)… 选项。</p>
+<p>直接点击上方虚拟机-安装VMware Tools，成功安装，则跳过后面步骤
+如果提示无法更新，请联系管理员</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./52.png"
+        data-srcset="./52.png, ./52.png 1.5x, ./52.png 2x"
+        data-sizes="auto"
+        alt="./52.png"
+        title="52" /></p>
+<blockquote>
+<p>若如果安装VMware Tools选项为灰色, 请参考</p>
+<p><strong>手动设置VMware Tools的安装引导ISO文件：</strong></p>
+<ul>
+<li>推出桌面上的光盘文件-右下角点击光盘-右键设置-ISO镜像文件选择darwin8.5.2或8.5.8都可以（先下载后复制到macOS安装文件夹下）-同时勾选上方的已连接和启动时连接-确定-此时桌面会出现VMware Tools安装，选择安装-一直下一步-有一步需要同意，不要点击好-点击打开设置-同意即可-自动安装完成后重启-具体参考图片</li>
+</ul>
+<p>虚拟机菜单栏 &ndash;安装VMware tools</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./65.webp"
+        data-srcset="./65.webp, ./65.webp 1.5x, ./65.webp 2x"
+        data-sizes="auto"
+        alt="./65.webp"
+        title="65" /></p>
+<p>提示无法更新服务器 这时候不用担心  直接先按确定</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./66.webp"
+        data-srcset="./66.webp, ./66.webp 1.5x, ./66.webp 2x"
+        data-sizes="auto"
+        alt="./66.webp"
+        title="66" /></p>
+<p>再点菜单栏中的虚拟机&ndash;设置</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./67.webp"
+        data-srcset="./67.webp, ./67.webp 1.5x, ./67.webp 2x"
+        data-sizes="auto"
+        alt="./67.webp"
+        title="67" /></p>
+<p>然后把darwin.iso加载到CD/DVD里面</p>
+<p>(darwin.iso在VM安装目装路径自己找)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./68.webp"
+        data-srcset="./68.webp, ./68.webp 1.5x, ./68.webp 2x"
+        data-sizes="auto"
+        alt="./68.webp"
+        title="68" /></p>
+<p>这时候又出现一个错误提示    看提示知道  你的MACOS客户机正在使用</p>
+<p>CD/DVD</p>
+<p>所以不用担心先点确定</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./69.webp"
+        data-srcset="./69.webp, ./69.webp 1.5x, ./69.webp 2x"
+        data-sizes="auto"
+        alt="./69.webp"
+        title="69" /></p>
+<p>提示操作已取消 正常现像  点击 确定</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./70.webp"
+        data-srcset="./70.webp, ./70.webp 1.5x, ./70.webp 2x"
+        data-sizes="auto"
+        alt="./70.webp"
+        title="70" /></p>
+<p>然后点取消虚拟机设置</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./71.webp"
+        data-srcset="./71.webp, ./71.webp 1.5x, ./71.webp 2x"
+        data-sizes="auto"
+        alt="./71.webp"
+        title="71" /></p>
+<p>然后进入MACOS系统打开 我的电脑</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./72.webp"
+        data-srcset="./72.webp, ./72.webp 1.5x, ./72.webp 2x"
+        data-sizes="auto"
+        alt="./72.webp"
+        title="72" /></p>
+<p>然后弹出我的所有文件窗口里  在左下角 退出正在加截的DVD驱动器</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./73.webp"
+        data-srcset="./73.webp, ./73.webp 1.5x, ./73.webp 2x"
+        data-sizes="auto"
+        alt="./73.webp"
+        title="73" /></p>
+<p>然后再一次 在虚拟机菜单栏中&ndash;虚拟机 &ndash;设置</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./74.webp"
+        data-srcset="./74.webp, ./74.webp 1.5x, ./74.webp 2x"
+        data-sizes="auto"
+        alt="./74.webp"
+        title="74" /></p>
+<p>1.勾选已连接</p>
+<p>2.加截darwin.iso</p>
+<p>3.确定</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./75.webp"
+        data-srcset="./75.webp, ./75.webp 1.5x, ./75.webp 2x"
+        data-sizes="auto"
+        alt="./75.webp"
+        title="75" /></p>
+<p>这时候弹出VMware Tools了吧</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./53.png"
+        data-srcset="./53.png, ./53.png 1.5x, ./53.png 2x"
+        data-sizes="auto"
+        alt="./53.png"
+        title="53" /></p>
+<p>然后双击安装VMware Tools</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./54.png"
+        data-srcset="./54.png, ./54.png 1.5x, ./54.png 2x"
+        data-sizes="auto"
+        alt="./54.png"
+        title="54" /></p>
+<p>双击&ndash;继续</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./55.png"
+        data-srcset="./55.png, ./55.png 1.5x, ./55.png 2x"
+        data-sizes="auto"
+        alt="./55.png"
+        title="55" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./56.png"
+        data-srcset="./56.png, ./56.png 1.5x, ./56.png 2x"
+        data-sizes="auto"
+        alt="./56.png"
+        title="56" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./57.png"
+        data-srcset="./57.png, ./57.png 1.5x, ./57.png 2x"
+        data-sizes="auto"
+        alt="./57.png"
+        title="57" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./58.png"
+        data-srcset="./58.png, ./58.png 1.5x, ./58.png 2x"
+        data-sizes="auto"
+        alt="./58.png"
+        title="58" /></p>
+<p>安装过程会触发多个安全限制，请按照提示转到设置里的安全设置里解锁，最后完成安装。</p>
+<p>双击&ndash;安装即可安装成功，重启后生效</p>
+<p>完成安装后必须重启系统，然后点击虚拟机上的进入全屏模式，macOS即可全屏显示。</p>
+<p>这时候屏幕变成全屏了这样表示安装TOOLS成了这时候可以往里面拉文件了</p>
+<p><strong>重新启动后，虚拟机上方-查看-自动调整大小-自动适应客户机-然后就可以全屏了-会根据vm窗口自动调整大小</strong></p>
+<ul>
+<li>成功后，启动后桌面还有VMware Tools光盘文件-先右键退出-然后右下角光盘进入设置-cd/dvd中的启动时连接和已连接不勾选-以后重启桌面就么有了</li>
+<li>VMware Tools安装教程，网上很多都无效了，有人提到关闭SIP，但是启动无法进入恢复模式，直接使用方法成功解决</li>
+<li>macOS10.14采用以上方法可以完美解决</li>
+</ul>
+<p><strong>如果没有darwin.iso, 安装一个旧版的wmwarepro就有了, 或者百度别的方法…</strong></p>
+<h4 id="1增加虚拟机的内存">1.增加虚拟机的内存</h4>
+<p>在虚拟机设置中适量增加Mac虚拟机的内存，不做过多解释啦</p>
+<p>根据自己电脑内存大小合理分配，比如我12G内存，平常windows使用在6G左右，分配给虚拟机4G，预留2G,核心数2核心2处理器，相当于4核，保证windows使用下给尽量多的内存，设置虚拟机内存也有推荐值，超过后会有提示警告。</p>
+<h4 id="2减少透明度">2.减少透明度</h4>
+<p>macOS大量采用透明菜单、窗口和标题栏，这需要耗费处理器性能和内存渲染。</p>
+<blockquote>
+<p><strong>如果找不到设置项, 可以在右上角搜索关键词</strong></p>
+</blockquote>
+<p>打开系统偏好设置，进入“辅助功能”，在【偏好设置】中的显示器部分选中“减少透明度”即可</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./76.png"
+        data-srcset="./76.png, ./76.png 1.5x, ./76.png 2x"
+        data-sizes="auto"
+        alt="./76.png"
+        title="76" /></p>
+<h4 id="3更改动画效果">3.更改动画效果</h4>
+<p>关闭应用最小化神奇效果-打开系统设置-偏好设置，在【Dock（程序坞）】中将最小化窗口时的动画效果为神奇效果改为缩放效果会流畅一点</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./77.png"
+        data-srcset="./77.png, ./77.png 1.5x, ./77.png 2x"
+        data-sizes="auto"
+        alt="./77.png"
+        title="77" /></p>
+<h4 id="4安装beamoff-划重点">4.安装beamoff <em>划重点</em></h4>
+<p>beamoff是VM上Mac虚拟机的优化神器</p>
+<h5 id="安装方法">安装方法</h5>
+<p>在虚拟机中用浏览器打开 <a href="https://raw.githubusercontent.com/S-Benjamin/Beamoff/master/beamoff.zip" target="_blank" rel="noopener noreferrer">https://raw.githubusercontent.com/S-Benjamin/Beamoff/master/beamoff.zip</a> 这个链接，或者在虚拟机的浏览器中打开本篇博文直接点击这个链接，自动下载beamoff，下载完成后在Finder中打开，拖动下载好的文件到左侧栏中的【应用程序】中</p>
+<h5 id="设置为开机启动">设置为开机启动</h5>
+<p>打开系统设置的【用户与群组】，左侧栏中点击自己的账户，在右边的登录项中添加beamoff即可</p>
+<h4 id="5禁用通知中心中无用的组件和扩展">5.禁用通知中心中无用的组件和扩展</h4>
+<ul>
+<li>偏好设置-扩展-今天/全部-关闭无关组件</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./78.png"
+        data-srcset="./78.png, ./78.png 1.5x, ./78.png 2x"
+        data-sizes="auto"
+        alt="./78.png"
+        title="78" /></p>
+<h4 id="6-macos中dock栏的设置和使用"><del>6. MacOS中Dock栏的设置和使用</del></h4>
+<p><del>参考：https://blog.csdn.net/ankychan/article/details/100561328</del></p>
+<h3 id="4参考教程">4.参考教程</h3>
+<p><a href="http://www.884358.com/vmware-install-macos/#kai_shi_an_zhuang" target="_blank" rel="noopener noreferrer">参考教程0</a></p>
+<p><a href="https://blog.csdn.net/u011318077/article/details/101511054" target="_blank" rel="noopener noreferrer">vmtools教程1</a></p>
+<p><a href="https://jingyan.baidu.com/article/6525d4b135231dac7d2e9435.html" target="_blank" rel="noopener noreferrer">vmtools教程2</a></p>
+<p><a href="https://blog.csdn.net/baidu_32475947/article/details/120382323" target="_blank" rel="noopener noreferrer">参考教程1</a></p>
+<p><a href="https://hestyle.blog.csdn.net/article/details/102750895" target="_blank" rel="noopener noreferrer">参考教程2</a></p>
+<p><a href="https://blog.csdn.net/SSS_Benjamin/article/details/89296164" target="_blank" rel="noopener noreferrer">VMware上MacOS卡顿的优化</a></p>
+<p><a href="http://www.884358.com/vmware-install-macos/#kai_shi_an_zhuang" target="_blank" rel="noopener noreferrer">http://www.884358.com/vmware-install-macos/#kai_shi_an_zhuang</a></p>
+<p><a href="https://www.jianshu.com/p/c19e120347c4" target="_blank" rel="noopener noreferrer">https://www.jianshu.com/p/c19e120347c4</a></p>
+<p><a href="https://sysin.org/blog/macOS-Monterey/#5-%E9%99%84%EF%BC%9A%E9%80%82%E7%94%A8%E7%9A%84-VMware-%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5" target="_blank" rel="noopener noreferrer">https://sysin.org/blog/macOS-Monterey/#5-%E9%99%84%EF%BC%9A%E9%80%82%E7%94%A8%E7%9A%84-VMware-%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5</a></p>
+<p><a href="https://blog.csdn.net/weixin_43825552/article/details/86763378" target="_blank" rel="noopener noreferrer">https://blog.csdn.net/weixin_43825552/article/details/86763378</a></p>
+<p><a href="https://jingyan.baidu.com/article/afd8f4de7a72b375e286e9f1.html" target="_blank" rel="noopener noreferrer">https://jingyan.baidu.com/article/afd8f4de7a72b375e286e9f1.html</a></p>
+<p><a href="https://blog.csdn.net/scdnplayer/article/details/123066070" target="_blank" rel="noopener noreferrer">https://blog.csdn.net/scdnplayer/article/details/123066070</a></p>
+<h2 id="macos无法连接appstore无法登录appleid问题">MacOS无法连接appstore，无法登录AppleID问题</h2>
+<h4 id="1-修改虚拟机httpssocsdnnetsosearchq虚拟机spm1001210130017020硬件信息">1 修改<a href="https://so.csdn.net/so/search?q=%e8%99%9a%e6%8b%9f%e6%9c%ba&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">虚拟机</a>硬件信息</h4>
+<ul>
+<li>运行虚拟机macOS系统，打开safari浏览器，下载ChameleonWizard4.5变色龙
+<ul>
+<li>链接：https://pan.baidu.com/s/1ATHQ6zDBnh8U3T_UbshCOA</li>
+<li>提取码：z3rm</li>
+</ul>
+</li>
+<li>下载后打开-找不到的话进入访达里面搜索Chame然后打开，选择builtin安装，然后再次打开点击SMbios-里面选择与自己电脑类似的配置-其它信息就自动生成了-然后截图-记录Board Product和序列号-后面需要用到-然后另存为文件</li>
+<li>关掉macOS-关闭VMware虚拟机-打开macOS里面的macOS.vmx（虚拟机配置文件）进行修改配置</li>
+<li>记得全循环搜索board，将true删除，然后保存vmx文件</li>
+</ul>
+<h4 id="2-启动登录账户">2 启动登录账户</h4>
+<ul>
+<li>重新打开虚拟机，进入系统，现在打开App Store 登陆</li>
+<li>然后会出现检查，填写完善个人信息，绑定支付账户</li>
+<li>继续，但是还是无法登录，上面显示联系苹果售后</li>
+</ul>
+<h4 id="3-联系售后激活apple-id账户权限">3 联系售后，激活Apple ID账户权限</h4>
+<ul>
+<li>按以下步骤：先打开getsupport.apple.com -&gt; Apple ID -&gt; iTunes Store与App Store，找到相应的问题，填好表单，苹果会在72小时邮件联系你。实际上会在半小时内回复你的邮件：
+问题描述：最好自己写，保持真实有效</li>
+<li>此时，再次登录应用商店，然后会出现检查，点击进入，可以选择银行卡，但是不用填写卡号之类，然后个人信息补充完整-点击继续-此时就成功了</li>
+<li>然后app商店下载应用，还会要求登录一次，然后就可以安装下载了</li>
+<li>过程图片本地macOS安装包中有保存备份</li>
+<li>参考以下博文：</li>
+<li><a href="https://www.cnblogs.com/xuan52rock/p/9755423.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/xuan52rock/p/9755423.html</a></li>
+</ul>
+<blockquote>
+<p><strong>vmware的macos中apple ID一直登陆不上解决 &mdash;(伪造smbios设备信息)</strong></p>
+<p>伪造smbios设备信息</p>
+<p>原文网址：http://www.insanelymac.com/forum/topic/292170-how-to-spoof-real-mac-in-vmware/page-1</p>
+<p>前提：</p>
+<p>网络正常，DNS 正常，网页能登录 <a href="https://www.apple.com" target="_blank" rel="noopener noreferrer">https://www.apple.com</a></p>
+<p>适用于， osx 中登录 app store 一直在转圈的情况。</p>
+<p><strong>原因：app store 会检查机器的smbios 信息，如果不是 mac 机器，就不让登录。</strong></p>
+<p>假信息生成工具：Chameleon Wizard</p>
+<p>下载地址：<a href="http://wizards.osxlatitude.com/chameleon/cw.zip" target="_blank" rel="noopener noreferrer">http://mac.softpedia.com/get/Utilities/Chameleon-Wizard.shtml</a></p>
+<p>启动虚拟机，进入 osx， 然后下载运行此工具</p>
+<p>然后，编辑=》预制的 smbioses 模版=》根据真机的CPU型号选个最相近的模版，生成成功后点另存为，导出设备信息文件。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./79.png"
+        data-srcset="./79.png, ./79.png 1.5x, ./79.png 2x"
+        data-sizes="auto"
+        alt="./79.png"
+        title="79" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./81.png"
+        data-srcset="./81.png, ./81.png 1.5x, ./81.png 2x"
+        data-sizes="auto"
+        alt="./81.png"
+        title="81" /></p>
+<p>然后，关闭虚拟机，编辑 osx 虚拟机对应的 .vmx 文件，用前面生成的信息，加入这么几行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">board-id.reflectHost = &#34;FALSE&#34;
+board-id = &#34;Mac-94245B3640C91C81&#34;
+hw.model.reflectHost = &#34;FALSE&#34;
+hw.model = &#34;MacBook Pro&#34;
+serialNumber.reflectHost = &#34;FALSE&#34;
+serialNumber = &#34;C02JJ8B3DH2G&#34;
+smbios.reflectHost = &#34;FALSE&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>注：</p>
+<p><strong>如果 vmx 文件中含有 board-id.reflectHost = &ldquo;TRUE&rdquo; 之类的字样就把它删掉，为 TRUE 表示允许使用真机的信息。</strong></p>
+<p>要使用假信息自然得删掉。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./82.png"
+        data-srcset="./82.png, ./82.png 1.5x, ./82.png 2x"
+        data-sizes="auto"
+        alt="./82.png"
+        title="82" /></p>
+<p>vms 改好后保存，再次启动 vmware ，即会使用假设备信息，也就可以使用 app store 了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./83.png"
+        data-srcset="./83.png, ./83.png 1.5x, ./83.png 2x"
+        data-sizes="auto"
+        alt="./83.png"
+        title="img" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./84.png"
+        data-srcset="./84.png, ./84.png 1.5x, ./84.png 2x"
+        data-sizes="auto"
+        alt="./84.png"
+        title="84" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./85.png"
+        data-srcset="./85.png, ./85.png 1.5x, ./85.png 2x"
+        data-sizes="auto"
+        alt="./85.png"
+        title="85" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./86.png"
+        data-srcset="./86.png, ./86.png 1.5x, ./86.png 2x"
+        data-sizes="auto"
+        alt="./86.png"
+        title="86" /></p>
+<p>跑虚拟机主要需要强劲的CPU，然后内存不能小，分给虚拟机4G内存的话，主机就需要8G或者更高的内存。
+还有苹果系统的界面渲染全靠GPU，<a href="https://so.csdn.net/so/search?q=VMware&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">VMware</a>虚拟机下的显卡驱动局限性很大，不支持苹果系统的GPU硬件加速，所以会卡。
+真想用苹果系统，还是买一台真正的苹果电脑吧</p>
+</blockquote>
+<h2 id="macos安装任何来源的应用">MacOS安装任何来源的应用</h2>
+<ul>
+<li>
+<p>偏好性设置-安全与隐私-通用-左下方的小锁-点击解锁-然后选择被认可的来源-如果有任何来源就选择任何来源-确定后-把锁锁上</p>
+</li>
+<li>
+<p>具体图片过程参考以下博文：</p>
+</li>
+<li>
+<p><a href="https://blog.csdn.net/cc1991_/article/details/78421108" target="_blank" rel="noopener noreferrer">https://blog.csdn.net/cc1991_/article/details/78421108</a></p>
+<blockquote>
+<p><strong>Mac电脑使用：您的安全性偏好设置仅允许安装来自App Store和被认可的开发者的应用（解决方法）</strong></p>
+<p>昨天准备给电脑上安装“SEED”，然后别人给我一个压缩包安装，结果安装之后，打开软件却弹出提示框，提示“打不开SEED，因为它来自身份不明的开发者。  。。。”，点击“好”，弹框关闭，SEED却打不开。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./87.png"
+        data-srcset="./87.png, ./87.png 1.5x, ./87.png 2x"
+        data-sizes="auto"
+        alt="./87.png"
+        title="87" /></p>
+<p>一、 造成有这种提示的原因是由于你的电脑安全性设置比较高导致的，下面来介绍一下解决的方法步骤。</p>
+<p>1.打开dock栏里面的“系统偏好设置”；</p>
+<p>2.在系统偏好设置里面，找到“安全性与隐私”选项；</p>
+<p>3.在安全性与隐私里面，找到左下角的锁型图标，然后点击锁，会弹出输入电脑开机密码的窗口，输入密码之后，点击“解锁”按钮，那个锁型变为开启的锁；</p>
+<p>4.解锁后，如果你的电脑里面在允许从以下位置下载应用有三个选项，就在允许从以下位置下载的应用选项中选择“任何来源”，在弹出的确认框里点击“允许来自任何来源”；如果你的电脑里面允许从以下位置下载的应用中只有两个选项，那你就直接去打开你刚才需要安装的那个程序的安装包，双击重新安装，会有一个提示框，也是提示允许来自任何来源安装的，然后就可以安装成功了，最后打开即可。</p>
+</blockquote>
+<h2 id="无法打开因为apple无法检查其是否包含恶意软件">无法打开因为apple无法检查其是否包含恶意软件</h2>
+<p>在mac系统中安装自己下载的软件，经常会提示“无法打开，因为apple无法检查其是否包含恶意软件”直接点击好按钮也无法使用，下面我们就来学习一下怎么解决这个问题。</p>
+<p>打开安装完成的app，弹出提示窗，点击【好】按钮也无法运行。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./88.webp"
+        data-srcset="./88.webp, ./88.webp 1.5x, ./88.webp 2x"
+        data-sizes="auto"
+        alt="./88.webp"
+        title="88" /></p>
+<p>打开底部程序坞中的“系统偏好设置”,或打开苹果图标菜单打开系统设置。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./89.webp"
+        data-srcset="./89.webp, ./89.webp 1.5x, ./89.webp 2x"
+        data-sizes="auto"
+        alt="./89.webp"
+        title="89" /></p>
+<p>打开系统偏好设置窗口，再打开里面的“安全性和稳私”</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./90.webp"
+        data-srcset="./90.webp, ./90.webp 1.5x, ./90.webp 2x"
+        data-sizes="auto"
+        alt="./90.webp"
+        title="90" /></p>
+<p>弹出安全性和稳私窗口，点击进入“通用”选项卡界面。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./91.webp"
+        data-srcset="./91.webp, ./91.webp 1.5x, ./91.webp 2x"
+        data-sizes="auto"
+        alt="./91.webp"
+        title="91" /></p>
+<p>在通用界面，在已阻止使用，因为来自身份不明的开发者，点击【仍要打开】按钮。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./92.webp"
+        data-srcset="./92.webp, ./92.webp 1.5x, ./92.webp 2x"
+        data-sizes="auto"
+        alt="./92.webp"
+        title="92" /></p>
+<p>再次弹出确认对话框，点击【打开】按钮。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./93.webp"
+        data-srcset="./93.webp, ./93.webp 1.5x, ./93.webp 2x"
+        data-sizes="auto"
+        alt="./93.webp"
+        title="93" /></p>
+<p>此时弹出输入管理员密码，输入后点击【好】按钮。现在就可以正常使用软件了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./94.webp"
+        data-srcset="./94.webp, ./94.webp 1.5x, ./94.webp 2x"
+        data-sizes="auto"
+        alt="./94.webp"
+        title="94" /></p>
+</li>
+</ul>
+<h2 id="vm15下mac-os1014分辨率设置亲测-可用">VM15下MAC os10.14分辨率设置，亲测 可用</h2>
+<h3 id="方法一">方法一</h3>
+<h4 id="步骤一">步骤一</h4>
+<p>安装VMware Tools，上方工具栏–&gt;<a href="https://so.csdn.net/so/search?q=%e8%99%9a%e6%8b%9f%e6%9c%ba&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">虚拟机</a>–&gt;安装VMware Tools（网上教程很多）–&gt;确保安装成功，macos比较新的版本需要进 系统偏好设置–&gt;安全性与隐私–&gt;通用–&gt;设置为appstore与被认可的开发者（下方先解锁）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./95.png"
+        data-srcset="./95.png, ./95.png 1.5x, ./95.png 2x"
+        data-sizes="auto"
+        alt="./95.png"
+        title="95" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./96.png"
+        data-srcset="./96.png, ./96.png 1.5x, ./96.png 2x"
+        data-sizes="auto"
+        alt="./96.png"
+        title="96" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./97.png"
+        data-srcset="./97.png, ./97.png 1.5x, ./97.png 2x"
+        data-sizes="auto"
+        alt="./97.png"
+        title="97" /></p>
+<h4 id="步骤二">步骤二</h4>
+<h5 id="进recovery模式">进recovery模式</h5>
+<p>参考博客：http://www.cnblogs.com/sunylat/p/6414697.html
+当时本人第一种方法一直进不去，一直跳出来搜索框，又不想改windows设置，遂采用第二种方法。</p>
+<h5 id="实用工具终端---输入-csrutil-disable-命令如果出现successful-则表示成功">实用工具–&gt;终端 &ndash;&gt;输入 csrutil disable 命令，如果出现successful 则表示成功</h5>
+<h5 id="终端输入-reboot-重启苹果">终端输入 reboot 重启苹果</h5>
+<h4 id="步骤三">步骤三</h4>
+<h5 id="别急还没完右键虚拟机设置显示器指定监视器设置为你电脑的分辨率若没有你电脑的分辨率请自己输入">别急还没完，右键虚拟机–&gt;设置–&gt;显示器–&gt;指定监视器–&gt;设置为你电脑的分辨率（若没有你电脑的分辨率，请自己输入）</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./98.png"
+        data-srcset="./98.png, ./98.png 1.5x, ./98.png 2x"
+        data-sizes="auto"
+        alt="./98.png"
+        title="98" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./99.png"
+        data-srcset="./99.png, ./99.png 1.5x, ./99.png 2x"
+        data-sizes="auto"
+        alt="./99.png"
+        title="99" /></p>
+<p>请将虚拟机全屏，这时应该占满整个屏幕v=，而且画质清晰感人。若没有效果，请关闭虚拟机设置后再开机。</p>
+<h3 id="方法二">方法二</h3>
+<h4 id="终端输入命令">终端输入命令</h4>
+<p>Mac系统重启后找到启动台&ndash;其他&ndash;终端</p>
+<p>输入指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">sudo /Library/Application<span class="se">\ </span>Support/VMware<span class="se">\ </span>Tools/vmware-resolutionSet <span class="m">1920</span> <span class="m">1080</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果是其他分辨率该最后两组数字改好就可以（例如:1440*900,就在最后写 1440 900）</p>
+<p>回车，</p>
+<p>会出现 Password: 这个提示, 你这个时候要输入你的账户的密码, 如果没有密码需要到系统偏好设置 - 账户 - 设置密码.</p>
+<p>然后你输入密码的的时候会发现光标不动 , 这是正常的, 实际上已经输入进入了, 因为Mac系统设置的你看不见你输入的密码，你不要管屏幕上有没有，直接输入就行了。输入完成后回车即可生效。</p>
+<h2 id="开发">开发</h2>
+<h3 id="安装xcode">安装Xcode</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./63.png"
+        data-srcset="./63.png, ./63.png 1.5x, ./63.png 2x"
+        data-sizes="auto"
+        alt="./63.png"
+        title="63" /></p>
+<p>控制台中显示效果</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./64.png"
+        data-srcset="./64.png, ./64.png 1.5x, ./64.png 2x"
+        data-sizes="auto"
+        alt="./64.png"
+        title="64" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/hackintosh-vm-16-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/hackintosh-vm-16-note/" data-title="VM安装Hackintosh笔记" data-hashtags="Macintosh,Hackintosh,VMware,VMware16,VirtualMachine"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/hackintosh-vm-16-note/" data-hashtag="Macintosh"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/hackintosh-vm-16-note/" data-title="VM安装Hackintosh笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/hackintosh-vm-16-note/" data-title="VM安装Hackintosh笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/macintosh/">Macintosh</a>,&nbsp;<a href="/tags/hackintosh/">Hackintosh</a>,&nbsp;<a href="/tags/vmware/">VMware</a>,&nbsp;<a href="/tags/vmware16/">VMware16</a>,&nbsp;<a href="/tags/virtualmachine/">VirtualMachine</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/java-thread-locks-note/" class="prev" rel="prev" title="Java线程锁笔记"><i class="fas fa-angle-left fa-fw"></i>Java线程锁笔记</a>
+            <a href="/java-asm-note/" class="next" rel="next" title="Java ASM 字节码增强框架详解的笔记">Java ASM 字节码增强框架详解的笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

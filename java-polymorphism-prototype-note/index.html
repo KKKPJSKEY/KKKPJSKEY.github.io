@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Java多态实现原理笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Java多态实现原理笔记"><meta property="og:title" content="Java多态实现原理笔记" />
+<meta property="og:description" content="记录Java多态实现原理笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/java-polymorphism-prototype-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-polymorphism-prototype-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-08T19:21:36+08:00" />
+<meta property="article:modified_time" content="2022-06-08T19:21:36+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/java-polymorphism-prototype-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Java多态实现原理笔记"/>
+<meta name="twitter:description" content="记录Java多态实现原理笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/java-polymorphism-prototype-note/" /><link rel="prev" href="https://kkkpjskey.github.io/jvm-class-structure-note/" /><link rel="next" href="https://kkkpjskey.github.io/java-audition-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Java多态实现原理笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/java-polymorphism-prototype-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/java-polymorphism-prototype-note\/featured-image.jpg",
+                            "width":  1220 ,
+                            "height":  366 
+                        }],"genre": "posts","keywords": "Java, Polymorphism","wordcount":  9573 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-polymorphism-prototype-note\/","datePublished": "2022-06-08T19:21:36+08:00","dateModified": "2022-06-08T19:21:36+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Java多态实现原理笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/java-polymorphism-prototype-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/java-polymorphism-prototype-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java多态实现原理笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-08">2022-06-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 9573 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 20 分钟&nbsp;<span id="/java-polymorphism-prototype-note/" class="leancloud_visitors" data-flag-title="Java多态实现原理笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/java-polymorphism-prototype-note/featured-image.jpg"
+        data-srcset="/java-polymorphism-prototype-note/featured-image.jpg, /java-polymorphism-prototype-note/featured-image.jpg 1.5x, /java-polymorphism-prototype-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/java-polymorphism-prototype-note/featured-image.jpg"
+        title="记录Java多态实现原理笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一什么是多态对于多态的理解">一.什么是多态?对于多态的理解?</a></li>
+    <li><a href="#二多态的两种表现形式">二.多态的两种表现形式：</a></li>
+    <li><a href="#三静多态分析">三.静多态分析：</a></li>
+    <li><a href="#四动多态的实现原理">四.动多态的实现原理：</a>
+      <ul>
+        <li><a href="#java-的方法调用方式">Java 的方法调用方式</a></li>
+        <li><a href="#方法区现在叫元空间">方法区(现在叫元空间)</a></li>
+        <li><a href="#常量池">常量池</a></li>
+        <li><a href="#简单来说">简单来说：</a></li>
+      </ul>
+    </li>
+    <li><a href="#举例">举例</a>
+      <ul>
+        <li><a href="#方法表与方法调用">方法表与方法调用</a></li>
+        <li><a href="#接口调用">接口调用</a></li>
+      </ul>
+    </li>
+    <li><a href="#五多态的好处">五.多态的好处：</a></li>
+    <li><a href="#六思考">六.思考</a></li>
+    <li><a href="#八面试总结">八.面试总结</a>
+      <ul>
+        <li><a href="#这样说六十分">这样说，六十分</a></li>
+        <li><a href="#这样说七八十分">这样说，七八十分</a></li>
+        <li><a href="#这样说薪资随你开">这样说，薪资随你开</a>
+          <ul>
+            <li><a href="#c是如何实现多态的">C++是如何实现多态的</a></li>
+            <li><a href="#jvm中的虚表">JVM中的虚表</a></li>
+            <li><a href="#java是如何实现虚表分发">Java是如何实现虚表分发</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="一什么是多态对于多态的理解">一.什么是多态?对于多态的理解?</h2>
+<p>多态Polymorphism即多种形态，是面向对象编程语言的重要特性，允许具有继承关系的不同类的对象去调用同一函数方法，并且会根据对象的不同产生多种状态的行为方式。或者说是一个接口的不同实现方式。在java里，继承一个类和实现一个接口本质上都是一种继承行为，因此都应该理解为多态的体现。</p>
+<h2 id="二多态的两种表现形式">二.多态的两种表现形式：</h2>
+<blockquote>
+<p>静态绑定在编译期就已经确定，这是因为静态方法、构造器方法、私有方法和父类方法可以唯一确定。这些方法的符号引用在类加载的解析阶段就会解析成直接引用。因此这些方法也被称为非虚方法，与之相对的便是虚方法。</p>
+</blockquote>
+<p>1.编译时多态(静多态)：</p>
+<ul>
+<li>编译期间决定目标方法</li>
+<li>通过overloading重载实现</li>
+<li>方法名相同，参数不同</li>
+</ul>
+<p>2.运行时多态(动多态)：</p>
+<ul>
+<li>运行期间决定目标方法</li>
+<li>同名同参</li>
+<li>overriding和继承实现</li>
+<li>JVM决定目标方法</li>
+</ul>
+<h2 id="三静多态分析">三.静多态分析：</h2>
+<p>由于静多态主要是依据于方法的重载，编译器只需要查看方法签名就能决定在编译时为特定方法调用调用哪个方法。</p>
+<p>注：在Java中，方法签名 - 方法的名称和参数类型</p>
+<h2 id="四动多态的实现原理">四.动多态的实现原理：</h2>
+<blockquote>
+<p>Java是用过方法表来实现的，C++是通过虚表来实现的。</p>
+</blockquote>
+<p>相比于静多态，动多态的底层过程就会复杂许多，首先通过了解要明确动多态的三个前提条件：**1.继承 2.重写 3.向上转型（即父类型的引用指向子类型的实例）**对象方法基本上都是虚方法。</p>
+<blockquote>
+<p>这里需要特别说明的是，final 方法由于不能被覆盖，可以唯一确定，因此 Java 语言规范规定 final 方法属于非虚方法，但仍然使用 invokevirtual 指令调用。静态绑定、动态绑定的概念和虚方法、非虚方法的概念是两个不同的概念。</p>
+</blockquote>
+<p>要解释多态在底层是如何实现的，只要去发掘程序实例是如何确定出自己真正的实例就好了。多态的底层实现是依靠<strong>动态绑定</strong>，它允许基类的指针或引用指向派生类的对象，而在具体访问时实现方法的动态绑定即在运行时才把方法调用与方法实现联系起来。以一个例子为例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Father</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;This is Father&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Son</span> <span class="kd">extends</span> <span class="n">Father</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;This is Son&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestDemo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Father</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Son</span><span class="o">();</span>
+        <span class="n">s</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>大家肯定都知道最后的的打印结果是“This is Son”，我们在这里要讨论的是这个过程是如何实现的</p>
+<h3 id="java-的方法调用方式">Java 的方法调用方式</h3>
+<p>Java  的方法调用有两类，动态方法调用与静态方法调用。静态方法调用是指对于类的静态方法的调用方式，是静态绑定的；而动态方法调用需要有方法调用所作用的对象，是动态绑定的。类调用 (invokestatic) 是在编译时刻就已经确定好具体调用的静态方法方法的情况，而实例/类引用调用，调用虚方法 (invokevirtual)  则是在调用的时候才确定具体的调用方法，这就是动态绑定，也是多态要解决的核心问题。</p>
+<p>JVM 的方法调用指令有四个，分别是 invokestatic，invokespecial（调用实例构造器方法、私有方法和父类方法），invokesvirtual 和 invokeinterface（调用接口方法，运行时确定具体实现），invokedynamic：运行时动态解析所引用的方法，然后再执行，用于支持动态类型语言。前两个是静态绑定，后两个是动态绑定的。</p>
+<p>Java 对于方法调用动态绑定的实现主要依赖于方法表，方法表是实现动态调用的核心。但通过类引用调用(invokevitual)和接口引用调用(invokeinterface)的实现则有所不同。</p>
+<p>总体而言，当某个方法被调用时，JVM 首先要查找相应的常量池，得到方法的符号引用，并查找调用类的方法表以确定该方法的直接引用，最后才真正调用该方法。</p>
+<p>这些方法中包括从父类继承的所有方法以及自身重写（override）的方法。</p>
+<h3 id="方法区现在叫元空间">方法区(现在叫元空间)</h3>
+<p>方法区和JAVA堆一样，是各个线程共享的内存区域，用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</p>
+<p>类引用调用的大致过程为：Java编译器将Java源代码编译成class文件，在编译过程中，会根据静态类型将调用的符号引用写到class文件中。在执行时，JVM根据class文件找到调用方法的符号引用，然后在静态类型的方法表中找到偏移量，然后根据this指针确定对象的实际类型，使用实际类型的方法表，偏移量跟静态类型中方法表的偏移量一样，如果在实际类型的方法表中找到该方法，则直接调用，否则，认为没有重写父类该方法。按照继承关系从下往上搜索。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>从上图可以看出，当程序运行需要某个类的定义时，载入子系统 (class loader subsystem) 就装入所需的 class  文件到JVM中（这个类型信息其实就是class文件在JVM中存储的一种数据结构），并在内部建立该类的类型信息，这个类型信息就存贮在方法区。类型信息包含java类定义的所有信息，一般包括该类的方法代码、类变量、成员变量的定义以及本博文要重点讨论的方法表等等（虚拟机栈中会存放当前方法调用的栈帧，在栈帧中，存储着局部变量表、操作栈、动态连接 、返回地址和其他附加信息。）。这个方法区中的类型信息跟在堆中存放的class对象是不同的，该类的class  对象是 JVM 在载入后于堆 (heap) 中创建的代表该类的对象，个class的类型信息只有唯一的实例（所以是各个线程共享的内存区域），而在堆中可以有多个该class对象，可以通过该 class 对象访问到方法区中该类型信息。比如最典型的应用，在 Java 反射中应用 class 对象访问到该类所有信息，如支持的所有方法，定义的成员变量等等。可以想象，JVM 在类型信息和 class  对象中维护着它们彼此的引用以便互相访问。两者的关系可以类比于进程对象与真正的进程之间的关系。并且为了优化对象调用方法的速度，方法区中的类型信息中会增加一个指针（指向栈帧），该指针会去指向一张记录该类方法入口的表，即方法表，并且方法表中的每一项都是指向相应方法的指针。通过栈帧的信息去找到被调用方法的具体实现，然后使用这个具体实现的直接引用完成方法调用。</p>
+<p>JAVA语言是单继承机制，一个类只能继承一个父类，而所有的类又都继承自Object类。方法表有自己的存储机制：方法表中最先存放的是Object类的方法，接下来是父类的方法，最后才是自身特有的方法。这里的关键点在于如果子类重写了父类的方法，那么子类和父类的同名方法共享一个方法表项，都被认作是父类的方法（仅仅只有非私有的实例方法才行，静态方法是不行的），即同名（子类重写的）方法在相对应类的方法表中的偏移量是相同的。</p>
+<h3 id="常量池">常量池</h3>
+<p>常量池是方法区中的一个区域，Class文件中除了有类的版本、方法、字段等描述信息外，还有一项信息是常量池，其中保存 Java 类引用的一些常量信息，包含字符串常量及一些编译器生成的各种类的符号引用信息等。，这部分信息在类加载时进入方法区的运行时常量池中。</p>
+<p>方法区的内存回收目标是针对常量池的回收及对类型的卸载。</p>
+<p>Java 代码编译生成的类文件中的常量池是静态常量池，当类被载入到虚拟机内部的时候，在内存中产生类的常量池叫运行时常量池。</p>
+<p>常量池在逻辑上可以分成多个表，每个表包含一类的常量信息，本文只探讨对于 Java 调用相关的常量池表。</p>
+<p>CONSTANT_Utf8_info</p>
+<p>字符串常量表，该表包含该类所使用的所有字符串常量，比如代码中的字符串引用、引用的类名、方法的名字、其他引用的类与方法的字符串描述等等。其余常量池表中所涉及到的任何常量字符串都被索引至该表。</p>
+<p>CONSTANT_Class_info</p>
+<p>类信息表，包含任何被引用的类或接口的符号引用，每一个条目主要包含一个索引，指向 CONSTANT_Utf8_info 表，表示该类或接口的全限定名。</p>
+<p>CONSTANT_NameAndType_info</p>
+<p>名字类型表，包含引用的任意方法或字段的名称和描述符信息在字符串常量表中的索引。</p>
+<p>CONSTANT_InterfaceMethodref_info</p>
+<p>接口方法引用表，包含引用的任何接口方法的描述信息，主要包括类信息索引和名字类型索引。</p>
+<p>CONSTANT_Methodref_info</p>
+<p>类方法引用表，包含引用的任何类型方法的描述信息，主要包括类信息索引和名字类型索引。</p>
+<p>1.通过aload_1指令将创建在堆中的对象的引用压入操作数栈,然后 invoke 指令会根据这个对象的引用找到该对象以及该对象所属类型的方法表
+2.通过相应的 invoke 指令得到其调用方法的常量池表索引，该常量表会记录该调用方法的符号引用(包括调用方法所在的类全限定名，方法名和返回类型)
+3.JVM根据该调用方法的类的全限定名加载、链接、初始化该类，并且在该类所在方法区中找到该调用方法的直接地址，并且将该地址记录到当前类的常量表中(常量解析过程)
+4.随后JVM就可以确定出调用方法在内存上的具体位置，并可以随时调用该方法</p>
+<p>对于所有私有方法、静态方法、final方法在程序编译后该信息就可以保存到静态常量池中了，JVM运行的时候只需要进行一次常量池解析即可。</p>
+<p>而对于我示例的这种动态绑定，其不一样的是向上转型的语法使得其引用类型是父类型，实例对象是子类型，在常量池解析的过程中 invoke  指令解析出test方法对应的类全限定名为Father，因为该实例的引用类型为Father，在Father类的方法表中找到test方法的地址记录到TestDemo的常量表中。但是之前的aload_1指令则会将Son对象压入操作数栈，invoke指令会通过该操作数找到Son对象并且找到Son类型的方法表的入口，如若是静态绑定这样的过程是合理的，因为引用类型与实例类型对应，我去当前引用类的常量表中拿到方法的偏移量地址再去我实例对象对应的方法表中定位该方法，但对于动态绑定看似引用和实例对不上，但由于方法表的默认规则，即同名（子类重写的）方法在相对应类的方法表中的偏移量是相同的，用父类方法的偏移量在实例类型的方法表中依然可以定位到该子类重写覆盖后的方法</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<h3 id="简单来说">简单来说：</h3>
+<p>如上图所示，当我们在执行代码的时候，首先根据我们所写的语法在栈内存上会创建相对应的引用变量s，相应地在堆内存上开辟空间创建Son的实例对象，并且引用s指向它的实例Son，由<strong>类的加载过程</strong>我们可知道我们所编写的Class文件会在JVM方法区上建立储存它所含有的类型信息（成员变量、类变量、方法等）并且还会得到一个Class对象（通过<strong>反射</strong>机制）建立在堆区上，该Class对象会作为方法区访问数据的入口。</p>
+<p>结合同名方法偏移量相同且是固定的，则在调用方法时，首先会对实例方法的符号引用进行解析，解析的结果就是方法表的偏移量。当我们把子类对象声明为父类类型时，明面上虚拟机通过<strong>对象引用的类型</strong>得到该类型方法区中类型信息的入口，去查询该类型的方法表（即例中的Father），得到的是父类型的方法表中的test方法的偏移量，但实际上编译器通过<strong>类加载过程</strong>获取到<strong>Class对象</strong>知道了实例对象s的真正类型，转而进入到了真正的子类类型（例中的Son）的方法表中用偏移量寻找方法，恰好两者偏移量是相等的，我们就顺利成章的拿到了Son类型方法表中的test方法进而去指向test方法入口。嘻嘻。</p>
+<p>以 invokevirtual 指令为例，在执行时，大致可以分为以下几步：先从操作栈中找到对象的实际类型 class；</p>
+<p>找到 class 中与被调用方法签名相同的方法，如果有访问权限就返回这个方法的直接引用，如果没有访问权限就报错 java.lang.IllegalAccessError ；</p>
+<p>如果第 2 步找不到相符的方法，就去搜索 class 的父类，按照继承关系自下而上依次执行第 2 步的操作；</p>
+<p>如果第 3 步找不到相符的方法，就报错 java.lang.AbstractMethodError ；</p>
+<p>可以看到，如果子类覆盖了父类的方法，则在多态调用中，动态绑定过程会首先确定实际类型是子类，从而先搜索到子类中的方法。这个过程便是方法覆盖的本质。</p>
+<h2 id="举例">举例</h2>
+<h3 id="方法表与方法调用">方法表与方法调用</h3>
+<p>如有类定义 Person, Girl, Boy</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>   
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(){</span>   
+        <span class="k">return</span> <span class="s">&#34;I&#39;m a person.&#34;</span><span class="o">;</span>   
+    <span class="o">}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">(){}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">speak</span><span class="o">(){}</span>   
+
+<span class="o">}</span>   
+
+<span class="kd">class</span> <span class="nc">Boy</span> <span class="kd">extends</span> <span class="n">Person</span><span class="o">{</span>   
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(){</span>   
+        <span class="k">return</span> <span class="s">&#34;I&#39;m a boy&#34;</span><span class="o">;</span>   
+    <span class="o">}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">speak</span><span class="o">(){}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fight</span><span class="o">(){}</span>   
+<span class="o">}</span>   
+
+<span class="kd">class</span> <span class="nc">Girl</span> <span class="kd">extends</span> <span class="n">Person</span><span class="o">{</span>   
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(){</span>   
+        <span class="k">return</span> <span class="s">&#34;I&#39;m a girl&#34;</span><span class="o">;</span>   
+    <span class="o">}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">speak</span><span class="o">(){}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sing</span><span class="o">(){}</span>   
+<span class="o">}</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>当这三个类被载入到 Java 虚拟机之后，方法区中就包含了各自的类的信息。Girl 和 Boy 在方法区中的方法表可表示如下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.png"
+        data-srcset="./3.png, ./3.png 1.5x, ./3.png 2x"
+        data-sizes="auto"
+        alt="./3.png"
+        title="3" /></p>
+<p>可以看到，Girl 和 Boy 的方法表包含继承自 Object 的方法，继承自直接父类 Person  的方法及各自新定义的方法。注意方法表条目指向的具体的方法地址，如 Girl 继承自 Object 的方法中，只有 toString() 指向自己的实现（Girl 的方法代码），其余皆指向 Object 的方法代码；其继承自于 Person 的方法 eat() 和 speak() 分别指向 Person 的方法实现和本身的实现。</p>
+<p>如果子类改写了父类的方法，那么子类和父类的那些同名的方法共享一个方法表项。</p>
+<p>因此，方法表的偏移量总是固定的。所有继承父类的子类的方法表中，其父类所定义的方法的偏移量也总是一个定值。
+Person 或 Object中的任意一个方法，在它们的方法表和其子类 Girl 和 Boy 的方法表中的位置 (index) 是一样的。这样 JVM 在调用实例方法其实只需要指定调用方法表中的第几个方法即可。</p>
+<p>如调用如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Party</span><span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">happyHour</span><span class="o">(){</span>
+        <span class="n">Person</span> <span class="n">girl</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Girl</span><span class="o">();</span>
+        <span class="n">girl</span><span class="o">.</span><span class="na">speak</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当编译 Party 类的时候，生成 girl.speak()的方法调用假设为：</p>
+<p>Invokevirtual #12</p>
+<p>设该调用代码对应着 girl.speak(); #12 是 Party 类的常量池的索引。JVM 执行该调用指令的过程如下所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.png"
+        data-srcset="./4.png, ./4.png 1.5x, ./4.png 2x"
+        data-sizes="auto"
+        alt="./4.png"
+        title="4" /></p>
+<p>（1）在常量池（这里有个错误，上图为ClassReference常量池而非Party的常量池）中找到方法调用的符号引用 。
+（2）查看Person的方法表，得到speak方法在该方法表的偏移量（假设为15），这样就得到该方法的直接引用。 
+（3）根据this指针得到具体的对象（即 girl 所指向的位于堆中的对象）。
+（4）根据对象得到该对象对应的方法表，根据偏移量15查看有无重写（override）该方法，如果重写，则可以直接调用（Girl的方法表的speak项指向自身的方法而非父类）；如果没有重写，则需要拿到按照继承关系从下往上的基类（这里是Person类)的方法表，同样按照这个偏移量15查看有无该方法。</p>
+<h3 id="接口调用">接口调用</h3>
+<p>因为 Java 类是可以同时实现多个接口的，而当用接口引用调用某个方法的时候，情况就有所不同了。</p>
+<p>Java 允许一个类实现多个接口，从某种意义上来说相当于多继承，这样同样的方法在基类和派生类的方法表的位置就可能不一样了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">interface</span> <span class="nc">IDance</span><span class="o">{</span>   
+    <span class="kt">void</span> <span class="nf">dance</span><span class="o">();</span>   
+<span class="o">}</span>   
+
+<span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>   
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(){</span>   
+        <span class="k">return</span> <span class="s">&#34;I&#39;m a person.&#34;</span><span class="o">;</span>   
+    <span class="o">}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">(){}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">speak</span><span class="o">(){}</span>   
+
+<span class="o">}</span>   
+
+<span class="kd">class</span> <span class="nc">Dancer</span> <span class="kd">extends</span> <span class="n">Person</span>
+    <span class="kd">implements</span> <span class="n">IDance</span> <span class="o">{</span>   
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(){</span>   
+        <span class="k">return</span> <span class="s">&#34;I&#39;m a dancer.&#34;</span><span class="o">;</span>   
+    <span class="o">}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dance</span><span class="o">(){}</span>   
+<span class="o">}</span>   
+
+<span class="kd">class</span> <span class="nc">Snake</span> <span class="kd">implements</span> <span class="n">IDance</span><span class="o">{</span>   
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(){</span>   
+        <span class="k">return</span> <span class="s">&#34;A snake.&#34;</span><span class="o">;</span>   
+    <span class="o">}</span>   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dance</span><span class="o">(){</span>   
+        <span class="c1">//snake dance   
+</span><span class="c1"></span>    <span class="o">}</span>   
+<span class="o">}</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到，由于接口的介入，继承自于接口 IDance 的方法 dance()在类 Dancer 和 Snake 的方法表中的位置已经不一样了，显然我们无法仅根据偏移量来进行方法的调用。</p>
+<p>Java 对于接口方法的调用是采用搜索方法表的方式，如，要在Dancer的方法表中找到dance()方法，必须搜索Dancer的整个方法表。</p>
+<p>因为每次接口调用都要搜索方法表，所以从效率上来说，接口方法的调用总是慢于类方法的调用的。</p>
+<h2 id="五多态的好处">五.多态的好处：</h2>
+<p>1.应用程序不必为每一个派生类编写功能调用，只需要对抽象基类进行处理即可。大大提高程序的可复用性。（继承保证）
+2.派生类的功能可以被基类的方法或引用变量所调用，这叫向后兼容，
+可以提高可扩充性和可维护性。（多态保证）</p>
+<h2 id="六思考">六.思考</h2>
+<p>实际上，商用虚拟机为了保证性能，通常会使用虚方法表和接口方法表，而不是每次都执行一遍上面的步骤。以虚方法表为例，虚方法表在类加载的解析阶段填充完成，其中存储了所有方法的直接引用。也就是说，动态分派在填充虚方法表的时候就已经完成了。</p>
+<p>在子类的虚方法表中，如果子类覆盖了父类的某个方法，则这个方法的直接引用指向子类的实现；而子类没有覆盖的那些方法，比如 Object 的方法，直接引用指向父类或 Object 的实现。</p>
+<h2 id="八面试总结">八.面试总结</h2>
+<h3 id="这样说六十分">这样说，六十分</h3>
+<p>多态是面向对象的三大特性之一，我个人认为，当时设计OOP机制的时候，能够想到多态的人，真特么太牛叉了。</p>
+<p>多态理论第一次有了具体实现是在第一款面向对象的编程语言中，这个语言可能很多人没听过：smalltalk。此后出现的只要具备OOP机制的语言，都或多或少模仿或借鉴了前面语言的OOP实现机制。C++有没有模仿或借鉴smalltalk，我不敢说，没特别研究过smalltalk。但是我敢说，Java的多态是几乎百分百模仿C++的多态实现的，不过做了一些细化。C++中只有直接调用、间接调用，而JVM通过不同的invoke指令来实现不同属性的方法调用，这点后文会讲到。</p>
+<p>那什么是多态呢，满足下面这几个条件就可以称为多态： 1、继承了某个类、实现了某个接口 2、重写父类的方法、实现接口中的方法 3、父类引用指向子类对象</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.jpg"
+        data-srcset="./5.jpg, ./5.jpg 1.5x, ./5.jpg 2x"
+        data-sizes="auto"
+        alt="./5.jpg"
+        title="5" /></p>
+<p>其实面试官问的这个问题，你这样回答也算就着他这个问题做了回答。但是显然，面试官想听的不是这些，而是父类引用指向子类对象，进行方法调用，这个JVM底层是如何实现的。面试题就是为了筛人，所以面试的时候，能答多深就答多深，绝对加分。</p>
+<p>顺便说下，经常跟多态联系在一起的两个词：动态绑定、晚绑定。别到时面试官说这两个词，你一脸懵，那真的很掉分，面试官的脸色一下就暗淡灰沉下去了。当面试官看到你的第一眼，心里给了你60分钟时间来表现，这下直接掉到5分钟。更直接一点的，可能找个借口就走人了。</p>
+<h3 id="这样说七八十分">这样说，七八十分</h3>
+<p>C++中的间接调用与直接调用，JVM抽象成了4个指令来完成： 1、invokevirtual：咱们平时写代码调用方法，最常用的就是这个指令。这个指令用于调用public、protected修饰，且不被static、final修饰的方法。跟多态机制有关。 2、invokeinterface：跟invokevirtual差不多。区别是多态调用时，如果父类引用是对象，就用invokevirtual。如果父类引用是接口，就用这个。 3、invokespecial：只用于调用私有方法，构造方法。跟多态机制无关。 4、invokestatic：只用于调用静态方法。与多态机制无关。</p>
+<p>跟面试官当然要扯点高逼格的对吧，那咱们就讲讲invokeinterface。这个指令为什么逼格高呢？因为它的底层实现比其他几个指令都要复杂，如图</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.jpg"
+        data-srcset="./6.jpg, ./6.jpg 1.5x, ./6.jpg 2x"
+        data-sizes="auto"
+        alt="./6.jpg"
+        title="6" /></p>
+<p>其他的invoke指令的后面就是2个字节的操作数，拿着操作数去常量池中就可以找到类信息、方法信息。但是invokeinterface你会发现，它后面操作数占了4个字节，这4个字节还不全是常量池索引，一起看下这个指令的结构，上图：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.jpg"
+        data-srcset="./7.jpg, ./7.jpg 1.5x, ./7.jpg 2x"
+        data-sizes="auto"
+        alt="./7.jpg"
+        title="7" /></p>
+<p>这个指令格式我解释一下：</p>
+<ol>
+<li>第二个字节跟第三个字节合起来是常量池的索引，对应常量池项JVM_CONSTANT_InterfaceMethodref，这里面包含接口的元信息、方法信息。</li>
+<li>第四个字节是这个方法的参数个数。是不是有小伙伴觉得很奇怪，show方法没有参数呀，这边怎么是1，是JVM的bug？呵，如果JVM有这么低级的bug，JVM也不会有今天的地位了。非静态方法就算没有参数，也默认有一个，就是this指针。其实这个参数个数完全没必要记录，可以通过解析方法的签名计算出来，不明白当时为什么做这样的设计。面试的时候这点记得说，很加分。其实字节码文件中有很多可以优化的点，后面准备共享这方面的面试题，没人想打我吧。^_^</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.jpg"
+        data-srcset="./8.jpg, ./8.jpg 1.5x, ./8.jpg 2x"
+        data-sizes="auto"
+        alt="./8.jpg"
+        title="8" /></p>
+<ol>
+<li>第五个字节永远为0，历史原因遗留。我查了一些资料，得到的答案是：为额外的运算元预留空间。子牙老师表示这个字我都认识，但是它组合在一起表达的意思我真不懂，是不是我太菜了。哎，还是太菜了。</li>
+</ol>
+<p>有些小伙伴可能就想：答到这个份上才七八十分？那后面还能怎么说哦。咱们现在才只说到invokeinterface指令，那这个指令是怎么找到要调用的方法的呢？JVM的虚表机制到底是什么样的呢？又是怎么与C++的虚表机制合二为一的呢？虚表分发机制又是怎样的呢？这些才是这个问题的精髓。</p>
+<h3 id="这样说薪资随你开">这样说，薪资随你开</h3>
+<p>这边给大家补一个知识点。上面说：当时设计OOP机制的时候，能够想到多态的人，真特么太牛叉了。我给大家讲一下我为什么这样说。或者说，OOP三大机制为什么就是封装、继承、多态。这么几十年了，没加一个、减一个或改一个。</p>
+<p>由于多态需要通过动态绑定才能得以实现，而绑定通俗一点讲就是让不同的对象对同一个函数进行调用，或者反过来讲，就是让同一个函数与不同的对象绑定起来，所以多态得以实现的一个大前提就是，编程语言必须是面向对象的。同时，函数与对象相互绑定，意味着函数也属于对象的一部分，这便具备了封装的特性。因为有了封装，才有了对象。同时，一个函数能够绑定多个对象，意味着对各不同的对象具有相同的行为，这是继承的含义。 因此，面向对象的三大特性缺一不可。封装与继承其实是为了多态准备的，或者说，封装与继承成全了多态，多态让封装与继承的意义最大化。</p>
+<h4 id="c是如何实现多态的">C++是如何实现多态的</h4>
+<p>多态的实现，现在几乎所有的编程语言都是基于虚表实现的，英文vtable。这里我没有说全部，因为我也不是所有的语言都了解哈，不敢乱说，免得遭喷。^_^</p>
+<p>C++的虚表在哪呢？在new创建的对象的头部。虚表里面存储的是什么呢？是虚函数。C++这块的知识我就不讲太多了，很多小伙伴不了解C++，讲多了没必要，作为一名Java程序员，了解到这个程度够了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
+        data-sizes="auto"
+        alt="./9.png"
+        title="9" /></p>
+<p>因为hotshot主要是用C++写的，讲了C++的虚表，这张图你应该就能看懂了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.png"
+        data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
+        data-sizes="auto"
+        alt="./10.png"
+        title="10" /></p>
+<p>不然总有小伙伴问我：Java的类对应的C++对象，为什么有C++级别的虚表啊。我没看到哪里有这样的代码啊。</p>
+<p>搞清楚了虚表，再来了解虚表分发就容易多了。虚表分发，其实就是通过虚表内存地址拿到虚表记录，然后通过函数名+内含参数信息及返回值信息的签名去虚表中找。因为是从前往后找，所以如果子类重写了父类的方法，会调用子类的方法。C++的虚表分发，我只是简单讲了下，讲多了大家没概念。JVM的虚表分发，我等下会讲得详细一些。很多现象，如果不了解它的底层，是不是百思不得其解。有那么多为什么？为什么？^_^</p>
+<p>所以Java虽好，底层也很重要。顺便说下，虚表就是用数组实现的，没有有些小伙伴想得那么复杂。</p>
+<h4 id="jvm中的虚表">JVM中的虚表</h4>
+<p>JVM的虚表跟C++的虚表还不太一样。不一样体现在哪呢？研究虚表研究三个东西：虚表在哪、虚表是用什么结构实现的、虚表分发机制是怎样的。JVM的虚表分发等下讲，JVM的虚表也是用数组实现的，那这个不一样就体现在虚表在哪？</p>
+<p>Java的类，JVM中对应的C++对象是klass模型。Java的对象，JVM中对应的C++对象是oop模型。C++中的虚表在对象头中，而JVM的虚表在klass模型的头部，即Java类对象的头部。这点区别一定要记住，这样你才能理解Java对象的内存布局。</p>
+<p>问个问题：我们随便定义的一个类，它有没有JVM虚表呢？其实是有的。那是哪些方法的内存地址呢？回答这个问题前先得搞明白：什么样的方法会存入虚表。只有public、protect类型的，且不被static、final修饰的方法才能被多态调用，才会进入虚表。因为Java中所有的类都是Object的子类，所以Object中满足这个条件的方法都会在每个类的虚表中。</p>
+<p>又到了小伙伴不服气环节。么事，上证据。具体怎么查看我就不讲了，有点复杂。对hotspot没一定的功力讲了也没概念。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<h4 id="java是如何实现虚表分发">Java是如何实现虚表分发</h4>
+<p>有些小伙伴不理解：我只会Java干活都没问题呀，我为什么要学底层呢？那你想进大厂跟优秀的人成为同事吗？你想成为别人眼中的大佬吗？你希望在某个领域能有一定的名气吗……这些都需要实力来支撑。</p>
+<p>有些小伙伴说：我手写一个JVM干什么呢？那我就用我手写的JVM来讲解这个知识点。这就是你有一个手写JVM的意义之一。</p>
+<p>JVM实现虚表分发，对应的字节码指令有两个：invokevirtual、invokeinterface。上篇文章咱们深入讲解了invokeinterface，这篇文章咱们继续拿这个指令来讲这个知识点。我们来看看JVM是如何分发的。其实一看执行invokeinterface时的堆栈，你应该就能明白了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+<p>虽然invokeinterface后面的操作数是接口方法信息。但是真正的对象会作为this传过来。所以在调用的时候，从操作数栈拿到真正的对象，然后通过对象头中的类型指针拿到TestDuotai对应的C++类对象，即klass模型。前面说了，虚表就在这个对象的头部。然后通过函数名+内含参数信息及返回值信息的签名去虚表中找。因为是从前往后找，所以如果子类重写了父类的方法，会调用子类的方法。这就是JVM虚表分发的底层原理。这块有点难理解，需要的基础可能比较深。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/java-polymorphism-prototype-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/java-polymorphism-prototype-note/" data-title="Java多态实现原理笔记" data-hashtags="Java,Polymorphism"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/java-polymorphism-prototype-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/java-polymorphism-prototype-note/" data-title="Java多态实现原理笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/java-polymorphism-prototype-note/" data-title="Java多态实现原理笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/polymorphism/">Polymorphism</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/jvm-class-structure-note/" class="prev" rel="prev" title="Jvm 第5篇：类文件结构笔记"><i class="fas fa-angle-left fa-fw"></i>Jvm 第5篇：类文件结构笔记</a>
+            <a href="/java-audition-note/" class="next" rel="next" title="Java后端面试题整理">Java后端面试题整理<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

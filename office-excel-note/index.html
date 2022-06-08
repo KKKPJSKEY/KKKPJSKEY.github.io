@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/office-excel-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/office-excel-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-11-29T11:05:05+08:00" />
-<meta property="article:modified_time" content="2022-06-04T23:55:09+08:00" />
+<meta property="article:modified_time" content="2021-11-29T11:05:05+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/office-excel-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/office-excel-note\/featured-image.jpg",
                             "width":  1025 ,
                             "height":  550 
-                        }],"genre": "posts","keywords": "Office, Excel","wordcount":  1808 ,
-        "url": "https:\/\/kkkpjskey.github.io\/office-excel-note\/","datePublished": "2021-11-29T11:05:05+08:00","dateModified": "2022-06-04T23:55:09+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Office, Excel","wordcount":  2921 ,
+        "url": "https:\/\/kkkpjskey.github.io\/office-excel-note\/","datePublished": "2021-11-29T11:05:05+08:00","dateModified": "2021-11-29T11:05:05+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Office中Excel的单独使用笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-29">2021-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1808 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/office-excel-note/" class="leancloud_visitors" data-flag-title="Office中Excel的单独使用笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-29">2021-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2921 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/office-excel-note/" class="leancloud_visitors" data-flag-title="Office中Excel的单独使用笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -150,6 +150,13 @@
     <li><a href="#快速在excel中筛选奇数或偶数行">快速在Excel中筛选奇数或偶数行</a></li>
     <li><a href="#公式">公式</a></li>
     <li><a href="#excel为什么明明有数值求和结果总是0">Excel为什么明明有数值，求和结果总是0</a></li>
+    <li><a href="#excel三大统计函数countcountifcountifs函数">Excel三大统计函数count、countif、countifs函数</a>
+      <ul>
+        <li><a href="#count函数">COUNT函数</a></li>
+        <li><a href="#countif函数">COUNTIF函数</a></li>
+        <li><a href="#countifs函数">COUNTIFS函数</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="excel字符串连接的5种方式">Excel字符串连接的5种方式</h2>
@@ -369,11 +376,81 @@
         alt="./19.png"
         title="19" /></p>
 <p>选择性粘贴转换数字格式</p>
+<h2 id="excel三大统计函数countcountifcountifs函数">Excel三大统计函数count、countif、countifs函数</h2>
+<p>在Excel中我们经常需要统计数量，这个时候我们就要会用到count、countif以及countifs函数，那么这三种统计函数具体是如何使用的呢？</p>
+<h3 id="count函数">COUNT函数</h3>
+<p>count函数，是以上三种统计函数当中操作最为简单的函数，那么它具体是如何使用的呢？举个例子，如下图所示，假如我们需要求出下列表格当中获取奖金的员工人数。此时我们就要在单元格里输入一个等于号以及我们的count函数，输入完毕之后，我们直接框选需要统计的数据区域。在下面图片当中，我们可以看到公式——=count（M7:M13）。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./20.png"
+        data-srcset="./20.png, ./20.png 1.5x, ./20.png 2x"
+        data-sizes="auto"
+        alt="./20.png"
+        title="20" /></p>
+<p>最后我们点击回车，然后可以看到表格中的获奖人数就被快速地统计出来了，人数为5人。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./21.png"
+        data-srcset="./21.png, ./21.png 1.5x, ./21.png 2x"
+        data-sizes="auto"
+        alt="./21.png"
+        title="21" /></p>
+<h3 id="countif函数">COUNTIF函数</h3>
+<p>countif函数，它的作用是满足单个指定条件来统计数量，比如，如下图所示，我们需要求出销售额大于2000的人数。此时我们就在单元格里面输入一个等于号以及我们countif函数，然后可以看到此函数有两个参数，第一个参数是“区域”，是指条件区域，区域里有若干个条件；另一个参数是“条件”，在这里也是就我们的指定条件“销售额大于2000”。我们框选销售额这一区域，再输入一个逗号隔开，然后输入指定条件&rdquo;&gt;2000&quot;(双引号为英文状态下)。则公式=（M7:M13，&quot;&gt;2000&quot;）。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./22.png"
+        data-srcset="./22.png, ./22.png 1.5x, ./22.png 2x"
+        data-sizes="auto"
+        alt="./22.png"
+        title="22" /></p>
+<p>最后点击回车，可以看到销售额大于2000的人数就被求了出来，人数为3人。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./23.png"
+        data-srcset="./23.png, ./23.png 1.5x, ./23.png 2x"
+        data-sizes="auto"
+        alt="./23.png"
+        title="23" /></p>
+<h3 id="countifs函数">COUNTIFS函数</h3>
+<p>countifs函数，它的作用是满足多个指定条件来统计数量，比如，如下图所示，我们需要求出一分店营销二部的男生人数，此时有三个指定条件，既要满足是一分店，也要满足是营销二部，同时还要满足是男生这一条件。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./24.png"
+        data-srcset="./24.png, ./24.png 1.5x, ./24.png 2x"
+        data-sizes="auto"
+        alt="./24.png"
+        title="24" /></p>
+<p>此时我们在单元格里面输入一个等于号以及我们的countifs函数，然后可以看到此函数有两种基本参数，一个是“区域”，一个是“条件”，区域指的是条件区域，一个区域里有若干个条件，根据我们要求的内容，我们框选分店这一区域，然后选择指定条件一分店，以此类推，接着我们再框选部门这一区域，选择营销二部这一指定条件，框选性别这一区域，选择指定条件男（每框选一个内容都要用逗号隔开，最后一个除外）。则公式——=countifs（L7:L13，L7，M7:M13，M9，K7:K13，K7）。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./25.png"
+        data-srcset="./25.png, ./25.png 1.5x, ./25.png 2x"
+        data-sizes="auto"
+        alt="./25.png"
+        title="25" /></p>
+<p>最后我们点击回车，可以看到通过countifs函数的相关操作，一分店营销二部的男生人数就被求了出来，人数为2人。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./26.png"
+        data-srcset="./26.png, ./26.png 1.5x, ./26.png 2x"
+        data-sizes="auto"
+        alt="./26.png"
+        title="26" /></p>
+<p>这就是Excel当中count、countif、countifs函数的基本使用方法。</p>
+<p>好了，以上就是本期的全部内容，如果你喜欢我的作品，欢迎点赞收藏加关注；</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-06-04</span>
+                <span>更新于 2021-11-29</span>
             </div>
             <div class="post-info-license"></div>
         </div>

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>IntelliJ IDEA插件笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录IntelliJ IDEA插件笔记统计代码行数插件教程的笔记"><meta property="og:title" content="IntelliJ IDEA插件笔记" />
+<meta property="og:description" content="记录IntelliJ IDEA插件笔记统计代码行数插件教程的笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/idea-plugins-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-25T10:52:53+08:00" />
+<meta property="article:modified_time" content="2022-06-08T09:07:00+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/logo.png"/>
+
+<meta name="twitter:title" content="IntelliJ IDEA插件笔记"/>
+<meta name="twitter:description" content="记录IntelliJ IDEA插件笔记统计代码行数插件教程的笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/idea-plugins-note/" /><link rel="prev" href="https://kkkpjskey.github.io/idea-selfmaven-nexus-init-error/" /><link rel="next" href="https://kkkpjskey.github.io/idea-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "IntelliJ IDEA插件笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/idea-plugins-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "Idea, Plugin","wordcount":  2985 ,
+        "url": "https:\/\/kkkpjskey.github.io\/idea-plugins-note\/","datePublished": "2021-08-25T10:52:53+08:00","dateModified": "2022-06-08T09:07:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录IntelliJ IDEA插件笔记统计代码行数插件教程的笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/idea-plugins-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/idea-plugins-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">IntelliJ IDEA插件笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2985 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/idea-plugins-note/" class="leancloud_visitors" data-flag-title="IntelliJ IDEA插件笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#字节码">字节码</a>
+      <ul>
+        <li><a href="#asm简单入门">ASM简单入门</a>
+          <ul>
+            <li><a href="#1asm简介">1.ASM简介</a>
+              <ul>
+                <li><a href="#11-asm的作用">1.1 ASM的作用</a></li>
+                <li><a href="#12-asm简单使用">1.2 ASM简单使用</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#jvm-字节码jclasslib解读">jvm 字节码jclasslib解读</a></li>
+      </ul>
+    </li>
+    <li><a href="#热部署">热部署</a>
+      <ul>
+        <li><a href="#jrebel插件使用详解">JRebel插件使用详解</a>
+          <ul>
+            <li><a href="#简介">简介</a></li>
+            <li><a href="#安装">安装</a>
+              <ul>
+                <li><a href="#第一步安装插件">第一步：安装插件</a></li>
+                <li><a href="#第二步在线guid地址在线生成guid">第二步：在线GUID地址：在线生成GUID</a></li>
+                <li><a href="#第三步打开jrebel-如下所示面板选择connect-to-online-licensing-service">第三步：打开jrebel 如下所示面板，选择Connect to online licensing service</a></li>
+              </ul>
+            </li>
+            <li><a href="#相关设置">相关设置</a>
+              <ul>
+                <li><a href="#设置成离线工作模式">设置成离线工作模式</a></li>
+                <li><a href="#设置自动编译">设置自动编译</a></li>
+                <li><a href="#设置compilerautomakeallowwhenapprunning">设置compiler.automake.allow.when.app.running</a></li>
+              </ul>
+            </li>
+            <li><a href="#使用">使用</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#统计代码行数插件">统计代码行数插件</a>
+      <ul>
+        <li><a href="#statistic">Statistic</a>
+          <ul>
+            <li><a href="#安装步骤">安装步骤</a></li>
+            <li><a href="#详解">详解</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="字节码">字节码</h2>
+<h3 id="asm简单入门">ASM简单入门</h3>
+<h4 id="1asm简介">1.ASM简介</h4>
+<p>动态修改Java的class字节码的框架</p>
+<p>官网:<a href="https://link.segmentfault.com/?url=https%3A%2F%2Fasm.ow2.io%2F" target="_blank" rel="noopener noreferrer">https://asm.ow2.io/</a></p>
+<h5 id="11-asm的作用">1.1 ASM的作用</h5>
+<ul>
+<li>注解+注入：假设有一个判断登录功能，可以使用注解，在方法开始的地方，解析注解，然后插入代码</li>
+<li>闭源代码修改:假设有一个闭源的代码内部有bug,可以通过修改字节码的方式来进行修改</li>
+<li>统计功能：Android中可以在方法开始和方法结束，插入代码桩，来得出时间，找出anr</li>
+</ul>
+<h5 id="12-asm简单使用">1.2 ASM简单使用</h5>
+<p>使用idea新建工程,首先导入asm:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="n">implementation</span><span class="o">(</span><span class="s">&#34;org.ow2.asm:asm:9.2&#34;</span><span class="o">)</span>
+    <span class="n">implementation</span><span class="o">(</span><span class="s">&#34;org.ow2.asm:asm-commons:9.2&#34;</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>编写简单的测试类：</p>
+<p>ASM01.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.ifreedomer.asm</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ASM01</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hello asm&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>IDEA使用插件 asm outline 查看 asm 如何生成该类。</strong></p>
+<p>安装插件: asm-bytecode-outline</p>
+<p>然后双击shift-&gt;show bytecode outline,得到如下字节码:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./19.png"
+        data-srcset="./19.png, ./19.png 1.5x, ./19.png 2x"
+        data-sizes="auto"
+        alt="./19.png"
+        title="19" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// class version 52.0 (52)
+</span><span class="c1">// access flags 0x21
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">com</span><span class="o">/</span><span class="n">ifreedomer</span><span class="o">/</span><span class="n">asm</span><span class="o">/</span><span class="n">ASM01</span> <span class="o">{</span>
+
+  <span class="c1">// compiled from: ASM01.java
+</span><span class="c1"></span>
+  <span class="c1">// access flags 0x1
+</span><span class="c1"></span>  <span class="kd">public</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;()</span><span class="n">V</span>
+   <span class="n">L0</span>
+    <span class="n">LINENUMBER</span> <span class="n">2</span> <span class="n">L0</span>
+    <span class="n">ALOAD</span> <span class="n">0</span>
+    <span class="n">INVOKESPECIAL</span> <span class="n">java</span><span class="o">/</span><span class="n">lang</span><span class="o">/</span><span class="n">Object</span><span class="o">.&lt;</span><span class="n">init</span><span class="o">&gt;</span> <span class="o">()</span><span class="n">V</span>
+    <span class="n">RETURN</span>
+   <span class="n">L1</span>
+    <span class="n">LOCALVARIABLE</span> <span class="k">this</span> <span class="n">Lcom</span><span class="o">/</span><span class="n">ifreedomer</span><span class="o">/</span><span class="n">asm</span><span class="o">/</span><span class="n">ASM01</span><span class="o">;</span> <span class="n">L0</span> <span class="n">L1</span> <span class="n">0</span>
+    <span class="n">MAXSTACK</span> <span class="o">=</span> <span class="n">1</span>
+    <span class="n">MAXLOCALS</span> <span class="o">=</span> <span class="n">1</span>
+
+  <span class="c1">// access flags 0x9
+</span><span class="c1"></span>  <span class="kd">public</span> <span class="kd">static</span> <span class="nf">main</span><span class="o">([</span><span class="n">Ljava</span><span class="o">/</span><span class="n">lang</span><span class="o">/</span><span class="n">String</span><span class="o">;)</span><span class="n">V</span>
+   <span class="n">L0</span>
+    <span class="n">LINENUMBER</span> <span class="n">4</span> <span class="n">L0</span>
+    <span class="n">GETSTATIC</span> <span class="n">java</span><span class="o">/</span><span class="n">lang</span><span class="o">/</span><span class="n">System</span><span class="o">.</span><span class="na">out</span> <span class="o">:</span> <span class="n">Ljava</span><span class="o">/</span><span class="n">io</span><span class="o">/</span><span class="n">PrintStream</span><span class="o">;</span>
+    <span class="n">LDC</span> <span class="s">&#34;hello asm&#34;</span>
+    <span class="n">INVOKEVIRTUAL</span> <span class="n">java</span><span class="o">/</span><span class="n">io</span><span class="o">/</span><span class="n">PrintStream</span><span class="o">.</span><span class="na">println</span> <span class="o">(</span><span class="n">Ljava</span><span class="o">/</span><span class="n">lang</span><span class="o">/</span><span class="n">String</span><span class="o">;)</span><span class="n">V</span>
+   <span class="n">L1</span>
+    <span class="n">LINENUMBER</span> <span class="n">5</span> <span class="n">L1</span>
+    <span class="n">RETURN</span>
+   <span class="n">L2</span>
+    <span class="n">LOCALVARIABLE</span> <span class="n">args</span> <span class="o">[</span><span class="n">Ljava</span><span class="o">/</span><span class="n">lang</span><span class="o">/</span><span class="n">String</span><span class="o">;</span> <span class="n">L0</span> <span class="n">L2</span> <span class="n">0</span>
+    <span class="n">MAXSTACK</span> <span class="o">=</span> <span class="n">2</span>
+    <span class="n">MAXLOCALS</span> <span class="o">=</span> <span class="n">1</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们首先看一下最简单的:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">package</span> <span class="nn">com.ifreedomer.asm</span>
+
+<span class="k">import</span> <span class="nn">org.objectweb.asm.*</span>
+<span class="k">import</span> <span class="nn">java.io.FileInputStream</span>
+<span class="k">import</span> <span class="nn">org.objectweb.asm.commons.AdviceAdapter</span>
+<span class="k">import</span> <span class="nn">org.objectweb.asm.commons.Method</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="c1">//读取class
+</span><span class="c1"></span>    <span class="k">val</span> <span class="py">inputStream</span> <span class="p">=</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s2">&#34;/Users/xx/Documents/Study/ASMStudy/build/classes/java/main/ASM01.class&#34;</span><span class="p">)</span>
+    <span class="c1">//class解析类
+</span><span class="c1"></span>    <span class="k">val</span> <span class="py">classReader</span> <span class="p">=</span> <span class="n">ClassReader</span><span class="p">(</span><span class="n">inputStream</span><span class="p">)</span>
+    <span class="c1">//class写出类
+</span><span class="c1"></span>    <span class="k">val</span> <span class="py">classWriter</span> <span class="p">=</span> <span class="n">ClassWriter</span><span class="p">(</span><span class="n">classReader</span><span class="p">,</span> <span class="n">ClassWriter</span><span class="p">.</span><span class="n">COMPUTE_MAXS</span><span class="p">)</span>
+    <span class="c1">//class访问类，所有类的信息都可以在这里面获取到
+</span><span class="c1"></span>    <span class="k">val</span> <span class="py">classVisitor</span> <span class="p">=</span> <span class="n">AMSClassVisitor</span><span class="p">(</span><span class="n">Opcodes</span><span class="p">.</span><span class="n">ASM9</span><span class="p">,</span> <span class="n">classWriter</span><span class="p">)</span>
+    <span class="n">classReader</span><span class="p">.</span><span class="n">accept</span><span class="p">(</span><span class="n">classVisitor</span><span class="p">,</span> <span class="n">ClassReader</span><span class="p">.</span><span class="n">EXPAND_FRAMES</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">//记录methodName
+</span><span class="c1"></span><span class="k">var</span> <span class="py">methodName</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
+<span class="k">class</span> <span class="nc">AMSClassVisitor</span><span class="p">(</span><span class="n">api</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">classVisitor</span><span class="p">:</span> <span class="n">ClassVisitor</span><span class="p">)</span> <span class="p">:</span> <span class="n">ClassVisitor</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">classVisitor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">visitMethod</span><span class="p">(</span>
+        <span class="n">access</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">?,</span>
+        <span class="n">descriptor</span><span class="p">:</span> <span class="n">String</span><span class="p">?,</span>
+        <span class="n">signature</span><span class="p">:</span> <span class="n">String</span><span class="p">?,</span>
+        <span class="n">exceptions</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="k">out</span> <span class="n">String</span><span class="p">&gt;?</span>
+    <span class="p">):</span> <span class="n">MethodVisitor</span> <span class="p">{</span>
+        <span class="k">val</span> <span class="py">methodVisitor</span> <span class="p">=</span> <span class="k">super</span><span class="p">.</span><span class="n">visitMethod</span><span class="p">(</span><span class="n">access</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">,</span> <span class="n">signature</span><span class="p">,</span> <span class="n">exceptions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ASMMethodVisitor</span><span class="p">(</span>
+            <span class="n">api</span> <span class="p">=</span> <span class="n">api</span><span class="p">,</span>
+            <span class="n">name</span> <span class="p">=</span> <span class="n">name</span><span class="p">,</span>
+            <span class="n">methodVisitor</span> <span class="p">=</span> <span class="n">methodVisitor</span><span class="p">,</span>
+            <span class="n">access</span> <span class="p">=</span> <span class="n">access</span><span class="p">,</span>
+            <span class="n">descriptor</span> <span class="p">=</span> <span class="n">descriptor</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+</span><span class="cm"> * @param api asm的版本，@link{Opcodes.ASM9}
+</span><span class="cm"> * @param methodVisitor 方法访问器
+</span><span class="cm"> * @param access 访问作用于 public protect等
+</span><span class="cm"> * @param name 方法名
+</span><span class="cm"> * @param descriptor 类方法的签名描述
+</span><span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">ASMMethodVisitor</span><span class="p">(</span>
+    <span class="n">api</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">methodVisitor</span><span class="p">:</span> <span class="n">MethodVisitor</span><span class="p">?,</span> <span class="n">access</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">String</span><span class="p">?,</span>
+    <span class="n">descriptor</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span>
+<span class="p">)</span> <span class="p">:</span> <span class="n">AdviceAdapter</span><span class="p">(</span>
+    <span class="n">api</span><span class="p">,</span>
+    <span class="n">methodVisitor</span><span class="p">,</span> <span class="n">access</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">descriptor</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//方法进入
+</span><span class="c1"></span>    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onMethodEnter</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&#34;onMethodEnter </span><span class="si">$methodName</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">//方法退出
+</span><span class="c1"></span>    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onMethodExit</span><span class="p">(</span><span class="n">opcode</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&#34;onMethodExit </span><span class="si">$methodName</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">init</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">methodName</span> <span class="p">=</span> <span class="n">name</span>
+        <span class="p">}</span>
+        <span class="n">println</span><span class="p">(</span><span class="s2">&#34;name = </span><span class="si">$name</span><span class="s2">  desc = </span><span class="si">$descriptor</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这是ASM最简单的代码了，首先看main方法:</p>
+<ul>
+<li>读入class</li>
+<li>构造ClassReader</li>
+<li>构造ClassWriter</li>
+<li>构造ClassVisitor</li>
+<li>替换ClassVisitor内部的visitMothod,换成我们自己的ASMMethodVisitor</li>
+</ul>
+<p>看看打印:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">name</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span>  <span class="n">desc</span> <span class="o">=</span> <span class="o">()</span><span class="n">V</span>
+<span class="n">onMethodEnter</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span>
+<span class="n">onMethodExit</span> <span class="o">&lt;</span><span class="n">init</span><span class="o">&gt;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">main</span>  <span class="n">desc</span> <span class="o">=</span> <span class="o">([</span><span class="n">Ljava</span><span class="o">/</span><span class="n">lang</span><span class="o">/</span><span class="n">String</span><span class="o">;)</span><span class="n">V</span>
+<span class="n">onMethodEnter</span> <span class="n">main</span>
+<span class="n">onMethodExit</span> <span class="n">main</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>对比字节码，我们发现，ASM01.class有两个方法，分别是init()和main()，所以我们的的程序正常work，这是ASM最简单的入门</p>
+<h3 id="jvm-字节码jclasslib解读">jvm 字节码jclasslib解读</h3>
+<p>我们在idea里面用jclasslib插件对一个简单的代码实例进行分析。</p>
+<p>源代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">test01</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kt">int</span> <span class="n">num</span><span class="p">=</span><span class="m">0</span><span class="p">;</span>
+ 
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">test01</span> <span class="n">t</span><span class="p">=</span><span class="k">new</span> <span class="n">test01</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">num</span><span class="p">=</span><span class="m">10</span><span class="p">;</span>
+        <span class="n">t</span><span class="p">.</span><span class="n">test01</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="n">test01</span><span class="p">(){</span>
+        <span class="n">String</span> <span class="n">name</span><span class="p">=</span><span class="s">&#34;hj&#34;</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+    <span class="p">}</span>
+ 
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>jclasslib里面如下所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./20.png"
+        data-srcset="./20.png, ./20.png 1.5x, ./20.png 2x"
+        data-sizes="auto"
+        alt="./20.png"
+        title="20" /></p>
+<p>main方法签名：名字，描述符放在常量池里面，都是字面量</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./21.png"
+        data-srcset="./21.png, ./21.png 1.5x, ./21.png 2x"
+        data-sizes="auto"
+        alt="./21.png"
+        title="21" /></p>
+<p>接下来分析它的code属性！也是最复杂的一项</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./22.png"
+        data-srcset="./22.png, ./22.png 1.5x, ./22.png 2x"
+        data-sizes="auto"
+        alt="./22.png"
+        title="22" /></p>
+<p>字节码如上，都是一些操作栈指令，可见长度为16</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./23.png"
+        data-srcset="./23.png, ./23.png 1.5x, ./23.png 2x"
+        data-sizes="auto"
+        alt="./23.png"
+        title="23" /></p>
+<p>里面LineNumberTable记录了操作指令和源代码直接的对应关系</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./24.png"
+        data-srcset="./24.png, ./24.png 1.5x, ./24.png 2x"
+        data-sizes="auto"
+        alt="./24.png"
+        title="24" /></p>
+<p>LocalVariableTable 记录了局部变量表信息，可以看到有三项，分别是args、t、num，其中序号对应的是slot槽的对应索引，long,double占两个slot，序号对应它的第一个slot的索引</p>
+<p>其中还可以看出它们的起始作用域，例如t：8-15，num:11-15</p>
+<p>接下来看一下非static方法的局部变量表：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./25.png"
+        data-srcset="./25.png, ./25.png 1.5x, ./25.png 2x"
+        data-sizes="auto"
+        alt="./25.png"
+        title="25" /></p>
+<p>局部变量表的长度是2，TIP非static方法，初始化的时候this属性会被分配，并记录在索引为0的位置，这是约定俗成的，便于虚拟机加载。</p>
+<h2 id="热部署">热部署</h2>
+<h3 id="jrebel插件使用详解">JRebel插件使用详解</h3>
+<h4 id="简介">简介</h4>
+<p>JRebel是一套JavaEE开发工具。
+Jrebel 可快速实现热部署，节省了大量重启时间，提高了个人开发效率。
+JRebel是一款JAVA虚拟机插件，它使得JAVA程序员能在不进行重部署的情况下，即时看到代码的改变对一个应用程序带来的影响。JRebel使你能即时分别看到代码、类和资源的变化，你可以一个个地上传而不是一次性全部部署。当程序员在开发环境中对任何一个类或者资源作出修改的时候，这个变化会直接反应在部署好的应用程序上，从而跳过了构建和部署的过程，可以省去大量的部署用的时间。</p>
+<p>JRebel是一款JVM插件，它使得Java代码修改后不用重启系统，立即生效。
+IDEA上原生是不支持热部署的，一般更新了 Java 文件后要手动重启 Tomcat 服务器，才能生效，浪费时间浪费生命。
+目前对于idea热部署最好的解决方案就是安装JRebel插件。</p>
+<h4 id="安装">安装</h4>
+<h5 id="第一步安装插件">第一步：安装插件</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.png"
+        data-srcset="./10.png, ./10.png 1.5x, ./10.png 2x"
+        data-sizes="auto"
+        alt="./10.png"
+        title="10" /></p>
+<h5 id="第二步在线guid地址在线生成guid">第二步：在线GUID地址：在线生成GUID</h5>
+<p>网址：<a href="https://www.guidgen.com/" target="_blank" rel="noopener noreferrer">在线GUID地址</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.png"
+        data-srcset="./11.png, ./11.png 1.5x, ./11.png 2x"
+        data-sizes="auto"
+        alt="./11.png"
+        title="11" /></p>
+<p>如果失效刷新GUID替换就可以！</p>
+<p>服务器地址：https://jrebel.qekang.com/<code>{GUID}</code></p>
+<h5 id="第三步打开jrebel-如下所示面板选择connect-to-online-licensing-service">第三步：打开jrebel 如下所示面板，选择Connect to online licensing service</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.png"
+        data-srcset="./12.png, ./12.png 1.5x, ./12.png 2x"
+        data-sizes="auto"
+        alt="./12.png"
+        title="12" /></p>
+<p>安装成功之后就可以通过JRebel启动项目。这样修改完Java代码后，就可以通过快捷键 <strong>Ctrl+shift+F9</strong> 而不再需要重启站点这样繁琐浪费时间的操作了。</p>
+<h4 id="相关设置">相关设置</h4>
+<h5 id="设置成离线工作模式">设置成离线工作模式</h5>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.png"
+        data-srcset="./13.png, ./13.png 1.5x, ./13.png 2x"
+        data-sizes="auto"
+        alt="./13.png"
+        title="13" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./14.png"
+        data-srcset="./14.png, ./14.png 1.5x, ./14.png 2x"
+        data-sizes="auto"
+        alt="./14.png"
+        title="14" /></p>
+<h5 id="设置自动编译">设置自动编译</h5>
+<p>要想实现热部署，首先需要对Intellij按如下进行设置：</p>
+<ol>
+<li>
+<p>由于JRebel是实时监控class文件的变化来实现热部署的，所以在idea环境下需要打开自动变异功能才能实现随时修改，随时生效。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./15.png"
+        data-srcset="./15.png, ./15.png 1.5x, ./15.png 2x"
+        data-sizes="auto"
+        alt="./15.png"
+        title="15" /></p>
+</li>
+<li>
+<p>打开运行时编译</p>
+</li>
+</ol>
+<h5 id="设置compilerautomakeallowwhenapprunning">设置compiler.automake.allow.when.app.running</h5>
+<p>快捷键ctrl+shift+A，搜索：registry
+或者
+按快捷键 Ctrl+Shift+Alt+/ ，选择 Registry</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./16.png"
+        data-srcset="./16.png, ./16.png 1.5x, ./16.png 2x"
+        data-sizes="auto"
+        alt="./16.png"
+        title="16" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./17.png"
+        data-srcset="./17.png, ./17.png 1.5x, ./17.png 2x"
+        data-sizes="auto"
+        alt="./17.png"
+        title="17" /></p>
+<h4 id="使用">使用</h4>
+<p>运行项目时要点击图中红框中的按钮，即可运行：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./18.png"
+        data-srcset="./18.png, ./18.png 1.5x, ./18.png 2x"
+        data-sizes="auto"
+        alt="./18.png"
+        title="18" /></p>
+<p>第一个按钮是Run，第二个按钮是Debug。</p>
+<p>修改代码（只测试了Java代码的修改）后，按快捷键 <strong>Ctrl + Shift + F9</strong>，运行后会提示有变化是否重新加载，选yes。完成加载以后，就已经实现了热更新效果。</p>
+<h2 id="统计代码行数插件">统计代码行数插件</h2>
+<h3 id="statistic">Statistic</h3>
+<h4 id="安装步骤">安装步骤</h4>
+<ol>
+<li>
+<p>第一步首先需要知道idea统计项目代码行数，主要是使用Statistic插件来统计，点击File-&gt;Settings，如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.jpg"
+        data-srcset="./1.jpg, ./1.jpg 1.5x, ./1.jpg 2x"
+        data-sizes="auto"
+        alt="./1.jpg"
+        title="1" /></p>
+</li>
+<li>
+<p>第二步进去Settings界面之后，点击Plugins，然后点击下方正中间的Browse repositories，如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.jpg"
+        data-srcset="./2.jpg, ./2.jpg 1.5x, ./2.jpg 2x"
+        data-sizes="auto"
+        alt="./2.jpg"
+        title="2" /></p>
+</li>
+<li>
+<p>第三步进去插件应用之后，搜索Statistic，选中之后，点击右侧的Install进行安装插件，如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.jpg"
+        data-srcset="./3.jpg, ./3.jpg 1.5x, ./3.jpg 2x"
+        data-sizes="auto"
+        alt="./3.jpg"
+        title="3" /></p>
+</li>
+<li>
+<p>第四步等待几秒钟，插件就安装成功了，点击close，如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.jpg"
+        data-srcset="./4.jpg, ./4.jpg 1.5x, ./4.jpg 2x"
+        data-sizes="auto"
+        alt="./4.jpg"
+        title="4" /></p>
+</li>
+<li>
+<p>第五步返回上一界面，可以看到Statistic插件，点击OK之后，会要求重启idea，如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.jpg"
+        data-srcset="./5.jpg, ./5.jpg 1.5x, ./5.jpg 2x"
+        data-sizes="auto"
+        alt="./5.jpg"
+        title="5" /></p>
+</li>
+<li>
+<p>第六步重启idea之后，在左下方可以看到Statistic，点击，可以看到项目代码的行数，如下图所示：</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.jpg"
+        data-srcset="./6.jpg, ./6.jpg 1.5x, ./6.jpg 2x"
+        data-sizes="auto"
+        alt="./6.jpg"
+        title="6" /></p>
+<h4 id="详解">详解</h4>
+<p>​     1）名称解释：</p>
+<p>​         Refresh 对当前项目代码统计</p>
+<p>​         Refresh on selection 对当前打开文件的代码统计</p>
+<p>​         Setting 配置项</p>
+<p>​    2）Overview 全局统计</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.png"
+        data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
+        data-sizes="auto"
+        alt="./7.png"
+        title="7" /></p>
+<p>​        Extension 按扩展名分类</p>
+<p>​        Count 文件数</p>
+<p>​        Size SUM 文件大小，单位KB</p>
+<p>​        Size MIN 最小文件大小</p>
+<p>​        Size MAX 最大文件大小</p>
+<p>​        Size AVG 平均文件大小</p>
+<p>​        Lines 代码行数（包含注释和空行）</p>
+<p>​        Lines MIN 最小行数</p>
+<p>​        Lines MAX 最大行数</p>
+<p>​        Lines AVG 平均行数</p>
+<p>​        Lines CODE 代码行数（不包含注释和空行）</p>
+<p>​    3）指定的文件，比如java/xml等</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.png"
+        data-srcset="./8.png, ./8.png 1.5x, ./8.png 2x"
+        data-sizes="auto"
+        alt="./8.png"
+        title="8" /></p>
+<p>​        Source File 文件名称</p>
+<p>​        Total Lines 总行数（包含注释和空行）</p>
+<p>​        Source Code Lines 源代码行数（不包含注释和空行）</p>
+<p>​        Source Code Lines[%] 源代码占比</p>
+<p>​        Comment Lines 注释行数</p>
+<p>​        Comment Lines[%] 空行占比</p>
+<p>​        Blank Lines 空行数</p>
+<p>​        Blank Lines[%] 空行占比</p>
+<p>​    4）Settings</p>
+<p>​        纳入统计范围的文件，按后缀区分。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.png"
+        data-srcset="./9.png, ./9.png 1.5x, ./9.png 2x"
+        data-sizes="auto"
+        alt="./9.png"
+        title="9" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/idea-plugins-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/idea-plugins-note/" data-title="IntelliJ IDEA插件笔记" data-hashtags="Idea,Plugin"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/idea-plugins-note/" data-hashtag="Idea"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/idea-plugins-note/" data-title="IntelliJ IDEA插件笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/idea-plugins-note/" data-title="IntelliJ IDEA插件笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/idea/">Idea</a>,&nbsp;<a href="/tags/plugin/">Plugin</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/idea-selfmaven-nexus-init-error/" class="prev" rel="prev" title="Idea使用Maven连接Nexus打开别人代码时报错Cannot resolve包"><i class="fas fa-angle-left fa-fw"></i>Idea使用Maven连接Nexus打开别人代码时报错Cannot resolve包</a>
+            <a href="/idea-note/" class="next" rel="next" title="Intellij IDEA教程">Intellij IDEA教程<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>
