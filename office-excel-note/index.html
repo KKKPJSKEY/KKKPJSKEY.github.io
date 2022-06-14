@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/office-excel-note\/featured-image.jpg",
                             "width":  1025 ,
                             "height":  550 
-                        }],"genre": "posts","keywords": "Office, Excel","wordcount":  2921 ,
+                        }],"genre": "posts","keywords": "Office, Excel","wordcount":  3612 ,
         "url": "https:\/\/kkkpjskey.github.io\/office-excel-note\/","datePublished": "2021-11-29T11:05:05+08:00","dateModified": "2021-11-29T11:05:05+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Office中Excel的单独使用笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-29">2021-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2921 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/office-excel-note/" class="leancloud_visitors" data-flag-title="Office中Excel的单独使用笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-29">2021-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3612 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/office-excel-note/" class="leancloud_visitors" data-flag-title="Office中Excel的单独使用笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -155,6 +155,12 @@
         <li><a href="#count函数">COUNT函数</a></li>
         <li><a href="#countif函数">COUNTIF函数</a></li>
         <li><a href="#countifs函数">COUNTIFS函数</a></li>
+      </ul>
+    </li>
+    <li><a href="#使用excel求两列的交集">使用Excel求两列的交集</a>
+      <ul>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#步骤">步骤</a></li>
       </ul>
     </li>
   </ul>
@@ -446,6 +452,70 @@
         title="26" /></p>
 <p>这就是Excel当中count、countif、countifs函数的基本使用方法。</p>
 <p>好了，以上就是本期的全部内容，如果你喜欢我的作品，欢迎点赞收藏加关注；</p>
+<h2 id="使用excel求两列的交集">使用Excel求两列的交集</h2>
+<h3 id="简介">简介</h3>
+<p>在工作生活中，有时候需要求两列的交集，如果靠人一个个挑是工作量很庞大的任务。幸好，Excel和wps表格都提供了求交集功能，大大的方便了我们的生活。使用“=IF(COUNTIF(K:K,B2)&gt;0,B2,0)“函数来实现求交集。这个函数的大致意思是：在K列中找B2的值，如果有至少一个，则把该单元格的值设定为b2，如果没有，则设置为0。后面详细讲解。</p>
+<h3 id="步骤">步骤</h3>
+<ol>
+<li>
+<p>第一步，选择一个空的单元格。图中的A、B列是原始数据列，C列是选择的单元格列，又来存储结果。我们利用公式“=IF(COUNTIF(B:B,A2)&gt;0,A2,0)”来求交集，即查找“A2”在B列里面有吗？如果有，则把C列的单元格设置为A2的值，如果不是则设为0（0是可以选择的）。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./27.webp"
+        data-srcset="./27.webp, ./27.webp 1.5x, ./27.webp 2x"
+        data-sizes="auto"
+        alt="./27.webp"
+        title="27" /></p>
+</li>
+<li></li>
+</ol>
+<p>第二步，扩展单元格。当我们在C2里面设置好公式之后，把鼠标放在C2单元格右下角，回出现一个“+”符号，然后按住鼠标下拉，会把同样的公式应用到C列。可以快速的求A、B列的交集。如果数据记录太多，用鼠标不方便，可以在出现“+”符号的地方双击左键回自动应用。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./28.webp"
+        data-srcset="./28.webp, ./28.webp 1.5x, ./28.webp 2x"
+        data-sizes="auto"
+        alt="./28.webp"
+        title="28" /></p>
+<ol start="3">
+<li></li>
+</ol>
+<p>第三步，筛选。当我们做好上面的处理之后，C列会有0和非0两个值（如果交集结果有0，那就再选一个数字作为处理结果）。我们选择C1单元格，然后点击筛选。然后C1会变成筛选项。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./29.webp"
+        data-srcset="./29.webp, ./29.webp 1.5x, ./29.webp 2x"
+        data-sizes="auto"
+        alt="./29.webp"
+        title="29" /></p>
+<ol start="4">
+<li></li>
+</ol>
+<p>第四步，设置筛选条件。我们点击C1的下拉栏，设置筛选条件。由于不好截图，只能文字描述下了。点击下拉栏，会出现条件选项，如果不符合你的要求，就选择自定义，如图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./30.webp"
+        data-srcset="./30.webp, ./30.webp 1.5x, ./30.webp 2x"
+        data-sizes="auto"
+        alt="./30.webp"
+        title="30" /></p>
+<ol start="5">
+<li></li>
+</ol>
+<p>第五步，复制筛选结果。通过上面的筛选条件，就可以看到筛选结果，比如我选择等于0的，最后的结果如图所示，会隐藏不符合的数据。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./31.webp"
+        data-srcset="./31.webp, ./31.webp 1.5x, ./31.webp 2x"
+        data-sizes="auto"
+        alt="./31.webp"
+        title="31" /></p>
+<p>END</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
