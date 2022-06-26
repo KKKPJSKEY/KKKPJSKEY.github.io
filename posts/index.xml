@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 24 Jun 2022 19:50:15 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 26 Jun 2022 20:04:09 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>面经</title>
     <link>https://kkkpjskey.github.io/face-exp-note/</link>
     <pubDate>Sat, 26 Feb 2022 10:06:06 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/face-exp-note/</guid>
@@ -25,10 +25,15 @@
     <pubDate>Tue, 08 Jun 2021 14:37:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-audition-note/</guid>
     <description><![CDATA[1、面向对象 什么是面向对象? 对比面向过程，是两种不同的处理问题的角度 面向过程更注重事情的每一个步骤及顺序，面向对象更注重事情有哪些参与者(对]]></description>
 </item><item>
-    <title>Win7打开Office时总是出现正在配置Microsoft office professional plus 2010</title>
-    <link>https://kkkpjskey.github.io/office-autoset-unauthorized-error/</link>
-    <pubDate>Fri, 24 Jun 2022 19:50:15 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/office-autoset-unauthorized-error/</guid>
-    <description><![CDATA[背景 家中老Win7电脑打开Office组件，如Word是，总是出现正在配置Microsoft office professional plus 2010，按照向导执行后报错1920 未能启]]></description>
+    <title>Windows Terminal 笔记</title>
+    <link>https://kkkpjskey.github.io/win-terminal-note/</link>
+    <pubDate>Sun, 26 Jun 2022 20:04:09 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win-terminal-note/</guid>
+    <description><![CDATA[指令 背景 最近研究公司框架，由于轻量版环境需要手动使用cmd启动多个bat脚本，个人觉得多个窗口不太美观，打算使用Windows Termina]]></description>
+</item><item>
+    <title>Windows Bat批处理 笔记</title>
+    <link>https://kkkpjskey.github.io/win-bat-note/</link>
+    <pubDate>Sun, 26 Jun 2022 19:40:40 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/win-bat-note/</guid>
+    <description><![CDATA[echo echo off @echo off 表示不显示所有命令的回显。 比如Bat脚本中有cd转移指令，开启echo on会使当前cmd的路径跳转，关闭echo off则不会跳转，]]></description>
 </item><item>
     <title>画中游</title>
     <link>https://kkkpjskey.github.io/tour-into-picture-note/</link>
@@ -49,10 +54,5 @@
     <link>https://kkkpjskey.github.io/idea-no-compiler-automake-note/</link>
     <pubDate>Wed, 08 Jun 2022 09:45:09 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-no-compiler-automake-note/</guid>
     <description><![CDATA[引言 很多文章介绍IntelliJ IDEA开启热部署功能都会写到在IntelliJ IDEA中的注册表中开启compiler.automake.]]></description>
-</item><item>
-    <title>Java ASM 字节码增强框架详解的笔记</title>
-    <link>https://kkkpjskey.github.io/java-asm-note/</link>
-    <pubDate>Wed, 08 Jun 2022 09:25:56 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-asm-note/</guid>
-    <description><![CDATA[1 概述 ASM是Java中比较流行的用来读写字节码的类库，用来基于字节码层面对代码进行分析和转换。 ASM是一个Java字节码操纵框架,它能被用]]></description>
 </item></channel>
 </rss>

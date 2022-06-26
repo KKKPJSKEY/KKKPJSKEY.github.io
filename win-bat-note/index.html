@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Windows Bat批处理 笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Windows Bat批处理 笔记"><meta property="og:title" content="Windows Bat批处理 笔记" />
+<meta property="og:description" content="记录Windows Bat批处理 笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/win-bat-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/win-bat-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-26T19:40:40+08:00" />
+<meta property="article:modified_time" content="2022-06-26T19:40:40+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/win-bat-note/featured-image.jpg"/>
+<meta name="twitter:title" content="Windows Bat批处理 笔记"/>
+<meta name="twitter:description" content="记录Windows Bat批处理 笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/win-bat-note/" /><link rel="prev" href="https://kkkpjskey.github.io/tour-into-picture-note/" /><link rel="next" href="https://kkkpjskey.github.io/win-terminal-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Windows Bat批处理 笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/win-bat-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/win-bat-note\/featured-image.jpg",
+                            "width":  1600 ,
+                            "height":  480 
+                        }],"genre": "posts","keywords": "Windows, Command, Bat","wordcount":  5640 ,
+        "url": "https:\/\/kkkpjskey.github.io\/win-bat-note\/","datePublished": "2022-06-26T19:40:40+08:00","dateModified": "2022-06-26T19:40:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Windows Bat批处理 笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/win-bat-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/win-bat-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Windows Bat批处理 笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5640 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/win-bat-note/" class="leancloud_visitors" data-flag-title="Windows Bat批处理 笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/win-bat-note/featured-image.jpg"
+        data-srcset="/win-bat-note/featured-image.jpg, /win-bat-note/featured-image.jpg 1.5x, /win-bat-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/win-bat-note/featured-image.jpg"
+        title="记录Windows Bat批处理 笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#echo">echo</a>
+      <ul>
+        <li><a href="#echo-off">echo off</a></li>
+        <li><a href="#batch-echo换行">batch echo换行</a></li>
+      </ul>
+    </li>
+    <li><a href="#call">Call</a>
+      <ul>
+        <li><a href="#call有几种用法">call有几种用法</a></li>
+        <li><a href="#这与goto有什么区别呢在看一个例子">这与goto有什么区别呢？在看一个例子：</a></li>
+      </ul>
+    </li>
+    <li><a href="#注释">注释</a></li>
+    <li><a href="#暂停">暂停</a></li>
+    <li><a href="#mshta">mshta</a>
+      <ul>
+        <li><a href="#下面是其他网友的补充">下面是其他网友的补充</a></li>
+      </ul>
+    </li>
+    <li><a href="#setlocalendlocal">setlocal/endlocal</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="echo">echo</h2>
+<h3 id="echo-off">echo off</h3>
+<p><code>@echo off</code> 表示不显示所有命令的回显。</p>
+<blockquote>
+<p>比如Bat脚本中有cd转移指令，开启echo on会使当前cmd的路径跳转，关闭echo off则不会跳转，留在原路径</p>
+</blockquote>
+<h3 id="batch-echo换行">batch echo换行</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span><span class="p">.</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="call">Call</h2>
+<p><strong>call 从批处理程序调用另一个批处理程序</strong></p>
+<h3 id="call有几种用法">call有几种用法</h3>
+<p>第一种用法，也就是最常用的一种，调用另一个批处理，在被调用的批处理执行完后在执行call下面的命令。如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span> <span class="n">off</span>
+<span class="n">call</span> <span class="n">a</span><span class="p">.</span><span class="n">bat</span>
+<span class="nb">dir </span><span class="n">c:</span><span class="p">\</span>
+<span class="n">pause</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果在被调用的批处理里面有参数，调用的时候需要在后面加上参数。</p>
+<p>如：</p>
+<p>a.bat内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span> <span class="n">off</span>
+<span class="nb">echo </span><span class="k">%</span><span class="n">0</span> <span class="k">%</span><span class="n">1</span>
+<span class="n">b</span><span class="p">.</span><span class="n">bat内容</span><span class="err">：</span>
+<span class="nv">@echo</span> <span class="n">off</span>
+<span class="n">call</span> <span class="n">a</span><span class="p">.</span><span class="n">bat</span> <span class="n">hello</span>
+<span class="nb">dir </span><span class="n">c:</span><span class="p">\</span>
+<span class="n">pause</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么，在执行b.bat的时候，会将hello赋值给%1，而%0代表a.bat自己。</p>
+<p>（在批处理中，可以使用%*代表所有参数%1-%9代表9个参数，%0代表批处理自己，其扩展用法见call /?，在讲for的时候也会讲到）</p>
+<p>在这里讲下goto :eof的用法，如：</p>
+<p>a.bat内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span> <span class="n">off</span>
+<span class="nb">echo </span><span class="k">%</span><span class="n">0</span> <span class="k">%</span><span class="n">1</span>
+<span class="n">goto</span> <span class="err">:</span><span class="n">eof</span>
+<span class="n">b</span><span class="p">.</span><span class="n">bat内容</span><span class="err">：</span>
+<span class="nv">@echo</span> <span class="n">off</span>
+<span class="n">call</span> <span class="n">a</span><span class="p">.</span><span class="n">bat</span> <span class="n">hello</span>
+<span class="nb">dir </span><span class="n">c:</span><span class="p">\</span>
+<span class="n">pause</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里，在显示完hello后，会执行dir c:\并暂停，如果将goto :eof改成exit，在显示完hello后就会自动退出。因为goto :eof后会转到a.bat结尾，即只退出a.bat然后会继续执行dir；由于call a.bat，在执行a.bat和b.bat是一个CMD窗口，exit的话就会直接退出这个窗口，这就是goto :eof和exit区别。</p>
+<p>call的第二种用法，调用一个命令，如：call ping 127.1，这和直接ping 127.1看似是一样的，但还是有区别的。主要用法就是call set，在后面讲延迟环境变量的时候慢慢体会。</p>
+<p>call的第三种用法，调用一个应用程序，call notepad.exe。call可以这么用，但一般在调用应用程序的时候会使用start，很少用call。</p>
+<p>call的第四种用法，调用本批处理中的一个标签。如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span> <span class="n">off</span>
+<span class="n">call</span> <span class="err">:</span><span class="n">no1</span>
+<span class="nb">start </span><span class="n">notepad</span><span class="p">.</span><span class="n">exe</span>
+<span class="n">exit</span>
+<span class="err">:</span><span class="n">no1</span>
+<span class="nb">start </span><span class="n">calc</span>
+<span class="n">ping</span> <span class="p">/</span><span class="n">n</span> <span class="n">2</span> <span class="n">127</span><span class="p">.</span><span class="n">1</span><span class="p">&gt;</span><span class="n">nul</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在这里会先打开计算器，然后打开记事本。在call标签的时候要加上“：”。</p>
+<h3 id="这与goto有什么区别呢在看一个例子">这与goto有什么区别呢？在看一个例子：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span> <span class="n">off</span>
+<span class="n">goto</span> <span class="err">:</span><span class="n">no1</span>
+<span class="nb">start </span><span class="n">notepad</span><span class="p">.</span><span class="n">exe</span>
+<span class="n">exit</span>
+<span class="err">:</span><span class="n">no1</span>
+<span class="nb">start </span><span class="n">calc</span>
+<span class="n">ping</span> <span class="p">/</span><span class="n">n</span> <span class="n">2</span> <span class="n">127</span><span class="p">.</span><span class="n">1</span><span class="p">&gt;</span><span class="n">nul</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里只会打开计算器，并不打开记事本。</p>
+<p>因为，goto :no1是转到标签:no1处运行，运行完就退出，而call是调用:no1，运行完继续执行call下面的命令</p>
+<h2 id="注释">注释</h2>
+<p><code>::</code>是bat里的一种注释语句，</p>
+<h2 id="暂停">暂停</h2>
+<p>pause<code> 也是命令，表示暂停程序，执行</code>pause<code>会输出</code>请按任意键继续&hellip;</p>
+<h2 id="mshta">mshta</h2>
+<p>它支持命令行参数，可以接收JS和VBS的方法。看示例（在命令行下测试）：</p>
+<p>JS:</p>
+<blockquote>
+<p>mshta vbscript:window.execScript(&ldquo;alert(&lsquo;hello world!');&rdquo;,&ldquo;javascript&rdquo;)</p>
+</blockquote>
+<p>VBS:</p>
+<blockquote>
+<p>mshta javascript:window.execScript(&ldquo;msgBox(&lsquo;hello world!'):window.close&rdquo;,&ldquo;vbs&rdquo;)</p>
+</blockquote>
+<p>调用VBS，分别使用MSGBOX函数和POPUP方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">mshta</span> <span class="n">vbscript</span><span class="err">:</span><span class="n">msgbox</span><span class="p">(</span><span class="s2">&#34;该干活了，伙计!&#34;</span><span class="p">,</span><span class="n">64</span><span class="p">,</span><span class="s2">&#34;提示&#34;</span><span class="p">)(</span><span class="n">window</span><span class="p">.</span><span class="n">close</span><span class="p">)</span> 
+<span class="n">mshta</span> <span class="n">vbscript</span><span class="err">:</span><span class="n">CreateObject</span><span class="p">(</span><span class="s2">&#34;Wscript.Shell&#34;</span><span class="p">).</span><span class="n">popup</span><span class="p">(</span><span class="s2">&#34;该干活了，伙计！&#34;</span><span class="p">,</span><span class="n">7</span><span class="p">,</span><span class="s2">&#34;提示&#34;</span><span class="p">,</span><span class="n">64</span><span class="p">)(</span><span class="n">window</span><span class="p">.</span><span class="n">close</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>execute方法 一条语句连续弹二个信息框：</p>
+<blockquote>
+<p>mshta vbscript:execute(&ldquo;msgbox &ldquo;&ldquo;one BOX&rdquo;&quot;:msgbox &ldquo;&ldquo;two BOX&rdquo;&quot;:window.close&rdquo;)</p>
+</blockquote>
+<p>LZ他们弄的，调用系统的英文阅读：</p>
+<blockquote>
+<p>mshta vbscript:createobject(&ldquo;sapi.spvoice&rdquo;).speak(&ldquo;Good luck&rdquo;)(window.close)</p>
+</blockquote>
+<h3 id="下面是其他网友的补充">下面是其他网友的补充</h3>
+<p>今天在一个批处理里看到一条命令mshta，感兴趣的可以搜索一下“mshta 批处理”</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">echo </span><span class="n">off</span>
+<span class="nb">start </span><span class="n">mshta</span> <span class="n">javascript</span><span class="err">:</span><span class="k">if</span><span class="p">(</span><span class="n">confirm</span><span class="p">(</span><span class="s2">&#34;将连接网站检测您是否安装了.net 2.0运行库，是否继续？该操作将不影响安装程序的运行！\r\n如果您确信已安装相应.net组件，请按取消，否则请按确定！&#34;</span><span class="p">))</span><span class="n">window</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&#34; http://www.test.com/test.aspx&#34;</span><span class="p">);</span><span class="n">window</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在百度查询了一下，原来mshta.exe是微软Windows操作系统相关程序，用于执行.HTA文件，或在批处理中结合其他语言的代码；如：mshta javascript，可用于运行一个HTML网页而不会出现安全警告。</p>
+<p><strong>下面是摘录内容：</strong></p>
+<p>以下用js表示javascript，用vbs表示vbscript。</p>
+<p>一般应用</p>
+<p>代码:</p>
+<blockquote>
+<p>mshta //www.jb51.net</p>
+</blockquote>
+<p>js与vbs</p>
+<p>有时，可以在bat中调用mshta js或vbs来实现一定的功能。如弹出对话框：</p>
+<p>代码:</p>
+<blockquote>
+<p>mshta &ldquo;vbscript:msgbox(&ldquo;内容&rdquo;,0,&ldquo;标题&rdquo;) &amp; window.close&rdquo;</p>
+</blockquote>
+<p>但是，并非所有的js和vbs命令都能通过mshta运行，比如wscript.sleep就不能。</p>
+<p>代码:</p>
+<p>rem 以下代码是错误的：</p>
+<blockquote>
+<p>mshta &ldquo;vbscript:wscript.sleep(1000) &amp; window.close&rdquo;</p>
+</blockquote>
+<p>可见，mshta调用js或vbs也是有条件的。</p>
+<p><strong>基本规则</strong></p>
+<p>※mshta所引用的命令必须相当于一个数值或变量。</p>
+<p>这句话是什么意思呢？学过vbs的朋友都知道，vbs中弹出对话框的命令是：</p>
+<p>代码:</p>
+<blockquote>
+<p>msgbox &ldquo;内容&rdquo;,0,&ldquo;标题&rdquo;</p>
+</blockquote>
+<p>但是，如果在bat中运行mshta &ldquo;msgbox &ldquo;内容&rdquo;,0,&ldquo;标题&rdquo;&quot;，就会出现错误。这是因为msgbox &ldquo;内容&rdquo;,0,&ldquo;标题&quot;并不相当于一个数值或变量，而是相当于一个语句。</p>
+<p>如果还没有理解，就请看下面的vbs：</p>
+<p>代码:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">a</span><span class="p">=</span><span class="n">1</span>
+<span class="n">b</span><span class="p">=</span><span class="n">2</span>
+<span class="n">c</span><span class="p">=</span><span class="n">a</span><span class="p">+</span><span class="n">b</span>
+<span class="n">msgbox</span> <span class="s2">&#34;内容&#34;</span>
+<span class="n">inputbox</span> <span class="s2">&#34;内容&#34;</span>
+<span class="n">d</span><span class="p">=</span><span class="n">msgbox</span><span class="p">(</span><span class="s2">&#34;内容&#34;</span><span class="p">)</span>
+<span class="n">e</span><span class="p">=</span><span class="n">inputbox</span><span class="p">(</span><span class="s2">&#34;内容&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这段代码中，第一行1是数值，a是变量，a=1是一个设置变量a的值为1的语句。</p>
+<p>第二行2是数值，b是变量，b=2是语句。</p>
+<p>第三行a+b这个整体相当于数值，c是变量，c=a+b是语句。</p>
+<p>至于第四行，情况有些变化：</p>
+<p>&ldquo;内容&quot;是数值，msgbox &ldquo;内容&quot;这个整体是一个弹出对话框的的语句。</p>
+<p>第五行，&ldquo;内容&quot;是数值，inputbox &ldquo;内容&quot;是语句。</p>
+<p>第六行msgbox(&ldquo;内容&rdquo;)这个整体相当于数值（注意它与msgbox &ldquo;内容&quot;的区别），d是变量，d=msgbox(&ldquo;内容&rdquo;)是一个设置变量d的值为msgbox(&ldquo;内容&rdquo;)的语句。</p>
+<p>同理，第七行inputbox(&ldquo;内容&rdquo;)相当于数值，e是变量，e=inputbox(&ldquo;内容&rdquo;)是语句。</p>
+<p>因此，以下命令都是有效的（其中 &amp; window.close 暂时不去理会）：</p>
+<p>代码:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span> <span class="n">off</span>
+<span class="n">mshta</span> <span class="s2">&#34;vbscript:1 &amp; window.close&#34;</span>
+<span class="n">mshta</span> <span class="s2">&#34;vbscript:a &amp; window.close&#34;</span>
+<span class="n">mshta</span> <span class="s2">&#34;vbscript:a+b &amp; window.close&#34;</span>
+<span class="n">mshta</span> <span class="s2">&#34;vbscript:msgbox(&#34;</span><span class="n">内容</span><span class="s2">&#34;) &amp; window.close&#34;</span>
+<span class="n">mshta</span> <span class="s2">&#34;vbscript:inputbox(&#34;</span><span class="n">内容</span><span class="s2">&#34;) &amp; window.close&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>而以下命令都是无效的：</p>
+<p>代码:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">::</span><span class="n">以下命令都是无效的</span>
+<span class="n">mshta</span> <span class="s2">&#34;vbscript:msgbox &#34;</span><span class="n">内容</span><span class="s2">&#34;&#34;</span>
+<span class="n">mshta</span> <span class="s2">&#34;vbscript:inputbox &#34;</span><span class="n">内容</span><span class="s2">&#34;&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>现在明白了吧？</p>
+<p>对于js，也有类似的情况，只是js中不明显罢了。
+另外，我刚刚发现vbs中execute函数可以调用语句。很复杂，自己研究吧。</p>
+<p><strong>连接多个命令</strong></p>
+<p>连接多个命令时，每个命令都必须遵守上述的基本规则。</p>
+<p>※对于js，用分号 ; 连接多个命令。</p>
+<p>代码:</p>
+<blockquote>
+<p>mshta &ldquo;javascript:alert(&lsquo;OK！');alert(&lsquo;1234&rsquo;);window.close()&rdquo;</p>
+</blockquote>
+<p>※对于vbs，用 &amp; 连接多个命令。</p>
+<p>代码:</p>
+<blockquote>
+<p>mshta &ldquo;vbscript:msgbox(&ldquo;内容&rdquo;) &amp; msgbox(&ldquo;1234&rdquo;) &amp; window.close&rdquo;</p>
+</blockquote>
+<p>※注意&amp;在bat中有特殊意义，所以此时mshta后面的代码必须用引号引起来！</p>
+<p><strong>window.close的作用</strong></p>
+<p>试着运行下面的代码：</p>
+<p>代码:</p>
+<blockquote>
+<p>mshta &ldquo;vbscript:msgbox(&ldquo;内容&rdquo;)&rdquo;</p>
+</blockquote>
+<p>你会发现，不仅弹出了需要的对话框，还出现了一个讨厌的白框。window.close的作用就是关闭它。</p>
+<p><strong>为什么wscript.sleep不能用</strong></p>
+<p>微软最初设计mshta时是为了运行hta程序（可近似理解为HTML网页程序），而wscript在HTML网页上用不了（它只能在真正的js或vbs上用），所以调用mshta js或vbs时要避开它。</p>
+<p><strong>利用mshta制作图形界面</strong></p>
+<p>其实，利用mshta也可以在bat中制作windows图形界面，但在这里就不详细介绍了。如果有兴趣请看</p>
+<p><a href="http://baike.baidu.com/view/712376.htm" target="_blank" rel="noopener noreferrer">http://baike.baidu.com/view/712376.htm</a>或https://www.jb51.net/article/40060.htm。</p>
+<p><strong>引用解释:</strong></p>
+<p>※mshta所引用的命令必须相当于一个数值或变量。</p>
+<p>这个只是针对 vbscript 协议。用其他方式运行vbs语句则可以。比如 about 协议：</p>
+<p>代码:</p>
+<blockquote>
+<p>mshta &ldquo;about:</p>
+</blockquote>
+<p>确切的说法应该是，用vbscript协议运行的代码中，不能包含语句，只能是表达式和函数（此时函数其实也是表达式）。这里的语句是vbs概念中的语句（statement），而不是普通的“一句话”的意思（sentence）。</p>
+<p>msgbox &ldquo;内容&rdquo;,0,&ldquo;标题&rdquo;，这个的确是一条语句，而不是“相当于”。</p>
+<p>e=inputbox(&ldquo;内容&rdquo;)，在vbs脚本，它可以作为语句（赋值语句）也可以是表达式（比较变量e与函数inputbox(&ldquo;内容&rdquo;)的返回值）。</p>
+<p>如果用vbscript协议运行，则它只是比较表达式。</p>
+<p>vbscript协议运行代码可以用&amp;连接不同的表达式，这个发现不错。其实就是表达式连接符。</p>
+<p>但如果要运行更复杂的语句，最好是用execute。execute也很简单。</p>
+<p>如alert方法，它不能直接在vbs脚本中运行，因为它是window对象的方法，而window对象是mshta、IE等html解释器提供的，脚本宿主WSH并没有提供。除非在vbs创建这样的对象，比如InternetExplorer.Application。</p>
+<p>mshta运行js语句没有那样的限制。超版都说了，只是 vbscript 协议有此限制。看来vbs到底是比js要差一点。</p>
+<p>比如下面，var a=1就是明显的赋值语句，alert方法与close方法也可以看作语句。</p>
+<p>代码:</p>
+<blockquote>
+<p>mshta &ldquo;javascript:var a=1; alert(a); close();&rdquo;</p>
+</blockquote>
+<p>不是CreateObject(&ldquo;WScript.Shell&rdquo;)，而是createObject(&ldquo;Microsoft.XMLHTTP&rdquo;)。</p>
+<p>我一直想做一个mshta实现文件下载，但总有些问题。</p>
+<p>Microsoft.XMLHTTP 组件自身的问题，禁止跨域操作。</p>
+<h2 id="setlocalendlocal">setlocal/endlocal</h2>
+<p>命令 setlocal （开启本地变量） endlocal (结束本地变量） 
+很多新手不理解这句话是什么意思，在批处理中有什么作用。 
+其实在批处理中 setlocal 作用很大，配合 endlocal (结束本地变量） 
+它可以使你的代码更简洁，易读，且不容易出错。 
+举例： 
+假设你在批处理的开头部分有这么一句 set var=123 
+那么在批处理结束以前，变量 var 的值就永远是 123 
+除非你 运行了 set &ldquo;var=&rdquo; 来把它的值清空。或 set var=别的什么 把它的值改变 
+否则它的值永远是 123 
+当写某些代码时，需要把变量的值累加，如： set var=%var%567 此时var的值就是 123567 
+或是 set /a var+=1 （这是当var的值是有效数字时）每运行一次，var的值就会加1 
+但当某段代码需要重复运行时，我们有时、甚至是经常需要var的值回到原始的值，即：123 
+你可能会说这还不好办，一句就ok 了 set var=123或set var= 
+不错，确实是这样，但如果我们需要将一大堆的变量都会回到原始值呢？ 
+比如： var num a b c d e f &hellip;&hellip;&hellip; 
+你难道要</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">set </span><span class="n">var</span><span class="p">=</span>
+<span class="nb">set </span><span class="n">num</span><span class="p">=</span>
+<span class="nb">set </span><span class="n">a</span><span class="p">=</span>
+<span class="nb">set </span><span class="n">b</span><span class="p">=</span>
+<span class="p">........</span> 
+<span class="p">........</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>这样吗？ 
+有了setlocal 和 endlocal 就不用这么麻烦了。 
+看代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span> <span class="n">off</span> 
+<span class="nb">set </span><span class="n">var</span><span class="p">=</span><span class="n">123</span> 
+<span class="nb">set </span><span class="n">num</span><span class="p">=</span><span class="n">4456</span> 
+<span class="nb">set </span><span class="n">a</span><span class="p">=</span><span class="n">ham</span> 
+<span class="n">setlocal</span> 
+<span class="nb">set </span><span class="n">var</span><span class="p">=</span><span class="n">abcd</span> 
+<span class="nb">set </span><span class="n">num</span><span class="p">=</span><span class="n">jkl</span> 
+<span class="nb">set </span><span class="n">a</span><span class="p">=</span><span class="n">efg</span> 
+<span class="nb">set </span><span class="n">max</span><span class="p">=</span><span class="n">1234567</span>
+<span class="p">::</span><span class="n">到了这一步</span><span class="err">，</span><span class="n">我想不用echo你应该也都知道</span><span class="err">，</span><span class="n">这三个变量的值改变了</span><span class="err">，</span> 
+<span class="p">::</span><span class="n">并且还给一个新的变量赋了值</span> <span class="n">max</span> 
+<span class="p">::</span><span class="n">对于不熟悉setlocal</span> <span class="n">和</span> <span class="n">endlocal</span> <span class="n">命令的朋友来说</span><span class="err">，</span><span class="n">要想让这</span> 
+<span class="p">::</span><span class="n">三个变量回到开始的值</span><span class="err">，</span><span class="n">可能就只有回到开头那三句去了</span><span class="err">，</span><span class="n">其实不用</span><span class="err">。</span> 
+<span class="p">::</span><span class="n">一句就可以了</span><span class="err">，</span><span class="n">看下面的</span>
+<span class="n">endlocal</span> 
+<span class="nb">echo </span><span class="k">%</span><span class="n">var</span><span class="p">%</span> <span class="k">%</span><span class="n">num</span><span class="p">%</span> <span class="k">%</span><span class="n">a</span><span class="p">%</span> 
+<span class="nb">echo </span><span class="k">%</span><span class="n">max</span><span class="p">%</span> 
+<span class="n">pause</span> 
+</code></pre></td></tr></table>
+</div>
+</div><p>看到区别了吗？ 
+不错，setlocal 和 endlocal 这两句中间的命令给所有的变量赋的值都消失了， 
+就好像从没有运行过它们一样。 
+运行 setlocal 以前变量的值是什么 在运行 endlocal 以后， 
+又回到了什么。如果之前是空值，即：没有赋值 
+如：例子中的　max 那么 echo %max%　就会显示　ECHO 处于关闭状态 
+以前　cn-dos 里有位版主(好像就是我们论坛的第三方软件版块的现任版主)曾经很形象的解释过这个问题， 
+这里借用一下 ，记得不是很清楚了，加一点我自己的描述。 
+他说： 
+　　批处理运行时会开辟一块地方给变量，我们可以把它想像为一块黑板， 
+你可以在黑板上任意写字，在批处理中这种写字，就是给变量赋值或清空或改变变量的值 
+如：set var=123 set num=  set /a str+=1 set var=%var% %num% 等等之类的。 
+而 setlocal 命令就是在黑板中又划出一块方块来，你在这之后所写的字就全在这个方块中， 
+（当然这个方块的容量、大小不会有什么限制，你或者把他理解为在这个黑板上又覆盖了一块同样大小的新的黑板，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">更为恰当。当然这个黑板的容量大小应该要减去你在原来那块黑板上所写的内容，这个就不在这里讨论了，
+知道个大概就行。）
+当运行 endlocal （结束变量）后，相当于把你在原来那块黑板上划的方块擦掉了，连内容一起擦掉了。
+又或者说，把这个新的黑板拿走了，你在这个新黑板上写的字也都没有了，回到你面前的又是原来的那块黑板，
+当然你以前写在上面的字仍然还在。它不会擦掉你的，也不会自动给你写些新东西上去。
+也就是 原来的变量还是原来的值，原来没有赋值的，仍然是空值。不管你在那块新黑板上写过什么，都过去了，
+就象什么也没发生过一样。
+  当新黑板上的内容与老黑板上的内容发生冲突时，则以新黑板上的内容为准，
+  若老黑板上的内容没与新黑板的内容冲突时，老黑板上的内容在新黑板中仍然有效。
+在提一句，新黑板最多只能连续覆盖32块，否则就会提示 “以达到最大递归层”的错误信息。
+所谓 “连续覆盖”就是运行了 setlocal 而没有运行 endlocal 的情况。
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/win-bat-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/win-bat-note/" data-title="Windows Bat批处理 笔记" data-hashtags="Windows,Command,Bat"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/win-bat-note/" data-hashtag="Windows"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/win-bat-note/" data-title="Windows Bat批处理 笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/win-bat-note/" data-title="Windows Bat批处理 笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/windows/">Windows</a>,&nbsp;<a href="/tags/command/">Command</a>,&nbsp;<a href="/tags/bat/">Bat</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/tour-into-picture-note/" class="prev" rel="prev" title="画中游"><i class="fas fa-angle-left fa-fw"></i>画中游</a>
+            <a href="/win-terminal-note/" class="next" rel="next" title="Windows Terminal 笔记">Windows Terminal 笔记<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>

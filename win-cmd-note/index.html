@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/win-cmd-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/win-cmd-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-29T15:42:59+08:00" />
-<meta property="article:modified_time" content="2022-06-05T15:32:40+08:00" />
+<meta property="article:modified_time" content="2022-06-26T20:30:20+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/win-cmd-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/win-cmd-note\/featured-image.jpg",
                             "width":  2000 ,
                             "height":  600 
-                        }],"genre": "posts","keywords": "Windows, Command","wordcount":  839 ,
-        "url": "https:\/\/kkkpjskey.github.io\/win-cmd-note\/","datePublished": "2022-05-29T15:42:59+08:00","dateModified": "2022-06-05T15:32:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Windows, Command","wordcount":  1157 ,
+        "url": "https:\/\/kkkpjskey.github.io\/win-cmd-note\/","datePublished": "2022-05-29T15:42:59+08:00","dateModified": "2022-06-26T20:30:20+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Windows Cmd指令笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-29">2022-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 839 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/win-cmd-note/" class="leancloud_visitors" data-flag-title="Windows Cmd指令笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-29">2022-05-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1157 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/win-cmd-note/" class="leancloud_visitors" data-flag-title="Windows Cmd指令笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -162,7 +162,12 @@
         <li><a href="#cmd中一直等待且不被打断">CMD中一直等待，且不被打断</a></li>
       </ul>
     </li>
-    <li><a href="#batch-echo换行">batch echo换行</a></li>
+    <li><a href="#cmd">CMD</a>
+      <ul>
+        <li><a href="#cmd-k">cmd /k</a></li>
+        <li><a href="#ping">ping</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="cmd怎么杀死进程">Cmd怎么杀死进程</h2>
@@ -264,16 +269,16 @@
 <li>frontpg.exe 进程名</li>
 </ol>
 <h2 id="windows-cmd命令行findstr-类似linux中的grep">Windows cmd命令行findstr 类似linux中的grep</h2>
-<p>使用截图
-<img
+<p>使用截图</p>
+<p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="./7.png"
         data-srcset="./7.png, ./7.png 1.5x, ./7.png 2x"
         data-sizes="auto"
         alt="./7.png"
-        title="7" />
-简介
+        title="7" /></p>
+<p>简介
 findstr是Window系统自带的命令，用途是查找指定的一个或多个文件文件中包含（或通过参数 /V来控制不包含)某些特定字符串的行，并将该行完整的信息打印出来，或者打印查询字符串所在的文件名。</p>
 <h2 id="通过命令行启动uwp应用">通过命令行启动uwp应用</h2>
 <h3 id="1-命令行格式">1. 命令行格式</h3>
@@ -341,8 +346,8 @@ Microsoft.WinDbg_8wekyb3d8bbwe                          C:<span class="se">\P</s
         data-srcset="https://img-blog.csdnimg.cn/6a9cbe04305d4db398b4ced1078d4154.png?x-oss-process=image/watermark%2ctype_d3F5LXplbmhlaQ%2cshadow_50%2ctext_Q1NETiBAZnJvemxlYWY=%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16, https://img-blog.csdnimg.cn/6a9cbe04305d4db398b4ced1078d4154.png?x-oss-process=image/watermark%2ctype_d3F5LXplbmhlaQ%2cshadow_50%2ctext_Q1NETiBAZnJvemxlYWY=%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16 1.5x, https://img-blog.csdnimg.cn/6a9cbe04305d4db398b4ced1078d4154.png?x-oss-process=image/watermark%2ctype_d3F5LXplbmhlaQ%2cshadow_50%2ctext_Q1NETiBAZnJvemxlYWY=%2csize_20%2ccolor_FFFFFF%2ct_70%2cg_se%2cx_16 2x"
         data-sizes="auto"
         alt="https://img-blog.csdnimg.cn/6a9cbe04305d4db398b4ced1078d4154.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAZnJvemxlYWY=,size_20,color_FFFFFF,t_70,g_se,x_16"
-        title="在这里插入图片描述" />
-得到PackageId</p>
+        title="在这里插入图片描述" /></p>
+<p>得到PackageId</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -473,20 +478,71 @@ TIMEOUT <span class="o">[</span>/T<span class="o">]</span> timeout <span class="
 请按 CTRL+C 退出 ...
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="batch-echo换行">batch echo换行</h2>
+</div><h2 id="cmd">CMD</h2>
+<h3 id="cmd-k">cmd /k</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"># 进度D盘根目录
+cmd /k <span class="s2">&#34;cd /d D:\&#34;</span>
+
+# 进度D盘下FFmpeg文件夹
+cmd /k <span class="s2">&#34;cd /d D:\FFmpeg&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>/k</code>表示cmd命令执行完毕后不关闭窗口。</li>
+<li>如果要关闭，则使用<code>/c</code></li>
+<li>^  为转义字符</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"># 注意： xxx 指代dos命令
+cmd /k <span class="s2">&#34;cd /d D:\FFmpeg\bin&amp;&amp;xxx&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>执行dos命令，一定要在前面带上<code>&amp;&amp;</code>,不然bat会认为后面的命令也是文件夹路径的一部分。</p>
+<p>如果要执行多条命令，多条命令之间也要用<code>&amp;&amp;</code>来分割。</p>
+<h3 id="ping">ping</h3>
+<p>ping -n 检测ip间通信通畅次数。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span><span class="p">.</span>
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">ping -n 1 127.1
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><blockquote>
+<p>127.1代表127.0.0.1（类似IPV6零压缩）</p>
+<p>回环地址检测1次，通常是测试本机网卡的好坏</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">ping -n 10 127.1<span class="p">&gt;</span>nul
+</code></pre></td></tr></table>
+</div>
+</div><p>ping -n 10 127.1&gt;nul 加 nul 的意思就是 不显示结果
+你可以把n改成10，看看这句话运行的效果，就是光标一直在闪等待大概10秒
+简单的说ping -n 10 127.1&gt;nul 就是让程序等待N秒</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-06-05</span>
+                <span>更新于 2022-06-26</span>
             </div>
             <div class="post-info-license"></div>
         </div>
