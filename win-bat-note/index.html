@@ -33,7 +33,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/win-bat-note\/featured-image.jpg",
                             "width":  1600 ,
                             "height":  480 
-                        }],"genre": "posts","keywords": "Windows, Command, Bat","wordcount":  5640 ,
+                        }],"genre": "posts","keywords": "Windows, Command, Bat","wordcount":  5890 ,
         "url": "https:\/\/kkkpjskey.github.io\/win-bat-note\/","datePublished": "2022-06-26T19:40:40+08:00","dateModified": "2022-06-26T19:40:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Windows Bat批处理 笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5640 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5890 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/win-bat-note/" class="leancloud_visitors" data-flag-title="Windows Bat批处理 笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -156,7 +156,11 @@
         <li><a href="#下面是其他网友的补充">下面是其他网友的补充</a></li>
       </ul>
     </li>
-    <li><a href="#setlocalendlocal">setlocal/endlocal</a></li>
+    <li><a href="#setlocalendlocal">setlocal/endlocal</a>
+      <ul>
+        <li><a href="#enabledelayedexpansion">enabledelayedexpansion</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="echo">echo</h2>
@@ -600,7 +604,31 @@
 所谓 “连续覆盖”就是运行了 setlocal 而没有运行 endlocal 的情况。
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h3 id="enabledelayedexpansion">enabledelayedexpansion</h3>
+<blockquote>
+<p>setlocal enabledelayedexpansion 设置本地为延迟扩展</p>
+</blockquote>
+<p>变量延迟的启动语句是“setlocal enabledelayedexpansion”，并且变量要用一对叹号“!!”括起来（注意要用英文的叹号），否则就没有变量延迟的效果。</p>
+<p>example：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<p>在这里插入图片描述批处理读取命令时是按行读取的，在处理之前要完成必要的预处理工作，这其中就包括对该行命令中的变量赋值。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.png"
+        data-srcset="./2.png, ./2.png 1.5x, ./2.png 2x"
+        data-sizes="auto"
+        alt="./2.png"
+        title="2" /></p>
+<p>在这里插入图片描述批处理设计了变量延迟。简单来说，在读取了一条完整的语句之后，不立即对该行的变量赋值，而会在某个单条语句执行之前再进行赋值，也就是说“延迟”了对变量的赋值。</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

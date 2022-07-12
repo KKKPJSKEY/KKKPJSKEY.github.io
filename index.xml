@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 26 Jun 2022 20:04:09 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 Jul 2022 17:31:57 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>面经</title>
@@ -26,6 +26,11 @@
     <link>https://kkkpjskey.github.io/java-audition-note/</link>
     <pubDate>Tue, 08 Jun 2021 14:37:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-audition-note/</guid>
     <description><![CDATA[1、面向对象 什么是面向对象? 对比面向过程，是两种不同的处理问题的角度 面向过程更注重事情的每一个步骤及顺序，面向对象更注重事情有哪些参与者(对]]></description>
+</item><item>
+    <title>IDEA如何正确配置Gradle? GRADLE_USER_HOME 和 Gradle user home的区别</title>
+    <link>https://kkkpjskey.github.io/idea-gradle-note/</link>
+    <pubDate>Tue, 12 Jul 2022 17:31:57 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-gradle-note/</guid>
+    <description><![CDATA[缘起 网上已经有了如此多的IDEA配置Gradle的文章，为何本菜鸟还想再写一篇这样的水文呢？ 原因是按照网上大多数的配置，Gradle并不能按]]></description>
 </item><item>
     <title>Windows Terminal 笔记</title>
     <link>https://kkkpjskey.github.io/win-terminal-note/</link>
@@ -51,10 +56,5 @@
     <link>https://kkkpjskey.github.io/jvm-class-structure-note/</link>
     <pubDate>Wed, 08 Jun 2022 10:16:17 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/jvm-class-structure-note/</guid>
     <description><![CDATA[开篇说明：本文的重点就是类文件结构，只需要清楚Class文件格式中的各名称的实际意义就行，不用对具体名称下的细节进行深究，否则需要花大量的时]]></description>
-</item><item>
-    <title>解决IDEA2021版compiler.automake.allow.when.app.running不存在的问题</title>
-    <link>https://kkkpjskey.github.io/idea-no-compiler-automake-note/</link>
-    <pubDate>Wed, 08 Jun 2022 09:45:09 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-no-compiler-automake-note/</guid>
-    <description><![CDATA[引言 很多文章介绍IntelliJ IDEA开启热部署功能都会写到在IntelliJ IDEA中的注册表中开启compiler.automake.]]></description>
 </item></channel>
 </rss>
