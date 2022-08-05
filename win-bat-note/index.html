@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/win-bat-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/win-bat-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-26T19:40:40+08:00" />
-<meta property="article:modified_time" content="2022-06-26T19:40:40+08:00" />
+<meta property="article:modified_time" content="2022-08-05T15:45:55+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/win-bat-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/win-bat-note\/featured-image.jpg",
                             "width":  1600 ,
                             "height":  480 
-                        }],"genre": "posts","keywords": "Windows, Command, Bat","wordcount":  5890 ,
-        "url": "https:\/\/kkkpjskey.github.io\/win-bat-note\/","datePublished": "2022-06-26T19:40:40+08:00","dateModified": "2022-06-26T19:40:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Windows, Command, Bat","wordcount":  6007 ,
+        "url": "https:\/\/kkkpjskey.github.io\/win-bat-note\/","datePublished": "2022-06-26T19:40:40+08:00","dateModified": "2022-08-05T15:45:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Windows Bat批处理 笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/operation/"><i class="far fa-folder fa-fw"></i>Operation</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5890 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-26">2022-06-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6007 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/win-bat-note/" class="leancloud_visitors" data-flag-title="Windows Bat批处理 笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -159,6 +159,11 @@
     <li><a href="#setlocalendlocal">setlocal/endlocal</a>
       <ul>
         <li><a href="#enabledelayedexpansion">enabledelayedexpansion</a></li>
+      </ul>
+    </li>
+    <li><a href="#str">Str</a>
+      <ul>
+        <li><a href="#拼接">拼接</a></li>
       </ul>
     </li>
   </ul>
@@ -628,11 +633,58 @@
         alt="./2.png"
         title="2" /></p>
 <p>在这里插入图片描述批处理设计了变量延迟。简单来说，在读取了一条完整的语句之后，不立即对该行的变量赋值，而会在某个单条语句执行之前再进行赋值，也就是说“延迟”了对变量的赋值。</p>
+<h2 id="str">Str</h2>
+<h3 id="拼接">拼接</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@echo</span> <span class="n">off</span>
+ 
+<span class="n">rem</span> <span class="n">两个变量拼接</span><span class="err">，</span><span class="n">等号前后一定不要有空格</span>
+<span class="nb">set </span><span class="n">str1</span><span class="p">=</span><span class="n">Hello</span>
+<span class="nb">set </span><span class="n">str2</span><span class="p">=</span><span class="n">world</span>
+<span class="nb">set </span><span class="n">result</span><span class="p">=</span><span class="k">%</span><span class="n">str1</span><span class="p">%,</span> <span class="k">%</span><span class="n">str2</span><span class="p">%!</span>
+<span class="nb">echo </span><span class="k">%</span><span class="n">result</span><span class="p">%</span>
+ 
+<span class="n">rem</span> <span class="n">开启延迟变量</span>
+<span class="nv">@setlocal</span> <span class="n">enableextensions</span> <span class="n">enabledelayedexpansion</span>
+<span class="nb">set </span><span class="n">words</span><span class="p">=</span><span class="n">China</span><span class="p">,</span><span class="n">Hubei</span><span class="p">,</span><span class="n">Wuhan</span>
+<span class="nb">set </span><span class="n">result2</span><span class="p">=</span>
+<span class="k">for</span> <span class="p">%</span><span class="k">%</span><span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="k">%</span><span class="n">words</span><span class="p">%)</span> <span class="k">do</span> <span class="p">(</span>
+  <span class="nb">set </span><span class="n">result2</span><span class="p">=!</span><span class="n">result2</span><span class="p">!</span> <span class="p">%</span><span class="k">%</span><span class="n">i</span>
+<span class="p">)</span>
+ 
+<span class="n">rem</span> <span class="n">将字符串最前面的空格去掉</span>  
+<span class="nb">set </span><span class="s2">&#34;result2=%result2:~1%&#34;</span>
+<span class="nb">echo </span><span class="k">%</span><span class="n">result2</span><span class="p">%</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>说明：如果复合语句中使用变量，一定要开启延迟变量</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-06-26</span>
+                <span>更新于 2022-08-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>

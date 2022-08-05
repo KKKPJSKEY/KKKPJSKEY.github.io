@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/win-powshell-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/win-powshell-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-30T11:05:28+08:00" />
-<meta property="article:modified_time" content="2022-01-30T11:05:28+08:00" />
+<meta property="article:modified_time" content="2022-08-05T15:55:55+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/win-powshell-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/win-powshell-note\/featured-image.jpg",
                             "width":  1078 ,
                             "height":  500 
-                        }],"genre": "posts","keywords": "PowerShell, Windows","wordcount":  895 ,
-        "url": "https:\/\/kkkpjskey.github.io\/win-powshell-note\/","datePublished": "2022-01-30T11:05:28+08:00","dateModified": "2022-01-30T11:05:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "PowerShell, Windows","wordcount":  988 ,
+        "url": "https:\/\/kkkpjskey.github.io\/win-powshell-note\/","datePublished": "2022-01-30T11:05:28+08:00","dateModified": "2022-08-05T15:55:55+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,7 +119,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Windows PowerShell 笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-30">2022-01-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 895 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-30">2022-01-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 988 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟&nbsp;<span id="/win-powshell-note/" class="leancloud_visitors" data-flag-title="Windows PowerShell 笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -147,6 +147,7 @@
       </ul>
     </li>
     <li><a href="#总结">总结</a></li>
+    <li><a href="#如何离线安装posh-git">如何离线安装posh-git</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="powershell创建-profile">PowerShell创建 Profile</h2>
@@ -246,11 +247,26 @@ nnn指定一已有的系统字符集，该字符集在 CONFIG.SYS文件中由COU
 <p>需要切换成美国英语模式 &raquo; chcp 437 ，然后修改字体</p>
 <p>字体修改完毕后，为了支持中文输入再次切换成简体中文模式 &raquo; chcp 936</p>
 <p>大概就是这个思路</p>
-</div><div class="post-footer" id="post-footer">
+<h2 id="如何离线安装posh-git">如何离线安装posh-git</h2>
+<ol>
+<li>不用上github</li>
+<li>下载post-git离线安装包(<a href="https://files.cnblogs.com/files/xcr1234/posh-git-master.zip" target="_blank" rel="noopener noreferrer">地址</a>)</li>
+<li>用Powershell执行install.ps1</li>
+<li>用管理员权限打开powershell，修改策略：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">set-executionpolicy</span> <span class="n">remotesigned</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-01-30</span>
+                <span>更新于 2022-08-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>

@@ -34,7 +34,7 @@
                             "url": "https:\/\/kkkpjskey.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "Idea, Plugin","wordcount":  2985 ,
+                        }],"genre": "posts","keywords": "Idea, Plugin","wordcount":  3136 ,
         "url": "https:\/\/kkkpjskey.github.io\/idea-plugins-note\/","datePublished": "2021-08-25T10:52:53+08:00","dateModified": "2022-06-08T09:07:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -120,8 +120,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">IntelliJ IDEA插件笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2985 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/idea-plugins-note/" class="leancloud_visitors" data-flag-title="IntelliJ IDEA插件笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3136 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/idea-plugins-note/" class="leancloud_visitors" data-flag-title="IntelliJ IDEA插件笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -153,9 +153,19 @@
             <li><a href="#简介">简介</a></li>
             <li><a href="#安装">安装</a>
               <ul>
-                <li><a href="#第一步安装插件">第一步：安装插件</a></li>
+                <li><a href="#第一步安装插件">第一步：安装插件</a>
+                  <ul>
+                    <li><a href="#在线安装">在线安装</a></li>
+                    <li><a href="#或离线安装">或离线安装</a></li>
+                  </ul>
+                </li>
                 <li><a href="#第二步在线guid地址在线生成guid">第二步：在线GUID地址：在线生成GUID</a></li>
-                <li><a href="#第三步打开jrebel-如下所示面板选择connect-to-online-licensing-service">第三步：打开jrebel 如下所示面板，选择Connect to online licensing service</a></li>
+                <li><a href="#第三步打开jrebel-如下所示面板选择connect-to-online-licensing-service">第三步：打开jrebel 如下所示面板，选择Connect to online licensing service</a>
+                  <ul>
+                    <li><a href="#在线激活">在线激活</a></li>
+                    <li><a href="#离线激活">离线激活</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
             <li><a href="#相关设置">相关设置</a>
@@ -590,6 +600,7 @@ IDEA上原生是不支持热部署的，一般更新了 Java 文件后要手动�
 目前对于idea热部署最好的解决方案就是安装JRebel插件。</p>
 <h4 id="安装">安装</h4>
 <h5 id="第一步安装插件">第一步：安装插件</h5>
+<h6 id="在线安装">在线安装</h6>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -598,6 +609,9 @@ IDEA上原生是不支持热部署的，一般更新了 Java 文件后要手动�
         data-sizes="auto"
         alt="./10.png"
         title="10" /></p>
+<h6 id="或离线安装">或离线安装</h6>
+<p>(<a href="https://plugins.jetbrains.com/plugin/download?updateId=25523" target="_blank" rel="noopener noreferrer">下载离线包</a>)</p>
+<p>也可以自行到<a href="https://plugins.jetbrains.com/plugin/4441-jrebel-for-intellij" target="_blank" rel="noopener noreferrer">官网下载</a></p>
 <h5 id="第二步在线guid地址在线生成guid">第二步：在线GUID地址：在线生成GUID</h5>
 <p>网址：<a href="https://www.guidgen.com/" target="_blank" rel="noopener noreferrer">在线GUID地址</a></p>
 <p><img
@@ -611,6 +625,7 @@ IDEA上原生是不支持热部署的，一般更新了 Java 文件后要手动�
 <p>如果失效刷新GUID替换就可以！</p>
 <p>服务器地址：https://jrebel.qekang.com/<code>{GUID}</code></p>
 <h5 id="第三步打开jrebel-如下所示面板选择connect-to-online-licensing-service">第三步：打开jrebel 如下所示面板，选择Connect to online licensing service</h5>
+<h6 id="在线激活">在线激活</h6>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -619,6 +634,20 @@ IDEA上原生是不支持热部署的，一般更新了 Java 文件后要手动�
         data-sizes="auto"
         alt="./12.png"
         title="12" /></p>
+<h6 id="离线激活">离线激活</h6>
+<p>下载反向代理软件</p>
+<p>根据自己的系统下载对应版本，window系统需要下载ReverseProxy_windows_amd64.exe这个版本 附：<a href="https://github.com/ilanyu/ReverseProxy/releases/tag/v1.4" target="_blank" rel="noopener noreferrer">下载地址</a></p>
+<p>下载后运行（注意：激活成功前不要关闭反向代理程序）</p>
+<p><strong>激活地址</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://127.0.0.1:8888/{{UUID}}
+</code></pre></td></tr></table>
+</div>
+</div><p>与在线类似，注意端口占用</p>
 <p>安装成功之后就可以通过JRebel启动项目。这样修改完Java代码后，就可以通过快捷键 <strong>Ctrl+shift+F9</strong> 而不再需要重启站点这样繁琐浪费时间的操作了。</p>
 <h4 id="相关设置">相关设置</h4>
 <h5 id="设置成离线工作模式">设置成离线工作模式</h5>
