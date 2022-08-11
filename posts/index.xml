@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/posts/</link>
         <description>所有文章 | KKKPJSKEY&#39;s-Case-Archives</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 05 Aug 2022 16:38:39 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 11 Aug 2022 09:45:16 &#43;0800</lastBuildDate><atom:link href="https://kkkpjskey.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Ove x Sonja</title>
     <link>https://kkkpjskey.github.io/film-ove-x-sonja-note/</link>
     <pubDate>Sun, 31 Jul 2022 21:06:29 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/film-ove-x-sonja-note/</guid>
@@ -30,6 +30,16 @@
     <pubDate>Tue, 08 Jun 2021 14:37:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-audition-note/</guid>
     <description><![CDATA[1、面向对象 什么是面向对象? 对比面向过程，是两种不同的处理问题的角度 面向过程更注重事情的每一个步骤及顺序，面向对象更注重事情有哪些参与者(对]]></description>
 </item><item>
+    <title>FSCapture笔记</title>
+    <link>https://kkkpjskey.github.io/software_fscapture_note/</link>
+    <pubDate>Thu, 11 Aug 2022 09:45:16 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/software_fscapture_note/</guid>
+    <description><![CDATA[需求 由于本博客文章封面需要保证10：3否则会显示不完全，查询到Faststone(FS)Capture97有此功能，故总结此笔记。 主页 主页 更]]></description>
+</item><item>
+    <title>Git Commit笔记</title>
+    <link>https://kkkpjskey.github.io/git_commit_note/</link>
+    <pubDate>Tue, 09 Aug 2022 14:00:46 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/git_commit_note/</guid>
+    <description><![CDATA[提交操作 常用提交操作 Git修改commit信息方法大全，提交日志、姓名、邮箱都能改 前言 如果提交的时候发现电脑的 git 配置有问题，不要着急，教你一]]></description>
+</item><item>
     <title>Idea：Java非法字符: ‘\ufeff’</title>
     <link>https://kkkpjskey.github.io/idea-java-illegal-char/</link>
     <pubDate>Fri, 05 Aug 2022 16:38:39 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-java-illegal-char/</guid>
@@ -44,15 +54,5 @@
     <link>https://kkkpjskey.github.io/idea-git-note/</link>
     <pubDate>Fri, 05 Aug 2022 15:50:54 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-git-note/</guid>
     <description><![CDATA[IDEA中侧边栏没有git commit模块，别的项目中又有 网上找了很多方法，大部分都是说在setting里面点击第一个按钮 选择Use-non]]></description>
-</item><item>
-    <title>Idea双击打不开没反应</title>
-    <link>https://kkkpjskey.github.io/idea-double-click-no-resp/</link>
-    <pubDate>Fri, 05 Aug 2022 13:32:37 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-double-click-no-resp/</guid>
-    <description><![CDATA[网上找了很多方法最后才找到一个可以解决的，如果遇到的问题与我这个相同可以用这个方法解决 1.打开idea安装根目录bin下,选中idea.ba]]></description>
-</item><item>
-    <title>分布式系统互斥性与幂等性问题的分析与解决</title>
-    <link>https://kkkpjskey.github.io/distribut-sys-mutex-idempotence/</link>
-    <pubDate>Fri, 05 Aug 2022 11:25:26 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/distribut-sys-mutex-idempotence/</guid>
-    <description><![CDATA[随着互联网信息技术的飞速发展，数据量不断增大，业务逻辑也日趋复杂，对系统的高并发访问、海量数据处理的场景也越来越多。如何用较低成本实现系统的]]></description>
 </item></channel>
 </rss>
