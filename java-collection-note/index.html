@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/java-collection-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-collection-note/featured-image.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-10-15T15:04:57+08:00" />
-<meta property="article:modified_time" content="2022-06-05T15:27:49+08:00" />
+<meta property="article:modified_time" content="2022-10-03T10:36:36+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/java-collection-note/featured-image.jpg"/>
@@ -33,8 +33,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/featured-image.jpg",
                             "width":  721 ,
                             "height":  330 
-                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  45997 ,
-        "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/","datePublished": "2021-10-15T15:04:57+08:00","dateModified": "2022-06-05T15:27:49+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Java, Collection, JavaNote","wordcount":  52351 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-collection-note\/","datePublished": "2021-10-15T15:04:57+08:00","dateModified": "2022-10-03T10:36:36+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -119,8 +119,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java-Collection笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 45997 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 92 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-15">2021-10-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 52351 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 105 分钟&nbsp;<span id="/java-collection-note/" class="leancloud_visitors" data-flag-title="Java-Collection笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -175,6 +175,12 @@
         <li><a href="#list转map的三种方法">List转Map的三种方法</a></li>
         <li><a href="#java两个list的交集并集">Java两个List的交集，并集</a></li>
         <li><a href="#在arraylist的循环中删除元素会不会出现问题">在ArrayList的循环中删除元素，会不会出现问题？</a></li>
+        <li><a href="#javalist-与-数组-相互转换">JAVA：List 与 数组 相互转换</a>
+          <ul>
+            <li><a href="#一-list-转化成-数组">一、 List 转化成 数组</a></li>
+            <li><a href="#二数组-转换成-list">二、数组 转换成 list</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#map">Map</a>
@@ -255,7 +261,22 @@
         <li><a href="#flatmap">FlatMap</a></li>
         <li><a href="#reduce">Reduce</a></li>
         <li><a href="#collect">Collect</a></li>
-        <li><a href="#optional">Optional</a></li>
+        <li><a href="#optional">Optional</a>
+          <ul>
+            <li><a href="#java8用optional处理-null">Java8用Optional处理 null</a>
+              <ul>
+                <li><a href="#ofnullable">ofNullable</a></li>
+                <li><a href="#ifpresent">ifPresent()</a></li>
+                <li><a href="#filter-1">filter()</a></li>
+                <li><a href="#map-1">map()</a></li>
+                <li><a href="#flatmap-1">flatMap()</a></li>
+                <li><a href="#orelse">orElse()</a></li>
+                <li><a href="#orelseget">orElseGet()</a></li>
+                <li><a href="#orelsethrow">orElseThrow()</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
         <li><a href="#并发">并发</a></li>
         <li><a href="#调试">调试</a></li>
       </ul>
@@ -288,7 +309,12 @@
       </ul>
     </li>
     <li><a href="#java中list-integer-int的相互转换">Java中List, Integer[], int[]的相互转换</a></li>
-    <li><a href="#数组操作">数组操作</a></li>
+    <li><a href="#数组操作">数组操作</a>
+      <ul>
+        <li><a href="#fill">fill</a></li>
+        <li><a href="#arrayutils">ArrayUtils</a></li>
+      </ul>
+    </li>
     <li><a href="#字符串操作">字符串操作</a></li>
     <li><a href="#stringformat的详细用法">String.format()的详细用法</a>
       <ul>
@@ -296,6 +322,14 @@
         <li><a href="#stringformat字符串常规类型格式化的两种重载方式">String.format()字符串常规类型格式化的两种重载方式</a></li>
         <li><a href="#上个栗子有用到了字符类型和整数类型的格式化-下面我把常用的类型例举出来">上个栗子有用到了字符类型和整数类型的格式化 下面我把常用的类型例举出来</a></li>
         <li><a href="#为了方便理解还是举个例子">为了方便理解还是举个例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#关于foreach循环不能修改变量的值问题">关于foreach循环不能修改变量的值问题</a>
+      <ul>
+        <li><a href="#一发现问题">一、发现问题</a></li>
+        <li><a href="#二探究原因">二、探究原因</a></li>
+        <li><a href="#三验证">三、验证</a></li>
+        <li><a href="#四总结">四、总结</a></li>
       </ul>
     </li>
   </ul>
@@ -2031,7 +2065,115 @@ abc--&gt;22
 </code></pre></td></tr></table>
 </div>
 </div><p>总结：一道看似很简单的问题，没想到背后却有这么多的知识，真是感觉自己要学的还很多，遇到方法细节的问题，我觉得直接看源码是最好的解决方法，另外我觉得在后面的版本的 JDK 中，可以增加一个在循环中删除连续元素的方法嘛，不然这里对于没有发现这个问题的人真是个坑。</p>
-<h2 id="map">Map</h2>
+<h3 id="javalist-与-数组-相互转换">JAVA：List 与 数组 相互转换</h3>
+<h4 id="一-list-转化成-数组">一、 List 转化成 数组</h4>
+<p><strong>1. list.toArray();</strong></p>
+<p>直接将 list 转换成 Object[] 类型的 <a href="https://so.csdn.net/so/search?q=%e6%95%b0%e7%bb%84&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">数组</a>；</p>
+<p><strong>Object ： 对象类，是所有类的父类</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Object</span><span class="o">[]</span>  <span class="n">ans1</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>2. list.toArray(T[] a);</strong></p>
+<p>输出指定类型的数组，输出的数组类型与括号中参数类型一致；</p>
+<p>必须是包装类（String、Integer、Character等），不能是基本数据类型了（string、int、char）；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 创建数组时： int [ ] arr = new int [ ] {}; 使用的是基本数据类型
+</span><span class="c1"></span><span class="n">Integer</span><span class="o">[]</span> <span class="n">ans2</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()]);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>案例：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 创建一个list，并且对list赋值        
+</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span>  <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>       
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">11</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+	<span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="o">}</span>
+ 
+<span class="c1">//方法一：
+</span><span class="c1"></span><span class="n">Object</span><span class="o">[]</span>  <span class="n">ans1</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;1:&#34;</span> <span class="o">+</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">ans1</span><span class="o">));</span>
+ 
+<span class="c1">// 方法二：
+</span><span class="c1"></span><span class="n">Integer</span><span class="o">[]</span> <span class="n">ans2</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()]);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;2:&#34;</span> <span class="o">+</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">ans2</span><span class="o">));</span>
+ 
+<span class="nl">1:</span><span class="o">[</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span><span class="o">,</span> <span class="n">7</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">9</span><span class="o">,</span> <span class="n">10</span><span class="o">]</span>
+<span class="nl">2:</span><span class="o">[</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span><span class="o">,</span> <span class="n">7</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">9</span><span class="o">,</span> <span class="n">10</span><span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="二数组-转换成-list">二、数组 转换成 list</h4>
+<p><strong>1. Arrays.asList( );</strong></p>
+<p>注意该方法的返回值是java.util.Arrays类中一个私有静态内部类java.util.Arrays.ArrayList，
+它并非java.util.ArrayList类。
+java.util.Arrays.ArrayList类具有set()，get()，contains()等方法，
+但是不支持添加add()或删除remove()方法,调用这些方法会报错。</p>
+<p>也就是说，此种方法残缺：重新得到的 list <strong>不能</strong> add( ) 或者 remove( );</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 因为list中是包装类。所以数组创建时也需要使用包装类 
+</span><span class="c1"></span><span class="n">Integer</span><span class="o">[]</span> <span class="n">num</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">[]{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">4</span><span class="o">,</span><span class="n">5</span><span class="o">,</span><span class="n">6</span><span class="o">,</span><span class="n">7</span><span class="o">,</span><span class="n">8</span><span class="o">,</span><span class="n">9</span><span class="o">};</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ans1</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+ 
+<span class="c1">//此时得到的list 不能 使用 add() 与 remove()方法；
+</span><span class="c1">// 解决办法：
+</span><span class="c1">//    创建一个新的list 对象，将残缺的list加入进去     
+</span><span class="c1"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">ans1</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>2、Collections.addAll( );（此种方法最实用）</strong></p>
+<p>直接创建一个新的 list 对象，然后使用<strong>Collections.addAll( )</strong> 方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">Integer</span><span class="o">[]</span> <span class="n">num</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">[]{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">4</span><span class="o">,</span><span class="n">5</span><span class="o">,</span><span class="n">6</span><span class="o">,</span><span class="n">7</span><span class="o">,</span><span class="n">8</span><span class="o">,</span><span class="n">9</span><span class="o">};</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ans2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+<span class="n">Collections</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">ans2</span><span class="o">,</span><span class="n">num</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="map">Map</h2>
 <h3 id="特点">特点</h3>
 <p>map 没有无序，不能下标访问，只能通过keyvalue进行访问，能增加随机访问的速度</p>
 <h3 id="修改">修改</h3>
@@ -5291,88 +5433,208 @@ resize前的HashMap如下图所示:</p>
 </span><span class="lnt">74
 </span><span class="lnt">75
 </span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm">  * toList
+</span><span class="cm">  */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toListTest</span><span class="o">(){</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">PersonModel</span><span class="o">::</span><span class="n">getName</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+<span class="o">}</span>
+
+<span class="cm">/**
+</span><span class="cm">  * toSet
+</span><span class="cm">  */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toSetTest</span><span class="o">(){</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+    <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">PersonModel</span><span class="o">::</span><span class="n">getName</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toSet</span><span class="o">());</span>
+<span class="o">}</span>
+
+<span class="cm">/**
+</span><span class="cm">  * toMap
+</span><span class="cm">  */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toMapTest</span><span class="o">(){</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span>
+        <span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">PersonModel</span><span class="o">::</span><span class="n">getName</span><span class="o">,</span> <span class="n">PersonModel</span><span class="o">::</span><span class="n">getAge</span><span class="o">)</span>
+    <span class="o">);</span>
+
+    <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">per</span><span class="o">-&gt;</span><span class="n">per</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="n">value</span><span class="o">-&gt;{</span>
+            <span class="k">return</span> <span class="n">value</span><span class="o">+</span><span class="s">&#34;1&#34;</span><span class="o">;</span>
+        <span class="o">}));</span>
+<span class="o">}</span>
+
+<span class="cm">/**
+</span><span class="cm">  * toMap处理冲突
+</span><span class="cm">  */</span>
+<span class="kn">import</span> <span class="nn">lombok.AllArgsConstructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+ 
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.function.Function</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.stream.Collectors</span><span class="o">;</span>
+ 
+<span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="nd">@AllArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+ 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="s">&#34;1&#34;</span><span class="o">));</span>
+<span class="c1">//        list.add(new Person(1, &#34;4&#34;));
+</span><span class="c1"></span>        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="s">&#34;2&#34;</span><span class="o">));</span>
+        <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="n">3</span><span class="o">,</span> <span class="s">&#34;3&#34;</span><span class="o">));</span>
+ 
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Person</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getId</span><span class="o">,</span> <span class="n">Function</span><span class="o">.</span><span class="na">identity</span><span class="o">()));</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Person</span><span class="o">&gt;</span> <span class="n">collect1</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getId</span><span class="o">,</span> <span class="n">Function</span><span class="o">.</span><span class="na">identity</span><span class="o">(),</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)-&gt;</span><span class="n">a</span><span class="o">));</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Person</span><span class="o">&gt;</span> <span class="n">collect2</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getId</span><span class="o">,</span> <span class="n">v</span> <span class="o">-&gt;</span> <span class="n">v</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)-&gt;</span><span class="n">a</span><span class="o">));</span>
+        <span class="n">Collection</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getId</span><span class="o">,</span> <span class="n">Function</span><span class="o">.</span><span class="na">identity</span><span class="o">(),</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">)).</span><span class="na">values</span><span class="o">();</span>
+        <span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">Person</span><span class="o">::</span><span class="n">getId</span><span class="o">,</span> <span class="n">Function</span><span class="o">.</span><span class="na">identity</span><span class="o">(),</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">a</span><span class="o">)).</span><span class="na">values</span><span class="o">().</span><span class="na">stream</span><span class="o">().</span><span class="na">count</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect1</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect2</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">values</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./33.png"
+        data-srcset="./33.png, ./33.png 1.5x, ./33.png 2x"
+        data-sizes="auto"
+        alt="./33.png"
+        title="33" /></p>
+<p>使用toMap()函数之后，返回的就是一个Map了，自然会需要key和value。
+toMap()的第一个参数就是用来生成key值的，第二个参数就是用来生成value值的。
+第三个参数用在key值冲突的情况下：如果新元素产生的key在Map中已经出现过了，第三个参数就会定义解决的办法。</p>
+<p>在.collect(Collectors.toMap(Person::getId, v -&gt; v, (a,b)-&gt;a))中：</p>
+<p>第一个参数：Person:getId表示选择Person的getId作为map的key值；</p>
+<p>第二个参数：v-&gt;v表示选择将原来的对象作为Map的value值</p>
+<p>第三个参数：(a,b)-&gt;a中，如果a与b的key值相同，选择a作为那个key所对应的value值。</p>
+<p>如果key冲突，不加(a,b）-&gt;a会报如下错误</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./34.png"
+        data-srcset="./34.png, ./34.png 1.5x, ./34.png 2x"
+        data-sizes="auto"
+        alt="./34.png"
+        title="34" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./35.png"
+        data-srcset="./35.png, ./35.png 1.5x, ./35.png 2x"
+        data-sizes="auto"
+        alt="./35.png"
+        title="35" /></p>
+<p><a href="https://blog.csdn.net/jiangpingjiangping/article/details/76474010?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param" target="_blank" rel="noopener noreferrer">参考1</a></p>
+<p><a href="https://blog.csdn.net/jiangpingjiangping/article/details/76474010?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param" target="_blank" rel="noopener noreferrer">参考2</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"> <span class="cm">/**
-</span><span class="cm">     * toList
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toListTest</span><span class="o">(){</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">PersonModel</span><span class="o">::</span><span class="n">getName</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
-    <span class="o">}</span>
+</span><span class="cm">  * 指定类型
+</span><span class="cm">  */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toTreeSetTest</span><span class="o">(){</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+    <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toCollection</span><span class="o">(</span><span class="n">TreeSet</span><span class="o">::</span><span class="k">new</span><span class="o">));</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span>
+<span class="o">}</span>
 
-    <span class="cm">/**
-</span><span class="cm">     * toSet
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toSetTest</span><span class="o">(){</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
-        <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">PersonModel</span><span class="o">::</span><span class="n">getName</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toSet</span><span class="o">());</span>
-    <span class="o">}</span>
+<span class="cm">/**
+</span><span class="cm">  * 分组
+</span><span class="cm">  */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toGroupTest</span><span class="o">(){</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+    <span class="n">Map</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">groupingBy</span><span class="o">(</span><span class="n">per</span> <span class="o">-&gt;</span> <span class="s">&#34;男&#34;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">per</span><span class="o">.</span><span class="na">getSex</span><span class="o">())));</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span>
+<span class="o">}</span>
 
-    <span class="cm">/**
-</span><span class="cm">     * toMap
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toMapTest</span><span class="o">(){</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
-        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">collect</span><span class="o">(</span>
-                        <span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">PersonModel</span><span class="o">::</span><span class="n">getName</span><span class="o">,</span> <span class="n">PersonModel</span><span class="o">::</span><span class="n">getAge</span><span class="o">)</span>
-                <span class="o">);</span>
+<span class="cm">/**
+</span><span class="cm">  * 分隔
+</span><span class="cm">  */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toJoiningTest</span><span class="o">(){</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">personModel</span> <span class="o">-&gt;</span> <span class="n">personModel</span><span class="o">.</span><span class="na">getName</span><span class="o">())</span>
+        <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">joining</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">,</span> <span class="s">&#34;{&#34;</span><span class="o">,</span> <span class="s">&#34;}&#34;</span><span class="o">));</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span>
+<span class="o">}</span>
 
-        <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="n">per</span><span class="o">-&gt;</span><span class="n">per</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="n">value</span><span class="o">-&gt;{</span>
-            <span class="k">return</span> <span class="n">value</span><span class="o">+</span><span class="s">&#34;1&#34;</span><span class="o">;</span>
+<span class="cm">/**
+</span><span class="cm">  * 自定义
+</span><span class="cm">  */</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">reduce</span><span class="o">(){</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;1&#34;</span><span class="o">,</span> <span class="s">&#34;2&#34;</span><span class="o">,</span> <span class="s">&#34;3&#34;</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span>
+        <span class="n">Collectors</span><span class="o">.</span><span class="na">reducing</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(),</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">x</span><span class="o">),</span> <span class="o">(</span><span class="n">y</span><span class="o">,</span> <span class="n">z</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">y</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">z</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">y</span><span class="o">;</span>
         <span class="o">}));</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 指定类型
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toTreeSetTest</span><span class="o">(){</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
-        <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toCollection</span><span class="o">(</span><span class="n">TreeSet</span><span class="o">::</span><span class="k">new</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 分组
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toGroupTest</span><span class="o">(){</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
-        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">groupingBy</span><span class="o">(</span><span class="n">per</span> <span class="o">-&gt;</span> <span class="s">&#34;男&#34;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">per</span><span class="o">.</span><span class="na">getSex</span><span class="o">())));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 分隔
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">toJoiningTest</span><span class="o">(){</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">PersonModel</span><span class="o">&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
-        <span class="n">String</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">personModel</span> <span class="o">-&gt;</span> <span class="n">personModel</span><span class="o">.</span><span class="na">getName</span><span class="o">())</span>
-                <span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">joining</span><span class="o">(</span><span class="s">&#34;,&#34;</span><span class="o">,</span> <span class="s">&#34;{&#34;</span><span class="o">,</span> <span class="s">&#34;}&#34;</span><span class="o">));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * 自定义
-</span><span class="cm">     */</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">reduce</span><span class="o">(){</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collect</span> <span class="o">=</span> <span class="n">Stream</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">&#34;1&#34;</span><span class="o">,</span> <span class="s">&#34;2&#34;</span><span class="o">,</span> <span class="s">&#34;3&#34;</span><span class="o">).</span><span class="na">collect</span><span class="o">(</span>
-                <span class="n">Collectors</span><span class="o">.</span><span class="na">reducing</span><span class="o">(</span><span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(),</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">x</span><span class="o">),</span> <span class="o">(</span><span class="n">y</span><span class="o">,</span> <span class="n">z</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
-                    <span class="n">y</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">z</span><span class="o">);</span>
-                    <span class="k">return</span> <span class="n">y</span><span class="o">;</span>
-                <span class="o">}));</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span>
-    <span class="o">}</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collect</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="optional">Optional</h3>
@@ -5545,6 +5807,133 @@ resize前的HashMap如下图所示:</p>
                 <span class="o">.</span><span class="na">ifPresent</span><span class="o">(</span><span class="n">per</span><span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">per</span><span class="o">));</span>
 
     <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="java8用optional处理-null">Java8用Optional处理 null</h4>
+<p>注意开头增加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="ofnullable">ofNullable</h5>
+<p>Optional 类是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。</p>
+<p>Optional 是个容器：它可以保存类型T的值，或者仅仅保存null。Optional提供很多有用的方法，这样我们就不用显式进行空值检测。</p>
+<p>Optional 类的引入很好的解决空指针异常。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getGender</span><span class="o">(</span><span class="n">Student</span> <span class="n">student</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">student</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">u</span><span class="o">.</span><span class="na">getGender</span><span class="o">()).</span><span class="na">orElse</span><span class="o">(</span><span class="s">&#34;Unkown&#34;</span><span class="o">);</span>    
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="ifpresent">ifPresent()</h5>
+<p>isPresent()方法用于判断包装对象的值是否非空。</p>
+<p>ifPresent()方法接受一个Consumer对象（消费函数），如果包装对象的值非空，运行Consumer对象的accept()方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">printName</span><span class="o">(</span><span class="n">Student</span> <span class="n">student</span><span class="o">){</span>
+	<span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">student</span><span class="o">).</span><span class="na">ifPresent</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;The student name is : &#34;</span> <span class="o">+</span> <span class="n">u</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="filter-1">filter()</h5>
+<p>filter()方法接受参数为Predicate对象，用于对Optional对象进行过滤，如果符合Predicate的条件，返回Optional对象本身，否则返回一个空的Optional对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">filterAge</span><span class="o">(</span><span class="n">Student</span> <span class="n">student</span><span class="o">){</span>
+	<span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">student</span><span class="o">).</span><span class="na">filter</span><span class="o">(</span> <span class="n">u</span> <span class="o">-&gt;</span> <span class="n">u</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">18</span><span class="o">).</span><span class="na">ifPresent</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span>  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;The student age is more than 18.&#34;</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="map-1">map()</h5>
+<p>map()方法的参数为Function（函数式接口）对象，map()方法将Optional中的包装对象用Function函数进行运算，并包装成新的Optional对象（包装对象的类型可能改变）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">getAge</span><span class="o">(</span><span class="n">Student</span> <span class="n">student</span><span class="o">){</span>
+	<span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">student</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">u</span><span class="o">.</span><span class="na">getAge</span><span class="o">());</span> 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="flatmap-1">flatMap()</h5>
+<p>跟map()方法不同的是，入参Function函数的返回值类型为Optional类型，而不是U类型，这样flatMap()能将一个二维的Optional对象映射成一个一维的对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">getAge</span><span class="o">(</span><span class="n">Student</span> <span class="n">student</span><span class="o">){</span>
+	<span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">student</span><span class="o">).</span><span class="na">flatMap</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">u</span><span class="o">.</span><span class="na">getAge</span><span class="o">()));</span> 
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="orelse">orElse()</h5>
+<p>orElse()方法功能比较简单，即如果包装对象值非空，返回包装对象值，否则返回入参other的值（默认值）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getGender</span><span class="o">(</span><span class="n">Student</span> <span class="n">student</span><span class="o">){</span>
+	<span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">student</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">u</span><span class="o">.</span><span class="na">getGender</span><span class="o">()).</span><span class="na">orElse</span><span class="o">(</span><span class="s">&#34;Unkown&#34;</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="orelseget">orElseGet()</h5>
+<p>orElseGet()方法与orElse()方法类似，区别在于orElseGet()方法的入参为一个Supplier对象，用Supplier对象的get()方法的返回值作为默认值。</p>
+<p>orElseGet 可以处理需要根据null对象进行处理的场景。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getGender</span><span class="o">(</span><span class="n">Student</span> <span class="n">student</span><span class="o">){</span>
+	<span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">student</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">u</span><span class="o">.</span><span class="na">getGender</span><span class="o">()).</span><span class="na">orElseGet</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="s">&#34;Unkown&#34;</span><span class="o">);</span>      
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="orelsethrow">orElseThrow()</h5>
+<p>orElseThrow()方法其实与orElseGet()方法非常相似了，入参都是Supplier对象，只不过orElseThrow()的Supplier对象必须返回一个Throwable异常，并在orElseThrow()中将异常抛出：</p>
+<p>orElseThrow()方法适用于包装对象值为空时需要抛出特定异常的场景。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getGender1</span><span class="o">(</span><span class="n">Student</span> <span class="n">student</span><span class="o">){</span>
+    <span class="k">return</span> <span class="n">Optional</span><span class="o">.</span><span class="na">ofNullable</span><span class="o">(</span><span class="n">student</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">u</span><span class="o">.</span><span class="na">getGender</span><span class="o">()).</span><span class="na">orElseThrow</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;Unkown&#34;</span><span class="o">));</span>      
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="并发">并发</h3>
@@ -7783,6 +8172,17 @@ Deque deque = new LinkedList()</li>
 </div>
 </div><p>由此可见，流操作还是很方便的。我对这些知识的掌握也不深，就不误人子弟了，只是给刚接触的人提供一个思考的方向。</p>
 <h2 id="数组操作">数组操作</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">说明：ArrayUtils工具类在标准的应用程序中是不可以被实例化的：
+参考：<span class="o">[</span>参考地址<span class="o">](</span>http://commons.apache.org/proper/commons-lang/javadocs/api-release/<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="fill">fill</h3>
 <p>数组的初始化填充</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -7794,6 +8194,359 @@ Deque deque = new LinkedList()</li>
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span><span class="o">[]</span> <span class="n">iL</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">100</span><span class="o">];</span>
 <span class="c1">//将数组填充为100个-1
 </span><span class="c1"></span><span class="n">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">iL</span><span class="o">,-</span><span class="n">1</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="arrayutils">ArrayUtils</h3>
+<p>数组工具ArrayUtils 拥有以下方法:</p>
+<p><strong>toString</strong></p>
+<p>将一个数组转换成String,用于打印数组</p>
+<p><strong>isEquals</strong></p>
+<p>判断两个数组是否相等,采用EqualsBuilder进行判断</p>
+<p><strong>toMap</strong></p>
+<p>将一个数组转换成Map,如果数组里是Entry则其Key与Value就是新Map的Key和Value,如果是Object[]则Object[0]为KeyObject[1]为Value</p>
+<p><strong>clone</strong></p>
+<p>拷贝数组</p>
+<p><strong>subarray</strong></p>
+<p>截取子数组</p>
+<p><strong>isSameLength</strong></p>
+<p>判断两个数组长度是否相等</p>
+<p><strong>getLength</strong></p>
+<p>获得数组的长度</p>
+<p><strong>isSameType</strong></p>
+<p>判段两个数组的类型是否相同</p>
+<p><strong>reverse</strong></p>
+<p>数组反转</p>
+<p><strong>indexOf</strong></p>
+<p>查询某个Object在数组中的位置,可以指定起始搜索位置</p>
+<p><strong>lastIndexOf</strong></p>
+<p>反向查询某个Object在数组中的位置,可以指定起始搜索位置</p>
+<p><strong>contains</strong></p>
+<p>查询某个Object是否在数组中</p>
+<p><strong>toObject</strong></p>
+<p>将基本数据类型转换成外包型数据</p>
+<p><strong>isEmpty</strong></p>
+<p>判断数组是否为空(null和length=0的时候都为空)</p>
+<p><strong>addAll</strong></p>
+<p>合并两个数组</p>
+<p><strong>add</strong></p>
+<p>添加一个数据到数组</p>
+<p><strong>remove</strong></p>
+<p>删除数组中某个位置上的数据</p>
+<p><strong>removeElement</strong></p>
+<p>删除数组中某个对象(从正序开始搜索,删除第一个)</p>
+<p><strong>eg</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.commons.lang3.ArrayUtils</span>
+<span class="c1">// 1.打印数组
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">});</span><span class="c1">// {1,4,2,3}
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">});</span><span class="c1">// {1,4,2,3}
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">&#34;I&#39;m nothing!&#34;</span><span class="o">);</span><span class="c1">// I&#39;m nothing!
+</span><span class="c1"></span>
+<span class="c1">// 2.判断两个数组是否相等,采用EqualsBuilder进行判断
+</span><span class="c1">// 只有当两个数组的数据类型,长度,数值顺序都相同的时候,该方法才会返回True
+</span><span class="c1">// 2.1 两个数组完全相同
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isEquals</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">},</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">});</span><span class="c1">// true
+</span><span class="c1">// 2.2 数据类型以及长度相同,但各个Index上的数据不是一一对应
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isEquals</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">2</span> <span class="o">},</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">});</span><span class="c1">// true
+</span><span class="c1">// 2.3 数组的长度不一致
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isEquals</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">3</span> <span class="o">},</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">});</span><span class="c1">// false
+</span><span class="c1">// 2.4 不同的数据类型
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isEquals</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">},</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">});</span><span class="c1">// false
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isEquals</span><span class="o">(</span><span class="k">new</span> <span class="n">Object</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">},</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">});</span><span class="c1">// false
+</span><span class="c1">// 2.5 Null处理,如果输入的两个数组都为null时候则返回true
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isEquals</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span> <span class="o">},</span> <span class="kc">null</span><span class="o">);</span><span class="c1">// false
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isEquals</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span><span class="c1">// true
+</span><span class="c1"></span>
+<span class="c1">// 3.将一个数组转换成Map
+</span><span class="c1">// 如果数组里是Entry则其Key与Value就是新Map的Key和Value,如果是Object[]则Object[0]为KeyObject[1]为Value
+</span><span class="c1">// 对于Object[]数组里的元素必须是instanceof Object[]或者Entry,即不支持基本数据类型数组
+</span><span class="c1">// 如:ArrayUtils.toMap(new Object[]{new int[]{1,2},new int[]{3,4}})会出异常
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="k">new</span> <span class="n">Object</span><span class="o">[]</span> <span class="o">{</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span> <span class="o">},</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[]</span> <span class="o">{</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span> <span class="o">}</span> <span class="o">});</span><span class="c1">// {1=2,
+</span><span class="c1">// 3=4}
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">toMap</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[][]</span> <span class="o">{</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span> <span class="o">},</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">[]</span> <span class="o">{</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span> <span class="o">}</span> <span class="o">});</span><span class="c1">// {1=2,
+</span><span class="c1">// 3=4}
+</span><span class="c1"></span>
+<span class="c1">// 4.拷贝数组
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">clone</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">3</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">4</span> <span class="o">});</span><span class="c1">// {3,2,4}
+</span><span class="c1"></span>
+<span class="c1">// 5.截取数组
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">subarray</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span> <span class="o">},</span> <span class="n">2</span><span class="o">,</span> <span class="n">4</span><span class="o">);</span><span class="c1">// {1,5}
+</span><span class="c1">// 起始index为2(即第三个数据)结束index为4的数组
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">subarray</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span> <span class="o">},</span> <span class="n">2</span><span class="o">,</span> <span class="n">10</span><span class="o">);</span><span class="c1">// {1,5,6}
+</span><span class="c1">// 如果endIndex大于数组的长度,则取beginIndex之后的所有数据
+</span><span class="c1"></span>
+<span class="c1">// 6.判断两个数组的长度是否相等
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isSameLength</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">5</span> <span class="o">},</span> <span class="k">new</span> <span class="n">Long</span><span class="o">[]</span> <span class="o">{</span> <span class="n">2L</span><span class="o">,</span> <span class="n">8L</span><span class="o">,</span> <span class="n">10L</span> <span class="o">});</span><span class="c1">// true
+</span><span class="c1"></span>
+<span class="c1">// 7.获得数组的长度
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">getLength</span><span class="o">(</span><span class="k">new</span> <span class="kt">long</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">23</span><span class="o">,</span> <span class="n">3</span> <span class="o">});</span><span class="c1">// 3
+</span><span class="c1"></span>
+<span class="c1">// 8.判段两个数组的类型是否相同
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isSameType</span><span class="o">(</span><span class="k">new</span> <span class="kt">long</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span> <span class="o">},</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[]</span> <span class="o">{</span> <span class="n">8</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span> <span class="o">});</span><span class="c1">// true
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isSameType</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span> <span class="o">},</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[]</span> <span class="o">{</span> <span class="n">8</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span> <span class="o">});</span><span class="c1">// false
+</span><span class="c1"></span>
+<span class="c1">// 9.数组反转
+</span><span class="c1"></span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">5</span> <span class="o">};</span>
+<span class="n">ArrayUtils</span><span class="o">.</span><span class="na">reverse</span><span class="o">(</span><span class="n">array</span><span class="o">);</span><span class="c1">// {5,2,1}
+</span><span class="c1"></span>
+<span class="c1">// 10.查询某个Object在数组中的位置,可以指定起始搜索位置,找不到返回-1
+</span><span class="c1">// 10.1 从正序开始搜索,搜到就返回当前的index否则返回-1
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">6</span> <span class="o">},</span> <span class="n">6</span><span class="o">);</span><span class="c1">// 2
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">6</span> <span class="o">},</span> <span class="n">2</span><span class="o">);</span><span class="c1">// -1
+</span><span class="c1">// 10.2 从逆序开始搜索,搜到就返回当前的index否则返回-1
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">lastIndexOf</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">6</span> <span class="o">},</span> <span class="n">6</span><span class="o">);</span><span class="c1">// 2
+</span><span class="c1"></span>
+<span class="c1">// 11.查询某个Object是否在数组中
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">3</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span> <span class="o">},</span> <span class="n">1</span><span class="o">);</span><span class="c1">// true
+</span><span class="c1">// 对于Object数据是调用该Object.equals方法进行判断
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="k">new</span> <span class="n">Object</span><span class="o">[]</span> <span class="o">{</span> <span class="n">3</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span> <span class="o">},</span> <span class="n">1L</span><span class="o">);</span><span class="c1">// false
+</span><span class="c1"></span>
+<span class="c1">// 12.基本数据类型数组与外包型数据类型数组互转
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">toObject</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span> <span class="o">});</span><span class="c1">// new Integer[]{Integer,Integer}
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">toPrimitive</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[]</span> <span class="o">{</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="n">1</span><span class="o">),</span> <span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="n">2</span><span class="o">)</span> <span class="o">});</span><span class="c1">// new int[]{1,2}
+</span><span class="c1"></span>
+<span class="c1">// 13.判断数组是否为空(null和length=0的时候都为空)
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">0</span><span class="o">]);</span><span class="c1">// true
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="k">new</span> <span class="n">Object</span><span class="o">[]</span> <span class="o">{</span> <span class="kc">null</span> <span class="o">});</span><span class="c1">// false
+</span><span class="c1"></span>
+<span class="c1">// 14.合并两个数组
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">5</span> <span class="o">},</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">2</span><span class="o">,</span> <span class="n">4</span> <span class="o">});</span><span class="c1">// {1,3,5,2,4}
+</span><span class="c1"></span>
+<span class="c1">// 15.添加一个数据到数组
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="sc">&#39;0&#39;</span><span class="o">)</span>       <span class="c1">//= [&#39;0&#39;]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="sc">&#39;1&#39;</span><span class="o">],</span> <span class="sc">&#39;0&#39;</span><span class="o">)</span>      <span class="c1">//= [&#39;1&#39;, &#39;0&#39;]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="sc">&#39;1&#39;</span><span class="o">,</span> <span class="sc">&#39;0&#39;</span><span class="o">],</span> <span class="sc">&#39;1&#39;</span><span class="o">)</span> <span class="c1">//= [&#39;1&#39;, &#39;0&#39;, &#39;1&#39;]
+</span><span class="c1">//说明：在给定的数组副本中加入传入的数组和给定的元素，如果给定的数组是null，那么会返回一个包含给定元素的数组；
+</span><span class="c1">//参数：array-要被复制的数组；element-在新数组中的最后一个索引处添加的元素；
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">char</span><span class="o">[]</span> <span class="nf">add</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">char</span> <span class="n">element</span><span class="o">)</span>
+
+<span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">0</span><span class="o">)</span>   <span class="c1">//= [0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">],</span> <span class="n">0</span><span class="o">)</span>    <span class="c1">//= [1, 0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span> <span class="c1">//= [1, 0, 1]
+</span><span class="c1">//说明：在给定的数组副本中加入传入的数组和给定的元素，如果给定的数组是null，那么会返回一个包含给定元素的数组；
+</span><span class="c1">//参数：array-要被复制的数组；element-在新数组中的最后一个索引处添加的元素；
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span><span class="o">[]</span> <span class="nf">add</span><span class="o">(</span><span class="kt">double</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">double</span> <span class="n">element</span><span class="o">)</span>
+
+<span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">0</span><span class="o">)</span>   <span class="c1">//= [0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">],</span> <span class="n">0</span><span class="o">)</span>    <span class="c1">//= [1, 0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span> <span class="c1">//= [1, 0, 1]
+</span><span class="c1">//说明：在给定的数组副本中加入传入的数组和给定的元素，如果给定的数组是null，那么会返回一个包含给定元素的数组；
+</span><span class="c1">//参数：array-要被复制的数组；element-在新数组中的最后一个索引处添加的元素；
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">float</span><span class="o">[]</span> <span class="nf">add</span><span class="o">(</span><span class="kt">float</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">float</span> <span class="n">element</span><span class="o">)</span>
+
+<span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">5</span> <span class="o">},</span> <span class="n">4</span><span class="o">);</span><span class="c1">// {1,3,5,4}
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">0</span><span class="o">)</span>                  <span class="c1">//= [0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">],</span> <span class="n">0</span><span class="o">)</span>                   <span class="c1">//= [1, 0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span>                <span class="c1">//= [1, 0, 1]
+</span><span class="c1">//说明：在给定的数组副本中加入传入的数组和给定的元素，如果给定的数组是null，那么会返回一个包含给定元素的数组；
+</span><span class="c1">//参数：array-要被复制的数组；element-在新数组中的最后一个索引处添加的元素；
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">int</span> <span class="n">element</span><span class="o">)</span>
+
+<span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">0</span><span class="o">)</span>   <span class="c1">//= [0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">],</span> <span class="n">0</span><span class="o">)</span>    <span class="c1">//= [1, 0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span> <span class="c1">//= [1, 0, 1] 
+</span><span class="c1">//说明：在给定的数组副本中加入传入的数组和给定的元素，如果给定的数组是null，那么会返回一个包含给定元素的数组；
+</span><span class="c1">//参数：array-要被复制的数组；element-在新数组中的最后一个索引处添加的元素；
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span><span class="o">[]</span> <span class="nf">add</span><span class="o">(</span><span class="kt">long</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">long</span> <span class="n">element</span><span class="o">)</span>
+
+<span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">0</span><span class="o">)</span>   <span class="c1">//= [0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">],</span> <span class="n">0</span><span class="o">)</span>    <span class="c1">//= [1, 0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span> <span class="c1">//= [1, 0, 1]
+</span><span class="c1">//说明：在给定的数组副本中加入传入的数组和给定的元素，如果给定的数组是null，那么会返回一个包含给定元素的数组；
+</span><span class="c1">//参数：array-要被复制的数组；element-在新数组中的最后一个索引处添加的元素；
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">short</span><span class="o">[]</span> <span class="nf">add</span><span class="o">(</span><span class="kt">short</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">short</span> <span class="n">element</span><span class="o">)</span>
+
+<span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">0</span><span class="o">)</span>   <span class="c1">//= [0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">],</span> <span class="n">0</span><span class="o">)</span>    <span class="c1">//= [1, 0]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span> <span class="c1">//= [1, 0, 1]
+</span><span class="c1">//说明：java的基本数据类型中有byte这种，byte存储整型数据，占据1个字节(8 bits)，能够存储的数据范围是-128～+127;在给定的数组副本中加入传入的数组和给定的元素，如果给定的数组是null，那么会返回一个包含给定元素的数组；
+</span><span class="c1">//参数：array-要被复制的数组；element-在新数组中的最后一个索引处添加的元素；
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">add</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">byte</span> <span class="n">element</span><span class="o">)</span>
+    
+<span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="kc">true</span><span class="o">)</span>          <span class="c1">//= [true]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="kc">true</span><span class="o">],</span> <span class="kc">false</span><span class="o">)</span>       <span class="c1">//= [true, false]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">add</span><span class="o">([</span><span class="kc">true</span><span class="o">,</span> <span class="kc">false</span><span class="o">],</span> <span class="kc">true</span><span class="o">)</span> <span class="c1">//= [true, false, true]
+</span><span class="c1">//说明：在给定的数组副本中加入传入的数组和给定的元素，如果给定的数组是null，那么会返回一个包含给定元素的数组；
+</span><span class="c1">//参数：array-要被复制的数组；element-在新数组中的最后一个索引处添加的元素；
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span><span class="o">[]</span> <span class="nf">add</span><span class="o">(</span><span class="kt">boolean</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">element</span><span class="o">)</span>
+
+
+<span class="c1">// 16.删除数组中某个位置上的数据
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">5</span> <span class="o">},</span> <span class="n">1</span><span class="o">);</span><span class="c1">// {1,5}
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">remove</span><span class="o">([</span><span class="n">1</span><span class="o">],</span> <span class="n">0</span><span class="o">)</span>                   <span class="c1">//= []
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">remove</span><span class="o">([</span><span class="n">2</span><span class="o">,</span> <span class="n">6</span><span class="o">],</span> <span class="n">0</span><span class="o">)</span>                <span class="c1">//= [6]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">remove</span><span class="o">([</span><span class="n">2</span><span class="o">,</span> <span class="n">6</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span>                <span class="c1">//= [2]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">remove</span><span class="o">([</span><span class="n">2</span><span class="o">,</span> <span class="n">6</span><span class="o">,</span> <span class="n">3</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span>             <span class="c1">//= [2, 3]
+</span><span class="c1"></span><span class="n">说明</span><span class="err">：</span><span class="n">删除数组中指定索引的值</span><span class="err">，</span><span class="n">所有后续元素左移</span><span class="err">（</span><span class="n">下标减一</span><span class="err">），</span><span class="n">此方法返回一个新数组</span><span class="err">，</span><span class="n">该数组与新输入数组元素相同</span><span class="err">，</span><span class="n">但是在指定位置上的元素除外</span><span class="err">。</span><span class="n">返回数组的数据类型总是与输入数组的数据类型相同</span><span class="err">，</span><span class="n">如果输入的数组是null</span><span class="o">,</span><span class="n">将会抛出IndexOutOfBoundsException</span> <span class="n">异常</span><span class="err">，</span><span class="n">因为在这种情况下不能指定有效的索引</span><span class="err">。</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span><span class="o">[]</span> <span class="nf">remove</span><span class="o">(</span><span class="kt">long</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">int</span> <span class="n">index</span><span class="o">)</span>
+
+<span class="c1">// 17.删除数组中某个对象(从正序开始搜索,删除第一个)
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">removeElement</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span> <span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">5</span> <span class="o">},</span> <span class="n">3</span><span class="o">);</span><span class="c1">// {1,5} 
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">removeElement</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">1</span><span class="o">)</span>                  <span class="c1">//= null
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">removeElement</span><span class="o">([],</span> <span class="n">1</span><span class="o">)</span>                    <span class="c1">//= []
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">removeElement</span><span class="o">([</span><span class="n">1</span><span class="o">],</span> <span class="n">2</span><span class="o">)</span>                   <span class="c1">//= [1]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">removeElement</span><span class="o">([</span><span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span>                <span class="c1">//= [3]
+</span><span class="c1"></span><span class="n">ArrayUtils</span><span class="o">.</span><span class="na">removeElement</span><span class="o">([</span><span class="n">1</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">1</span><span class="o">],</span> <span class="n">1</span><span class="o">)</span>             <span class="c1">//= [3, 1]
+</span><span class="c1">//说明：从指定的数组中移除指定的第一个元素，所有的后续元素左移（下标减一），如果数组中不包含这样的元素，不会从数组中移除元素，此方法返回输入数组中的所有元素移除掉指定元素，返回数组的数据类型总是与输入数组相同；
+</span><span class="c1">//返回值是一个新数组包含了现有数组的所有元素去除掉指定元素的第一次出现；
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span><span class="o">[]</span> <span class="nf">removeElement</span><span class="o">(</span><span class="kt">long</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">long</span> <span class="n">element</span><span class="o">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="字符串操作">字符串操作</h2>
@@ -8161,11 +8914,207 @@ HH:MM格式（24时制）：22:43
 </code></pre></td></tr></table>
 </div>
 </div><p>其实还有很多其他有趣的玩法 我这边只列举一些常用的 有兴趣的朋友可以自己再去多了解了解</p>
+<h2 id="关于foreach循环不能修改变量的值问题">关于foreach循环不能修改变量的值问题</h2>
+<h3 id="一发现问题">一、发现问题</h3>
+<p>直接上代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;[]</span>  <span class="n">lists</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">[</span><span class="n">5</span><span class="o">];</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">List</span> <span class="n">list</span> <span class="o">:</span> <span class="n">lists</span><span class="o">){</span>
+	<span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">List</span> <span class="n">list</span> <span class="o">:</span> <span class="n">lists</span><span class="o">){</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>观察这段简单的代码，首先创建了一个ArrayList的数组，然后通过foreach循环对该数组进行赋值，随后打印该数组。</p>
+<p>预期将会打印出 5 行list的toString()信息，但是，实际情况却有所不一样。</p>
+<p>运行结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">null
+null
+null
+null
+null
+
+Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>为什么会出现这样的情况？不是赋值了嘛？</p>
+<p>既然这样，难道是我赋值的姿势不正确？要不我换一种方式，直接用for进行赋值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;[]</span>  <span class="n">lists</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">[</span><span class="n">5</span><span class="o">];</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">5</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+	<span class="n">lists</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">List</span> <span class="n">list</span> <span class="o">:</span> <span class="n">lists</span><span class="o">){</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>运行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[]</span>
+<span class="o">[]</span>
+<span class="o">[]</span>
+<span class="o">[]</span>
+<span class="o">[]</span>
+
+Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这次成功赋值了，对比之下，我们大概可以猜到是因为使用了foreach而导致赋值失败的。</p>
+<h3 id="二探究原因">二、探究原因</h3>
+<p>首先得分析JDK源码，foreach基于容器或者数组的迭代器，也就是Iterator实现的，在翻阅源码的过程中，发现迭代器有一个方法forEach.</p>
+<p>public void forEach(Consumer&lt;? super E&gt; action) {
+Objects.requireNonNull(action);
+int expectedModCount = this.modCount;
+Object[] es = this.elementData;
+int size = this.size;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="k">this</span><span class="o">.</span><span class="na">modCount</span> <span class="o">==</span> <span class="n">expectedModCount</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+    	<span class="n">action</span><span class="o">.</span><span class="na">accept</span><span class="o">(</span><span class="n">elementAt</span><span class="o">(</span><span class="n">es</span><span class="o">,</span> <span class="n">i</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">modCount</span> <span class="o">!=</span> <span class="n">expectedModCount</span><span class="o">)</span> <span class="o">{</span>
+    	<span class="k">throw</span> <span class="k">new</span> <span class="n">ConcurrentModificationException</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>该方法正是实现foreach的关键，可以看出，增强型循环将数组或者容器传入方法体，方法体再执行操作，而这个过程就涉及到了 JAVA参数是值传递 的问题，如果不理解，可以参考这篇文章，有比较详细的介绍。</p>
+<p>链接: <a href="https://blog.csdn.net/weixin_44308662/article/details/108593631" target="_blank" rel="noopener noreferrer">如何理解Java是值传递？</a>.</p>
+<p>也就是说，对foreach的操作其实是对数组或者容器的拷贝的操作。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./36.png"
+        data-srcset="./36.png, ./36.png 1.5x, ./36.png 2x"
+        data-sizes="auto"
+        alt="./36.png"
+        title="36" /></p>
+<p>在这里插入图片描述
+所以对原来数据的值(基本数据类型、引用)将不会发生改变，但可以修改引用的属性。</p>
+<h3 id="三验证">三、验证</h3>
+<p>下面将进行对foreach修改引用的属性的测试：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;[]</span>  <span class="n">lists</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">[</span><span class="n">5</span><span class="o">];</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">5</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+    <span class="n">lists</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">List</span> <span class="n">list</span> <span class="o">:</span> <span class="n">lists</span><span class="o">){</span>
+    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">List</span> <span class="n">list</span> <span class="o">:</span> <span class="n">lists</span><span class="o">){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>首先创建数组，并且赋值，然后通过foreach修改数组的内容，最后打印</p>
+<p>运行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>1<span class="o">]</span>
+<span class="o">[</span>1<span class="o">]</span>
+<span class="o">[</span>1<span class="o">]</span>
+<span class="o">[</span>1<span class="o">]</span>
+<span class="o">[</span>1<span class="o">]</span>
+
+Process finished with <span class="nb">exit</span> code <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>验证成功！</p>
+<h3 id="四总结">四、总结</h3>
+<p>1.foreach的实现基于Iterator；
+2.不能使用foreach对数组或容器进行赋值；
+3.可以使用foreach修改数组或容器的对象的属性；
+4.赋值行为尽量使用for循环。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-06-05</span>
+                <span>更新于 2022-10-03</span>
             </div>
             <div class="post-info-license"></div>
         </div>

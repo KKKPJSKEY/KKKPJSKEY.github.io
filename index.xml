@@ -4,7 +4,7 @@
         <link>https://kkkpjskey.github.io/</link>
         <description>使用Hugo和CodiIT生成的GitHub-Pages</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>KKKPJSKEY@outlook.com (KKKPJSKEY)</managingEditor>
-            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 11 Aug 2022 09:45:16 &#43;0800</lastBuildDate>
+            <webMaster>KKKPJSKEY@outlook.com (KKKPJSKEY)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 18 Oct 2022 19:44:07 &#43;0800</lastBuildDate>
             <atom:link href="https://kkkpjskey.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>Ove x Sonja</title>
@@ -32,6 +32,21 @@
     <pubDate>Tue, 08 Jun 2021 14:37:52 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/java-audition-note/</guid>
     <description><![CDATA[1、面向对象 什么是面向对象? 对比面向过程，是两种不同的处理问题的角度 面向过程更注重事情的每一个步骤及顺序，面向对象更注重事情有哪些参与者(对]]></description>
 </item><item>
+    <title>数据库优化笔记</title>
+    <link>https://kkkpjskey.github.io/database-pptimization-note/</link>
+    <pubDate>Tue, 18 Oct 2022 19:44:07 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/database-pptimization-note/</guid>
+    <description><![CDATA[诊断Java代码中常见的数据库性能热点问题应该这么做！ “你的Java应用程序的性能是怎样诊断和优化的？不妨看看这两位西医的方子。如果你有更好]]></description>
+</item><item>
+    <title>SVN笔记</title>
+    <link>https://kkkpjskey.github.io/svn-note/</link>
+    <pubDate>Tue, 18 Oct 2022 19:27:30 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/svn-note/</guid>
+    <description><![CDATA[安装SVN时忘记勾选command line client tools解决方案 我们先说一下正确的安装SVN并配置到AndroidStudio过程: 首先在百度搜索并]]></description>
+</item><item>
+    <title>谷歌浏览器使用笔记</title>
+    <link>https://kkkpjskey.github.io/chrome-note/</link>
+    <pubDate>Mon, 03 Oct 2022 19:11:46 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/chrome-note/</guid>
+    <description><![CDATA[快捷键 功能 按键 切换到上一个标签页 Ctrl+Shift+Tab或Ctrl+PgUp 切换到下一个标签页 Ctrl+PgDown]]></description>
+</item><item>
     <title>FSCapture笔记</title>
     <link>https://kkkpjskey.github.io/software_fscapture_note/</link>
     <pubDate>Thu, 11 Aug 2022 09:45:16 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/software_fscapture_note/</guid>
@@ -41,20 +56,5 @@
     <link>https://kkkpjskey.github.io/git_commit_note/</link>
     <pubDate>Tue, 09 Aug 2022 14:00:46 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/git_commit_note/</guid>
     <description><![CDATA[提交操作 常用提交操作 Git修改commit信息方法大全，提交日志、姓名、邮箱都能改 前言 如果提交的时候发现电脑的 git 配置有问题，不要着急，教你一]]></description>
-</item><item>
-    <title>Idea：Java非法字符: ‘\ufeff’</title>
-    <link>https://kkkpjskey.github.io/idea-java-illegal-char/</link>
-    <pubDate>Fri, 05 Aug 2022 16:38:39 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-java-illegal-char/</guid>
-    <description><![CDATA[Java中项目启动出现 非法字符: '\ufeff' 原因是因为文件编码的问题 解决办法：项目启动会自动定位出现编码问题的文件，并控制台输出：非法字符: '\ufeff' 我是通过]]></description>
-</item><item>
-    <title>将Firefox书签（JSON）导入到Chrome中</title>
-    <link>https://kkkpjskey.github.io/brser-firefox2chrome-bookmark/</link>
-    <pubDate>Fri, 05 Aug 2022 16:20:21 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/brser-firefox2chrome-bookmark/</guid>
-    <description><![CDATA[将Firefox书签（JSON）导入到Chrome中 Firefox（火狐）浏览器书签 JSON→ Chrome（谷歌）浏览器书签HTML Fire]]></description>
-</item><item>
-    <title>Idea中使用Git笔记</title>
-    <link>https://kkkpjskey.github.io/idea-git-note/</link>
-    <pubDate>Fri, 05 Aug 2022 15:50:54 &#43;0800</pubDate><author>KKKPJSKEY@outlook.com</author><dc:creator>KKKPSJKEY</dc:creator><guid>https://kkkpjskey.github.io/idea-git-note/</guid>
-    <description><![CDATA[IDEA中侧边栏没有git commit模块，别的项目中又有 网上找了很多方法，大部分都是说在setting里面点击第一个按钮 选择Use-non]]></description>
 </item></channel>
 </rss>

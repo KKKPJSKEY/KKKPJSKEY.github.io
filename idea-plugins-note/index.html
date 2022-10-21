@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kkkpjskey.github.io/idea-plugins-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-25T10:52:53+08:00" />
-<meta property="article:modified_time" content="2022-08-11T10:33:00+08:00" />
+<meta property="article:modified_time" content="2022-10-18T19:40:41+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kkkpjskey.github.io/logo.png"/>
@@ -34,8 +34,8 @@
                             "url": "https:\/\/kkkpjskey.github.io\/images\/Apple-Devices-Preview.png",
                             "width":  3200 ,
                             "height":  2048 
-                        }],"genre": "posts","keywords": "Ide, Idea, Plugin","wordcount":  3148 ,
-        "url": "https:\/\/kkkpjskey.github.io\/idea-plugins-note\/","datePublished": "2021-08-25T10:52:53+08:00","dateModified": "2022-08-11T10:33:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "Ide, Idea, Plugin","wordcount":  3156 ,
+        "url": "https:\/\/kkkpjskey.github.io\/idea-plugins-note\/","datePublished": "2021-08-25T10:52:53+08:00","dateModified": "2022-10-18T19:40:41+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -120,7 +120,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">IntelliJ IDEA插件笔记</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>Software</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3148 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-25">2021-08-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3156 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/idea-plugins-note/" class="leancloud_visitors" data-flag-title="IntelliJ IDEA插件笔记">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -634,10 +634,23 @@ IDEA上原生是不支持热部署的，一般更新了 Java 文件后要手动�
         data-sizes="auto"
         alt="./12.png"
         title="12" /></p>
+<blockquote>
+<p>可选使用反代工具<a href="https://github.com/ilanyu/ReverseProxy/releases" target="_blank" rel="noopener noreferrer">github:ilanyu</a></p>
+</blockquote>
 <h6 id="离线激活">离线激活</h6>
-<p>下载反向代理软件</p>
-<p>根据自己的系统下载对应版本，window系统需要下载ReverseProxy_windows_amd64.exe这个版本 附：<a href="https://github.com/ilanyu/ReverseProxy/releases/tag/v1.4" target="_blank" rel="noopener noreferrer">下载地址</a></p>
-<p>下载后运行（注意：激活成功前不要关闭反向代理程序）</p>
+<p>下载激活java工程</p>
+<p>使用已经封装好的jar包，保持一直运行即可（放到服务器上）。 　　<a href="https://pan.baidu.com/s/1rrn-6F26JpD5RSsbJV3-hQ" target="_blank" rel="noopener noreferrer">链接</a>；密码: dscu 　<a href="https://gitee.com/gsls200808/JrebelLicenseServerforJava" target="_blank" rel="noopener noreferrer">码云地址</a>　服务器上使用如下命令启动：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">java -jar JrebelBrainsLicenseServerforJava-1.0-SNAPSHOT-jar-with-dependencies.jar -p <span class="m">1008</span> <span class="p">&amp;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-p：可修改端口，默认8888</li>
+</ul>
 <p><strong>激活地址</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -847,7 +860,7 @@ IDEA上原生是不支持热部署的，一般更新了 Java 文件后要手动�
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-11</span>
+                <span>更新于 2022-10-18</span>
             </div>
             <div class="post-info-license"></div>
         </div>

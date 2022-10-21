@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>数据库优化笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录数据库优化笔记"><meta property="og:title" content="数据库优化笔记" />
+<meta property="og:description" content="记录数据库优化笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/database-pptimization-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/database-pptimization-note/featured-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-18T19:44:07+08:00" />
+<meta property="article:modified_time" content="2022-10-21T19:48:15+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/database-pptimization-note/featured-image.jpg"/>
+<meta name="twitter:title" content="数据库优化笔记"/>
+<meta name="twitter:description" content="记录数据库优化笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/database-pptimization-note/" /><link rel="prev" href="https://kkkpjskey.github.io/svn-note/" /><link rel="next" href="https://kkkpjskey.github.io/java-audition-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "数据库优化笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/database-pptimization-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/database-pptimization-note\/featured-image.jpg",
+                            "width":  1440 ,
+                            "height":  810 
+                        }],"genre": "posts","keywords": "DataBase, Optimization","wordcount":  24063 ,
+        "url": "https:\/\/kkkpjskey.github.io\/database-pptimization-note\/","datePublished": "2022-10-18T19:44:07+08:00","dateModified": "2022-10-21T19:48:15+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录数据库优化笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/database-pptimization-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/database-pptimization-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">数据库优化笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-10-18">2022-10-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 24063 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 49 分钟&nbsp;<span id="/database-pptimization-note/" class="leancloud_visitors" data-flag-title="数据库优化笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/database-pptimization-note/featured-image.jpg"
+        data-srcset="/database-pptimization-note/featured-image.jpg, /database-pptimization-note/featured-image.jpg 1.5x, /database-pptimization-note/featured-image.jpg 2x"
+        data-sizes="auto"
+        alt="/database-pptimization-note/featured-image.jpg"
+        title="记录数据库优化笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#诊断java代码中常见的数据库性能热点问题应该这么做">诊断Java代码中常见的数据库性能热点问题应该这么做！</a>
+      <ul>
+        <li><a href="#可选的诊断工具">可选的诊断工具</a>
+          <ul>
+            <li><a href="#找出数据库的性能热点">找出数据库的性能热点</a></li>
+          </ul>
+        </li>
+        <li><a href="#诊断糟糕的数据库访问模式">诊断糟糕的数据库访问模式</a></li>
+        <li><a href="#示例1自主设计的or映射器产生了过多的sql">示例1：自主设计的O/R映射器产生了过多的SQL</a></li>
+        <li><a href="#很容易就可以看出这个请求产生了大量的sql语句执行并且造成数据库繁忙效应它总共执行了24889次sql花费了4027秒占整个请求时间的6651才完成整个执行过程">很容易就可以看出这个请求产生了大量的SQL语句执行，并且造成数据库繁忙效应它总共执行了24889次SQL！花费了40.27秒（占整个请求时间的66.51%）才完成整个执行过程！</a></li>
+        <li><a href="#这种糟糕的访问模式是无法通过对数据库的索引进行优化而解决的">这种糟糕的访问模式是无法通过对数据库的索引进行优化而解决的。</a></li>
+        <li><a href="#示例2错误的hibernate配置造成了过多的sql执行">示例2：错误的Hibernate配置造成了过多的SQL执行</a></li>
+        <li><a href="#在使用hibernate或spring等or映射器时需要选择正确的加载与缓存选项你需要理解他们的幕后工作原理">在使用Hibernate或Spring等O/R映射器时，需要选择正确的加载与缓存选项。你需要理解他们的幕后工作原理。</a></li>
+        <li><a href="#示例3在自定义db访问代码中使用的语句未经过预处理">示例3：在自定义DB访问代码中使用的语句未经过预处理</a></li>
+        <li><a href="#通过对sql执行次数与已预处理的sql执行次数进行对比发现了未经预处理的数据库访问的问题">通过对SQL执行次数与已预处理的SQL执行次数进行对比，发现了未经预处理的数据库访问的问题</a></li>
+        <li><a href="#示例4由于耗时的后端sql报表执行造成连接池无法有效地调整大小">示例4：由于耗时的后端SQL报表执行，造成连接池无法有效地调整大小</a></li>
+        <li><a href="#确保你适当地调整了连接池的大小不要使用与你期待的负载情况不符的默认设置">确保你适当地调整了连接池的大小，不要使用与你期待的负载情况不符的默认设置</a></li>
+        <li><a href="#个别的sql执行阻塞了其他连接达几分钟造成了连接池资源消耗殆尽的问题">个别的SQL执行阻塞了其他连接达几分钟，造成了连接池资源消耗殆尽的问题</a></li>
+        <li><a href="#通过学习sql查询执行计划对你的sql语句进行优化">通过学习SQL查询执行计划，对你的SQL语句进行优化</a>
+          <ul>
+            <li><a href="#负载测试以及在生产环境中进行监控的提示与技巧">负载测试以及在生产环境中进行监控的提示与技巧</a></li>
+          </ul>
+        </li>
+        <li><a href="#检查点1由于数据缓存的存在对db的访问次数应当逐渐减少">检查点1：由于数据缓存的存在，对DB的访问次数应当逐渐减少</a></li>
+        <li><a href="#如果你的应用表现不符合这一预期那么可能是遇到了数据驱动的性能问题或是产生了缓存问题">如果你的应用表现不符合这一预期，那么可能是遇到了数据驱动的性能问题，或是产生了缓存问题</a></li>
+        <li><a href="#检查点2按类别指出sql访问模式">检查点2：按类别指出SQL访问模式</a></li>
+        <li><a href="#检查点3数据库实例的运行状态">检查点3：数据库实例的运行状态</a></li>
+        <li><a href="#通过表锁等信息判断是否有某个正在执行中的sql语句对服务器乃至你的应用造成了负面影响">通过表锁等信息，判断是否有某个正在执行中的SQL语句对服务器乃至你的应用造成了负面影响</a>
+          <ul>
+            <li><a href="#在持续集成流程中对数据库指标进行自动检测">在持续集成流程中对数据库指标进行自动检测</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#必看关于sql的慢查询及解决方案">必看，关于sql的慢查询及解决方案</a>
+      <ul>
+        <li><a href="#一前言">一、前言</a></li>
+        <li><a href="#二慢查询概要">二、慢查询概要</a>
+          <ul>
+            <li><a href="#21-第一步慢查询分析之前的配置">2.1 第一步，慢查询分析之前的配置</a>
+              <ul>
+                <li><a href="#211-方式一修改myini">2.1.1 方式一：修改my.ini</a></li>
+                <li><a href="#212-方式二修改数据库">2.1.2 方式二：修改数据库</a></li>
+              </ul>
+            </li>
+            <li><a href="#22-第二步找到执行慢的sql语句">2.2 第二步，找到执行慢的sql语句</a></li>
+            <li><a href="#23-第三步找到原因两种方式之一explain分析explain各个字段的解释">2.3 第三步，找到原因两种方式之一，explain分析，explain各个字段的解释</a></li>
+            <li><a href="#24-第四步找到原因两种方式之一profile分析找到慢查询的本质原因profile各个字段的解释">2.4 第四步，找到原因两种方式之一，profile分析，找到慢查询的本质原因，profile各个字段的解释</a>
+              <ul>
+                <li><a href="#241-explain制造慢sql语句profile找到慢的sql语句">2.4.1 explain制造慢sql语句，profile找到慢的sql语句</a></li>
+                <li><a href="#242-show-profile-for-query-具体id">2.4.2 show profile for query 具体id</a>
+                  <ul>
+                    <li><a href="#2421-sending-data发送数据慢就是网络io">2.4.2.1 sending data发送数据慢，就是网络IO</a></li>
+                    <li><a href="#2422-copying-to-tmp-table临时表慢">2.4.2.2 Copying to tmp table临时表慢</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#243-查看cpu内存和io信息">2.4.3 查看cpu、内存和IO信息</a></li>
+        <li><a href="#三sql优化">三、SQL优化</a>
+          <ul>
+            <li><a href="#31-第一明确sql优化两个目标io成本cpu成本">3.1 第一，明确SQL优化两个目标（IO成本+CPU成本）</a></li>
+            <li><a href="#32-第二sql执行的11个步骤搞懂mysql的语句执行顺序11条">3.2 第二，SQL执行的11个步骤，搞懂MySQL的语句执行顺序（11条）</a></li>
+            <li><a href="#33-第三表设计表设计5条--字段设计5条">3.3 第三，表设计（表设计5条 + 字段设计5条）</a>
+              <ul>
+                <li><a href="#331-表设计层面5条">3.3.1 表设计层面（5条）</a></li>
+                <li><a href="#332-字段设计层面5条">3.3.2 字段设计层面（5条）</a></li>
+              </ul>
+            </li>
+            <li><a href="#34-第四高效的sql语句索引单表优化多表优化">3.4 第四，高效的SQL语句（索引+单表优化+多表优化）</a>
+              <ul>
+                <li><a href="#341-索引索引两方向优先使用索引避免索引失效">3.4.1 索引（索引两方向：优先使用索引，避免索引失效）</a>
+                  <ul>
+                    <li><a href="#3411-避免索引失效">3.4.1.1 避免索引失效</a></li>
+                    <li><a href="#3412-优先使用索引">3.4.1.2 优先使用索引</a></li>
+                  </ul>
+                </li>
+                <li><a href="#342-单表查询-10点">3.4.2 单表查询 10点</a>
+                  <ul>
+                    <li><a href="#1单表查询避免索引失效不要在-where-子句中对字段进行-null-值判断这会进行全表扫描">1、单表查询：避免索引失效，不要在 where 子句中对字段进行 null 值判断，这会进行全表扫描</a></li>
+                    <li><a href="#2单表查询开启慢查询日志定位慢查询的sql语句">2、单表查询，开启慢查询日志，定位慢查询的SQL语句</a></li>
+                    <li><a href="#3单表查询数据库压力转移到java后台">3、单表查询，数据库压力转移到Java后台</a></li>
+                    <li><a href="#4单表查询where-查询条件数量--查询条件顺序">4、单表查询，where 查询条件数量 + 查询条件顺序</a></li>
+                    <li><a href="#5单表查询返回值和关键字大写优化select-limit">5、单表查询，返回值和关键字大写优化（select *，limit）</a></li>
+                    <li><a href="#6单表查询计数优化不要使用-count列名或-count常量来替代-count">6、单表查询：计数优化，不要使用 count(列名)或 count(常量)来替代 count(*)</a></li>
+                    <li><a href="#7单表查询去重优化能用group-by的就不用distinct">7、单表查询：去重优化，能用GROUP BY的就不用DISTINCT</a></li>
+                    <li><a href="#8单表查询limit优化巧借索引优化orderby排序">8、单表查询，LIMIT优化，巧借索引优化orderby排序</a></li>
+                    <li><a href="#9单表查询排序优化order-by-字段加索引">9、单表查询：排序优化，order by 字段加索引</a></li>
+                    <li><a href="#10单表查询分组优化group-by-调节顺序为复合索引顺序">10、单表查询：分组优化，group by 调节顺序为复合索引顺序</a></li>
+                  </ul>
+                </li>
+                <li><a href="#343-多表连接查询-4点">3.4.3 多表连接查询 4点</a>
+                  <ul>
+                    <li><a href="#1多表连接五个用-join-代替子查询连接字段类型一致连接字段加索引主表是小表orderby和groupby字段在主表否则无用">1、多表连接，五个：用 join 代替子查询，连接字段类型一致，连接字段加索引，主表是小表，orderby和groupby字段在主表，否则无用</a></li>
+                    <li><a href="#2多表查询很多时候用exists代替in是一个好的选择理由虽然in与exists效率在不同场景效率有高有低但not-exists比not-in的效率高">2、多表查询，很多时候用exists代替in是一个好的选择（理由：虽然in与exists效率在不同场景效率有高有低，但not exists比not in的效率高）</a></li>
+                    <li><a href="#3尽量避免向客户端返回大数据量应该使用分页">3、尽量避免向客户端返回大数据量，应该使用分页</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#4用union-all代替or比较少用一般都用or">4、用Union ALL代替OR（比较少用，一般都用OR）</a></li>
+            <li><a href="#35-第五通用">3.5 第五，通用</a></li>
+          </ul>
+        </li>
+        <li><a href="#四小结">四、小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#表缓冲工作原理">表缓冲工作原理</a></li>
+    <li><a href="#mysql内存表和临时表的见解">MySQL内存表和临时表的见解</a></li>
+    <li><a href="#数据库中表的缓冲索引等介绍">数据库中表的缓冲、索引等介绍</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="诊断java代码中常见的数据库性能热点问题应该这么做">诊断Java代码中常见的数据库性能热点问题应该这么做！</h2>
+<p>“你的Java应用程序的性能是怎样诊断和优化的？不妨看看这两位西医的方子。如果你有更好疗效的药方，也欢迎在评论区告诉我们。</p>
+<p>当我在帮助一些开发者或架构师分析及优化Java应用程序的性能时，关键往往不在于对个别方法进行微调，以节省一或两微秒的执行时间。虽然对某些软件来说，微秒级的优化确实非常重要，但我认为这并非着眼点所在。我在2015年间对数百个应用进行了分析，发现多数性能与可伸缩性问题都来源于糟糕的架构决策、框架的错误配置、错误的数据库访问模式、过量的日志记录，以及由于内存过度消耗而导致的垃圾回收所带来的影响。</p>
+<p>在我看来，性能工程的根本在于通过大量的观察，将关键的架构指标、可伸缩性指标以及性能指标关联在一起。通过对每次构建的结果以及不同负载情况下的表现进行分析，以发现系统中的回归缺陷或瓶颈所在。以下图中的仪表板作为示例：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.webp"
+        data-srcset="./1.webp, ./1.webp 1.5x, ./1.webp 2x"
+        data-sizes="auto"
+        alt="./1.webp"
+        title="1" /></p>
+<p>通过将系统负载、响应时间与SQL语句的执行次数等指标相关联，可得出某些性能工程方面问题的根本原因。</p>
+<p>最上面一张图叫做“层分解”图表，它显示了你的应用中各个逻辑组件（例如Web Service、数据库访问、业务逻辑、Web服务器等等）的总体执行时间。红色部分所表示的是某个后端Web Service所花费的时间，很明显这里产生了一个组件热点。</p>
+<p>我们同时可以发现，该Web  Service并没有承受异常的负载，因为从第二张图来看，当时应用程序所处理的请求数量这条线比较平稳。一般情况下，整体响应时间多数都耗费在数据层，但这并不代表数据库本身的速度缓慢！我了解，低效的数据库访问往往是造成性能不佳的主要原因，因此通常会结合分析SQL语句的执行次数。在这个示例中，已经能够很清楚地看到它与大多数响应时间的峰值是相关的。</p>
+<p>我所观察到最常见的问题模式就是糟糕的数据库访问模式，此外还有过于细粒度的服务调用、糟糕的共享数据访问共享、过度的日志记录，以及由内存泄露以及大量的对象创建所导致的垃圾回收影响或是应用程序的崩溃。</p>
+<h3 id="可选的诊断工具">可选的诊断工具</h3>
+<p>在本文中，我将专注于探讨数据库方面的问题，因为我十分确信你的所有应用都是因这些访问模式中的某一种而产生问题的！你可以在市场上已有的各种性能诊断、追踪，或是APM工具之间随意选择，不过我所选择的是免费的Dynatrace Personal License。Java本身也提供了各种出色的工具，例如Java Mission  Control等等。许多提供数据访问功能的框架也经常通过其日志输出提供各种诊断选项，例如Hibernate或Spring等等。</p>
+<p>在使用这些跟踪工具时，通常不需要对代码进行任何修改，因为他们都利用了JVMTI（JVM Tooling  Interface）以捕获代码层面的信息，甚至能够跨远程的各层次进行调用追踪，这一点对于分布式、面向（微）服务的应用来说非常实用。你所要做的就是修改你的JVM启动命令行选项，以加载这些工具。</p>
+<p>某些工具的开发商还提供了与IDE的集成功能，你只需简单地表示“在运行时开启XYZ性能诊断功能”。我在YouTube上做了一个简单的视频指南，演示了如何对在Eclipse中启动的应用进行追踪。（https://www.youtube.com/watch?v=unrey8wfq-M&amp;list=PLqt2rd0eew1bmDn54E2_M2uvbhm_WxY_6&amp;index=14）</p>
+<h4 id="找出数据库的性能热点">找出数据库的性能热点</h4>
+<p>即使你已经发现造成应用整体响应时间过长的主要原因在于数据库，但也不要因此就轻率地指责数据库与DBA！造成数据库繁忙的原因可能有以下几种：</p>
+<ul>
+<li>对数据库的使用过于低效：错误的查询设计、糟糕的应用程序逻辑、对于数据访问框架的配置不正确</li>
+<li>糟糕的数据库设计与数据结构：表的关联、缓慢的存储视图、缺失的或错误的索引、过期的表统计信息</li>
+<li>不恰当的数据库配置，例如内存、磁盘、表空间、连接池等等  在本文中，我将着重讲解如何在应用程序端将访问数据库所消耗的时间减至最低。</li>
+</ul>
+<h3 id="诊断糟糕的数据库访问模式">诊断糟糕的数据库访问模式</h3>
+<p>在对应用程序进行问题诊断时，我通常总要检查几个数据库访问模式。我会逐个分析应用的请求，并将这些问题分别放入以下这个“DB问题模式”的分类表中：</p>
+<ul>
+<li>过多的SQL执行（Excessive SQLs）：执行大量（大于500）不同的SQL语句</li>
+<li>N+1次查询问题（N+1 Query）：多次（大于20）执行相同的SQL语句</li>
+<li>单一SQL语句执行缓慢（Slow Single SQL）：某个单一的SQL语句执行时间占据了响应时间的80%以上</li>
+<li>数据驱动问题（Data-Driven）：同样的请求，由于输入参数的不同，会执行不同的SQL语句</li>
+<li>数据库繁忙（Database Heavy）：数据库执行的总体时间占据总体响应时间的60%以上</li>
+<li>未经预处理的语句（Unprepared Statements）：在执行相同的SQL时未对语句进行预处理</li>
+<li>连接池资源用光（Pool Exhaustion）：由于连接获取时间过长所导致（getConnection的时间超过了executeStatement）</li>
+<li>低效的连接池访问（Inefficient Pool Access）：对连接池的访问次数过多（对getConnection的调用超过了executeStatement调用次数的50%）</li>
+<li>数据库服务服务器超负荷（Overloaded Database Server）：来自各个应用的请求过多，造成了数据库服务器超负荷</li>
+</ul>
+<h3 id="示例1自主设计的or映射器产生了过多的sql">示例1：自主设计的O/R映射器产生了过多的SQL</h3>
+<p>我的第一个示例是一个web应用程序，它能够提供某幢大楼中的会议室信息。会议室的信息都保存在某个数据库中，每次当用户生成会议室信息的报表时，就会调用某个自定义的数据访问层以访问该数据库。</p>
+<p>在对个别请求进行分析时，我总是从所谓的事务流（Transaction  Flow）着手检查。事务流是一种可视化选项，可展现出应用程序处理请求的过程。对于会议室信息报表这个请求来说，可以看到，该请求首先进入web服务器层（图左）、随后进入应用服务层（图中），然后对数据层发起调用（图右）。这些层之间的“链接”表现了这些层之间的交互次数，例如这个单一的请求执行了多少次SQL查询。</p>
+<p>从这个屏幕上我们可以立即发现造成问题的头两种模式，即过多的SQL执行模式以及数据库繁忙模式。让我们来分析一下：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./2.webp"
+        data-srcset="./2.webp, ./2.webp 1.5x, ./2.webp 2x"
+        data-sizes="auto"
+        alt="./2.webp"
+        title="2" /></p>
+<h3 id="很容易就可以看出这个请求产生了大量的sql语句执行并且造成数据库繁忙效应它总共执行了24889次sql花费了4027秒占整个请求时间的6651才完成整个执行过程">很容易就可以看出这个请求产生了大量的SQL语句执行，并且造成数据库繁忙效应它总共执行了24889次SQL！花费了40.27秒（占整个请求时间的66.51%）才完成整个执行过程！</h3>
+<p>如果我们对个别的SQL语句进分析，将发现这个请求还有另外的问题，即N+1 次查询问题以及低效的连接池访问（下文将进行详细讨论）：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./3.webp"
+        data-srcset="./3.webp, ./3.webp 1.5x, ./3.webp 2x"
+        data-sizes="auto"
+        alt="./3.webp"
+        title="3" /></p>
+<h3 id="这种糟糕的访问模式是无法通过对数据库的索引进行优化而解决的">这种糟糕的访问模式是无法通过对数据库的索引进行优化而解决的。</h3>
+<p>我已经无数次看到这种问题发生了。应用的逻辑需要对某个对象列表进行迭代，但它并没有选择使用“贪婪加载”（Eager  Loading）方式，则是使用了“延迟加载”（Lazy  Loading）方式。这种选择可能来自于O/R映射框架，例如Hibernate或Spring，也可能来自于自主开发的框架，正如上文所述的示例一样。该示例使用了某种自主开发的实现方式，它会加载每个会议室对象，并通过独立的SQL查询语句获取每个会议室的全部属性。</p>
+<p>每个SQL查询都是在一个向连接池获取的JDBC连接中执行的，然后在每个查询完成之后都会返回。这也解释了为什么该请求会产生12444次set clientname操作，因为Sybase  JDBC驱动每次向连接池请求连接时都会提交这一请求。这就是问题所在！其他的JDBC驱动未必会产生set  clientname这个调用，你可以查看一下调用getConnection的次数，这同样可反映出这个问题。</p>
+<p>对于N+1次查询问题本身来说，使用连接查询就可以轻易地避免这一问题。在这个会议室与属性的示例中，可以使用以下连接查询：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">meeting_rooms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">room_properties</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">room_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">room_id</span><span class="w"> 
+</span></code></pre></td></tr></table>
+</div>
+</div><p>结果就是整个执行过程只产生了1次查询执行，不再是12000多次了！同时也免除了12000次连接的获取操作以及对“set clientname”的调用。</p>
+<h3 id="示例2错误的hibernate配置造成了过多的sql执行">示例2：错误的Hibernate配置造成了过多的SQL执行</h3>
+<p>据我所知，Hibernate或其他O/R映射器有许多使用者。我想要提醒你们一点，O/R映射器所提供的延迟加载与贪婪加载选项，以及其他各种缓存层各有其存在的理由。对于特定的用例，需要确保你正确地使用了这些特性与选项。</p>
+<p>在下面这个示例中，延迟加载并不是一种好的选择，因为加载2千个对象以及他们的属性会导致产生4千多次SQL查询。考虑到我们总是需要获取所有对象，那么更好的方式是贪婪加载这些对象，然后考虑对他们进行缓存，前提是这些对象不会变更得十分频繁：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./4.webp"
+        data-srcset="./4.webp, ./4.webp 1.5x, ./4.webp 2x"
+        data-sizes="auto"
+        alt="./4.webp"
+        title="4" /></p>
+<h3 id="在使用hibernate或spring等or映射器时需要选择正确的加载与缓存选项你需要理解他们的幕后工作原理">在使用Hibernate或Spring等O/R映射器时，需要选择正确的加载与缓存选项。你需要理解他们的幕后工作原理。</h3>
+<p>大多数O/R映射器都会通过日志记录提供优秀的诊断选项，同时也可以查看在线社区中的内容，以了解各种最佳实践。推荐你阅读由Alois  Reitbauer撰写的一系列博客文章，他曾经在Hibernate推出的早些年头对其进行过非常深入的研究。在这系列文章中，他特别强调了如何有效地使用缓存与加载选项。</p>
+<h3 id="示例3在自定义db访问代码中使用的语句未经过预处理">示例3：在自定义DB访问代码中使用的语句未经过预处理</h3>
+<p>当数据库引擎完成对某条SQL语句的解析，并创建了数据访问的执行计划后，该结果会被保存在数据库中的一个缓存区域中以便重用，而无需重新解析这一语句（语句解析是数据库中最耗费CPU时间的操作）。用于在缓存中找到某个查询的键是语句的全文本。这也意味着，如果你调用了1000次相同的语句，却为其传了100个不同的参数值（例如where语句中的值），那么在缓存中就会产生1000个不同的条目，而使用了新参数的第1001次查询也必须被再次解析。这种工作方式非常低效。</p>
+<p>因此，我们提出了“预处理的语句”这一概念：某条语句经过预处理、解析后被保存在缓存中，以占位符的方式表示变量。在这条语句的实际执行过程中，这些占位符会被实际的值所替换，无需再次解析这条语句，可以直接从缓存中找出执行计划。</p>
+<p>数据库访问框架通常在这一点上做得很出色，会对查询语句进行预处理。但在自定义代码中，我发现开发者经常会忽略这一点。在以下示例中，只有一小部分SQL执行经过了预处理过程：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./5.webp"
+        data-srcset="./5.webp, ./5.webp 1.5x, ./5.webp 2x"
+        data-sizes="auto"
+        alt="./5.webp"
+        title="5" /></p>
+<h3 id="通过对sql执行次数与已预处理的sql执行次数进行对比发现了未经预处理的数据库访问的问题">通过对SQL执行次数与已预处理的SQL执行次数进行对比，发现了未经预处理的数据库访问的问题</h3>
+<p>如果你打算自行开发数据库访问代码，请再次确认你正确地调用了prepareStatement。举例来说，如果你调用某个查询不止1次，那么通常来说最好能够使用PreparedStatement。如果你选择使用框架以访问数据，也请再次确认这些框架的行为，以及在优化和执行所生成的SQL时有哪些配置选项可以选择。实现一点最简单的方式是对executeStatement与prepareStatement执行的次数进行监控。如果你重复对每个SQL查询进行相同的监控，那么将很容易地找到优化热点。</p>
+<h3 id="示例4由于耗时的后端sql报表执行造成连接池无法有效地调整大小">示例4：由于耗时的后端SQL报表执行，造成连接池无法有效地调整大小</h3>
+<p>我经常发现有些应用会使用默认的连接池大小，例如每个池10或20个连接。开发者总是会忽略对连接池大小的优化，因为他们没有进行必要的大规模负载测试，也不知道有多少个用户会使用这些新特性，更不了解并行的DB访问会导致什么结果。也有可能是从预发布环境转向生产环境的部署时“丢失”了连接池的配置信息，导致生产环境中的配置使用了应用服务器中的默认配置。</p>
+<p>通过JMX指标信息，能够方便地对连接池的使用情况进行监控。每种应用服务器（Tomcat、JBoss、Websphere等等）都会提供这些指标，不过有些服务器需要你明确地开启这种特性。下图展示了某个群集中的WebLogic服务器的连接池使用情况。你可以看到，在其中三台应用服务器中，“活动的DB连接数量”都已经达到最大值。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./6.webp"
+        data-srcset="./6.webp, ./6.webp 1.5x, ./6.webp 2x"
+        data-sizes="auto"
+        alt="./6.webp"
+        title="6" /></p>
+<h3 id="确保你适当地调整了连接池的大小不要使用与你期待的负载情况不符的默认设置">确保你适当地调整了连接池的大小，不要使用与你期待的负载情况不符的默认设置</h3>
+<p>出现这一问题的根本原因不在于访问量的峰值。在本文开头部分所介绍的“系统负载 / 响应时间 /  数据库执行次数”这个仪表板中显示，应用并没有产生特别的访问量峰值情况。最终发现，在每天下午2点多这个时间段设定了一个运行报表的计划，它需要执行多个运行时间相当长的UPDATE语句，每个语句都使用了不同的连接。这会在几分钟内阻塞其他连接，导致了应用程序在“正常的”访问量下出现性能问题，因为用户的请求无法获得数据库的连接：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./7.webp"
+        data-srcset="./7.webp, ./7.webp 1.5x, ./7.webp 2x"
+        data-sizes="auto"
+        alt="./7.webp"
+        title="7" /></p>
+<h3 id="个别的sql执行阻塞了其他连接达几分钟造成了连接池资源消耗殆尽的问题">个别的SQL执行阻塞了其他连接达几分钟，造成了连接池资源消耗殆尽的问题</h3>
+<p>如果你已经了解到某些请求会使连接挂起一段较长的时间，你可以选择以下几种方案：</p>
+<ul>
+<li>将这些请求发送至独立的服务器上，避免影响其他使用者</li>
+<li>重新设定其执行时间，只在不会影响到其他人的时间段才执行</li>
+<li>增加连接池大小，确保在正常的访问量下有足够的连接可用</li>
+</ul>
+<p>不过，首先你要确保对这些查询进行优化。通过分析SQL查询执行计划，以找出哪些操作是最耗时的。如今，大多数APM工具都能够让你以某种方式获取某个SQL语句的执行计划。如果没有可用的工具，最简单的方式就是使用数据库的命令行工具，或者咨询某个DBA，让他帮助你生成执行计划。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./8.webp"
+        data-srcset="./8.webp, ./8.webp 1.5x, ./8.webp 2x"
+        data-sizes="auto"
+        alt="./8.webp"
+        title="8" /></p>
+<h3 id="通过学习sql查询执行计划对你的sql语句进行优化">通过学习SQL查询执行计划，对你的SQL语句进行优化</h3>
+<p>执行计划能够显示出DB引擎处理SQL语句的方式。造成SQL语句执行缓慢的原因多种多样，不仅仅限于缺少索引或是使用索引的方式不对，很多情况下是因为设计、结构或连接查询所造成的。如果你并非SQL方面的专家，可以向DBA或SQL大牛求助。</p>
+<h4 id="负载测试以及在生产环境中进行监控的提示与技巧">负载测试以及在生产环境中进行监控的提示与技巧</h4>
+<p>除了对各个请求进行分析，以指出这些问题模式之外，我同样也会关注当某个应用程序在负载情况下的长期趋势。除了我在本文开头为你展示的仪表板之外，我也会指出数据驱动行为的变化，并对数据缓存是否正确运行进行验证</p>
+<h3 id="检查点1由于数据缓存的存在对db的访问次数应当逐渐减少">检查点1：由于数据缓存的存在，对DB的访问次数应当逐渐减少</h3>
+<p>下面这张图表展示了SQL语句执行的平均次数（绿色）以及SQL语句执行的总次数（蓝色）。我们为应用进行了一次两小时的性能测试，保持负载始终处于较高水平。我所期望的结果是平均次数逐渐减少，而总次数则趋向平稳。因为按照我的假设，从DB所获取的数据大多数是静态的，或是会被缓存在某个不同的层。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./9.webp"
+        data-srcset="./9.webp, ./9.webp 1.5x, ./9.webp 2x"
+        data-sizes="auto"
+        alt="./9.webp"
+        title="9" /></p>
+<h3 id="如果你的应用表现不符合这一预期那么可能是遇到了数据驱动的性能问题或是产生了缓存问题">如果你的应用表现不符合这一预期，那么可能是遇到了数据驱动的性能问题，或是产生了缓存问题</h3>
+<p>假设如我之前所展示的一样，你的应用中产生了常见的N+1次查询问题。那么随着终端用户在DB中产生越来越多的数据，应用程序所产生的SQL平均次数也将不断提高，因为这些查询所返回的数据也会越来越多！因此，请务必注意这些数字！</p>
+<h3 id="检查点2按类别指出sql访问模式">检查点2：按类别指出SQL访问模式</h3>
+<p>示例4表现了某个后台报表应用在每天下午2点执行所造成的问题，与之类似，我同样也会关注SQL访问随着时间变化的模式。我所关注的不仅包括总执行时间，同时也包括SELECT、INSERT、UPDATE与DELETE的执行次数。这样一来，我就能够指出是否在某个时间段内会进行一些特别的活动，例如通过后台作业对大批数据进行更新。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./10.webp"
+        data-srcset="./10.webp, ./10.webp 1.5x, ./10.webp 2x"
+        data-sizes="auto"
+        alt="./10.webp"
+        title="10" /></p>
+<p><strong>通过观察总执行时间，以及SELECT、INSERT、UPDATE与DELETE的执行次数，了解应用的数据库访问行为</strong></p>
+<p>进行大量更新操作的批处理作业的执行需要一段时间才能完成，尤其对于包含大量行的表来说更为明显。如果整张表因此被锁住，那么其他需要对这张表、哪怕只是对其中某些行进行更新的请求都必须等待锁被释放。你应考虑在没有其他用户在线的时间段运行这些作业，或实现某种不同的加锁逻辑，实现对单个行的加锁、更新以及释放操作。</p>
+<h3 id="检查点3数据库实例的运行状态">检查点3：数据库实例的运行状态</h3>
+<p>在本文中，我着重分析的数据库性能问题多数与数据库服务器本身是否缓慢是无关的，而主要是由使用了糟糕的数据库访问模式（N+1次查询问题、未经预处理的语句等等）的应用程序代码、或是配置错误（低效的连接池访问、数据驱动问题）所导致的问题。 但是，如果我们完全忽略了数据库本身，那也是不明智的。因此，我总是会对关键的数据库性能指标进行检查。大多数数据库都会通过特殊的系统表提供丰富的性能信息，比如Oracle就会提供某些v$表以及视图，以访问关键的数据库性能指标（会话、等待时间、解析时间、执行时间等等），或是表锁以及运行时间较慢的SQL等信息，这些信息来自于使用这个共享的数据库实例的各个应用程序。</p>
+<p>我在进行数据库健康检查时通常会观察两个仪表板，你可以在此看到来自于这些性能表中的指标数据：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./11.jpg"
+        data-srcset="./11.jpg, ./11.jpg 1.5x, ./11.jpg 2x"
+        data-sizes="auto"
+        alt="./11.jpg"
+        title="11" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+        data-srcset="data:image/gif;base64%2ciVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==, data:image/gif;base64%2ciVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg== 1.5x, data:image/gif;base64%2ciVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg== 2x"
+        data-sizes="auto"
+        alt="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="
+        title="img" /><strong>观察数据库是处于健康状态，还是由于共享该数据库实例的应用产生过多的负载而产生了影响。</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./12.webp"
+        data-srcset="./12.webp, ./12.webp 1.5x, ./12.webp 2x"
+        data-sizes="auto"
+        alt="./12.webp"
+        title="12" /></p>
+<h3 id="通过表锁等信息判断是否有某个正在执行中的sql语句对服务器乃至你的应用造成了负面影响">通过表锁等信息，判断是否有某个正在执行中的SQL语句对服务器乃至你的应用造成了负面影响</h3>
+<h4 id="在持续集成流程中对数据库指标进行自动检测">在持续集成流程中对数据库指标进行自动检测</h4>
+<p>在我为你介绍分析关键数据库指标以及用例的一些新点子之前，我希望首先能够弥补一个缺失的主题，而这一点是我们都应当考虑到的，那就是自动化！</p>
+<p>我建议你不要手动地执行这些检查步骤，而是通过持续集成工具检查这些指标，将这一步骤与单元测试、集成测试、REST  API或其他类型的功能性测试等步骤结合在一起。如果你已经设计出一套测试用例集，用于检查各种REST  API或新特性的功能，那么为什么不在每次构建的测试执行期间去捕获这些指标呢？这种方式可以带来以下益处：</p>
+<ol>
+<li>让代码评审过程专注于这些指标，而不是翻来覆去地阅读每一行代码</li>
+<li>如果某个代码签入导致了这种问题，则发出通知</li>
+</ol>
+<p>下面这幅屏幕截图展示了每次构建与每次测试时对这些指标的追踪，并在其表现异常时发出警告。你可以将这些指标集成在你的构建管道中，并且当某个代码变更造成影响时通过通知信息了解情况，随后立即修复这一问题，避免当代码发布到生产环境时产生系统崩溃的情况。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./13.webp"
+        data-srcset="./13.webp, ./13.webp 1.5x, ./13.webp 2x"
+        data-sizes="auto"
+        alt="./13.webp"
+        title="13" /></p>
+<p><strong>在你的持续集成流程中加入这些指标，并对指标的变化进行观察，以自动地找出各种糟糕的数据库访问模式！</strong> <strong>性能问题远不止数据库</strong></p>
+<p>在本文中，我们专注的是数据库方面的热点问题。但在我的工作过程中，我也在其他领域发现许多类型的性能问题。在2015年，我参与了一个将一体性应用迁移为（微）服务的项目，在其中发现了一个巨大的峰值问题。该问题类似于我们已分析过的某些模式，例如N+1次查询问题，原因在于某个用例会数百次调用某个后端服务。</p>
+<p>大多数情况下，这种问题都是由糟糕的接口设计而造成的，并且没有考虑到某个原本在本地调用的方法在Docker容器或云计算环境中被执行时会发生什么。网络问题会突然间出现，包括通过网络传输的信息以及新的连接池（意味着你需要考虑线程与套接字)，这些问题是你必须处理的。</p>
+<h2 id="必看关于sql的慢查询及解决方案">必看，关于sql的慢查询及解决方案</h2>
+<h3 id="一前言">一、前言</h3>
+<p>SQL中，广义的查询就是crud操作，狭义的查询仅仅是select查询操作，慢查询就是指广义的查询，否则为什么不叫慢查询、慢更新、慢删除。</p>
+<p>查询就是那些执行慢的sql语句，包括crud，一般是查询，所以称为慢查询</p>
+<blockquote>
+<p>问题1：怎么一定一个sql语句是慢的？</p>
+<p>回答：根据实际需要，如果前端反馈，执行3s是慢的，就是在my.ini中（Windows是my.ini，Linux是my.conf）中设置long_query_time=3，表示操作3s的查询就是慢查询，要记录下来，好好分析。</p>
+</blockquote>
+<blockquote>
+<p>问题：为什么这些sql语句会慢呢？为什么这些sql语句满足long_query_time设置的时间？</p>
+<p>回答：执行慢的sql语句不满足我们的要求，
+（1）找到原因 explain + profile；
+（2）要想办法解决，这就是SQL优化。</p>
+</blockquote>
+<h3 id="二慢查询概要">二、慢查询概要</h3>
+<h4 id="21-第一步慢查询分析之前的配置">2.1 第一步，慢查询分析之前的配置</h4>
+<h5 id="211-方式一修改myini">2.1.1 方式一：修改my.ini</h5>
+<p>修改配置文件 在 my.ini 增加几行:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>mysqld<span class="o">]</span>
+<span class="nv">long_query_time</span><span class="o">=</span><span class="m">2</span>   // 慢查询的定义时间（超过2秒就是慢查询）
+
+// 慢查询log日志记录（ slow_query_log）
+<span class="c1">## 5.5 版本以下配置</span>
+log-slow-queries<span class="o">=</span><span class="s2">&#34;mysql-slow-query.log&#34;</span>
+<span class="c1">## 5.5 版本及以上配置</span>
+slow-query-log<span class="o">=</span>on
+<span class="nv">slow_query_log_file</span><span class="o">=</span><span class="s2">&#34;mysql-slow-query.log&#34;</span>
+
+//记录没有使用索引的query
+log-query-not-using-indexes
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="212-方式二修改数据库">2.1.2 方式二：修改数据库</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql &gt; <span class="nb">set</span> global <span class="nv">slow_query_log</span><span class="o">=</span>ON
+mysql &gt; <span class="nb">set</span> global <span class="nv">long_query_time</span> <span class="o">=</span> 3600<span class="p">;</span>
+mysql &gt; <span class="nb">set</span> global <span class="nv">long_queries_not_using_indexes</span><span class="o">=</span>ON<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="22-第二步找到执行慢的sql语句">2.2 第二步，找到执行慢的sql语句</h4>
+<ol>
+<li><strong>找到慢查询日志文件路径</strong>：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql &gt; show variables like <span class="err">&#39;</span>slow_query_log_file
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li><strong>使用msql提供的日志分析工具mysqldumpslow分析找出查询时间最慢的十条sql</strong>：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql &gt; mysqldumpslow -s <span class="m">10</span> /mysql/mysql01_slow.log
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="23-第三步找到原因两种方式之一explain分析explain各个字段的解释">2.3 第三步，找到原因两种方式之一，explain分析，explain各个字段的解释</h4>
+<blockquote>
+<p>问题：为什么使用explain来做慢查询分析？</p>
+<p>回答：<strong>explain关键字可以模拟优化器执行SQL查询语句</strong>，所以用来分析sql慢查询语句</p>
+</blockquote>
+<p><strong>使用explain分析这10条sql</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">explain</span><span class="w"> </span><span class="n">SQL_NO_CACHE</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Jefabc&#39;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>注意：mysql8.0以下，SQL_NO_CACHE 指明了该查询不走缓存，避免了查询速度时高时低，影响判断。
+ps：使用explain一般看一看索引使用是否正确，尽量避免回表。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cDataBase-Pptimization-Note%5c14.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cDataBase-Pptimization-Note%5c14.png, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cDataBase-Pptimization-Note%5c14.png 1.5x, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cDataBase-Pptimization-Note%5c14.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\DataBase-Pptimization-Note\14.png"
+        title="14" /></p>
+<p><strong>explain各个字段解释</strong></p>
+<p><strong>id</strong>：每个执行计划都有一个 id，如果是一个联合查询union，这里还将有多个 id。
+<strong>select_type</strong>：表示 SELECT 查询类型，常见的有四种
+SIMPLE（普通查询，即没有联合查询、子查询）、
+PRIMARY（主查询）、UNION（UNION 中后面的查询）、SUBQUERY（子查询）等。
+<strong>table</strong>：当前执行计划查询的表，如果给表起别名了，则显示别名信息。
+<strong>partitions</strong>：访问的分区表信息。
+<strong>type</strong>：这是重要的列，<strong>显示连接使用了何种类型</strong>。从最好到最差的连接类型为：system &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; ALL。
+system/const：表中只有一行数据匹配，此时根据索引查询一次就能找到对应的数据。如果是 B + 树索引，我们知道此时索引构造成了多个层级的树，当查询的索引在树的底层时，查询效率就越低。const 表示此时索引在第一层，只需访问一层便能得到数据。
+eq_ref：使用唯一索引扫描，常见于多表连接中使用主键和唯一索引作为关联条件。
+ref：非唯一索引扫描，还可见于唯一索引最左原则匹配扫描。
+range：索引范围扫描，比如，&lt;，&gt;，between 等操作。
+index：索引全表扫描，此时遍历整个索引树。
+ALL：表示全表扫描，需要遍历全表来找到对应的行。
+<strong>possible_keys</strong>：可能使用到的索引。
+<strong>key</strong>：实际使用到的索引。
+<strong>key_len</strong>：实际使用的索引的长度。
+<strong>ref</strong>：关联 id 等信息。
+<strong>rows</strong>：查找到记录所扫描的行数。
+<strong>filtered</strong>：查找到所需记录占总扫描记录数的比例。
+<strong>Extra</strong>：额外的信息。</p>
+<h4 id="24-第四步找到原因两种方式之一profile分析找到慢查询的本质原因profile各个字段的解释">2.4 第四步，找到原因两种方式之一，profile分析，找到慢查询的本质原因，profile各个字段的解释</h4>
+<blockquote>
+<p>问题：为什么使用profile做慢查询分析？</p>
+<p>回答：Show profile 是mysql 提供可以用来分析当前会话中语句执行的<strong>资源消耗情况</strong>。</p>
+</blockquote>
+<blockquote>
+<p>以下四个中若出现一个或多个，表示sql 语句 必须优化。
+1、converting HEAP to MyISAM ： 查询结果太大，内存都不够用了，往磁盘上搬了；
+2、creating tmp table ：创建临时表，拷贝数据到临时表，然后再删除；
+3、copying to tmp table on disk ：把内存中临时表复制到磁盘，危险！！！
+4、 locked</p>
+</blockquote>
+<h5 id="241-explain制造慢sql语句profile找到慢的sql语句">2.4.1 explain制造慢sql语句，profile找到慢的sql语句</h5>
+<p><strong>第一步，查看一下我的数据库版本</strong></p>
+<p>Show profiles是5.0.37之后添加的，要想使用此功能，要确保版本在5.0.37之后。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql&gt; Select  version<span class="o">()</span><span class="p">;</span>
+
+<span class="p">|</span> version<span class="o">()</span>           <span class="p">|</span> 
+<span class="p">|</span> 5.0.82-community-nt <span class="p">|</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>版本是支持show profiles功能的。接下来进入mysql性能跟踪诊断的世界</p>
+<p><strong>第二步，查看是否打开了profiles功能,默认是关闭的</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql&gt; use test<span class="p">;</span>
+Database changed
+
+mysql&gt; show profiles<span class="p">;</span>
+Empty <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>显示为空，说明profiles功能是关闭的。</p>
+<p><strong>第三步，开启profile</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql&gt; <span class="nb">set</span> <span class="nv">profiling</span><span class="o">=</span>1<span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.00 sec<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>第四步，explain执行下面的查询</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql&gt; explain <span class="k">select</span> distinct player_idfrom task limit 20<span class="p">;</span>
+mysql&gt; <span class="k">select</span> distinct player_id from task <span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>第五步，执行 show profiles</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql&gt; show profiles<span class="p">;</span>
+
+<span class="p">|</span> Query_ID <span class="p">|</span> Duration   <span class="p">|</span> Query                                               <span class="p">|</span>
+
+<span class="p">|</span>       <span class="m">1</span> <span class="p">|</span> 0.00035225 <span class="p">|</span> explain <span class="k">select</span> distinct player_id from task limit <span class="m">20</span> <span class="p">|</span>
+<span class="p">|</span>       <span class="m">2</span> <span class="p">|</span> 1.91772775 <span class="p">|</span> <span class="k">select</span> distinct player_id from task                  <span class="p">|</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Query_ID 这个需要就是给show profile for query 具体id来用的。</p>
+</blockquote>
+<p>此时可以看到执行select distinct player_id from task 用了1.91772775秒的时间</p>
+<h5 id="242-show-profile-for-query-具体id">2.4.2 show profile for query 具体id</h5>
+<h6 id="2421-sending-data发送数据慢就是网络io">2.4.2.1 sending data发送数据慢，就是网络IO</h6>
+<p>根据prifile进一步分析，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">show</span><span class="w"> </span><span class="n">profile</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="err">具体</span><span class="n">id</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>可以清楚的看到该sql的所有执行阶段，如锁等待、执行、优化、发送数据、内存排序，在下图中可以看到<strong>Sending data发送数据</strong>耗时1.39s。慢查询主要原因是网络IO。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cDataBase-Pptimization-Note%5c15.png"
+        data-srcset="C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cDataBase-Pptimization-Note%5c15.png, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cDataBase-Pptimization-Note%5c15.png 1.5x, C:%5cProgram_Green%5chugo_extended_Windows-64bit%5csites%5cKKKPJSKEY%27s-Case-Archives%5ccontent%5cposts%5cDataBase-Pptimization-Note%5c15.png 2x"
+        data-sizes="auto"
+        alt="C:\Program_Green\hugo_extended_Windows-64bit\sites\KKKPJSKEY&#39;s-Case-Archives\content\posts\DataBase-Pptimization-Note\15.png"
+        title="15" /></p>
+<h6 id="2422-copying-to-tmp-table临时表慢">2.4.2.2 Copying to tmp table临时表慢</h6>
+<p>**根据query_id 查看某个查询的详细时间耗费，是Copying to tmp table **</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql&gt; show profile <span class="k">for</span> query 2<span class="p">;</span>
+
+<span class="p">|</span> Status               <span class="p">|</span> Duration <span class="p">|</span>
+
+<span class="p">|</span> starting             <span class="p">|</span> 0.000052 <span class="p">|</span>
+<span class="p">|</span> Opening tables       <span class="p">|</span> 0.000009 <span class="p">|</span>
+<span class="p">|</span> System lock          <span class="p">|</span> 0.000003 <span class="p">|</span>
+<span class="p">|</span> Table lock           <span class="p">|</span> 0.000007 <span class="p">|</span>
+<span class="p">|</span> init                 <span class="p">|</span> 0.000013 <span class="p">|</span>
+<span class="p">|</span> optimizing           <span class="p">|</span> 0.000003 <span class="p">|</span>
+<span class="p">|</span> statistics           <span class="p">|</span> 0.000009 <span class="p">|</span>
+<span class="p">|</span> preparing            <span class="p">|</span> 0.000008 <span class="p">|</span>
+<span class="p">|</span> Creating tmp table   <span class="p">|</span> 0.000074 <span class="p">|</span>
+<span class="p">|</span> executing            <span class="p">|</span> 0.000002 <span class="p">|</span>
+<span class="p">|</span> Copying to tmp table <span class="p">|</span>1.916551 <span class="p">|</span>    // 大量时间   四条中第三条，很严重，临时表到
+<span class="p">|</span> Sending data         <span class="p">|</span> 0.000667 <span class="p">|</span>
+<span class="p">|</span> end                  <span class="p">|</span> 0.000004 <span class="p">|</span>
+<span class="p">|</span> removing tmp table   <span class="p">|</span> 0.000065 <span class="p">|</span>
+<span class="p">|</span> end                  <span class="p">|</span> 0.000002 <span class="p">|</span>
+<span class="p">|</span> end                  <span class="p">|</span> 0.000002 <span class="p">|</span>
+<span class="p">|</span> query end            <span class="p">|</span> 0.000003 <span class="p">|</span>
+<span class="p">|</span> freeing items        <span class="p">|</span> 0.000245 <span class="p">|</span>
+<span class="p">|</span> closing tables       <span class="p">|</span> 0.000006 <span class="p">|</span>
+<span class="p">|</span> logging slow query   <span class="p">|</span> 0.000002 <span class="p">|</span>
+<span class="p">|</span> cleaning up          <span class="p">|</span> 0.000003 <span class="p">|</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到 Copying to tmp table 部分耗费了大量时间，这是因为distinct查看会用到临时表</p>
+<h3 id="243-查看cpu内存和io信息">2.4.3 查看cpu、内存和IO信息</h3>
+<p>那么可不可以查看占用cpu、 io等信息呢</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> mysql&gt; show profile block io,cpu <span class="k">for</span> query2<span class="p">;</span>
+
+<span class="p">|</span> Status <span class="p">|</span> Duration <span class="p">|</span> CPU_user <span class="p">|</span>CPU_system <span class="p">|</span> Block_ops_in <span class="p">|</span> Block_ops_out <span class="p">|</span>
+
+<span class="p">|</span> starting <span class="p">|</span> 0.000052 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>   NULL <span class="p">|</span>
+<span class="p">|</span> Opening tables  <span class="p">|</span> 0.000009 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>   NULL <span class="p">|</span>
+<span class="p">|</span> System lock   <span class="p">|</span> 0.000003 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span> NULL <span class="p">|</span>
+<span class="p">|</span> Table lock   <span class="p">|</span> 0.000007 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span> NULL <span class="p">|</span>
+<span class="p">|</span> init     <span class="p">|</span> 0.000013 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span> NULL <span class="p">|</span>
+<span class="p">|</span> optimizing   <span class="p">|</span> 0.000003 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>   NULL <span class="p">|</span>
+<span class="p">|</span> statistics           <span class="p">|</span> 0.000009 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>  NULL <span class="p">|</span>
+<span class="p">|</span> preparing            <span class="p">|</span> 0.000008 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>        NULL <span class="p">|</span> NULL <span class="p">|</span>
+<span class="p">|</span> Creating tmp table   <span class="p">|</span> 0.000074 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>  NULL <span class="p">|</span>
+<span class="p">|</span> executing            <span class="p">|</span> 0.000002 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>  NULL <span class="p">|</span>
+<span class="p">|</span> Copying to tmp table（耗时） <span class="p">|</span> 1.916551 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>    NULL <span class="p">|</span>NULL <span class="p">|</span>
+<span class="p">|</span> Sending data         <span class="p">|</span> 0.000667 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>  NULL <span class="p">|</span>
+<span class="p">|</span> end                  <span class="p">|</span> 0.000004 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>   NULL <span class="p">|</span>
+<span class="p">|</span> removing tmp table   <span class="p">|</span> 0.000065 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span> NULL <span class="p">|</span>
+<span class="p">|</span> end                  <span class="p">|</span> 0.000002 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>  NULL <span class="p">|</span>
+<span class="p">|</span> end                  <span class="p">|</span> 0.000002 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span> NULL <span class="p">|</span>
+<span class="p">|</span> query end            <span class="p">|</span> 0.000003 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span> NULL <span class="p">|</span>
+<span class="p">|</span> freeing items        <span class="p">|</span> 0.000245 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span>  NULL <span class="p">|</span>
+<span class="p">|</span> closing tables       <span class="p">|</span> 0.000006 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span> NULL <span class="p">|</span>
+<span class="p">|</span> logging slow query   <span class="p">|</span> 0.000002 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span> NULL <span class="p">|</span>
+<span class="p">|</span> cleaning up          <span class="p">|</span> 0.000003 <span class="p">|</span>     NULL <span class="p">|</span>       NULL <span class="p">|</span>         NULL <span class="p">|</span> NULL <span class="p">|</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>另外还可以看到memory,swaps,context switches,source 等信息</p>
+<h3 id="三sql优化">三、SQL优化</h3>
+<h4 id="31-第一明确sql优化两个目标io成本cpu成本">3.1 第一，明确SQL优化两个目标（IO成本+CPU成本）</h4>
+<p>减少 IO 次数</p>
+<p>IO永远是数据库最容易产生瓶颈的地方，这是由数据库的职责所决定的，大部分数据库操作中超过90%的时间都是IO操作所占用的，减少IO次数是SQL优化中需要第一优先考虑，当然，也是收效最明显的优化手段。</p>
+<p>降低 CPU 计算</p>
+<p>除了 IO 瓶颈之外，SQL优化中需要考虑的就是 CPU 运算量的优化了。order by，group  by，distinct等操作都十分占用CPU资源(这些操作基本上都是 CPU 处理内存中的数据比较运算)。当我们的 IO  优化做到一定阶段之后，降低 CPU 计算也就成为了我们 SQL 优化的重要目标。</p>
+<h4 id="32-第二sql执行的11个步骤搞懂mysql的语句执行顺序11条">3.2 第二，SQL执行的11个步骤，搞懂MySQL的语句执行顺序（11条）</h4>
+<p>MySQL的语句一共分为11步，如下图所标注的那样，最先执行的总是FROM操作，最后执行的是LIMIT操作。其中每一个操作都会产生一张虚拟的表，这个虚拟的表作为一个处理的输入。</p>
+<p>select m.Province,S.Name from member m
+left join ShippingArea s on m.Province=s.ShippingAreaID;</p>
+<p>下面具体分析一下查询处理的每一个阶段。</p>
+<p>1、FORM: 对FROM的左边的表和右边的表计算笛卡尔积。产生虚表vitual table 1</p>
+<p>2、ON: 对虚表VT1进行ON筛选，只有那些符合&lt; join-condition&gt;的行才会被记录在虚表VT2中。</p>
+<p>3、JOIN： 如果指定了OUTER JOIN（比如left join、 right  join），那么保留表中未匹配的行就会作为外部行添加到虚拟表VT2中，产生虚拟表VT3，如果包含两个以上的表的话，那么就会对上一个join连接产生的结果VT3和下一个表重复执行步骤1~3这三个步骤，一直到处理完所有的表为止。</p>
+<p>4、WHERE： 对虚拟表VT3进行WHERE条件过滤。只有符合&lt; where-condition&gt;的记录才会被插入到虚拟表VT4中。</p>
+<p>5、GROUP BY: 根据group by子句中的列，对VT4中的记录进行分组操作，产生VT5。</p>
+<p>6、CUBE | ROLLUP: 对表VT5进行cube或者rollup操作，产生表VT6。</p>
+<p>7、HAVING： 对虚拟表VT6应用having过滤，只有符合&lt; having-condition&gt;的记录才会被插入到虚拟表VT7中。</p>
+<p>8、SELECT： 执行select操作，选择指定的列，插入到虚拟表VT8中。</p>
+<p>9、DISTINCT： 对VT8中的记录进行去重。产生虚拟表VT9。</p>
+<p>10、ORDER BY: 将虚拟表VT9中的记录进行排序操作，产生虚拟表VT10。</p>
+<p>11、 LIMIT：取出指定行的记录，产生虚拟表VT11，并将结果返回。</p>
+<blockquote>
+<p><strong>金手指：记忆方式：输入、判断、返回
+输入：from on join
+判断：where判断、group by分组、having判断
+返回：select输出，distinct去重、order by排序、limit返回</strong>
+单表查询，设置条件：用 Where 子句替换 HAVING 子句 因为 HAVING 只会在检索出所有记录之后才对结果集进行过滤</p>
+</blockquote>
+<blockquote>
+<p>大多数关系型数据库都是按照行(row)的方式存储，而数据存取操作都是以一个固定大小的IO单元(被称作block或者page)为单位，一般为4KB，8KB…… 大多数时候，每个IO单元中存储了多行，每行都是存储了该行的所有字段(blob等特殊类型字段除外)。
+所以，我们是取一个字段还是多个字段，实际上数据库在表中需要访问的数据量其实是一样的。
+当然，也有例外情况，那就是我们的这个查询在索引中就可以完成，也就是说当只取 a，b两个字段的时候，不需要回表，而c这个字段不在使用的索引中，需要回表取得其数据。在这样的情况下，二者的IO量会有较大差异。
+大多数时候并不会影响到 IO 量，但是当还存在order by操作的时候，select子句中的字段多少会在很大程度上影响到排序效率。</p>
+</blockquote>
+<h4 id="33-第三表设计表设计5条--字段设计5条">3.3 第三，表设计（表设计5条 + 字段设计5条）</h4>
+<h5 id="331-表设计层面5条">3.3.1 表设计层面（5条）</h5>
+<p>1、【表引擎】选择正确的表引擎 MyISAM Innodb</p>
+<p>（1）MyISAM  适合于一些需要大量查询的应用，但其对于有大量写操作并不是很好，甚至你只是需要update一个字段，整个表都会被锁起来，而别的进程，就算是读进程都无法操作直到读操作完成。（2）MyISAM 对于 SELECT COUNT(*) 这类的计算是超快无比的。</p>
+<p>InnoDB 的趋势会是一个非常复杂的存储引擎，对于一些小的应用，它会比 MyISAM 还慢。他是它支持“行锁” ，于是在写操作比较多的时候，会更优秀。并且，他还支持更多的高级应用，比如：事务。</p>
+<blockquote>
+<p><strong>金手指：与传统的ISAM与MyISAM相比，InnoDB的最大特色就是支持了ACID兼容的事务（Transaction）功能</strong>。</p>
+</blockquote>
+<p>2、【表设计-无逻辑意义自增id】给所有的InnoDB表都设计一个无逻辑意义的自增列做主键，对于绝大多数场景都是如此，真正纯只读用InnoDB表的并不多；</p>
+<p>3、【表设计-反范式设计，减少回表】适当的使用字段冗余的反范式设计，以空间换时间有的时候会很高效，比如：有用户id字段的表，用户在查询时如果经常需要同时获得用户名，此时可以将用户名当一个冗余字段在该表中存储，这样就可以不做连接即可获得用户名。
+要求：该冗余字段的值一般不变或者很少变化。</p>
+<p>4、【表存储——数据量过大，水平分表】通常地，单表物理大小不超过10GB，单表行数不超过1亿条，行平均长度不超过8KB，如果机器性能足够，这些数据量MySQL是完全能处理的过来的，不用担心性能问题，数据量过大就要水平分表，不要放在同一个表中。</p>
+<p>5、【表存储——表中存储数据而不是运算】数据库直接存放数值，不要在数据库中做运算。</p>
+<blockquote>
+<p><strong>优化数据库结构</strong>
+合理的数据库结构不仅可以使数据库占用更小的磁盘空间，而且能够使查询速度更快。数据库结构的设计，需要考虑数据冗余、查询和更新的速度、字段的数据类型是否合理等多方面的内容。
+1、垂直分表，将字段很多的表分解成多个表
+对于字段比较多的表，如果有些字段的使用频率很低，可以将这些字段分离出来形成新表。因为当一个表的数据量很大时，会由于使用频率低的字段的存在而变慢。
+2、多对多关系表，增加中间表
+对于需要经常联合查询的表，可以建立中间表以提高查询效率。通过建立中间表，把需要经常联合查询的数据插入到中间表中，然后将原来的联合查询改为对中间表的查询，以此来提高查询效率。</p>
+</blockquote>
+<blockquote>
+<p>三范式优化+反范式优化+分库分表
+1）三大范式优化： 比如消除冗余（节省空间。。）
+2）反范式优化：比如适当加冗余等（减少 join）
+3）分库：  分区将数据在物理上分隔开，不同分区的数据可以制定保存在处于不同磁盘上的数据文件里。这样，当对这个表进行查询时，只需要在表分区中进行扫描，而不必进行全表扫描，明显缩短了查询时间，另外处于不同磁盘的分区也将对这个表的数据传输分散在不同的磁盘 I/O，一个精心设置的分区可以将数据传输对磁盘 I/O 竞争均匀地分散开。对数据量大的时时表可采取此方法。可按月自动建表分区。
+4）分表：垂直拆分和水平拆分：
+案例： 简单购物系统暂设涉及如下表：
+1.产品表（数据量 10w，稳定）
+2.订单表（数据量 200w，且有增长趋势）
+3.用户表 （数据量 100w，且有增长趋势）
+以 mysql 为例讲述下水平拆分和垂直拆分，mysql 能容忍的数量级在百万静态数据可以到千万
+垂直拆分：
+解决问题：表与表之间的 io 竞争
+不解决问题：单表中数据量增长出现的压力
+方案： 把产品表和用户表放到一个 server 上 订单表单独放到一个 server 上
+水平拆分：
+解决问题：单表中数据量增长出现的压力
+不解决问题：表与表之间的 io 争夺
+方案：
+用户表通过性别拆分为男用户表和女用户表，男用户表放一个 server 上 女用户表放一个 server 上(女的爱购物)
+订单表通过已完成和完成中拆分为已完成订单和未完成订单 ，未完成订单放一个 server 上 已完成订单放到一个server上</p>
+</blockquote>
+<h5 id="332-字段设计层面5条">3.3.2 字段设计层面（5条）</h5>
+<p>1、yes 两条【字段-数据类型够用选小的，加上not null提交性能】字段长度满足需求前提下，尽可能选择长度小的；字段属性尽量都加上NOT NULL约束，可一定程度提高性能；</p>
+<p>2、no 过大不要【字段-数据类型尽量不使用Text/Blob，垂直分表】尽可能不使用TEXT/BLOB类型，确实需要的话，建议垂直分表，拆分到子表中，不要和主表放在一起，避免SELECT * 的时候读性能太差。</p>
+<p>3、select  1条【字段-使用数字型而不是字符型】数据类型尽量用数字型，数字型比字符型的效率高，如果表中某个字段存储的都是数字，那么该字段设计为数字型字段，而不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。这是因为引擎在处理查询和连接时会逐个比较字符串中每一个字符，而对于数字型而言只需要比较一次就够了。</p>
+<p>4、select 1条【字段-接上面，对于字符类型，使用固定长度而不是可变长度】
+char/nchar为固定长度，如果某个字段中字符长度已知固定，使用char/nchar效率比varchar/nvarchar效率高。</p>
+<p>5、select 1条【取值有限用枚举Enum】
+如果你有一个字段，比如“性别”，“国家”，“民族”，“状态”或“部门”，你知道这些字段的取值是有限而且固定的，那么，你应该使用 ENUM 而不是 VARCHAR。</p>
+<h4 id="34-第四高效的sql语句索引单表优化多表优化">3.4 第四，高效的SQL语句（索引+单表优化+多表优化）</h4>
+<h5 id="341-索引索引两方向优先使用索引避免索引失效">3.4.1 索引（索引两方向：优先使用索引，避免索引失效）</h5>
+<p>如下第二、第三句SQL，使用索引与不使用索引，查询速度相差巨大。（索引可用在select后，也可用于on，where后的条件中，参考<strong>索引使用理论基础</strong>）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test1</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 1.863 2.008 2.062（260万条数据） -- 此处有个select*的误区，实际上不加索引的select* 比select col速度来得快
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test1</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 4.989 5.001 4.855 （260万条数据, name不加索引）
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test1</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 1.227 1.476 1.403 （260万条数据, name加索引）
+</span></code></pre></td></tr></table>
+</div>
+</div><h6 id="3411-避免索引失效">3.4.1.1 避免索引失效</h6>
+<p>1）应尽量避免在 where 子句中使用!=或&lt;&gt;操作符，否则将引擎放弃使用索引而进行全表扫描。</p>
+<p>2）应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描。</p>
+<blockquote>
+<p>如：
+select id from t where num is null
+可以在 num 上设置默认值 0，确保表中 num列没有 null 值，然后这样查询：
+select id from t where num=0
+注意：关于 null,isNull,isNotNull 其实是要看成本的，是否回表等因素总和考虑，才会决定是要走索引还是走全表扫描</p>
+</blockquote>
+<p>【索引】禁止任何对where字段的计算，函数等操作</p>
+<blockquote>
+<p>索引没起作用的情况
+1、使用LIKE关键字的查询语句
+在使用LIKE关键字进行查询的查询语句中，如果匹配字符串的第一个字符为“%”，索引不会起作用。只有“%”不在第一个位置索引才会起作用。
+2、使用多列索引的查询语句
+MySQL可以为多个字段创建索引。一个索引最多可以包括16个字段。对于多列索引，只有查询条件使用了这些字段中的第一个字段时，索引才会被使用。</p>
+</blockquote>
+<p><strong>尽量避免在索引过的字符数据中，使用非打头字母搜索，导致索引无效</strong></p>
+<p>SELECT id FROM table WHERE NAME LIKE ‘%L%’; // 错误</p>
+<p>SELECT id FROM table WHERE NAME LIKE ‘L%’; // 正确</p>
+<p>即使NAME字段建有索引， 第一个查询无法利用索引完成加快操作，引擎不得不对全表所有数据逐条操作来完成任务。而第二个查询能够使用索引来加快操作。</p>
+<p><strong>不要在where子句中的“=”左边进行函数、算术运算或其他表达式运算，导致索引无效</strong></p>
+<p>任何对列的操作都将导致表扫描，它包括数据库函数、计算表达式等等，查询时要尽可能将操作移至等号右边。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">T1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">F1</span><span class="o">/</span><span class="mi">2</span><span class="o">=</span><span class="mi">100</span><span class="w">
+</span><span class="w"></span><span class="err">应改为</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">T1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">F1</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="mi">2</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">RECORD</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">SUBSTRING</span><span class="p">(</span><span class="n">CARD_NO</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;5378&#39;</span><span class="w">
+</span><span class="w"></span><span class="err">应改为</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">RECORD</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CARD_NO</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;5378%&#39;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="n">member_number</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">members</span><span class="w">
+</span><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">DATEDIFF</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="n">datofbirth</span><span class="p">,</span><span class="n">now</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">21</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">-- 应改为:
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">member_number</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">members</span><span class="w">
+</span><span class="w"></span><span class="k">WHERE</span><span class="w"> </span><span class="n">dateofbirth</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DATEADD</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="o">-</span><span class="mi">21</span><span class="p">,</span><span class="n">now</span><span class="p">())</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><strong>索引</strong>：
+%% like查询, not in,not exist 都无法应用索引
+用了&quot;聚合函数&quot;查询,就无法应用索引；
+复合索引,一般都是看第一个条件索引</p>
+<h6 id="3412-优先使用索引">3.4.1.2 优先使用索引</h6>
+<p>【索引-前缀索引】对一个VARCHAR(N)列创建索引时，通常取其50%（甚至更小）左右长度创建前缀索引就足以满足80%以上的查询需求了，没必要创建整列的全长度索引；</p>
+<p>【SQL语句-输入参数where子句-索引代替全表扫描】尽量避免在where子句中对字段进行null值判断。这会进行全表扫描 Select id,name from user where name is null;</p>
+<p>【SQL语句-输入参数where子句-索引代替全表扫描】尽量避免在where子句中对字段进行表达式操作。这会导致引擎放弃使用索引而进行全表扫描 SELECT id,name FROM user where age/12;</p>
+<p>【优先使用复合索引代替单个索引，减少索引数量】多用复合索引，少用多个独立索引，尤其是一些基数（Cardinality）太小（比如说，该列的唯一值总数少于255）的列就不要创建独立索引了；</p>
+<p>【SQL语句-输入参数or子句-索引代替全表扫描】对于OR子句，如果要利用索引，则OR之间的每个条件列都必须用到索引，如果没有索引，则应该考虑增加索引。</p>
+<p><strong>【复合索引的顺序】在使用索引字段作为条件时，如果该索引是复合索引，那么必须使用到该索引中的第一个字段作为条件时才能保证系统使用该索引，否则该索引将不会被使用，并且应尽可能的让字段顺序与索引顺序相一致。</strong></p>
+<h5 id="342-单表查询-10点">3.4.2 单表查询 10点</h5>
+<h6 id="1单表查询避免索引失效不要在-where-子句中对字段进行-null-值判断这会进行全表扫描">1、单表查询：避免索引失效，不要在 where 子句中对字段进行 null 值判断，这会进行全表扫描</h6>
+<p>错误：应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致数据库放弃使用索引而进行全表扫描，降低查询速度。可以在col上设置默认值，确保表中col列not null值，然后查询。</p>
+<p>以下实测结果表明：在不加索引的情况下，判空操作比判非空默认值操作速度快得多，加索引的情况下两种情况差不多。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="err">–</span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">003</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">963</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">975</span><span class="w"> </span><span class="err">（</span><span class="k">table</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="err">未加入索引，</span><span class="mi">260</span><span class="err">万数据）</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="mi">0</span><span class="err">’</span><span class="w">  </span><span class="o">-</span><span class="err">–</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="mi">407</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">256</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">434</span><span class="w">  </span><span class="err">（</span><span class="k">table</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="err">未加入索引，</span><span class="mi">260</span><span class="err">万数据）</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="err">–</span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">549</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">884</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">818</span><span class="w"> </span><span class="err">（</span><span class="k">table</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="err">加入索引，</span><span class="mi">260</span><span class="err">万数据）</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">‘</span><span class="mi">0</span><span class="err">’</span><span class="w">  </span><span class="o">-</span><span class="err">–</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">626</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">854</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">532</span><span class="w"> </span><span class="err">（</span><span class="k">table</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="err">加入索引，</span><span class="mi">260</span><span class="err">万数据）</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h6 id="2单表查询开启慢查询日志定位慢查询的sql语句">2、单表查询，开启慢查询日志，定位慢查询的SQL语句</h6>
+<p>【单表查询-慢查询】开启慢查询日志，定期用explain或desc优化慢查询中的SQL语句</p>
+<p>【单表查询-预处理语句】使用预处理语句。例如使用PDO来操作mysql
+在性能方面，当一个相同的查询被使用多次的时候，这会为你带来可观的性能优势。你可以给这些Prepared Statements(预处理语句)定义一些参数，而MySQL只会解析一次。</p>
+<h6 id="3单表查询数据库压力转移到java后台">3、单表查询，数据库压力转移到Java后台</h6>
+<p><strong>将数据库的压力转移至后台</strong>
+数据库的资源是宝贵的，我们可以将不必要的操作转移至Java端处理。如判空，字段值拼接，字符串TRIM，日期格式化等等。
+如下SQL，均可由Java处理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="n">IFNULL</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="n">col</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w">     </span><span class="o">//</span><span class="w"> </span><span class="err">判空</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w">   </span><span class="o">//</span><span class="err">字段值拼接</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">TRIM</span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w">   </span><span class="o">//</span><span class="w"> </span><span class="err">字符串</span><span class="k">TRIM</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="s1">&#39;%d %b %Y %T:%f&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">table</span><span class="p">;</span><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="err">日期格式化</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h6 id="4单表查询where-查询条件数量--查询条件顺序">4、单表查询，where 查询条件数量 + 查询条件顺序</h6>
+<blockquote>
+<p>where子句两个
+第一，查询条件尽量少
+第二，越精确的条件,应该放在前面，先过滤掉大数据;</p>
+</blockquote>
+<p><strong>where子句中，尽量少的条件</strong>
+如下面这句SQL，<strong>如果</strong> where条件中col1=1，col2=2是能够精确查找结果的最简条件，则无需加入冗余的其他条件。
+SELECT * FROM table where col1=1 and col2=2 and col3=3</p>
+<p><strong>where子句中，越精准的条件越早过滤</strong>
+where条件中，越精确的条件（能够剔除大部分结果的条件）放前面。
+又如，在多个表进行分页数据查询的时候，我们最好是能够在一个表上先过滤好数据分好页，然后再用分好页的结果集与另外的表Join，这样可以尽可能多的减少不必要的 IO 操作，大大节省IO操作所消耗的时间。</p>
+<h6 id="5单表查询返回值和关键字大写优化select-limit">5、单表查询，返回值和关键字大写优化（select *，limit）</h6>
+<p>【SQL语句-返回值】满足业务需求下，返回值不要使用select * from 的形式查询数据，只查询需要使用的列
+【SQL语句-返回值】满足业务需求下，返回值使用limit减少返回的行数，减少网络数据传输时间和带宽浪费，但是CPU消耗还是要的</p>
+<p>【SQL语句-关键字】所有的SQL关键字用大写，避免SQL语句重复编译造成系统资源的浪费</p>
+<h6 id="6单表查询计数优化不要使用-count列名或-count常量来替代-count">6、单表查询：计数优化，不要使用 count(列名)或 count(常量)来替代 count(*)</h6>
+<p>【单表查询】不要使用 count(列名)或 count(常量)来替代 count(*)
+【单表查询】使用 ISNULL()来判断是否为 NULL 值</p>
+<p><strong>count(*) count(1) count(id)的效率</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test1</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 0.749 0.752 0.750   你看，count(*)性能很好
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test1</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 1.578 0.900 1.455
+</span><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test1</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 0.740 0.763  0.751
+</span></code></pre></td></tr></table>
+</div>
+</div><p>很多人为了统计记录条数，就使用count(1)和count(primary_key)而不是count(<em>) ，他们认为这样性能更好，其实这是一个误区。对于有些场景，这样做可能性能会更差，因为数据库对count(</em>)计数操作做了一些特别的优化。</p>
+<p>第一，定义不同
+count(column) 和 count(<em>)，count(1)是一个完全不一样的操作，所代表的意义也完全不一样。
+count(column) 是表示结果集中有多少个column字段不为空的记录。
+count(</em>)，count(1)是表示整个结果集有多少条记录。</p>
+<blockquote>
+<p>查询尽量用具体的字段，而不是直接select * ；聚合函数不适用大量数据查询过滤；
+count(<em>)—会吧null空列也统计进去
+count(列)—只会统计非空字段
+在mysql5.6之后，count(</em>)速度比count(1)和count(列) 更快</p>
+</blockquote>
+<h6 id="7单表查询去重优化能用group-by的就不用distinct">7、单表查询：去重优化，能用GROUP BY的就不用DISTINCT</h6>
+<p>使用GROUP BY去重比DISTINCT效率高。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">OrderID</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Details</span><span class="w"> 
+</span><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">UnitPrice</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c1">-- 用下面的语句替换：
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">OrderID</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Details</span><span class="w"> 
+</span><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">UnitPrice</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">OrderID</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h6 id="8单表查询limit优化巧借索引优化orderby排序">8、单表查询，LIMIT优化，巧借索引优化orderby排序</h6>
+<p>【单表查询-limit】如果查询中有LIMIT的话，LIMIT也会在排序之后应用，所以即使需要返回较少的数据，临时表和需要排序的数据量仍然会非常大</p>
+<blockquote>
+<p><strong>单表查询-优化LIMIT分页，使用索引优化orderby排序，因为索引是有序的，加上覆盖索引</strong>
+在系统中需要分页的操作通常会使用limit加上偏移量的方法实现，同时加上合适的order by 子句。如果有对应的索引，通常效率会不错，否则MySQL需要做大量的文件排序操作。
+一个非常令人头疼问题就是当偏移量非常大的时候，例如可能是limit 10000,20这样的查询，这是mysql需要查询10020条然后只返回最后20条，前面的10000条记录都将被舍弃，这样的代价很高。
+<strong>优化此类查询的一个最简单的方法是尽可能的使用索引覆盖扫描</strong>，而不是查询所有的列。然后根据需要做一次关联操作再返回所需的列。对于偏移量很大的时候这样做的效率会得到很大提升。
+对于下面的查询：
+select id,title from collect limit 90000,10;
+该语句存在的最大问题在于limit  M,N中偏移量M太大（我们暂不考虑筛选字段上要不要添加索引的影响），导致每次查询都要先从整个表中找到满足条件  的前M条记录，之后舍弃这M条记录并从第M+1条记录开始再依次找到N条满足条件的记录。如果表非常大，且筛选字段没有合适的索引，且M特别大那么这样的代价是非常高的。  试想，如我们下一次的查询能从前一次查询结束后标记的位置开始查找，找到满足条件的100条记录，并记下下一次查询应该开始的位置，以便于下一次查询能直接从该位置 开始，这样就不必每次查询都先从整个表中先找到满足条件的前M条记录，舍弃，在从M+1开始再找到100条满足条件的记录了。
+<strong>方法一：虑筛选字段（title）上加索引</strong>
+title字段加索引 （此效率如何未加验证）
+<strong>方法二：先查询出主键id值（优化LIMIT分页，使用索引优化orderby排序）</strong>
+select id,title from collect where id&gt;=
+(select id from collect order by id limit 90000,1) limit 10;
+原理：先查询出90000条数据对应的主键id的值，然后直接通过该id的值直接查询该id后面的数据。
+<strong>方法三：“关延迟联”</strong>
+如果这个表非常大，那么这个查询可以改写成如下的方式：
+Select news.id, news.description from news
+inner join (select id from news order by title limit 50000,5) as myNew using(id);
+这里的“关延迟联”将大大提升查询的效率，它让MySQL扫描尽可能少的页面，获取需要的记录后再根据关联列回原表查询需要的所有列。这个技术也可以用在优化关联查询中的limit。
+<strong>方法四：建立复合索引 acct_id和create_time</strong>
+select * from acct_trans_log WHERE acct_id = 3095 order by create_time desc limit 0,10
+注意sql查询慢的原因都是:引起filesort，所以一定要避免filesort</p>
+</blockquote>
+<h6 id="9单表查询排序优化order-by-字段加索引">9、单表查询：排序优化，order by 字段加索引</h6>
+<p>索引数据实际上是有序的，如果我们的需要的数据和某个索引的顺序一致，而且我们的查询又通过这个索引来执行，那么数据库一般会省略排序操作，而直接将数据返回，因为数据库知道数据已经满足我们的排序需求了。</p>
+<p>实际上，利用索引来优化有排序需求的 SQL，是一个非常重要的优化手段。</p>
+<h6 id="10单表查询分组优化group-by-调节顺序为复合索引顺序">10、单表查询：分组优化，group by 调节顺序为复合索引顺序</h6>
+<p><strong>存在的问题</strong>：通常情况下，SQL 语句中的 GROUP BY 子句会<strong>导致数据库不得不通过一个排序（SORT）操作来实现对数据的分组</strong>，而排序被认为是一个比较耗费 CPU 和内存的操作。实际上某些情况下，如果写法得当，当中的排序操作是可以避免的。</p>
+<p>具体来说，在写 GROUP BY 子句的时候，应该考虑到数据库中已经存在的索引的情况。如果 GROUP BY  子句中所有的列恰好包括在某个索引的键（Key column）的范围之内而且是处于开始的位置，那么在写 GROUP BY  子句的时候，就应该按照该索引上键的先后顺序来写 GROUP BY 子句。</p>
+<p>比如说有如下的 SQL 语句：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">C2</span><span class="p">,</span><span class="w"> </span><span class="n">C3</span><span class="p">,</span><span class="w"> </span><span class="n">C1</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">C4</span><span class="p">)</span><span class="w">
+</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">T1</span><span class="w">
+</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">C2</span><span class="p">,</span><span class="w"> </span><span class="n">C3</span><span class="p">,</span><span class="w"> </span><span class="n">C1</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>一般情况下，GROUP BY C2, C3, C1这样的写法都会导致数据库执行一个排序操作，消耗CPU。但是，如果表 T1  上已经存在一个索引 IX1(C1, C2, C3, C4), 这里注意到 GROUP BY 子句中引用到的列（C2，C3，C1）正好是索引  IX1 中的前三个键，那么就可以通过改变 GROUP BY 子句中列的顺序的办法来避免这个排序操作。</p>
+<p>可以把 SQL 语句改写为如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">C1</span><span class="p">,</span><span class="w"> </span><span class="n">C2</span><span class="p">,</span><span class="w"> </span><span class="n">C3</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">C4</span><span class="p">)</span><span class="w">
+</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">T1</span><span class="w">
+</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">C1</span><span class="p">,</span><span class="w"> </span><span class="n">C2</span><span class="p">,</span><span class="w"> </span><span class="n">C3</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>通过这样改变 GROUP BY 子句中列的顺序使其与索引 IX1 中的键顺序一致，数据库就可以利用 IX1 来访问其已经排序的键值并直接返回进行下一步操作，从而避免额外的排序操作，从而带来查询性能上的提高。</p>
+<h5 id="343-多表连接查询-4点">3.4.3 多表连接查询 4点</h5>
+<h6 id="1多表连接五个用-join-代替子查询连接字段类型一致连接字段加索引主表是小表orderby和groupby字段在主表否则无用">1、多表连接，五个：用 join 代替子查询，连接字段类型一致，连接字段加索引，主表是小表，orderby和groupby字段在主表，否则无用</h6>
+<p>【多表连接-join代替子连接】通常情况下，子查询的性能比较差，建议改造成JOIN写法；</p>
+<blockquote>
+<p><strong>多表查询：嵌套子查询如何优化</strong>
+<strong>嵌套子查询的效率低的原因</strong>：执行子查询时，MYSQL需要创建临时表，查询完毕后再删除这些临时表，多了一个创建和销毁临时表的过程
+<strong>嵌套子查询的优化方案</strong>：
+1、使用join，join比嵌套子查询更高效，数据量较大时，无需真正带入不同参数循环迭代
+2、拆分为多个查询语句</p>
+</blockquote>
+<blockquote>
+<p><strong>多表查询-分解关联查询</strong>
+解释：将一个大的查询分解为多个小查询是很有必要的。
+很多高性能的应用都会对关联查询进行分解，就是可以对每一个表进行一次单表查询，然后将查询结果在应用程序中进行关联，很多场景下这样会更高效，例如：
+SELECT * FROM tag
+JOIN tag_post ON tag_id = tag.id
+JOIN post ON tag_post.post_id = post.id
+WHERE tag.tag = ‘mysql’;
+分解为：
+SELECT * FROM tag WHERE tag = ‘mysql’;
+SELECT * FROM tag_post WHERE tag_id = 1234;
+SELECT * FROM post WHERE post.id in (123,456,567);</p>
+</blockquote>
+<p>【多表连接-连接字段CPU消耗一致】多表联接查询时，关联字段类型尽量一致，省去字段类型转换的CPU消耗；
+【多表连接-连接字段都要有索引】多表联接查询时，关联字段都要有索引；</p>
+<p>【多表连接-主表是小表】多表连接查询时，把结果集小的表（注意，这里是指过滤后的结果集，不一定是全表数据量小的）作为驱动表，解释：小表全表扫描，用来比较大表。
+【多表查询-groupby orderby在主表上】多表查询中，如果使用group by,order by，最好都能选择驱动表的列或者只选择一个表上的列，否则无法排序和分组无法用到索引。</p>
+<blockquote>
+<p><strong>多表查询，分析具体的SQL语句</strong>
+1、两个表选哪个为驱动表，表面是可以以数据量的大小作为依据，但是实际经验最好交给mysql查询优化器自己去判断。
+例如： select * from a where id in (select id from b );
+对于这条sql语句它的执行计划其实并不是先查询出b表的所有id,然后再与a表的id进行比较。
+mysql内部会将 in子查询转换成exists相关子查询，所以它实际等同于这条sql语句：select * from a where exists(select * from b where b.id=a.id );
+而exists相关子查询的执行原理是: 循环取出a表的每一条记录与b表进行比较，比较的条件是a.id=b.id . 看a表的每条记录的id是否在b表存在，如果存在就行返回a表的这条记录。
+<strong>exists查询有什么弊端？外面的a表无法使用索引，必须走全表扫描</strong>
+由exists执行原理可知，a表(外表)使用不了索引，必须全表扫描，因为是拿a表的数据到b表查。而且必须得使用a表的数据到b表中查（外表到里表中），顺序是固定死的。
+<strong>如何优化？</strong>
+加索引。但是由上面分析可知，要建索引只能在b表的id字段建，不能在a表的id上，mysql利用不上。
+<strong>这样优化够了吗？还差一些。</strong>
+由于exists查询它的执行计划只能拿着a表的数据到b表查（外表到里表中），虽然可以在b表的id字段建索引来提高查询效率。
+但是并不能反过来拿着b表的数据到a表查，exists子查询的查询顺序是固定死的。
+<strong>为什么要反过来？</strong>
+因为首先可以肯定的是反过来的结果也是一样的。这样就又引出了一个更细致的疑问：在双方两个表的id字段上都建有索引时，到底是a表查b表的效率高，还是b表查a表的效率高？
+<strong>该如何进一步优化？</strong>
+把查询修改成inner join连接查询：select * from a inner join b on a.id=b.id; （但是仅此还不够，接着往下看）
+<strong>为什么不用left join 和 right join？</strong>
+这时候表之间的连接的顺序就<strong>被固定住了</strong>，比如左连接就是必须先查左表全表扫描，然后一条一条的到另外表去查询，右连接同理。仍然不是最好的选择。
+<strong>为什么使用inner join就可以？</strong>
+inner join中的两张表，如： a inner join b，但实际执行的顺序是跟写法的顺序没有半毛钱关系的，最终执行也可能会是b连接a，<strong>顺序不是固定死的</strong>。如果on条件字段有索引的情况下，同样可以使用上索引。
+<strong>那我们又怎么能知道a和b什么样的执行顺序效率更高？</strong>
+你不知道，我也不知道。谁知道？mysql自己知道。让mysql自己去判断（查询优化器）。具体表的连接顺序和使用索引情况，mysql查询优化器会对每种情况做出成本评估，最终选择最优的那个做为执行计划。
+<strong>在inner join的连接中,mysql会自己评估使用a表查b表的效率高还是b表查a表高，如果两个表都建有索引的情况下，mysql同样会评估使用a表条件字段上的索引效率高还是b表的。</strong>
+<strong>利用explain字段查看执行时运用到的key（索引）</strong>
+而我们要做的就是：把两个表的连接条件的两个字段都各自建立上索引，然后explain 一下，查看执行计划，看mysql到底利用了哪个索引，最后再把没有使用索引的表的字段索引给去掉就行了。</p>
+</blockquote>
+<blockquote>
+<p>错误使用Left Join
+left join的表在where中出现，如
+Table1 left join Table2 on Table1.C1=Table2.c1 where Table2.column1=XXX
+实际上已经变成了inner join
+Left join会限制连接顺序，而且where条件只能在连接后过滤，影响性能</p>
+</blockquote>
+<h6 id="2多表查询很多时候用exists代替in是一个好的选择理由虽然in与exists效率在不同场景效率有高有低但not-exists比not-in的效率高">2、多表查询，很多时候用exists代替in是一个好的选择（理由：虽然in与exists效率在不同场景效率有高有低，但not exists比not in的效率高）</h6>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">
+</span><span class="w"></span><span class="c1">-- 用下面的语句替换：
+</span><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">num</span><span class="o">=</span><span class="n">a</span><span class="p">.</span><span class="n">num</span><span class="p">)</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h6 id="3尽量避免向客户端返回大数据量应该使用分页">3、尽量避免向客户端返回大数据量，应该使用分页</h6>
+<p>若从数据库一次性返回的数据量过大，应该考虑相应需求是否合理，是否可以通过分页等方法处理。</p>
+<p>【多表查询-分页SQL语句】类似分页功能的SQL，建议先用主键关联，然后返回结果集，效率会高很多；</p>
+<p>分页SQL优化
+分页SQL可能包含order by，group by和多表join等操作，可以利用前面的优化手段
+后台分页取数SQL可以用cursor替换，分批fetch；使用分页SQL多次取，性能差，数据一致性没保证</p>
+<h4 id="4用union-all代替or比较少用一般都用or">4、用Union ALL代替OR（比较少用，一般都用OR）</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;test1_1&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;test1_2&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 3.179 2.902 2.806（100万数据测试）
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;test1_1&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">union</span><span class="w"> </span><span class="k">all</span><span class="w">
+</span><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">test1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;test1_2&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 2.335 2.485 2.432（100万数据测试）
+</span></code></pre></td></tr></table>
+</div>
+</div><p>拆分复杂查询，使用联合查询，可以用多条sql语句来实现一条查询结果,提高查询性能。</p>
+<p><strong>能用UNION ALL就不要用UNION</strong></p>
+<p>UNION ALL不执行SELECT DISTINCT函数，少一个步骤，这样就会减少很多不必要的资源。</p>
+<h4 id="35-第五通用">3.5 第五，通用</h4>
+<blockquote>
+<p><strong>【通用】</strong>：
+Mysql数据库名和表名在 Windows 中是大小写不敏感的，而在大多数类型的 Unix/Linux 系统中是大小写敏感的。
+MySQL大小写敏感可以通过配置文件（Windows中的my.ini，Linux中的my.cnf）的lower_case_table_names参数来控制。
+<strong>【通用】</strong>：数据库的存储三样东西&mdash;-表结构,表数据，索引
+【通用 Mysql很少使用存储引擎】Mysql很少采用类似SqlServer中大量使用的  “存储过程”来实现业务逻辑（存储过程也不是mysql的优势）；更多的是用  简单的查询，而把复杂的查询业务，直接在程序代码中实现，压力转义(java中有很多优秀的orm框架)。  mysql虽然没有sqlserver和oracle强大，但是它是开源免费，可以部署多台sql服务器,实现分表分库,集群，从而实现以量换性能。</p>
+</blockquote>
+<h3 id="四小结">四、小结</h3>
+<p>1、慢查询和SQL调优是一体的；
+2、全文金手指，都是要记忆的。</p>
+<h2 id="表缓冲工作原理">表缓冲工作原理</h2>
+<p>在对sql语句用explain操作时多出了一个using  john buffer：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">mysql&gt;explain <span class="k">select</span> * from t1,t2 where t1.col&lt;<span class="m">10</span> and t2.col&lt;<span class="s1">&#39;123&#39;</span><span class="p">;</span>
+id     select_type   table   <span class="nb">type</span>    extra
+<span class="m">1</span>      simple        t1      range   using  where
+<span class="m">2</span>      simple        t2      range   using where:using john buffer
+</code></pre></td></tr></table>
+</div>
+</div><p>在没有使用john buffer的mysql服务上，执行下面这个表连接操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">table     <span class="nb">type</span>         -------                extra              
+ tbl1      all
+ tbl2      ref                                using where
+ tbl3     range                               using where
+</code></pre></td></tr></table>
+</div>
+</div><p>在没有使用表连接的情况下，mysql服务将执行上述查询语句</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"> while(t1rec in tbl1){
+	while(t3rec  in   tbl3 and t3rec.key1&lt;40){
+		put the(t1rec,t2rec,t3rec)combination to output buffer;
+	}
+}   
+</code></pre></td></tr></table>
+</div>
+</div><p>这是没有采用缓冲算法的代码</p>
+<p>对于缓冲算法，下次继续哈。</p>
+<h2 id="mysql内存表和临时表的见解">MySQL内存表和临时表的见解</h2>
+<p>临时表与内存表的区分
+临时表是指使用create temprary table创建的临时表.临时表可以使用任何存储引擎,临时表只在单个连接中可见,当连接断开时,临时表也会消失.
+MySQL最初会将临时表创建在内存中,当数据变的太大后,就会转储到磁盘上.
+内存表是指用memory引擎创建的表.表结构存在于磁盘,数据放在内存中.</p>
+<p>临时表创建的条件:
+1,查询中有排序(ORDER BY)和分组(GROUP BY)的操作
+2,在排序中使用过滤重复列(DISTINCT)
+3,查询中用SQL_SMALL_RESULT选项</p>
+<p>遇到下列情况会将内存中的临时表写入磁盘:
+1,表中存在BLOB和TEXT字段
+2,分组或过滤的列超过512字节
+3,查询中合并结果集的列超过512字节</p>
+<p>如果起初在内存中创建的临时表变的太大,MySQL会自动将其转成磁盘上的临时表.
+内存中的临时表由 tmp_table_size 和 max_heap_table_size 两个参数决定.这与创建MEMORY引擎的表不同.MEMORY引擎的表由max_heap_table_size参数决定表的大小,并且它不会转成到在磁盘上的格式.
+当MySQL创建临时表时(包括内存上和磁盘上),都会增加Created_tmp_tables 状态值,如果MySQL在磁盘上创建临时表(包括从内存上转成磁盘的),都会增加 Created_tmp_disk_tables状态值.</p>
+<p><strong>关于内存表和临时表的两个选项</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 独立的内存表所允许的最大容量.
+# 此选项为了防止意外创建一个超大的内存表导致用尽所有的内存资源.
+# 设置范围16KB-4GB
+max_heap_table_size = 64M
+
+# 内部(内存中)临时表的最大大小
+# 如果一个表增长到比此值更大,将会自动转换为基于磁盘的表.
+# 此限制是针对单个表的,而不是总和.
+tmp_table_size = 64M
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="数据库中表的缓冲索引等介绍">数据库中表的缓冲、索引等介绍</h2>
+<p>4、表的缓冲(缓存)类型有3种：单记录缓冲，常规缓冲，完全缓冲。（技术设置）</p>
+<p>单记录缓冲：适合于select single 语句对于select single 找不到记录的情况，buffer中也会记
+录这种情况下找不到，下次使用这个语句时就不会再读取数据库了。
+常规缓冲：访问到得记录的 key的左连接（left join）被缓存。
+完全缓冲：比较小的表，很少被修改适合 fully buffer。对于那种场景是表中的记录不存在的
+查询经常被使用的表也适合做 fully buffer。另外对于 fully buffer由于 buffer中的记录是按照
+key 排序的所以查询条件要充分利用索引，否则的话很有可能性能还没有直接从数据库中访
+问利用secondary index好。</p>
+<p>说明：可以在【命令输入域】中敲入/<em>T<strong>A</strong>B</em>来清空所在<em>a<strong>p</strong>p<strong>l</strong>i<strong>c</strong>a<strong>t</strong>i<strong>o</strong>n<strong>s</strong>e<strong>r</strong>v<strong>e</strong>r</em>上的缓存。/</p>
+<p>SYNC
+可以清空所在application server 上的所有缓存。打开缓冲的表一般是频繁读取数据，相对较
+小，延迟更新表中数据可以接受的情况。</p>
+<p>5、表和索引
+表中的索引，分为主索引(primary index)和次级索引(secondary index).
+主索引：是由系统根据表中的所有关键字(primary key)自动隐式建立的，为唯一索引。
+次级索引：可以用户自定义，可以指定为唯一的索引，也可以定义为非唯一的索引，定义为
+非唯一索引时，有三种选择，可以在所有数据库系统上建立索引、没有数据库索引、选定数
+据库系统， 【选定数据库系统】的时候，可以排除列表和选择列表两种方式在相应的数据库
+上建立索引。然后添加需要在数据库中建立索引的字段，一般次级索引的字段都是 SQL 语
+句中 where 查询条件里的字段，并且，在一定要放在 where 条件的最前端，才有更好的效
+率。所以建立完成后，保存-&gt;检查-&gt;激活。会提示在数据库系统（如 ORACLE）中存在索引
+索引ID（如AFRU~E1）.若提示在数据库中索引ID 不存在，那么即使该次级索引激活了，也
+没有效果。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-10-21</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/database-pptimization-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/database-pptimization-note/" data-title="数据库优化笔记" data-hashtags="DataBase,Optimization"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/database-pptimization-note/" data-hashtag="DataBase"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/database-pptimization-note/" data-title="数据库优化笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/database-pptimization-note/" data-title="数据库优化笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/database/">DataBase</a>,&nbsp;<a href="/tags/optimization/">Optimization</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/svn-note/" class="prev" rel="prev" title="SVN笔记"><i class="fas fa-angle-left fa-fw"></i>SVN笔记</a>
+            <a href="/java-audition-note/" class="next" rel="next" title="Java后端面试题整理">Java后端面试题整理<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>
