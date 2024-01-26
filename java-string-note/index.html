@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Java String笔记 - KKKPJSKEY&#39;s-Case-Archives</title><meta name="description" content="记录Java String笔记"><meta property="og:title" content="Java String笔记" />
+<meta property="og:description" content="记录Java String笔记" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kkkpjskey.github.io/java-string-note/" /><meta property="og:image" content="https://kkkpjskey.github.io/java-string-note/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-01-25T18:55:34+08:00" />
+<meta property="article:modified_time" content="2024-01-25T18:55:34+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kkkpjskey.github.io/java-string-note/featured-image.png"/>
+<meta name="twitter:title" content="Java String笔记"/>
+<meta name="twitter:description" content="记录Java String笔记"/>
+<meta name="application-name" content="KKKPJSKEY&#39;s-Case-Archives">
+<meta name="apple-mobile-web-app-title" content="KKKPJSKEY&#39;s-Case-Archives"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kkkpjskey.github.io/java-string-note/" /><link rel="prev" href="https://kkkpjskey.github.io/database-pptimization-note/" /><link rel="next" href="https://kkkpjskey.github.io/java-audition-note/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.c7b8c5b85fd75a61ccb5e4d67876bcea7a86730af33a2c32f518a595ee670885455e303041833dfdf22b05a4eed86b37.css" integrity="sha384-x7jFuF/XWmHMteTWeHa86nqGcwrzOiwy9Rille5nCIVFXjAwQYM9/fIrBaTu2Gs3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Java String笔记",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kkkpjskey.github.io\/java-string-note\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/kkkpjskey.github.io\/java-string-note\/featured-image.png",
+                            "width":  1200 ,
+                            "height":  360 
+                        }],"genre": "posts","keywords": "Java, String, Format","wordcount":  5988 ,
+        "url": "https:\/\/kkkpjskey.github.io\/java-string-note\/","datePublished": "2024-01-25T18:55:34+08:00","dateModified": "2024-01-25T18:55:34+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/kkkpjskey.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "KKKPSJKEY"
+            },"description": "记录Java String笔记"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/note/"> 笔记 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/java-string-note/" selected>简体中文</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KKKPJSKEY&#39;s-Case-Archives"><span class="header-title-pre"><i class='fas fa-laptop-code fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/note/" title="">笔记</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/KKKPJSKEY" title="GitHub" rel="noopener noreferrer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">简体中文<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/java-string-note/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java String笔记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/KKKPJSKEY" title="Author" target="_blank" rel="noopener noreferrer author" class="author"><i class="fas fa-user-circle fa-fw"></i>KKKPSJKEY</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/back/"><i class="far fa-folder fa-fw"></i>Back</a>&nbsp;<a href="/categories/note/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2024-01-25">2024-01-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5988 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/java-string-note/" class="leancloud_visitors" data-flag-title="Java String笔记">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/java-string-note/featured-image.png"
+        data-srcset="/java-string-note/featured-image.png, /java-string-note/featured-image.png 1.5x, /java-string-note/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/java-string-note/featured-image.png"
+        title="记录Java String笔记" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#工具">工具</a></li>
+    <li><a href="#参数不兼容">参数不兼容</a>
+      <ul>
+        <li><a href="#s"><code>%s</code></a>
+          <ul>
+            <li><a href="#正常使用">正常使用</a></li>
+            <li><a href="#输出">输出</a></li>
+            <li><a href="#缺少参数多占位符">缺少参数（多占位符）</a></li>
+            <li><a href="#输出-1">输出</a></li>
+            <li><a href="#多余参数少占位符">多余参数（少占位符）</a></li>
+            <li><a href="#输出-2">输出</a></li>
+          </ul>
+        </li>
+        <li><a href="#1s"><code>%1$s</code></a>
+          <ul>
+            <li><a href="#正常使用-1">正常使用</a></li>
+            <li><a href="#输出-3">输出</a></li>
+            <li><a href="#缺少参数多占位符-1">缺少参数（多占位符）</a></li>
+            <li><a href="#输出-4">输出</a></li>
+            <li><a href="#多余参数少占位符-1">多余参数（少占位符）</a></li>
+            <li><a href="#输出-5">输出</a></li>
+          </ul>
+        </li>
+        <li><a href="#0"><code>{0}</code></a>
+          <ul>
+            <li><a href="#正常使用-2">正常使用</a></li>
+            <li><a href="#输出-6">输出</a></li>
+            <li><a href="#缺少参数多占位符-2">缺少参数（多占位符）</a></li>
+            <li><a href="#输出-7">输出</a></li>
+            <li><a href="#多余参数少占位符-2">多余参数（少占位符）</a></li>
+            <li><a href="#输出-8">输出</a></li>
+          </ul>
+        </li>
+        <li><a href="#总结">总结</a>
+          <ul>
+            <li><a href="#综述">综述</a></li>
+            <li><a href="#文件打开">文件打开</a></li>
+            <li><a href="#git提交">git提交</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#类型">类型</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#测试代码">测试代码</a></li>
+            <li><a href="#输出-9">输出</a></li>
+          </ul>
+        </li>
+        <li><a href="#带规则">带规则</a></li>
+        <li><a href="#日期时间">日期时间</a>
+          <ul>
+            <li><a href="#测试代码-1">测试代码</a></li>
+            <li><a href="#输出-10">输出</a></li>
+          </ul>
+        </li>
+        <li><a href="#自定义时间">自定义时间</a>
+          <ul>
+            <li><a href="#测试代码-2">测试代码</a></li>
+            <li><a href="#输出-11">输出</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#java转义字符大全">Java转义字符大全</a>
+      <ul>
+        <li><a href="#常见的转义字符">常见的转义字符</a></li>
+        <li><a href="#代码示例">代码示例</a></li>
+        <li><a href="#总结-1">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="java-format笔记">Java Format笔记</h1>
+<p>字符串格式化在日常编码过程中是必须使用的，尽管此时Java18已经推出一段时间了，大部分企业还是常用的Java8版本用于生产，所以在低版本Java中如何优雅的使用字符串格式化是很有必要的。</p>
+<h2 id="工具">工具</h2>
+<p>字符串格式化有三种常用的形式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">%s
+%1<span class="nv">$s</span>
+<span class="o">{</span>0<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参数不兼容">参数不兼容</h2>
+<h3 id="s"><code>%s</code></h3>
+<h4 id="正常使用">正常使用</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    	<span class="n">String</span> <span class="n">formatNormal121</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;第%s行%s不能为空。&#34;</span><span class="o">,</span> <span class="s">&#34;1&#34;</span><span class="o">,</span><span class="s">&#34;displayName&#34;</span><span class="o">);</span>
+    	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">formatNormal121</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">第1行displayName不能为空。
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="缺少参数多占位符">缺少参数（多占位符）</h4>
+<blockquote>
+<p>会抛出MissingFormatArgumentException异常</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.MissingFormatArgumentException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">formatNormalLessParam</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+          <span class="n">formatNormalLessParam</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;第%s行%s不能为空。&#34;</span><span class="o">,</span> <span class="s">&#34;1&#34;</span><span class="o">);</span>
+          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">formatNormalLessParam</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">MissingFormatArgumentException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;format Normal Less Param error:&#34;</span> <span class="o">+</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+    <span class="c1">//      throw new RuntimeException(e);
+</span><span class="c1"></span>        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-1">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">format Normal Less Param error:Format specifier <span class="s1">&#39;%s&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="多余参数少占位符">多余参数（少占位符）</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">formatNormalMoreParam</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;第%s行%s不能为空。&#34;</span><span class="o">,</span> <span class="s">&#34;1&#34;</span><span class="o">,</span><span class="s">&#34;displayName&#34;</span><span class="o">,</span><span class="s">&#34;moreParameters&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">formatNormalMoreParam</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-2">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">第1行displayName不能为空。
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="1s"><code>%1$s</code></h3>
+<h4 id="正常使用-1">正常使用</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">orderFormat121</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;第%1$d行%2$s不能为空。&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="s">&#34;displayName&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">orderFormat121</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-3">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">第1行displayName不能为空。
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="缺少参数多占位符-1">缺少参数（多占位符）</h4>
+<blockquote>
+<p>会抛出MissingFormatArgumentException异常</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.MissingFormatArgumentException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">orderFormatLessParam</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+          <span class="n">orderFormatLessParam</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;第%1$d行%2$s不能为空。&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">orderFormatLessParam</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">MissingFormatArgumentException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;order Format Less Param error:&#34;</span> <span class="o">+</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+    <span class="c1">//      throw new RuntimeException(e);
+</span><span class="c1"></span>        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-4">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">order Format Less Param error:Format specifier <span class="s1">&#39;%2$s&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="多余参数少占位符-1">多余参数（少占位符）</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">orderFormatMoreParam</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;第%1$d行%2$s不能为空。&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="s">&#34;displayName&#34;</span><span class="o">,</span>  <span class="s">&#34;moreParameters&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">orderFormatMoreParam</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-5">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">第1行displayName不能为空。
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="0"><code>{0}</code></h3>
+<h4 id="正常使用-2">正常使用</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="n">String</span> <span class="n">syntacticSugarFormat121</span><span class="o">=</span> <span class="n">MessageFormat</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;第{0}行{1}不能为空。&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="s">&#34;displayName&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">syntacticSugarFormat121</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-6">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">第1行displayName不能为空。
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="缺少参数多占位符-2">缺少参数（多占位符）</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">syntacticSugarFormatLessParam</span><span class="o">=</span> <span class="n">MessageFormat</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;第{0}行{1}不能为空。&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">syntacticSugarFormatLessParam</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-7">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">第1行<span class="o">{</span>1<span class="o">}</span>不能为空。
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="多余参数少占位符-2">多余参数（少占位符）</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">syntacticSugarFormatMoreParam</span><span class="o">=</span> <span class="n">MessageFormat</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;第{0}行{1}不能为空。&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="s">&#34;displayName&#34;</span><span class="o">,</span>  <span class="s">&#34;moreParameters&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">syntacticSugarFormatMoreParam</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-8">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">第1行displayName不能为空。
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="总结">总结</h3>
+<h4 id="综述">综述</h4>
+<p>高版本Java（如17+）<code>String.format</code>也支持<code>{0}</code>形式的格式化，低版本推荐使用<code>MessageFormat.format</code>，不会抛异常。</p>
+<p>同时String.format参数不对，Idea会在打开文件和git提交时进行类型警告，根据警告也可以处理</p>
+<h4 id="文件打开">文件打开</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./1.png"
+        data-srcset="./1.png, ./1.png 1.5x, ./1.png 2x"
+        data-sizes="auto"
+        alt="./1.png"
+        title="1" /></p>
+<h4 id="git提交">git提交</h4>
+<p>新版idea为了提高性能，将此功能改为异步，先commit掉代码，如有警告和报错则提示</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c2.png"
+        data-srcset="C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c2.png, C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c2.png 1.5x, C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c2.png 2x"
+        data-sizes="auto"
+        alt="C:\Users\kingdee\Desktop\Java-String-Note\2.png"
+        title="2" /></p>
+<p>如果没有problem页签，去view-&gt;tool view-&gt;problem即可开启或默认快捷键alt+6</p>
+<p>旧版本idea会进行分析，如果有警告和错误会进行二次确认</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c3.png"
+        data-srcset="C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c3.png, C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c3.png 1.5x, C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c3.png 2x"
+        data-sizes="auto"
+        alt="C:\Users\kingdee\Desktop\Java-String-Note\3.png"
+        title="3" /></p>
+<p>如果commit不进行代码检测说明关闭了设置，重新开启即可</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c4.png"
+        data-srcset="C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c4.png, C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c4.png 1.5x, C:%5cUsers%5ckingdee%5cDesktop%5cJava-String-Note%5c4.png 2x"
+        data-sizes="auto"
+        alt="C:\Users\kingdee\Desktop\Java-String-Note\4.png"
+        title="4" /></p>
+<h2 id="类型">类型</h2>
+<table>
+<thead>
+<tr>
+<th>转 换 符</th>
+<th>说  明</th>
+<th>示  例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%s</td>
+<td>字符串类型</td>
+<td>&ldquo;mingrisoft&rdquo;</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>字符类型</td>
+<td>&rsquo;m'</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>布尔类型</td>
+<td>true</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>整数类型（十进制）</td>
+<td>99</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>整数类型（十六进制）</td>
+<td>FF</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>整数类型（八进制）</td>
+<td>77</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>浮点类型</td>
+<td>99.99</td>
+</tr>
+<tr>
+<td>%a</td>
+<td>十六进制浮点类型</td>
+<td>FF.35AE</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>指数类型</td>
+<td>9.38e+5</td>
+</tr>
+<tr>
+<td>%g</td>
+<td>通用浮点类型（f和e类型中较短的）</td>
+<td></td>
+</tr>
+<tr>
+<td>%h</td>
+<td>散列码</td>
+<td></td>
+</tr>
+<tr>
+<td>%%</td>
+<td>百分比类型</td>
+<td>％</td>
+</tr>
+<tr>
+<td>%n</td>
+<td>换行符</td>
+<td></td>
+</tr>
+<tr>
+<td>%tx</td>
+<td>日期与时间类型（x代表不同的日期与时间转换符</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="测试代码">测试代码</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">String</span> <span class="n">str</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>  
+        <span class="c1">//$使用  
+</span><span class="c1"></span>        <span class="n">str</span><span class="o">=</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&#34;格式参数$的使用：%1$d,%2$s&#34;</span><span class="o">,</span> <span class="n">99</span><span class="o">,</span><span class="s">&#34;abc&#34;</span><span class="o">);</span>             
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>                       
+        <span class="c1">//+使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;显示正负数的符号：%+d与%d%n&#34;</span><span class="o">,</span> <span class="n">99</span><span class="o">,-</span><span class="n">99</span><span class="o">);</span>  
+        <span class="c1">//补O使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;最牛的编号是：%03d%n&#34;</span><span class="o">,</span> <span class="n">7</span><span class="o">);</span>  
+        <span class="c1">//空格使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;Tab键的效果是：% 8d%n&#34;</span><span class="o">,</span> <span class="n">7</span><span class="o">);</span>  
+        <span class="c1">//.使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;整数分组的效果是：%,d%n&#34;</span><span class="o">,</span> <span class="n">9989997</span><span class="o">);</span>  
+        <span class="c1">//空格和小数点后面个数  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;一本书的价格是：% 50.5f元%n&#34;</span><span class="o">,</span> <span class="n">49</span><span class="o">.</span><span class="na">8</span><span class="o">);</span>  
+    <span class="o">}</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-9">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">    格式参数$的使用：99,abc  
+    显示正负数的符号：+99与-99  
+    最牛的编号是：007  
+    Tab键的效果是：       <span class="m">7</span>  
+    整数分组的效果是：9,989,997  
+    一本书的价格是： 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="带规则">带规则</h3>
+<table>
+<thead>
+<tr>
+<th>标  志</th>
+<th>说  明</th>
+<th>示  例</th>
+<th>结  果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>为正数或者负数添加符号</td>
+<td>(&quot;%+d&quot;,15)</td>
+<td>+15</td>
+</tr>
+<tr>
+<td>−</td>
+<td>左对齐</td>
+<td>(&quot;%-5d&quot;,15)</td>
+<td>|15  |</td>
+</tr>
+<tr>
+<td>0</td>
+<td>数字前面补0</td>
+<td>(&quot;%04d&quot;, 99)</td>
+<td>0099</td>
+</tr>
+<tr>
+<td>空格</td>
+<td>在整数之前添加指定数量的空格</td>
+<td>(&quot;% 4d&quot;, 99)</td>
+<td>| 99|</td>
+</tr>
+<tr>
+<td>,</td>
+<td>以“,”对数字分组</td>
+<td>(&quot;%,f&quot;, 9999.99)</td>
+<td>9,999.990000</td>
+</tr>
+<tr>
+<td>(</td>
+<td>使用括号包含负数</td>
+<td>(&quot;%(f&quot;, -99.99)</td>
+<td>(99.990000)</td>
+</tr>
+<tr>
+<td>#</td>
+<td>如果是浮点数则包含小数点，如果是16进制或8进制则添加0x或0</td>
+<td>(&quot;%#x&quot;, 99)(&quot;%#o&quot;, 99)</td>
+<td>0x630143</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>格式化前一个转换符所描述的参数</td>
+<td>(&quot;%f和%&lt;3.2f&quot;, 99.45)</td>
+<td>99.450000和99.45</td>
+</tr>
+<tr>
+<td>$</td>
+<td>被格式化的参数索引</td>
+<td>(&quot;%1$d,%2$s&quot;, 99,&ldquo;abc&rdquo;)</td>
+<td>99,abc</td>
+</tr>
+</tbody>
+</table>
+<h3 id="日期时间">日期时间</h3>
+<table>
+<thead>
+<tr>
+<th>转 换 符</th>
+<th>说  明</th>
+<th>示  例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c</td>
+<td>包括全部日期和时间信息</td>
+<td>星期六 十月 27 14:21:20 CST 2007</td>
+</tr>
+<tr>
+<td>F</td>
+<td>“年-月-日”格式</td>
+<td>2007-10-27</td>
+</tr>
+<tr>
+<td>D</td>
+<td>“月/日/年”格式</td>
+<td>10/27/07</td>
+</tr>
+<tr>
+<td>r</td>
+<td>“HH:MM:SS PM”格式（12时制）</td>
+<td>02:25:51 下午</td>
+</tr>
+<tr>
+<td>T</td>
+<td>“HH:MM:SS”格式（24时制）</td>
+<td>14:28:16</td>
+</tr>
+<tr>
+<td>R</td>
+<td>“HH:MM”格式（24时制）</td>
+<td>14:28</td>
+</tr>
+</tbody>
+</table>
+<h4 id="测试代码-1">测试代码</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">Date</span> <span class="n">date</span><span class="o">=</span><span class="k">new</span> <span class="n">Date</span><span class="o">();</span>                                  
+        <span class="c1">//c的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;全部日期和时间信息：%tc%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>          
+        <span class="c1">//f的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;年-月-日格式：%tF%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//d的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;月/日/年格式：%tD%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//r的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;HH:MM:SS PM格式（12时制）：%tr%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//t的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;HH:MM:SS格式（24时制）：%tT%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//R的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;HH:MM格式（24时制）：%tR&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="o">}</span>  
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+    <span class="n">Date</span> <span class="n">date</span><span class="o">=</span><span class="k">new</span> <span class="n">Date</span><span class="o">();</span>                                      
+    <span class="c1">//b的使用，月份简称  
+</span><span class="c1"></span>    <span class="n">String</span> <span class="n">str</span><span class="o">=</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">Locale</span><span class="o">.</span><span class="na">US</span><span class="o">,</span><span class="s">&#34;英文月份简称：%tb&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>       
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>                                                                              
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;本地月份简称：%tb%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//B的使用，月份全称  
+</span><span class="c1"></span>    <span class="n">str</span><span class="o">=</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">Locale</span><span class="o">.</span><span class="na">US</span><span class="o">,</span><span class="s">&#34;英文月份全称：%tB&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;本地月份全称：%tB%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//a的使用，星期简称  
+</span><span class="c1"></span>    <span class="n">str</span><span class="o">=</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">Locale</span><span class="o">.</span><span class="na">US</span><span class="o">,</span><span class="s">&#34;英文星期的简称：%ta&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>  
+    <span class="c1">//A的使用，星期全称  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;本地星期的简称：%tA%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//C的使用，年前两位  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;年的前两位数字（不足两位前面补0）：%tC%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//y的使用，年后两位  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;年的后两位数字（不足两位前面补0）：%ty%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//j的使用，一年的天数  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;一年中的天数（即年的第几天）：%tj%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//m的使用，月份  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;两位数字的月份（不足两位前面补0）：%tm%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//d的使用，日（二位，不够补零）  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;两位数字的日（不足两位前面补0）：%td%n&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+    <span class="c1">//e的使用，日（一位不补零）  
+</span><span class="c1"></span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;月份的日（前面不补0）：%te&#34;</span><span class="o">,</span><span class="n">date</span><span class="o">);</span>  
+<span class="o">}</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-10">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">    全部日期和时间信息：星期一 九月 <span class="m">10</span> 10:43:36 CST <span class="m">2012</span>  
+    年-月-日格式：2012-09-10  
+    月/日/年格式：09/10/12  
+    HH:MM:SS PM格式（12时制）：10:43:36 上午  
+    HH:MM:SS格式（24时制）：10:43:36  
+    HH:MM格式（24时制）：10:43  
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">英文月份简称：Sep  
+本地月份简称：九月  
+英文月份全称：September  
+本地月份全称：九月  
+英文星期的简称：Mon  
+本地星期的简称：星期一  
+年的前两位数字（不足两位前面补0）：20  
+年的后两位数字（不足两位前面补0）：12  
+一年中的天数（即年的第几天）：254  
+两位数字的月份（不足两位前面补0）：09  
+两位数字的日（不足两位前面补0）：10  
+月份的日（前面不补0）：10 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="自定义时间">自定义时间</h3>
+<table>
+<thead>
+<tr>
+<th>转 换 符</th>
+<th>说  明</th>
+<th>示  例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H</td>
+<td>2位数字24时制的小时（不足2位前面补0）</td>
+<td>15</td>
+</tr>
+<tr>
+<td>I</td>
+<td>2位数字12时制的小时（不足2位前面补0）</td>
+<td>03</td>
+</tr>
+<tr>
+<td>k</td>
+<td>2位数字24时制的小时（前面不补0）</td>
+<td>15</td>
+</tr>
+<tr>
+<td>l</td>
+<td>2位数字12时制的小时（前面不补0）</td>
+<td>3</td>
+</tr>
+<tr>
+<td>M</td>
+<td>2位数字的分钟（不足2位前面补0）</td>
+<td>03</td>
+</tr>
+<tr>
+<td>S</td>
+<td>2位数字的秒（不足2位前面补0）</td>
+<td>09</td>
+</tr>
+<tr>
+<td>L</td>
+<td>3位数字的毫秒（不足3位前面补0）</td>
+<td>015</td>
+</tr>
+<tr>
+<td>N</td>
+<td>9位数字的毫秒数（不足9位前面补0）</td>
+<td>562000000</td>
+</tr>
+<tr>
+<td>p</td>
+<td>小写字母的上午或下午标记</td>
+<td>中：下午英：pm</td>
+</tr>
+<tr>
+<td>z</td>
+<td>相对于GMT的RFC822时区的偏移量</td>
+<td>+0800</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>时区缩写字符串</td>
+<td>CST</td>
+</tr>
+<tr>
+<td>s</td>
+<td>1970-1-1 00:00:00 到现在所经过的秒数</td>
+<td>1193468128</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>1970-1-1 00:00:00 到现在所经过的毫秒数</td>
+<td>1193468128984</td>
+</tr>
+</tbody>
+</table>
+<h4 id="测试代码-2">测试代码</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">();</span>  
+        <span class="c1">//H的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;2位数字24时制的小时（不足2位前面补0）:%tH%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//I的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;2位数字12时制的小时（不足2位前面补0）:%tI%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//k的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;2位数字24时制的小时（前面不补0）:%tk%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//l的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;2位数字12时制的小时（前面不补0）:%tl%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//M的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;2位数字的分钟（不足2位前面补0）:%tM%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//S的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;2位数字的秒（不足2位前面补0）:%tS%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//L的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;3位数字的毫秒（不足3位前面补0）:%tL%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//N的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;9位数字的毫秒数（不足9位前面补0）:%tN%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//p的使用  
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">Locale</span><span class="o">.</span><span class="na">US</span><span class="o">,</span> <span class="s">&#34;小写字母的上午或下午标记(英)：%tp&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>   
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;小写字母的上午或下午标记（中）：%tp%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//z的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;相对于GMT的RFC822时区的偏移量:%tz%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//Z的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;时区缩写字符串:%tZ%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//s的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;1970-1-1 00:00:00 到现在所经过的秒数：%ts%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+        <span class="c1">//Q的使用  
+</span><span class="c1"></span>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&#34;1970-1-1 00:00:00 到现在所经过的毫秒数：%tQ%n&#34;</span><span class="o">,</span> <span class="n">date</span><span class="o">);</span>  
+    <span class="o">}</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="输出-11">输出</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">2位数字24时制的小时（不足2位前面补0）:11  
+2位数字12时制的小时（不足2位前面补0）:11  
+2位数字24时制的小时（前面不补0）:11  
+2位数字12时制的小时（前面不补0）:11  
+2位数字的分钟（不足2位前面补0）:03  
+2位数字的秒（不足2位前面补0）:52  
+3位数字的毫秒（不足3位前面补0）:773  
+9位数字的毫秒数（不足9位前面补0）:773000000  
+小写字母的上午或下午标记<span class="o">(</span>英<span class="o">)</span>：am  
+小写字母的上午或下午标记（中）：上午  
+相对于GMT的RFC822时区的偏移量:+0800  
+时区缩写字符串:CST  
+1970-1-1 00:00:00 到现在所经过的秒数：1347246232  
+1970-1-1 00:00:00 到现在所经过的毫秒数：1347246232773 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="java转义字符大全">Java转义字符大全</h2>
+<p>转义字符是一种特殊的字符序列，用于表示无法直接输入或打印的字符。在Java中，转义字符以反斜杠（\）开头，后跟一个或多个字符。在本文中，我们将介绍Java中常用的转义字符及其用法，以及一些常见的示例。</p>
+<h3 id="常见的转义字符">常见的转义字符</h3>
+<p>以下是Java中常用的转义字符：</p>
+<ol>
+<li>\t：制表符，用于在输出中插入一个制表符，相当于按下Tab键。</li>
+<li>\n：换行符，用于在输出中插入一个换行符，将光标移动到下一行的开头。</li>
+<li>\b：退格符，用于删除前一个字符。</li>
+<li>\r：回车符，用于将光标移动到当前行的开头。</li>
+<li>\f：换页符，用于在输出中插入一个换页符。</li>
+<li>'：单引号，用于在字符常量中插入一个单引号。</li>
+<li>&quot;：双引号，用于在字符串常量中插入一个双引号。</li>
+<li>\：反斜杠，用于在字符串常量中插入一个反斜杠。</li>
+</ol>
+<h3 id="代码示例">代码示例</h3>
+<p>下面是一些使用转义字符的代码示例：</p>
+<ol>
+<li>制表符示例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;姓名\t年龄\t性别&#34;</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;张三\t20\t男&#34;</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;李四\t18\t女&#34;</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">姓名    年龄    性别
+张三    20      男
+李四    18      女
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>换行符示例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;第一行\n第二行\n第三行&#34;</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">第一行
+第二行
+第三行
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>退格符示例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Hello\bWorld&#34;</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">HellWorld
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>回车符示例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;第一行\r第二行\r第三行&#34;</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">第一行
+第二行
+第三行
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>换页符示例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;第一页\f第二页\f第三页&#34;</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">第一页
+第二页
+第三页
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>单引号示例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;\&#39;&#39;</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">&#39;
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>双引号示例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;\&#34;Hello\&#34;&#34;</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">&#34;Hello&#34;
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>反斜杠示例：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&#34;C:\\Program Files\\Java&#34;</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">path</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">C:\Program Files\Java
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="总结-1">总结</h3>
+<p>本文介绍了Java中常见的转义字符及其用法，并提供了相应的代码示例。通过使用转义字符，我们可以在输出中插入特殊字符，使输出结果更加灵活和易读。在实际编程中，我们经常会用到这些转义字符来处理各种不同的需求。因此，熟练掌握这些转义字符的用法对于Java开发者来说是非常重要的。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-01-25</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/java-string-note/index.md" target="_blank" rel="noopener noreferrer">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kkkpjskey.github.io/java-string-note/" data-title="Java String笔记" data-hashtags="Java,String,Format"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kkkpjskey.github.io/java-string-note/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kkkpjskey.github.io/java-string-note/" data-title="Java String笔记" data-ralateuid="3960792616"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://kkkpjskey.github.io/java-string-note/" data-title="Java String笔记"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/baidu.svg"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/string/">String</a>,&nbsp;<a href="/tags/format/">Format</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/database-pptimization-note/" class="prev" rel="prev" title="数据库优化笔记"><i class="fas fa-angle-left fa-fw"></i>数据库优化笔记</a>
+            <a href="/java-audition-note/" class="next" rel="next" title="Java后端面试题整理">Java后端面试题整理<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.92.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/sunt-programator/CodeIT" target="_blank" rel="noopener noreferrer" title="CodeIT 0.2.10"><i class="fas fa-laptop-code fa-fw"></i> CodeIT</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/KKKPJSKEY" target="_blank" rel="noopener noreferrer">KKKPJSKEY</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoCodeIT.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"KKKPJSKEY's-Case-Archives","id-2":"KKKPJSKEY's-Case-Archives"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"HQXVPXR7JG","algoliaIndex":"KKKPJSKEY's-Case-Archives","algoliaSearchKey":"19b354f5c6a10bcec6a1c920d95cda23","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.e7a5845171e7810e33987fe5e0126480d67b52c04d579f93f48f97aae1932644ec5f7fa8c1f3377a0613c9a2fcf86bd1.js" integrity="sha384-56WEUXHngQ4zmH/l4BJkgNZ7UsBNV5&#43;T9I&#43;XquGTJkTsX3&#43;owfM3egYTyaL8&#43;GvR"></script></body>
+</html>
